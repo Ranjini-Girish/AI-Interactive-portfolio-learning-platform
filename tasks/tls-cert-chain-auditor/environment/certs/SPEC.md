@@ -22,7 +22,8 @@ The dataset under `/app/certs/` contains:
   "ocsp_stale_days": <int>,
   "max_chain_depth": <int>,
   "key_size_min_per_tier": {"production": 2048, "staging": 2048, "internal": 1024},
-  "san_policy_per_tier": {"production": "exact", "staging": "wildcard_ok", "internal": "cn_only"}
+  "san_policy_per_tier": {"production": "exact", "staging": "wildcard_ok", "internal": "cn_only"},
+  "deprecated_signature_algos": ["<str>", ...]
 }
 ```
 
@@ -49,21 +50,28 @@ A leaf or intermediate certificate file at `leafs/<serial>.json` or `intermediat
 
 An entry of `incident_log.events` is **accepted** iff **all** of the following hold:
 
-- `kind` is one of `"key_compromise"`, `"ca_compromise"`, `"audit_review"`.
+- `kind` is one of `"key_compromise"`, `"ca_compromise"`, `"audit_review"`, `"quarantine_hold"`.
 - `day` is an integer and `day <= pool_state.current_day`.
 - For `"key_compromise"`: `serial` matches the `serial` of some leaf certificate.
 - For `"ca_compromise"`: `serial` matches the `serial` of some intermediate certificate or appears in `chain_config.trusted_roots`.
 - For `"audit_review"`: `domain` is the `domain` field of some `domains/<tier>/<domain>.json` AND `target_verdict` is one of `"valid"`, `"untrusted"`.
+- For `"quarantine_hold"`: `domain` is the `domain` field of some `domains/<tier>/<domain>.json`.
 
 Every other event is silently ignored and counted in `summary.ignored_incident_events`.
 
 ## OCSP interpretation
 
-An OCSP response is **stale** iff `pool_state.current_day - produced_day > chain_config.ocsp_stale_days`. For each leaf (referenced by domain), look up the OCSP response with the matching `serial` (if multiple match, use the one with the largest `produced_day`; if still tied, the one whose `produced_day` is smallest in the input list — last-tied wins). The leaf's `ocsp_state` is:
+An OCSP response is **stale** iff `pool_state.current_day - produced_day > chain_config.ocsp_stale_days`.
+
+**Response selection.** For a given `serial`, consider every response whose `serial` matches. Choose the response with the largest `produced_day`; if several share that maximum, the response that appears **last** in the `responses` array wins.
+
+**State assignment.** For the selected response (or when no response exists for the serial):
 
 - `"valid"` if the response has `status == "good"` and is not stale.
 - `"revoked"` if the response has `status == "revoked"`.
 - `"soft_fail"` if the response has `status == "unknown"` OR the matched response is stale OR no matching response exists.
+
+Apply this to each domain's leaf serial to obtain the leaf's `ocsp_state`. Apply the same rules to every intermediate serial that appears in the domain's successful chain list at positions `1` through `len(chain)-2` (excluding the leaf and the trusted root) to obtain that intermediate's OCSP state. A domain has **intermediate_revoked** when any such intermediate's OCSP state is `"revoked"`.
 
 ## Chain validation
 
@@ -93,16 +101,27 @@ SAN matching depends on tier:
 
 If SAN matching fails, the leaf has `san_ok == false`.
 
-## Per-domain verdict
+## Deprecated signature algorithms
 
-Compute a preliminary verdict for each domain in the order below; the **first** matching label wins:
+`chain_config.deprecated_signature_algos` lists algorithm name strings. For a domain whose chain walk **succeeded** (no chain failure reason applies):
+
+- If the leaf's `signature_algo` is listed: add reason `deprecated_signature` when `domain.tier == "production"`, or `deprecated_signature_warn` when `domain.tier == "staging"`. The `internal` tier ignores deprecated status on the leaf.
+- For each intermediate serial at chain positions `1` through `len(chain)-2`, if that intermediate's `signature_algo` is listed, add the same reason label using the **domain's** tier (not the intermediate's).
+
+These reasons participate in the preliminary verdict below even when they do not change the winning label.
+
+## Per-domain preliminary verdict
+
+Compute a **preliminary** verdict for each domain; the **first** matching label wins:
 
 - `"chain_unreachable"` — the chain walk failed (any of `leaf_missing`, `intermediate_missing`, `chain_too_long`, `cycle_detected`).
 - `"expired"` — the leaf is expired or not yet valid.
-- `"revoked"` — `ocsp_state == "revoked"`.
-- `"untrusted"` — `key_size_ok` is false OR `san_ok` is false.
-- `"warning"` — `expiry_bucket == "warning"` OR `ocsp_state == "soft_fail"`.
+- `"revoked"` — the leaf's `ocsp_state == "revoked"` OR `intermediate_revoked` is true.
+- `"untrusted"` — `key_size_ok` is false OR `san_ok` is false OR (`domain.tier == "production"` AND `deprecated_signature` is among the collected reasons).
+- `"warning"` — `expiry_bucket == "warning"` OR the leaf's `ocsp_state == "soft_fail"` OR (`domain.tier == "staging"` AND `deprecated_signature_warn` is among the collected reasons).
 - `"valid"` — none of the above.
+
+Record each domain's preliminary verdict; `summary.by_preliminary_verdict` counts domains by this label before any later pass.
 
 ## Compromise cascade (cross-cutting)
 
@@ -113,7 +132,16 @@ For an intermediate or root with at least one accepted `ca_compromise` event:
 - Every domain whose chain walk visits that serial (anywhere in `chain`, leaf to root inclusive) gets verdict `"compromised"` overriding any preliminary verdict.
 - Every other domain whose chain shares **at least one** intermediate (not a root, not the leaf) with a compromised chain gets verdict `"tainted"` overriding any preliminary verdict that is not already `"compromised"`. Tainting does not propagate transitively beyond one shared intermediate.
 
-After the compromise cascade, an accepted `audit_review` event with the largest `day` for a given domain (ties broken by largest list index) sets the final verdict to `target_verdict`, **unless** the domain is currently `"compromised"` (compromise overrides audit_review unconditionally). For non-compromised domains, whenever such a winning event exists, `audit_review_override` must appear in that domain's `reasons` in `/app/audit/chain_audit.json`, including when `target_verdict` equals the preliminary verdict.
+After the compromise cascade, an accepted `audit_review` event with the largest `day` for a given domain (ties broken by largest list index) sets the verdict to `target_verdict`, **unless** any of the following hold:
+
+- the domain is currently `"compromised"` (compromise overrides audit_review unconditionally);
+- the domain's preliminary verdict was `"revoked"` (including revocation discovered via intermediate OCSP).
+
+For domains where audit_review applies, `audit_review_override` must appear in that domain's `reasons` in `/app/audit/chain_audit.json`, including when `target_verdict` equals the verdict immediately before the override.
+
+## Quarantine hold (post-review)
+
+After audit_review processing, for each domain that has at least one accepted `quarantine_hold` event: if the current verdict is `"valid"` or `"warning"`, change the verdict to `"untrusted"` and add `quarantine_hold` to `reasons`. Quarantine does not apply to domains whose verdict is already `"compromised"`, `"tainted"`, `"revoked"`, `"expired"`, `"untrusted"`, or `"chain_unreachable"`.
 
 ## Output schemas
 
@@ -136,10 +164,14 @@ All five outputs are written under `/app/audit/`. List ordering is part of the c
 | `expired`                 | `current_day > leaf.not_after_day`                                                                                                               |
 | `not_yet_valid`           | `current_day < leaf.not_before_day`                                                                                                              |
 | `revoked`                 | the leaf's `ocsp_state` is `"revoked"`                                                                                                           |
+| `intermediate_revoked`    | `intermediate_revoked` is true for the domain                                                                                                      |
 | `key_size_too_small`      | `leaf.key_size < key_size_min_per_tier[domain.tier]`                                                                                             |
 | `san_mismatch`            | SAN matching for the domain's tier policy fails                                                                                                  |
+| `deprecated_signature`    | a listed `signature_algo` on the leaf or a chain intermediate and `domain.tier == "production"`                                                |
+| `deprecated_signature_warn` | a listed `signature_algo` on the leaf or a chain intermediate and `domain.tier == "staging"`                                                   |
 | `expiry_warning`          | `0 <= leaf.not_after_day - current_day <= expiry_warn_days`                                                                                      |
 | `ocsp_soft_fail`          | the leaf's `ocsp_state` is `"soft_fail"`                                                                                                         |
+| `quarantine_hold`         | the domain has an accepted `quarantine_hold` event and the post-review verdict was `"valid"` or `"warning"` before quarantine was applied       |
 | `key_compromise`          | the leaf has at least one accepted `key_compromise` event                                                                                        |
 | `ca_compromise`           | the chain visits an intermediate or root that has an accepted `ca_compromise` event, OR the chain shares an intermediate with such a compromised chain |
 | `audit_review_override`   | a non-compromised domain has a winning accepted `audit_review` event after the tie-break above, including when `target_verdict` equals the preliminary verdict |
@@ -171,10 +203,10 @@ Each bucket list is sorted by `(days_to_expiry ascending, domain ascending)`. `d
 ### `/app/audit/summary.json`
 
 ```
-{"current_day": <int>, "audit_version": "<str>", "total_domains": <int>, "total_intermediates": <int>, "ignored_incident_events": <int>, "by_verdict": {"valid": <int>, "warning": <int>, "expired": <int>, "revoked": <int>, "untrusted": <int>, "chain_unreachable": <int>, "compromised": <int>, "tainted": <int>}, "by_ocsp_state": {"valid": <int>, "revoked": <int>, "soft_fail": <int>}, "compromised_cas": ["<serial>", ...]}
+{"current_day": <int>, "audit_version": "<str>", "total_domains": <int>, "total_intermediates": <int>, "ignored_incident_events": <int>, "by_preliminary_verdict": {"valid": <int>, "warning": <int>, "expired": <int>, "revoked": <int>, "untrusted": <int>, "chain_unreachable": <int>}, "by_verdict": {"valid": <int>, "warning": <int>, "expired": <int>, "revoked": <int>, "untrusted": <int>, "chain_unreachable": <int>, "compromised": <int>, "tainted": <int>}, "by_ocsp_state": {"valid": <int>, "revoked": <int>, "soft_fail": <int>}, "compromised_cas": ["<serial>", ...]}
 ```
 
-`compromised_cas` is sorted ascending. Every key in `by_verdict` and `by_ocsp_state` must appear with an integer value (zero if absent).
+`compromised_cas` is sorted ascending. Every key in `by_preliminary_verdict`, `by_verdict`, and `by_ocsp_state` must appear with an integer value (zero if absent). `by_preliminary_verdict` has exactly the six preliminary labels and counts domains before the compromise cascade; `by_verdict` has all eight final labels and counts domains after compromise, audit_review, and quarantine passes.
 
 ## Canonical encoding
 

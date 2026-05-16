@@ -2,6 +2,7 @@
   "events": [
     {"kind": "key_compromise", "serial": "leaf-shop-v1", "day": 980},
     {"kind": "ca_compromise", "serial": "int-eu-1-sub", "day": 970},
+    {"kind": "quarantine_hold", "domain": "api.example.com", "day": 990},
     {"kind": "audit_review", "domain": "api.example.com", "target_verdict": "valid", "day": 985},
     {"kind": "audit_review", "domain": "ops.example.io", "target_verdict": "untrusted", "day": 990},
     {"kind": "audit_review", "domain": "ops.example.io", "target_verdict": "valid", "day": 995},

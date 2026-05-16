@@ -8,6 +8,8 @@
     {"serial": "leaf-staging-v2",  "status": "unknown",  "produced_day": 999},
     {"serial": "leaf-internal-v1", "status": "good",     "produced_day": 999},
     {"serial": "leaf-internal-v2", "status": "good",     "produced_day": 988},
+    {"serial": "leaf-internal-v2", "status": "unknown",  "produced_day": 988},
+    {"serial": "int-asia-1",       "status": "revoked",  "produced_day": 999},
     {"serial": "leaf-cdn-v1",      "status": "revoked",  "produced_day": 970},
     {"serial": "leaf-revoked-v1",  "status": "revoked",  "produced_day": 999}
   ]

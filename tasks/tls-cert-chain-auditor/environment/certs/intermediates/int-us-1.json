@@ -5,6 +5,6 @@
   "not_before_day": 0,
   "san": [],
   "serial": "int-us-1",
-  "signature_algo": "sha256-rsa",
+  "signature_algo": "sha1-rsa",
   "subject_cn": "GlobalTrust US Intermediate CA"
 }

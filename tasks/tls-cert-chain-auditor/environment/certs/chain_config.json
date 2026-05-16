@@ -12,5 +12,6 @@
     "production": "exact",
     "staging": "wildcard_ok",
     "internal": "cn_only"
-  }
+  },
+  "deprecated_signature_algos": ["sha1-rsa", "md5-rsa"]
 }

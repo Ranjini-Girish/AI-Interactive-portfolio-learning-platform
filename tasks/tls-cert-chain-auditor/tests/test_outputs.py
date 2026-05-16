@@ -28,15 +28,15 @@ REQUIRED_OUTPUT_FILES = [
 ]
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md":                                                   "892ee490c6f7c2c46abd2d838f2a3bfdc05b3651da95327c388d49fbd3167f23",
-    "chain_config.json":                                         "6c9d6f9f366a880336fae5c1b10d0b3af7a13b99421666b2e933a6218992d274",
-    "incident_log.json":                                         "07f1e8ed722e66b4d9f3d64b9710dec9d1ed97d6162775c3f47263ab8f15bf1f",
-    "ocsp_responses.json":                                       "2f4073f4a215d630fe158fef99fdd3841c5047ba924f94a5945036ad324ca69a",
+    "SPEC.md":                                                   "02a6be3b83fe120ab0c91723b57f3560115920cffbdcb5b99769a906ede3591e",
+    "chain_config.json":                                         "4a2bfae4e54697cadc7e462c24278f53db44812c2933f6b580a9c341b3f7098a",
+    "incident_log.json":                                         "df2b8be55f3bcbfd941d5b12768954d6ea30c859d160c58b9f738e5296b73346",
+    "ocsp_responses.json":                                       "3077389416ef1b815a325d976810f956bb3e15085f4f0bc4968476d1fb03a431",
     "pool_state.json":                                           "cb7407fb08999e9118ce059c3125314591168f15c6a7422325f58d1286e40a60",
     "intermediates/int-asia-1.json":                             "81b671f6742715e7d9536b50438e6ec68bbe00c354609946aab66480a99ce2ca",
     "intermediates/int-eu-1-sub.json":                           "abc7e2af93a9cea343caec05d84013ea32b20886139d16e6523ed816f07c873c",
     "intermediates/int-eu-1.json":                               "042c35185e534e7984f21fc2985f5428c879c7af702bdd81059d843082523bdd",
-    "intermediates/int-us-1.json":                               "ee50e87e58de9196e28450d193ea1855373a5efd5ad8ac199025930cd107e72f",
+    "intermediates/int-us-1.json":                               "cd444dee5ed9e298a72c6445b308615bb413727e3131ee459f615821334aaf5e",
     "intermediates/int-us-2.json":                               "48f7a927b527f71517beca97dd7c9d74c4e5ac82638e42138a28a31198dbc8a8",
     "leafs/leaf-api-v1.json":                                    "4e1d1abe1a452aa556f93456ac9656a4e023f80deba1fdddd88c97537a983d4d",
     "leafs/leaf-cdn-v1.json":                                    "5f5755d242dda12974502e92bc8847796982491a65f4bcf9285e694be437df4c",
@@ -63,21 +63,22 @@ EXPECTED_INPUT_HASHES = {
 }
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "chain_audit.json":   "ea33d6d2941ec38fab528bc85058b58efa32dc75abcb47426ddf5bfffcd98483",
+    "chain_audit.json":   "6f656ab5066f6fee7c5db80b6a1a3baf471cc65841dde2629f107391acde6fc4",
     "expiry_report.json": "bc7a49ae7eb5fb293fe26e47831efe5b05a4e6f681444368181a9144ef13a700",
     "ocsp_summary.json":  "bd3b7b63ef0285325234d04b5bbdc9abe63e5de8a4fad9f45ac6f6b8d42068fa",
     "ca_risk.json":       "f0cc2e55120697cce74b5dbe812dc059356a8509753ff44334b813ba73d5fbed",
-    "summary.json":       "176deb35372cba315e8128f9d50e0991935aea7a4176415a97cddbd01923210b",
+    "summary.json":       "b3d4c65d493bc7f0d16fb715a6f63b2e8d1e2215891d03fd67612354a2f7eac7",
 }
 
 EXPECTED_FIELD_HASHES = {
-    "chain_audit.domains":      "9552b2dc70f0d11d9a06ed894f6b0dd3b62eb123e46a4ae3333e68f3f28ad6c2",
-    "expiry_report.buckets":    "74fe2f0cfcc317da51b1a91d2cc2ff6d87c11cc95534daac7cc36882dba1ea44",
-    "ocsp_summary.details":     "3c6f84549422fd6fbb61e61219e02d2a36430a18e1442052ef09e270c9ba63ba",
-    "ca_risk.intermediates":    "7d6f3e6ef92ce023d0d1b43d4a2ce2ec7a17c4a7f347c7d11883bbbe33c77bb3",
-    "summary.by_verdict":       "26ba61d281a60fe608cce1882eecbf54390a62554a5ebc80d27c3b1ddc429ef7",
-    "summary.by_ocsp_state":    "ea1c14496d15cd8b4566703e3724c3e40669eb4e8fb2abf823de272b0ff22669",
-    "summary.compromised_cas":  "9af690fa8ca2f502f5cdbe5c20b8cd4a05b3a9947fc06a7fa6656c7e4aedd0ce",
+    "chain_audit.domains":            "33b614acaa2a0baebeb8a89010c7b4b340d3dbdf425b3e80388acc368879433c",
+    "expiry_report.buckets":          "74fe2f0cfcc317da51b1a91d2cc2ff6d87c11cc95534daac7cc36882dba1ea44",
+    "ocsp_summary.details":           "3c6f84549422fd6fbb61e61219e02d2a36430a18e1442052ef09e270c9ba63ba",
+    "ca_risk.intermediates":          "7d6f3e6ef92ce023d0d1b43d4a2ce2ec7a17c4a7f347c7d11883bbbe33c77bb3",
+    "summary.by_verdict":             "1240da8359118fa7d4cc27072cdc8daa716a1b75af828bae8bac277221e6af05",
+    "summary.by_ocsp_state":          "ea1c14496d15cd8b4566703e3724c3e40669eb4e8fb2abf823de272b0ff22669",
+    "summary.compromised_cas":        "9af690fa8ca2f502f5cdbe5c20b8cd4a05b3a9947fc06a7fa6656c7e4aedd0ce",
+    "summary.by_preliminary_verdict": "11d5c8d80fca116a81c3d7d2217073ecff22acf8f2638a7c1dcdcc53eca0c97a",
 }
 
 
@@ -175,7 +176,8 @@ class TestReportStructure:
         obj = loaded_outputs["summary.json"]["obj"]
         expected = {
             "current_day", "audit_version", "total_domains", "total_intermediates",
-            "ignored_incident_events", "by_verdict", "by_ocsp_state", "compromised_cas",
+            "ignored_incident_events", "by_preliminary_verdict", "by_verdict",
+            "by_ocsp_state", "compromised_cas",
         }
         assert set(obj.keys()) == expected
 
@@ -222,6 +224,11 @@ class TestFieldHashes:
         """summary.compromised_cas must canonicalise to the locked hash."""
         v = loaded_outputs["summary.json"]["obj"]["compromised_cas"]
         assert _canonical_sha256(v) == EXPECTED_FIELD_HASHES["summary.compromised_cas"]
+
+    def test_summary_by_preliminary_verdict_field(self, loaded_outputs):
+        """summary.by_preliminary_verdict must canonicalise to the locked hash."""
+        v = loaded_outputs["summary.json"]["obj"]["by_preliminary_verdict"]
+        assert _canonical_sha256(v) == EXPECTED_FIELD_HASHES["summary.by_preliminary_verdict"]
 
 
 # ---------------------------------------------------------------------------
@@ -297,12 +304,34 @@ class TestChainAudit:
         assert st["verdict"] == "tainted"
         assert "ca_compromise" in st["reasons"]
 
-    def test_known_warning_for_expiry(self, loaded_outputs):
-        """A leaf within expiry_warn_days of expiration gets verdict=warning."""
+    def test_known_expiry_warning_reason(self, loaded_outputs):
+        """A leaf within expiry_warn_days collects expiry_warning even when a higher verdict wins."""
         domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
         cdn = next(d for d in domains if d["domain"] == "cdn.example.com")
-        assert cdn["verdict"] == "warning"
         assert "expiry_warning" in cdn["reasons"]
+
+    def test_known_deprecated_intermediate_untrusted(self, loaded_outputs):
+        """Production domains whose chain visits a deprecated intermediate are untrusted."""
+        domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
+        cdn = next(d for d in domains if d["domain"] == "cdn.example.com")
+        assert cdn["verdict"] == "untrusted"
+        assert "deprecated_signature" in cdn["reasons"]
+
+    def test_known_intermediate_revoked_blocks_audit_review(self, loaded_outputs):
+        """Intermediate OCSP revocation prevents audit_review from changing the verdict."""
+        domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
+        it = next(d for d in domains if d["domain"] == "internal-tools.example.lan")
+        assert it["verdict"] == "revoked"
+        assert "intermediate_revoked" in it["reasons"]
+        assert "audit_review_override" not in it["reasons"]
+
+    def test_known_quarantine_after_audit_review(self, loaded_outputs):
+        """Quarantine downgrades a domain that audit_review had set to valid."""
+        domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
+        api = next(d for d in domains if d["domain"] == "api.example.com")
+        assert api["verdict"] == "untrusted"
+        assert "audit_review_override" in api["reasons"]
+        assert "quarantine_hold" in api["reasons"]
 
     def test_known_revoked_domain(self, loaded_outputs):
         """A leaf with OCSP status=revoked (and no compromise) gets verdict=revoked."""
@@ -318,12 +347,12 @@ class TestChainAudit:
         assert lg["verdict"] == "untrusted"
         assert "key_size_too_small" in lg["reasons"]
 
-    def test_known_audit_review_override(self, loaded_outputs):
-        """A non-compromised domain whose audit_review forces a verdict has 'audit_review_override' in reasons."""
+    def test_known_intermediate_revoked_on_internal_app(self, loaded_outputs):
+        """Intermediate OCSP revocation yields revoked for internal-tier domains too."""
         domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
-        it = next(d for d in domains if d["domain"] == "internal-tools.example.lan")
-        assert it["verdict"] == "valid"
-        assert "audit_review_override" in it["reasons"]
+        app = next(d for d in domains if d["domain"] == "internal-app.example.lan")
+        assert app["verdict"] == "revoked"
+        assert "intermediate_revoked" in app["reasons"]
 
     def test_compromise_overrides_audit_review(self, loaded_outputs):
         """A compromised domain ignores audit_review even when target is 'valid'."""
@@ -462,6 +491,19 @@ class TestSummary:
         """by_verdict values sum to total_domains."""
         s = loaded_outputs["summary.json"]["obj"]
         assert sum(s["by_verdict"].values()) == s["total_domains"]
+
+    def test_by_preliminary_verdict_keys_complete(self, loaded_outputs):
+        """by_preliminary_verdict has all six documented preliminary keys."""
+        d = loaded_outputs["summary.json"]["obj"]["by_preliminary_verdict"]
+        expected = {
+            "valid", "warning", "expired", "revoked", "untrusted", "chain_unreachable",
+        }
+        assert set(d.keys()) == expected
+
+    def test_by_preliminary_verdict_sums_to_total_domains(self, loaded_outputs):
+        """by_preliminary_verdict values sum to total_domains."""
+        s = loaded_outputs["summary.json"]["obj"]
+        assert sum(s["by_preliminary_verdict"].values()) == s["total_domains"]
 
     def test_by_ocsp_state_sums_to_total_domains(self, loaded_outputs):
         """by_ocsp_state values sum to total_domains."""

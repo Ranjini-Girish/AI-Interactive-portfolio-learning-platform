@@ -11,7 +11,7 @@ from pathlib import Path
 DATA = Path(os.environ.get("TLS_DATA_DIR", "/app/certs"))
 OUT = Path(os.environ.get("TLS_AUDIT_DIR", "/app/audit"))
 
-ALLOWED_INCIDENT_KINDS = {"key_compromise", "ca_compromise", "audit_review"}
+ALLOWED_INCIDENT_KINDS = {"key_compromise", "ca_compromise", "audit_review", "quarantine_hold"}
 ALLOWED_TARGET_VERDICTS = {"valid", "untrusted"}
 
 
@@ -34,6 +34,7 @@ def main():
 
     cfg = load_json(DATA / "chain_config.json")
     trusted_roots = set(cfg["trusted_roots"])
+    deprecated_algos = set(cfg.get("deprecated_signature_algos", []))
 
     leafs = {}
     for fp in sorted((DATA / "leafs").glob("*.json")):
@@ -52,12 +53,32 @@ def main():
     domains.sort(key=lambda d: d["domain"])
 
     ocsp_doc = load_json(DATA / "ocsp_responses.json")
-    ocsp_by_serial = {}
-    for r in ocsp_doc.get("responses", []):
-        sid = r["serial"]
-        cur = ocsp_by_serial.get(sid)
-        if cur is None or r["produced_day"] > cur["produced_day"]:
-            ocsp_by_serial[sid] = r
+    ocsp_responses = ocsp_doc.get("responses", [])
+
+    def pick_ocsp_response(serial):
+        best = None
+        best_idx = -1
+        for idx, r in enumerate(ocsp_responses):
+            if r.get("serial") != serial:
+                continue
+            pd = r.get("produced_day")
+            if best is None or pd > best["produced_day"] or (
+                pd == best["produced_day"] and idx > best_idx
+            ):
+                best = r
+                best_idx = idx
+        return best
+
+    def ocsp_state(serial):
+        r = pick_ocsp_response(serial)
+        if r is None:
+            return "soft_fail"
+        stale = (current_day - r["produced_day"]) > cfg["ocsp_stale_days"]
+        if r["status"] == "revoked":
+            return "revoked"
+        if r["status"] == "good" and not stale:
+            return "valid"
+        return "soft_fail"
 
     log = load_json(DATA / "incident_log.json")
     accepted_events = []
@@ -87,17 +108,18 @@ def main():
             if s not in inter_serials and s not in trusted_roots:
                 ignored += 1
                 continue
-        elif kind == "audit_review":
+        elif kind in ("audit_review", "quarantine_hold"):
             if ev.get("domain") not in domain_set:
                 ignored += 1
                 continue
-            if ev.get("target_verdict") not in ALLOWED_TARGET_VERDICTS:
+            if kind == "audit_review" and ev.get("target_verdict") not in ALLOWED_TARGET_VERDICTS:
                 ignored += 1
                 continue
         accepted_events.append(ev)
 
     key_compromised_leafs = {ev["serial"] for ev in accepted_events if ev["kind"] == "key_compromise"}
     ca_compromised = {ev["serial"] for ev in accepted_events if ev["kind"] == "ca_compromise"}
+    quarantine_domains = {ev["domain"] for ev in accepted_events if ev["kind"] == "quarantine_hold"}
 
     audit_overrides = {}
     for idx, ev in enumerate(accepted_events):
@@ -137,10 +159,7 @@ def main():
         leaf_san = leaf.get("san", [])
         cn = leaf.get("subject_cn", "")
         if policy == "exact":
-            for e in expected_list:
-                if e not in leaf_san:
-                    return False
-            return True
+            return all(e in leaf_san for e in expected_list)
         if policy == "wildcard_ok":
             for e in expected_list:
                 if e in leaf_san:
@@ -157,11 +176,32 @@ def main():
                     return False
             return True
         if policy == "cn_only":
-            for e in expected_list:
-                if e != cn:
-                    return False
-            return True
+            return all(e == cn for e in expected_list)
         return False
+
+    def chain_intermediates(chain, fail):
+        if fail is not None or len(chain) < 2:
+            return []
+        return [s for s in chain[1:-1] if s in intermediates]
+
+    def intermediate_revoked(chain, fail):
+        return any(ocsp_state(s) == "revoked" for s in chain_intermediates(chain, fail))
+
+    def add_deprecated_reasons(reasons, leaf, chain, tier, fail):
+        if fail is not None:
+            return
+        if tier == "production":
+            dep_label, warn_label = "deprecated_signature", "deprecated_signature_warn"
+        elif tier == "staging":
+            dep_label, warn_label = "deprecated_signature", "deprecated_signature_warn"
+        else:
+            return
+        if leaf is not None and leaf.get("signature_algo") in deprecated_algos:
+            reasons.add(dep_label if tier == "production" else warn_label)
+        for serial in chain_intermediates(chain, fail):
+            cert = intermediates.get(serial)
+            if cert and cert.get("signature_algo") in deprecated_algos:
+                reasons.add(dep_label if tier == "production" else warn_label)
 
     domain_chain = {}
     domain_walk_failure = {}
@@ -172,37 +212,34 @@ def main():
 
     domain_visits_compromised_ca = {}
     for d in domains:
-        chain = domain_chain[d["domain"]]
-        domain_visits_compromised_ca[d["domain"]] = any(s in ca_compromised for s in chain)
+        domain_visits_compromised_ca[d["domain"]] = any(
+            s in ca_compromised for s in domain_chain[d["domain"]]
+        )
 
     domain_intermediate_set = {}
     for d in domains:
-        chain = domain_chain[d["domain"]]
-        if len(chain) >= 2:
-            ints_only = [s for s in chain[1:-1] if s in intermediates]
-            if domain_walk_failure[d["domain"]] is None and len(chain) >= 2:
-                if chain[-1] in trusted_roots:
-                    pass
-            domain_intermediate_set[d["domain"]] = set(ints_only)
-        else:
-            domain_intermediate_set[d["domain"]] = set()
+        dom = d["domain"]
+        fail = domain_walk_failure[dom]
+        domain_intermediate_set[dom] = set(chain_intermediates(domain_chain[dom], fail))
 
     compromised_intermediates_in_chains = set()
     for dom, visits in domain_visits_compromised_ca.items():
         if visits:
-            chain = domain_chain[dom]
-            for s in chain:
+            for s in domain_chain[dom]:
                 if s in intermediates:
                     compromised_intermediates_in_chains.add(s)
 
     domain_records = []
+    by_preliminary = {k: 0 for k in (
+        "valid", "warning", "expired", "revoked", "untrusted", "chain_unreachable"
+    )}
+
     for d in domains:
         dom = d["domain"]
         tier = d["tier"]
         leaf_serial = d["leaf_serial"]
         chain = domain_chain[dom]
         fail = domain_walk_failure[dom]
-
         leaf = leafs.get(leaf_serial)
         reasons = set()
 
@@ -218,42 +255,49 @@ def main():
             if 0 <= days_to_expiry <= cfg["expiry_warn_days"]:
                 reasons.add("expiry_warning")
 
-        if leaf is not None:
-            if leaf["key_size"] < cfg["key_size_min_per_tier"][tier]:
-                reasons.add("key_size_too_small")
+        if leaf is not None and leaf["key_size"] < cfg["key_size_min_per_tier"][tier]:
+            reasons.add("key_size_too_small")
 
         if leaf is not None:
             policy = cfg["san_policy_per_tier"][tier]
             if not san_match(leaf, d["expected_san"], policy):
                 reasons.add("san_mismatch")
 
-        ocsp_state = "soft_fail"
-        if leaf_serial in ocsp_by_serial:
-            r = ocsp_by_serial[leaf_serial]
-            stale = (current_day - r["produced_day"]) > cfg["ocsp_stale_days"]
-            if r["status"] == "revoked":
-                ocsp_state = "revoked"
-            elif r["status"] == "good" and not stale:
-                ocsp_state = "valid"
-            else:
-                ocsp_state = "soft_fail"
-        if ocsp_state == "revoked":
+        add_deprecated_reasons(reasons, leaf, chain, tier, fail)
+
+        leaf_ocsp = ocsp_state(leaf_serial)
+        if leaf_ocsp == "revoked":
             reasons.add("revoked")
-        elif ocsp_state == "soft_fail":
+        elif leaf_ocsp == "soft_fail":
             reasons.add("ocsp_soft_fail")
 
+        inter_revoked = intermediate_revoked(chain, fail)
+        if inter_revoked:
+            reasons.add("intermediate_revoked")
+
         if fail is not None:
-            verdict = "chain_unreachable"
+            preliminary = "chain_unreachable"
         elif "expired" in reasons or "not_yet_valid" in reasons:
-            verdict = "expired"
-        elif ocsp_state == "revoked":
-            verdict = "revoked"
-        elif "key_size_too_small" in reasons or "san_mismatch" in reasons:
-            verdict = "untrusted"
-        elif "expiry_warning" in reasons or ocsp_state == "soft_fail":
-            verdict = "warning"
+            preliminary = "expired"
+        elif leaf_ocsp == "revoked" or inter_revoked:
+            preliminary = "revoked"
+        elif (
+            "key_size_too_small" in reasons
+            or "san_mismatch" in reasons
+            or (tier == "production" and "deprecated_signature" in reasons)
+        ):
+            preliminary = "untrusted"
+        elif (
+            "expiry_warning" in reasons
+            or leaf_ocsp == "soft_fail"
+            or (tier == "staging" and "deprecated_signature_warn" in reasons)
+        ):
+            preliminary = "warning"
         else:
-            verdict = "valid"
+            preliminary = "valid"
+
+        by_preliminary[preliminary] += 1
+        verdict = preliminary
 
         if leaf_serial in key_compromised_leafs:
             verdict = "compromised"
@@ -261,16 +305,18 @@ def main():
         elif domain_visits_compromised_ca[dom]:
             verdict = "compromised"
             reasons.add("ca_compromise")
-        else:
-            shared = domain_intermediate_set[dom] & compromised_intermediates_in_chains
-            if shared:
-                verdict = "tainted"
-                reasons.add("ca_compromise")
+        elif domain_intermediate_set[dom] & compromised_intermediates_in_chains:
+            verdict = "tainted"
+            reasons.add("ca_compromise")
 
-        if verdict not in ("compromised",) and dom in audit_overrides:
+        if verdict not in ("compromised",) and preliminary != "revoked" and dom in audit_overrides:
             target = audit_overrides[dom][1]["target_verdict"]
             verdict = target
             reasons.add("audit_review_override")
+
+        if dom in quarantine_domains and verdict in ("valid", "warning"):
+            verdict = "untrusted"
+            reasons.add("quarantine_hold")
 
         domain_records.append({
             "domain": dom,
@@ -305,17 +351,7 @@ def main():
     by_state = {"valid": 0, "revoked": 0, "soft_fail": 0}
     for d in domains:
         ls = d["leaf_serial"]
-        r = ocsp_by_serial.get(ls)
-        if r is None:
-            state = "soft_fail"
-        else:
-            stale = (current_day - r["produced_day"]) > cfg["ocsp_stale_days"]
-            if r["status"] == "revoked":
-                state = "revoked"
-            elif r["status"] == "good" and not stale:
-                state = "valid"
-            else:
-                state = "soft_fail"
+        state = ocsp_state(ls)
         ocsp_details.append({"domain": d["domain"], "leaf_serial": ls, "ocsp_state": state})
         by_state[state] += 1
     ocsp_details.sort(key=lambda x: x["domain"])
@@ -342,8 +378,11 @@ def main():
                 break
 
         domains_signed = sum(1 for d in domains if serial in domain_chain[d["domain"]])
-        tainted = sorted(rec["domain"] for rec in domain_records
-                         if rec["verdict"] == "tainted" and serial in domain_intermediate_set[rec["domain"]])
+        tainted = sorted(
+            rec["domain"]
+            for rec in domain_records
+            if rec["verdict"] == "tainted" and serial in domain_intermediate_set[rec["domain"]]
+        )
         inter_records.append({
             "serial": serial,
             "trusted_root_anchor": anchor,
@@ -353,8 +392,10 @@ def main():
         })
     write_json(OUT / "ca_risk.json", {"intermediates": inter_records})
 
-    by_verdict = {"valid": 0, "warning": 0, "expired": 0, "revoked": 0,
-                  "untrusted": 0, "chain_unreachable": 0, "compromised": 0, "tainted": 0}
+    by_verdict = {
+        "valid": 0, "warning": 0, "expired": 0, "revoked": 0,
+        "untrusted": 0, "chain_unreachable": 0, "compromised": 0, "tainted": 0,
+    }
     for rec in domain_records:
         by_verdict[rec["verdict"]] = by_verdict.get(rec["verdict"], 0) + 1
 
@@ -364,6 +405,7 @@ def main():
         "total_domains": len(domains),
         "total_intermediates": len(intermediates),
         "ignored_incident_events": ignored,
+        "by_preliminary_verdict": by_preliminary,
         "by_verdict": by_verdict,
         "by_ocsp_state": by_state,
         "compromised_cas": sorted(ca_compromised),
