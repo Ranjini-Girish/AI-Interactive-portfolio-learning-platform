@@ -1,0 +1,76 @@
+{
+  "incidents": [
+    {
+      "accepted": false,
+      "day": 1,
+      "event_id": "e00_skip",
+      "kind": "suspend_rule",
+      "rule_id": "r_dmz_db_deny"
+    },
+    {
+      "accepted": true,
+      "day": 3,
+      "event_id": "e01_remap_mgmt_once",
+      "kind": "remap_zone_tier",
+      "new_tier": "internal",
+      "zone_id": "z_mgmt"
+    },
+    {
+      "accepted": true,
+      "day": 5,
+      "event_id": "e02_remap_staging",
+      "kind": "remap_zone_tier",
+      "new_tier": "production",
+      "zone_id": "z_staging"
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e03_suspend_staging_db",
+      "kind": "suspend_rule",
+      "rule_id": "r_staging_db_deny"
+    },
+    {
+      "accepted": true,
+      "day": 16,
+      "event_id": "e04_suspend_dmz_db",
+      "kind": "suspend_rule",
+      "rule_id": "r_dmz_db_deny"
+    },
+    {
+      "accepted": true,
+      "audit_tier": "production",
+      "day": 22,
+      "event_id": "e05_emergency_db",
+      "dst_zones": ["z_db"],
+      "exempt_src_zones": ["z_bastion"],
+      "kind": "emergency_surface_deny",
+      "priority": 0,
+      "src_zones": ["*"]
+    },
+    {
+      "accepted": true,
+      "audit_tier": "production",
+      "day": 28,
+      "dst_zone": "z_db",
+      "event_id": "e06_inject_staging_db",
+      "kind": "inject_allow",
+      "priority": 0,
+      "src_zone": "z_staging"
+    },
+    {
+      "accepted": false,
+      "day": 50,
+      "event_id": "e07_future",
+      "kind": "suspend_rule",
+      "rule_id": "r_bastion_db_allow"
+    },
+    {
+      "accepted": true,
+      "day": 41,
+      "event_id": "e08_unknown_kind",
+      "kind": "deprecate_zone",
+      "zone_id": "z_nope"
+    }
+  ]
+}

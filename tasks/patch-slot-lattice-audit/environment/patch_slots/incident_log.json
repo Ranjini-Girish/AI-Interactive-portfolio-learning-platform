@@ -1,0 +1,56 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 14,
+      "event_id": "e00",
+      "host_id": "h-p1",
+      "kind": "host_compromise"
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "event_id": "e01",
+      "delta": 1,
+      "kind": "cap_bump",
+      "region_id": "r-east"
+    },
+    {
+      "accepted": true,
+      "day": 14,
+      "event_id": "e02",
+      "host_id": "h-p2",
+      "kind": "host_compromise"
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e03",
+      "kind": "freeze_region",
+      "region_id": "r-west"
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "end_day": 20,
+      "event_id": "e04",
+      "bundle_id": "b-mon",
+      "kind": "bundle_embargo",
+      "start_day": 10
+    },
+    {
+      "accepted": true,
+      "day": 16,
+      "event_id": "e05",
+      "kind": "cap_bump",
+      "region_id": "r-east",
+      "delta": 99
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "event_id": "e06",
+      "kind": "unknown_kind"
+    }
+  ]
+}

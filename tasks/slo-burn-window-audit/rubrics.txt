@@ -1,0 +1,14 @@
+Agent reflects every normative rule in SPEC.md across burns, incidents, tier budgets, dependency taint, and output shapes in the five JSON files, +3
+Agent writes all five required JSON files under the configured audit directory, +3
+Agent applies tier_budget_delta adjustments to per-tier error budgets, +2
+Agent computes fast and slow window burn rates and uses max for effective burn, +3
+Agent zeroes bad minutes on burn_freeze days when summing windows, +2
+Agent forces breached status and zero remaining budget on service_compromise, +3
+Agent honors slo_review_override target_status and reason on affected services, +2
+Agent marks consumers with inherited_compromise when a compromised producer is reachable, +2
+Agent sorts every array output by the spec primary keys, +2
+Agent uses canonical JSON encoding with sorted keys and trailing newline, +2
+Agent leaves the read-root directory tree unchanged from the shipped snapshot, -5
+Agent applies compromise and slo_review_override semantics when computing final slo_status and reasons on every burn report row, -3
+Agent excludes bad minutes on burn_freeze-covered days when summing window totals for each service, -3
+Agent derives dependency taint from producer-to-consumer reachability starting at compromised services, -3

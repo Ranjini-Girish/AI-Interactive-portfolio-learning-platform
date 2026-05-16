@@ -1,0 +1,17 @@
+{
+  "files": [
+    {
+      "cnf": [
+        [
+          "solaris"
+        ]
+      ],
+      "imports": [
+        "github.com/acme/lib"
+      ],
+      "name": "solaris_only.go"
+    }
+  ],
+  "package_key": "devnull",
+  "package_path": "github.com/acme/devnull"
+}

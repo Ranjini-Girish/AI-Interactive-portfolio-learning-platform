@@ -1,0 +1,23 @@
+{
+  "host_id": "host-alpha",
+  "leases": [
+    {
+      "last_renew_day": 98,
+      "lease_until_day": 105,
+      "renew_count": 2,
+      "slot_id": "slot-alpha1"
+    },
+    {
+      "last_renew_day": 99,
+      "lease_until_day": 102,
+      "renew_count": 1,
+      "slot_id": "slot-shared"
+    }
+  ],
+  "renewals_by_day": {
+    "94": 1,
+    "97": 2,
+    "99": 1
+  },
+  "tier": "gold"
+}

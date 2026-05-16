@@ -1,0 +1,1 @@
+artifact-promote-lattice-audit fixture bundle

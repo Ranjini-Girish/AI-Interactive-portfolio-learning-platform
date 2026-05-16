@@ -1,0 +1,88 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 90,
+      "event_id": "x00",
+      "kind": "extend_soak_delta",
+      "target_tier": "gold",
+      "delta": 9
+    },
+    {
+      "accepted": true,
+      "day": 108,
+      "event_id": "e01",
+      "kind": "extend_soak_delta",
+      "target_tier": "silver",
+      "delta": 1
+    },
+    {
+      "accepted": true,
+      "day": 109,
+      "event_id": "e02",
+      "kind": "flap_day_suppress",
+      "days": [105, 106],
+      "node_id": "node-beta"
+    },
+    {
+      "accepted": true,
+      "day": 107,
+      "event_id": "e03",
+      "kind": "fail_threshold_delta",
+      "target_tier": "bronze",
+      "delta": -1
+    },
+    {
+      "accepted": true,
+      "day": 110,
+      "event_id": "e04",
+      "kind": "isolate_node",
+      "node_id": "node-delta"
+    },
+    {
+      "accepted": true,
+      "day": 106,
+      "event_id": "e05",
+      "kind": "force_unhealthy",
+      "node_id": "node-alpha"
+    },
+    {
+      "accepted": true,
+      "day": 105,
+      "event_id": "e06",
+      "kind": "flap_threshold_delta",
+      "target_tier": "gold",
+      "delta": 1
+    },
+    {
+      "accepted": true,
+      "day": 101,
+      "event_id": "e10",
+      "kind": "rolling_span_delta",
+      "target_tier": "bronze",
+      "delta": -1
+    },
+    {
+      "accepted": true,
+      "day": 103,
+      "event_id": "e08",
+      "kind": "rolling_span_delta",
+      "target_tier": "silver",
+      "delta": 1
+    },
+    {
+      "accepted": true,
+      "day": 104,
+      "event_id": "e07",
+      "kind": "bogus_kind_xyz"
+    },
+    {
+      "accepted": true,
+      "day": 108,
+      "event_id": "e09",
+      "kind": "fail_day_suppress",
+      "days": [106],
+      "node_id": "node-iota"
+    }
+  ]
+}

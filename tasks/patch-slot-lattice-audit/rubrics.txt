@@ -1,0 +1,15 @@
+Agent emits all five audit JSON files under `/app/audit/` with the canonical formatting contract from `/app/patch_slots/SPEC.md`, +5
+Agent intersects host maintenance windows with tier calendars before judging candidacy, +3
+Agent applies bundle dependency gates using only bundles already listed in `applied_bundles`, +3
+Agent walks regional capacity in `(tier_rank, host_id)` order and defers overflow hosts with `capacity_deferred`, +3
+Agent honors active `host_compromise` and `freeze_region` incidents before capacity assignment, +2
+Agent records kept incidents in `incident_journal.json` sorted by `(day, event_id)`, +2
+Agent lists `host_plan.hosts` sorted by ascending `host_id`, +2
+Agent mutates, replaces, or rewrites any file under `/app/patch_slots/`, -5
+Agent omits a required audit file or writes non-UTF-8 JSON, -5
+Agent schedules a bundle while a required dependency remains unapplied, -5
+Agent assigns more hosts than the effective regional cap allows, -3
+Agent emits `scheduled_bundle` on a `quarantined` or `frozen_region` host row, -3
+Agent mislabels a deferred would-be bundle without `capacity_deferred` in `blocked_candidates`, -3
+Agent writes audit JSON with unsorted object keys or missing trailing newline, -2
+Agent places artifacts outside `/app/audit/` while claiming completion, -5

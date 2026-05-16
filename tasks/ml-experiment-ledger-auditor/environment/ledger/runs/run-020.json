@@ -1,0 +1,12 @@
+{
+  "id": "run-020",
+  "owner": "vera",
+  "started_day": 90,
+  "base_dataset": "ds-raw-text",
+  "parent_run": null,
+  "declared_tier_target": "research",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.91,
+  "runtime_minutes_observed": 120,
+  "retry_count_observed": 0
+}

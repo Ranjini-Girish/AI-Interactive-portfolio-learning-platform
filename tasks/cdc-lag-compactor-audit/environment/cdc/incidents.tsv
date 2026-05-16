@@ -1,0 +1,10 @@
+e01|late_arrival_grace|orders|*|17|true|2|-
+e02|partition_rewind|payments|p0|18|true|275|-
+e03|compaction_hold|fulfill|p1|19|true|3|-
+e04|stream_compromise|analytics|*|18|true|breach|-
+e05|force_replay|notify|p0|19|true|manual|-
+e06|source_pause|archive|p0|18|true|4|-
+e07|stream_compromise|ghost|*|18|true|bad|-
+e08|compaction_hold|orders|p2|19|true|2|-
+e09|late_arrival_grace|fulfill|*|24|true|5|-
+e10|source_pause|orders|p0|12|false|4|-

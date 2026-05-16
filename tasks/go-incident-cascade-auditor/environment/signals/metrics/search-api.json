@@ -1,0 +1,11 @@
+{
+  "service_id": "search-api",
+  "windows": [
+    {"error_pct": 3, "minute": 55, "p95_ms": 210, "qps": 700},
+    {"error_pct": 3, "minute": 56, "p95_ms": 215, "qps": 690},
+    {"error_pct": 4, "minute": 57, "p95_ms": 225, "qps": 695},
+    {"error_pct": 4, "minute": 58, "p95_ms": 228, "qps": 700},
+    {"error_pct": 4, "minute": 59, "p95_ms": 232, "qps": 688},
+    {"error_pct": 4, "minute": 60, "p95_ms": 235, "qps": 680}
+  ]
+}

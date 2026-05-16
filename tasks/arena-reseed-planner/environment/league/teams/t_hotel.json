@@ -1,0 +1,11 @@
+{
+  "home_region": "west",
+  "preferred_arena_ids": [
+    "a_central"
+  ],
+  "roster_size": 6,
+  "seed_score": 84,
+  "stamina": 72,
+  "team_id": "t_hotel",
+  "tier": "gold"
+}

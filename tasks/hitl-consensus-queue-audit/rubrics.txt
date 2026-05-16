@@ -1,0 +1,16 @@
+Agent Reads /app/hitl/SPEC.md before emitting JSON, +5
+Agent Emits exactly five files under /app/audit/ with the required names, +5
+Agent Preserves two-space sorted JSON encoding with a single trailing newline per file, +3
+Agent Computes weighted open-item consensus with tier scaling, incident multipliers, and post-calibration halving exactly as SPEC defines, +5
+Agent Applies batch-scoped quorum bumps on top of the global floor without dropping abstain handling, +3
+Agent Honors batch_freeze windows so frozen batches yield blocked_freeze rows and blocked_batches in summary, +3
+Agent Locks calibration gold labels regardless of dissenting votes, +3
+Agent Orders backlog rows by eligible_day, business_tier, batch_id, and item_id with dense ranks, +3
+Agent Lists active scalers per annotator with stable sorting keys, +2
+Agent Emits compliance flags for freezes and quorum shortfalls with sorted codes, +2
+Agent Leaves every path under /app/hitl/ unmodified on disk, -5
+Agent Omits any required /app/audit/*.json file or adds extra top-level keys, -5
+Agent Mis-orders backlog or consensus list ordering relative to SPEC, -5
+Agent Ignores accepted weight_scaler composition order or effective_day gating on votes, -5
+Agent Treats abstain votes as contributing label weight or distinct-voter credit, -3
+Agent Downgrades or upgrades ignored incidents into active logic, -3

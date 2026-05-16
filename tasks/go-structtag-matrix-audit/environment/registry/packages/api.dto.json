@@ -1,0 +1,1 @@
+{"module_path":"example.com/api","package_id":"api.dto","structs":[{"fields":[{"field_id":"A","go_name":"UserID","tags":{"json":"userId"}},{"field_id":"B","go_name":"AltID","tags":{"json":"userId"}}],"struct_id":"Request"}]}

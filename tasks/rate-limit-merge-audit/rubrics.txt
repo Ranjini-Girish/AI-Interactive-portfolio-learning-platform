@@ -1,0 +1,16 @@
+Agent writes service_limits.json, incident_journal.json, host_summary.json, and summary.json under /app/audit/, +2
+Agent leaves every file under the frozen input tree unchanged, -3
+Agent reads /app/rate_merge_lab/SPEC.md before writing outputs, +2
+Agent honors JRMA_DATA_DIR and JRMA_AUDIT_DIR overrides when set to non-empty values, +2
+Agent produces canonical JSON with sorted object keys and the trailing newline contract from SPEC, +3
+Agent applies standard versus legacy drop-in merge order exactly as written in SPEC, +3
+Agent processes accepted incidents in ascending day then event_id order, +2
+Agent replaces limits on compromised hosts with pool_state quarantine values after incidents, +3
+Agent applies host max_burst caps only to hosts that are not compromised at the end, +2
+Agent includes every unit file from units/ in service_limits.services sorted by service_id, +2
+Agent records ignored incident count in incident_journal.json, +2
+Agent lists dropins_applied in true merge order per unit class, +2
+Agent fabricates extra top-level keys in any audit JSON file, -5
+Agent writes partial outputs or skips any required audit filename, -5
+Agent reads or copies answers from mounted test or reference paths outside the data root, -5
+Agent omits incident_journal.applied_events or host_summary.hosts objects, -3

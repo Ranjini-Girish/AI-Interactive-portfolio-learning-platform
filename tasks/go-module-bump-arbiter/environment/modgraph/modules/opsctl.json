@@ -1,0 +1,22 @@
+{
+  "excludes": [],
+  "go_version_min": "1.20",
+  "module_path": "opsctl",
+  "replaces": [
+    {
+      "from_path": "github.com/acme/nosql",
+      "to_path": "github.com/acme/ghost",
+      "to_version": "v9.9.9"
+    }
+  ],
+  "requires": [
+    {
+      "dep_path": "github.com/acme/nosql",
+      "min_version": "v1.0.0",
+      "reachability_symbols": [
+        "github.com/acme/nosql/driver.Session"
+      ]
+    }
+  ],
+  "tools": []
+}

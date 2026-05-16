@@ -1,0 +1,7 @@
+{
+  "checkout_tick_ms": 4600000,
+  "entered_idle_tick_ms": null,
+  "phase": "leased",
+  "segment": "gamma",
+  "wrapper_id": "w09"
+}

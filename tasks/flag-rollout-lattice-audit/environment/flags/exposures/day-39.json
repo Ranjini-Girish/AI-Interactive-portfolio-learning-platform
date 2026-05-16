@@ -1,0 +1,15 @@
+{
+  "day": 39,
+  "records": [
+    {
+      "flag_id": "checkout-v3",
+      "segment_id": "internal",
+      "users": 2400
+    },
+    {
+      "flag_id": "ops-console",
+      "segment_id": "internal",
+      "users": 1800
+    }
+  ]
+}

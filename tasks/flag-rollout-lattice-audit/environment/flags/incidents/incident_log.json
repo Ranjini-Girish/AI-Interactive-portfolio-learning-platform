@@ -1,0 +1,99 @@
+{
+  "events": [
+    {
+      "day": 34,
+      "delta_pct": 10,
+      "event_id": "evt-001",
+      "flag_id": "checkout-v3",
+      "kind": "budget_grant",
+      "valid": true
+    },
+    {
+      "day": 35,
+      "depends_on": "billing-ledger",
+      "duration_days": 10,
+      "event_id": "evt-002",
+      "flag_id": "mobile-paywall",
+      "kind": "dependency_waiver",
+      "valid": true
+    },
+    {
+      "day": 36,
+      "duration_days": 8,
+      "event_id": "evt-003",
+      "kind": "segment_lock",
+      "segment_id": "enterprise-eu",
+      "valid": true
+    },
+    {
+      "day": 37,
+      "event_id": "evt-004",
+      "flag_id": "recommend-rerank",
+      "kind": "kill_switch",
+      "scope": "flag",
+      "valid": true
+    },
+    {
+      "day": 38,
+      "event_id": "evt-005",
+      "flag_id": "search-facets",
+      "kind": "force_state",
+      "state": "active",
+      "valid": true
+    },
+    {
+      "day": 39,
+      "event_id": "evt-006",
+      "kind": "segment_compromise",
+      "segment_id": "beta-ring",
+      "valid": true
+    },
+    {
+      "day": 40,
+      "delta_pct": 15,
+      "event_id": "evt-007",
+      "flag_id": "mobile-paywall",
+      "kind": "budget_grant",
+      "valid": true
+    },
+    {
+      "day": 43,
+      "event_id": "evt-008",
+      "flag_id": "checkout-v3",
+      "kind": "kill_switch",
+      "scope": "flag",
+      "valid": true
+    },
+    {
+      "day": 39,
+      "event_id": "evt-009",
+      "flag_id": "billing-ledger",
+      "kind": "unknown_kind",
+      "valid": true
+    },
+    {
+      "day": 41,
+      "event_id": "evt-010",
+      "flag_id": "billing-ledger",
+      "kind": "force_state",
+      "state": "active",
+      "valid": false
+    },
+    {
+      "day": 41,
+      "duration_days": 1,
+      "event_id": "evt-011",
+      "kind": "segment_lock",
+      "segment_id": "selfserve",
+      "valid": true
+    },
+    {
+      "day": 42,
+      "event_id": "evt-012",
+      "flag_id": "profile-merge",
+      "kind": "kill_switch",
+      "scope": "flag",
+      "valid": true
+    }
+  ]
+}

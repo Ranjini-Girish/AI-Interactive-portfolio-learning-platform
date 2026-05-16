@@ -1,0 +1,23 @@
+{
+  "module_id": "billing",
+  "module_path": "example.com/billing",
+  "replaces": [
+    {
+      "from": "example.com/retire-pkg/widget",
+      "to": "example.com/widget-billing"
+    },
+    {
+      "from": "github.com/legacy/sdk",
+      "to": "example.com/sdk-new"
+    },
+    {
+      "from": "github.com/legacy/extra",
+      "to": "example.com/extra-new"
+    }
+  ],
+  "requires": [
+    "github.com/legacy/sdk",
+    "github.com/legacy/extra",
+    "example.com/retire-pkg/widget"
+  ]
+}

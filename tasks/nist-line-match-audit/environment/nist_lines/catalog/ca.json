@@ -1,0 +1,11 @@
+{
+  "element": "Ca",
+  "lines": [
+    {
+      "label": "resonance",
+      "line_id": "CA_422",
+      "rel_int": 60,
+      "wave_nm": 422
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 5,
+      "dep_path": "golang.org/x/net",
+      "effective_day": 100,
+      "event_id": "e-rer-net",
+      "kind": "retract_emergency",
+      "version": "v0.11.0"
+    },
+    {
+      "accepted": true,
+      "day": 10,
+      "event_id": "e-rep-a",
+      "from_path": "golang.org/x/net",
+      "kind": "replace_workspace_wide",
+      "to_path": "github.com/acme/telemetry",
+      "to_version": "v1.1.0"
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "dep_path": "golang.org/x/text",
+      "event_id": "e-fpt-text",
+      "kind": "force_pin",
+      "override_advisories": [
+        "GO-2024-text"
+      ],
+      "version": "v0.4.0"
+    },
+    {
+      "accepted": true,
+      "day": 30,
+      "dep_path": "github.com/acme/crypto",
+      "event_id": "e-fpc-crypto",
+      "kind": "force_pin",
+      "version": "v0.1.0"
+    },
+    {
+      "accepted": true,
+      "cycle_modules": [
+        "checkout",
+        "indexer"
+      ],
+      "day": 40,
+      "event_id": "e-cyc-01",
+      "kind": "module_graph_cycle"
+    },
+    {
+      "accepted": true,
+      "day": 50,
+      "event_id": "e-rep-b",
+      "from_path": "golang.org/x/net",
+      "kind": "replace_workspace_wide",
+      "to_path": "github.com/acme/telemetry",
+      "to_version": "v1.0.0"
+    },
+    {
+      "accepted": true,
+      "day": 200,
+      "dep_path": "github.com/acme/nosql",
+      "event_id": "e-future-pin",
+      "kind": "force_pin",
+      "version": "v9.9.9"
+    },
+    {
+      "accepted": false,
+      "day": 60,
+      "dep_path": "github.com/acme/logger",
+      "event_id": "e-reject-pin",
+      "kind": "force_pin",
+      "version": "v1.0.0"
+    },
+    {
+      "accepted": true,
+      "day": 61,
+      "event_id": "e-bad-kind",
+      "kind": "registry_freeze",
+      "target": "github.com/acme/nosql"
+    },
+    {
+      "accepted": true,
+      "cycle_modules": [
+        "billing"
+      ],
+      "day": 62,
+      "event_id": "e-bad-cycle",
+      "kind": "module_graph_cycle"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "kinds": [
+    "client_quarantine",
+    "redirect_pin",
+    "scope_revoke",
+    "tier_override"
+  ]
+}

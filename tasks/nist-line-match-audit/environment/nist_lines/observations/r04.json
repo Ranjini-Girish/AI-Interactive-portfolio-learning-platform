@@ -1,0 +1,13 @@
+{
+  "instrument_id": "instA",
+  "peaks": [
+    {
+      "amp": 100.0,
+      "peak_index": 0,
+      "sigma_nm": 1.0,
+      "wave_nm": 999
+    }
+  ],
+  "run_day": 1,
+  "run_id": "r04"
+}

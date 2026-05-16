@@ -1,0 +1,6 @@
+{
+  "id": "ds-raw-text",
+  "name": "Raw text corpus",
+  "tier": "raw",
+  "lineage_parents": ["ds-missing-source"]
+}

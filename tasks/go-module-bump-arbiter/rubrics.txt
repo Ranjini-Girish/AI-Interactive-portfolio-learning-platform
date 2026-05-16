@@ -1,0 +1,15 @@
+Agent reads the workspace specification before emitting any output file, +2
+Agent compiles a Go binary at the required path from sources placed under the documented source directory, +3
+Agent produces every required output file under the documented decisions directory with no extra files, +2
+Agent emits each output file using the canonical encoding (two-space indent, sorted keys at every depth, single trailing newline), +2
+Agent computes per-dep resolutions using the documented version comparator and minimum-version walk-up across exclusion and retraction gates, +5
+Agent honours force-pin events over walk-up gates and propagates pinned versions through downstream phases, +3
+Agent applies workspace-wide replace overrides ahead of any per-module replace directives sharing the same source path, +3
+Agent classifies per-module replace rows under the documented quorum, divergent-target, and missing-target rules, +3
+Agent triages every advisory against the post-resolution version using the documented six-rule precedence including reachability, +5
+Agent reports cycle membership, per-module blocked versions, and tool-only impacts with the documented sort orders, +2
+Agent mutates a read-only input fixture under the workspace directory, -5
+Agent emits an unrequested file under the decisions directory or omits a required output, -3
+Agent ignores incident filtering rules and applies events with day greater than current_day or unsupported kinds, -3
+Agent confuses minimum-version-selection with latest-version-selection and resolves deps to the highest published version, -3
+Agent omits the binary at the required path or implements the program in a language other than Go, -5

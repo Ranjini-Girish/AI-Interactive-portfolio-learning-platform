@@ -1,0 +1,15 @@
+{
+  "host": "alpha",
+  "snapshots": [
+    {"id": "alpha-001", "kind": "full",        "taken_day": 10,  "size_mb": 80, "parent_id": null,        "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0001"},
+    {"id": "alpha-002", "kind": "incremental", "taken_day": 45,  "size_mb": 15, "parent_id": "alpha-001", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0002"},
+    {"id": "alpha-003", "kind": "incremental", "taken_day": 80,  "size_mb": 20, "parent_id": "alpha-002", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0003"},
+    {"id": "alpha-004", "kind": "incremental", "taken_day": 140, "size_mb": 25, "parent_id": "alpha-003", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0004"},
+    {"id": "alpha-005", "kind": "incremental", "taken_day": 200, "size_mb": 30, "parent_id": "alpha-004", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0005"},
+    {"id": "alpha-006", "kind": "incremental", "taken_day": 290, "size_mb": 35, "parent_id": "alpha-005", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0006"},
+    {"id": "alpha-007", "kind": "incremental", "taken_day": 340, "size_mb": 20, "parent_id": "alpha-006", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0007"},
+    {"id": "alpha-008", "kind": "incremental", "taken_day": 358, "size_mb": 15, "parent_id": "alpha-007", "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0008"},
+    {"id": "alpha-INV1", "kind": "snapshot",   "taken_day": 100, "size_mb": 10, "parent_id": null,        "sha256_chain": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa9991"},
+    {"id": "alpha-INV2", "kind": "full",       "taken_day": 100, "size_mb": 10, "parent_id": null,        "sha256_chain": "abc"}
+  ]
+}

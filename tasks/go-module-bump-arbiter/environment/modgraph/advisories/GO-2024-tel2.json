@@ -1,0 +1,12 @@
+{
+  "advisory_id": "GO-2024-tel2",
+  "affected_symbols": [
+    "github.com/acme/telemetry/admin.Cmd"
+  ],
+  "affected_versions": [
+    "v1.0.0"
+  ],
+  "dep_path": "github.com/acme/telemetry",
+  "fixed_in": "v1.2.0",
+  "severity": "medium"
+}

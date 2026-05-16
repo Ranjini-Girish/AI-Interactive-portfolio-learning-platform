@@ -1,0 +1,11 @@
+{
+  "service_id": "reco-engine",
+  "windows": [
+    {"error_pct": 5, "minute": 55, "p95_ms": 260, "qps": 460},
+    {"error_pct": 5, "minute": 56, "p95_ms": 265, "qps": 450},
+    {"error_pct": 5, "minute": 57, "p95_ms": 270, "qps": 445},
+    {"error_pct": 5, "minute": 58, "p95_ms": 275, "qps": 440},
+    {"error_pct": 5, "minute": 59, "p95_ms": 278, "qps": 438},
+    {"error_pct": 5, "minute": 60, "p95_ms": 280, "qps": 430}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "capacity_mb": 700,
+  "current_day": 365,
+  "tier_quotas": {
+    "bronze": 110,
+    "gold": 360,
+    "silver": 220
+  }
+}

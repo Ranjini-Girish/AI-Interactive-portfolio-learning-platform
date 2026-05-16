@@ -1,0 +1,5 @@
+{
+  "required_audience": "https://svc/c/",
+  "server_id": "srv_wide",
+  "tier": "gold"
+}

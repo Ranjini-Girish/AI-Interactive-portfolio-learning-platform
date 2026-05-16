@@ -1,0 +1,25 @@
+{
+  "repo": "api-gateway",
+  "tier": "gold",
+  "language": "python",
+  "override_rules": [
+    {
+      "name": "quality-gate-strict-v1",
+      "kind": "pre-commit",
+      "required_for_tiers": ["gold"],
+      "required_checks": ["lint", "conflict_markers", "debug_statements", "file_size", "deprecated_api"]
+    },
+    {
+      "name": "quality-gate-strict-v2",
+      "kind": "pre-commit",
+      "required_for_tiers": ["gold"],
+      "required_checks": ["lint", "conflict_markers", "debug_statements", "file_size"]
+    },
+    {
+      "name": "msg-format-strict",
+      "kind": "commit-msg",
+      "required_for_tiers": ["gold"],
+      "required_checks": ["conventional_format", "issue_in_body"]
+    }
+  ]
+}

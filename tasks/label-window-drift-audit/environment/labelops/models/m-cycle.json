@@ -1,0 +1,10 @@
+{
+  "candidate_windows": [
+    "w-cycle-1",
+    "w-cycle-2"
+  ],
+  "dataset_id": "ds-cycle-a",
+  "declared_stage": "candidate",
+  "model_id": "m-cycle",
+  "score_bps": 7900
+}

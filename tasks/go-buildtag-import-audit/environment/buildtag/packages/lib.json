@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [],
+      "name": "lib.go"
+    }
+  ],
+  "package_key": "lib",
+  "package_path": "github.com/acme/lib"
+}

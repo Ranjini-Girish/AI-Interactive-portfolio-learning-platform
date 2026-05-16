@@ -1,0 +1,6 @@
+{
+  "id": "model-retracted",
+  "candidate_checkpoint": "ckpt-P",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

@@ -1,0 +1,15 @@
+Agent establishes a Rust Cargo workspace rooted at `/app`, compiles with `cargo build --release`, places the `tabgap` binary at `/app/target/release/tabgap`, and completes a no-argument invocation with exit status zero after auditing the bundled tab bundle, +3
+Agent writes only the single regular file `/app/audit/gap_report.json` in canonical UTF-8 JSON with two-space indentation, sorted object keys at every level, ASCII-only string content, and a single trailing newline so two correct runs are byte-identical, +3
+Agent computes the global kept-column union by dropping per-table skip columns and union-merging the remaining names across every cataloged table, then sorts the union ascending by raw UTF-8 byte string and uses that lexicographic order for every mask string and every column rollup row, +5
+Agent applies the four-clause missing-value predicate including ASCII-only whitespace, the literal `NA`, and every entry of `extra_missing_tokens`, and treats a column absent from a table's per-table kept set as missing for every one of that table's data rows, +5
+Agent counts column-rollup totals against the global denominator of all data rows across all cataloged tables and formats both rates with six decimal digits using truncation toward zero plus the `0.000000` and `100.000000` clamps for the boundary cases, +3
+Agent maintains an in-dataset duplicate stream keyed on the lexicographically ordered values of `policy.dedup_keys` that disables the dataset entirely when any key column is absent from its kept columns and skips rows whose key values are missing, +5
+Agent maintains an independent global key duplicate stream keyed on `policy.global_keys` over a single map shared across all datasets, walking data rows in catalog array order then within-table row order and assigning every data row a global index even when the global key would skip that row, +3
+Agent emits `column_rollups` sorted by descending decimal `missing_rate`, then descending integer `missing_count`, then ascending `column_name`, +2
+Agent emits `dataset_rollups` sorted by descending decimal `missing_rate_dataset`, then descending integer `data_rows`, then ascending `dataset_id`, +2
+Agent emits `presence_rows` sorted ascending by `dataset_id` then by integer `row_index`, +2
+Agent adds, deletes, renames, or edits any regular file under `/app/tab_bundle/`, -3
+Agent skips files referenced by `relative_path` from `catalog.json` or instead reads any distractor file under `/app/tab_bundle/`, -3
+Agent uses a per-table denominator for column rollups instead of the global total of data rows across every cataloged table, -5
+Agent omits any of the seven required top-level keys or adds keys outside `column_rollups`, `dataset_rollups`, `duplicate_key_events`, `global_key_events`, `meta`, `presence_rows`, `summary`, -3
+Agent ships the binary at a path other than `/app/target/release/tabgap` or requires positional arguments for the full audit invocation, -3

@@ -1,0 +1,9 @@
+{
+  "id": "crash-015",
+  "reported_day": 32,
+  "reporter": "olive@example.com",
+  "frame_stack": ["mem::alloc", "mem::free", "mem::scrub", "mem::commit"],
+  "env_hash": "4a5b6c7d8e9f0011223344556678e9f04a5b6c7d8e9f0011223344556678e9f0",
+  "reproducibility": "once",
+  "severity_observed": "low"
+}

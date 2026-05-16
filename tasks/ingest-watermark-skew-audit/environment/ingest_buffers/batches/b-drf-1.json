@@ -1,0 +1,14 @@
+{
+  "batch_id": "b-drf-1",
+  "ingest_day": 99,
+  "partition_id": "part-drift-a",
+  "events": [
+    {
+      "bytes_hint": 180,
+      "event_day": 98,
+      "event_id": "e-d1",
+      "idempotency_key": "k-drf",
+      "sequence": 1
+    }
+  ]
+}

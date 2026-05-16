@@ -1,0 +1,12 @@
+{
+  "soak_days": {
+    "dev": 3,
+    "staging": 5
+  },
+  "stage_order": ["dev", "staging", "prod"],
+  "tier_rank": {
+    "development": 2,
+    "production": 0,
+    "staging": 1
+  }
+}

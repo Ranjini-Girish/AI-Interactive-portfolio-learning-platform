@@ -1,0 +1,24 @@
+{
+  "batches": [
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B1",
+      "lineage_id": "LIN1"
+    },
+    {
+      "assay_id": "igm_titer",
+      "batch_id": "B2",
+      "lineage_id": "LIN2"
+    },
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B3",
+      "lineage_id": "LIN3"
+    },
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B4",
+      "lineage_id": "LIN4"
+    }
+  ]
+}

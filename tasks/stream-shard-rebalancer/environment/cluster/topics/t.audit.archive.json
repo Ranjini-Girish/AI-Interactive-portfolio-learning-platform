@@ -1,0 +1,17 @@
+{
+  "topic_id": "t.audit.archive",
+  "partitions": 3,
+  "tier": "bronze",
+  "target_lag_messages": 5000,
+  "current_throughput_mbps_per_partition": 10,
+  "current_lag_messages": {
+    "0": 80,
+    "1": 60,
+    "2": 40
+  },
+  "current_leader_map": {
+    "0": "b11",
+    "1": "b04",
+    "2": "b12"
+  }
+}

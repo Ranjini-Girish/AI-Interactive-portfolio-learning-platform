@@ -1,0 +1,21 @@
+{
+  "host_id": "host-eta",
+  "leases": [
+    {
+      "last_renew_day": 100,
+      "lease_until_day": 106,
+      "renew_count": 4,
+      "slot_id": "slot-silver5"
+    },
+    {
+      "last_renew_day": 99,
+      "lease_until_day": 107,
+      "renew_count": 1,
+      "slot_id": "slot-zeta6"
+    }
+  ],
+  "renewals_by_day": {
+    "100": 1
+  },
+  "tier": "silver"
+}

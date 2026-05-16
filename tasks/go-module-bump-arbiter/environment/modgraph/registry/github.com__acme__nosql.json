@@ -1,0 +1,23 @@
+{
+  "dep_path": "github.com/acme/nosql",
+  "versions": [
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v1.0.0",
+      "vuln_advisories": []
+    },
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.19",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v1.1.0",
+      "vuln_advisories": []
+    }
+  ]
+}

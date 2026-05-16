@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-zeta",
+  "departure_day": 15,
+  "required_guards": 1,
+  "route_id": "r-west",
+  "tier": "silver"
+}

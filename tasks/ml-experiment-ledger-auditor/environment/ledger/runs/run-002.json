@@ -1,0 +1,12 @@
+{
+  "id": "run-002",
+  "owner": "bob",
+  "started_day": 50,
+  "base_dataset": "ds-raw-clicks",
+  "parent_run": null,
+  "declared_tier_target": "prod",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.95,
+  "runtime_minutes_observed": 360,
+  "retry_count_observed": 0
+}

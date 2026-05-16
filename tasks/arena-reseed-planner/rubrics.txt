@@ -1,0 +1,12 @@
+Agent produces all five required report files under /app/plan with valid JSON content, +5
+Agent implements active-event filtering using accepted flag and current_day cutoff, +3
+Agent applies latest stamina override per team with day and event-id tie-break behavior, +3
+Agent computes eligibility using suspension, stamina threshold, and minimum roster size correctly, +3
+Agent sorts active teams and forms adjacent pairs with deterministic odd-team benching, +3
+Agent implements rivalry-aware arena candidate selection and lock/cap bypass behavior correctly, +3
+Agent applies the documented arena scoring and tie-break order exactly, +3
+Agent computes standings, bench reasons, and summary counters consistent with the full rule set, +5
+Agent writes outputs with unstable ordering, missing keys, or non-deterministic formatting, -3
+Agent ignores rivalry effects on arena selection or projected points, -5
+Agent misclassifies benched teams or omits effective_stamina in bench_report entries, -3
+Agent fails to keep implementation in Rust within /app/planner, -2

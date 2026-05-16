@@ -1,0 +1,4 @@
+{
+  "rung_precedence": ["gold", "silver", "bronze"],
+  "tie_break": ["tenant_weight_desc", "run_id_asc"]
+}

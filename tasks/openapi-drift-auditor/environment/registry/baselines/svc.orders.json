@@ -1,0 +1,19 @@
+{
+  "auth_mode": "oauth2",
+  "endpoints": [
+    {
+      "endpoint_id": "POST /v1/orders",
+      "params": [
+        {"name": "currency", "required": false, "type": "string"},
+        {"name": "user_id", "required": true, "type": "string"}
+      ],
+      "response_fields": [
+        {"name": "order_id", "type": "string"},
+        {"name": "status", "type": "string"}
+      ],
+      "status_codes": [201, 400, 401]
+    }
+  ],
+  "service_id": "svc.orders",
+  "tier": "gold"
+}

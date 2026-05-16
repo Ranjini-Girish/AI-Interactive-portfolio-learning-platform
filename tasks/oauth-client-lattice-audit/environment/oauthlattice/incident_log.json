@@ -1,0 +1,87 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 5,
+      "event_id": "e00_scope",
+      "kind": "scope_revoke",
+      "payload": {"client_id": "c_alpha", "scopes": ["admin.ui"]}
+    },
+    {
+      "accepted": true,
+      "day": 8,
+      "event_id": "e01_pin",
+      "kind": "redirect_pin",
+      "payload": {
+        "client_id": "c_alpha",
+        "redirect_uri": "https://alpha.example.com/custom/studio"
+      }
+    },
+    {
+      "accepted": false,
+      "day": 9,
+      "event_id": "e02_reject",
+      "kind": "tier_override",
+      "payload": {"client_id": "c_eta", "new_tier": "bronze"}
+    },
+    {
+      "accepted": true,
+      "day": 9,
+      "event_id": "e03_unsupported",
+      "kind": "token_exchange_grant",
+      "payload": {"client_id": "c_eta"}
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e04_future_ok",
+      "kind": "client_quarantine",
+      "payload": {"active": true, "client_id": "c_gamma"}
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "event_id": "e05_quarantine_gamma",
+      "kind": "client_quarantine",
+      "payload": {"active": true, "client_id": "c_gamma"}
+    },
+    {
+      "accepted": true,
+      "day": 18,
+      "event_id": "e06_release_gamma",
+      "kind": "client_quarantine",
+      "payload": {"active": false, "client_id": "c_gamma"}
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "event_id": "e07_revoke_beta",
+      "kind": "scope_revoke",
+      "payload": {"client_id": "c_beta", "scopes": ["api.read"]}
+    },
+    {
+      "accepted": true,
+      "day": 35,
+      "event_id": "e08_tier_beta_gold",
+      "kind": "tier_override",
+      "payload": {"client_id": "c_beta", "new_tier": "gold"}
+    },
+    {
+      "accepted": true,
+      "day": 40,
+      "event_id": "e09_future",
+      "kind": "scope_revoke",
+      "payload": {"client_id": "c_eta", "scopes": ["openid"]}
+    },
+    {
+      "accepted": true,
+      "day": 50,
+      "event_id": "e10_dup_pin",
+      "kind": "redirect_pin",
+      "payload": {
+        "client_id": "c_alpha",
+        "redirect_uri": "https://alpha.example.com/cb"
+      }
+    }
+  ]
+}

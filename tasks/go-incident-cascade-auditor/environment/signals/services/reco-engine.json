@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "indexer"
+  ],
+  "node_id": "node-h",
+  "service_id": "reco-engine",
+  "team": "growth",
+  "tier": "bronze"
+}

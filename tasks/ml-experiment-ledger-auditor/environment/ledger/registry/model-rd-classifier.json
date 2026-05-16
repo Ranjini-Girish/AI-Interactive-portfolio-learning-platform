@@ -1,0 +1,6 @@
+{
+  "id": "model-rd-classifier",
+  "candidate_checkpoint": "ckpt-O",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

@@ -1,0 +1,8 @@
+{
+  "module_id": "search",
+  "module_path": "example.com/search",
+  "replaces": [],
+  "requires": [
+    "example.com/auth"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "run-019",
+  "owner": "tina",
+  "started_day": 112,
+  "base_dataset": "ds-curated-text",
+  "parent_run": null,
+  "declared_tier_target": "staging",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.78,
+  "runtime_minutes_observed": 200,
+  "retry_count_observed": 0
+}

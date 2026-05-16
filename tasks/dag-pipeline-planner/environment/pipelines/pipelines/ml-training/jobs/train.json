@@ -1,0 +1,8 @@
+{
+  "base_priority": 2,
+  "depends_on": ["prep"],
+  "name": "train",
+  "resource_class": "gpu",
+  "retry_count": 1,
+  "runtime_minutes": 240
+}

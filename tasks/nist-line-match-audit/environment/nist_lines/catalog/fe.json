@@ -1,0 +1,11 @@
+{
+  "element": "Fe",
+  "lines": [
+    {
+      "label": "weak",
+      "line_id": "FE_386",
+      "rel_int": 5,
+      "wave_nm": 386
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "artifact_id": "art_frontend",
+  "deployment_tier": "production",
+  "digest": "sha256:4400000000000000000000000000000000000000000000000000000000000004",
+  "repository": "ghcr.io/fleet/frontend",
+  "signatures": [
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+      "policy_rank": 1,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_frontend_bad_digest",
+      "signer_email": "rel@org.prod"
+    }
+  ]
+}

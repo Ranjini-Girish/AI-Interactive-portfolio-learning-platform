@@ -1,0 +1,14 @@
+{
+  "excludes": [],
+  "go_version_min": "1.21",
+  "module_path": "checkout",
+  "replaces": [],
+  "requires": [
+    {
+      "dep_path": "github.com/acme/logger",
+      "min_version": "v2.0.0",
+      "reachability_symbols": []
+    }
+  ],
+  "tools": []
+}

@@ -1,0 +1,12 @@
+{
+  "rematch_window": 2,
+  "winner_bonus_points": 5,
+  "need_match_bonus": 7,
+  "supported_incident_kinds": [
+    "conduct_warning",
+    "no_show",
+    "exploit_use",
+    "pardon",
+    "raid_lockout"
+  ]
+}

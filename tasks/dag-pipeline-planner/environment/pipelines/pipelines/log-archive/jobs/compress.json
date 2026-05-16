@@ -1,0 +1,8 @@
+{
+  "base_priority": 6,
+  "depends_on": ["collect"],
+  "name": "compress",
+  "resource_class": "cpu_large",
+  "retry_count": 1,
+  "runtime_minutes": 60
+}

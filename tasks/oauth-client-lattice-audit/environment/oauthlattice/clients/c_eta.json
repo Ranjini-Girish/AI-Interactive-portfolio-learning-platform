@@ -1,0 +1,8 @@
+{
+  "client_id": "c_eta",
+  "client_type": "confidential",
+  "grant_types": ["authorization_code", "client_credentials"],
+  "redirect_uris": ["https://eta.example.com/oauth"],
+  "registered_scopes": ["openid", "reports.export"],
+  "tier_declared": "silver"
+}

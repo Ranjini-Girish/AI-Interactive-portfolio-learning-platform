@@ -1,0 +1,10 @@
+{
+  "repo": "legacy-shop",
+  "installed": [
+    {
+      "name": "quality-gate",
+      "kind": "pre-commit",
+      "checks_present": ["lint", "conflict_markers", "debug_statements", "file_size", "deprecated_api"]
+    }
+  ]
+}

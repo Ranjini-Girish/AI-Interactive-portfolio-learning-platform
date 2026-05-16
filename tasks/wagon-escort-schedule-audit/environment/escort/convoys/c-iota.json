@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-iota",
+  "departure_day": 12,
+  "required_guards": 5,
+  "route_id": "r-east",
+  "tier": "silver"
+}

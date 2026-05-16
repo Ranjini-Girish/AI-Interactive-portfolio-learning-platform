@@ -1,0 +1,8 @@
+{
+  "keys": [
+    { "key_id": "hk-v1", "valid_from_day": 100 },
+    { "key_id": "hk-v2", "valid_from_day": 105 },
+    { "key_id": "hk-v3", "valid_from_day": 108 }
+  ],
+  "profile_id": "sp-hooks"
+}

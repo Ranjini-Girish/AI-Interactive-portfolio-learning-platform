@@ -1,0 +1,10 @@
+{
+  "repo": "billing",
+  "commits": [
+    {"sha": "f001beef", "branch": "main",            "msg_type": "feat",     "msg_subject": "invoice export csv",             "issue_ref": "BILL-77",  "day": 105},
+    {"sha": "f002beef", "branch": "feature/invoice", "msg_type": "refactor", "msg_subject": "split renderer module",          "issue_ref": "BILL-78",  "day": 108},
+    {"sha": "f003beef", "branch": "main",            "msg_type": "chore",    "msg_subject": "bump deps",                      "issue_ref": "BILL-79",  "day": 112},
+    {"sha": "f004beef", "branch": "main",            "msg_type": "fix",      "msg_subject": "currency rounding off-by-one when more than one item is on the invoice and discounts apply", "issue_ref": "BILL-80", "day": 115},
+    {"sha": "f005beef", "branch": "main",            "msg_type": "feat",     "msg_subject": "add SEPA channel",               "issue_ref": null,       "day": 118}
+  ]
+}

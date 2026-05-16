@@ -1,0 +1,14 @@
+{
+  "endpoint_id": "ep-internal",
+  "outcomes_by_day": {
+    "104": "rate_limited",
+    "105": "rate_limited",
+    "106": "fail",
+    "107": "rate_limited",
+    "108": "fail",
+    "109": "timeout",
+    "110": "fail"
+  },
+  "subscription_id": "sub-gamma",
+  "tier": "bronze"
+}

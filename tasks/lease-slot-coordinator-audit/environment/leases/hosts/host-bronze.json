@@ -1,0 +1,16 @@
+{
+  "host_id": "host-bronze",
+  "leases": [
+    {
+      "last_renew_day": 90,
+      "lease_until_day": 92,
+      "renew_count": 4,
+      "slot_id": "slot-bronze3"
+    }
+  ],
+  "renewals_by_day": {
+    "88": 2,
+    "90": 1
+  },
+  "tier": "bronze"
+}

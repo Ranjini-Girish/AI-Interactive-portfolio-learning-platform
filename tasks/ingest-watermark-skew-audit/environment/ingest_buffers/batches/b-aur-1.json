@@ -1,0 +1,14 @@
+{
+  "batch_id": "b-aur-1",
+  "ingest_day": 99,
+  "partition_id": "part-aurora-a",
+  "events": [
+    {
+      "bytes_hint": 120,
+      "event_day": 97,
+      "event_id": "e-a1",
+      "idempotency_key": "k-aur",
+      "sequence": 1
+    }
+  ]
+}

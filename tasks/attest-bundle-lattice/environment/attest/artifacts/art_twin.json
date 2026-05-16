@@ -1,0 +1,26 @@
+{
+  "artifact_id": "art_twin",
+  "deployment_tier": "production",
+  "digest": "sha256:aa0000000000000000000000000000000000000000000000000000000000000a",
+  "repository": "ghcr.io/fleet/twin",
+  "signatures": [
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:aa0000000000000000000000000000000000000000000000000000000000000a",
+      "policy_rank": 20,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_twin_high",
+      "signer_email": "rel@org.prod"
+    },
+    {
+      "key_id": "k_vendor",
+      "payload_digest": "sha256:aa0000000000000000000000000000000000000000000000000000000000000a",
+      "policy_rank": 5,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_twin_low",
+      "signer_email": "sec@org.prod"
+    }
+  ]
+}

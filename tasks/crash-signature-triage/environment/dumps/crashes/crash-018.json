@@ -1,0 +1,9 @@
+{
+  "id": "crash-018",
+  "reported_day": 42,
+  "reporter": "ruth@example.com",
+  "frame_stack": ["ipc::pipe::send", "ipc::pipe::recv", "ipc::pipe::close", "ipc::pipe::reset"],
+  "env_hash": "7a8b9c0d1e2f33445566778899ab12c37a8b9c0d1e2f33445566778899ab12c3",
+  "reproducibility": "intermittent",
+  "severity_observed": "medium"
+}

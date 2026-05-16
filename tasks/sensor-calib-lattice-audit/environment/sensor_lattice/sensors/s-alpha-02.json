@@ -1,0 +1,11 @@
+{
+  "batch_id": "batch-a1",
+  "depends_on": [
+    "s-alpha-01"
+  ],
+  "measured_ppm": 114,
+  "reference_ppm": 104,
+  "sensor_id": "s-alpha-02",
+  "tier": "silver",
+  "uncertainty_ppm": 4
+}

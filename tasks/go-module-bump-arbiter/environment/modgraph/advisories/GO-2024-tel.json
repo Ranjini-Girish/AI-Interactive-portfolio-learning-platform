@@ -1,0 +1,12 @@
+{
+  "advisory_id": "GO-2024-tel",
+  "affected_symbols": [
+    "github.com/acme/telemetry/internal/wire"
+  ],
+  "affected_versions": [
+    "v1.1.0"
+  ],
+  "dep_path": "github.com/acme/telemetry",
+  "fixed_in": "v1.2.0",
+  "severity": "medium"
+}

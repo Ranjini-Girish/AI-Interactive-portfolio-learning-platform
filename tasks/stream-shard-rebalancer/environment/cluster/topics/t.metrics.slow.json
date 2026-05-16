@@ -1,0 +1,15 @@
+{
+  "topic_id": "t.metrics.slow",
+  "partitions": 2,
+  "tier": "bronze",
+  "target_lag_messages": 3000,
+  "current_throughput_mbps_per_partition": 12,
+  "current_lag_messages": {
+    "0": 400,
+    "1": 300
+  },
+  "current_leader_map": {
+    "0": "b02",
+    "1": "b10"
+  }
+}

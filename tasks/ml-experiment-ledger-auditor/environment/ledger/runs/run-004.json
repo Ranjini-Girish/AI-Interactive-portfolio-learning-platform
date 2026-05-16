@@ -1,0 +1,12 @@
+{
+  "id": "run-004",
+  "owner": "dan",
+  "started_day": 35,
+  "base_dataset": "ds-raw-text",
+  "parent_run": null,
+  "declared_tier_target": "research",
+  "status_declared": "aborted",
+  "claimed_eval_metric": 0.0,
+  "runtime_minutes_observed": 12,
+  "retry_count_observed": 2
+}

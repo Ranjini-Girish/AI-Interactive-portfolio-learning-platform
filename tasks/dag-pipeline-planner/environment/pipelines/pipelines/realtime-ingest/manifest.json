@@ -1,0 +1,5 @@
+{
+  "name": "realtime-ingest",
+  "sla_hours": 1,
+  "tier": "prod"
+}

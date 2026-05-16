@@ -1,0 +1,11 @@
+{
+  "candidate_windows": [
+    "w-alpha-1",
+    "w-alpha-2",
+    "w-alpha-3"
+  ],
+  "dataset_id": "ds-alpha",
+  "declared_stage": "candidate",
+  "model_id": "m-alpha",
+  "score_bps": 8500
+}

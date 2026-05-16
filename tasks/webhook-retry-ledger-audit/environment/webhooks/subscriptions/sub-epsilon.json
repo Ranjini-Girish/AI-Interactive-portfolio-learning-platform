@@ -1,0 +1,14 @@
+{
+  "endpoint_id": "ep-hooks",
+  "outcomes_by_day": {
+    "104": "ok",
+    "105": "ok",
+    "106": "ok",
+    "107": "ok",
+    "108": "ok",
+    "109": "ok",
+    "110": "ok"
+  },
+  "subscription_id": "sub-epsilon",
+  "tier": "silver"
+}

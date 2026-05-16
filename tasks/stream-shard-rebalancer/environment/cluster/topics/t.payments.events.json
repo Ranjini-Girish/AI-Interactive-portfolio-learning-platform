@@ -1,0 +1,17 @@
+{
+  "topic_id": "t.payments.events",
+  "partitions": 3,
+  "tier": "gold",
+  "target_lag_messages": 800,
+  "current_throughput_mbps_per_partition": 50,
+  "current_lag_messages": {
+    "0": 900,
+    "1": 600,
+    "2": 1100
+  },
+  "current_leader_map": {
+    "0": "b03",
+    "1": "b09",
+    "2": "b01"
+  }
+}

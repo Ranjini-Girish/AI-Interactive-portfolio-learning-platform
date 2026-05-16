@@ -1,0 +1,7 @@
+{
+  "keys": [
+    { "key_id": "pk-a", "valid_from_day": 99 },
+    { "key_id": "pk-b", "valid_from_day": 110 }
+  ],
+  "profile_id": "sp-public"
+}

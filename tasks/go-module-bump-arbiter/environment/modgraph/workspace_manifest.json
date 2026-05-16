@@ -1,0 +1,15 @@
+{
+  "modules": [
+    "billing",
+    "checkout",
+    "gateway",
+    "indexer",
+    "notifier",
+    "opsctl",
+    "platform"
+  ],
+  "replace_directive_quorum": 3,
+  "severity_block_threshold": "high",
+  "vulncheck_reachability_required": true,
+  "workspace_id": "ws-bench-go-modules"
+}

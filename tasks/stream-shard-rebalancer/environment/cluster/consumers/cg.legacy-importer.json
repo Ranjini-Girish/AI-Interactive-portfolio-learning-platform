@@ -1,0 +1,10 @@
+{
+  "group_id": "cg.legacy-importer",
+  "subscription": "literal:t.legacy.dump",
+  "members": [
+    {
+      "member_id": "m01-leg",
+      "consumption_capacity_mbps": 40
+    }
+  ]
+}

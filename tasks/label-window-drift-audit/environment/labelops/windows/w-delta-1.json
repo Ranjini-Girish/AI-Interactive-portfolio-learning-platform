@@ -1,0 +1,12 @@
+{
+  "conflicts": 8,
+  "dataset_id": "ds-delta",
+  "day_end": 97,
+  "day_start": 91,
+  "depends_on": [],
+  "labels_total": 700,
+  "positives": 245,
+  "reviewer_rejects": 6,
+  "source_model_id": "seed",
+  "window_id": "w-delta-1"
+}

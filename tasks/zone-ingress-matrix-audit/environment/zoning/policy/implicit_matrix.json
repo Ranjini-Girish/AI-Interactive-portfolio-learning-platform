@@ -1,0 +1,13 @@
+{
+  "pairs": {
+    "internal->internal": "allow",
+    "internal->production": "allow",
+    "internal->staging": "allow",
+    "production->internal": "deny",
+    "production->production": "allow",
+    "production->staging": "allow",
+    "staging->internal": "deny",
+    "staging->production": "deny",
+    "staging->staging": "allow"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "profile_id": "p-low",
+  "pulses": [
+    150,
+    160,
+    170
+  ],
+  "quality_pct": 88,
+  "run_id": "r05",
+  "scheduled_minute": 215,
+  "specimen_id": "s-theta",
+  "station_id": "B"
+}

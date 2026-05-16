@@ -1,0 +1,31 @@
+{
+  "supported_incident_kinds": [
+    "batch_contamination",
+    "lab_freeze",
+    "recall_extend",
+    "sensor_suppress"
+  ],
+  "tier_rules": {
+    "bronze": {
+      "capacity_weight": 1,
+      "max_residual_ppm": 12,
+      "max_uncertainty_ppm": 8,
+      "priority_rank": 3,
+      "recall_days": 45
+    },
+    "gold": {
+      "capacity_weight": 3,
+      "max_residual_ppm": 5,
+      "max_uncertainty_ppm": 3,
+      "priority_rank": 1,
+      "recall_days": 20
+    },
+    "silver": {
+      "capacity_weight": 2,
+      "max_residual_ppm": 8,
+      "max_uncertainty_ppm": 5,
+      "priority_rank": 2,
+      "recall_days": 30
+    }
+  }
+}

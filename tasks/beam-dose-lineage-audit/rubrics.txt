@@ -1,0 +1,15 @@
+Agent reads `/app/beamline/SPEC.md` before interpreting fixture files, +2
+Agent writes all four required JSON files under `/app/audit/` with canonical formatting, +3
+Agent honours `BDL_DATA_DIR` and `BDL_AUDIT_DIR` when they are set, +2
+Agent implements the audit in Go under `/app/src/` with a `package main` source tree and executable `/app/bin/bdlaudit`, +5
+Agent modifies any file under `/app/beamline/`, -3
+Agent omits a required output file or writes extra audit artifacts, -5
+Agent emits malformed JSON or JSON that is not recursively key-sorted, -3
+Agent uses a language other than Go for the implementation tree, -5
+Agent fails to reject dark-current or saturated pulse readings before median aggregation, -3
+Agent chooses irradiation windows without applying tier-specific grace limits and deterministic tie-breaks, -3
+Agent fails to propagate specimen contamination through transitive lineage descendants, -5
+Agent fails to classify lineage cycles ahead of contamination status, -5
+Agent charges frozen windows or omits chargeable bad-quality and over-dose runs from capacity totals, -3
+Agent ignores accepted calibration shifts or applies dose overrides before the documented winner rule, -3
+Agent emits summary counts inconsistent with the run, lineage, or window outputs, -3

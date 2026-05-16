@@ -1,0 +1,30 @@
+{
+  "critical_chain_debit_per_link": 25,
+  "degraded_sla_debit_per_upstream_quarantine": 30,
+  "impaired_slot_carve_out_per_class": {
+    "cpu_large": 0,
+    "cpu_small": 1,
+    "gpu": 0
+  },
+  "partial_block_sla_multiplier_pct_per_tier": {
+    "dev": 100,
+    "prod": 70,
+    "staging": 85
+  },
+  "retry_penalty_minutes_per_tier": {
+    "dev": 20,
+    "prod": 5,
+    "staging": 10
+  },
+  "slots_per_resource_class": {
+    "cpu_large": 1,
+    "cpu_small": 2,
+    "gpu": 1
+  },
+  "tier_priority_modifier_int": {
+    "dev": 15,
+    "prod": 5,
+    "staging": 10
+  },
+  "wave_pressure_debit_per_burst": 30
+}

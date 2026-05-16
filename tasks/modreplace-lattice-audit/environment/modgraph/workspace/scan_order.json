@@ -1,0 +1,20 @@
+{
+  "module_manifests": [
+    "modules/00-gateway.json",
+    "modules/01-common.json",
+    "modules/02-auth.json",
+    "modules/03-billing.json",
+    "modules/04-cart.json",
+    "modules/05-catalog.json",
+    "modules/06-checkout.json",
+    "modules/07-inventory.json",
+    "modules/08-ledger.json",
+    "modules/09-notifications.json",
+    "modules/10-orders.json",
+    "modules/11-payments.json",
+    "modules/12-search.json",
+    "modules/13-shipper.json",
+    "modules/14-users.json",
+    "modules/15-indexer.json"
+  ]
+}

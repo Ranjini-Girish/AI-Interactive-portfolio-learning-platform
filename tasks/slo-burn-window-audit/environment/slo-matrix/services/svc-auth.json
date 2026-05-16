@@ -1,0 +1,13 @@
+{
+  "minutes_by_day": {
+    "10": { "bad_minutes": 4 },
+    "11": { "bad_minutes": 4 },
+    "12": { "bad_minutes": 4 },
+    "13": { "bad_minutes": 4 },
+    "14": { "bad_minutes": 4 },
+    "8": { "bad_minutes": 4 },
+    "9": { "bad_minutes": 4 }
+  },
+  "service_id": "svc-auth",
+  "tier": "bronze"
+}

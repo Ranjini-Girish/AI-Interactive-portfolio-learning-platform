@@ -1,0 +1,60 @@
+{
+  "direct_field_reads": [
+    {
+      "consumer_id": "svc.billing.report",
+      "endpoint_id": "GET /v1/gateway/aggregate",
+      "fields": ["transaction_amount"],
+      "producer_id": "svc.gateway"
+    },
+    {
+      "consumer_id": "svc.cycle.alpha",
+      "endpoint_id": "GET /v1/cycle/beta",
+      "fields": ["beta_value"],
+      "producer_id": "svc.cycle.beta"
+    },
+    {
+      "consumer_id": "svc.cycle.beta",
+      "endpoint_id": "GET /v1/cycle/alpha",
+      "fields": ["alpha_value"],
+      "producer_id": "svc.cycle.alpha"
+    },
+    {
+      "consumer_id": "svc.gateway",
+      "endpoint_id": "GET /v1/payments",
+      "fields": ["amount"],
+      "producer_id": "svc.payments"
+    },
+    {
+      "consumer_id": "svc.gateway",
+      "endpoint_id": "GET /v1/users",
+      "fields": ["email"],
+      "producer_id": "svc.users.profile"
+    },
+    {
+      "consumer_id": "svc.notifications",
+      "endpoint_id": "GET /v1/payments",
+      "fields": ["amount", "txn_id"],
+      "producer_id": "svc.payments"
+    },
+    {
+      "consumer_id": "svc.notifications",
+      "endpoint_id": "POST /v1/orders",
+      "fields": ["order_id", "status"],
+      "producer_id": "svc.orders"
+    }
+  ],
+  "field_exposures": [
+    {
+      "endpoint_id": "GET /v1/payments",
+      "exposing_service": "svc.gateway",
+      "field_map": {"amount": "transaction_amount"},
+      "producer_id": "svc.payments"
+    },
+    {
+      "endpoint_id": "GET /v1/users",
+      "exposing_service": "svc.gateway",
+      "field_map": {"email": "user_email"},
+      "producer_id": "svc.users.profile"
+    }
+  ]
+}

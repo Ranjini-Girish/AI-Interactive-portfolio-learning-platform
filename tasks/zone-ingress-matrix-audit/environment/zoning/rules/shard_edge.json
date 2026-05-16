@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "action": "deny",
+      "audit_tier": "production",
+      "dst_zones": ["z_db"],
+      "priority": 3,
+      "rule_id": "r_staging_db_deny",
+      "src_zones": ["z_staging"]
+    },
+    {
+      "action": "deny",
+      "audit_tier": "internal",
+      "dst_zones": ["z_mgmt"],
+      "priority": 10,
+      "rule_id": "r_internal_mgmt_deny",
+      "src_zones": ["z_internal"]
+    },
+    {
+      "action": "allow",
+      "audit_tier": "production",
+      "dst_zones": ["z_staging"],
+      "priority": 7,
+      "rule_id": "r_dmz_staging_allow",
+      "src_zones": ["z_dmz"]
+    }
+  ]
+}

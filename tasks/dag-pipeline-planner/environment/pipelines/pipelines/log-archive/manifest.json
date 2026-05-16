@@ -1,0 +1,5 @@
+{
+  "name": "log-archive",
+  "sla_hours": 3,
+  "tier": "dev"
+}

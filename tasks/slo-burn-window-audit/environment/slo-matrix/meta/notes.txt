@@ -1,0 +1,1 @@
+Read-only packaging metadata for the slo-matrix workspace.

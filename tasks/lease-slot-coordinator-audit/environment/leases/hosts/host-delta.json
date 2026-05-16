@@ -1,0 +1,13 @@
+{
+  "host_id": "host-delta",
+  "leases": [
+    {
+      "last_renew_day": 88,
+      "lease_until_day": 110,
+      "renew_count": 1,
+      "slot_id": "slot-beta2"
+    }
+  ],
+  "renewals_by_day": {},
+  "tier": "gold"
+}

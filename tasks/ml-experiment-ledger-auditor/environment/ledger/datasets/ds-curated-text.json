@@ -1,0 +1,6 @@
+{
+  "id": "ds-curated-text",
+  "name": "Curated text snippets",
+  "tier": "curated",
+  "lineage_parents": ["ds-raw-text"]
+}

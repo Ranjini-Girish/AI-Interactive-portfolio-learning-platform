@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/looper"
+      ],
+      "name": "loop.go"
+    }
+  ],
+  "package_key": "looper",
+  "package_path": "github.com/acme/looper"
+}

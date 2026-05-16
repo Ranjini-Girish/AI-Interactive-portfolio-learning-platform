@@ -1,0 +1,13 @@
+{
+  "advisory_id": "GO-2024-net",
+  "affected_symbols": [
+    "golang.org/x/net/http2.Transport"
+  ],
+  "affected_versions": [
+    "v0.10.0",
+    "v0.11.0"
+  ],
+  "dep_path": "golang.org/x/net",
+  "fixed_in": "v0.12.0",
+  "severity": "high"
+}

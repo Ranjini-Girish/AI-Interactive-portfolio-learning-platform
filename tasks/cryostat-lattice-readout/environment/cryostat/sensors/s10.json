@@ -1,0 +1,9 @@
+{
+  "sensor_id": "s10",
+  "strap_id": "strap-e",
+  "rig_id": "east",
+  "tier": "primary",
+  "commissioned_day": 0,
+  "last_calibration_day": 10,
+  "nominal_range_millic": [80300, 80400]
+}

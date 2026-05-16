@@ -1,0 +1,62 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 98,
+      "event_id": "w00",
+      "kind": "tier_retry_delta",
+      "target_tier": "silver",
+      "delta": 5
+    },
+    {
+      "accepted": true,
+      "day": 100,
+      "event_id": "w01",
+      "kind": "tier_retry_delta",
+      "target_tier": "silver",
+      "delta": 1
+    },
+    {
+      "accepted": true,
+      "day": 103,
+      "event_id": "w02",
+      "kind": "failure_day_suppress",
+      "days": [109],
+      "subscription_id": "sub-beta"
+    },
+    {
+      "accepted": true,
+      "day": 104,
+      "event_id": "w03",
+      "kind": "failure_day_suppress",
+      "days": [999],
+      "subscription_id": "sub-beta"
+    },
+    {
+      "accepted": true,
+      "day": 102,
+      "event_id": "w04",
+      "kind": "bronze_surge"
+    },
+    {
+      "accepted": true,
+      "day": 105,
+      "event_id": "w05",
+      "kind": "endpoint_compromise",
+      "endpoint_id": "ep-partner"
+    },
+    {
+      "accepted": true,
+      "day": 108,
+      "event_id": "w06",
+      "kind": "force_exhausted",
+      "subscription_id": "sub-epsilon"
+    },
+    {
+      "accepted": true,
+      "day": 106,
+      "event_id": "w07",
+      "kind": "unknown_future_kind"
+    }
+  ]
+}

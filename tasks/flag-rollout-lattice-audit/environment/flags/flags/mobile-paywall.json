@@ -1,0 +1,17 @@
+{
+  "default_pct": 25,
+  "flag_id": "mobile-paywall",
+  "overrides": [
+    {
+      "pct": 65,
+      "priority": 25,
+      "segment_id": "selfserve"
+    },
+    {
+      "pct": 75,
+      "priority": 40,
+      "segment_id": "beta-ring"
+    }
+  ],
+  "tier": "silver"
+}

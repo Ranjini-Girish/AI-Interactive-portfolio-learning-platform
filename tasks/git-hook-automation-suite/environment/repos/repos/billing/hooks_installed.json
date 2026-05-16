@@ -1,0 +1,15 @@
+{
+  "repo": "billing",
+  "installed": [
+    {
+      "name": "quality-gate",
+      "kind": "pre-commit",
+      "checks_present": ["lint", "conflict_markers", "debug_statements"]
+    },
+    {
+      "name": "msg-format",
+      "kind": "commit-msg",
+      "checks_present": ["conventional_format"]
+    }
+  ]
+}

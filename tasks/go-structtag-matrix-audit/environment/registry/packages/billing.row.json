@@ -1,0 +1,1 @@
+{"module_path":"example.com/billing","package_id":"billing.row","structs":[{"fields":[{"field_id":"Amt","go_name":"Amt","tags":{"bson":"amt","json":"amount"}}],"struct_id":"Line"}]}

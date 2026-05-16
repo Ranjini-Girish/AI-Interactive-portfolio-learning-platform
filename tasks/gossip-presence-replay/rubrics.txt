@@ -1,0 +1,16 @@
+Agent reads `/app/gossip_lab/SPEC.md` and follows merge plus presence rules before coding, +3
+Agent emits only `/app/output/gossip_report.json` with no sibling artefacts under `/app/output/`, +2
+Agent preserves canonical JSON layout including sorted keys and trailing newline, +3
+Agent implements merged inbox ordering exactly as specified, +5
+Agent handles inline comments and blank lines in both inbox logs, +2
+Agent computes directed edge totals with the required `>` key format, +2
+Agent derives per-update first and last rounds plus propagation delay consistently, +2
+Agent builds round snapshots filtered by global update order and first-round cutoff, +3
+Agent computes the pull-tail score from the merged stream tail semantics, +3
+Agent leaves `/app/gossip_lab/` bit-for-bit unchanged, +2
+Agent adds spurious top-level JSON keys beyond the contract, -5
+Agent reads ambient retainers or corpus noise files into the ledger, -5
+Agent omits `events_overflow.log` or prepends it ahead of `events.log`, -5
+Agent writes pretty JSON with wrong indentation or missing final newline, -3
+Agent uses epidemic simulation instead of the witness presence model from the spec, -5
+Agent leaves `/app/output/` empty or writes a differently named report file, -5

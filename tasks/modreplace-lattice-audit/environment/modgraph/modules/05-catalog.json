@@ -1,0 +1,16 @@
+{
+  "module_id": "catalog",
+  "module_path": "example.com/catalog",
+  "replaces": [
+    {
+      "from": "example.com/x-orphan",
+      "to": "example.com/y-orphan",
+      "expires_on_day": 50
+    },
+    {
+      "from": "example.com/cycle-a",
+      "to": "example.com/cycle-b"
+    }
+  ],
+  "requires": []
+}

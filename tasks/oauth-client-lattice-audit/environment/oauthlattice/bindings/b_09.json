@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_09",
+  "client_id": "c_gamma",
+  "requested_redirect": "https://gamma.example.com/login",
+  "resource_id": "r_api"
+}

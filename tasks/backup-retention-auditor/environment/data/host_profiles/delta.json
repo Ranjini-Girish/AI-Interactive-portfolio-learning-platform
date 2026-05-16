@@ -1,0 +1,6 @@
+{
+  "exempt": true,
+  "host": "delta",
+  "override_rules": [],
+  "tier": "silver"
+}

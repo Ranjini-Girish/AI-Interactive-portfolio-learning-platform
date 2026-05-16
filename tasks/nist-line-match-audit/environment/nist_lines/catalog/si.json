@@ -1,0 +1,11 @@
+{
+  "element": "Si",
+  "lines": [
+    {
+      "label": "UV",
+      "line_id": "SI_288",
+      "rel_int": 70,
+      "wave_nm": 288
+    }
+  ]
+}

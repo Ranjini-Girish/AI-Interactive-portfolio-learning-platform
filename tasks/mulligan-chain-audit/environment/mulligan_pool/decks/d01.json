@@ -1,0 +1,15 @@
+{
+  "deck_id": "d01",
+  "maindeck": [
+    "Forest",
+    "Island",
+    "Lightning Bolt",
+    "Mountain",
+    "Plains",
+    "Swamp"
+  ],
+  "sideboard": [
+    "Disenchant"
+  ],
+  "tier": "gold"
+}

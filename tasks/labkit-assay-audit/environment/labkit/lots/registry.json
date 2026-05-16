@@ -1,0 +1,13 @@
+{
+  "lots": {
+    "LOT_BAD": {
+      "reagent_code": "R-900"
+    },
+    "LOT_OK": {
+      "reagent_code": "R-100"
+    },
+    "LOT_STD": {
+      "reagent_code": "R-200"
+    }
+  }
+}

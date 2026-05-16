@@ -1,0 +1,5 @@
+You audit a multi-plate wet-lab kitting study from read-only inputs under `/app/labkit/`: `/app/labkit/pool_state.json`, `/app/labkit/policy.json`, `/app/labkit/assays.json`, `/app/labkit/batches/index.json`, `/app/labkit/lots/registry.json`, `/app/labkit/incident_log.json`, and `/app/labkit/plates/*.json`. Treat `/app/labkit/profiles/` and `/app/labkit/meta/` as optional opaque JSON that may be ignored.
+
+Read `/app/labkit/SPEC.md` fully first. It defines blank medians and fallback behaviour, standard-curve regression acceptance, accepted lot recalls and their `detail` pattern, historic drift medians, disposition precedence, and every required output sort order.
+
+Emit exactly five JSON documents under `/app/audit/`: `well_results.json`, `batch_assay_rollup.json`, `curve_diagnostics.json`, `lot_disposition.json`, and `summary.json`. Never write under `/app/labkit/`. Each output must be UTF-8, two-space indented, keys sorted at all levels, end with one trailing newline, and match the byte-identical shape this dataset demands under the spec.

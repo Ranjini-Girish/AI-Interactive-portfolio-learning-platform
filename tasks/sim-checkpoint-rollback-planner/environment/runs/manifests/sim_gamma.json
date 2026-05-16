@@ -1,0 +1,10 @@
+{
+  "current_checkpoint_step": 4100,
+  "engine": "transformer-train",
+  "inputs_dataset": "ds_radon",
+  "kind": "production",
+  "last_known_good_step": 3800,
+  "sim_id": "sim_gamma",
+  "stabilization_steps": 1000,
+  "started_at_day": 210
+}

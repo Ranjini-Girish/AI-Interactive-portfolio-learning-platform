@@ -1,0 +1,32 @@
+{
+  "checkpoint_score_floor": 0.4,
+  "tiers": {
+    "research": {
+      "min_eval_floor": 0.5,
+      "max_retry_count_allowed": 5,
+      "min_lineage_depth": 0,
+      "replay_tolerance": 0.10,
+      "requires_clean_dataset_lineage": false,
+      "runtime_budget_minutes": 300,
+      "min_audit_age_days": 0
+    },
+    "staging": {
+      "min_eval_floor": 0.7,
+      "max_retry_count_allowed": 3,
+      "min_lineage_depth": 1,
+      "replay_tolerance": 0.05,
+      "requires_clean_dataset_lineage": true,
+      "runtime_budget_minutes": 300,
+      "min_audit_age_days": 15
+    },
+    "prod": {
+      "min_eval_floor": 0.85,
+      "max_retry_count_allowed": 1,
+      "min_lineage_depth": 2,
+      "replay_tolerance": 0.02,
+      "requires_clean_dataset_lineage": true,
+      "runtime_budget_minutes": 300,
+      "min_audit_age_days": 20
+    }
+  }
+}

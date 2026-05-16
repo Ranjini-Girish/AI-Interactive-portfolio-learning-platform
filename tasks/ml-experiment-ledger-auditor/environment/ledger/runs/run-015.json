@@ -1,0 +1,12 @@
+{
+  "id": "run-015",
+  "owner": "peter",
+  "started_day": 95,
+  "base_dataset": "ds-curated-text",
+  "parent_run": null,
+  "declared_tier_target": "research",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.5,
+  "runtime_minutes_observed": 200,
+  "retry_count_observed": 0
+}

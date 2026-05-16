@@ -1,0 +1,8 @@
+{
+  "image_id": "img_ops",
+  "service_id": "svc_ops",
+  "digest": "sha256:ops001",
+  "previous_digest": "sha256:ops000",
+  "base_risk": 48,
+  "signatures": ["k_secondary_a"]
+}

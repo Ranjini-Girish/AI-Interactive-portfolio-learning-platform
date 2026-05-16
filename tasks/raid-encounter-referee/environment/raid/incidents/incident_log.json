@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "event_id": "e01",
+      "day": 39,
+      "accepted": true,
+      "kind": "conduct_warning",
+      "scope": "player",
+      "target_id": "p02"
+    },
+    {
+      "event_id": "e02",
+      "day": 40,
+      "accepted": true,
+      "kind": "no_show",
+      "scope": "player",
+      "target_id": "p03"
+    },
+    {
+      "event_id": "e03",
+      "day": 38,
+      "accepted": true,
+      "kind": "exploit_use",
+      "scope": "player",
+      "target_id": "p08"
+    },
+    {
+      "event_id": "e04",
+      "day": 41,
+      "accepted": true,
+      "kind": "pardon",
+      "scope": "player",
+      "target_id": "p03"
+    },
+    {
+      "event_id": "e05",
+      "day": 40,
+      "accepted": true,
+      "kind": "raid_lockout",
+      "scope": "team",
+      "target_id": "jade"
+    },
+    {
+      "event_id": "e06",
+      "day": 44,
+      "accepted": true,
+      "kind": "conduct_warning",
+      "scope": "player",
+      "target_id": "p01"
+    },
+    {
+      "event_id": "e07",
+      "day": 40,
+      "accepted": true,
+      "kind": "no_show",
+      "scope": "player",
+      "target_id": "p04"
+    },
+    {
+      "event_id": "e08",
+      "day": 40,
+      "accepted": true,
+      "kind": "unknown_kind",
+      "scope": "player",
+      "target_id": "p05"
+    }
+  ]
+}

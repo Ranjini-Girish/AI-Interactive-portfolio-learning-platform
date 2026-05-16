@@ -1,0 +1,1 @@
+{"module_path":"example.com/embed","package_id":"embed.slot","structs":[{"fields":[{"field_id":"S","go_name":"S","tags":{"bson":",omitempty","json":"s"}}],"struct_id":"Box"}]}

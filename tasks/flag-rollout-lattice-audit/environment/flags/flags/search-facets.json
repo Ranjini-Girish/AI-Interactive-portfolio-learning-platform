@@ -1,0 +1,17 @@
+{
+  "default_pct": 35,
+  "flag_id": "search-facets",
+  "overrides": [
+    {
+      "pct": 40,
+      "priority": 20,
+      "segment_id": "selfserve"
+    },
+    {
+      "pct": 55,
+      "priority": 25,
+      "segment_id": "selfserve-new"
+    }
+  ],
+  "tier": "bronze"
+}

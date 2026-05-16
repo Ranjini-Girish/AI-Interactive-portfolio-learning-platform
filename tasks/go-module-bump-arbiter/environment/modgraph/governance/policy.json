@@ -1,0 +1,15 @@
+{
+  "retract_grace_days": 7,
+  "severity_rank": {
+    "critical": 4,
+    "high": 3,
+    "low": 1,
+    "medium": 2
+  },
+  "supported_incident_kinds": [
+    "force_pin",
+    "module_graph_cycle",
+    "replace_workspace_wide",
+    "retract_emergency"
+  ]
+}

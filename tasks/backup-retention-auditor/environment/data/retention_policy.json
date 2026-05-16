@@ -1,0 +1,12 @@
+{
+  "rules": [
+    {"name": "yearly_gold",   "priority": 1, "kind": "yearly",  "keep_count": 2, "max_age_days": 730, "applies_to_tier": "gold"},
+    {"name": "yearly_silver", "priority": 2, "kind": "yearly",  "keep_count": 1, "max_age_days": 365, "applies_to_tier": "silver"},
+    {"name": "monthly_gold",  "priority": 3, "kind": "monthly", "keep_count": 6, "max_age_days": 200, "applies_to_tier": "gold"},
+    {"name": "monthly_any",   "priority": 4, "kind": "monthly", "keep_count": 3, "max_age_days": 120, "applies_to_tier": "*"},
+    {"name": "weekly_any",    "priority": 5, "kind": "weekly",  "keep_count": 4, "max_age_days": 60,  "applies_to_tier": "*"},
+    {"name": "daily_gold",    "priority": 6, "kind": "daily",   "keep_count": 7, "max_age_days": 14,  "applies_to_tier": "gold"},
+    {"name": "daily_silver",  "priority": 7, "kind": "daily",   "keep_count": 3, "max_age_days": 7,   "applies_to_tier": "silver"},
+    {"name": "daily_bronze",  "priority": 8, "kind": "daily",   "keep_count": 2, "max_age_days": 5,   "applies_to_tier": "bronze"}
+  ]
+}

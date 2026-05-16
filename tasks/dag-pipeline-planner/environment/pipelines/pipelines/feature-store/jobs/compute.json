@@ -1,0 +1,8 @@
+{
+  "base_priority": 5,
+  "depends_on": [],
+  "name": "compute",
+  "resource_class": "cpu_large",
+  "retry_count": 1,
+  "runtime_minutes": 120
+}

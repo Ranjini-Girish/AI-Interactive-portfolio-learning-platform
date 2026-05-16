@@ -1,0 +1,154 @@
+---
+description: instruction.md must agree with /app/docs/ and the reference solver — direct contradictions cause empirical failures and reviewer rejections
+globs: **/instruction.md, **/environment/docs/**.md, **/environment/schemas/**.json
+alwaysApply: false
+---
+
+# instruction.md ↔ /app/docs/ ↔ reference solver must agree
+
+The verifier compares agent output to the reference solver byte-for-byte. Any sentence in `instruction.md` that contradicts the reference (or the in-container `/app/docs/` material) sets agents up to follow the prompt and fail the verifier. This is one of the strongest causes of empirical failure and reviewer rejection: the prompt looks reasonable, the agent reads it correctly, the output still doesn't match.
+
+## Single source of truth per rule
+
+For each quantitative or set-membership claim:
+
+- Pick ONE place to state it.
+- If you state it in `instruction.md`, copy it from the reference solver verbatim — do not paraphrase semantics.
+- Otherwise point at `/app/docs/<file>.md` and let the agent consult it.
+
+Never have two places stating the same rule with different wording — one of them will drift.
+
+## No partial enumerations
+
+Listing "X, Y, and Z are still updated" while silently leaving out a fourth counter that the reference also updates is worse than no list at all. Agents read the list as exhaustive and skip the omitted counter; the verifier flags the resulting mismatch.
+
+```markdown
+<!-- ❌ BAD - partial list invites the agent to assume the rest -->
+A no-op event still bumps `total_<events>` and `messages_processed`.
+
+<!-- ✅ GOOD - exhaustive, or delegate -->
+A no-op event updates the counters listed under "Counter semantics" in
+`/app/docs/<topic>.md`.
+```
+
+Either be exhaustive or be silent and delegate. Half a list is worse than none.
+
+## Pre-submit consistency check
+
+For every quantitative or set-membership claim in `instruction.md`, grep the reference solver (typically under `solution/`, `tests/`, or wherever the byte-for-byte oracle lives) and confirm the exact same condition fires. If the prompt says "X counts toward Y", the reference must increment Y in exactly those cases. Any drift is a reviewer auto-fail and an empirical-failure source.
+
+## State-machine tables: enumerate every reference-legal trigger
+
+When `/app/docs/<file>.md` uses a transition table for a state machine, the table is the agent's contract for what counts as a "legal" trigger. Combined with prose like *"any other (state, direction, flags) combination is illegal and emits the strict-mode diagnostic"*, agents treat unlisted rows as illegal — including reference-legal **same-state refreshes** (no actual state change, but no diagnostic either).
+
+For every (state, trigger) tuple the reference solver accepts without raising the strict-mode diagnostic, there MUST be a row — even when the next state equals the current state.
+
+```markdown
+<!-- ❌ BAD: docs list two transitions out of ESTABLISHED but no same-state row,
+     so an `ESTABLISHED + reply PSH+ACK` packet that the reference allows as
+     a legal data segment is read as illegal and bumps the strict-mode counter. -->
+| `ESTABLISHED` | orig FIN or reply FIN                | `FIN_WAIT`    | ttl |
+| `ESTABLISHED` | orig PSH+ACK or orig ACK or reply ACK | `ESTABLISHED` | ttl |
+... (any other combination is illegal)
+
+<!-- ✅ GOOD: every reference-legal combination has a row, AND prose calls out
+     that same-state rows are legal refreshes (no diagnostic, no transition entry). -->
+| `ESTABLISHED` | orig FIN or reply FIN          | `FIN_WAIT`    | ttl |
+| `ESTABLISHED` | (orig or reply) ACK or PSH+ACK | `ESTABLISHED` | ttl |
+| `FIN_WAIT`    | (orig or reply) ACK or PSH+ACK | `FIN_WAIT`    | ttl |
+
+A "same-state" row above is a **legal** trigger: TTL refreshes, no
+`state_transitions.json` entry, and the strict-mode diagnostic is NOT
+emitted. Only triggers that match no row at all are illegal.
+```
+
+The diagnostic of this kind of bug is identifiable by symptom: most `test_*_match_reference` tests pass after the obvious fixes, but `test_summary_match_reference` keeps failing by exactly 1 in a single counter (typically `invalid_*_transitions` or similar strict-mode counter) — a per-event off-by-one originating from one or two missing rows.
+
+## Output JSON keys: prose must use the OUTPUT key name, not the internal field name
+
+When a diagnostic, event, or evidence object is described in two `/app/docs/*.md` files, the prose in each file must name fields exactly as they appear in the produced JSON — never as the internal struct/variable name from the reference solver. The most common drift is between two cooperating docs:
+
+- `/app/docs/diagnostics.md` (or `schemas/<output>.schema.json`) — the **authoritative output contract**, lists the exact JSON keys the verifier compares.
+- `/app/docs/<topic>.md` (e.g. `eviction.md`, `flap_log.md`) — narrative prose describing when the diagnostic fires, what it carries, what triggers it.
+
+If `diagnostics.md` says the evidence object carries `<evicted_field_ms>`, but a narrative doc describes the same field as "the victim's pre-eviction `<internal_field_ms>`" (where `<internal_field_ms>` is the reference solver's internal struct field name, not the output key), an agent reading the narrative doc first can reasonably emit the wrong JSON key and fail the byte-for-byte compare. Even when `instruction.md` points at `diagnostics.md` as the authoritative source, the cross-doc inconsistency is a real spec-quality risk.
+
+```markdown
+<!-- ❌ BAD - narrative doc uses the internal field name in prose -->
+On a capacity eviction the runtime emits W_EVICTED with the victim's
+pre-eviction `<internal_field_ms>`, the cache key, and the policy in force.
+
+<!-- ✅ GOOD option 1 - name the output JSON key explicitly -->
+On a capacity eviction the runtime emits W_EVICTED with evidence field
+`<evicted_field_ms>` (the victim's pre-eviction `<internal_field_ms>`),
+the cache key, and the policy in force.
+
+<!-- ✅ GOOD option 2 - delegate naming to the authoritative doc -->
+On a capacity eviction the runtime emits W_EVICTED; the evidence fields
+are listed under W_EVICTED in `/app/docs/diagnostics.md`.
+```
+
+Heuristic: for every diagnostic / event / evidence object, grep the docs for both the JSON output key and any "internal" rephrasing. If both names appear and they differ, one of them is wrong.
+
+```bash
+# 1. Collect every JSON key the schemas / diagnostics doc declares
+rg -o '"\w+"\s*:\s*\{' environment/docs/diagnostics.md environment/schemas/*.json 2>/dev/null \
+  | rg -o '"\w+"' | sort -u > /tmp/output_keys.txt
+
+# 2. For each output key, grep the narrative docs for prose mentions of
+#    the SAME concept under a different name. Manual eye-check, no clean grep.
+```
+
+A short discipline: when you write narrative prose about an output field, copy the exact JSON key from the schema doc into backticks, then add a parenthetical with the human/internal name if needed. The backtick name is what the agent will emit.
+
+## Terminology must match the output schema's structure
+
+A specific sub-case of cross-doc drift: when `instruction.md` (or a test docstring) describes an output artefact with a structural term that the schema explicitly contradicts. The canonical example is calling a graph a "DAG" when the output schema has a required `cycles` field and the reference simulator emits multi-vertex SCCs into it.
+
+```markdown
+<!-- ❌ BAD - "DAG" is acyclic by definition, but the schema for
+     <graph_output>.json requires a `cycles` field and the bundled
+     trace produces a 2-vertex cycle from a swap-back event pair. -->
+`<graph_output>.json` (the DAG induced by `move_subtree` operations,
+with every node id ever observed as a vertex and an edge from the
+source parent to the moved node)
+
+<!-- ✅ GOOD - prose matches the schema's actual structure -->
+`<graph_output>.json` (the directed graph induced by `move_subtree`
+operations, with every node id ever observed as a vertex, an edge
+from the source parent to the moved node, and any multi-vertex SCCs
+surfaced under `cycles`)
+```
+
+The pattern also surfaces in test docstrings — *"compares against the reference simulator's DAG"* when the simulator emits cycles is the same drift moved one file over.
+
+Audit rule: for every structural noun in `instruction.md` and `tests/test_outputs.py` docstrings (`DAG`, `tree`, `forest`, `set`, `partial order`, `total order`, `bijection`, `monotonic`), check that the output schema and the reference solver actually enforce that structure. Listed-as-required output fields like `cycles`, `duplicates`, `conflicts`, `unsorted_entries`, `non_monotonic_steps` are direct evidence that the corresponding "acyclic / sorted / monotonic" framing is wrong.
+
+```bash
+# Common structural-noun ↔ contradicting-field pairs to grep for
+for pair in "DAG cycles" "tree cycles" "forest cycles" \
+            "set duplicates" "monotonic non_monotonic" \
+            "sorted unsorted" "bijection collisions"; do
+  noun=${pair%% *}; field=${pair##* }
+  if rg -nq "\b$noun\b" instruction.md tests/test_outputs.py 2>/dev/null \
+     && rg -nq "\"$field\"" environment/schemas/*.json 2>/dev/null; then
+    echo "WARN: '$noun' wording vs '$field' schema field - terminology drift"
+  fi
+done
+```
+
+## Sister rules
+
+- `tb2-instruction-must-cover-test-assertions.mdc` — underspecification (prose admits a reading the test rejects).
+- `tb2-domain-term-semantics.mdc` — semantic clash (a domain-standard term used with non-standard meaning).
+- This rule — direct contradiction (prose says X, reference says NOT-X), cross-doc JSON-key drift (one doc uses internal field name, the other the output key), and structural-term drift (prose names a structure the schema's own fields disprove).
+
+## Origin
+
+Distilled from recurring manual-reviewer feedback patterns:
+
+- **Direct prose-vs-reference contradiction.** A spec claimed a counter included a transition class that the reference solver and an authoritative narrative doc both excluded. Most empirical agent runs failed at exactly that field. The fix is "single source of truth per rule": copy from the reference verbatim, or delegate to `/app/docs/<topic>.md` and stay silent in `instruction.md`.
+- **Partial enumeration in spec lists.** Listing "X, Y, and Z are updated" while silently leaving out a fourth counter the reference also updates. Agents read the list as exhaustive and skip the omitted counter.
+- **State-machine table omissions.** A transition table was missing reference-legal *same-state* rows (the reference accepted them as silent refreshes); a doc-strict reader emitted the strict-mode diagnostic for those rows and the verifier mismatched a single counter by exactly the number of missing rows. Diagnostic symptom: most `*_match_reference` tests pass, but `summary_match_reference` keeps failing by exactly N in a single counter (typically `invalid_*_transitions` or a similar strict-mode counter) — N equals the number of missing same-state rows.
+- **Cross-doc JSON-key drift.** A `diagnostics.md` declared an evidence object's output key while a narrative doc described the same field using the reference solver's internal struct name. An implementer who read the narrative doc first emitted the wrong JSON key and failed byte-for-byte. Fix: in narrative prose, name the output JSON key in backticks and add the internal name only in a parenthetical.
+- **Structural-noun drift vs schema.** Prose called an output graph a "DAG" while the schema required a `cycles` field and the reference simulator emitted multi-vertex SCCs into it; the bundled trace itself produced an observable cycle. Replaced "DAG" with "directed graph ... with multi-vertex SCCs surfaced under `cycles`" in `instruction.md` and the matching test docstring.

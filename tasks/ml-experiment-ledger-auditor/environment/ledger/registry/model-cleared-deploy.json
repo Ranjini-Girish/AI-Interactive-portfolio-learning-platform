@@ -1,0 +1,6 @@
+{
+  "id": "model-cleared-deploy",
+  "candidate_checkpoint": "ckpt-N",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

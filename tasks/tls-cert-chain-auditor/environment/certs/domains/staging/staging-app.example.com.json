@@ -1,0 +1,6 @@
+{
+  "domain": "staging-app.example.com",
+  "expected_san": ["staging-app.example.com"],
+  "leaf_serial": "leaf-staging-v2",
+  "tier": "staging"
+}

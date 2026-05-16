@@ -1,0 +1,8 @@
+{
+  "id": "ckpt-P",
+  "run_id": "run-016",
+  "step": 20000,
+  "eval_score": 0.78,
+  "signature_hash": "ee0011223344556677889900112233445566778899aabbccddeeff00112233ff",
+  "file_size_mb": 900
+}

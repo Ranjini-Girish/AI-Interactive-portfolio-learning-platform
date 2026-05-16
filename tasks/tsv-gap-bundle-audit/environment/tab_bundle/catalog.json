@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    { "dataset_id": "alpha", "relative_path": "data/alpha.tsv" },
+    { "dataset_id": "bravo", "relative_path": "data/bravo.tsv" },
+    { "dataset_id": "charlie", "relative_path": "data/charlie.tsv" },
+    { "dataset_id": "delta", "relative_path": "data/delta.tsv" },
+    { "dataset_id": "echo", "relative_path": "data/echo.tsv" },
+    { "dataset_id": "foxtrot", "relative_path": "data/foxtrot.tsv" }
+  ]
+}

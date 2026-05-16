@@ -1,0 +1,23 @@
+{
+  "exempt": false,
+  "host": "beta",
+  "override_rules": [
+    {
+      "applies_to_tier": "gold",
+      "keep_count": 14,
+      "kind": "daily",
+      "max_age_days": 30,
+      "name": "beta_daily_extra",
+      "priority": 100
+    },
+    {
+      "applies_to_tier": "gold",
+      "keep_count": 2,
+      "kind": "daily",
+      "max_age_days": 5,
+      "name": "beta_daily_strict",
+      "priority": 50
+    }
+  ],
+  "tier": "gold"
+}

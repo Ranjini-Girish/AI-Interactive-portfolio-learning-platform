@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "user-db"
+  ],
+  "node_id": "node-b",
+  "service_id": "auth-service",
+  "team": "core-platform",
+  "tier": "silver"
+}

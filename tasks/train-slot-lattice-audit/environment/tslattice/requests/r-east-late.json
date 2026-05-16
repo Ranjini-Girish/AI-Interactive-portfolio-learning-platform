@@ -1,0 +1,8 @@
+{
+  "depends_on": null,
+  "run_id": "r-east-late",
+  "rung": "gold",
+  "slots_asked": 1,
+  "submit_day": 8,
+  "tenant_id": "lab-east"
+}

@@ -1,0 +1,8 @@
+{
+  "depends_on": null,
+  "run_id": "r-parent",
+  "rung": "gold",
+  "slots_asked": 2,
+  "submit_day": 5,
+  "tenant_id": "solo"
+}

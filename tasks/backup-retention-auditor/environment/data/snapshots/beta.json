@@ -1,0 +1,16 @@
+{
+  "host": "beta",
+  "snapshots": [
+    {"id": "beta-001",  "kind": "full",        "taken_day": 20,  "size_mb": 200, "parent_id": null,       "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"},
+    {"id": "beta-002",  "kind": "incremental", "taken_day": 50,  "size_mb": 30,  "parent_id": "beta-001", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"},
+    {"id": "beta-003",  "kind": "incremental", "taken_day": 120, "size_mb": 40,  "parent_id": "beta-002", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0003"},
+    {"id": "beta-004",  "kind": "incremental", "taken_day": 200, "size_mb": 50,  "parent_id": "beta-003", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0004"},
+    {"id": "beta-005",  "kind": "incremental", "taken_day": 336, "size_mb": 45,  "parent_id": "beta-004", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0005"},
+    {"id": "beta-006",  "kind": "incremental", "taken_day": 345, "size_mb": 40,  "parent_id": "beta-005", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0006"},
+    {"id": "beta-007",  "kind": "incremental", "taken_day": 350, "size_mb": 30,  "parent_id": "beta-006", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0007"},
+    {"id": "beta-008",  "kind": "incremental", "taken_day": 355, "size_mb": 25,  "parent_id": "beta-007", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0008"},
+    {"id": "beta-009",  "kind": "incremental", "taken_day": 360, "size_mb": 20,  "parent_id": "beta-008", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0009"},
+    {"id": "beta-010",  "kind": "incremental", "taken_day": 365, "size_mb": 15,  "parent_id": "beta-009", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0010"},
+    {"id": "beta-FUT",  "kind": "incremental", "taken_day": 400, "size_mb": 5,   "parent_id": "beta-010", "sha256_chain": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb9999"}
+  ]
+}

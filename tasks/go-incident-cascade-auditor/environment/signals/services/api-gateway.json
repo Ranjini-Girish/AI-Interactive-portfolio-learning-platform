@@ -1,0 +1,11 @@
+{
+  "dependencies": [
+    "auth-service",
+    "payment-core",
+    "search-api"
+  ],
+  "node_id": "node-a",
+  "service_id": "api-gateway",
+  "team": "core-platform",
+  "tier": "gold"
+}

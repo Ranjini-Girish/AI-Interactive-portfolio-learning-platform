@@ -1,0 +1,6 @@
+{
+  "bundle_id": "b-net",
+  "depends_on": ["b-base"],
+  "priority": 2,
+  "reboot_minutes": 45
+}

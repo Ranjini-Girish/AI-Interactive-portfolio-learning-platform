@@ -1,0 +1,10 @@
+{
+  "current_checkpoint_step": 12400,
+  "engine": "icon",
+  "inputs_dataset": "ds_krypton",
+  "kind": "production",
+  "last_known_good_step": 12000,
+  "sim_id": "sim_eta",
+  "stabilization_steps": 3000,
+  "started_at_day": 110
+}

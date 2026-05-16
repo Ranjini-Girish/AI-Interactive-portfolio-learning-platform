@@ -1,0 +1,15 @@
+{
+  "day": 41,
+  "records": [
+    {
+      "flag_id": "profile-merge",
+      "segment_id": "beta-ring",
+      "users": 7200
+    },
+    {
+      "flag_id": "mobile-paywall",
+      "segment_id": "beta-ring",
+      "users": 6100
+    }
+  ]
+}

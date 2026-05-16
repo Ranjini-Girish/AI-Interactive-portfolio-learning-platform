@@ -1,0 +1,6 @@
+{
+  "id": "model-classify-clicks",
+  "candidate_checkpoint": "ckpt-A",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

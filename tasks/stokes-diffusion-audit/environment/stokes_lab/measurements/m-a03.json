@@ -1,0 +1,9 @@
+{
+  "measurement_id": "m-a03",
+  "probe_id": "p3",
+  "solvent_id": "water",
+  "solute_id": "s-dextran",
+  "hydrodynamic_radius_nm": 0.8,
+  "temp_reported_K": 298.0,
+  "run_day": 8
+}

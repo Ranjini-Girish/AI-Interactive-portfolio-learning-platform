@@ -1,0 +1,10 @@
+{
+  "host": "delta",
+  "snapshots": [
+    {"id": "delta-001", "kind": "full",        "taken_day": 30,  "size_mb": 150, "parent_id": null,        "sha256_chain": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0001"},
+    {"id": "delta-002", "kind": "incremental", "taken_day": 120, "size_mb": 30,  "parent_id": "delta-001", "sha256_chain": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0002"},
+    {"id": "delta-003", "kind": "incremental", "taken_day": 200, "size_mb": 40,  "parent_id": "delta-002", "sha256_chain": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0003"},
+    {"id": "delta-004", "kind": "incremental", "taken_day": 300, "size_mb": 35,  "parent_id": "delta-003", "sha256_chain": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0004"},
+    {"id": "delta-005", "kind": "incremental", "taken_day": 360, "size_mb": 25,  "parent_id": "delta-004", "sha256_chain": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0005"}
+  ]
+}

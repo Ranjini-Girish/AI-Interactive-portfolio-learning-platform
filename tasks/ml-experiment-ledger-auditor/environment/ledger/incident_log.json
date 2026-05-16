@@ -1,0 +1,157 @@
+{
+  "events": [
+    {
+      "kind": "dataset_compromise",
+      "day": 40,
+      "dataset_id": "ds-raw-clicks",
+      "reason": "PII leak discovered in raw click stream"
+    },
+    {
+      "kind": "dataset_compromise",
+      "day": 35,
+      "dataset_id": "ds-cleared-corpus",
+      "reason": "early data leak detected during onboarding"
+    },
+    {
+      "kind": "compromise_lift",
+      "day": 105,
+      "dataset_id": "ds-cleared-corpus",
+      "reason": "PII fully remediated and corpus re-curated end-to-end"
+    },
+    {
+      "kind": "compromise_lift",
+      "day": 110,
+      "dataset_id": "ds-not-real",
+      "reason": "lift for nonexistent dataset must be ignored"
+    },
+    {
+      "kind": "key_revocation",
+      "day": 75,
+      "effective_day": 20,
+      "signature_prefix": "deadbeef",
+      "reason": "signing key rotated after registry compromise"
+    },
+    {
+      "kind": "key_revocation",
+      "day": 80,
+      "effective_day": 120,
+      "signature_prefix": "aabb",
+      "reason": "leaked signing key from contractor laptop"
+    },
+    {
+      "kind": "key_revocation",
+      "day": 95,
+      "effective_day": -1,
+      "signature_prefix": "5566",
+      "reason": "negative effective_day must be ignored"
+    },
+    {
+      "kind": "eval_replay",
+      "event_id": "replay-007-a",
+      "day": 90,
+      "run_id": "run-007",
+      "replayed_eval_metric": 0.42
+    },
+    {
+      "kind": "eval_replay",
+      "event_id": "replay-007-b",
+      "day": 100,
+      "run_id": "run-007",
+      "replayed_eval_metric": 0.40
+    },
+    {
+      "kind": "eval_replay",
+      "event_id": "replay-007-c",
+      "day": 100,
+      "run_id": "run-007",
+      "replayed_eval_metric": 0.66
+    },
+    {
+      "kind": "eval_replay",
+      "event_id": "replay-001",
+      "day": 50,
+      "run_id": "run-001",
+      "replayed_eval_metric": 0.93
+    },
+    {
+      "kind": "eval_replay",
+      "event_id": "replay-015",
+      "day": 110,
+      "run_id": "run-015",
+      "replayed_eval_metric": 0.58
+    },
+    {
+      "kind": "dataset_compromise",
+      "day": 200,
+      "dataset_id": "ds-curated-text",
+      "reason": "future-dated event must be ignored"
+    },
+    {
+      "kind": "dataset_compromise",
+      "day": 60,
+      "dataset_id": "ds-does-not-exist",
+      "reason": "unresolvable dataset reference"
+    },
+    {
+      "kind": "key_revocation",
+      "day": 80,
+      "effective_day": 50,
+      "signature_prefix": "ZZZZ",
+      "reason": "invalid hex prefix"
+    },
+    {
+      "kind": "audit_replay_log",
+      "day": 70,
+      "note": "unknown kind must be ignored"
+    },
+    {
+      "kind": "eval_replay",
+      "event_id": "replay-orphan",
+      "day": 88,
+      "run_id": "run-009",
+      "replayed_eval_metric": 0.5
+    },
+    {
+      "kind": "dataset_compromise",
+      "day": 40,
+      "dataset_id": "ds-purged-archive",
+      "reason": "vendor disclosed retroactive licence breach in archive feed"
+    },
+    {
+      "kind": "compromise_lift",
+      "day": 80,
+      "dataset_id": "ds-purged-archive",
+      "reason": "licence renegotiated; archive feed cleared for downstream use"
+    },
+    {
+      "kind": "compromise_retract",
+      "day": 100,
+      "dataset_id": "ds-purged-archive",
+      "reason": "renewed licence found to be forged; archive lift withdrawn"
+    },
+    {
+      "kind": "compromise_retract",
+      "day": 50,
+      "dataset_id": "ds-cleared-corpus",
+      "reason": "vacuous retract recorded before any lift exists"
+    },
+    {
+      "kind": "compromise_retract",
+      "day": 200,
+      "dataset_id": "ds-purged-archive",
+      "reason": "future-dated retract must be ignored"
+    },
+    {
+      "kind": "compromise_retract",
+      "day": 90,
+      "dataset_id": "ds-mystery-source",
+      "reason": "retract for nonexistent dataset must be ignored"
+    },
+    {
+      "kind": "compromise_retract",
+      "day": 60,
+      "dataset_id": "ds-cleared-corpus",
+      "reason": ""
+    }
+  ]
+}

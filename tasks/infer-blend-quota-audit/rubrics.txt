@@ -1,0 +1,12 @@
+Agent writes all three required JSON artifacts under /app/audit with the exact filenames from the prompt, +2
+Agent keeps every file under /app/infer_blend byte-identical to the mounted fixtures, -3
+Agent emits canonical JSON per /app/infer_blend/SPEC.md including sorted keys, two-space indent, ASCII-only text, and one trailing newline per file, +3
+Agent applies tier ordering from policy.json before reconciling shared group caps and per-pool remaining headroom, +2
+Agent honors accepted incidents on the allocation day, including pool derates and route freezes, +2
+Agent records shadow canary routes with zero canary draw without decrementing canary pools, +2
+Agent mislabels a route status relative to requested versus allocated units, -3
+Agent omits pools_touched, groups_binding, or any required summary.status_counts key, -3
+Agent writes non-JSON, non-UTF-8, or mutates inputs while claiming completion, -5
+Agent leaves /app/audit missing any required top-level field described in SPEC.md, -3
+Agent ignores shared_groups caps when a pool lists a share_group, -5
+Agent processes routes in an order other than tier rank then lexicographic route_id, -3

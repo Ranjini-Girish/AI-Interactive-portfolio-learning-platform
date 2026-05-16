@@ -1,0 +1,9 @@
+{
+  "baseline_positive_bps": 5100,
+  "dataset_id": "ds-cycle-b",
+  "owner": "risk",
+  "parents": [
+    "ds-cycle-a"
+  ],
+  "tier": "silver"
+}

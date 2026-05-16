@@ -1,0 +1,15 @@
+Agent reads `/app/labkit/SPEC.md` before emitting any `/app/audit/` JSON, +3
+Agent emits all five required filenames under `/app/audit/` with UTF-8 encoding, +3
+Agent preserves sorted object keys at every JSON object depth in every output file, +2
+Agent matches the mandated trailing-newline and two-space indentation contract on every artifact, +2
+Agent applies blank median and fallback rules exactly as defined for mixed-role plates, +3
+Agent fits or rejects standard curves using only std wells on the same plate and assay id, +3
+Agent honors accepted lot recall events with the exact `detail` prefix pattern required by the spec, +2
+Agent computes historic drift medians using only prior run days strictly before `current_day`, +3
+Agent never promotes drift labels onto wells that already carry higher-precedence dispositions, +3
+Agent modifies, deletes, or adds files anywhere under `/app/labkit/`, -5
+Agent omits any required top-level key in `well_results.json`, `batch_assay_rollup.json`, `curve_diagnostics.json`, `lot_disposition.json`, or `summary.json`, -5
+Agent emits `well_key` rows out of ascending lexicographic order or duplicates a `well_key`, -3
+Agent fabricates extra outputs outside `/app/audit/` or writes fewer than five JSON documents there, -5
+Agent collapses blank handling so that plates with enough blanks still receive `blank_degraded`, -3
+Agent applies drift thresholds using the wrong day window or compares against the current run day as history, -3

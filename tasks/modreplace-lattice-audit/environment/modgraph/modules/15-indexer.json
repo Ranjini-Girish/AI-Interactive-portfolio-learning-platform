@@ -1,0 +1,22 @@
+{
+  "module_id": "indexer",
+  "module_path": "example.com/indexer",
+  "replaces": [
+    {
+      "from": "example.com/lib",
+      "to": "example.com/lib-indexer"
+    },
+    {
+      "from": "example.com/retire-pkg/widget",
+      "to": "example.com/widget-indexer"
+    },
+    {
+      "from": "example.com/hotpatch/wire",
+      "to": "example.com/wire-indexer-local"
+    }
+  ],
+  "requires": [
+    "example.com/lib",
+    "example.com/retire-pkg/widget"
+  ]
+}

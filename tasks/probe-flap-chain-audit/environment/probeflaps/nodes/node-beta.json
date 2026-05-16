@@ -1,0 +1,14 @@
+{
+  "node_id": "node-beta",
+  "parent_id": null,
+  "probes_by_day": {
+    "104": "ok",
+    "105": "flap",
+    "106": "fail",
+    "107": "flap",
+    "108": "ok",
+    "109": "flap",
+    "110": "ok"
+  },
+  "tier": "silver"
+}

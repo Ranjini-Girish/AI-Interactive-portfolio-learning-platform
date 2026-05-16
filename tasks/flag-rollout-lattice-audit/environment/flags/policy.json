@@ -1,0 +1,35 @@
+{
+  "states": [
+    "active",
+    "blocked_dependency",
+    "budget_exceeded",
+    "locked",
+    "killed",
+    "quarantined"
+  ],
+  "supported_incidents": [
+    "budget_grant",
+    "kill_switch",
+    "force_state",
+    "dependency_waiver",
+    "segment_lock",
+    "segment_compromise"
+  ],
+  "tiers": {
+    "bronze": {
+      "default_budget_pct": 20,
+      "lock_grace_days": 0,
+      "max_pct": 50
+    },
+    "gold": {
+      "default_budget_pct": 55,
+      "lock_grace_days": 2,
+      "max_pct": 100
+    },
+    "silver": {
+      "default_budget_pct": 35,
+      "lock_grace_days": 1,
+      "max_pct": 75
+    }
+  }
+}

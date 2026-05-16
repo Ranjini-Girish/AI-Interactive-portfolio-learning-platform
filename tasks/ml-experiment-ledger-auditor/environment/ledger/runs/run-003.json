@@ -1,0 +1,12 @@
+{
+  "id": "run-003",
+  "owner": "carol",
+  "started_day": 55,
+  "base_dataset": "ds-gold-clicks",
+  "parent_run": null,
+  "declared_tier_target": "prod",
+  "status_declared": "aborted",
+  "claimed_eval_metric": 0.0,
+  "runtime_minutes_observed": 30,
+  "retry_count_observed": 0
+}

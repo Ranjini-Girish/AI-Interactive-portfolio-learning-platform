@@ -1,0 +1,14 @@
+{
+  "node_id": "node-alpha",
+  "parent_id": null,
+  "probes_by_day": {
+    "104": "ok",
+    "105": "fail",
+    "106": "ok",
+    "107": "fail",
+    "108": "ok",
+    "109": "ok",
+    "110": "ok"
+  },
+  "tier": "gold"
+}

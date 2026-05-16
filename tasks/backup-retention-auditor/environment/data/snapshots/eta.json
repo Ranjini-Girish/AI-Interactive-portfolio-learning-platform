@@ -1,0 +1,12 @@
+{
+  "host": "eta",
+  "snapshots": [
+    {"id": "eta-001", "kind": "full",        "taken_day": 15,  "size_mb": 110, "parent_id": null,       "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110001"},
+    {"id": "eta-002", "kind": "incremental", "taken_day": 70,  "size_mb": 20,  "parent_id": "eta-001",  "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110002"},
+    {"id": "eta-003", "kind": "incremental", "taken_day": 160, "size_mb": 25,  "parent_id": "eta-002",  "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110003"},
+    {"id": "eta-004", "kind": "incremental", "taken_day": 250, "size_mb": 30,  "parent_id": "eta-003",  "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110004"},
+    {"id": "eta-005", "kind": "incremental", "taken_day": 320, "size_mb": 25,  "parent_id": "eta-004",  "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110005"},
+    {"id": "eta-006", "kind": "incremental", "taken_day": 355, "size_mb": 20,  "parent_id": "eta-005",  "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110006"},
+    {"id": "eta-007", "kind": "incremental", "taken_day": 363, "size_mb": 15,  "parent_id": "eta-006",  "sha256_chain": "1111111111111111111111111111111111111111111111111111111111110007"}
+  ]
+}

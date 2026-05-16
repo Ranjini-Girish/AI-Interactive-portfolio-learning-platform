@@ -1,0 +1,12 @@
+{
+  "overlap_tail_days": 7,
+  "signing_eligible_phases": [
+    "active",
+    "grace_tail"
+  ],
+  "supported_incident_kinds": [
+    "audience_emergency",
+    "extend_validity",
+    "revoke_key"
+  ]
+}

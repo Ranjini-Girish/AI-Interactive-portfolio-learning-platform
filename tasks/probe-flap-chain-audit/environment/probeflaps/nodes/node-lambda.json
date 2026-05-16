@@ -1,0 +1,14 @@
+{
+  "node_id": "node-lambda",
+  "parent_id": "node-beta",
+  "probes_by_day": {
+    "104": "ok",
+    "105": "ok",
+    "106": "ok",
+    "107": "ok",
+    "108": "fail",
+    "109": "ok",
+    "110": "ok"
+  },
+  "tier": "bronze"
+}

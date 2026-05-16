@@ -1,0 +1,10 @@
+{
+  "format_id": "fmt-modern",
+  "max_mulligans": 5,
+  "min_keep_hand_size": 4,
+  "mulligan_style": "vancouver",
+  "restricted_counts": {
+    "Counterspell": 4,
+    "Lightning Bolt": 0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "service_id": "checkout-ui",
+  "windows": [
+    {"error_pct": 3, "minute": 55, "p95_ms": 220, "qps": 860},
+    {"error_pct": 3, "minute": 56, "p95_ms": 225, "qps": 840},
+    {"error_pct": 4, "minute": 57, "p95_ms": 230, "qps": 830},
+    {"error_pct": 4, "minute": 58, "p95_ms": 235, "qps": 820},
+    {"error_pct": 4, "minute": 59, "p95_ms": 240, "qps": 810},
+    {"error_pct": 4, "minute": 60, "p95_ms": 245, "qps": 500}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "development": {
+    "mode": "allow_all"
+  },
+  "production": {
+    "allowlist": [
+      "rel@org.prod",
+      "sec@org.prod"
+    ],
+    "mode": "exact_allowlist"
+  },
+  "staging": {
+    "mode": "suffix_allowlist",
+    "suffixes": [
+      "@vendor.test"
+    ]
+  }
+}

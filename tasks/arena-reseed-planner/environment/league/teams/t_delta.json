@@ -1,0 +1,12 @@
+{
+  "home_region": "south",
+  "preferred_arena_ids": [
+    "a_south",
+    "a_central"
+  ],
+  "roster_size": 4,
+  "seed_score": 88,
+  "stamina": 75,
+  "team_id": "t_delta",
+  "tier": "silver"
+}

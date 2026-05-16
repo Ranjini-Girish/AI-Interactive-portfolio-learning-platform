@@ -1,0 +1,6 @@
+{
+  "repo": "mobile-app",
+  "tier": "bronze",
+  "language": "kotlin",
+  "override_rules": []
+}

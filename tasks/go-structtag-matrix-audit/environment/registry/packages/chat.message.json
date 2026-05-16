@@ -1,0 +1,1 @@
+{"module_path":"example.com/chat","package_id":"chat.message","structs":[{"fields":[{"field_id":"Hidden","go_name":"Hidden","tags":{"json":"-"}},{"field_id":"Text","go_name":"Text","tags":{"json":"text"}}],"struct_id":"Msg"}]}

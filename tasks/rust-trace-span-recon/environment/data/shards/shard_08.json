@@ -1,0 +1,9 @@
+[
+  {
+    "end_ms": 3,
+    "parent_id": null,
+    "span_id": "badtime",
+    "start_ms": 10,
+    "trace_id": "delta"
+  }
+]

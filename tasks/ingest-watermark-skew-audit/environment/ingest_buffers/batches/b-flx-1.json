@@ -1,0 +1,28 @@
+{
+  "batch_id": "b-flx-1",
+  "ingest_day": 100,
+  "partition_id": "part-flux-a",
+  "events": [
+    {
+      "bytes_hint": 60,
+      "event_day": 94,
+      "event_id": "e-f1",
+      "idempotency_key": "k-flx",
+      "sequence": 1
+    },
+    {
+      "bytes_hint": 65,
+      "event_day": 97,
+      "event_id": "e-f2",
+      "idempotency_key": "k-flx",
+      "sequence": 1
+    },
+    {
+      "bytes_hint": 55,
+      "event_day": 93,
+      "event_id": "e-f3",
+      "idempotency_key": "k-flx2",
+      "sequence": 1
+    }
+  ]
+}

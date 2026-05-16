@@ -1,0 +1,7 @@
+{
+  "keys": [
+    { "key_id": "ik-01", "valid_from_day": 90 },
+    { "key_id": "ik-02", "valid_from_day": 107 }
+  ],
+  "profile_id": "sp-internal"
+}

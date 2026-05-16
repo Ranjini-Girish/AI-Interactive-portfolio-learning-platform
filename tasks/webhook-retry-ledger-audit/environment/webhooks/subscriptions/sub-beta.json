@@ -1,0 +1,17 @@
+{
+  "endpoint_id": "ep-hooks",
+  "outcomes_by_day": {
+    "104": "rate_limited",
+    "105": "fail",
+    "106": "fail",
+    "107": "timeout",
+    "108": "rate_limited",
+    "109": "fail",
+    "110": "ok"
+  },
+  "slip_days": {
+    "106": 106
+  },
+  "subscription_id": "sub-beta",
+  "tier": "silver"
+}

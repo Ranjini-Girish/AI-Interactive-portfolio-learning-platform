@@ -1,0 +1,8 @@
+{
+  "dropins": [
+    "d3.json"
+  ],
+  "host_id": "h-east",
+  "service_id": "u-iota",
+  "unit_class": "standard"
+}

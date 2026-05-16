@@ -1,0 +1,6 @@
+id	name	region	_audit
+A1	Alice	NORTH	x
+A2		NORTH	y
+A3	Carol	?	z
+A4	Dan	SOUTH	NA
+A1	Alice	EAST	w

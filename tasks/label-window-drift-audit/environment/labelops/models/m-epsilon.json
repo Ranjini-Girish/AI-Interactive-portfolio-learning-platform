@@ -1,0 +1,9 @@
+{
+  "candidate_windows": [
+    "w-epsilon-1"
+  ],
+  "dataset_id": "ds-epsilon",
+  "declared_stage": "candidate",
+  "model_id": "m-epsilon",
+  "score_bps": 6500
+}

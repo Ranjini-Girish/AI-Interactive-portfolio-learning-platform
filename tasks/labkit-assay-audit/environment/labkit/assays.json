@@ -1,0 +1,15 @@
+{
+  "assays": {
+    "igg_kinetic": {
+      "normalization_mode": "to_blank_median"
+    },
+    "igm_titer": {
+      "normalization_mode": "to_standard_curve",
+      "std_x_by_level": {
+        "L1": 1,
+        "L2": 2,
+        "L3": 4
+      }
+    }
+  }
+}

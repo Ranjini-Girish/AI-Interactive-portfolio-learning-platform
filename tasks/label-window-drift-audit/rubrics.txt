@@ -1,0 +1,14 @@
+Agent emits all five required JSON audit files with exact top-level schemas and canonical formatting, +3
+Agent correctly classifies dataset lineage depth, missing parents, cycles, and transitive compromise propagation, +3
+Agent computes label-window drift, conflict rates, relabel credits, and tier thresholds with integer arithmetic, +3
+Agent applies dependency-cycle and freeze propagation precedence before ordinary drift decisions, +3
+Agent computes model readiness with quarantine, hold, promotion, window-count, and score precedence, +3
+Agent records accepted, ignored, future, unsupported, missing-target, and superseded incident decisions accurately, +2
+Agent provides a rerunnable Go program and executable that regenerate the same audit artifacts, +3
+Agent preserves the bundled input evidence without rewriting or deleting files, +2
+Agent omits any required audit file or writes malformed JSON, -5
+Agent uses floating-point or nondeterministic ordering that changes canonical report bytes, -3
+Agent ignores transitive lineage or dependency effects and only checks direct parents, -3
+Agent lets incident events override higher-priority quarantine or invalid-lineage decisions, -3
+Agent hardcodes final JSON without a functioning rerunnable implementation, -5
+Agent writes outputs outside the requested audit directory contract, -2

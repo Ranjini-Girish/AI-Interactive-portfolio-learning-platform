@@ -1,0 +1,53 @@
+[
+  {
+    "accepted": true,
+    "day": 10,
+    "event_id": "ev-tag-ent",
+    "kind": "tag_injection",
+    "payload": {
+      "tags": [
+        "enterprise"
+      ]
+    }
+  },
+  {
+    "accepted": false,
+    "day": 12,
+    "event_id": "ev-reject",
+    "kind": "tag_injection",
+    "payload": {
+      "tags": [
+        "rejected"
+      ]
+    }
+  },
+  {
+    "accepted": true,
+    "day": 25,
+    "event_id": "ev-waiver-a",
+    "kind": "forbidden_waiver",
+    "payload": {
+      "import_path": "github.com/acme/forbiddenlib"
+    }
+  },
+  {
+    "accepted": true,
+    "day": 40,
+    "event_id": "ev-waiver-b",
+    "kind": "forbidden_waiver",
+    "payload": {
+      "import_path": "github.com/acme/forbiddenlib"
+    }
+  },
+  {
+    "accepted": true,
+    "day": 50,
+    "event_id": "ev-gamma",
+    "kind": "tag_injection",
+    "payload": {
+      "tags": [
+        "gamma"
+      ]
+    }
+  }
+]

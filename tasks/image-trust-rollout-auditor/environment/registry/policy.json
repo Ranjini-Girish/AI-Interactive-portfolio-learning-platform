@@ -1,0 +1,15 @@
+{
+  "min_signatures_by_env": {
+    "dev": 1,
+    "prod": 2,
+    "staging": 1
+  },
+  "trusted_tiers_by_env": {
+    "dev": ["primary", "secondary", "legacy"],
+    "prod": ["primary"],
+    "staging": ["primary", "secondary"]
+  },
+  "insufficient_signature_penalty": 15,
+  "compromised_signature_penalty": 25,
+  "emergency_freeze_risk_threshold": 90
+}

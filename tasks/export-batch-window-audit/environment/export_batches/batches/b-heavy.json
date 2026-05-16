@@ -1,0 +1,8 @@
+{
+  "batch_id": "b-heavy",
+  "credit_cost": 6,
+  "depends_on": [
+    "b-base"
+  ],
+  "priority": 2
+}

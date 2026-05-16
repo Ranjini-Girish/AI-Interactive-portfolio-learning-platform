@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [],
+      "name": "solo.go"
+    }
+  ],
+  "package_key": "solo",
+  "package_path": "github.com/acme/solo"
+}

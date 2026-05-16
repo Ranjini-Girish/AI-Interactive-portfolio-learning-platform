@@ -1,0 +1,75 @@
+{
+  "incidents": [
+    {
+      "accepted": false,
+      "batch_ids": ["bq"],
+      "day": 3,
+      "event_id": "ignored-bump",
+      "extra_distinct": 2,
+      "kind": "quorum_bump"
+    },
+    {
+      "accepted": true,
+      "batch_id": "bf",
+      "day": 5,
+      "event_id": "freeze-bf",
+      "kind": "batch_freeze",
+      "thaw_day": 20
+    },
+    {
+      "accepted": true,
+      "batch_ids": ["bq"],
+      "day": 8,
+      "event_id": "bump-bq",
+      "extra_distinct": 1,
+      "kind": "quorum_bump"
+    },
+    {
+      "accepted": true,
+      "annotator_id": "bob",
+      "day": 10,
+      "effective_day": 11,
+      "event_id": "scale-bob",
+      "kind": "weight_scaler",
+      "pct_den": 2,
+      "pct_num": 1
+    },
+    {
+      "accepted": true,
+      "annotator_id": "carol",
+      "day": 13,
+      "effective_day": 1,
+      "event_id": "scale-carol-ignored-future",
+      "kind": "weight_scaler",
+      "pct_den": 10,
+      "pct_num": 9
+    },
+    {
+      "accepted": true,
+      "annotator_id": "carol",
+      "day": 50,
+      "effective_day": 40,
+      "event_id": "future-day-ignored",
+      "kind": "weight_scaler",
+      "pct_den": 2,
+      "pct_num": 1
+    },
+    {
+      "accepted": true,
+      "annotator_id": "dave",
+      "day": 99,
+      "effective_day": 0,
+      "event_id": "future-incident",
+      "kind": "weight_scaler",
+      "pct_den": 2,
+      "pct_num": 1
+    },
+    {
+      "accepted": true,
+      "day": 4,
+      "event_id": "unknown-kind",
+      "kind": "maintenance_window",
+      "note": "ignored"
+    }
+  ]
+}

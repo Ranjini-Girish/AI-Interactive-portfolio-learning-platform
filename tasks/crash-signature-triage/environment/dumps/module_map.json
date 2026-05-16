@@ -1,0 +1,9 @@
+{
+  "modules": [
+    {"frame_prefix": "render::", "owner_team": "graphics-team"},
+    {"frame_prefix": "net::", "owner_team": "network-team"},
+    {"frame_prefix": "db::", "owner_team": "db-team"},
+    {"frame_prefix": "auth::", "owner_team": "auth-team"},
+    {"frame_prefix": "auth::otp::", "owner_team": "identity-team"}
+  ]
+}

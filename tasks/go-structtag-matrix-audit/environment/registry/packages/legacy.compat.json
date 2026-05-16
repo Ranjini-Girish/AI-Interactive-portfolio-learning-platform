@@ -1,0 +1,1 @@
+{"module_path":"example.com/legacy","package_id":"legacy.compat","structs":[{"fields":[{"field_id":"Old","go_name":"Old","tags":{"bson":"legacy_id","json":"id"}},{"field_id":"New","go_name":"New","tags":{"bson":"nid","json":"new_id"}}],"struct_id":"Row"}]}

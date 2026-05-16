@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_05",
+  "client_id": "c_zeta",
+  "requested_redirect": "http://127.0.0.1:9999/mobile",
+  "resource_id": "r_api"
+}

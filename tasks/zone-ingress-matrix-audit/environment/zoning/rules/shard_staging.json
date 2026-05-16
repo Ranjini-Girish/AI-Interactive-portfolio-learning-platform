@@ -1,0 +1,12 @@
+{
+  "rules": [
+    {
+      "action": "allow",
+      "audit_tier": "production",
+      "dst_zones": ["z_internal"],
+      "priority": 6,
+      "rule_id": "r_staging_internal_lift",
+      "src_zones": ["z_staging"]
+    }
+  ]
+}

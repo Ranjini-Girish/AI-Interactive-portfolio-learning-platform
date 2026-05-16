@@ -1,0 +1,4 @@
+{
+  "channel": "batch-ingest",
+  "schema": "iwsa-v1"
+}

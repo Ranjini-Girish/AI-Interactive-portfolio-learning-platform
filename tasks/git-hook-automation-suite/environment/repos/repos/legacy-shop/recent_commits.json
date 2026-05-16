@@ -1,0 +1,9 @@
+{
+  "repo": "legacy-shop",
+  "commits": [
+    {"sha": "ls000001", "branch": "main",         "msg_type": "fix",   "msg_subject": "checkout total",         "issue_ref": null, "day": 88},
+    {"sha": "ls000002", "branch": "main",         "msg_type": "chore", "msg_subject": "update php deps",         "issue_ref": null, "day": 92},
+    {"sha": "ls000003", "branch": "main",         "msg_type": "feat",  "msg_subject": "wishlist endpoint",      "issue_ref": null, "day": 96},
+    {"sha": "ls000004", "branch": "feature/wish", "msg_type": "test",  "msg_subject": "cover wishlist routes",  "issue_ref": null, "day": 110}
+  ]
+}

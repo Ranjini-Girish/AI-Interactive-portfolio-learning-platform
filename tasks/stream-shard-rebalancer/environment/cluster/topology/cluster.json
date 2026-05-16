@@ -1,0 +1,112 @@
+{
+  "brokers": [
+    {
+      "broker_id": "b01",
+      "availability_zone": "us-east-a",
+      "region": "us-east",
+      "pool": "reserved-gold",
+      "nominal_capacity_mbps": 400,
+      "utilization_overhead_pct": 15,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b02",
+      "availability_zone": "us-east-a",
+      "region": "us-east",
+      "pool": "shared",
+      "nominal_capacity_mbps": 350,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b03",
+      "availability_zone": "us-east-b",
+      "region": "us-east",
+      "pool": "reserved-gold",
+      "nominal_capacity_mbps": 400,
+      "utilization_overhead_pct": 15,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b04",
+      "availability_zone": "us-east-b",
+      "region": "us-east",
+      "pool": "shared",
+      "nominal_capacity_mbps": 300,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 75
+    },
+    {
+      "broker_id": "b05",
+      "availability_zone": "us-east-c",
+      "region": "us-east",
+      "pool": "shared",
+      "nominal_capacity_mbps": 350,
+      "utilization_overhead_pct": 12,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b06",
+      "availability_zone": "us-east-c",
+      "region": "us-east",
+      "pool": "reserved-gold",
+      "nominal_capacity_mbps": 400,
+      "utilization_overhead_pct": 15,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b07",
+      "availability_zone": "us-west-a",
+      "region": "us-west",
+      "pool": "shared",
+      "nominal_capacity_mbps": 320,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b08",
+      "availability_zone": "us-west-a",
+      "region": "us-west",
+      "pool": "shared",
+      "nominal_capacity_mbps": 320,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b09",
+      "availability_zone": "us-west-b",
+      "region": "us-west",
+      "pool": "reserved-gold",
+      "nominal_capacity_mbps": 380,
+      "utilization_overhead_pct": 15,
+      "backpressure_threshold_pct": 80
+    },
+    {
+      "broker_id": "b10",
+      "availability_zone": "us-west-b",
+      "region": "us-west",
+      "pool": "shared",
+      "nominal_capacity_mbps": 300,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 75
+    },
+    {
+      "broker_id": "b11",
+      "availability_zone": "us-east-a",
+      "region": "us-east",
+      "pool": "shared",
+      "nominal_capacity_mbps": 280,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 75
+    },
+    {
+      "broker_id": "b12",
+      "availability_zone": "us-west-a",
+      "region": "us-west",
+      "pool": "shared",
+      "nominal_capacity_mbps": 290,
+      "utilization_overhead_pct": 10,
+      "backpressure_threshold_pct": 75
+    }
+  ]
+}

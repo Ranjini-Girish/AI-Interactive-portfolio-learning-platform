@@ -1,0 +1,33 @@
+{
+  "credit_decay_bps_per_hop": 300,
+  "freeze_propagation_hops": 2,
+  "supported_event_kinds": [
+    "label_source_compromise",
+    "model_hold",
+    "relabel_credit",
+    "window_freeze"
+  ],
+  "tier_rules": {
+    "bronze": {
+      "conflict_block_bps": 1500,
+      "drift_block_bps": 2200,
+      "drift_warn_bps": 1200,
+      "min_clean_windows": 1,
+      "min_score_bps": 6900
+    },
+    "gold": {
+      "conflict_block_bps": 850,
+      "drift_block_bps": 1300,
+      "drift_warn_bps": 700,
+      "min_clean_windows": 2,
+      "min_score_bps": 8200
+    },
+    "silver": {
+      "conflict_block_bps": 1100,
+      "drift_block_bps": 1700,
+      "drift_warn_bps": 900,
+      "min_clean_windows": 2,
+      "min_score_bps": 7600
+    }
+  }
+}

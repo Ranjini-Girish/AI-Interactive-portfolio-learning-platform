@@ -1,0 +1,5 @@
+{
+  "max_promotions_per_day": 3,
+  "pool_id": "p-north",
+  "tier": "development"
+}

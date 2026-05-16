@@ -1,0 +1,35 @@
+[
+  {
+    "kind": "lattice_fault",
+    "day": 5,
+    "accepted": true,
+    "seed_sensors": ["s07"]
+  },
+  {
+    "kind": "strap_quench",
+    "day": 12,
+    "accepted": true,
+    "strap_id": "strap-q"
+  },
+  {
+    "kind": "rig_warm",
+    "day": 20,
+    "accepted": true,
+    "rig_id": "north",
+    "delta_millic": 20
+  },
+  {
+    "kind": "rig_warm",
+    "day": 30,
+    "accepted": false,
+    "rig_id": "south",
+    "delta_millic": 5000
+  },
+  {
+    "kind": "rig_warm",
+    "day": 40,
+    "accepted": true,
+    "rig_id": "east",
+    "delta_millic": 15
+  }
+]

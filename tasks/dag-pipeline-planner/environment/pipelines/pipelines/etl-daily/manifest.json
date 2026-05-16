@@ -1,0 +1,5 @@
+{
+  "name": "etl-daily",
+  "sla_hours": 4,
+  "tier": "prod"
+}

@@ -1,0 +1,1 @@
+{"module_path":"example.com/core","package_id":"core.ids","structs":[{"fields":[{"field_id":"X","go_name":"X","tags":{"json":",omitempty"}}],"struct_id":"Bad"}]}

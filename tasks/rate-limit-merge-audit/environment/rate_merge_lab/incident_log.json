@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 2,
+      "delta": 5,
+      "event_id": "ev-burst-alpha",
+      "kind": "burst_add",
+      "service_ids": ["u-alpha"]
+    },
+    {
+      "accepted": true,
+      "day": 4,
+      "den": 2,
+      "event_id": "ev-half-east",
+      "host_id": "h-east",
+      "kind": "interval_mult",
+      "num": 1
+    },
+    {
+      "accepted": true,
+      "day": 8,
+      "delta": 15,
+      "event_id": "ev-west-bump",
+      "host_id": "h-west",
+      "kind": "burst_add"
+    },
+    {
+      "accepted": true,
+      "day": 10,
+      "event_id": "ev-comp-east",
+      "host_id": "h-east",
+      "kind": "host_compromise"
+    },
+    {
+      "accepted": true,
+      "ceiling": 120,
+      "day": 12,
+      "event_id": "ev-cap-all",
+      "kind": "burst_ceiling"
+    },
+    {
+      "accepted": false,
+      "day": 1,
+      "delta": 99,
+      "event_id": "ev-rejected",
+      "kind": "burst_add",
+      "service_ids": ["u-zeta"]
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "delta": 1,
+      "event_id": "ev-future",
+      "kind": "burst_add",
+      "service_ids": ["u-alpha"]
+    },
+    {
+      "bogus": 1,
+      "event_id": "ev-unknown",
+      "kind": "unknown_kind"
+    }
+  ]
+}

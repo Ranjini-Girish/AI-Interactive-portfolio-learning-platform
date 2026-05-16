@@ -1,0 +1,6 @@
+orders|gold|-|active
+payments|gold|orders|active
+fulfill|silver|orders,payments|active
+notify|bronze|fulfill|active
+analytics|bronze|orders|active
+archive|silver|analytics|active

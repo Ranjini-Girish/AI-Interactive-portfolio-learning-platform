@@ -1,0 +1,35 @@
+{
+  "attestations": [
+    {
+      "day": 95,
+      "subject_host": "host-bronze",
+      "witness_host": "host-iota"
+    },
+    {
+      "day": 96,
+      "subject_host": "host-bronze",
+      "witness_host": "host-iota"
+    },
+    {
+      "day": 97,
+      "subject_host": "host-bronze",
+      "witness_host": "host-iota"
+    },
+    {
+      "day": 95,
+      "subject_host": "host-iota",
+      "witness_host": "host-bronze"
+    },
+    {
+      "day": 96,
+      "subject_host": "host-iota",
+      "witness_host": "host-bronze"
+    },
+    {
+      "day": 97,
+      "subject_host": "host-iota",
+      "witness_host": "host-bronze"
+    }
+  ],
+  "slot_id": "slot-bronze3"
+}

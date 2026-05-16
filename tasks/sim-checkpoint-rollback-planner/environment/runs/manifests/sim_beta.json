@@ -1,0 +1,10 @@
+{
+  "current_checkpoint_step": 5400,
+  "engine": "lammps",
+  "inputs_dataset": "ds_krypton",
+  "kind": "production",
+  "last_known_good_step": 5000,
+  "sim_id": "sim_beta",
+  "stabilization_steps": 2000,
+  "started_at_day": 198
+}

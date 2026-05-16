@@ -1,0 +1,9 @@
+{
+  "candidate_windows": [
+    "w-delta-1"
+  ],
+  "dataset_id": "ds-delta",
+  "declared_stage": "candidate",
+  "model_id": "m-delta",
+  "score_bps": 8700
+}

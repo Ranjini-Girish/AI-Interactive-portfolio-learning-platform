@@ -1,0 +1,15 @@
+Agent emits all five audit JSON files under `/app/audit/` with the canonical formatting contract from `/app/promote_lattice/SPEC.md`, +5
+Agent requires every dependency to meet the next stage rank before an artifact is promotable, +3
+Agent enforces per-stage soak timers using `stage_entered_day` and `soak_days`, +3
+Agent walks pool capacity in `(tier_rank, promote_priority, artifact_id)` order and defers overflow with `capacity_deferred`, +3
+Agent honors active `artifact_compromise` and `freeze_pool` incidents before capacity assignment, +2
+Agent records kept incidents in `incident_journal.json` sorted by `(day, event_id)`, +2
+Agent lists `artifact_plan.artifacts` sorted by ascending `artifact_id`, +2
+Agent mutates, replaces, or rewrites any file under `/app/promote_lattice/`, -5
+Agent omits a required audit file or writes non-UTF-8 JSON, -5
+Agent promotes an artifact while a required dependency remains below the next stage rank, -5
+Agent assigns more promotions than the effective pool cap allows, -3
+Agent sets `promoted_to` on a `quarantined` or `pool_frozen` artifact row, -3
+Agent mislabels a deferred promotion without `capacity_deferred` in `blocked_promotions`, -3
+Agent writes audit JSON with unsorted object keys or missing trailing newline, -2
+Agent places artifacts outside `/app/audit/` while claiming completion, -5

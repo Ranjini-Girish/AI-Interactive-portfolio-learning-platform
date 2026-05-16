@@ -1,0 +1,10 @@
+{
+  "candidate_windows": [
+    "w-alpha-1",
+    "w-alpha-2"
+  ],
+  "dataset_id": "ds-alpha",
+  "declared_stage": "candidate",
+  "model_id": "m-alpha-canary",
+  "score_bps": 8350
+}

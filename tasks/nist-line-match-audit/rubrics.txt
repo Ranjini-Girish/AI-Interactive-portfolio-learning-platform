@@ -1,0 +1,15 @@
+Agent emits all five audit JSON files under /app/audit/ with UTF-8 encoding, two-space indentation, and lexicographically sorted object keys at every depth, +3
+Agent ends each audit file with exactly one trailing newline and no additional trailing bytes, +2
+Agent leaves every path under /app/nist_lines/ unchanged as read-only evidence, +3
+Agent lists every catalog line_id in line_utilization with accurate match_count totals, +2
+Agent applies accepted catalog_line_suppress and instrument_bias_shift events exactly as described in /app/nist_lines/SPEC.md, +3
+Agent sorts run_matches.runs by run_id ascending and peaks by peak_index ascending, +2
+Agent computes instrument_bias_state.incident_delta_total_nm using only shifts that ever apply to recorded runs, +2
+Agent writes any extra filenames under /app/audit/ beyond the five required reports, -3
+Agent omits any required top-level key in a named audit file, -5
+Agent matches suppressed catalog lines on runs where the suppress is active or reuses a line_id twice within one run, -5
+Agent miscomputes peak half-widths from sigma_multiplier_milli, match_slack_nm, and peak sigma_nm, -5
+Agent ignores weak-line amplitude gating or same-element proximity blended_conflict outcomes, -5
+Agent fabricates line_id values not present in the catalog or misstates delta_nm for matched peaks, -3
+Agent includes instruments in instrument_bias_state that never appear in observations, -2
+Agent increments summary.ignored_incidents incorrectly for accepted well-formed events, -3

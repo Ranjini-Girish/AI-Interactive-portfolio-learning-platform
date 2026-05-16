@@ -1,0 +1,9 @@
+{
+  "sensor_id": "s04",
+  "strap_id": "strap-c",
+  "rig_id": "south",
+  "tier": "primary",
+  "commissioned_day": 0,
+  "last_calibration_day": 65,
+  "nominal_range_millic": [80300, 80900]
+}

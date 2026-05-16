@@ -1,0 +1,5 @@
+id	name	score	_audit	_internal
+F1	Hugh	8	a	x
+F1	Ivan	NA	b	y
+F2		MISSING	c	z
+F1	Hugh	8	d	w

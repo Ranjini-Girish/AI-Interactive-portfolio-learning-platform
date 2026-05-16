@@ -1,0 +1,6 @@
+{
+  "id": "ds-curated-clicks",
+  "name": "Curated click events",
+  "tier": "curated",
+  "lineage_parents": ["ds-raw-clicks"]
+}

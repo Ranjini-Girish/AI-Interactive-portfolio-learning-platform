@@ -1,0 +1,24 @@
+{
+  "teams": {
+    "checkout": {
+      "primary": "nora",
+      "secondary": "owen"
+    },
+    "core-platform": {
+      "primary": "liam",
+      "secondary": "maya"
+    },
+    "data": {
+      "primary": "ravi",
+      "secondary": "sara"
+    },
+    "growth": {
+      "primary": "zoe",
+      "secondary": "yuri"
+    },
+    "search": {
+      "primary": "iris",
+      "secondary": "joel"
+    }
+  }
+}

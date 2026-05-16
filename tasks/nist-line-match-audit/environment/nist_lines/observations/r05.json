@@ -1,0 +1,13 @@
+{
+  "instrument_id": "instB",
+  "peaks": [
+    {
+      "amp": 100.0,
+      "peak_index": 0,
+      "sigma_nm": 1.0,
+      "wave_nm": 656
+    }
+  ],
+  "run_day": 2,
+  "run_id": "r05"
+}

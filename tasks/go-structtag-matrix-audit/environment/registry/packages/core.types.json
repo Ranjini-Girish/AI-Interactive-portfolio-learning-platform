@@ -1,0 +1,1 @@
+{"module_path":"example.com/core","package_id":"core.types","structs":[{"fields":[{"field_id":"ID","go_name":"ID","tags":{"json":"id,string"}}],"struct_id":"Ident"}]}

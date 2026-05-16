@@ -1,0 +1,9 @@
+[
+  {
+    "end_ms": 8,
+    "parent_id": "root-a",
+    "span_id": "child-a2",
+    "start_ms": 2,
+    "trace_id": "alpha"
+  }
+]

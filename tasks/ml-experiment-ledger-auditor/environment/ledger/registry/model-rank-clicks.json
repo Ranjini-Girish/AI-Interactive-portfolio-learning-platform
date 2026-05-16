@@ -1,0 +1,6 @@
+{
+  "id": "model-rank-clicks",
+  "candidate_checkpoint": "ckpt-B",
+  "target_tier": "prod",
+  "governance_review_status": "approved"
+}

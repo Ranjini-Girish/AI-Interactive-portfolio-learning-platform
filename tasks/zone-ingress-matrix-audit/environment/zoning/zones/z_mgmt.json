@@ -1,0 +1,5 @@
+{
+  "description": "management plane",
+  "zone_id": "z_mgmt",
+  "zone_tier": "internal"
+}

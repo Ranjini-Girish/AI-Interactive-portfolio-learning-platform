@@ -1,0 +1,47 @@
+{
+  "dep_path": "golang.org/x/net",
+  "versions": [
+    {
+      "affected_symbols": [
+        "golang.org/x/net/http2.Transport"
+      ],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v0.10.0",
+      "vuln_advisories": [
+        "GO-2024-net"
+      ]
+    },
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v0.11.0",
+      "vuln_advisories": [
+        "GO-2024-net"
+      ]
+    },
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.19",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v0.12.0",
+      "vuln_advisories": []
+    },
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.20",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v0.13.0",
+      "vuln_advisories": []
+    }
+  ]
+}

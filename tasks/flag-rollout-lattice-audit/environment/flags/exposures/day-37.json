@@ -1,0 +1,15 @@
+{
+  "day": 37,
+  "records": [
+    {
+      "flag_id": "recommend-rerank",
+      "segment_id": "beta-ring",
+      "users": 6500
+    },
+    {
+      "flag_id": "profile-merge",
+      "segment_id": "enterprise-us",
+      "users": 4100
+    }
+  ]
+}

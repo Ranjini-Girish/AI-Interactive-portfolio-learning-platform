@@ -1,0 +1,15 @@
+{
+  "exempt": false,
+  "host": "theta",
+  "override_rules": [
+    {
+      "applies_to_tier": "silver",
+      "keep_count": 0,
+      "kind": "weekly",
+      "max_age_days": 60,
+      "name": "theta_no_weekly",
+      "priority": 50
+    }
+  ],
+  "tier": "silver"
+}

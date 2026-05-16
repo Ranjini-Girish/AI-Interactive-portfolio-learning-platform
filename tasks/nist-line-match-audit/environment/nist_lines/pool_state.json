@@ -1,0 +1,15 @@
+{
+  "sigma_multiplier_milli": 1000,
+  "match_slack_nm": 0,
+  "weak_rel_int_threshold": 10,
+  "min_amp_for_weak": 50.0,
+  "element_tie_order": [
+    "Na",
+    "Mg",
+    "Si",
+    "Ca",
+    "Fe",
+    "H"
+  ],
+  "min_same_element_separation_nm": 3
+}

@@ -1,0 +1,14 @@
+{
+  "dep_path": "k8s.io/apimachinery",
+  "versions": [
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.20",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v0.28.0",
+      "vuln_advisories": []
+    }
+  ]
+}

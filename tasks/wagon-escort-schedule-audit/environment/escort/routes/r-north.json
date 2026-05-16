@@ -1,0 +1,16 @@
+{
+  "depot_ids": [
+    "d-north"
+  ],
+  "route_id": "r-north",
+  "segments": [
+    {
+      "base_hazard": 18,
+      "segment_id": "s1"
+    },
+    {
+      "base_hazard": 17,
+      "segment_id": "s2"
+    }
+  ]
+}

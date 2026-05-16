@@ -1,0 +1,7 @@
+{
+  "dependencies": [],
+  "node_id": "node-g",
+  "service_id": "ledger-db",
+  "team": "checkout",
+  "tier": "gold"
+}

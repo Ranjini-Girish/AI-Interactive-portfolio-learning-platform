@@ -1,0 +1,8 @@
+{
+  "base_priority": 2,
+  "depends_on": [],
+  "name": "dedupe",
+  "resource_class": "cpu_small",
+  "retry_count": 0,
+  "runtime_minutes": 15
+}

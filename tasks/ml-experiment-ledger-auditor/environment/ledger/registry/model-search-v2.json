@@ -1,0 +1,6 @@
+{
+  "id": "model-search-v2",
+  "candidate_checkpoint": "ckpt-I",
+  "target_tier": "staging",
+  "governance_review_status": "approved"
+}

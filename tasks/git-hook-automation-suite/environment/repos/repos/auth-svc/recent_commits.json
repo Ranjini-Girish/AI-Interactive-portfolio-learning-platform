@@ -1,0 +1,10 @@
+{
+  "repo": "auth-svc",
+  "commits": [
+    {"sha": "1a2b3c4d", "branch": "main",         "msg_type": "feat", "msg_subject": "rotate signing keys",         "issue_ref": "AUTH-501", "day": 100},
+    {"sha": "2b3c4d5e", "branch": "feature/oidc", "msg_type": "feat", "msg_subject": "OIDC discovery endpoint",     "issue_ref": "AUTH-502", "day": 110},
+    {"sha": "3c4d5e6f", "branch": "main",         "msg_type": "fix",  "msg_subject": "fix race in session refresh", "issue_ref": "AUTH-503", "day": 116},
+    {"sha": "4d5e6f70", "branch": "main",         "msg_type": "feat", "msg_subject": "rate limit on /token",         "issue_ref": "AUTH-504", "day": 117},
+    {"sha": "5e6f7081", "branch": "release",      "msg_type": "fix",  "msg_subject": "patch CVE-2026-99999",         "issue_ref": "AUTH-505", "day": 119}
+  ]
+}

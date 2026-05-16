@@ -1,0 +1,8 @@
+{
+  "parent_ids": [
+    "s-alpha"
+  ],
+  "planned_dose_mgy": 50,
+  "specimen_id": "s-beta",
+  "tier": "primary"
+}

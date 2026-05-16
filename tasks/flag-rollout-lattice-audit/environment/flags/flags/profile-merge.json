@@ -1,0 +1,17 @@
+{
+  "default_pct": 15,
+  "flag_id": "profile-merge",
+  "overrides": [
+    {
+      "pct": 55,
+      "priority": 30,
+      "segment_id": "enterprise-us"
+    },
+    {
+      "pct": 70,
+      "priority": 45,
+      "segment_id": "beta-ring"
+    }
+  ],
+  "tier": "gold"
+}

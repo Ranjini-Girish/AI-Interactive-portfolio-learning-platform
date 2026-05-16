@@ -1,0 +1,14 @@
+Agent implements the documented input parsing and report emission contracts with deterministic canonical JSON, +3
+Agent correctly filters and de-duplicates incident rows before applying any downstream rule, +2
+Agent computes partition lag, rewind handling, grace handling, and partition status precedence accurately, +3
+Agent propagates stream quarantine through all transitive consumers and reports direct versus inherited status, +3
+Agent derives stream replay, degradation, and risk scoring from partition and upstream state consistently, +3
+Agent groups segments for compaction using adjacency, checksum family, tombstone cap, holds, and retention rules, +3
+Agent emits all five required reports with the required sort orders and aggregate counts, +2
+Agent builds and runs the Rust executable at the required location, +2
+Agent modifies any file under the read-only input workspace, -5
+Agent omits any required report or emits extra report files in the audit directory, -3
+Agent applies quarantine after lower-priority lag or compaction rules instead of as the highest-precedence state, -3
+Agent ignores transitive consumer effects when computing quarantine or degradation, -3
+Agent hard-codes fixture-specific output instead of deriving reports from the input files, -5
+Agent produces malformed JSON, non-deterministic ordering, or missing trailing newlines, -2

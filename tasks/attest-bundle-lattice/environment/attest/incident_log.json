@@ -1,0 +1,75 @@
+{
+  "incidents": [
+    {
+      "accepted": true,
+      "artifact_id": "art_proxy",
+      "day": 4,
+      "event_id": "e_quarantine_early",
+      "kind": "quarantine_artifact"
+    },
+    {
+      "accepted": true,
+      "day": 6,
+      "event_id": "e_revoke_ci",
+      "key_id": "k_ci",
+      "kind": "revoke_key"
+    },
+    {
+      "accepted": true,
+      "day": 7,
+      "event_id": "e_ban_vendor_suffix",
+      "kind": "ban_email_pattern",
+      "pattern": "*@blocked.test"
+    },
+    {
+      "accepted": true,
+      "day": 7,
+      "event_id": "e_ban_invalid_star",
+      "kind": "ban_email_pattern",
+      "pattern": "bad*middle"
+    },
+    {
+      "accepted": false,
+      "day": 8,
+      "event_id": "e_reject_quarantine",
+      "kind": "quarantine_artifact"
+    },
+    {
+      "accepted": true,
+      "artifact_id": "art_cache",
+      "day": 16,
+      "event_id": "e_future_quarantine",
+      "kind": "quarantine_artifact"
+    },
+    {
+      "accepted": true,
+      "day": 9,
+      "event_id": "e_reparent_release_vendor",
+      "key_id": "k_release",
+      "kind": "reparent_delegation",
+      "new_parent_key_id": "k_vendor"
+    },
+    {
+      "accepted": true,
+      "day": 10,
+      "event_id": "e_reparent_release_root",
+      "key_id": "k_release",
+      "kind": "reparent_delegation",
+      "new_parent_key_id": "k_root"
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "event_id": "e_unknown_kind",
+      "kind": "freeze_predicate"
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e_reparent_mid_ci",
+      "key_id": "k_mid",
+      "kind": "reparent_delegation",
+      "new_parent_key_id": "k_ci"
+    }
+  ]
+}

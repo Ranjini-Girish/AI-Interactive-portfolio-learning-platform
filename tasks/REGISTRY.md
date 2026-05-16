@@ -1,0 +1,305 @@
+# Terminus Edition-2 — Task Registry
+
+Track all tasks to maintain diversity requirements across submissions.
+
+## Diversity Constraints
+- **codebase_size**: only `small` or `large` (minimal blocked)
+- **Model difficulty**: only medium or hard (easy blocked)
+- **Python tasks**: must be hard model difficulty
+- **No single category > ~30%** of total tasks
+- **At least 4 categories each >= ~10%**
+
+---
+
+## Task Log
+
+| # | Task Name | Category | Difficulty | Codebase Size | Languages | Milestones | Status | Date |
+|---|-----------|----------|------------|---------------|-----------|------------|--------|------|
+| 1 | ansible-dependency-impact-task | software-engineering | hard | small | python, bash | 0 | accepted | 2026-05-05 |
+| 2 | postgres-schema-drift-resolver  | software-engineering | hard | small | python, bash | 0 | accepted | 2026-05-05 |
+| 3 | systemd-dep-analyzer            | system-administration | hard | small | python      | 0 | accepted | 2026-05-05 |
+| 4 | account-hardening-audit         | system-administration | hard | small | python      | 0 | accepted | 2026-05-05 |
+| 5 | (5th accepted task)             | tbd                  | hard | small | tbd         | 0 | accepted | 2026-05-05 |
+| 6 | backup-retention-auditor        | system-administration | hard | small | rust        | 0 | draft (Rust port; oracle 116/116) | 2026-05-11 |
+| 7 | git-hook-automation-suite       | software-engineering | hard | small | python      | 0 | draft (TB-2.0 reshape; oracle 82/82) | 2026-05-10 |
+| 8 | tls-cert-chain-auditor          | security             | hard | small | python      | 0 | submission-ready (oracle 85/85; SPEC.md input hash lock synced; ruff+leak-check clean; 32 env files vs small; terminus_zip preflight+verify-task green; flat zip tasks/tls-cert-chain-auditor.zip 27953 bytes rubrics excluded; needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission) | 2026-05-14 |
+| 9 | dag-pipeline-planner            | data-processing      | hard | small | rust        | 0 | resubmit-ready 2026-05-16 (oracle 147/147; scaffold-only planner src; `.dockerignore` excludes `planner/target`; `task.toml` `[environment]` workdir+GPU/network flags; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/dag-pipeline-planner.zip 45621 bytes rubrics excluded; needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission) | 2026-05-16 |
+| 10 | ml-experiment-ledger-auditor   | machine-learning     | hard | small | go          | 0 | draft (170/170; Go oracle + agent)   | 2026-05-13 |
+| 11 | crash-signature-triage         | debugging            | hard | small | python      | 0 | draft (oracle 96/96)                 | 2026-05-11 |
+| 12 | cargo-workspace-bump-planner   | build-and-dependency-management | hard | small | python | 0 | draft (oracle 104/104)              | 2026-05-11 |
+| 13 | sim-checkpoint-rollback-planner | scientific-computing | hard | small | typescript | 0 | draft (oracle 100/100; submission zip ready; hop-capped pause + exploratory cost + corruption canon) | 2026-05-13 |
+| 14 | stream-shard-rebalancer         | data-processing      | hard | small | go    | 0 | draft (oracle 102/102, Go-only)     | 2026-05-11 |
+| 15 | raid-encounter-referee          | games                | hard | small | go    | 0 | draft (oracle-ready scaffold, Go-only) | 2026-05-12 |
+| 16 | arena-reseed-planner            | games                | hard | small | rust  | 0 | draft (new Rust games task)         | 2026-05-12 |
+| 17 | image-trust-rollout-auditor     | security             | hard | small | rust  | 0 | draft (new Rust security task)      | 2026-05-12 |
+| 18 | go-incident-cascade-auditor     | debugging            | hard | small | go    | 0 | draft (oracle 45/45, Go task)       | 2026-05-12 |
+| 19 | npm-monorepo-bump-arbiter       | build-and-dependency-management | hard | small | python | 0 | draft (oracle 99/99, peer-intersection task) | 2026-05-13 |
+| 20 | openapi-drift-auditor           | software-engineering | hard | small | go    | 0 | draft (oracle 87/87, Go-only OpenAPI drift) | 2026-05-13 |
+| 21 | hitl-consensus-queue-audit      | machine-learning     | hard | small | rust   | 0 | draft (oracle 53/53)                 | 2026-05-13 |
+| 22 | labkit-assay-audit              | scientific-computing | hard | small | python | 0 | draft (oracle 24/24 pytest)          | 2026-05-13 |
+| 23 | go-module-bump-arbiter          | build-and-dependency-management | hard | small | go    | 0 | resubmit-ready (oracle fix: `solve.sh` exports PATH so `go` works under login shells; task.toml `workdir=/app` + gpu/network flags; 120/120 pytest in golang image; ruff+leak-check clean; 33 env files; preflight+verify-task green; flat zip tasks/go-module-bump-arbiter.zip 37505 bytes rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-16 |
+| 24 | go-structtag-matrix-audit       | software-engineering | hard | small | go    | 0 | draft (oracle 69/69 pytest; struct tags + incidents) | 2026-05-13 |
+| 25 | go-buildtag-import-audit        | build-and-dependency-management | hard | small | go    | 0 | draft (oracle 57/57 pytest; build-tag CNF + pool mask + waiver + import cycles) | 2026-05-13 |
+| 26 | zone-ingress-matrix-audit       | system-administration | hard | small | python | 0 | draft (oracle 51/51 pytest; zone matrix + incidents + synthetics) | 2026-05-13 |
+| 27 | rust-trace-span-recon           | debugging            | hard | small | rust, bash | 0 | submission-ready (ruff clean; leakage grep clean; 18 env files vs small; flat zip at tasks/rust-trace-span-recon.zip; CodeBuild static CI green; harbor trials pending) | 2026-05-13 |
+| 28 | modreplace-lattice-audit        | build-and-dependency-management | hard | small | go    | 0 | submission-ready (oracle 78/78 pytest; ruff+leakage clean; 21 env files vs small; instruction ~142 words; terminus preflight+verify-task green; flat zip tasks/modreplace-lattice-audit.zip; rubrics excluded; harbor trials pending) | 2026-05-14 |
+| 29 | tsv-gap-bundle-audit            | data-processing                 | hard | small | rust, bash | 0 | resubmit-ready (oracle fix: EXPECTED_INPUT_HASHES SPEC.md digest synced to current bundle; 12/12 pytest in Docker incl. release-binary rerun; Rust Cargo tabgap; 24 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/tsv-gap-bundle-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-16 |
+| 30 | oidc-key-lifecycle-audit        | security                        | hard | small | python | 0 | submission-ready (oracle 54/54 pytest + harbor oracle 1.0 2026-05-15; ruff+leakage clean; task.toml workdir=/app; flat zip tasks/oidc-key-lifecycle-audit.zip; GPT-5.2/Opus trials pending) | 2026-05-15 |
+| 31 | attest-bundle-lattice           | security                        | hard | small | python | 0 | submission-ready (oracle 58/58 pytest; 21 env files vs small; local-qc ci-only green; flat zip tasks/attest-bundle-lattice.zip rubrics excluded; harbor trials pending) | 2026-05-14 |
+| 32 | oauth-client-lattice-audit      | security                        | hard | small | python | 0 | submission-ready (oracle 65/65 pytest; ruff+leakage clean; 30 env files vs small; local-qc static CI green; flat zip tasks/oauth-client-lattice-audit.zip 21258 bytes excludes rubrics; harbor trials pending) | 2026-05-14 |
+| 33 | gossip-presence-replay          | data-processing                 | hard | small | rust, bash | 0 | draft (adapted from TB gossip medium; merged inbox + presence ledger + Rust Cargo reference; 16 env files; ruff+leakage clean; Docker not verified locally) | 2026-05-14 |
+| 34 | nist-line-match-audit           | scientific-computing            | hard | small | go, bash | 0 | draft (oracle 13/13 pytest; 18 env files vs small; optical catalog matching + incident bias/suppress; ruff+leakage clean; harbor trials pending) | 2026-05-14 |
+| 35 | stokes-diffusion-audit          | scientific-computing            | hard | small | go | 0 | submission-ready (review fixes: task.toml tags in [3,6]; instruction two-paragraph prose ~174w + exit-zero; tests: entry key set + /app/src package main + /app/bin/stokesdiff executable + SDA_AUDIT_DIR/SDA_DATA_DIR rerun hash checks; removed stray local-src/; 32 pytest; 31 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/stokes-diffusion-audit.zip ~1.98MB rubrics excluded; re-run harbor oracle + GPT-5.2/Opus trials; Snorkel two-cycle rubric) | 2026-05-16 |
+| 36 | cryostat-lattice-readout        | scientific-computing            | hard | small | go    | 0 | revised v2 (rebuild: Go-only after TRIVIAL feedback on python v1 - both opus 4.6 + gpt-5.2 hit 100%; oracle 72/72 pytest; 25 env files vs CodeBuild small>=20; +3 compound twists - median-of-K-with-rejection aggregation, calibration drift past grace, verdict-aware end-of-prev-round edge freezing; Go binary anti-cheat re-execution; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cryostat-lattice-readout.zip 23985 bytes excludes rubrics; harbor trials pending) | 2026-05-15 |
+| 37 | breaker-ledger-audit            | debugging                       | hard | small | go, bash | 0 | draft (oracle 14/14 pytest; 21 env files vs CodeBuild small>=20; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/breaker-ledger-audit.zip; harbor trials pending) | 2026-05-14 |
+| 38 | train-slot-lattice-audit        | machine-learning                | hard | small | go    | 0 | draft (oracle 17/17 pytest; 23 env files vs small; Go reference binary built at verify time; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/train-slot-lattice-audit.zip; harbor trials pending) | 2026-05-15 |
+| 39 | infer-blend-quota-audit         | machine-learning                | hard | small | go, bash | 0 | submission-ready (oracle 11/11 pytest; 20 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/infer-blend-quota-audit.zip 15880 bytes rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 40 | rate-limit-merge-audit          | system-administration           | hard | small | go, bash | 0 | draft (oracle 9/9 pytest; 23 env files vs small; class+drop-in merge + legacy reverse order + incidents + compromise quarantine + host caps; ruff+leakage+terminus preflight green; harbor trials pending) | 2026-05-15 |
+| 41 | initiative-clash-audit          | games                           | hard | small | go, bash | 0 | resubmit-ready (oracle 15/15 pytest; stim vs base clash score + escort anchoring + jam echo sink + band-tail inversion; zip at tasks/initiative-clash-audit.zip; prior trials 100%/100% on old spec) | 2026-05-16 |
+| 42 | mulligan-chain-audit            | games                           | hard | small | go, bash | 0 | submission-ready (resubmit: `allow_internet` + slim `[environment]`; pytest+ctrf in Dockerfile, offline `test.sh`; on-disk output SHA-256 + canonical field hashes + `MCA_*` routing tests; oracle 24/24 pytest; 33 env files vs small; london/vancouver/partial_paris + tier cap + incidents + shared pool; ruff+leak-check+preflight+verify-task green; flat zip tasks/mulligan-chain-audit.zip 27868 bytes rubrics excluded; harbor trials + platform two-cycle rubric) | 2026-05-16 |
+| 43 | wagon-escort-schedule-audit     | games                           | hard | small | go, bash | 0 | draft (oracle 26/26 pytest; 36 env files vs small; tier hazard decay + depot coverage multiplier + guard cooldown + route_embargo cross-cut; Go binary anti-cheat; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/wagon-escort-schedule-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 44 | webhook-retry-ledger-audit      | software-engineering            | hard | small | go, bash | 0 | submission-ready (resubmit: SPEC slip_grace vs failure_day_suppress no-op; incident suppress targets counted day 109; oracle 15/15 pytest; 25 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/webhook-retry-ledger-audit.zip 20906 bytes rubrics excluded; two-cycle platform rubric; refresh harbor trials as needed) | 2026-05-16 |
+| 45 | lease-slot-coordinator-audit    | system-administration           | hard | small | go, bash | 0 | draft (oracle 23/23 pytest; 32 env files; co-tenant witness gate; `tasks/lease-slot-coordinator-audit.zip` rebuilt; ruff+leakage+preflight+verify-task green; re-submit for new agent scores) | 2026-05-16 |
+| 46 | slo-burn-window-audit           | system-administration           | hard | small | go, bash | 0 | draft (oracle 18/18 pytest; 22 env files vs small; tier budgets + max fast/slow burn + burn_freeze + compromise cascade + review override; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/slo-burn-window-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 47 | patch-slot-lattice-audit        | system-administration           | hard | small | go, bash | 0 | submission-ready (oracle 24/24 pytest; 28 env files vs small; bundle deps + tier/host window intersection + regional cap_bump + compromise/freeze/embargo precedence; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/patch-slot-lattice-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 48 | probe-flap-chain-audit          | debugging                       | hard | small | go, bash | 0 | submission-ready (resubmit: per-tier rolling_span_delta + fail_day_suppress + effective_failures; oracle 16/16 pytest; 24 env files vs small; task.toml workdir=/app; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/probe-flap-chain-audit.zip rubrics excluded; two-cycle platform rubric + GPT-5.2/Opus trials) | 2026-05-16 |
+| 49 | artifact-promote-lattice-audit  | build-and-dependency-management | hard | small | go, bash | 0 | submission-ready (oracle 28/28 pytest; 23 env files vs small; stage soak + dependency rank gates + pool cap_bump + compromise/freeze/embargo precedence; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/artifact-promote-lattice-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 50 | ingest-watermark-skew-audit     | data-processing                 | hard | small | go, bash | 0 | draft (oracle 14/14 pytest; 34 env files vs small; tier lateness + dedup supersession + grace_day + skew penalty + source_compromise quarantine; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/ingest-watermark-skew-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 51 | export-batch-window-audit       | data-processing                 | hard | small | go, bash | 0 | submission-ready (oracle 26/26 pytest; 28 env files vs small; batch deps + sync-window intersection + dual warehouse cap/credit pass + credit_grant + compromise/freeze/embargo; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/export-batch-window-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 52 | flag-rollout-lattice-audit      | software-engineering            | hard | small | typescript | 0 | submission-ready (local verifier 15/15 pytest; 30 env files vs small; segment inheritance + exposure budget + dependency waves + incident precedence + segment compromise cascade; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/flag-rollout-lattice-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 53 | label-window-drift-audit        | machine-learning                | hard | small | go, bash | 0 | draft (oracle 15/15 pytest; 32 env files vs small; label drift credits + dataset lineage compromise + freeze propagation + model hold precedence; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/label-window-drift-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 54 | beam-dose-lineage-audit         | scientific-computing            | hard | small | go, bash | 0 | draft (local pytest 70/70; 34 env files vs small; pulse median rejection + calibration shift + transitive specimen lineage/cycles + frozen-window capacity precedence; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/beam-dose-lineage-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 55 | sensor-calib-lattice-audit      | scientific-computing            | hard | small | go, bash | 0 | draft (oracle 20/20 pytest; 28 env files vs small; tier residual/uncertainty + transitive contamination + recall extension + lab freeze/capacity precedence; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/sensor-calib-lattice-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 56 | cdc-lag-compactor-audit         | data-processing                 | hard | small | rust | 0 | draft (oracle 12/12 pytest in container; 25 env files vs small; CDC lag + rewind/grace + compaction holds + transitive quarantine + Rust binary re-execution; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cdc-lag-compactor-audit.zip rubrics excluded; harbor trials pending) | 2026-05-15 |
+| 57 | conn-lease-helix-audit          | debugging                       | hard | small | go, bash | 0 | draft (Java STS JDBC pool prompt adapted; lease vs idle reclaim + freeze + min live guard; Go reference 13 pytest; 21 env files vs small; ruff+leakage+terminus preflight+verify-task green; harbor trials pending) | 2026-05-16 |
+| 58 | edge-probe-tier-audit          | data-processing                 | hard | small | go, bash | 0 | draft (Java STS URL monitor prompt adapted; SLO tiers + global MAD + incident tier override + kbps; 11 pytest; 24 env files vs small; ruff+leakage+terminus preflight+verify-task green; harbor trials pending) | 2026-05-16 |
+| 59 | ivy-build-lattice-audit        | build-and-dependency-management | hard | small | go, bash | 0 | draft (Java STS Ant/Ivy graph prompt adapted; SCC cycle ring + null linear order + empty path weights; 9 pytest; 26 env files vs small; ruff+leakage+terminus preflight+verify-task green; harbor trials pending) | 2026-05-16 |
+
+---
+
+## Diversity Dashboard
+
+### By Category (counted over the 59 logged tasks above)
+| Category | Count | % |
+|----------|-------|---|
+| system-administration | 8 | 14% |
+| software-engineering | 7 | 12% |
+| data-processing | 8 | 14% |
+| security | 5 | 8% |
+| machine-learning | 5 | 8% |
+| debugging | 6 | 10% |
+| build-and-dependency-management | 6 | 10% |
+| scientific-computing | 7 | 12% |
+| games | 5 | 8% |
+| (5th accepted, tbd) | 1 | 2% |
+
+> NOTE: `go-module-bump-arbiter` adds a third `build-and-dependency-management` draft (first Go entry in this category; Go-MVS with replace/exclude/retract walk-up, advisory reachability triage, and four-incident-kind compound cascade). Re-submission bundle 2026-05-16 fixes Harbor/CodeBuild oracle when `bash -lc` leaves PATH empty (`solve.sh` prepends `/usr/local/go/bin`). Harbor GPT-5.2/Opus trials still required before final send.
+
+### By Codebase Size
+| Size | Count | % |
+|------|-------|---|
+| small | 59 | 100% |
+| large | 0 | - |
+
+### By Difficulty
+| Difficulty | Count | % |
+|------------|-------|---|
+| medium | 0 | - |
+| hard | 59 | 100% |
+
+### By Language
+| Language | Count | Difficulty Requirement |
+|----------|-------|----------------------|
+| python | 18 | must be hard (compliant) |
+| typescript | 2 | (no language-specific gate; hard preferred) |
+| go     | 28 | (no language-specific gate; hard preferred) |
+| rust   | 4  | (no language-specific gate; hard preferred) |
+| bash   | 18 | (no language-specific gate) |
+
+---
+
+## New tasks (May 10, 2026 batch)
+
+### git-hook-automation-suite (#7) — software-engineering
+- Inputs: per-repo declarative state under `/app/repos/` (8 repos × 3 files each = 24 per-repo files; baseline.json, incident_log.json, pool_state.json, SPEC.md). 28 fixture files total.
+- Outputs: 5 canonical JSON files at `/app/audit/`: repo_compliance.json, hook_install_plan.json, commit_review.json, branch_protection.json, summary.json.
+- Twists:
+  1. Per-repo `override_rules` replace global hook_policy entries by `kind`, last-wins on duplicate-kind override entries.
+  2. Tier-dependent commit-message review (gold/silver/bronze) — type whitelist, max length, issue-ref requirement all vary by tier.
+  3. Time-bounded `emergency_waiver` events excuse missing hooks only when `[day, day+duration_days-1]` covers `current_day`.
+  4. (cross-cutting) Compromise quarantine: any repo with an accepted `compromise` event becomes `compliance_level=quarantine` regardless of hook state, every commit on/after the smallest compromise day becomes `needs_review`, and every required hook gets `force_reinstall` — affects 4 of 5 outputs simultaneously.
+- Oracle: 82/82 tests pass.
+
+### tls-cert-chain-auditor (#8) — security
+- Inputs: declarative TLS inventory under `/app/certs/` — 11 leaf certs, 5 intermediates, 11 domains across 3 tiers, OCSP, incident log, chain_config, pool_state, SPEC.md. 32 fixture files.
+- Outputs: 5 canonical JSON files at `/app/audit/`: chain_audit.json, expiry_report.json, ocsp_summary.json, ca_risk.json, summary.json.
+- Twists:
+  1. Chain walk via `issuer_serial` to a trusted root within `max_chain_depth`, with four distinct failure modes (leaf_missing, intermediate_missing, chain_too_long, cycle_detected).
+  2. Tier-dependent SAN matching (production=exact, staging=wildcard_ok, internal=cn_only).
+  3. OCSP staleness rule with last-produced-day tie-break for multiple responses.
+  4. (cross-cutting) Compromise cascade: a chain visiting an accepted `ca_compromise` serial becomes `compromised`; OTHER chains that share at least one intermediate (not root, not leaf) with such a chain become `tainted`. `key_compromise` on a leaf forces compromised. Winning `audit_review` sets the final verdict for non-compromised domains; `audit_review_override` must appear in `reasons` whenever that event exists, even when `target_verdict` equals the preliminary verdict (compromised domains ignore audit_review).
+- Oracle: 85/85 tests pass.
+
+### dag-pipeline-planner (#9) — data-processing
+- Inputs: declarative pipeline DSL under `/app/pipelines/` — 7 pipelines (20 jobs total) + cluster, consumers, incident_log, pool_state, SPEC.md. Fixture files under `environment/pipelines/` (see preflight file-count vs `codebase_size=small`).
+- Outputs: 6 canonical JSON files at `/app/plan/`: schedule_plan.json, cycle_report.json, resource_utilization.json, quarantine_status.json, wave_plan.json, summary.json. v3 adds `upstream_offset_minutes` as a top-level pipeline field in schedule_plan.json (among other schedule fields).
+- Implementation language: **Rust only**. The `task.toml` declares `languages = ["rust"]`; the agent must replace `/app/planner/src/main.rs` and build via `cargo build --release --locked`. `tests/test.sh` runs Python pytest against the emitted `/app/plan/` files, but the build path is enforced by the Cargo project shape.
+- Twists (v3 — recompound 2026-05-13 after v2 platform run scored both reference agents at 100% (TRIVIAL)):
+  1. Per-pipeline cycle detection via SCC-equivalent analysis; cyclic pipelines block ALL their jobs (not just SCC participants). Quarantined pipelines preserve their topological phase numbers — only `blocked_cycle` collapses every phase to `0`.
+  2. Topological phase = longest dependency-chain length; per-phase max-effective-runtime determines start_minute. `effective_runtime_minutes = runtime_minutes + retry_count * retry_penalty_minutes_per_tier[tier]` drives every phase_runtime, start_minute, end_minute, and total_runtime_minutes; the emitted `runtime_minutes` field stays raw.
+  3. (cross-cutting v3 Twist A — phase compaction) Jobs whose status is `blocked_resource_freeze` emit `start_minute = end_minute = null` AND contribute 0 to their phase's runtime. `phase_runtime_p = max(eff over non-frozen jobs in p)` or 0 if every job in the phase is frozen. Compaction applies to both partial_resource_block and degraded pipelines (any pipeline with at least one frozen job). Missing this rule overstates etl-daily total by ≥65 min and breaks 3 outputs.
+  4. (cross-cutting v3 Twist B — cross-pipeline upstream offset) Each `degraded` or `partial_resource_block` pipeline's phase 0 starts at `upstream_offset_minutes = max(total_runtime_minutes of every transitive producer P via consumers.edges where P.pipeline_status ∈ {scheduled, degraded, partial_resource_block})`; quarantined/cyclic producers contribute 0. Pipelines must be evaluated in producer-first topological order across consumers.edges. The same offset feeds back into total_runtime_minutes as a constant additive term. Missing Twist B breaks log-archive total (drops from 125 to 55) and reporting total (drops from 130 to 60) and flips both pipelines' sla_met from false to true, breaking 4 outputs.
+  5. (composing) v3 Twist C — partial-block SLA multiplier: every `partial_resource_block` pipeline's `effective_sla_minutes = (base_sla * cluster.partial_block_sla_multiplier_pct_per_tier[tier]) // 100`. The multiplier applies ONLY to partial_resource_block pipelines; degraded ones still use the upstream-quarantine debit. Missing Twist C silently lets etl-daily's effective_sla stay at 240 instead of 168 (still met for the current run; matters when fixture changes shrink etl-daily's slack). Schema-level: this misclassification by itself fails the schedule_plan field hash.
+  6. Status precedence and propagation rules from v2 are preserved verbatim (blocked_cycle > blocked_quarantine > degraded > partial_resource_block > scheduled at pipeline level; blocked_cycle > blocked_quarantine > blocked_resource_freeze > degraded > scheduled per-job; `blocked_resource_freeze` propagates downstream along same-pipeline `depends_on`; cascade extends through both quarantined AND partial-resource-block seeds; quarantined excluded from degraded set).
+- Oracle: 147/147 pytest pass (v3+ verifier growth: wave_plan + field hashes + behavioural classes). Image ships a **scaffold** `planner/src/main.rs`; oracle `solve.sh` overwrites it, then `cargo build --release --locked`. `environment/.dockerignore` excludes `planner/target` from the Docker build context.
+- Calibration history:
+  - v1 (2026-05-10) — both reference agents at 60% (3/5) → MEDIUM, failed Python-must-be-hard. Spec was too explicit on phase math.
+  - v2 (2026-05-11) — added indirect-freeze propagation + tier-scaled retry penalty. Submitted to platform.
+  - v2 platform verdict (2026-05-13) — Opus 4.6 and GPT-5.2 both at 100% (5/5) → **TRIVIAL**, requires ≥ MEDIUM. Diagnostic: SPEC.md essentially pseudo-code; both models translated it 1:1.
+  - v3 (this revision) — added 3 compound interacting twists per project rules' calibration recipe (phase compaction, cross-pipeline upstream offset, partial-block SLA multiplier). Languages changed to `rust` only (agent must rewrite Rust scaffold and build with cargo). Spec strengthened (not loosened); tests tightened on the new failure modes.
+- v3 sanity (computed via independent Python re-derivation): etl-daily PRB total=70 (offset 0 + compact phase 0 only), log-archive degraded total=125 (offset 70 + phase 0 = 55, frozen phase 1 = 0), reporting degraded total=130 (offset 70 + 30 + 20 + 10), sla_violations=[log-archive, reporting], ignored_incident_events=4.
+
+### ml-experiment-ledger-auditor (#10) — machine-learning (Go)
+- Inputs: declarative ML experiment ledger under `/app/ledger/` — 6 datasets (with lineage_parents), 11 runs (1 invalid), 11 checkpoints (1 invalid), 10 registry entries (1 invalid), governance_config (per-tier promotion gates + replay tolerance), incident_log (dataset_compromise + key_revocation + eval_replay), pool_state, SPEC.md. 42 fixture files.
+- Agent language: Go (`task.toml` languages=`[go]`); `instruction.md` requires `/app/src` + `/app/bin/ml-ledger-auditor` with `MEL_DATA_DIR` / `MEL_AUDIT_DIR`. The image is `golang:1.23-bookworm`; the bundled reference program is Go (`solution/main.go` built by `solve.sh`).
+- Outputs: 5 canonical JSON files at `/app/audit/`: run_status.json, lineage_graph.json, checkpoint_disposition.json, registry_promotion.json, summary.json.
+- Twists:
+  1. Transitive `parent_run` fine-tuning chain → walking until null, ASCII-smallest offending ancestor names the `inherited_invalid` reason; agents that only check the immediate parent miss every grandchild case.
+  2. Multi-event `eval_replay` resolution → latest-day wins, ASCII-smallest `event_id` tie-break, then per-run `replay_tolerance` decides `replay_mismatch`; `replay_metric` is reported for every run with at least one accepted replay (even when no mismatch fires).
+  3. Tier-gated governance promotion → per-tier `min_eval_floor`, `max_retry_count_allowed`, and `requires_clean_dataset_lineage` produce 9 distinct decisions with a strict precedence: candidate-disposition gates > review-status gates > retry-cap > eval-floor.
+  4. (cross-cutting) Compromise cascade: an accepted `dataset_compromise` event propagates transitively along `lineage_parents` to every descendant dataset; lineage cycles produce `compromise_status=cyclic` with `lineage_depth=-1`; runs on any compromised or cyclic dataset become `tainted_run` regardless of `status_declared`; their checkpoints become `quarantine_tainted`; their registry entries become `force_rejected_compromise`. Independently, `key_revocation` events quarantine checkpoints by `signature_prefix`. Affects 4 of 5 outputs simultaneously.
+- Verifier: 170/170 tests pass.
+
+### crash-signature-triage (#11) — debugging
+- Inputs: read-only crash corpus under `/app/dumps/` — 22 crash dumps (19 valid + 3 invalid), 8 release manifests (7 valid + 1 invalid), `triage_config.json`, `module_map.json` (5 entries with both shallow and deep prefixes for the longest-prefix rule), `incident_log.json` (3 accepted + 1 re-classified + 6 always-ignored events spanning poisoned_build / owner_reassign / cluster_merge), pool_state, SPEC.md. 35 fixture files.
+- Outputs: 5 canonical JSON files at `/app/triage/`: cluster_index.json, attribution_report.json, severity_ranking.json, owner_assignment.json, summary.json.
+- Twists (deliberately different mechanic family from #6–#10 — no graph propagation, no downward compromise cascade; the cross-cutting rule is a time-window override):
+  1. Canonical frame-stack signature → first three frames combined with the last frame, then left-to-right deduplication keeping first occurrence; stacks shorter than four use the entire stack before dedup. The deduplication branch alone separates two clusters that would otherwise collide.
+  2. Release-window attribution → smallest release `day` ≥ cluster's `first_seen_day`, ASCII-smallest `version` on day ties. Agents that use largest-day-≤-first_seen instead of smallest-day-≥-first_seen flip every attribution.
+  3. Severity escalation precedence → poisoned_build > reproducibility_always > cluster_size_threshold > max_observed, with the cluster_size reason naming the EXACT post-merge crash count.
+  4. (cross-cutting) Poisoned-build time-window override: an accepted `poisoned_build` event for `diff_hash=H` retroactively forces every cluster attributed to a release with `diff_hash=H` to `attribution_note=poisoned_build`, `computed_severity=critical`, AND `assigned_owner_team=release-engineering` — simultaneously across 3 of the 5 outputs. Plus secondary mechanics: `cluster_merge` events apply in day/event_id order and shift `first_seen_day` (which can change attribution); `owner_reassign` events whose signature was merged away are re-classified to ignored after merge.
+- Oracle: 96/96 tests pass.
+
+### stream-shard-rebalancer (#14) — data-processing (Go)
+- Inputs: declarative Kafka-style cluster state under `/app/cluster/` — 12 brokers across 5 AZs in 2 regions (`topology/cluster.json`, `topology/azs.json`), 9 topics across gold/silver/bronze tiers in 9 per-topic files (with `current_throughput_mbps_per_partition`, per-partition `current_lag_messages`, per-partition `current_leader_map`), 5 consumer groups with literal- and regex-anchored subscriptions, a rebalance policy file, an incident log with 10 events (5 accepted across all 3 supported kinds, 5 ignored across every rejection cause), `pool_state.json` (`current_day=12`), and `SPEC.md`. 20 fixture files (excluding Dockerfile).
+- Outputs: 5 canonical JSON files at `/app/plan/`: partition_assignment.json (28 entries), consumer_rebalance.json (5 groups with member_assignments + unassigned_partitions[frozen]), lag_report.json (4-state classification on integer-only arithmetic), quarantine_status.json (12 brokers with all 4 status enums represented), summary.json (16 aggregate counters).
+- Twists (cross-cutting twist 4 flips values across all 5 outputs simultaneously):
+  1. Tier-weighted deterministic placement — hash-driven leader/replica selection (`sha256(topic_id+":"+p+":"+s)[:8]` as big-endian uint64) over per-tier-eligible-broker pools (gold may use reserved-gold + shared; silver/bronze share-only). Replicas claim distinct availability zones first; documented `region` fallback only when AZs are exhausted; ASCII broker_id tie-break at every walk step.
+  2. Lag-weighted consumer bin-pack — for each group, eligible partitions are sorted by (lag desc, throughput desc, topic_id asc, partition_id asc) and greedily assigned to the member with smallest current `assigned_lag_sum`. The 4-state `lag_status` (within_target | near_threshold | exceeded) uses integer-only comparison `5*max < 4*T` to avoid float-arithmetic divergence between Go and Python.
+  3. Cascading backpressure demotion — integer-only over-threshold check (`100*load > threshold_pct*effective_capacity`) drives single-broker demotion of bronze/silver-only candidates (ASCII-largest topic_id then highest partition_id tie-break); gold leaders are never moved (over-threshold load is acceptable when only gold remains); a partition demoted once cannot be demoted twice (termination guarantee).
+  4. (cross-cutting) Incident cascade across 3 accepted event kinds — `broker_quarantine` removes brokers from every eligible pool (affecting partition_assignment, quarantine_status, summary, AND the consumer side via partition-leader churn); `partition_freeze` overrides Phase 1 leader to `current_leader_map[p]` and, crucially, **excludes the partition from consumer rebalance** (driving values in consumer_rebalance.unassigned_partitions, lag_report.projected_max_member_lag_messages, AND lag_status); when freeze+quarantine collide, the broker becomes `frozen_quarantined`; `capacity_override` rewrites a broker's effective capacity feeding back into Phase 3 demotion. Missing twist 4 breaks all 5 outputs simultaneously.
+- Implementation language: **Go only**. The `task.toml` declares `languages = ["go"]`, the instruction requires the agent to write Go under `/app/src/` and compile a binary at `/app/bin/rebalancer`, and `tests/test_outputs.py::TestImplementationLanguage` enforces this by (a) confirming `package main` exists under `/app/src/`, (b) confirming `/app/bin/rebalancer` is executable, and (c) re-running the agent's binary into a temp dir and asserting it reproduces `/app/plan/` byte-for-byte — defeating both hand-edited JSON forgery and Python-bypass attempts.
+- Determinism: all arithmetic is integer-only; Go's `encoding/json` map-key sort matches Python's `sort_keys=True` byte-for-byte (verified locally via Python re-encode round-trip).
+- Oracle: 102/102 tests pass (Go 1.26.3 build, output identical to Python canonical encoding).
+
+### raid-encounter-referee (#15) — games (Go)
+- Inputs: raid tournament fixtures under `/app/raid/` — 9 per-player files, team tiers, incident log, loot crates, duel history, policy, pool state, and `SPEC.md`. 16 fixture files (excluding Dockerfile).
+- Outputs: 5 canonical JSON files at `/app/results/`: `match_cards.json`, `loot_draft.json`, `sanction_board.json`, `bench_plan.json`, `summary.json`.
+- Twists:
+  1. Incident acceptance + duplicate resolution by `(scope, target_id, kind)` with day/event tie-breakers.
+  2. Status-precedence ladder (`active`/`probation`/`suspended`/`disqualified`) with personal incidents and team-level lockout composition.
+  3. Duel pairing from combat-score sorting with rematch-window avoidance swaps, plus forced-rematch fallback.
+  4. (cross-cutting) Team `raid_lockout` cascade removes affected players from duel eligibility, alters sanction statuses/sources, suppresses bench rows, and changes downstream loot candidate pools and summary counters simultaneously.
+- Implementation language: **Go only** with source under `/app/src/` and compiled binary at `/app/bin/referee`; tests re-run the binary into a temp directory and byte-compare regenerated `/app/results/` artifacts.
+- Oracle: scaffold complete with hash-locked outputs and Go-language enforcement in tests (ready for in-container oracle run).
+
+### sim-checkpoint-rollback-planner (#13) — scientific-computing
+- Inputs: declarative HPC simulation state under `/app/runs/` — 14 per-sim manifests (sim_alpha…sim_xi covering production/exploratory kinds, with optional scheduled_quiesce_window), `pool_state.json` (current_day clock), `governance/policy.json` (telemetry caps + severity buckets + chronic gate + peak-quiesce window + surcharge + `consumer_pause_max_hops` + `exploratory_cost_discount_pct`), `metrics/current_telemetry.json`, `metrics/window_history.json`, `history/run_history.csv`, `dependencies.json`, `incident_log.json` (7 events spanning corruption_confirmed duplicates, dataset_compromise, force_pin, and rejected kinds), `SPEC.md`. 22 files under `runs/`; the image copies a 3-file TypeScript scaffold into `/app/planner/`.
+- Outputs: 5 canonical JSON files at `/app/plan/`: rollback_plan.json, trend_report.json, dependency_order.json (rank plus hop-bounded `consumers_to_pause`), chronic_runs.json, summary.json.
+- Twists (several outputs cross-cut on compromise + cost ordering):
+  1. Four-condition rollback eligibility gate with ordered first-fail skip labels (`skipped_capacity` / `skipped_grace` / `skipped_quiesce`).
+  2. Force-roll override — `nan_count > 0` or an accepted canonical `corruption_confirmed` bypasses grace and scheduled quiesce (capacity still applies), forces critical/full_restart, and honors `safe_step` when present.
+  3. Trend classifier — volatility-first over degrading/improving/stable; primary metric by largest normalized violation fraction with ASCII tie-break; sign inversion on `samples_per_second` deltas.
+  4. Compromise + dependency + force_pin — `dataset_compromise` forces matching `inputs_dataset` sims into the plan at critical/full_restart/step 0 regardless of telemetry; **shortest-path hop counts** from those seeds gate `consumers_to_pause` and the downstream one-step severity bump for consumers that also have their own rollback rows; `force_pin` removes a sim from the plan.
+  5. Canonical corruption selection when multiple corruption rows share a `sim_id` (max `day`, then min `event_id`).
+  6. Exploratory cost attenuation — after peak surcharge and its first rounding, exploratory manifests get a policy discount and a second rounding; approvals and totals use the final cost.
+- Implementation language: **TypeScript** under `/app/planner/` (Node 22 image; `typescript` 5.7 + `tsx` 4.19 preinstalled); verifier pytest on `tests/test_outputs.py`.
+- Oracle: 100/100 tests pass (`solution/planner.ts` copied into `/app/planner/src/main.ts` and executed via `npx tsx`).
+
+### npm-monorepo-bump-arbiter (#19) — build-and-dependency-management
+- Inputs: declarative npm-style monorepo state under `/app/monorepo/` — `monorepo_manifest.json` (7 workspace packages + severity_block_threshold + allow_yanked_pinned), `governance/policy.json` (engines_node_workspace + peer_intersection_required), 7 `packages/*.json` (per-package manifests with dep `range`, `scope`, `exports_used`; per-package `engines_node`; mixed prod/dev/peer scopes; workspace-protocol forms in five entries spanning `workspace:*`, `workspace:^`, `workspace:~`), 7 `registry/<dep>.json` (3-5 versions per external dep with per-version `engines_node`, `exports_conditions`, `peer_constraints`, `advisory_ids`, `yanked`; `dist_tags` with `latest`/`next`/`canary`), 7 advisories spanning all status enum values, a 9-dep `current_lock.json`, an `incident_log.json` with 10 events (3 directives accepted across all 3 supported kinds, 1 dedup-dropped same-scope duplicate, 4 ignored across every rejection cause, 2 additional accepted), and `pool_state.json` (`current_day=60`). 21 fixture files (excluding Dockerfile).
+- Outputs: 5 canonical JSON files at `/app/arbitration/`: bump_decisions.json (19 per-entry decisions), peer_satisfaction_report.json (4 peer links spanning all 4 peer-status enum values), engines_compatibility.json (7-package report with `lower_exceeded_by` + `upper_exceeded_by` and all 4 status enum values), advisory_status.json (7-advisory verdict spanning all 7 status enum values), summary.json (12 aggregate counters).
+- Twists (the cross-cutting twist 4 deliberately flips values across 4 of the 5 outputs simultaneously):
+  1. Workspace-protocol resolution — `workspace:*` / `workspace:^` / `workspace:~` forms pin to the in-workspace package's own `version` (not a registry range), tagged with `protocol_variant` ∈ {star,caret,tilde}. References to non-monorepo packages emit `block_no_workspace_target`. Exports cascade does NOT apply to workspace-protocol entries.
+  2. Exports-condition downgrade — for registry-resolved entries, the chosen version must support every condition in the consumer's `exports_used`. When no eligible version supports the full set, the drop pool of conditions unsupported by the highest eligible version is dropped in ASCII order until some eligible version supports the remainder; `exports_dropped_set` is sorted and `reason` becomes `exports_downgrade`.
+  3. peerDependency intersection — every registry-resolved entry's chosen version contributes a peer link per `(peer, declared_range)` pair. The intersection of consumer ranges per peer is `[max_lower, min_upper)`; the resolved peer version is the highest chosen across entries naming the peer as dep. `peer_status` ∈ {satisfied, outside_intersection, unsatisfiable_intersection, peer_unresolved}.
+  4. (cross-cutting) Incident-driven force_freeze + dist_tag_pin + advisory_override + engines-superset gate — `force_freeze` locks consuming entries to `current_lock`, escalates to `freeze_unsafe` when an active advisory covers the locked version (advisory → `still_open_frozen`). `dist_tag_pin` overrides selection to `registry[dep].dist_tags[tag]`, blocks to `block_dist_tag_unsafe` when the pinned version fails engines/yanked/advisory (advisory → `unmitigated_pinned`). `advisory_override` cancels a high-severity advisory (status `overridden`). The engines-superset check (`v.engines_node ⊇ engines_node_workspace`) is a hard eligibility gate independent of every other check, contributing to `engines_blocked_versions_count` per package when it is the SOLE failure. Missing this twist flips values in bump_decisions (action and chosen_version on 8 entries), advisory_status (status and mitigation_method on 4 of 7 advisories), peer_satisfaction_report (some peer links shift because the frozen/pinned chosen versions declare different `peer_constraints`), and summary (action_counts, advisory_counts, peer_status_counts, engines_blocked_versions_total, ignored_incident_events).
+- Oracle: 99/99 tests pass.
+
+### openapi-drift-auditor (#20) — software-engineering (Go)
+- Inputs: declarative OpenAPI-style registry under `/app/registry/` — paired `services/*.json` and `baselines/*.json` for nine services, `consumers/dependencies.json` (`direct_field_reads` + `field_exposures` with explicit `field_map`), `policy/policy.json` (tier weights, freeze extension, supported incident kinds), `incidents/incident_log.json` (accepted vs ignored events across supported and unsupported kinds), `pool_state.json`, and `SPEC.md`. 23 fixture files (excluding Dockerfile).
+- Outputs: 5 canonical JSON files at `/app/audit/`: `change_classification.json`, `consumer_impact.json`, `migration_plan.json`, `risk_assessment.json`, `summary.json`.
+- Twists:
+  1. Tier-graded breaking-change matrix with silver-tier `consumer_aware` resolution for response-field removals and type changes when direct readers declare affected fields.
+  2. Transitive consumer impact via `field_map` re-exposure walks from producer fields through exposing gateways to downstream readers; cyclic dependency edges surface `cyclic_field_exposure` with hop distance rules.
+  3. Migration phases from consumer→producer dependency depth with `deferred_freeze` extending topological phase by `freeze_extension_phases`, `forced_phase_zero` for targeted services, and `blocked_cycle` for SCC-affected services.
+  4. (cross-cutting) Accepted `force_break` events override endpoint classification to `breaking_forced`, force `force_migration_required` impacts on all readers, pin the producer to migration phase 0 with `forced_phase_zero`, and drive `block` risk with `forced_event` origin — simultaneously across classification, consumer impact, migration plan, and risk assessment.
+- Oracle: 87/87 tests pass (pytest; includes Go binary re-execution anti-cheat).
+
+### go-module-bump-arbiter (#23) — build-and-dependency-management (Go)
+- Inputs: declarative Go-module workspace under `/app/modgraph/` — `workspace_manifest.json` (7 modules + replace_directive_quorum=3 + severity_block_threshold=high + vulncheck_reachability_required=true), `governance/policy.json` (severity_rank + supported_incident_kinds + retract_grace_days), 7 `modules/*.json` (per-module declarations: requires with min_version + reachability_symbols, replaces with quorum / divergent / missing-target inputs, excludes, tools), 15 `registry/*.json` (per-dep version histories with min_go_version, retracted, retract_reason, affected_symbols, pseudo, vuln_advisories), 6 `advisories/*.json` (severity, affected_versions, fixed_in, affected_symbols), an `incident_log.json` with 10 events (6 accepted spanning all 4 supported kinds — force_pin, replace_workspace_wide, retract_emergency, module_graph_cycle — and 4 ignored across every rejection cause), `pool_state.json` (current_day=120), and `SPEC.md`. 33 fixture files (excluding Dockerfile).
+- Outputs: 5 canonical JSON files at `/app/decisions/`: version_resolution.json (12 deps spanning all 7 action enums), replace_directive_audit.json (14 rows spanning all 5 status enums), vulnerability_exposure.json (6 advisories spanning all 6 status enums), cycle_and_retract_report.json (cycles + module_view with 7 per-module entries spanning all 3 blocked_versions reasons + tool_impacts spanning both tool_status enums), summary.json (14 integer counters).
+- Twists (the cross-cutting twist 4 deliberately flips values across 4 of 5 outputs simultaneously):
+  1. Minimum-Version Selection with exclusion / retract walk-up — for each dep, candidate = max(min_version) across non-cycle-blocked requirers under the canonical version comparator; walk forward through ascending versions skipping ANY effective-requirer's excludes (`mvs_walk_excluded`) or registry / emergency-retracted versions (`mvs_walk_retracted`); `mvs_walk_excluded` action label wins when both occur. Exhausted walks emit `block_no_version`. Agents trained on Cargo / npm's "latest published" or "max range" intuitions resolve to the wrong version on every walked dep.
+  2. Quorum-gated workspace replace with divergent-target tie-break — per-module replaces are grouped by `from_path`; unanimous-on-(to_path, to_version) AND count ≥ quorum → `applied_workspace`; unanimous but below quorum → `quorum_failed`; divergent targets select the HIGHEST `to_version` under the canonical comparator (ASCII tie-break on `to_path`) as winner (`applied_workspace`), losers become `conflict_divergent_targets`. Replace targets with no registry file become `block_target_missing` regardless of quorum / agreement.
+  3. Reachability-aware vulnerability triage — Phase C scores every advisory against the post-resolution version under a strict 6-rule precedence: incident `override_advisories` → `overridden`; replace path != advisory dep_path AND not covered → `mitigated_by_replace`; not covered → `mitigated_bumped`; covered AND action=`forced_pin` → `unmitigated_pinned`; covered AND severity below `severity_block_threshold` AND `vulncheck_reachability_required` AND reachability-symbol intersection empty → `unreachable`; else `still_open_frozen`. Reachability gates require the precise union over `requires[D].reachability_symbols` across all requirers.
+  4. (cross-cutting) Compound four-incident cascade — `force_pin(D, V, override_advisories?)` overrides MVS walk-up (keeps retracted / excluded version, action=`forced_pin`, advisories listed in `override_advisories` become `overridden`); `replace_workspace_wide(from, to_path, to_version)` overrides EVERY per-module replace row for that `from_path` to `overridden_incident` and becomes the active workspace target for Phase B (`workspace_replace` action), with the latest accepted incident winning when multiple exist; `retract_emergency(D, V, effective_day)` retroactively retracts `V` when `effective_day ≤ current_day`, forcing MVS walk-up to `mvs_walk_retracted` carrying that event's `event_id`; `module_graph_cycle(cycle_modules)` excludes named modules from MVS / reachability / exclusion contribution — deps whose only requirers are cycle-blocked become `block_cycle` regardless of registry availability. Missing this twist flips values in version_resolution (action and resolved_path for 5 deps), replace_directive_audit (status for 4 of 14 rows), vulnerability_exposure (status for 2 of 6 advisories), cycle_and_retract_report (cycle membership, blocked_versions retracted_emergency reason), and summary (8 of 14 counters).
+- Implementation language: **Go only**. The `task.toml` declares `languages = ["go"]`, the instruction requires the agent to write Go under `/app/src/` and compile a binary at `/app/bin/modarb`, and `tests/test_outputs.py::TestImplementationLanguage` enforces this by (a) confirming `package main` exists under `/app/src/`, (b) confirming `/app/bin/modarb` is executable, and (c) re-running the agent's binary into a temp dir with `/app/decisions/` moved aside, asserting the freshly-produced outputs reproduce the on-disk files AND the canonical reference hashes byte-for-byte. Defeats both hand-edited JSON forgery and Python-bypass attempts.
+- Determinism: Go's `encoding/json` map-key sort matches Python's `sort_keys=True` byte-for-byte; canonical encoding uses `SetEscapeHTML(false)` + `SetIndent("", "  ")` + trailing newline. All comparisons are integer-only (version Major/Minor/Patch + ASCII string compares).
+- Oracle: 120/120 tests pass (pytest in `golang:1.23-bookworm` after `solve.sh`; binary output matches pinned canonical SHA-256 hashes). `solve.sh` must export PATH before `go` so login-shell harnesses do not fail with `go: command not found`.
+
+### cargo-workspace-bump-planner (#12) — build-and-dependency-management
+- Inputs: declarative Rust workspace state under `/app/workspace/` — `workspace_manifest.json` (7 workspace dependencies + workspace_msrv + severity_block_threshold + allow_yanked_pinned), 7 `members/*.json` (per-crate dep declarations with workspace inheritance flag, requested features, default-feature toggle, and required_features), 10 `registry/*.json` (4-7 versions per external crate with per-version MSRV, feature set, default-feature subset, yank flag), 6 advisories spanning low → critical severity, a 10-crate `current_lock.json`, an `incident_log.json` with 9 events (3 directives accepted, 1 advisory_override accepted, 4 ignored — kind-not-supported / accepted=false / day>current_day / deprecation_warning — plus 1 superseded duplicate of force_freeze), and a 1-line `pool_state.json` carrying `current_day`. 23 fixture files (excluding Dockerfile).
+- Outputs: 5 canonical JSON files at `/app/plan/`: bump_plan.json (25 per-entry decisions), msrv_compatibility.json (7-member MSRV report with `exceeded_by` componentwise diff), feature_conflict_report.json (per-entry hard-conflict events), advisory_status.json (6-advisory verdict spanning all six status enum values), summary.json (aggregate counts and pass-through metadata).
+- Twists (the cross-cutting twist 4 deliberately flips values across 4 of the 5 outputs simultaneously):
+  1. Workspace-shared vs per-member dep precedence — workspace-shared selection picks one version across the sharing set; a per-member `forced_bump` event splits one member off into `sharing=forced_per_member`, and the remaining sharing set re-computes a separate workspace decision (often a different chosen version because the union of requested features shrinks). Per-member declared deps (`workspace=false`) get an independent chosen version per member, which can diverge (e.g. tessera-net is 2.1.0 for one member and 2.3.0 for another).
+  2. Feature-flag union resolution with cascading downgrade — for workspace deps, the chosen version must support the union of `features` across the sharing set, plus `default_features` only when at least one sharing member opts in. When the highest eligible version misses a feature, the planner walks down by version; when no eligible version supports the full union, the offending features are dropped one-by-one in ASCII order until some eligible version supports the remainder.
+  3. MSRV ceiling enforcement — `workspace_msrv` is a hard ceiling on per-version `msrv`. A member whose `member_msrv > workspace_msrv` is flagged `status=inconsistent` with componentwise non-negative `exceeded_by`; `msrv_blocked_versions_count` reports the distinct (crate, version) pairs in scope rejected solely by the MSRV ceiling.
+  4. (cross-cutting) Advisory-driven force_freeze + forced_bump + advisory_override + feature cascade — `force_freeze` on a crate locks every consuming entry to `current_lock`, escalates to `freeze_unsafe` when an active advisory covers the locked version, and propagates that advisory's status to `still_open_frozen`. `forced_bump` on `(member, crate)` overrides only that entry, splits workspace-shared decisions, and contributes a hard-conflict feature-loss event when the forced version drops a required feature. `advisory_override` cancels a high-severity advisory (status `overridden`). When the only safe post-advisory version lacks a required feature, the entry is a hard conflict and the advisory becomes `mitigated_by_forced_disable`. Missing this twist flips values in bump_plan (action and chosen_version), feature_conflict_report (events), advisory_status (status and mitigation_method), and summary (action_counts, advisory_counts, hard_conflict_count).
+- Oracle: 104/104 tests pass.
+
+---
+
+## Agent Run Results
+
+Track pass rates for difficulty verification.
+
+<!--
+### <task-name>
+- GPT-5.2 Run 1: PASS/FAIL
+- GPT-5.2 Run 2: PASS/FAIL
+- GPT-5.2 Run 3: PASS/FAIL
+- GPT-5.2 Run 4: PASS/FAIL
+- GPT-5.2 Run 5: PASS/FAIL
+- Claude Opus 4.6 Run 1: PASS/FAIL
+- Claude Opus 4.6 Run 2: PASS/FAIL
+- Claude Opus 4.6 Run 3: PASS/FAIL
+- Claude Opus 4.6 Run 4: PASS/FAIL
+- Claude Opus 4.6 Run 5: PASS/FAIL
+- Best model pass rate: X/5 = Y%
+- Difficulty: medium|hard
+-->
+
+### git-hook-automation-suite (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission)
+### tls-cert-chain-auditor (submission-ready 2026-05-14 — oracle 85/85; tests lock SPEC.md SHA-256 to current fixture; ruff+leak-check clean; 32 env files vs small; terminus_zip clean+preflight+build+verify-task green; flat zip tasks/tls-cert-chain-auditor.zip 27953 bytes rubrics excluded; needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### dag-pipeline-planner (resubmit-ready 2026-05-16 — oracle 147/147 pytest; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/dag-pipeline-planner.zip 45621 bytes rubrics excluded; needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission after v2 platform run scored TRIVIAL)
+### ml-experiment-ledger-auditor (pending — pure Go oracle; needs harbor + GPT-5.2/Opus 4.6 trials before submission)
+### crash-signature-triage (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission)
+### cargo-workspace-bump-planner (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission)
+### sim-checkpoint-rollback-planner (pending — flat `tasks/sim-checkpoint-rollback-planner.zip` built; needs harbor + GPT-5.2/Opus 4.6 trials before submission)
+### stream-shard-rebalancer (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission; first Go-only task)
+### raid-encounter-referee (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission; Go-only games task)
+### go-incident-cascade-auditor (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission; Go-only debugging task)
+### npm-monorepo-bump-arbiter (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission; peer-intersection + workspace-protocol task)
+### openapi-drift-auditor (pending — needs harbor + GPT-5.2/Opus 4.6 trials before submission; Go-only OpenAPI drift task)
+### go-module-bump-arbiter (resubmit-ready 2026-05-16 — oracle 120/120; `solve.sh` PATH fix for login-shell oracle; task.toml `[environment]` includes `workdir=/app`, `gpu_required=false`, `network_required=false`; ruff+leak-check clean; flat zip tasks/go-module-bump-arbiter.zip 37505 bytes rubrics excluded; terminus_zip preflight+verify-task green; needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### oidc-key-lifecycle-audit (submission-ready 2026-05-15 — ruff+leakage clean, oracle 54/54 pytest, harbor `stb harbor run -a oracle` reward 1.0 on 2026-05-15, task.toml `[environment].workdir = "/app"`, flat zip at tasks/oidc-key-lifecycle-audit.zip; needs GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### oauth-client-lattice-audit (submission-ready 2026-05-14 — ruff green, leakage grep clean, local-qc static CI green, oracle 65/65 pytest, flat zip at tasks/oauth-client-lattice-audit.zip (21258 bytes, rubrics excluded); needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### attest-bundle-lattice (submission-ready 2026-05-14 — 21 env files for CodeBuild small bucket; local-qc ci-only green, oracle 58/58 pytest, flat zip at tasks/attest-bundle-lattice.zip rubrics excluded; needs harbor or platform GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### wagon-escort-schedule-audit (draft 2026-05-15 — oracle 26/26; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/wagon-escort-schedule-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### slo-burn-window-audit (draft 2026-05-15 — oracle 18/18 pytest; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/slo-burn-window-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### flag-rollout-lattice-audit (submission-ready 2026-05-15 — local verifier 15/15 pytest; ruff+leakage+terminus preflight+verify-task green; 30 env files vs small; flat zip tasks/flag-rollout-lattice-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### label-window-drift-audit (draft 2026-05-15 — oracle 15/15 pytest; ruff+leakage+terminus preflight+verify-task green; 32 env files vs small; flat zip tasks/label-window-drift-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### beam-dose-lineage-audit (draft 2026-05-15 — local pytest 70/70; 34 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/beam-dose-lineage-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### sensor-calib-lattice-audit (draft 2026-05-15 — oracle 20/20 pytest; 28 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/sensor-calib-lattice-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### cdc-lag-compactor-audit (draft 2026-05-15 — oracle 12/12 pytest in container; 25 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cdc-lag-compactor-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)

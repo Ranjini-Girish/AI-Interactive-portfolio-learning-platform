@@ -1,0 +1,6 @@
+{
+  "id": "model-staging-raw-hygiene",
+  "candidate_checkpoint": "ckpt-S",
+  "target_tier": "staging",
+  "governance_review_status": "approved"
+}

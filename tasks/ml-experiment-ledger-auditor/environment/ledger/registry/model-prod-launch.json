@@ -1,0 +1,6 @@
+{
+  "id": "model-prod-launch",
+  "candidate_checkpoint": "ckpt-L",
+  "target_tier": "prod",
+  "governance_review_status": "approved"
+}

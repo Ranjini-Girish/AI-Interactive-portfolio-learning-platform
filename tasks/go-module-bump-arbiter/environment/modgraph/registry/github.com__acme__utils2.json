@@ -1,0 +1,14 @@
+{
+  "dep_path": "github.com/acme/utils2",
+  "versions": [
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.20",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v3.0.0",
+      "vuln_advisories": []
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "artifact_id": "a-app",
+  "current_stage": "dev",
+  "depends_on": ["a-net"],
+  "pool": "p-east",
+  "promote_priority": 3,
+  "stage_entered_day": 14
+}

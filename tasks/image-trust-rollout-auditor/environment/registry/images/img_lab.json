@@ -1,0 +1,8 @@
+{
+  "image_id": "img_lab",
+  "service_id": "svc_lab",
+  "digest": "sha256:lab001",
+  "previous_digest": "sha256:lab000",
+  "base_risk": 70,
+  "signatures": ["k_secondary_a"]
+}

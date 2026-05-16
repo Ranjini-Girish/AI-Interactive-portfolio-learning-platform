@@ -1,0 +1,15 @@
+Agent reads /app/oidc_keys/SPEC.md before other corpus files, +2
+Agent leaves /app/oidc_keys/ byte-identical, +3
+Agent emits all five JSON files under /app/audit/ with canonical encoding, +5
+Agent matches incident duplicate suppression and extend stacking rules, +5
+Agent classifies lifecycle phases with overlap-tail and revocation ordering, +5
+Agent binds servers using effective audience during emergencies, +3
+Agent computes pairwise overlap maxima with sorted witness kids, +3
+Agent populates incident ledger accepted and ignored streams deterministically, +2
+Agent summary counters reflect merged keys, servers, incidents, and unsupported kinds, +2
+Agent writes filenames or top-level keys that diverge from SPEC, -5
+Agent touches or rewrites any path under /app/oidc_keys/, -5
+Agent emits JSON without sorted keys, two-space indent, or single trailing newline, -5
+Agent omits required output files or leaves them invalid JSON, -5
+Agent ignores signing-eligible phase filtering when building eligible_kids, -3
+Agent mishandles revoke timing relative to extends or current_day, -3

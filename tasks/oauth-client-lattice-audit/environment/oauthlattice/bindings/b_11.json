@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_11",
+  "client_id": "c_eta",
+  "requested_redirect": "https://eta.example.com/oauth/v2/callback",
+  "resource_id": "r_device"
+}

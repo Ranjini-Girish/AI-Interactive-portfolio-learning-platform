@@ -1,0 +1,17 @@
+{
+  "default_pct": 5,
+  "flag_id": "ops-console",
+  "overrides": [
+    {
+      "pct": 60,
+      "priority": 60,
+      "segment_id": "internal"
+    },
+    {
+      "pct": 10,
+      "priority": 10,
+      "segment_id": "enterprise"
+    }
+  ],
+  "tier": "bronze"
+}

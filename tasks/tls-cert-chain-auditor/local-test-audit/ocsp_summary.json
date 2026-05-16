@@ -1,0 +1,64 @@
+{
+  "by_state": {
+    "revoked": 2,
+    "soft_fail": 6,
+    "valid": 3
+  },
+  "details": [
+    {
+      "domain": "api.example.com",
+      "leaf_serial": "leaf-api-v1",
+      "ocsp_state": "valid"
+    },
+    {
+      "domain": "cdn.example.com",
+      "leaf_serial": "leaf-cdn-v1",
+      "ocsp_state": "valid"
+    },
+    {
+      "domain": "edge.example.com",
+      "leaf_serial": "leaf-edge-v1",
+      "ocsp_state": "soft_fail"
+    },
+    {
+      "domain": "internal-app.example.lan",
+      "leaf_serial": "leaf-internal-v1",
+      "ocsp_state": "valid"
+    },
+    {
+      "domain": "internal-tools.example.lan",
+      "leaf_serial": "leaf-internal-v2",
+      "ocsp_state": "soft_fail"
+    },
+    {
+      "domain": "legacy.example.org",
+      "leaf_serial": "leaf-legacy-v1",
+      "ocsp_state": "soft_fail"
+    },
+    {
+      "domain": "ops.example.io",
+      "leaf_serial": "leaf-ops-v1",
+      "ocsp_state": "soft_fail"
+    },
+    {
+      "domain": "revoked-svc.example.com",
+      "leaf_serial": "leaf-revoked-v1",
+      "ocsp_state": "revoked"
+    },
+    {
+      "domain": "shop.example.net",
+      "leaf_serial": "leaf-shop-v1",
+      "ocsp_state": "revoked"
+    },
+    {
+      "domain": "staging-app.example.com",
+      "leaf_serial": "leaf-staging-v2",
+      "ocsp_state": "soft_fail"
+    },
+    {
+      "domain": "staging.example.com",
+      "leaf_serial": "leaf-staging-v1",
+      "ocsp_state": "soft_fail"
+    }
+  ]
+}

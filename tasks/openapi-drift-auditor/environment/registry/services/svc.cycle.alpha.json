@@ -1,0 +1,15 @@
+{
+  "auth_mode": "oauth2",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/cycle/alpha",
+      "params": [],
+      "response_fields": [
+        {"name": "alpha_state", "type": "string"}
+      ],
+      "status_codes": [200]
+    }
+  ],
+  "service_id": "svc.cycle.alpha",
+  "tier": "silver"
+}

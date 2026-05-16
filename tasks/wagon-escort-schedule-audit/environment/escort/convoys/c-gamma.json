@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-gamma",
+  "departure_day": 14,
+  "required_guards": 2,
+  "route_id": "r-loop",
+  "tier": "gold"
+}

@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 90,
+      "endpoint_id": "",
+      "event_id": "evt-cf-notif",
+      "kind": "consumer_freeze",
+      "service_id": "svc.notifications"
+    },
+    {
+      "accepted": false,
+      "day": 95,
+      "endpoint_id": "",
+      "event_id": "evt-cf-rejected",
+      "kind": "consumer_freeze",
+      "service_id": "svc.gateway"
+    },
+    {
+      "accepted": true,
+      "day": 70,
+      "endpoint_id": "",
+      "event_id": "evt-dw-users",
+      "kind": "deprecation_warning",
+      "service_id": "svc.users.profile"
+    },
+    {
+      "accepted": true,
+      "day": 200,
+      "endpoint_id": "GET /v1/gateway/aggregate",
+      "event_id": "evt-fb-future-gw",
+      "kind": "force_break",
+      "service_id": "svc.gateway"
+    },
+    {
+      "accepted": true,
+      "day": 80,
+      "endpoint_id": "POST /v1/orders",
+      "event_id": "evt-fb-orders",
+      "kind": "force_break",
+      "service_id": "svc.orders"
+    },
+    {
+      "accepted": true,
+      "day": 70,
+      "endpoint_id": "POST /v1/orders",
+      "event_id": "evt-fb-orders-dup",
+      "kind": "force_break",
+      "service_id": "svc.orders"
+    },
+    {
+      "accepted": false,
+      "day": 92,
+      "endpoint_id": "GET /v1/payments",
+      "event_id": "evt-fb-rejected",
+      "kind": "force_break",
+      "service_id": "svc.payments"
+    },
+    {
+      "accepted": true,
+      "day": 85,
+      "endpoint_id": "",
+      "event_id": "evt-vp-pmts",
+      "kind": "vendor_pin",
+      "service_id": "svc.payments"
+    }
+  ]
+}

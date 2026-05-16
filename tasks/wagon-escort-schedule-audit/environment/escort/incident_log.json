@@ -1,0 +1,72 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 8,
+      "delta": 4,
+      "event_id": "e01",
+      "kind": "hazard_spike",
+      "route_id": "r-north"
+    },
+    {
+      "accepted": true,
+      "day": 10,
+      "depot_id": "d-east",
+      "effective_day": 12,
+      "event_id": "e02",
+      "kind": "depot_closure"
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "event_id": "e03",
+      "guard_id": "g04",
+      "kind": "guard_bench"
+    },
+    {
+      "accepted": true,
+      "day": 9,
+      "event_id": "e04",
+      "kind": "route_embargo",
+      "route_ids": [
+        "r-west",
+        "r-mid"
+      ]
+    },
+    {
+      "accepted": false,
+      "day": 9,
+      "event_id": "e05",
+      "kind": "hazard_spike",
+      "route_id": "r-west"
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "event_id": "e06",
+      "kind": "route_embargo",
+      "route_ids": [
+        "r-loop"
+      ]
+    },
+    {
+      "accepted": true,
+      "day": 7,
+      "event_id": "e07",
+      "kind": "mystery_kind"
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e08",
+      "kind": "depot_closure"
+    },
+    {
+      "accepted": true,
+      "day": 9,
+      "event_id": "e09",
+      "guard_id": "g02",
+      "kind": "guard_bench"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "replication_factor_by_tier": {
+    "gold": 3,
+    "silver": 2,
+    "bronze": 1
+  },
+  "anti_affinity": {
+    "primary": "availability_zone",
+    "fallback": "region"
+  },
+  "tier_eligible_pools": {
+    "gold": ["reserved-gold", "shared"],
+    "silver": ["shared"],
+    "bronze": ["shared"]
+  }
+}

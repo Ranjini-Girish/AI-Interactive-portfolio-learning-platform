@@ -1,0 +1,5 @@
+Release engineering needs a deterministic same-day artifact promotion plan for every registry pool after stage-order rules, dependency rank gates, per-stage soak timers, per-pool promotion caps with incident-driven capacity bumps, promote embargoes, artifact compromise holds, and pool freeze directives are all evaluated against `pool_state.current_day`. The result must be replayable without touching the frozen input tree.
+
+Write five UTF-8 JSON artifacts under `/app/audit/` named `artifact_plan.json`, `pool_ledger.json`, `stage_matrix.json`, `incident_journal.json`, and `summary.json`. Grammar for artifacts, pools, incidents, blocked-promotion reasons, artifact status values, and canonical JSON formatting lives in `/app/promote_lattice/SPEC.md`.
+
+Inputs are under `/app/promote_lattice/`. When `APLA_DATA_DIR` is set to a non-empty value it overrides the input root; when `APLA_AUDIT_DIR` is set to a non-empty value it overrides the output directory. Unset or empty variables fall back to `/app/promote_lattice/` for reads and `/app/audit/` for writes. Create the output directory if needed. Do not modify files under the input root during the audit run.

@@ -1,0 +1,21 @@
+Agent Reads `/app/modgraph/SPEC.md` before emitting audit JSON, +2
+Agent Produces exactly five audit files under `/app/audit/` with no extras, +3
+Agent Implements Go under `/app/src/` with a `package main` entrypoint, +2
+Agent Builds `/app/bin/lattice-auditor` and honors `MLA_MODGRAPH_DIR` / `MLA_AUDIT_DIR`, +3
+Agent Emits UTF-8 JSON with two-space indent, sorted keys at every object, and one trailing newline, +3
+Agent Computes global replace winners from manifest scan order with legacy strip hits excluded from the shared map, +5
+Agent Applies the pool-driven shared-map revoke pass after manifest processing before any resolution reads that map, +5
+Agent Applies the tail-manifest local-strip gate tied to `local_strip_after_manifest` without folding it into legacy strip handling, +5
+Agent Overlays per-module effective maps so local replaces can diverge from the shared map, +5
+Agent Detects pairwise skew for shared requires with different resolved paths, +3
+Agent Runs SCC-style cycle reporting on the union replace edge set, +3
+Agent Emits the extended integer summary totals for union deduping, vertex coverage, local-overlay usage, skew path diversity, revoke drops, and tail suppressions exactly as defined in SPEC, +3
+Agent Leaves every file under `/app/modgraph/` unchanged, -3
+Agent Writes any filename under `/app/audit/` other than the five required names, -3
+Agent Emits JSON with unsorted object keys at any depth, -3
+Agent Omits the Go binary or leaves it non-executable, -5
+Agent Ignores expiry days when filtering replace entries, -5
+Agent Treats legacy strip-hit entries as contributors to the shared global map, -5
+Agent Collapses empty per-module resolution tables to JSON null instead of `[]`, -5
+Agent Applies tail local-strip suppression to manifests at or before the anchor index, -5
+Agent Inflates union-edge or skew-diversity summary integers by counting duplicate parallel replace edges or mis-joining resolution rows, -5

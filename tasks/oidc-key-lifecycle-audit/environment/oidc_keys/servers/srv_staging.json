@@ -1,0 +1,5 @@
+{
+  "required_audience": "https://svc/a/staging",
+  "server_id": "srv_staging",
+  "tier": "silver"
+}

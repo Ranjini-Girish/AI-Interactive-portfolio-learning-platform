@@ -1,0 +1,14 @@
+Agent structures the Go source as a buildable single-package program under /app/src/ that follows the documented binary path /app/bin/rebalancer and uses only the standard library, +3
+Agent computes the base partition layout for every topic such that each partition's leader and replica brokers match the deterministic tier-eligible placement contract, +5
+Agent honours the per-tier replication factor (gold=3, silver=2, bronze=1) and never repeats a broker within a single partition's leader+replica set, +3
+Agent enforces availability-zone anti-affinity with documented region fallback so that no partition has two replicas sharing both the same AZ and the same region, +3
+Agent treats frozen partitions per spec, keeping the documented leader, excluding them from consumer assignments, and distinguishing the two frozen reason values, +3
+Agent fires backpressure demotion only for non-gold, non-frozen leaders on over-threshold brokers, using the documented tier and tie-break precedence, +3
+Agent assigns consumer partitions to members via the lag-weighted distribution rule and reports the correct lag-status bucket per group, +3
+Agent reports the correct broker status for every broker (active, quarantined, frozen_quarantined, capacity_overridden) and the post-rebalance load and capacity in integer mbps, +3
+Agent emits every output file using the canonical JSON encoding (UTF-8, indent=2, sorted object keys at every level, single trailing newline, per-field list sort order from the spec), +3
+Agent modifies any file under /app/cluster/ during execution, -3
+Agent omits any required output file, emits extra files in /app/plan/, or emits files whose object keys are not sorted at every nesting level, -3
+Agent solves the task in a language other than Go (e.g. produces /app/plan/ from a Python script or shell pipeline without a Go binary), -3
+Agent leaves /app/bin/rebalancer absent, non-executable, or unable to reproduce /app/plan/ from /app/cluster/ on a fresh run, -2
+Agent fails to apply the cross-cutting incident cascade (broker_quarantine + partition_freeze + capacity_override interactions across placement, consumer assignment, quarantine status, and summary), -5

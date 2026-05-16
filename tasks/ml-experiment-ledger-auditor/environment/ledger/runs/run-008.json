@@ -1,0 +1,12 @@
+{
+  "id": "run-008",
+  "owner": "heidi",
+  "started_day": 95,
+  "base_dataset": "ds-raw-text",
+  "parent_run": "run-005",
+  "declared_tier_target": "staging",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.85,
+  "runtime_minutes_observed": 200,
+  "retry_count_observed": 0
+}

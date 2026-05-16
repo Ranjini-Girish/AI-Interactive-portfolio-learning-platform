@@ -1,0 +1,19 @@
+{
+  "auth_mode": "oauth2",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/payments",
+      "params": [
+        {"name": "user_id", "required": true, "type": "string"}
+      ],
+      "response_fields": [
+        {"name": "amount", "type": "number"},
+        {"name": "status", "type": "string"},
+        {"name": "txn_id", "type": "string"}
+      ],
+      "status_codes": [200, 400, 401]
+    }
+  ],
+  "service_id": "svc.payments",
+  "tier": "gold"
+}

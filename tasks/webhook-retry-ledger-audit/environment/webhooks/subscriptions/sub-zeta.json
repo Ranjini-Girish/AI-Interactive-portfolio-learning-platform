@@ -1,0 +1,14 @@
+{
+  "endpoint_id": "ep-internal",
+  "outcomes_by_day": {
+    "104": "fail",
+    "105": "fail",
+    "106": "fail",
+    "107": "fail",
+    "108": "fail",
+    "109": "fail",
+    "110": "ok"
+  },
+  "subscription_id": "sub-zeta",
+  "tier": "bronze"
+}

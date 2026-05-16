@@ -1,0 +1,7 @@
+{
+  "keys": [
+    { "key_id": "ptk-old", "valid_from_day": 80 },
+    { "key_id": "ptk-new", "valid_from_day": 109 }
+  ],
+  "profile_id": "sp-partner"
+}

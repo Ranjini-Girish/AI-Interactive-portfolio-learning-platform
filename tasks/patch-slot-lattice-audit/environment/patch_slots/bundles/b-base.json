@@ -1,0 +1,6 @@
+{
+  "bundle_id": "b-base",
+  "depends_on": [],
+  "priority": 1,
+  "reboot_minutes": 30
+}

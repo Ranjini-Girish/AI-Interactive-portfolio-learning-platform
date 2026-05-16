@@ -1,0 +1,20 @@
+{
+  "auth_mode": "oauth2",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/users",
+      "params": [
+        {"name": "user_id", "required": true, "type": "string"}
+      ],
+      "response_fields": [
+        {"name": "created_at", "type": "string"},
+        {"name": "email", "type": "string"},
+        {"name": "name", "type": "string"},
+        {"name": "user_id", "type": "string"}
+      ],
+      "status_codes": [200, 400, 401, 404]
+    }
+  ],
+  "service_id": "svc.users.profile",
+  "tier": "silver"
+}

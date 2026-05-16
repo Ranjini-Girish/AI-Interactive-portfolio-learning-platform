@@ -1,0 +1,22 @@
+{
+  "default_pct": 30,
+  "flag_id": "checkout-v3",
+  "overrides": [
+    {
+      "pct": 60,
+      "priority": 20,
+      "segment_id": "enterprise"
+    },
+    {
+      "pct": 25,
+      "priority": 40,
+      "segment_id": "enterprise-eu"
+    },
+    {
+      "pct": 100,
+      "priority": 90,
+      "segment_id": "internal"
+    }
+  ],
+  "tier": "gold"
+}

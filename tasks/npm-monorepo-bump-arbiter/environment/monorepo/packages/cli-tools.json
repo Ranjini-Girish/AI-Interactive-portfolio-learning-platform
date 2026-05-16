@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@aurum/missing-pkg": {
+      "exports_used": [],
+      "range": "workspace:*",
+      "scope": "prod"
+    },
+    "kiln-bundler": {
+      "exports_used": ["require"],
+      "range": "^2.0.0",
+      "scope": "prod"
+    }
+  },
+  "dev_dependencies": {
+    "pebble-lint": {
+      "exports_used": [],
+      "range": "^5.0.0",
+      "scope": "dev"
+    },
+    "quartz-ts": {
+      "exports_used": ["types"],
+      "range": "^4.0.0",
+      "scope": "dev"
+    }
+  },
+  "engines_node": ">=20.0.0 <23.0.0",
+  "name": "@aurum/cli-tools",
+  "version": "2.0.0"
+}

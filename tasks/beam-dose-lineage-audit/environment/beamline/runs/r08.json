@@ -1,0 +1,13 @@
+{
+  "profile_id": "p-high",
+  "pulses": [
+    300,
+    310,
+    320
+  ],
+  "quality_pct": 97,
+  "run_id": "r08",
+  "scheduled_minute": 320,
+  "specimen_id": "s-alpha",
+  "station_id": "A"
+}

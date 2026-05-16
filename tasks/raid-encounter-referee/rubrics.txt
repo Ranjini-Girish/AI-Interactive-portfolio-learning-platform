@@ -1,0 +1,14 @@
+Agent writes exactly five required JSON files in /app/results with no extras, +3
+Agent keeps all /app/raid input files unchanged, +3
+Agent emits UTF-8 JSON with sorted keys, two-space indent, and one trailing newline, +2
+Agent correctly applies incident acceptance filtering and duplicate-event winner selection, +3
+Agent enforces status precedence including team lockout cascade across affected players, +3
+Agent generates duel pairings with rematch-avoidance swap behavior and forced rematch fallback, +3
+Agent computes loot priorities using all required score components and tie-breakers, +3
+Agent applies epic-rarity restriction for probation players, +2
+Agent derives bench_state values from byes and loot awards exactly as specified, +2
+Agent produces summary counters that are internally consistent with other outputs, +2
+Agent omits Go source under /app/src or fails to build executable at /app/bin/referee, -5
+Agent includes suspended or disqualified players in duels, loot candidates, or bench rows, -5
+Agent ignores deterministic ordering rules for rows or list fields, -3
+Agent mishandles lockout effects so affected team members are not consistently reflected across outputs, -3

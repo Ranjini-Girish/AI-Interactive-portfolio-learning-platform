@@ -1,0 +1,16 @@
+{
+  "host_id": "host-gamma",
+  "leases": [
+    {
+      "last_renew_day": 97,
+      "lease_until_day": 104,
+      "renew_count": 1,
+      "slot_id": "slot-gamma4"
+    }
+  ],
+  "renewals_by_day": {
+    "96": 1,
+    "97": 1
+  },
+  "tier": "gold"
+}

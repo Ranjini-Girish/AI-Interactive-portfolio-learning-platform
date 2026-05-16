@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@aurum/shared-ui": {
+      "exports_used": [],
+      "range": "workspace:~",
+      "scope": "prod"
+    },
+    "glint-core": {
+      "exports_used": ["import", "require"],
+      "range": "^2.0.0",
+      "scope": "prod"
+    }
+  },
+  "dev_dependencies": {
+    "pebble-lint": {
+      "exports_used": [],
+      "range": "^5.0.0",
+      "scope": "dev"
+    }
+  },
+  "engines_node": ">=20.0.0 <22.0.0",
+  "name": "@aurum/admin-console",
+  "version": "0.3.7"
+}

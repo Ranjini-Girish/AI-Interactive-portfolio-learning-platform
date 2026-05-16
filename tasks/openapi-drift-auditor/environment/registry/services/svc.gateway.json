@@ -1,0 +1,19 @@
+{
+  "auth_mode": "oauth2",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/gateway/aggregate",
+      "params": [
+        {"name": "format", "required": false, "type": "string"},
+        {"name": "user_id", "required": true, "type": "string"}
+      ],
+      "response_fields": [
+        {"name": "transaction_amount", "type": "number"},
+        {"name": "user_email", "type": "string"}
+      ],
+      "status_codes": [200, 400, 401]
+    }
+  ],
+  "service_id": "svc.gateway",
+  "tier": "silver"
+}

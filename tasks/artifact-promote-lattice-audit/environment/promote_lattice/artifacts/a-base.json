@@ -1,0 +1,8 @@
+{
+  "artifact_id": "a-base",
+  "current_stage": "staging",
+  "depends_on": [],
+  "pool": "p-east",
+  "promote_priority": 1,
+  "stage_entered_day": 8
+}

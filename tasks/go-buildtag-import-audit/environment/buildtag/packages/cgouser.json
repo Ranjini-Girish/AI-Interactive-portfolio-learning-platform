@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [],
+      "name": "plain.go"
+    },
+    {
+      "cnf": [
+        [
+          "cgo"
+        ]
+      ],
+      "imports": [
+        "github.com/acme/forbiddenlib"
+      ],
+      "name": "with_cgo.go"
+    }
+  ],
+  "package_key": "cgouser",
+  "package_path": "github.com/acme/cgouser"
+}

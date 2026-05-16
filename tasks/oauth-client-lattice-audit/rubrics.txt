@@ -1,0 +1,14 @@
+Agent Reads `/app/oauthlattice/SPEC.md` before touching inputs, +2
+Agent Emits all five required JSON documents under `/app/audit/` with sorted keys and stable list ordering, +3
+Agent Uses two-space indentation and exactly one trailing newline on every emitted JSON file, +2
+Agent Applies incident ordering and resolution labels exactly as written in the spec, +3
+Agent Computes scope closure after revocations without skipping the fixpoint pass, +5
+Agent Separates redirect verdicts from resource access outcomes for the same binding rows, +2
+Agent Omits unsupported incident kinds from mutable state while still tracing them, +2
+Agent Matches redirect modes to the effective tier after overrides, including strict tightening cases, +3
+Agent Counts applied versus ignored incidents and reconciles summary totals with binding rows, +2
+Agent Mislabels an incident resolution string in `incident_trace.json`, -3
+Agent Modifies any fixture under `/app/oauthlattice/`, -5
+Agent Writes JSON that is not byte-stable under the canonical encoding rules, -3
+Agent Skips localhost exception handling for public bronze bindings, -2
+Agent Ignores grant-cap checks when the effective tier changes mid timeline, -3

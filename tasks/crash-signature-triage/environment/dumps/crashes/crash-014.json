@@ -1,0 +1,9 @@
+{
+  "id": "crash-014",
+  "reported_day": 75,
+  "reporter": "ned@example.com",
+  "frame_stack": ["auth::otp::generate", "auth::otp::deliver", "auth::otp::verify", "auth::otp::cleanup"],
+  "env_hash": "3a4b5c6d7e8f99001122334456c7d8e93a4b5c6d7e8f99001122334456c7d8e9",
+  "reproducibility": "once",
+  "severity_observed": "high"
+}

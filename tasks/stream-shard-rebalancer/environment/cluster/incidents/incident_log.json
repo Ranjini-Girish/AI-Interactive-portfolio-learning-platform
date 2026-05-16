@@ -1,0 +1,83 @@
+{
+  "events": [
+    {
+      "event_id": "evt001",
+      "kind": "broker_quarantine",
+      "broker_id": "b04",
+      "evac_day": 10,
+      "day": 8,
+      "accepted": true
+    },
+    {
+      "event_id": "evt002",
+      "kind": "partition_freeze",
+      "topic_id": "t.orders.events",
+      "partition_id": 2,
+      "day": 7,
+      "accepted": true
+    },
+    {
+      "event_id": "evt003",
+      "kind": "capacity_override",
+      "broker_id": "b05",
+      "new_capacity_mbps": 60,
+      "day": 9,
+      "accepted": true
+    },
+    {
+      "event_id": "evt004",
+      "kind": "broker_quarantine",
+      "broker_id": "b08",
+      "evac_day": 11,
+      "day": 10,
+      "accepted": true
+    },
+    {
+      "event_id": "evt005",
+      "kind": "partition_freeze",
+      "topic_id": "t.user.events",
+      "partition_id": 0,
+      "day": 6,
+      "accepted": true
+    },
+    {
+      "event_id": "evt006",
+      "kind": "broker_quarantine",
+      "broker_id": "b10",
+      "evac_day": 20,
+      "day": 8,
+      "accepted": true
+    },
+    {
+      "event_id": "evt007",
+      "kind": "broker_quarantine",
+      "broker_id": "b02",
+      "evac_day": 11,
+      "day": 11,
+      "accepted": false
+    },
+    {
+      "event_id": "evt008",
+      "kind": "capacity_override",
+      "broker_id": "b07",
+      "new_capacity_mbps": 200,
+      "day": 13,
+      "accepted": true
+    },
+    {
+      "event_id": "evt009",
+      "kind": "broker_decommission",
+      "broker_id": "b09",
+      "day": 5,
+      "accepted": true
+    },
+    {
+      "event_id": "evt010",
+      "kind": "partition_freeze",
+      "topic_id": "t.user.events",
+      "partition_id": 1,
+      "day": 15,
+      "accepted": true
+    }
+  ]
+}

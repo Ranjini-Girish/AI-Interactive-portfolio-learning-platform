@@ -1,0 +1,8 @@
+{
+  "base_priority": 3,
+  "depends_on": ["train"],
+  "name": "evaluate",
+  "resource_class": "cpu_small",
+  "retry_count": 1,
+  "runtime_minutes": 30
+}

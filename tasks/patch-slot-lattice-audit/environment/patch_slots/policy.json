@@ -1,0 +1,13 @@
+{
+  "reboot_budget_minutes_per_host": 90,
+  "tier_calendar": {
+    "development": [[1, 31]],
+    "production": [[10, 20]],
+    "staging": [[1, 31]]
+  },
+  "tier_rank": {
+    "development": 2,
+    "production": 0,
+    "staging": 1
+  }
+}

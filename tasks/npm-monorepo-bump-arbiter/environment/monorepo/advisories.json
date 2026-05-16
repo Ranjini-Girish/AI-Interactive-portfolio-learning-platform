@@ -1,0 +1,60 @@
+{
+  "advisories": [
+    {
+      "advisory_id": "GH-1001",
+      "day_published": 10,
+      "dep": "glint-core",
+      "patched_range": ">=1.4.0 <3.0.0",
+      "severity": "critical",
+      "vulnerable_range": ">=1.0.0 <1.4.0"
+    },
+    {
+      "advisory_id": "GH-1002",
+      "day_published": 15,
+      "dep": "flax-http",
+      "patched_range": ">=3.2.0 <4.0.0",
+      "severity": "high",
+      "vulnerable_range": ">=3.0.0 <3.2.0"
+    },
+    {
+      "advisory_id": "GH-1003",
+      "day_published": 20,
+      "dep": "tessera-utils",
+      "patched_range": ">=0.9.0 <2.0.0",
+      "severity": "medium",
+      "vulnerable_range": ">=0.8.0 <0.9.0"
+    },
+    {
+      "advisory_id": "GH-1004",
+      "day_published": 25,
+      "dep": "pebble-lint",
+      "patched_range": ">=5.1.0 <7.0.0",
+      "severity": "high",
+      "vulnerable_range": ">=5.0.0 <5.1.0"
+    },
+    {
+      "advisory_id": "GH-1005",
+      "day_published": 30,
+      "dep": "kiln-bundler",
+      "patched_range": ">=3.0.0 <4.0.0",
+      "severity": "critical",
+      "vulnerable_range": ">=2.0.0 <3.0.0"
+    },
+    {
+      "advisory_id": "GH-1006",
+      "day_published": 35,
+      "dep": "glint-dom",
+      "patched_range": ">=2.1.0 <3.0.0",
+      "severity": "high",
+      "vulnerable_range": ">=2.0.0 <2.1.0"
+    },
+    {
+      "advisory_id": "GH-1007",
+      "day_published": 50,
+      "dep": "glint-core",
+      "patched_range": ">=2.2.0 <3.0.0",
+      "severity": "high",
+      "vulnerable_range": ">=2.1.0 <2.2.0"
+    }
+  ]
+}

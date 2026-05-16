@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-epsilon",
+  "departure_day": 12,
+  "required_guards": 1,
+  "route_id": "r-south",
+  "tier": "bronze"
+}

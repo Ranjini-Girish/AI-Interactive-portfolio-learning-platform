@@ -1,0 +1,8 @@
+{
+  "base_priority": 5,
+  "depends_on": [],
+  "name": "fetch_data",
+  "resource_class": "cpu_small",
+  "retry_count": 2,
+  "runtime_minutes": 20
+}

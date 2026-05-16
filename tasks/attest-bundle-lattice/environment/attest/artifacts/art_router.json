@@ -1,0 +1,20 @@
+{
+  "artifact_id": "art_router",
+  "deployment_tier": "production",
+  "digest": "sha256:8800000000000000000000000000000000000000000000000000000000000008",
+  "repository": "ghcr.io/fleet/router",
+  "signatures": [
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:8800000000000000000000000000000000000000000000000000000000000008",
+      "policy_rank": 1,
+      "predicate_type": "link",
+      "referential_material_digests": [
+        "sha256:1100000000000000000000000000000000000000000000000000000000000001",
+        "sha256:deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdead"
+      ],
+      "signature_id": "sig_router_link",
+      "signer_email": "rel@org.prod"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "minutes_by_day": {
+    "10": { "bad_minutes": 3 },
+    "11": { "bad_minutes": 3 },
+    "12": { "bad_minutes": 3 },
+    "13": { "bad_minutes": 3 },
+    "14": { "bad_minutes": 3 },
+    "8": { "bad_minutes": 3 },
+    "9": { "bad_minutes": 3 }
+  },
+  "service_id": "svc-search",
+  "tier": "bronze"
+}

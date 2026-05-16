@@ -1,0 +1,14 @@
+{
+  "exported_batches": [
+    "b-base"
+  ],
+  "source_id": "h-s2",
+  "sync_windows": [
+    [
+      15,
+      15
+    ]
+  ],
+  "tier": "staging",
+  "warehouse_id": "r-west"
+}

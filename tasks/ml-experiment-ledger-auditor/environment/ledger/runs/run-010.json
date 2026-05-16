@@ -1,0 +1,12 @@
+{
+  "id": "run-010",
+  "owner": "judy",
+  "started_day": 100,
+  "base_dataset": "ds-curated-text",
+  "parent_run": "run-001",
+  "declared_tier_target": "research",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.55,
+  "runtime_minutes_observed": 220,
+  "retry_count_observed": 0
+}

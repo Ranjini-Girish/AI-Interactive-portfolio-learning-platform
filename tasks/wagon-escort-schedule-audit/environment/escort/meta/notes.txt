@@ -1,0 +1,1 @@
+"fixture packaging stub\n"

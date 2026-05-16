@@ -1,0 +1,23 @@
+{
+  "burn_threshold_milli_by_tier": {
+    "bronze": {
+      "critical": 800,
+      "warning": 600
+    },
+    "gold": {
+      "critical": 1000,
+      "warning": 800
+    },
+    "silver": {
+      "critical": 900,
+      "warning": 700
+    }
+  },
+  "error_budget_minutes_by_tier": {
+    "bronze": 20,
+    "gold": 50,
+    "silver": 35
+  },
+  "fast_window_days": 1,
+  "slow_window_days": 7
+}

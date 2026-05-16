@@ -1,0 +1,28 @@
+{
+  "edges": [
+    {
+      "depends_on": "checkout-v3",
+      "flag_id": "recommend-rerank"
+    },
+    {
+      "depends_on": "checkout-v3",
+      "flag_id": "profile-merge"
+    },
+    {
+      "depends_on": "profile-merge",
+      "flag_id": "billing-ledger"
+    },
+    {
+      "depends_on": "billing-ledger",
+      "flag_id": "mobile-paywall"
+    },
+    {
+      "depends_on": "search-facets",
+      "flag_id": "ops-console"
+    },
+    {
+      "depends_on": "ops-console",
+      "flag_id": "search-facets"
+    }
+  ]
+}

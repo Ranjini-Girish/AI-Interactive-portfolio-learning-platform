@@ -1,0 +1,20 @@
+{
+  "attestations": [
+    {
+      "day": 97,
+      "subject_host": "host-beta",
+      "witness_host": "host-alpha"
+    },
+    {
+      "day": 98,
+      "subject_host": "host-alpha",
+      "witness_host": "host-beta"
+    },
+    {
+      "day": 99,
+      "subject_host": "host-alpha",
+      "witness_host": "host-beta"
+    }
+  ],
+  "slot_id": "slot-shared"
+}

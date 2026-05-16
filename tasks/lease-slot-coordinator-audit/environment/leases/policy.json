@@ -1,0 +1,19 @@
+{
+  "grace_days_by_tier": {
+    "bronze": 7,
+    "gold": 3,
+    "silver": 5
+  },
+  "max_renewals_by_tier": {
+    "bronze": 3,
+    "gold": 5,
+    "silver": 4
+  },
+  "renewal_window_days": 7,
+  "witness_day_floor": 96,
+  "witness_quorum_by_tier": {
+    "bronze": 1,
+    "gold": 2,
+    "silver": 1
+  }
+}

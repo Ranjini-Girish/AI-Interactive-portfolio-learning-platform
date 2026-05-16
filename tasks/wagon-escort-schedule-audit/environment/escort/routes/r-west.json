@@ -1,0 +1,14 @@
+{
+  "depot_ids": [],
+  "route_id": "r-west",
+  "segments": [
+    {
+      "base_hazard": 9,
+      "segment_id": "s1"
+    },
+    {
+      "base_hazard": 6,
+      "segment_id": "s2"
+    }
+  ]
+}

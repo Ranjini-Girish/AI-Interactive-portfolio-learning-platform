@@ -1,0 +1,6 @@
+{
+  "forbidden_imports": [
+    "github.com/acme/blockedX",
+    "github.com/acme/forbiddenlib"
+  ]
+}

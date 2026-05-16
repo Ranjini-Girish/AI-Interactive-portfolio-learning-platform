@@ -1,0 +1,17 @@
+{
+  "artifact_id": "art_depth",
+  "deployment_tier": "production",
+  "digest": "sha256:cc0000000000000000000000000000000000000000000000000000000000000c",
+  "repository": "ghcr.io/fleet/depth",
+  "signatures": [
+    {
+      "key_id": "k_d1",
+      "payload_digest": "sha256:cc0000000000000000000000000000000000000000000000000000000000000c",
+      "policy_rank": 1,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_depth_main",
+      "signer_email": "rel@org.prod"
+    }
+  ]
+}

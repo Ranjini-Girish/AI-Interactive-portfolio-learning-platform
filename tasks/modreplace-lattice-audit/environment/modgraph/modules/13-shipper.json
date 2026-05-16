@@ -1,0 +1,17 @@
+{
+  "module_id": "shipper",
+  "module_path": "example.com/shipper",
+  "replaces": [
+    {
+      "from": "example.com/shipping-api",
+      "to": "example.com/shipping-fork-a"
+    },
+    {
+      "from": "example.com/shipping-api",
+      "to": "example.com/shipping-fork-b"
+    }
+  ],
+  "requires": [
+    "example.com/shipping-api"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "rules": [
+    {
+      "action": "allow",
+      "audit_tier": "internal",
+      "dst_zones": ["z_db"],
+      "priority": 30,
+      "rule_id": "r_mgmt_db_allow",
+      "src_zones": ["z_mgmt"]
+    },
+    {
+      "action": "deny",
+      "audit_tier": "production",
+      "dst_zones": ["z_internal"],
+      "priority": 4,
+      "rule_id": "r_dmz_internal_deny",
+      "src_zones": ["z_dmz"]
+    }
+  ]
+}

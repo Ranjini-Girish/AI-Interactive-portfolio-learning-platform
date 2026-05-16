@@ -1,0 +1,20 @@
+{
+  "artifact_id": "art_sidecar",
+  "deployment_tier": "production",
+  "digest": "sha256:9900000000000000000000000000000000000000000000000000000000000009",
+  "repository": "ghcr.io/fleet/sidecar",
+  "signatures": [
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:9900000000000000000000000000000000000000000000000000000000000009",
+      "policy_rank": 1,
+      "predicate_type": "link",
+      "referential_material_digests": [
+        "sha256:1100000000000000000000000000000000000000000000000000000000000001",
+        "sha256:3300000000000000000000000000000000000000000000000000000000000003"
+      ],
+      "signature_id": "sig_sidecar_link",
+      "signer_email": "rel@org.prod"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "service_id": "indexer",
+  "windows": [
+    {"error_pct": 4, "minute": 55, "p95_ms": 240, "qps": 520},
+    {"error_pct": 4, "minute": 56, "p95_ms": 245, "qps": 510},
+    {"error_pct": 4, "minute": 57, "p95_ms": 250, "qps": 515},
+    {"error_pct": 5, "minute": 58, "p95_ms": 255, "qps": 505},
+    {"error_pct": 5, "minute": 59, "p95_ms": 260, "qps": 500},
+    {"error_pct": 5, "minute": 60, "p95_ms": 265, "qps": 495}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "host": "theta",
+  "snapshots": [
+    {"id": "theta-001",   "kind": "full",        "taken_day": 20,  "size_mb": 100, "parent_id": null,         "sha256_chain": "2222222222222222222222222222222222222222222222222222222222220001"},
+    {"id": "theta-002",   "kind": "incremental", "taken_day": 80,  "size_mb": 25,  "parent_id": "theta-001",  "sha256_chain": "2222222222222222222222222222222222222222222222222222222222220002"},
+    {"id": "theta-003",   "kind": "incremental", "taken_day": 180, "size_mb": 30,  "parent_id": "theta-002",  "sha256_chain": "2222222222222222222222222222222222222222222222222222222222220003"},
+    {"id": "theta-004",   "kind": "incremental", "taken_day": 290, "size_mb": 25,  "parent_id": "theta-003",  "sha256_chain": "2222222222222222222222222222222222222222222222222222222222220004"},
+    {"id": "theta-005",   "kind": "incremental", "taken_day": 355, "size_mb": 20,  "parent_id": "theta-004",  "sha256_chain": "2222222222222222222222222222222222222222222222222222222222220005"},
+    {"id": "theta-006",   "kind": "incremental", "taken_day": 363, "size_mb": 15,  "parent_id": "theta-005",  "sha256_chain": "2222222222222222222222222222222222222222222222222222222222220006"},
+    {"id": "theta-NOHASH","kind": "full",        "taken_day": 100, "size_mb": 5,   "parent_id": null,         "sha256_chain": "abc"}
+  ]
+}

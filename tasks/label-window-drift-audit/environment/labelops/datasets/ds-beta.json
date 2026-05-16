@@ -1,0 +1,9 @@
+{
+  "baseline_positive_bps": 4100,
+  "dataset_id": "ds-beta",
+  "owner": "search",
+  "parents": [
+    "ds-alpha"
+  ],
+  "tier": "silver"
+}

@@ -1,0 +1,14 @@
+Agent reads `/app/attest/SPEC.md` before emitting JSON, +2
+Agent writes all five required files under `/app/audit/` with canonical two-space JSON, +3
+Agent preserves every input fixture byte-for-byte under `/app/attest/`, +2
+Agent applies ordered incidents before evaluating signatures, +3
+Agent resolves delegation depth caps and cycles exactly as specified, +3
+Agent enforces tier identity rules independently of key reachability, +2
+Agent enforces material witness rules for gated predicate types, +2
+Agent ranks verified winners using policy rank then signature id, +2
+Agent reconciles summary counters with emitted catalog rows, +2
+Agent emits incident trace rows in original log order with correct flags, +2
+Agent leaves any unrelated paths under `/app/` untouched, -3
+Agent mutates or rewrites files under `/app/attest/`, -5
+Agent omits any required top-level output key or adds extra keys, -3
+Agent emits outputs that are not strict sorted-key JSON objects, -2

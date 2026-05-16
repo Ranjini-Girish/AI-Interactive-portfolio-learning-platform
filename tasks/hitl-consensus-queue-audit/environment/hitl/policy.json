@@ -1,0 +1,6 @@
+{
+  "abstain_token": "ABSTAIN",
+  "min_distinct_labelers": 2,
+  "min_winner_weight": 80,
+  "tier_weight": {"bronze": 30, "gold": 100, "silver": 60}
+}

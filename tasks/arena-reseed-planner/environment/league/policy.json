@@ -1,0 +1,22 @@
+{
+  "max_matches_per_arena": 1,
+  "min_roster_size": 5,
+  "min_stamina": 60,
+  "participation_points": 2,
+  "rivalry_bonus": 1,
+  "rivalry_pairs": [
+    [
+      "t_alpha",
+      "t_bravo"
+    ],
+    [
+      "t_echo",
+      "t_foxtrot"
+    ]
+  ],
+  "suspended_penalty": -2,
+  "tier_priority": {
+    "gold": 2,
+    "silver": 1
+  }
+}

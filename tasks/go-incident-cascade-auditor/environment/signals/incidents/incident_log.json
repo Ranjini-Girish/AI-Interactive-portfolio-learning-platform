@@ -1,0 +1,81 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "event_id": "e-100",
+      "from_minute": 58,
+      "kind": "node_quarantine",
+      "minute": 58,
+      "node_id": "node-d",
+      "to_minute": 63
+    },
+    {
+      "accepted": true,
+      "end_minute": 61,
+      "event_id": "e-110",
+      "extra_error_pct": 4,
+      "kind": "throttle_window",
+      "minute": 59,
+      "service_id": "auth-service",
+      "start_minute": 59
+    },
+    {
+      "accepted": true,
+      "event_id": "e-120",
+      "kind": "severity_override",
+      "minute": 60,
+      "service_id": "reco-engine",
+      "severity": "critical"
+    },
+    {
+      "accepted": false,
+      "event_id": "e-125",
+      "kind": "severity_override",
+      "minute": 60,
+      "service_id": "indexer",
+      "severity": "warning"
+    },
+    {
+      "accepted": true,
+      "event_id": "e-130",
+      "from_minute": 57,
+      "kind": "node_quarantine",
+      "minute": 57,
+      "node_id": "node-h",
+      "to_minute": 70
+    },
+    {
+      "accepted": true,
+      "end_minute": 50,
+      "event_id": "e-140",
+      "extra_error_pct": 3,
+      "kind": "throttle_window",
+      "minute": 40,
+      "service_id": "payment-core",
+      "start_minute": 35
+    },
+    {
+      "accepted": true,
+      "event_id": "e-150",
+      "kind": "node_quarantine",
+      "minute": 45,
+      "node_id": "node-z",
+      "to_minute": 55,
+      "from_minute": 44
+    },
+    {
+      "accepted": true,
+      "event_id": "e-160",
+      "kind": "severity_override",
+      "minute": 65,
+      "service_id": "checkout-ui",
+      "severity": "healthy"
+    },
+    {
+      "accepted": true,
+      "event_id": "e-170",
+      "kind": "unknown_event",
+      "minute": 59
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "edges": [
+    {"child": "api.read", "parent": "api.write"},
+    {"child": "api.write", "parent": "admin.ui"},
+    {"child": "openid", "parent": "profile.extended"},
+    {"child": "reports.export", "parent": "reports.view"}
+  ]
+}

@@ -1,0 +1,16 @@
+Agent emits five output files at /app/audit/ as deterministic JSON with two-space indent, sorted keys at every level, trailing newline, and stable list ordering so two correct runs are byte-identical, +2
+Agent silently drops every incident event whose kind is not in {emergency_waiver, compromise, audit_override} or whose day exceeds pool_state.current_day or whose repo is not the name of a directory under /app/repos/repos/, and increments summary.ignored_incident_events for each, +2
+Agent merges per-repo override_rules over the global hook_policy by replacing every global rule of the same kind, keeping only the last entry of each duplicate-kind override, and computes missing_hooks and missing_checks against the resulting effective policy, +5
+Agent treats emergency_waiver events as time-bounded over [day, day+duration_days-1] inclusive and only excuses missing hooks during that range, ignoring expired waivers when computing compliance_level, +3
+Agent forces compliance_level=quarantine for any repo with at least one accepted compromise event regardless of hook state and regardless of any audit_override events for the same repo, +5
+Agent retroactively re-flags every commit whose day is on or after a quarantined repo's smallest accepted compromise day as needs_review, overwriting any prior status the commit-review phase had computed, +5
+Agent applies an accepted audit_override only when no compromise exists for that repo, picking the entry with the largest day and breaking day-ties by the largest list index, +3
+Agent enforces a per-tier commit-message policy where gold's type whitelist is the strictest, silver's is broader, and bronze's is broadest, with max_subject_length and require_issue_ref also varying by tier, +3
+Agent classifies each commit by checking protected_branch_violation (wip on a protected branch) before type_not_allowed before length_exceeded before missing_issue_ref, picking the first matching status, +2
+Agent records hook_install_plan actions as install for unwaivered missing required hooks of non-quarantined repos and as force_reinstall for every required hook of a quarantined repo whether currently installed or not, +3
+Agent computes branch_protection.status as quarantined for compromised repos, waivered when every missing hook on the branch has an active waiver, missing_hook when at least one missing hook is unwaivered, and compliant otherwise, while leaving missing_hooks itself populated by the pre-waiver list, +3
+Agent reports compromise_day as null for non-quarantined repos and as the smallest accepted compromise day for quarantined repos, +1
+Agent modifies any file under /app/repos/ while computing the audit, -3
+Agent applies audit_override on a repo that already has an accepted compromise event, letting the override label win over the quarantine label, -3
+Agent treats emergency_waiver events as permanent and excuses missing hooks past the duration_days window when computing compliance_level, -2
+Agent omits one or more of the required output files (repo_compliance.json, hook_install_plan.json, commit_review.json, branch_protection.json, summary.json) under /app/audit/, -3

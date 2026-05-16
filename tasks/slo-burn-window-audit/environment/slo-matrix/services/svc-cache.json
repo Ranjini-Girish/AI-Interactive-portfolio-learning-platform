@@ -1,0 +1,13 @@
+{
+  "minutes_by_day": {
+    "10": { "bad_minutes": 8 },
+    "11": { "bad_minutes": 8 },
+    "12": { "bad_minutes": 99 },
+    "13": { "bad_minutes": 99 },
+    "14": { "bad_minutes": 99 },
+    "8": { "bad_minutes": 8 },
+    "9": { "bad_minutes": 8 }
+  },
+  "service_id": "svc-cache",
+  "tier": "gold"
+}

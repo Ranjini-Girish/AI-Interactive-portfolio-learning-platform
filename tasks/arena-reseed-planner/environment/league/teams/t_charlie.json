@@ -1,0 +1,11 @@
+{
+  "home_region": "south",
+  "preferred_arena_ids": [
+    "a_south"
+  ],
+  "roster_size": 7,
+  "seed_score": 90,
+  "stamina": 40,
+  "team_id": "t_charlie",
+  "tier": "gold"
+}

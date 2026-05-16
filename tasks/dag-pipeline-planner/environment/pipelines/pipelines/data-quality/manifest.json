@@ -1,0 +1,5 @@
+{
+  "name": "data-quality",
+  "sla_hours": 1,
+  "tier": "prod"
+}

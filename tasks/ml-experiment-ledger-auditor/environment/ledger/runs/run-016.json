@@ -1,0 +1,12 @@
+{
+  "id": "run-016",
+  "owner": "quentin",
+  "started_day": 85,
+  "base_dataset": "ds-purged-archive",
+  "parent_run": null,
+  "declared_tier_target": "research",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.75,
+  "runtime_minutes_observed": 150,
+  "retry_count_observed": 0
+}

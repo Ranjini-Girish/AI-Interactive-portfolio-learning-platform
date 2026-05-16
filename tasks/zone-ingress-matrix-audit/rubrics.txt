@@ -1,0 +1,20 @@
+Agent reads `/app/zoning/SPEC.md` before writing any audit file, +2
+Agent emits all five required JSON files under `/app/audit/` with trailing newlines, +2
+Agent builds the full ordered zone pair matrix with explicit versus implicit paths, +3
+Agent applies tier remaps in chronological incident order, +3
+Agent honors suspend events for baseline rule ids before evaluating cells, +3
+Agent merges wildcard `*` zone tokens exactly as the spec describes, +2
+Agent ranks synthetics above baselines using the documented tuple ordering, +3
+Agent lists invalid baseline rule ids separately from active matching rules, +2
+Agent leaves every path under `/app/zoning/` byte-identical to the shipped fixtures, -5
+Agent omits `matrix_cells.json` or mis-orders its `cells` array, -5
+Agent ignores incident ordering or eligibility when rebuilding tier maps, -3
+Agent matches wildcard zones incorrectly when `*` appears in rule shards, -3
+Agent collapses synthetic incidents into baseline rule ids or drops `surf__` or `inj__` prefixes, -3
+Agent writes extra audit files beyond the five named outputs, -2
+Agent uses non-JSON text or a BOM inside any `/app/audit/*.json` artifact, -5
+Agent reports `summary.ignored_incidents` without counting every non-eligible incident row, -3
+Agent leaves `summary.invalid_rule_refs` empty when invalid baseline rules are present in fixtures, -5
+Agent fabricates incident kinds not present in the incident log, -5
+Agent emits `precedence_table.json` rows out of ascending `rule_id` order, -3
+Agent marks a cell as `implicit` when an explicit synthetic still matches that pair, -5

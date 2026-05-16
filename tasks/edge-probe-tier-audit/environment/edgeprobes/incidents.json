@@ -1,0 +1,9 @@
+{
+  "notes": [
+    {
+      "endpoint_id": "ep-h03",
+      "forced_tier": "SLOW",
+      "reason": "operator_hold"
+    }
+  ]
+}

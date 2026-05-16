@@ -1,0 +1,65 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 10,
+      "event_id": "e00",
+      "kind": "tier_budget_delta",
+      "target_tier": "gold",
+      "delta_minutes": 100
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "event_id": "e01",
+      "kind": "tier_budget_delta",
+      "target_tier": "silver",
+      "delta_minutes": 5
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e02",
+      "kind": "burn_freeze",
+      "freeze_end_day": 14,
+      "freeze_start_day": 12,
+      "service_id": "svc-cache"
+    },
+    {
+      "accepted": true,
+      "day": 13,
+      "event_id": "e03",
+      "kind": "service_compromise",
+      "service_id": "svc-notify"
+    },
+    {
+      "accepted": true,
+      "day": 14,
+      "event_id": "e04",
+      "kind": "slo_review_override",
+      "service_id": "svc-auth",
+      "target_status": "warning"
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "event_id": "e05",
+      "kind": "service_compromise",
+      "service_id": "svc-gateway"
+    },
+    {
+      "accepted": true,
+      "day": 14,
+      "event_id": "e06",
+      "kind": "unknown_kind"
+    },
+    {
+      "accepted": true,
+      "day": 14,
+      "event_id": "e07",
+      "kind": "burn_freeze",
+      "freeze_start_day": 20,
+      "service_id": "svc-ledger"
+    }
+  ]
+}

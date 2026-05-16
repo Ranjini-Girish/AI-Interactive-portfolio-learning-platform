@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-eta",
+  "departure_day": 13,
+  "required_guards": 3,
+  "route_id": "r-mid",
+  "tier": "silver"
+}

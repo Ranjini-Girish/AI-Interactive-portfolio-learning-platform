@@ -1,0 +1,1 @@
+{"events":[{"accepted":true,"end_day":50,"factor_bp":5000,"kind":"pool_derate","pool_id":"p03","start_day":1},{"accepted":true,"end_day":42,"kind":"route_freeze","route_id":"rt-h","start_day":41},{"accepted":true,"end_day":45,"factor_bp":8000,"kind":"pool_derate","pool_id":"p05","start_day":40}]}

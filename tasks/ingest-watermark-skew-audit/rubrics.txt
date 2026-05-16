@@ -1,0 +1,14 @@
+Agent reads /app/ingest_buffers/SPEC.md before emitting audit JSON, +3
+Agent writes all five required JSON files under /app/audit/, +3
+Agent applies tier-scoped event-time lateness before deduplication, +3
+Agent honors sliding idempotency supersession within the effective dedup window, +3
+Agent applies partition grace_day extensions only for ingest days on or after the incident day, +2
+Agent computes partition watermarks with skew penalty when accepted span exceeds the guard, +3
+Agent quarantines ingests for compromised sources from the compromise incident day onward, +3
+Agent leaves files under the input data root unchanged, +2
+Agent emits canonical UTF-8 JSON with sorted keys and a trailing newline, +2
+Agent modifies any file under the bundled input root, -3
+Agent omits required top-level keys from any audit artifact, -3
+Agent treats dedup supersessions as additional accepted events in partition totals, -3
+Agent ignores ingest_window_days and processes batches outside the pool day window, -3
+Agent applies skew penalty without setting skew_exceeded on the partition row, -2

@@ -1,0 +1,9 @@
+{
+  "azs": {
+    "us-east-a": "us-east",
+    "us-east-b": "us-east",
+    "us-east-c": "us-east",
+    "us-west-a": "us-west",
+    "us-west-b": "us-west"
+  }
+}

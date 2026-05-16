@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "api-gateway",
+    "reco-engine"
+  ],
+  "node_id": "node-i",
+  "service_id": "checkout-ui",
+  "team": "checkout",
+  "tier": "silver"
+}

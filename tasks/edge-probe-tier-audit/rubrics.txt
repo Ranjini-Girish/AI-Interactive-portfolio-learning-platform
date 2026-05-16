@@ -1,0 +1,11 @@
+Agent writes all five JSON artifacts with canonical formatting per SPEC, +2
+Agent keeps /app/edgeprobes read-only and honors EPT_DATA_DIR and EPT_AUDIT_DIR overrides, +2
+Agent applies incident tier overrides after base SLO bucketing without dropping MAD math, +3
+Agent lists endpoints and anomaly events in ascending endpoint id order, +2
+Agent aligns tier rollups with final tiers including FAILED counts, +2
+Agent omits any required JSON artifact or breaks canonical serialization, -5
+Agent mutates probe fixtures or ignores window_ms when computing kbps, -3
+Agent flags anomalies on FAILED probes or skips MAD sample sizing rules, -3
+Agent emits unsorted region maps or partial tier tally objects, -2
+Agent confuses inclusive SLO bounds with strict inequalities, -2
+Agent drops trailing newline on any audit file, -2

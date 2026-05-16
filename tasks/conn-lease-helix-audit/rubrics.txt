@@ -1,0 +1,11 @@
+Agent emits all five JSON artifacts under /app/audit/ with canonical formatting per SPEC, +2
+Agent leaves /app/connhelix/ read-only and honors CLA_DATA_DIR/CLA_AUDIT_DIR overrides, +2
+Agent matches leak-first reclaim ordering and idle walk ordering in reclaim_events.json, +3
+Agent preserves sorted wrapper rows and sorted summary segment lists, +2
+Agent aligns pool_counters tallies with wrapper verdict rows, +2
+Agent mis-orders reclaim events relative to SPEC sequencing, -3
+Agent omits any required output file or writes non-canonical JSON, -5
+Agent mutates bundled inputs under /app/connhelix/, -3
+Agent ignores freeze windows when classifying idle preservation, -2
+Agent drops trailing newline or uses non-ASCII bytes in outputs, -2
+Agent conflates strict idle-timeout comparison with inclusive equality, -2

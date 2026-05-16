@@ -1,0 +1,18 @@
+Agent emits exactly five files under /app/audit with deterministic JSON encoding (two-space indent, sorted keys at every level, one trailing newline, and SPEC-compliant list ordering), +2
+Agent drops invalid dataset, run, checkpoint, and registry records per schema/range/reference rules and increments the matching summary.totals.invalid_*_dropped counters without leaking dropped records into downstream outputs, +3
+Agent accepts incident events for every documented kind (including compromise_retract) only when kind/day and kind-specific fields are valid, and increments summary.totals.ignored_incident_events for every rejected event, +3
+Agent marks every cyclic dataset (including self-parent loops) with compromise_status=cyclic, compromise_source=null, lineage_depth=-1, and downstream_runs=[], +3
+Agent applies compromise_retract before compromise_lift coverage so that any lift on day at most the retract day is invalidated, then propagates remaining compromise transitively with smallest lineage-depth and ASCII-smallest id tie-break for compromise_source, +5
+Agent computes run status using the documented precedence (tainted_run > inherited_invalid > runtime_exceeded > replay_mismatch > status_declared) and uses transitive parent_run ancestry to derive inherited_invalid reason values, +5
+Agent flags runtime_exceeded using the run's declared-tier runtime_budget_minutes, emits the documented integer reason format, and treats runtime_exceeded ancestors as inherited_invalid offenders downstream, +3
+Agent resolves replay checks from the latest accepted replay event (largest day then ASCII-smallest event_id), evaluates mismatch using tiers[declared_tier_target].replay_tolerance, and reports replay_metric from that same latest replay, +3
+Agent computes checkpoint disposition with precedence (quarantine_tainted > quarantine_revoked_key > quarantine_unstable_run > quarantine_lowscore > keep), applies key revocation only when effective_day <= parent run started_day, and treats runtime_exceeded parents as unstable, +3
+Agent computes registry decisions using the specified gate order (candidate disposition, then review status, then raw-base hygiene when requires_clean_dataset_lineage is true, then retry_cap, lineage_floor, eval_floor, audit_pending) and always emits applied_eval_floor as the target tier floor rounded to four decimals, +5
+Agent includes every documented enum bucket in summary counters (by_run_status with runtime_exceeded, by_compromise_status, by_disposition, by_decision with rejected_audit_pending) with JSON integer values including zeros, +2
+Agent only inspects the immediate parent_run and misses inherited_invalid propagation from ancestors two or more hops away, -3
+Agent treats a compromise_retract as a lift (or simply ignores it), letting a dataset whose lift was retracted remain clean, -5
+Agent picks replay evidence from non-latest events or uses a global/incorrect tier tolerance for mismatch evaluation, -3
+Agent applies runtime budgeting from the wrong tier (or skips runtime_exceeded altogether), or fails to cascade runtime_exceeded ancestors as inherited_invalid offenders, -3
+Agent omits or misorders raw-base hygiene, retry_cap, lineage_floor, eval_floor, and audit_pending registry gates, causing incorrect accepted/rejected decisions, -3
+Agent applies key revocation by prefix match alone and ignores effective_day versus parent run started_day, -3
+Agent emits non-canonical or incomplete outputs, or modifies any file under /app/ledger while computing results, -5

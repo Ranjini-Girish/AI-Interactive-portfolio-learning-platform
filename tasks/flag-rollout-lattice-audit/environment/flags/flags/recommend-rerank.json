@@ -1,0 +1,17 @@
+{
+  "default_pct": 20,
+  "flag_id": "recommend-rerank",
+  "overrides": [
+    {
+      "pct": 80,
+      "priority": 50,
+      "segment_id": "beta-ring"
+    },
+    {
+      "pct": 45,
+      "priority": 40,
+      "segment_id": "selfserve-new"
+    }
+  ],
+  "tier": "silver"
+}

@@ -1,0 +1,12 @@
+Agent writes all five required JSON artifacts under /app/audit with valid structure, +5
+Agent leaves every byte under /app/registry unchanged from the shipped fixtures, +5
+Agent implements tier-graded breaking classification and consumer-aware resolution per SPEC, +3
+Agent applies accepted incident deduplication and the cross-cutting forced-break override rules, +3
+Agent walks field maps for transitive consumer impact and flags cyclic exposure correctly, +3
+Agent emits migration phases with forced-phase-zero deferred-freeze blocked-cycle and topo origins, +3
+Agent computes risk scores per-service actions and summary counters consistent with emitted rows, +2
+Agent preserves deterministic ordering for services endpoints consumers and nested arrays, +2
+Agent produces canonical UTF-8 JSON with two-space indent sorted keys and a single trailing newline, +2
+Agent fails to compile or ship an executable Go binary at /app/bin/auditor, -5
+Agent implements the work in a non-Go language or bypasses the required binary path, -3
+Agent adds extra files under /app/audit or omits any required report filename, -2

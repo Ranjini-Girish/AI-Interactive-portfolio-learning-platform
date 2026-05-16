@@ -1,0 +1,17 @@
+Agent emits all three required JSON files under /app/audit/ with the exact filenames from the prompt, +3
+Agent leaves every path under /app/init_clash/ byte-identical to the shipped fixtures, -3
+Agent writes canonical JSON per /app/init_clash/SPEC.md (two-space indent, sorted keys, trailing newline), +2
+Agent mis-orders units within a final band after applying jam and echo sinking, -3
+Agent ignores day filtering on incidents so stale jams or stims alter the wrong round, -3
+Agent collapses throttle and overclock interactions so degraded units still show overclock flags, -2
+Agent drops clash pairs that share base score and intrinsic band, -3
+Agent records a throttled skirmisher under delayed or ready instead of degraded, -3
+Agent treats stim-boosted priority as the clash ledger score instead of base_priority_score, -3
+Agent skips escort anchoring so escorted units keep a better final band than their escort, -3
+Agent applies descending priority inside the roster tail band instead of band-tail inversion, -3
+Agent counts echo-sunk skirmishers as delayed in status_counts, -2
+Agent emits non-ASCII text inside any audit JSON string, -2
+Agent writes helper sources outside /app/ or deletes shipped inputs while producing audits, -3
+Agent matches band_counts and echo_sink_count totals to the ordered roster without drift, +2
+Agent preserves stim-aware ordering when base scores collide inside the same intrinsic band, +2
+Agent keeps per_unit flags consistent with policy, incidents, overclock, and escort data for every unit id, +2

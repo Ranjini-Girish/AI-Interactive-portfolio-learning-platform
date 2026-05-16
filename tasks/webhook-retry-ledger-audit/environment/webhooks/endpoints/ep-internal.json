@@ -1,0 +1,5 @@
+{
+  "endpoint_id": "ep-internal",
+  "rate_limited": false,
+  "signing_profile": "sp-internal"
+}

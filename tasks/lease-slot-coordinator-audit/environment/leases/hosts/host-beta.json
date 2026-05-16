@@ -1,0 +1,22 @@
+{
+  "host_id": "host-beta",
+  "leases": [
+    {
+      "last_renew_day": 96,
+      "lease_until_day": 101,
+      "renew_count": 3,
+      "slot_id": "slot-beta2"
+    },
+    {
+      "last_renew_day": 98,
+      "lease_until_day": 103,
+      "renew_count": 0,
+      "slot_id": "slot-shared"
+    }
+  ],
+  "renewals_by_day": {
+    "95": 1,
+    "98": 1
+  },
+  "tier": "silver"
+}

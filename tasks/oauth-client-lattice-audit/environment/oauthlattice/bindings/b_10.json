@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_10",
+  "client_id": "c_delta",
+  "requested_redirect": "https://delta.example.com/rp",
+  "resource_id": "r_device"
+}

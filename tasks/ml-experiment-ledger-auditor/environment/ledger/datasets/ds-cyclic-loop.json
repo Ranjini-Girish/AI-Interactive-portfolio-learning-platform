@@ -1,0 +1,6 @@
+{
+  "id": "ds-cyclic-loop",
+  "name": "Mis-registered dataset with self-reference",
+  "tier": "curated",
+  "lineage_parents": ["ds-cyclic-loop"]
+}

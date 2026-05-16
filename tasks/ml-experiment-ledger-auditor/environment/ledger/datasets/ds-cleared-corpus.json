@@ -1,0 +1,6 @@
+{
+  "id": "ds-cleared-corpus",
+  "name": "Cleared training corpus (post-incident)",
+  "tier": "curated",
+  "lineage_parents": ["ds-raw-text"]
+}

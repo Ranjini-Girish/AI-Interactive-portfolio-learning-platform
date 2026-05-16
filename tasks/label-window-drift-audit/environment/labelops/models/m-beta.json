@@ -1,0 +1,10 @@
+{
+  "candidate_windows": [
+    "w-beta-1",
+    "w-beta-2"
+  ],
+  "dataset_id": "ds-beta",
+  "declared_stage": "candidate",
+  "model_id": "m-beta",
+  "score_bps": 8000
+}

@@ -1,0 +1,75 @@
+{
+  "events": [
+    {
+      "kind": "cluster_merge",
+      "event_id": "merge-shader-render",
+      "day": 18,
+      "source_signature": "render::shader::compile|render::shader::link|render::vertex::upload|render::vertex::commit",
+      "target_signature": "render::draw|render::clip|render::flush|render::commit",
+      "reason": "duplicate signature root-caused to render pipeline"
+    },
+    {
+      "kind": "owner_reassign",
+      "event_id": "reassign-ipc",
+      "day": 80,
+      "signature": "ipc::pipe::send|ipc::pipe::recv|ipc::pipe::close|ipc::pipe::reset",
+      "new_owner_team": "platform-team",
+      "reason": "ipc subsystem moved to platform"
+    },
+    {
+      "kind": "poisoned_build",
+      "day": 70,
+      "diff_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "reason": "auth release shipped broken token-parser"
+    },
+    {
+      "kind": "owner_reassign",
+      "event_id": "reassign-shader-prevmerge",
+      "day": 15,
+      "signature": "render::shader::compile|render::shader::link|render::vertex::upload|render::vertex::commit",
+      "new_owner_team": "ghost-team",
+      "reason": "set before the merge collapsed this signature"
+    },
+    {
+      "kind": "anecdotal_report",
+      "day": 50,
+      "note": "unknown kind must be ignored"
+    },
+    {
+      "kind": "poisoned_build",
+      "day": 200,
+      "diff_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "reason": "future-dated event must be ignored"
+    },
+    {
+      "kind": "owner_reassign",
+      "event_id": "reassign-orphan",
+      "day": 65,
+      "signature": "nonexistent::frame|stack|that|does|not|cluster",
+      "new_owner_team": "phantom-team",
+      "reason": "signature does not resolve to any cluster"
+    },
+    {
+      "kind": "cluster_merge",
+      "event_id": "merge-with-ghost-target",
+      "day": 22,
+      "source_signature": "auth::otp::generate|auth::otp::deliver|auth::otp::verify|auth::otp::cleanup",
+      "target_signature": "nonexistent::target|of|the|merge|event",
+      "reason": "target does not resolve initially"
+    },
+    {
+      "kind": "poisoned_build",
+      "day": 90,
+      "diff_hash": "ZZZZZZZZZZZZ_not_valid_hex",
+      "reason": "diff_hash is not valid hex"
+    },
+    {
+      "kind": "cluster_merge",
+      "event_id": "merge-after-source-gone",
+      "day": 28,
+      "source_signature": "render::shader::compile|render::shader::link|render::vertex::upload|render::vertex::commit",
+      "target_signature": "net::tcp::send|net::tcp::ack|net::ssl::handshake|net::ssl::verify",
+      "reason": "source already merged away by earlier event"
+    }
+  ]
+}

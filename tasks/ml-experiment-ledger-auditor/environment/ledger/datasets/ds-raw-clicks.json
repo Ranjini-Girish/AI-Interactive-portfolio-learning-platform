@@ -1,0 +1,6 @@
+{
+  "id": "ds-raw-clicks",
+  "name": "Raw click stream",
+  "tier": "raw",
+  "lineage_parents": []
+}

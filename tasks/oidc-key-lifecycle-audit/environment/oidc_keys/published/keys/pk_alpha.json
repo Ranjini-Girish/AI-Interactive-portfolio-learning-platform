@@ -1,0 +1,11 @@
+{
+  "alg_family": "RS256",
+  "allowed_audience_prefixes": [
+    "https://svc/a/"
+  ],
+  "kid": "k_alpha",
+  "not_after_day": 50,
+  "not_before_day": 10,
+  "record_id": "pub_alpha_1",
+  "sequence": 1
+}

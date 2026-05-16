@@ -1,0 +1,11 @@
+{
+  "service_id": "user-db",
+  "windows": [
+    {"error_pct": 2, "minute": 55, "p95_ms": 180, "qps": 340},
+    {"error_pct": 2, "minute": 56, "p95_ms": 182, "qps": 338},
+    {"error_pct": 3, "minute": 57, "p95_ms": 185, "qps": 336},
+    {"error_pct": 3, "minute": 58, "p95_ms": 188, "qps": 334},
+    {"error_pct": 3, "minute": 59, "p95_ms": 190, "qps": 332},
+    {"error_pct": 3, "minute": 60, "p95_ms": 192, "qps": 330}
+  ]
+}

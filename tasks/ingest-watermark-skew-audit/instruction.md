@@ -1,0 +1,5 @@
+Data platform owners need a frozen ingest replay for every partition after tier-scoped event-time lateness, sliding idempotency deduplication, partition-level grace extensions, dedup-window incident bumps, accepted-event skew penalties, and source compromise quarantine are evaluated on the same timeline anchored to `pool_state.current_day`. The outcome must be reproducible without mutating the bundled input tree.
+
+Write five UTF-8 JSON artifacts under `/app/audit/` named `partition_ledger.json`, `source_verdicts.json`, `dedup_journal.json`, `incident_journal.json`, and `summary.json`. Grammar for sources, partitions, ingest batches, disposition values, incident kinds, and canonical JSON formatting is defined in `/app/ingest_buffers/SPEC.md`.
+
+Bundled evidence lives under `/app/ingest_buffers/`. A non-empty `IWSA_DATA_DIR` overrides the input root; a non-empty `IWSA_AUDIT_DIR` overrides the output directory. When a variable is unset or empty, that side falls back to `/app/ingest_buffers/` for reads and `/app/audit/` for writes. Create the output directory if needed. Do not modify files under the input root during the audit run.

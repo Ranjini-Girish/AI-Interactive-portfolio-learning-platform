@@ -1,0 +1,14 @@
+{
+  "conflicts": 18,
+  "dataset_id": "ds-alpha",
+  "day_end": 100,
+  "day_start": 96,
+  "depends_on": [
+    "w-alpha-2"
+  ],
+  "labels_total": 1000,
+  "positives": 780,
+  "reviewer_rejects": 12,
+  "source_model_id": "m-old",
+  "window_id": "w-alpha-3"
+}

@@ -1,0 +1,8 @@
+{
+  "client_id": "c_gamma",
+  "client_type": "confidential",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "redirect_uris": ["https://gamma.example.com/login"],
+  "registered_scopes": ["api.read", "reports.view"],
+  "tier_declared": "bronze"
+}

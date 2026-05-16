@@ -1,0 +1,9 @@
+{
+  "module_id": "gateway",
+  "module_path": "example.com/gateway",
+  "replaces": [],
+  "requires": [
+    "example.com/lib",
+    "example.com/auth"
+  ]
+}

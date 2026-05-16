@@ -1,0 +1,56 @@
+{
+  "plate_id": "P02",
+  "run_day": 24,
+  "wells": [
+    {
+      "batch_id": "B2",
+      "lot_id": "LOT_STD",
+      "raw_value": 0.09,
+      "role": "blank",
+      "well_id": "A01"
+    },
+    {
+      "batch_id": "B2",
+      "lot_id": "LOT_STD",
+      "raw_value": 0.11,
+      "role": "blank",
+      "well_id": "A02"
+    },
+    {
+      "assay_id": "igm_titer",
+      "batch_id": "B2",
+      "lot_id": "LOT_STD",
+      "raw_value": 1.1,
+      "role": "std",
+      "std_level": "L1",
+      "well_id": "C01"
+    },
+    {
+      "assay_id": "igm_titer",
+      "batch_id": "B2",
+      "lot_id": "LOT_STD",
+      "raw_value": 2.1,
+      "role": "std",
+      "std_level": "L2",
+      "well_id": "C02"
+    },
+    {
+      "assay_id": "igm_titer",
+      "batch_id": "B2",
+      "lot_id": "LOT_STD",
+      "raw_value": 4.2,
+      "role": "std",
+      "std_level": "L3",
+      "well_id": "C03"
+    },
+    {
+      "assay_id": "igm_titer",
+      "batch_id": "B2",
+      "lot_id": "LOT_OK",
+      "raw_value": 3.1,
+      "role": "sample",
+      "sample_id": "T1",
+      "well_id": "D01"
+    }
+  ]
+}

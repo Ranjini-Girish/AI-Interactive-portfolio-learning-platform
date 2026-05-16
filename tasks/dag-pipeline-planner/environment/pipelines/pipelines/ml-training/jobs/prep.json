@@ -1,0 +1,8 @@
+{
+  "base_priority": 4,
+  "depends_on": [],
+  "name": "prep",
+  "resource_class": "gpu",
+  "retry_count": 2,
+  "runtime_minutes": 90
+}

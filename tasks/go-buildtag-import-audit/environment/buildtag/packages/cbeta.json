@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/calpha"
+      ],
+      "name": "beta.go"
+    }
+  ],
+  "package_key": "cbeta",
+  "package_path": "github.com/acme/cbeta"
+}

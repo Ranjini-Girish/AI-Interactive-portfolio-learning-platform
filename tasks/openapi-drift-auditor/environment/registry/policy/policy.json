@@ -1,0 +1,9 @@
+{
+  "freeze_extension_phases": 2,
+  "supported_incident_kinds": ["consumer_freeze", "force_break"],
+  "tier_weights": {
+    "bronze": 2,
+    "gold": 10,
+    "silver": 5
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "entry_points": [
+    "github.com/acme/gateway",
+    "github.com/acme/solo",
+    "github.com/acme/nonexistent"
+  ],
+  "extra_tags": [
+    "cgo"
+  ],
+  "goarch": "amd64",
+  "goos": "linux",
+  "reference_day": 100
+}

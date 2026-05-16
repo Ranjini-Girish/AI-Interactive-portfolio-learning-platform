@@ -1,0 +1,15 @@
+Agent reads and follows the `/app/sensor_lattice/SPEC.md` contract for all emitted artifacts, +3
+Agent produces all five required JSON files under `/app/audit/` with canonical formatting and no extra files, +2
+Agent implements the Go program and executable paths requested in the instruction, +2
+Agent applies tier residual, uncertainty, recall, priority, and capacity-weight rules consistently, +3
+Agent resolves usable incidents with current-day filtering and duplicate target tie-breaks, +2
+Agent propagates batch contamination through transitive sensor dependencies and identifies dependency cycles, +5
+Agent enforces suppression, quarantine, lab-freeze, capacity, recall, review, and acceptance precedence exactly, +5
+Agent computes lab ledgers from placed and deferred sensors without double-counting capacity, +2
+Agent emits lineage and recall reports that agree with the calibration plan, +3
+Agent summarizes all status, cycle, applied-event, and ignored-event counts accurately, +3
+Agent modifies any file under `/app/sensor_lattice/`, -5
+Agent omits the requested Go executable or emits results only by hand-writing JSON, -5
+Agent ignores transitive lineage or cycle handling, -5
+Agent applies capacity before higher-priority suppression, quarantine, or lab-freeze exclusions, -3
+Agent emits non-canonical JSON, missing fields, extra top-level keys, or unstable ordering, -3

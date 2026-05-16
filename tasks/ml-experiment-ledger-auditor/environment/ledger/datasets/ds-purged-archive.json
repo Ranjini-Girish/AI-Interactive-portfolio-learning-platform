@@ -1,0 +1,6 @@
+{
+  "id": "ds-purged-archive",
+  "name": "Historical archive feed (licence-revoked)",
+  "tier": "curated",
+  "lineage_parents": ["ds-raw-text"]
+}

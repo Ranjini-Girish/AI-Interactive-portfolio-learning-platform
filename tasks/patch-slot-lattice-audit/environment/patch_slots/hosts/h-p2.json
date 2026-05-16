@@ -1,0 +1,7 @@
+{
+  "applied_bundles": ["b-base", "b-net"],
+  "host_id": "h-p2",
+  "maintenance_windows": [[10, 20]],
+  "region": "r-east",
+  "tier": "production"
+}

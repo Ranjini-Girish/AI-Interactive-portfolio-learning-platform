@@ -1,0 +1,17 @@
+{
+  "topic_id": "t.product.updates",
+  "partitions": 3,
+  "tier": "silver",
+  "target_lag_messages": 1200,
+  "current_throughput_mbps_per_partition": 25,
+  "current_lag_messages": {
+    "0": 150,
+    "1": 80,
+    "2": 120
+  },
+  "current_leader_map": {
+    "0": "b02",
+    "1": "b07",
+    "2": "b10"
+  }
+}

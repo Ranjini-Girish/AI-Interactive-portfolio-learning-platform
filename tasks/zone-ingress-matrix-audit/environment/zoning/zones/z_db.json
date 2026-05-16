@@ -1,0 +1,5 @@
+{
+  "description": "data plane",
+  "zone_id": "z_db",
+  "zone_tier": "production"
+}

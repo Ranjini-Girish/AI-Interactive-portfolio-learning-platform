@@ -1,0 +1,24 @@
+{
+  "caps": {
+    "bronze": {
+      "confidential": [
+        "authorization_code",
+        "client_credentials",
+        "refresh_token"
+      ],
+      "public": ["authorization_code"]
+    },
+    "gold": {
+      "confidential": ["authorization_code", "client_credentials"],
+      "public": ["authorization_code"]
+    },
+    "silver": {
+      "confidential": [
+        "authorization_code",
+        "client_credentials",
+        "device_code"
+      ],
+      "public": ["authorization_code", "device_code"]
+    }
+  }
+}

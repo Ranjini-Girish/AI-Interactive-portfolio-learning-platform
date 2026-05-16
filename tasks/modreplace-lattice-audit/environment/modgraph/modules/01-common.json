@@ -1,0 +1,12 @@
+{
+  "module_id": "common",
+  "module_path": "example.com/common",
+  "replaces": [
+    {
+      "from": "example.com/lib",
+      "to": "example.com/lib-v0",
+      "expires_on_day": 119
+    }
+  ],
+  "requires": []
+}

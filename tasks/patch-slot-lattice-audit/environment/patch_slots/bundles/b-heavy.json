@@ -1,0 +1,6 @@
+{
+  "bundle_id": "b-heavy",
+  "depends_on": ["b-base"],
+  "priority": 1,
+  "reboot_minutes": 120
+}

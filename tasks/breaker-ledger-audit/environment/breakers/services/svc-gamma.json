@@ -1,0 +1,12 @@
+{
+  "outcomes_by_day": {
+    "100": "fail",
+    "101": "fail",
+    "102": "fail",
+    "103": "fail",
+    "104": "fail"
+  },
+  "service_id": "svc-gamma",
+  "tier": "bronze",
+  "upstream_id": "up-south"
+}

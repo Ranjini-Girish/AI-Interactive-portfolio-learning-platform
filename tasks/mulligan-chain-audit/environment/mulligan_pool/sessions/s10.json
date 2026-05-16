@@ -1,0 +1,34 @@
+{
+  "chain": [
+    {
+      "action": "keep",
+      "hand": [
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest"
+      ],
+      "step": 0
+    },
+    {
+      "action": "keep",
+      "hand": [
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest"
+      ],
+      "step": 1
+    }
+  ],
+  "deck_id": "d11",
+  "format_id": "fmt-standard",
+  "played_day": 101,
+  "session_id": "s10"
+}

@@ -1,0 +1,20 @@
+{
+  "band_rules": [
+    {"band": 0, "min_priority": 90},
+    {"band": 1, "min_priority": 65},
+    {"band": 2, "min_priority": 40},
+    {"band": 3, "min_priority": 0}
+  ],
+  "current_day": 14,
+  "faction_favor": {
+    "alpha": 3,
+    "beta": 0,
+    "gamma": 0
+  },
+  "stance_delta": {
+    "attack": 5,
+    "defend": -2,
+    "neutral": 0
+  },
+  "stim_delta": 4
+}

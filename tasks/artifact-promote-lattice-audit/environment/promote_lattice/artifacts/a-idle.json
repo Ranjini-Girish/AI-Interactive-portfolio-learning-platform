@@ -1,0 +1,8 @@
+{
+  "artifact_id": "a-idle",
+  "current_stage": "prod",
+  "depends_on": [],
+  "pool": "p-east",
+  "promote_priority": 99,
+  "stage_entered_day": 1
+}

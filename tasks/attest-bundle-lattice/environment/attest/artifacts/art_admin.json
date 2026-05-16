@@ -1,0 +1,26 @@
+{
+  "artifact_id": "art_admin",
+  "deployment_tier": "production",
+  "digest": "sha256:1100000000000000000000000000000000000000000000000000000000000001",
+  "repository": "ghcr.io/fleet/admin",
+  "signatures": [
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:1100000000000000000000000000000000000000000000000000000000000001",
+      "policy_rank": 5,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_admin_extra",
+      "signer_email": "lead@blocked.test"
+    },
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:1100000000000000000000000000000000000000000000000000000000000001",
+      "policy_rank": 4,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_admin_main",
+      "signer_email": "rel@org.prod"
+    }
+  ]
+}

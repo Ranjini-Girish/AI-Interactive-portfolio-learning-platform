@@ -1,0 +1,14 @@
+Agent Reads /app/registry/SPEC.md fully before changing any Go code, +2
+Agent Produces all five JSON files under /app/audit with canonical encoding, +3
+Agent Respects sorted keys and stable ordering rules from SPEC for every output array, +2
+Agent Implements incident winner selection and superseded event listing exactly as specified, +3
+Agent Applies integrity lock so every field in a locked package shows blocked severity, +2
+Agent Applies naming waiver so skew-only rows downgrade from warn to info for that package, +2
+Agent Detects JSON primary collisions within each struct scope excluding ignored json fields, +2
+Agent Parses comma-separated tag bodies with allowed flag vocabulary for json and bson, +2
+Agent Leaves /app/registry byte-identical, -3
+Agent Emits extra files under /app/audit beyond the five required names, -3
+Agent Writes outputs that fail SHA-256 pins on any required file or fragment, -5
+Agent Modifies pool_state.json or incident_log.json fixtures during the run, -5
+Agent Builds the Go program outside /app/src or names the binary something other than /app/bin/tagmatrix, -3
+Agent Uses a JSON encoder that omits spaces after colons or omits the single trailing newline, -2

@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_04",
+  "client_id": "c_eta",
+  "requested_redirect": "https://eta.example.com/oauth",
+  "resource_id": "r_reports"
+}

@@ -1,0 +1,19 @@
+{
+  "exported_batches": [
+    "b-app",
+    "b-base",
+    "b-db",
+    "b-heavy",
+    "b-mon",
+    "b-net"
+  ],
+  "source_id": "h-idle",
+  "sync_windows": [
+    [
+      10,
+      20
+    ]
+  ],
+  "tier": "production",
+  "warehouse_id": "r-east"
+}

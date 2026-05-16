@@ -1,0 +1,9 @@
+{
+  "id": "crash-005",
+  "reported_day": 16,
+  "reporter": "eve@example.com",
+  "frame_stack": ["render::draw", "render::clip", "render::flush", "render::buffer", "render::commit"],
+  "env_hash": "4a5b6c7d8e9f0011223a4b5c6d7e8f9024a5b6c7d8e9f0011223a4b5c6d7e8f9",
+  "reproducibility": "once",
+  "severity_observed": "low"
+}

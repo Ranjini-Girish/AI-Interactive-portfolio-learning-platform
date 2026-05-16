@@ -1,0 +1,8 @@
+{
+  "module_id": "checkout",
+  "module_path": "example.com/checkout",
+  "replaces": [],
+  "requires": [
+    "example.com/pay"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "ds-gold-clicks",
+  "name": "Gold-tier click features",
+  "tier": "gold",
+  "lineage_parents": ["ds-curated-clicks"]
+}

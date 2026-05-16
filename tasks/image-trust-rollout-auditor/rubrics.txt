@@ -1,0 +1,13 @@
+Agent implements the auditor in Rust at `/app/planner/src/main.rs` and generates all five required JSON outputs in `/app/audit`, +5
+Agent applies incident activation by accepted flag and current-day cutoff before any downstream logic, +3
+Agent resolves duplicate risk overrides and force-allow directives using highest day then ASCII-smallest event_id tie-breaks, +3
+Agent computes trusted signatures with environment-specific tier allowlists and minimum counts, +3
+Agent applies risk computation in the correct sequence including override replacement and status penalties, +2
+Agent enforces deployment decision precedence so compromised images and service lockdown interactions are handled correctly, +5
+Agent produces quarantine statuses and per-service blocked/review image lists with deterministic ordering, +3
+Agent emits key exposure status values and counts consistent with compromise and expiry precedence, +2
+Agent writes deterministic canonical JSON outputs that are stable across repeated runs, +2
+Agent omits any required output file or writes malformed JSON, -5
+Agent uses incorrect event tie-breaks or ignores accepted/day gating for incidents, -3
+Agent miscomputes trust status, risk totals, or deployment decisions for any image, -5
+Agent returns non-deterministic ordering in output arrays or summary maps, -2

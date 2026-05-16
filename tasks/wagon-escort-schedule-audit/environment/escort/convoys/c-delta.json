@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-delta",
+  "departure_day": 11,
+  "required_guards": 2,
+  "route_id": "r-east",
+  "tier": "silver"
+}

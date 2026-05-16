@@ -1,0 +1,5 @@
+{
+  "service_id": "svc_billing",
+  "environment": "prod",
+  "max_risk_allowed": 65
+}

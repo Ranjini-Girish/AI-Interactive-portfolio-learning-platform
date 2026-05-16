@@ -1,0 +1,29 @@
+{
+  "duels": [
+    {
+      "round": 5,
+      "red_player": "p01",
+      "blue_player": "p03"
+    },
+    {
+      "round": 4,
+      "red_player": "p01",
+      "blue_player": "p02"
+    },
+    {
+      "round": 5,
+      "red_player": "p01",
+      "blue_player": "p05"
+    },
+    {
+      "round": 4,
+      "red_player": "p01",
+      "blue_player": "p06"
+    },
+    {
+      "round": 3,
+      "red_player": "p06",
+      "blue_player": "p07"
+    }
+  ]
+}

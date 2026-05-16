@@ -1,0 +1,5 @@
+{
+  "as_of_day": 120,
+  "global_revoke_prefixes": ["example.com/retire-pkg/"],
+  "local_strip_after_manifest": "modules/09-notifications.json"
+}

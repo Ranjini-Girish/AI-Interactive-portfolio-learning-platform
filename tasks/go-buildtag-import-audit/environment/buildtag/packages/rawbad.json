@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/blockedX"
+      ],
+      "name": "bad.go"
+    }
+  ],
+  "package_key": "rawbad",
+  "package_path": "github.com/acme/rawbad"
+}

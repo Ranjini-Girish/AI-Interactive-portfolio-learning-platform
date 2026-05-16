@@ -1,0 +1,16 @@
+{
+  "teams": [
+    {
+      "team_id": "azure",
+      "tier": "mythic"
+    },
+    {
+      "team_id": "crimson",
+      "tier": "heroic"
+    },
+    {
+      "team_id": "jade",
+      "tier": "normal"
+    }
+  ]
+}

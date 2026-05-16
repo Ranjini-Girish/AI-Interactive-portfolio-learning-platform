@@ -1,0 +1,8 @@
+{
+  "module_id": "ledger",
+  "module_path": "example.com/ledger",
+  "replaces": [],
+  "requires": [
+    "example.com/auth"
+  ]
+}

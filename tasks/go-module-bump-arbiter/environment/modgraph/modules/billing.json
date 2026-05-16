@@ -1,0 +1,75 @@
+{
+  "excludes": [],
+  "go_version_min": "1.20",
+  "module_path": "billing",
+  "replaces": [
+    {
+      "from_path": "github.com/acme/badge",
+      "to_path": "github.com/acme/badge2",
+      "to_version": "v2.0.0"
+    },
+    {
+      "from_path": "github.com/acme/utils",
+      "to_path": "github.com/acme/utils2",
+      "to_version": "v3.0.0"
+    },
+    {
+      "from_path": "golang.org/x/net",
+      "to_path": "github.com/acme/telemetry",
+      "to_version": "v1.2.0"
+    },
+    {
+      "from_path": "google.golang.org/grpc",
+      "to_path": "google.golang.org/grpc",
+      "to_version": "v1.59.0"
+    }
+  ],
+  "requires": [
+    {
+      "dep_path": "github.com/acme/badge",
+      "min_version": "v1.0.0",
+      "reachability_symbols": []
+    },
+    {
+      "dep_path": "github.com/acme/cache",
+      "min_version": "v1.1.0",
+      "reachability_symbols": [
+        "github.com/acme/cache/redis.Pool"
+      ]
+    },
+    {
+      "dep_path": "github.com/acme/telemetry",
+      "min_version": "v1.0.0",
+      "reachability_symbols": [
+        "github.com/acme/telemetry/api.Client"
+      ]
+    },
+    {
+      "dep_path": "github.com/acme/utils",
+      "min_version": "v1.0.0",
+      "reachability_symbols": []
+    },
+    {
+      "dep_path": "golang.org/x/net",
+      "min_version": "v0.10.0",
+      "reachability_symbols": [
+        "golang.org/x/net/http2.Transport"
+      ]
+    },
+    {
+      "dep_path": "golang.org/x/text",
+      "min_version": "v0.3.0",
+      "reachability_symbols": [
+        "golang.org/x/text/unicode/norm"
+      ]
+    },
+    {
+      "dep_path": "google.golang.org/grpc",
+      "min_version": "v1.58.0",
+      "reachability_symbols": [
+        "google.golang.org/grpc.ClientConn"
+      ]
+    }
+  ],
+  "tools": []
+}

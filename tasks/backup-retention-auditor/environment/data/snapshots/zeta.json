@@ -1,0 +1,12 @@
+{
+  "host": "zeta",
+  "snapshots": [
+    {"id": "zeta-001", "kind": "full",        "taken_day": 20,  "size_mb": 90, "parent_id": null,             "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0001"},
+    {"id": "zeta-002", "kind": "incremental", "taken_day": 100, "size_mb": 20, "parent_id": "zeta-001",       "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0002"},
+    {"id": "zeta-003", "kind": "incremental", "taken_day": 200, "size_mb": 25, "parent_id": "zeta-002",       "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0003"},
+    {"id": "zeta-004", "kind": "incremental", "taken_day": 290, "size_mb": 30, "parent_id": "zeta-MISSING",   "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0004"},
+    {"id": "zeta-005", "kind": "incremental", "taken_day": 355, "size_mb": 20, "parent_id": "zeta-004",       "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0005"},
+    {"id": "zeta-006", "kind": "incremental", "taken_day": 363, "size_mb": 15, "parent_id": "zeta-005",       "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0006"},
+    {"id": "zeta-007", "kind": "incremental", "taken_day": 358, "size_mb": 18, "parent_id": "zeta-PHANTOM",   "sha256_chain": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0007"}
+  ]
+}

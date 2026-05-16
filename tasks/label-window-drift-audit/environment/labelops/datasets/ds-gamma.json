@@ -1,0 +1,9 @@
+{
+  "baseline_positive_bps": 2800,
+  "dataset_id": "ds-gamma",
+  "owner": "ads",
+  "parents": [
+    "ds-beta"
+  ],
+  "tier": "bronze"
+}

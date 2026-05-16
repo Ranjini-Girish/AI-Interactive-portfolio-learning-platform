@@ -1,0 +1,12 @@
+{
+  "advisory_id": "GO-2024-crypto",
+  "affected_symbols": [
+    "github.com/acme/crypto/legacy.Cipher"
+  ],
+  "affected_versions": [
+    "v0.1.0"
+  ],
+  "dep_path": "github.com/acme/crypto",
+  "fixed_in": "v0.2.0",
+  "severity": "high"
+}

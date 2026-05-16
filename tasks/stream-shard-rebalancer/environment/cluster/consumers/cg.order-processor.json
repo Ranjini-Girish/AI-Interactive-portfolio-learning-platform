@@ -1,0 +1,22 @@
+{
+  "group_id": "cg.order-processor",
+  "subscription": "literal:t.orders.events",
+  "members": [
+    {
+      "member_id": "m01-ord",
+      "consumption_capacity_mbps": 80
+    },
+    {
+      "member_id": "m02-ord",
+      "consumption_capacity_mbps": 80
+    },
+    {
+      "member_id": "m03-ord",
+      "consumption_capacity_mbps": 80
+    },
+    {
+      "member_id": "m04-ord",
+      "consumption_capacity_mbps": 80
+    }
+  ]
+}

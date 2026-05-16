@@ -1,0 +1,12 @@
+{
+  "id": "run-014",
+  "owner": "olivia",
+  "started_day": 108,
+  "base_dataset": "ds-cleared-corpus",
+  "parent_run": null,
+  "declared_tier_target": "research",
+  "status_declared": "succeeded",
+  "claimed_eval_metric": 0.6,
+  "runtime_minutes_observed": 180,
+  "retry_count_observed": 0
+}

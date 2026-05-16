@@ -1,0 +1,11 @@
+{
+  "alg_family": "ES256",
+  "allowed_audience_prefixes": [
+    "https://svc/c/"
+  ],
+  "kid": "k_delta",
+  "not_after_day": 30,
+  "not_before_day": 5,
+  "record_id": "pub_delta_1",
+  "sequence": 1
+}

@@ -1,0 +1,16 @@
+Agent applies the witness-day lower bound only to attestation day filtering while leaving renewal-window sums on the original renewal-window bounds, +2
+Agent emits all five required JSON files under the audit directory with exactly the top-level keys named in SPEC.md, +3
+Agent applies tier-scaled grace and renewal-cap baselines plus incident deltas when computing effective_grace and max_renewals per lease, +3
+Agent evaluates contested-slot witness sufficiency using co-tenant attestations deduped by witness host and day against the witness inclusive day range from SPEC.md before grace or cap rules, +3
+Agent processes accepted incidents in ascending (day, event_id) order and records each applied row in incident_journal.json, +2
+Agent forces quarantined status when host_compromise or slot_compromise incidents target a lease host or slot, +2
+Agent honors freeze_renewals and force_expire precedence so frozen or directive-expired leases never appear active, +2
+Agent sorts lease_verdicts.leases by (host_id, slot_id) and slot_contention active_hosts lexicographically, +1
+Agent writes canonical UTF-8 JSON with two-space indent and sorted keys per SPEC.md, +1
+Agent modifies any file under the bundled leases input tree, -5
+Agent omits one or more required audit output files or adds extra top-level keys, -3
+Agent filters renewal tallies with the witness-day floor or filters witness days with the renewal-window floor alone, -3
+Agent credits witness attestations from hosts that never hold a lease on the contested slot, -3
+Agent ignores extend_grace or renewal_cap_delta tier deltas when computing tier_policy or lease caps, -3
+Agent counts rejected, future-day, or malformed incidents as applied rather than ignored in summary.json, -2
+Agent emits lease rows out of (host_id, slot_id) sort order or leaves reasons unsorted, -2

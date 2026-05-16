@@ -1,0 +1,10 @@
+1 A B push 1
+1 B C pull 1
+2 B D push 2
+2 D E pull 2
+3 C E push 3
+3 E C pull 3
+4 D F push 4
+4 F D pull 4
+5 A E push 5
+5 E A pull 5

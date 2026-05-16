@@ -1,0 +1,7 @@
+{
+  "capacity_weight_limit": 3,
+  "end_minute": 260,
+  "start_minute": 200,
+  "station_id": "B",
+  "window_id": "w-beta"
+}

@@ -1,0 +1,11 @@
+{
+  "element": "Mg",
+  "lines": [
+    {
+      "label": "resonance",
+      "line_id": "MG_285",
+      "rel_int": 80,
+      "wave_nm": 285
+    }
+  ]
+}

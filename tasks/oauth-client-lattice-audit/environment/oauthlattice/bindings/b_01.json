@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_01",
+  "client_id": "c_alpha",
+  "requested_redirect": "https://alpha.example.com/cb",
+  "resource_id": "r_admin"
+}

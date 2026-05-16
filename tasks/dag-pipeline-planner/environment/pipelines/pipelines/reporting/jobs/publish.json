@@ -1,0 +1,8 @@
+{
+  "base_priority": 3,
+  "depends_on": ["render_csv", "render_html", "render_pdf"],
+  "name": "publish",
+  "resource_class": "cpu_small",
+  "retry_count": 1,
+  "runtime_minutes": 5
+}

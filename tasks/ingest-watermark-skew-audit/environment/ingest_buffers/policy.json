@@ -1,0 +1,12 @@
+{
+  "dedup_window_days": 3,
+  "ingest_window_days": 7,
+  "lateness_days_by_tier": {
+    "bronze": 6,
+    "gold": 2,
+    "silver": 4
+  },
+  "skew_guard_days": 5,
+  "skew_penalty_days": 2,
+  "watermark_retreat_days": 0
+}

@@ -1,0 +1,5 @@
+{
+  "description": "public edge",
+  "zone_id": "z_dmz",
+  "zone_tier": "production"
+}

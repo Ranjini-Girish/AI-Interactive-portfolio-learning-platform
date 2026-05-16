@@ -1,0 +1,10 @@
+{
+  "issuer_serial": "int-us-2",
+  "key_size": 2048,
+  "not_after_day": 1400,
+  "not_before_day": 600,
+  "san": ["shop.example.net", "checkout.example.net"],
+  "serial": "leaf-shop-v1",
+  "signature_algo": "sha256-rsa",
+  "subject_cn": "shop.example.net"
+}

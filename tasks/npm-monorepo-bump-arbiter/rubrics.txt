@@ -1,0 +1,18 @@
+Agent emits all five required output files under /app/arbitration/ with the documented top-level key shape, +3
+Agent correctly resolves workspace-protocol forms to the in-workspace package version with the right protocol variant tag, +3
+Agent classifies workspace-protocol entries against a non-monorepo target with the documented block reason, +1
+Agent applies force_freeze events to all consuming entries and classifies safe versus advisory-conflict freezes correctly, +3
+Agent applies dist_tag_pin events to all consuming entries and classifies safe versus advisory-conflict pinned targets correctly, +3
+Agent computes the eligibility cascade across range, engines-superset, yanked-or-pinned, and active-advisory in the right priority order, +3
+Agent implements the exports-condition downgrade rule with ASCII-ordered drops of conditions not supported by the highest eligible version, +5
+Agent intersects peer ranges across multiple consumers and classifies the four peer-status enum values correctly, +5
+Agent computes engines compatibility with both lower and upper componentwise diffs and the four package-status enum values, +3
+Agent classifies every advisory across the seven status enum values with the correct mitigation-method lookup, +5
+Agent computes summary aggregates that are internally consistent with the four per-artifact outputs, +2
+Agent silently ignores incident events failing the accept-filter and surfaces the count in summary, +2
+Agent emits canonical JSON with two-space indentation, sorted keys, and a single trailing newline for every output, +2
+Agent mutates or deletes any read-only file under the monorepo input directory, -3
+Agent omits any required output key or emits a non-empty exports_dropped_set out of ASCII order, -3
+Agent miscomputes the peer intersection by failing to handle empty intersections as null or by sorting consumers incorrectly, -3
+Agent picks an engines-incompatible registry version that fails the workspace-superset check, -3
+Agent treats deduplicated incident events as ignored or counts accepted-but-unmatched events into the ignored counter, -2

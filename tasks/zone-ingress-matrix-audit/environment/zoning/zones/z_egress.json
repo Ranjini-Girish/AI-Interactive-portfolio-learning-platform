@@ -1,0 +1,5 @@
+{
+  "description": "egress relay",
+  "zone_id": "z_egress",
+  "zone_tier": "production"
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "accepted": true,
+    "day": 4,
+    "event_id": "evt-001",
+    "kind": "suspension",
+    "team_id": "t_golf"
+  },
+  {
+    "accepted": true,
+    "day": 5,
+    "event_id": "evt-002",
+    "kind": "stamina_override",
+    "new_stamina": 64,
+    "team_id": "t_foxtrot"
+  },
+  {
+    "accepted": true,
+    "arena_id": "a_north",
+    "day": 3,
+    "event_id": "evt-003",
+    "kind": "arena_lock"
+  },
+  {
+    "accepted": false,
+    "arena_id": "a_east",
+    "day": 6,
+    "event_id": "evt-004",
+    "kind": "arena_lock"
+  },
+  {
+    "accepted": true,
+    "day": 9,
+    "event_id": "evt-005",
+    "kind": "suspension",
+    "team_id": "t_charlie"
+  },
+  {
+    "accepted": true,
+    "day": 2,
+    "event_id": "evt-006",
+    "kind": "stamina_override",
+    "new_stamina": 61,
+    "team_id": "t_charlie"
+  }
+]

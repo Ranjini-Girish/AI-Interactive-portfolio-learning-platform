@@ -1,0 +1,12 @@
+{
+  "conflicts": 8,
+  "dataset_id": "ds-epsilon",
+  "day_end": 97,
+  "day_start": 91,
+  "depends_on": [],
+  "labels_total": 500,
+  "positives": 365,
+  "reviewer_rejects": 7,
+  "source_model_id": "seed",
+  "window_id": "w-epsilon-1"
+}

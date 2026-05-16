@@ -1,0 +1,10 @@
+{
+  "issuer_serial": "int-eu-1",
+  "key_size": 4096,
+  "not_after_day": 4500,
+  "not_before_day": 0,
+  "san": [],
+  "serial": "int-eu-1-sub",
+  "signature_algo": "sha256-rsa",
+  "subject_cn": "EUTrust Issuance Authority"
+}

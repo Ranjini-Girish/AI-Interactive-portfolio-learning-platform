@@ -1,0 +1,13 @@
+Agent reads /app/escort/SPEC.md and every mounted fixture before planning, +3
+Agent emits all five schedule JSON files under /app/schedule/ with canonical formatting, +5
+Agent implements the planner in Go under /app/src/ and builds /app/bin/escort-scheduler, +3
+Agent applies tier hazard decay before classifying convoy risk, +2
+Agent multiplies uncovered convoy hazard by the tier-specific policy percent, +2
+Agent honors guard cooldown windows when greedily assigning escorts, +2
+Agent processes accepted incidents in ascending day then event_id order, +2
+Agent applies route_embargo across convoy risk, guard assignment, and route verdict, +3
+Agent leaves every input file under /app/escort/ unchanged, -3
+Agent writes schedule JSON with wrong key ordering or missing trailing newline, -2
+Agent assigns guards to embargoed convoy routes, -3
+Agent ignores depot_closure operative limits when testing coverage, -2
+Agent emits assignment_status other than the spec buckets for bundled convoys, -2

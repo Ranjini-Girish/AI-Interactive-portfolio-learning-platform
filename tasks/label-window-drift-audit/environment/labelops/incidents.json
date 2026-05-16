@@ -1,0 +1,87 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "amount_bps": 500,
+      "day": 96,
+      "event_id": "evt-001",
+      "kind": "relabel_credit",
+      "target_id": "w-alpha-2",
+      "target_type": "window"
+    },
+    {
+      "accepted": true,
+      "day": 99,
+      "event_id": "evt-002",
+      "kind": "window_freeze",
+      "target_id": "w-alpha-3",
+      "target_type": "window"
+    },
+    {
+      "accepted": true,
+      "day": 98,
+      "event_id": "evt-003",
+      "kind": "label_source_compromise",
+      "target_id": "ds-beta",
+      "target_type": "dataset"
+    },
+    {
+      "accepted": true,
+      "day": 100,
+      "event_id": "evt-004",
+      "kind": "model_hold",
+      "target_id": "m-alpha",
+      "target_type": "model"
+    },
+    {
+      "accepted": true,
+      "day": 97,
+      "event_id": "evt-005",
+      "kind": "model_hold",
+      "target_id": "m-alpha",
+      "target_type": "model"
+    },
+    {
+      "accepted": true,
+      "amount_bps": 900,
+      "day": 104,
+      "event_id": "evt-006",
+      "kind": "relabel_credit",
+      "target_id": "w-alpha-2",
+      "target_type": "window"
+    },
+    {
+      "accepted": true,
+      "day": 99,
+      "event_id": "evt-007",
+      "kind": "window_freeze",
+      "target_id": "w-ghost",
+      "target_type": "window"
+    },
+    {
+      "accepted": true,
+      "day": 101,
+      "event_id": "evt-008",
+      "kind": "label_source_compromise",
+      "target_id": "ds-epsilon",
+      "target_type": "dataset"
+    },
+    {
+      "accepted": true,
+      "day": 90,
+      "event_id": "evt-009",
+      "kind": "unknown_note",
+      "target_id": "ds-alpha",
+      "target_type": "dataset"
+    },
+    {
+      "accepted": false,
+      "amount_bps": 500,
+      "day": 99,
+      "event_id": "evt-010",
+      "kind": "relabel_credit",
+      "target_id": "w-epsilon-1",
+      "target_type": "window"
+    }
+  ]
+}

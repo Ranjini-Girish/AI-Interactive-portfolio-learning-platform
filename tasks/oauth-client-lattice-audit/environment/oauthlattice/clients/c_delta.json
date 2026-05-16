@@ -1,0 +1,8 @@
+{
+  "client_id": "c_delta",
+  "client_type": "confidential",
+  "grant_types": ["authorization_code", "implicit"],
+  "redirect_uris": ["https://delta.example.com/rp"],
+  "registered_scopes": ["openid"],
+  "tier_declared": "silver"
+}

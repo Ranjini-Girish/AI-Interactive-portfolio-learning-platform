@@ -1,0 +1,21 @@
+{
+  "batch_id": "b-cet-2",
+  "ingest_day": 99,
+  "partition_id": "part-cetus-a",
+  "events": [
+    {
+      "bytes_hint": 130,
+      "event_day": 94,
+      "event_id": "e-c2",
+      "idempotency_key": "k-cet-skew",
+      "sequence": 1
+    },
+    {
+      "bytes_hint": 140,
+      "event_day": 100,
+      "event_id": "e-c3",
+      "idempotency_key": "k-cet-skew-b",
+      "sequence": 1
+    }
+  ]
+}

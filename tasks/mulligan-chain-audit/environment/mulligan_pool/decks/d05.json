@@ -1,0 +1,13 @@
+{
+  "deck_id": "d05",
+  "maindeck": [
+    "Forest",
+    "Island",
+    "Mountain",
+    "Plains",
+    "Swamp",
+    "Wastes"
+  ],
+  "sideboard": [],
+  "tier": "silver"
+}

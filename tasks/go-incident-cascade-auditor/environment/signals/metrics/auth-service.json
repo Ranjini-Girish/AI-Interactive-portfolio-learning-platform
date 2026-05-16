@@ -1,0 +1,11 @@
+{
+  "service_id": "auth-service",
+  "windows": [
+    {"error_pct": 4, "minute": 55, "p95_ms": 210, "qps": 620},
+    {"error_pct": 5, "minute": 56, "p95_ms": 220, "qps": 610},
+    {"error_pct": 5, "minute": 57, "p95_ms": 225, "qps": 605},
+    {"error_pct": 6, "minute": 58, "p95_ms": 235, "qps": 600},
+    {"error_pct": 6, "minute": 59, "p95_ms": 245, "qps": 590},
+    {"error_pct": 7, "minute": 60, "p95_ms": 250, "qps": 580}
+  ]
+}

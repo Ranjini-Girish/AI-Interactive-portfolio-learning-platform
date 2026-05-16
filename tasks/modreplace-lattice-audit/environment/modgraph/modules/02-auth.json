@@ -1,0 +1,13 @@
+{
+  "module_id": "auth",
+  "module_path": "example.com/auth",
+  "replaces": [
+    {
+      "from": "example.com/lib",
+      "to": "example.com/lib-v2"
+    }
+  ],
+  "requires": [
+    "example.com/lib"
+  ]
+}

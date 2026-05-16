@@ -1,0 +1,15 @@
+{
+  "topic_id": "t.legacy.dump",
+  "partitions": 2,
+  "tier": "bronze",
+  "target_lag_messages": 4000,
+  "current_throughput_mbps_per_partition": 18,
+  "current_lag_messages": {
+    "0": 200,
+    "1": 100
+  },
+  "current_leader_map": {
+    "0": "b08",
+    "1": "b11"
+  }
+}

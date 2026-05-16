@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/lib"
+      ],
+      "name": "index.go"
+    }
+  ],
+  "package_key": "indexer",
+  "package_path": "github.com/acme/indexer"
+}

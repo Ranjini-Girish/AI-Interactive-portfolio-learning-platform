@@ -1,0 +1,7 @@
+{
+  "convoy_id": "c-alpha",
+  "departure_day": 9,
+  "required_guards": 2,
+  "route_id": "r-north",
+  "tier": "gold"
+}

@@ -1,0 +1,218 @@
+{
+  "events": [
+    {
+      "event_id": "ev-drift-p1-02",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 2,
+      "probe_id": "p1",
+      "delta_K": 0.1
+    },
+    {
+      "event_id": "ev-drift-p1-08",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 8,
+      "probe_id": "p1",
+      "delta_K": -0.05
+    },
+    {
+      "event_id": "ev-drift-p1-10",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 10,
+      "probe_id": "p1",
+      "delta_K": -0.25
+    },
+    {
+      "event_id": "ev-drift-p1-13",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 13,
+      "probe_id": "p1",
+      "delta_K": 0.05
+    },
+    {
+      "event_id": "ev-drift-p2-01",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 1,
+      "probe_id": "p2",
+      "delta_K": 0.05
+    },
+    {
+      "event_id": "ev-bench-p2-acetone-04",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 4,
+      "probe_id": "p2",
+      "solvent_id": "acetone",
+      "delta_K": 0.02
+    },
+    {
+      "event_id": "ev-bench-p2-acetone-05a",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 5,
+      "probe_id": "p2",
+      "solvent_id": "acetone",
+      "delta_K": 0.1
+    },
+    {
+      "event_id": "ev-bench-p2-acetone-05b",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 5,
+      "probe_id": "p2",
+      "solvent_id": "acetone",
+      "delta_K": -0.35
+    },
+    {
+      "event_id": "ev-bench-p1-dmso-02",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 2,
+      "probe_id": "p1",
+      "solvent_id": "dmso",
+      "delta_K": -0.5
+    },
+    {
+      "event_id": "ev-stict-p4-early",
+      "kind": "probe_stiction",
+      "accepted": true,
+      "day": 1,
+      "probe_id": "p4"
+    },
+    {
+      "event_id": "ev-stict-p3",
+      "kind": "probe_stiction",
+      "accepted": true,
+      "day": 9,
+      "probe_id": "p3"
+    },
+    {
+      "event_id": "ev-drift-p3-a03",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 5,
+      "probe_id": "p3",
+      "delta_K": 0.1
+    },
+    {
+      "event_id": "ev-drift-p3-07",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 7,
+      "probe_id": "p3",
+      "delta_K": -0.05
+    },
+    {
+      "event_id": "ev-bench-p3-water-11",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 11,
+      "probe_id": "p3",
+      "solvent_id": "water",
+      "delta_K": -0.02
+    },
+    {
+      "event_id": "ev-drift-p3-a04only",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 11,
+      "probe_id": "p3",
+      "delta_K": 0.2
+    },
+    {
+      "event_id": "ev-bench-p1-water-17",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 17,
+      "probe_id": "p1",
+      "solvent_id": "water",
+      "delta_K": 0.45
+    },
+    {
+      "event_id": "ev-recall-water",
+      "kind": "solvent_recall",
+      "accepted": true,
+      "day": 18,
+      "solvent_id": "water"
+    },
+    {
+      "event_id": "ev-lift-water-p1",
+      "kind": "recall_lift",
+      "accepted": true,
+      "day": 19,
+      "solvent_id": "water",
+      "probe_id": "p1"
+    },
+    {
+      "event_id": "ev-lift-acetone-wildcard",
+      "kind": "recall_lift",
+      "accepted": true,
+      "day": 1,
+      "solvent_id": "acetone"
+    },
+    {
+      "event_id": "ev-disabled-drift",
+      "kind": "sensor_drift",
+      "accepted": false,
+      "day": 30,
+      "probe_id": "p1",
+      "delta_K": 50.0
+    },
+    {
+      "event_id": "ev-recall-unknown",
+      "kind": "solvent_recall",
+      "accepted": true,
+      "day": 1,
+      "solvent_id": "unknown_solvent"
+    },
+    {
+      "event_id": "ev-stict-unknown",
+      "kind": "probe_stiction",
+      "accepted": true,
+      "day": 1,
+      "probe_id": "unknown_probe"
+    },
+    {
+      "event_id": "ev-drift-missing-delta",
+      "kind": "sensor_drift",
+      "accepted": true,
+      "day": 3,
+      "probe_id": "p1"
+    },
+    {
+      "event_id": "ev-bench-unknown-solvent",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 1,
+      "probe_id": "p1",
+      "solvent_id": "unknown_solvent",
+      "delta_K": 1.0
+    },
+    {
+      "event_id": "ev-bench-no-probe",
+      "kind": "bench_correction",
+      "accepted": true,
+      "day": 1,
+      "delta_K": 0.01
+    },
+    {
+      "event_id": "ev-lift-unknown-solvent",
+      "kind": "recall_lift",
+      "accepted": true,
+      "day": 25,
+      "solvent_id": "unknown_solvent"
+    },
+    {
+      "event_id": "ev-lift-bad-probe",
+      "kind": "recall_lift",
+      "accepted": true,
+      "day": 5,
+      "solvent_id": "water",
+      "probe_id": "ghost_probe"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "format_id": "fmt-standard",
+  "max_mulligans": 5,
+  "mulligan_style": "london",
+  "restricted_counts": {
+    "Lightning Bolt": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "indexer"
+  ],
+  "node_id": "node-d",
+  "service_id": "search-api",
+  "team": "search",
+  "tier": "silver"
+}

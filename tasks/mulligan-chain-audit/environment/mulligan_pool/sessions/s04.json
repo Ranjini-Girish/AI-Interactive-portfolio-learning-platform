@@ -1,0 +1,21 @@
+{
+  "chain": [
+    {
+      "action": "keep",
+      "hand": [
+        "Forest",
+        "Island",
+        "Lightning Bolt",
+        "Mountain",
+        "Plains",
+        "Swamp",
+        "Wastes"
+      ],
+      "step": 0
+    }
+  ],
+  "deck_id": "d04",
+  "format_id": "fmt-standard",
+  "played_day": 101,
+  "session_id": "s04"
+}

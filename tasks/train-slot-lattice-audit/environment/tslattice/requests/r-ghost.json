@@ -1,0 +1,8 @@
+{
+  "depends_on": "no-run",
+  "run_id": "r-ghost",
+  "rung": "silver",
+  "slots_asked": 1,
+  "submit_day": 5,
+  "tenant_id": "lab-west"
+}

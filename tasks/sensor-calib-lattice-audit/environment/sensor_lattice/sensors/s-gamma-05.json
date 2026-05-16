@@ -1,0 +1,9 @@
+{
+  "batch_id": "batch-g1",
+  "depends_on": [],
+  "measured_ppm": 30,
+  "reference_ppm": 29,
+  "sensor_id": "s-gamma-05",
+  "tier": "bronze",
+  "uncertainty_ppm": 2
+}

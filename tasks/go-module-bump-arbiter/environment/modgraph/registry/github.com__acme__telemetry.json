@@ -1,0 +1,38 @@
+{
+  "dep_path": "github.com/acme/telemetry",
+  "versions": [
+    {
+      "affected_symbols": [
+        "github.com/acme/telemetry/internal/wire"
+      ],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v1.0.0",
+      "vuln_advisories": []
+    },
+    {
+      "affected_symbols": [
+        "github.com/acme/telemetry/internal/wire"
+      ],
+      "min_go_version": "1.19",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v1.1.0",
+      "vuln_advisories": [
+        "GO-2024-tel"
+      ]
+    },
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.20",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v1.2.0",
+      "vuln_advisories": []
+    }
+  ]
+}

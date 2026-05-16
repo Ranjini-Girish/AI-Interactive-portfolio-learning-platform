@@ -1,0 +1,15 @@
+{
+  "day": 40,
+  "records": [
+    {
+      "flag_id": "recommend-rerank",
+      "segment_id": "selfserve-new",
+      "users": 8500
+    },
+    {
+      "flag_id": "search-facets",
+      "segment_id": "selfserve-new",
+      "users": 9400
+    }
+  ]
+}

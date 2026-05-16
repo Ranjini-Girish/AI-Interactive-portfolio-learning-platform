@@ -1,0 +1,16 @@
+{
+  "host_id": "host-zeta",
+  "leases": [
+    {
+      "last_renew_day": 98,
+      "lease_until_day": 105,
+      "renew_count": 5,
+      "slot_id": "slot-zeta6"
+    }
+  ],
+  "renewals_by_day": {
+    "94": 3,
+    "98": 2
+  },
+  "tier": "gold"
+}

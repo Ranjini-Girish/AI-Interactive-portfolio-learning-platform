@@ -1,0 +1,9 @@
+{
+  "module_id": "inventory",
+  "module_path": "example.com/inventory",
+  "replaces": [],
+  "requires": [
+    "github.com/legacy/sdk",
+    "github.com/legacy/extra"
+  ]
+}

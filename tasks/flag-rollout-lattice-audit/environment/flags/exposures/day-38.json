@@ -1,0 +1,15 @@
+{
+  "day": 38,
+  "records": [
+    {
+      "flag_id": "billing-ledger",
+      "segment_id": "enterprise",
+      "users": 9000
+    },
+    {
+      "flag_id": "mobile-paywall",
+      "segment_id": "selfserve",
+      "users": 36000
+    }
+  ]
+}

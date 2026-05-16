@@ -1,0 +1,36 @@
+{
+  "guard_cooldown_days": 3,
+  "hazard_decay_by_tier": {
+    "bronze": 1,
+    "gold": 5,
+    "silver": 3
+  },
+  "risk_thresholds_by_tier": {
+    "bronze": {
+      "critical": 35,
+      "high": 20,
+      "medium": 10
+    },
+    "gold": {
+      "critical": 50,
+      "high": 30,
+      "medium": 15
+    },
+    "silver": {
+      "critical": 40,
+      "high": 25,
+      "medium": 12
+    }
+  },
+  "supported_incident_kinds": [
+    "depot_closure",
+    "guard_bench",
+    "hazard_spike",
+    "route_embargo"
+  ],
+  "uncovered_multiplier_pct_by_tier": {
+    "bronze": 150,
+    "gold": 100,
+    "silver": 120
+  }
+}

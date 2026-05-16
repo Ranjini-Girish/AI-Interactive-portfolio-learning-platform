@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [],
+      "name": "c.go"
+    }
+  ],
+  "package_key": "chain_c",
+  "package_path": "github.com/acme/chain_c"
+}

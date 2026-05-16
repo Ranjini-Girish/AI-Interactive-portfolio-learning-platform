@@ -1,0 +1,13 @@
+{
+  "events": [
+    {"kind": "job_quarantine", "pipeline": "feature-store", "job": "compute", "day": 95, "reason": "flaky_outputs"},
+    {"kind": "sla_breach_grace", "pipeline": "reporting", "day": 90, "extension_minutes": 30},
+    {"kind": "resource_pool_freeze", "resource_class": "cpu_large", "day": 98, "duration_days": 5},
+    {"kind": "sla_breach_grace", "pipeline": "ml-training", "day": 92, "extension_minutes": 60},
+    {"kind": "job_quarantine", "pipeline": "ml-training", "job": "prep", "day": 99, "reason": "training_data_drift"},
+    {"kind": "unknown_event", "pipeline": "etl-daily", "day": 99},
+    {"kind": "sla_breach_grace", "pipeline": "ghost-pipe", "day": 95, "extension_minutes": 15},
+    {"kind": "job_quarantine", "pipeline": "etl-daily", "job": "ghost-job", "day": 88, "reason": "missing_target"},
+    {"kind": "resource_pool_freeze", "resource_class": "tpu", "day": 99, "duration_days": 3}
+  ]
+}

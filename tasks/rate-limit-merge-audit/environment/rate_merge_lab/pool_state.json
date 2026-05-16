@@ -1,0 +1,7 @@
+{
+  "current_day": 15,
+  "quarantine": {
+    "burst": 40,
+    "interval_sec": 4
+  }
+}

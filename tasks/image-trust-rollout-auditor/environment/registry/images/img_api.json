@@ -1,0 +1,8 @@
+{
+  "image_id": "img_api",
+  "service_id": "svc_api",
+  "digest": "sha256:api001",
+  "previous_digest": "sha256:api000",
+  "base_risk": 45,
+  "signatures": ["k_primary_a", "k_legacy"]
+}

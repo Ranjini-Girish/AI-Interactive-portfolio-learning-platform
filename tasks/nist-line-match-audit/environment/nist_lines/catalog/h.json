@@ -1,0 +1,11 @@
+{
+  "element": "H",
+  "lines": [
+    {
+      "label": "Balmer",
+      "line_id": "H_ALPHA",
+      "rel_int": 100,
+      "wave_nm": 656
+    }
+  ]
+}

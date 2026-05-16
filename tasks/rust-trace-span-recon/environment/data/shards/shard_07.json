@@ -1,0 +1,9 @@
+[
+  {
+    "end_ms": 5,
+    "parent_id": null,
+    "span_id": "ok-g",
+    "start_ms": 1,
+    "trace_id": "gamma"
+  }
+]

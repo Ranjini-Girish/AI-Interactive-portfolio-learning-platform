@@ -1,0 +1,6 @@
+{
+  "dark_pulse": 10,
+  "gain_umgy_per_pulse": 200,
+  "profile_id": "p-low",
+  "saturation_pulse": 1000
+}

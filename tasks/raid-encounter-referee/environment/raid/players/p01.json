@@ -1,0 +1,10 @@
+{
+  "player_id": "p01",
+  "team_id": "azure",
+  "role": "tank",
+  "rating": 2430,
+  "attendance_streak": 5,
+  "loot_tokens": 2,
+  "bench_credits": 3,
+  "loot_need": "weapon"
+}

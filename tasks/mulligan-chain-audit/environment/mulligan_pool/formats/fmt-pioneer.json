@@ -1,0 +1,8 @@
+{
+  "format_id": "fmt-pioneer",
+  "max_mulligans": 3,
+  "mulligan_style": "partial_paris",
+  "restricted_counts": {
+    "Thoughtseize": 4
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "delta_umgy_per_pulse": -50,
+      "kind": "calibration_shift",
+      "minute": 80,
+      "profile_id": "p-low"
+    },
+    {
+      "accepted": true,
+      "delta_umgy_per_pulse": 100,
+      "kind": "calibration_shift",
+      "minute": 210,
+      "profile_id": "p-high"
+    },
+    {
+      "accepted": true,
+      "kind": "lineage_contam",
+      "minute": 90,
+      "specimen_id": "s-beta"
+    },
+    {
+      "accepted": true,
+      "kind": "specimen_hold",
+      "minute": 140,
+      "specimen_id": "s-epsilon"
+    },
+    {
+      "accepted": true,
+      "kind": "window_freeze",
+      "minute": 205,
+      "window_id": "w-beta"
+    },
+    {
+      "accepted": true,
+      "dose_mgy": 130,
+      "kind": "dose_override",
+      "minute": 315,
+      "run_id": "r08"
+    },
+    {
+      "accepted": true,
+      "dose_mgy": 90,
+      "kind": "dose_override",
+      "minute": 470,
+      "run_id": "r01"
+    },
+    {
+      "accepted": false,
+      "kind": "window_freeze",
+      "minute": 240,
+      "window_id": "w-gamma"
+    },
+    {
+      "accepted": true,
+      "kind": "beam_note",
+      "minute": 250,
+      "run_id": "r07"
+    },
+    {
+      "accepted": true,
+      "kind": "lineage_contam",
+      "minute": 260,
+      "specimen_id": "s-unknown"
+    },
+    {
+      "accepted": true,
+      "delta_umgy_per_pulse": 20,
+      "kind": "calibration_shift",
+      "minute": 300,
+      "profile_id": "p-ghost"
+    }
+  ]
+}

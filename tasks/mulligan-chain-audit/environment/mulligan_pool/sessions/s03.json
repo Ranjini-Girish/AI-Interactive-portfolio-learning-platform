@@ -1,0 +1,21 @@
+{
+  "chain": [
+    {
+      "action": "keep",
+      "hand": [
+        "Dark Ritual",
+        "Forest",
+        "Island",
+        "Mountain",
+        "Plains",
+        "Swamp",
+        "Wastes"
+      ],
+      "step": 0
+    }
+  ],
+  "deck_id": "d03",
+  "format_id": "fmt-standard",
+  "played_day": 102,
+  "session_id": "s03"
+}

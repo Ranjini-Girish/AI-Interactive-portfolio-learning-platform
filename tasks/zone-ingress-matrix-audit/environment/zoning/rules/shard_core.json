@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "action": "deny",
+      "audit_tier": "production",
+      "dst_zones": ["z_db"],
+      "priority": 5,
+      "rule_id": "r_dmz_db_deny",
+      "src_zones": ["z_dmz"]
+    },
+    {
+      "action": "allow",
+      "audit_tier": "production",
+      "dst_zones": ["z_db"],
+      "priority": 1,
+      "rule_id": "r_bastion_db_allow",
+      "src_zones": ["z_bastion"]
+    },
+    {
+      "action": "allow",
+      "audit_tier": "staging",
+      "dst_zones": ["z_internal"],
+      "priority": 2,
+      "rule_id": "r_any_internal_allow",
+      "src_zones": ["*"]
+    }
+  ]
+}

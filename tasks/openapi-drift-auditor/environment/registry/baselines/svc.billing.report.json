@@ -1,0 +1,18 @@
+{
+  "auth_mode": "api_key",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/reports/billing",
+      "params": [
+        {"name": "user_id", "required": true, "type": "string"}
+      ],
+      "response_fields": [
+        {"name": "pending", "type": "number"},
+        {"name": "total", "type": "number"}
+      ],
+      "status_codes": [200, 400, 401]
+    }
+  ],
+  "service_id": "svc.billing.report",
+  "tier": "bronze"
+}

@@ -1,0 +1,15 @@
+{
+  "host_id": "host-kappa",
+  "leases": [
+    {
+      "last_renew_day": 98,
+      "lease_until_day": 99,
+      "renew_count": 1,
+      "slot_id": "slot-kappa7"
+    }
+  ],
+  "renewals_by_day": {
+    "98": 1
+  },
+  "tier": "bronze"
+}

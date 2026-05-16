@@ -1,0 +1,15 @@
+{
+  "attestations": [
+    {
+      "day": 97,
+      "subject_host": "host-zeta",
+      "witness_host": "host-eta"
+    },
+    {
+      "day": 98,
+      "subject_host": "host-eta",
+      "witness_host": "host-zeta"
+    }
+  ],
+  "slot_id": "slot-zeta6"
+}

@@ -1,0 +1,11 @@
+Agent emits all five JSON artifacts with canonical formatting per SPEC, +2
+Agent keeps /app/ivybuild read-only and honors IBL_DATA_DIR and IBL_AUDIT_DIR overrides, +2
+Agent surfaces SCC members for multi-node rings and nulls linear order when cycles exist, +3
+Agent keeps module catalog rows and embedded prereq lists sorted lexicographically, +2
+Agent leaves path weights empty whenever the graph is not linearizable, +2
+Agent invents edges not present in module prereq lists, -5
+Agent omits any required JSON artifact or writes non-canonical JSON, -5
+Agent mislabels acyclic graphs as cyclic or drops SCC members, -3
+Agent emits path weights while linear_order is null, -3
+Agent forgets to echo graph_label into summary.json, -2
+Agent breaks ASCII-only canonical JSON output, -2

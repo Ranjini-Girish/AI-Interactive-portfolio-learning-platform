@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "cnf": [
+        [
+          "ignore"
+        ]
+      ],
+      "imports": [
+        "github.com/acme/lib"
+      ],
+      "name": "skip.go"
+    },
+    {
+      "cnf": [],
+      "imports": [],
+      "name": "use.go"
+    }
+  ],
+  "package_key": "ignpkg",
+  "package_path": "github.com/acme/ignpkg"
+}

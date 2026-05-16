@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "cnf": [
+        [
+          "enterprise"
+        ]
+      ],
+      "imports": [],
+      "name": "needs_ent.go"
+    }
+  ],
+  "package_key": "entpkg",
+  "package_path": "github.com/acme/entpkg"
+}

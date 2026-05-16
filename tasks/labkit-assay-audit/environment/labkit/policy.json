@@ -1,0 +1,6 @@
+{
+  "drift_abs_threshold": 0.75,
+  "fallback_blank_value": 0.05,
+  "ignored_incident_kind_marker": "none",
+  "min_blanks": 2
+}

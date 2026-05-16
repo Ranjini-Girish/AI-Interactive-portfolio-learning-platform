@@ -1,0 +1,7 @@
+{
+  "applied_bundles": ["b-base"],
+  "host_id": "h-n1",
+  "maintenance_windows": [[1, 31]],
+  "region": "r-north",
+  "tier": "staging"
+}

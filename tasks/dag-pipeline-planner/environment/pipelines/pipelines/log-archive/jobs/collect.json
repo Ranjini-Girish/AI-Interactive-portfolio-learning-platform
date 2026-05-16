@@ -1,0 +1,8 @@
+{
+  "base_priority": 8,
+  "depends_on": [],
+  "name": "collect",
+  "resource_class": "cpu_small",
+  "retry_count": 2,
+  "runtime_minutes": 15
+}

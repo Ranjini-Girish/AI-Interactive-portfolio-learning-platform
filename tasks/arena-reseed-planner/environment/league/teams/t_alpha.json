@@ -1,0 +1,12 @@
+{
+  "home_region": "north",
+  "preferred_arena_ids": [
+    "a_north",
+    "a_central"
+  ],
+  "roster_size": 6,
+  "seed_score": 98,
+  "stamina": 70,
+  "team_id": "t_alpha",
+  "tier": "gold"
+}

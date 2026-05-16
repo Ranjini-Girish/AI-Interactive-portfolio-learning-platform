@@ -1,0 +1,4 @@
+{
+  "roots": ["node-alpha", "node-beta", "node-delta", "node-gamma", "node-iota"],
+  "version": 1
+}

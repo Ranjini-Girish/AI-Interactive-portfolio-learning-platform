@@ -1,0 +1,10 @@
+{
+  "attestations": [
+    {
+      "day": 99,
+      "subject_host": "host-beta",
+      "witness_host": "host-delta"
+    }
+  ],
+  "slot_id": "slot-beta2"
+}

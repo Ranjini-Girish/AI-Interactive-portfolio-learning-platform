@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_03",
+  "client_id": "c_beta",
+  "requested_redirect": "https://beta.example.com/app/callback",
+  "resource_id": "r_api"
+}

@@ -1,0 +1,8 @@
+{
+  "artifact_id": "a-mon",
+  "current_stage": "staging",
+  "depends_on": [],
+  "pool": "p-east",
+  "promote_priority": 4,
+  "stage_entered_day": 5
+}

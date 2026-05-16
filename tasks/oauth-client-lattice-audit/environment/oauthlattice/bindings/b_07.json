@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_07",
+  "client_id": "c_alpha",
+  "requested_redirect": "https://alpha.example.com/custom/studio/step2",
+  "resource_id": "r_reports"
+}

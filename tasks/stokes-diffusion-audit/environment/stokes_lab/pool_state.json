@@ -1,0 +1,7 @@
+{
+  "kelvin_offset_global": 0.75,
+  "radius_floor_nm": 0.85,
+  "radius_ceiling_nm": 1.15,
+  "drift_cap_K": 0.18,
+  "stiction_lookback_days": 12
+}

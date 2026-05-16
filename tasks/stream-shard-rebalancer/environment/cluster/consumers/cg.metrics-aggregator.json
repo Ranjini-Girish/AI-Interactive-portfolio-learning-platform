@@ -1,0 +1,22 @@
+{
+  "group_id": "cg.metrics-aggregator",
+  "subscription": "regex:^t\\.metrics\\..*$",
+  "members": [
+    {
+      "member_id": "m01-met",
+      "consumption_capacity_mbps": 50
+    },
+    {
+      "member_id": "m02-met",
+      "consumption_capacity_mbps": 50
+    },
+    {
+      "member_id": "m03-met",
+      "consumption_capacity_mbps": 50
+    },
+    {
+      "member_id": "m04-met",
+      "consumption_capacity_mbps": 50
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "depot_ids": [
+    "d-north"
+  ],
+  "route_id": "r-loop",
+  "segments": [
+    {
+      "base_hazard": 25,
+      "segment_id": "s1"
+    },
+    {
+      "base_hazard": 25,
+      "segment_id": "s2"
+    }
+  ]
+}

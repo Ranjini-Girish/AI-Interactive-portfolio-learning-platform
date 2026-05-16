@@ -1,0 +1,8 @@
+{
+  "module_id": "notifications",
+  "module_path": "example.com/notifications",
+  "replaces": [],
+  "requires": [
+    "example.com/lib"
+  ]
+}

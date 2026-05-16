@@ -1,0 +1,24 @@
+{
+  "crates": [
+    {
+      "crate_id": "c-arc-01",
+      "slot": "weapon",
+      "rarity": "epic"
+    },
+    {
+      "crate_id": "c-bulwark-02",
+      "slot": "armor",
+      "rarity": "rare"
+    },
+    {
+      "crate_id": "c-rune-03",
+      "slot": "trinket",
+      "rarity": "epic"
+    },
+    {
+      "crate_id": "c-emblem-04",
+      "slot": "armor",
+      "rarity": "rare"
+    }
+  ]
+}

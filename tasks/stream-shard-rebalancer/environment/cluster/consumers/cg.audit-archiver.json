@@ -1,0 +1,14 @@
+{
+  "group_id": "cg.audit-archiver",
+  "subscription": "regex:^t\\.audit\\..*$",
+  "members": [
+    {
+      "member_id": "m01-aud",
+      "consumption_capacity_mbps": 60
+    },
+    {
+      "member_id": "m02-aud",
+      "consumption_capacity_mbps": 60
+    }
+  ]
+}

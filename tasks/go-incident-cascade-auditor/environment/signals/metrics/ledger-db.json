@@ -1,0 +1,11 @@
+{
+  "service_id": "ledger-db",
+  "windows": [
+    {"error_pct": 2, "minute": 55, "p95_ms": 170, "qps": 280},
+    {"error_pct": 2, "minute": 56, "p95_ms": 172, "qps": 278},
+    {"error_pct": 2, "minute": 57, "p95_ms": 174, "qps": 276},
+    {"error_pct": 2, "minute": 58, "p95_ms": 176, "qps": 274},
+    {"error_pct": 3, "minute": 59, "p95_ms": 178, "qps": 272},
+    {"error_pct": 3, "minute": 60, "p95_ms": 180, "qps": 270}
+  ]
+}

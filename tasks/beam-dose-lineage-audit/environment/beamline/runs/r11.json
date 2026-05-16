@@ -1,0 +1,13 @@
+{
+  "profile_id": "p-micro",
+  "pulses": [
+    200,
+    210,
+    205
+  ],
+  "quality_pct": 99,
+  "run_id": "r11",
+  "scheduled_minute": 350,
+  "specimen_id": "s-mu",
+  "station_id": "A"
+}

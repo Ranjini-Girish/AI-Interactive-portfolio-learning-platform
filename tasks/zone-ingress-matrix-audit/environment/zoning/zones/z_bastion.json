@@ -1,0 +1,5 @@
+{
+  "description": "jump host",
+  "zone_id": "z_bastion",
+  "zone_tier": "production"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "model-retry-stress",
+  "candidate_checkpoint": "ckpt-A",
+  "target_tier": "staging",
+  "governance_review_status": "approved"
+}

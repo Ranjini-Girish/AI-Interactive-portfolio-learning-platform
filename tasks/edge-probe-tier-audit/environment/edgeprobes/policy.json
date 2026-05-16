@@ -1,0 +1,6 @@
+{
+  "failed_status_floor": 400,
+  "mad_k": 2.5,
+  "rtt_fast_max_ms": 50,
+  "rtt_moderate_max_ms": 200
+}

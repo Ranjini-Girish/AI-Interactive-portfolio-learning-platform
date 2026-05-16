@@ -1,0 +1,15 @@
+{
+  "host_id": "host-epsilon",
+  "leases": [
+    {
+      "last_renew_day": 99,
+      "lease_until_day": 108,
+      "renew_count": 0,
+      "slot_id": "slot-vault"
+    }
+  ],
+  "renewals_by_day": {
+    "99": 1
+  },
+  "tier": "silver"
+}

@@ -1,0 +1,15 @@
+{
+  "day": 36,
+  "records": [
+    {
+      "flag_id": "checkout-v3",
+      "segment_id": "enterprise",
+      "users": 11000
+    },
+    {
+      "flag_id": "search-facets",
+      "segment_id": "selfserve",
+      "users": 22000
+    }
+  ]
+}

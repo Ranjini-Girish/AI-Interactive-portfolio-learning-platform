@@ -1,0 +1,14 @@
+{
+  "batch_id": "b-bor-b-3",
+  "ingest_day": 100,
+  "partition_id": "part-boreal-b",
+  "events": [
+    {
+      "bytes_hint": 70,
+      "event_day": 95,
+      "event_id": "e-bb4",
+      "idempotency_key": "k-bb2",
+      "sequence": 1
+    }
+  ]
+}

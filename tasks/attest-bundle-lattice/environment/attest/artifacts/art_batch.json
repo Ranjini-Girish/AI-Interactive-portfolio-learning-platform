@@ -1,0 +1,17 @@
+{
+  "artifact_id": "art_batch",
+  "deployment_tier": "production",
+  "digest": "sha256:2200000000000000000000000000000000000000000000000000000000000002",
+  "repository": "ghcr.io/fleet/batch",
+  "signatures": [
+    {
+      "key_id": "k_release",
+      "payload_digest": "sha256:2200000000000000000000000000000000000000000000000000000000000002",
+      "policy_rank": 3,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_batch_main",
+      "signer_email": "ops@org.prod"
+    }
+  ]
+}

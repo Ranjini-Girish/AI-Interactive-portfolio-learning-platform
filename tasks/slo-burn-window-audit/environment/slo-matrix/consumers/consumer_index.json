@@ -1,0 +1,7 @@
+{
+  "consumers": [
+    "svc-batch",
+    "svc-gateway",
+    "svc-ledger"
+  ]
+}

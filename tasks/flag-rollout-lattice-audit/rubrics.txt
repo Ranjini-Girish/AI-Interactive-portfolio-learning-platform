@@ -1,0 +1,14 @@
+Agent emits all five required JSON reports under the audit directory with exactly the top-level keys named in SPEC.md, +3
+Agent applies segment inheritance and override priority when computing every rollout_matrix row, +3
+Agent evaluates dependency waivers, cycles, and killed upstream flags when assigning dependency_waves rows, +3
+Agent processes accepted incidents in ascending (day, event_id) order and records ignored incidents with the correct rejection reason, +2
+Agent applies budget grants, observed exposure totals, and quarantine exposure precedence in exposure_budget.json, +2
+Agent gives segment compromise highest rollout precedence across every flag and descendant segment, +2
+Agent writes canonical UTF-8 JSON with two-space indent, sorted keys, and trailing newline, +1
+Agent keeps rollout, budget, dependency, and journal arrays in the sort order required by SPEC.md, +1
+Agent modifies any file under the bundled flags input tree, -5
+Agent omits one or more required audit output files or adds extra top-level keys, -3
+Agent treats future-day, invalid, or unsupported incident rows as applied, -3
+Agent ignores active dependency waivers or fails to mark cycle-blocked flags, -3
+Agent lets kill switches or locks override segment compromise in final rollout state, -2
+Agent emits noncanonical JSON or unstable ordering in any report, -2

@@ -1,0 +1,8 @@
+{
+  "base_priority": 1,
+  "depends_on": [],
+  "name": "ingest",
+  "resource_class": "cpu_small",
+  "retry_count": 2,
+  "runtime_minutes": 5
+}

@@ -1,0 +1,18 @@
+Agent emits all five required JSON audit artifacts under the chosen output directory using exactly the filenames and top-level object shapes described in SPEC.md, +3
+Agent merges deck restriction limits across every format that references each deck in the bundle and lists violation rows sorted by ascending card name, +3
+Agent resolves session verdicts using the precedence order in SPEC.md so quarantine, format suspension, merged restriction hits, banned cards, structural chain faults, mulligan cap breaches, and hand-size mismatches cannot displace an earlier match, +3
+Agent validates hand lengths per format mulligan style and records per-step trace fields consistent with opening size, prior mulligan count, and recorded hands, +3
+Agent filters incident events to accepted kinds on or before pool_state.current_day with required fields present and emits the incident ledger in ascending day then event_id process order, +2
+Agent tightens effective mulligan caps when policy defines shared_mulligan_pool by subtracting prior mulligan totals for the same deck_id from earlier sessions in ascending ASCII session_id order, +3
+Agent emits chain_invalid verdicts carrying only the documented structural reason literals, deduplicated and sorted, and keeps legal sessions with an empty reasons array, +2
+Agent orders session verdict rows and mulligan trace rows by ascending session_id and deck restriction rows by ascending deck_id, +2
+Agent honors nonempty MCA_DATA_DIR and MCA_AUDIT_DIR so reads and writes use those roots instead of the default bundle and audit paths, +2
+Agent writes every audit file as canonical UTF-8 JSON with two-space indent, recursively sorted object keys, ASCII-only strings, and exactly one trailing newline at end of file, +2
+Agent aligns summary.json counters with applied versus ignored incidents, verdict category counts, deck restriction hit tallies, and total sessions, +3
+Agent modifies, renames, or adds any path under the read-only tournament bundle tree mounted at the input root, -5
+Agent omits one of the five outputs, invents extra top-level keys, or drifts field names away from the schemas in SPEC.md, -3
+Agent ignores merged restriction limits when the same physical deck is registered in multiple formats with different restricted_counts, -3
+Agent counts mulligan steps after the final keep, ignores shared_mulligan_pool room, or compares mulligan_count against the format cap before tier and pool tightening, -3
+Agent applies banned card logic without using the final kept hand from the last keep step or mis-orders incident effects relative to played_day, -3
+Agent emits reasons out of strictly increasing ASCII order, duplicates reason literals, or attaches reasons that do not belong to the resolved verdict class, -2
+Agent emits JSON that violates the ASCII-only two-space sorted-keys single trailing newline contract on any delivered audit file, -2

@@ -1,0 +1,13 @@
+{
+  "minutes_by_day": {
+    "10": { "bad_minutes": 1 },
+    "11": { "bad_minutes": 1 },
+    "12": { "bad_minutes": 1 },
+    "13": { "bad_minutes": 1 },
+    "14": { "bad_minutes": 1 },
+    "8": { "bad_minutes": 1 },
+    "9": { "bad_minutes": 1 }
+  },
+  "service_id": "svc-worker",
+  "tier": "bronze"
+}

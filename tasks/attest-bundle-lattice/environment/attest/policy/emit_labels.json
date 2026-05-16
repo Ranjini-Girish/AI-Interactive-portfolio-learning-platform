@@ -1,0 +1,10 @@
+{
+  "emit_order_hint": [
+    "artifact_catalog",
+    "signature_outcomes",
+    "delegation_audit",
+    "incident_trace",
+    "summary"
+  ],
+  "note": "informational-only"
+}

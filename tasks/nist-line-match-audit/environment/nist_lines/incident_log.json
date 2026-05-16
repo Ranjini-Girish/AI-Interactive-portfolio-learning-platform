@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "kind": "catalog_line_suppress",
+      "line_id": "H_ALPHA",
+      "effective_day": 5
+    },
+    {
+      "kind": "instrument_bias_shift",
+      "instrument_id": "instA",
+      "effective_day": 4,
+      "delta_bias_nm": 1
+    },
+    {
+      "kind": "unknown_noise",
+      "note": "ignored"
+    },
+    {
+      "kind": "instrument_bias_shift",
+      "accepted": false,
+      "instrument_id": "instA",
+      "effective_day": 1,
+      "delta_bias_nm": 99
+    },
+    {
+      "kind": "instrument_bias_shift",
+      "instrument_id": "instB",
+      "effective_day": 2,
+      "delta_bias_nm": 2
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "model-broken-ref",
+  "candidate_checkpoint": "ckpt-DOES-NOT-EXIST",
+  "target_tier": "staging",
+  "governance_review_status": "approved"
+}

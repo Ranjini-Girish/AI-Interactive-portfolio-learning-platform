@@ -1,0 +1,8 @@
+{
+  "base_priority": 4,
+  "depends_on": ["scan"],
+  "name": "report",
+  "resource_class": "cpu_small",
+  "retry_count": 1,
+  "runtime_minutes": 15
+}

@@ -1,0 +1,14 @@
+{
+  "endpoint_id": "ep-public",
+  "outcomes_by_day": {
+    "104": "ok",
+    "105": "fail",
+    "106": "timeout",
+    "107": "fail",
+    "108": "ok",
+    "109": "fail",
+    "110": "ok"
+  },
+  "subscription_id": "sub-alpha",
+  "tier": "gold"
+}

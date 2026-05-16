@@ -1,0 +1,21 @@
+{
+  "chain": [
+    {
+      "action": "keep",
+      "hand": [
+        "Forest",
+        "Island",
+        "Mountain",
+        "Plains",
+        "Swamp",
+        "Wastes",
+        "Z"
+      ],
+      "step": 0
+    }
+  ],
+  "deck_id": "d05",
+  "format_id": "fmt-standard",
+  "played_day": 106,
+  "session_id": "s05"
+}

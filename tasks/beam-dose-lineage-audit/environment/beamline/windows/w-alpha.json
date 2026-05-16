@@ -1,0 +1,7 @@
+{
+  "capacity_weight_limit": 5,
+  "end_minute": 160,
+  "start_minute": 100,
+  "station_id": "A",
+  "window_id": "w-alpha"
+}

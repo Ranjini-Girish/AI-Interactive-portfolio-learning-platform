@@ -1,0 +1,12 @@
+{
+  "id": "run-006",
+  "owner": "frank",
+  "started_day": 70,
+  "base_dataset": "ds-curated-text",
+  "parent_run": null,
+  "declared_tier_target": "staging",
+  "status_declared": "failed",
+  "claimed_eval_metric": 0.3,
+  "runtime_minutes_observed": 90,
+  "retry_count_observed": 4
+}

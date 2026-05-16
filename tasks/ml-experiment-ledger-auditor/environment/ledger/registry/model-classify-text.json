@@ -1,0 +1,6 @@
+{
+  "id": "model-classify-text",
+  "candidate_checkpoint": "ckpt-H",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

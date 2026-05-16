@@ -1,0 +1,8 @@
+{
+  "depends_on": "r-cy-b",
+  "run_id": "r-cy-a",
+  "rung": "gold",
+  "slots_asked": 1,
+  "submit_day": 5,
+  "tenant_id": "lab-west"
+}

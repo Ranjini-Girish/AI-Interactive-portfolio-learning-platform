@@ -1,0 +1,9 @@
+{
+  "module_id": "payments",
+  "module_path": "example.com/pay",
+  "replaces": [],
+  "requires": [
+    "example.com/lib",
+    "example.com/retire-pkg/widget"
+  ]
+}

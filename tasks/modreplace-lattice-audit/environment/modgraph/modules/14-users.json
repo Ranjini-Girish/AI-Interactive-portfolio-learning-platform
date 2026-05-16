@@ -1,0 +1,8 @@
+{
+  "module_id": "users",
+  "module_path": "example.com/users",
+  "replaces": [],
+  "requires": [
+    "example.com/lib"
+  ]
+}

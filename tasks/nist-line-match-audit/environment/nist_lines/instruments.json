@@ -1,0 +1,10 @@
+{
+  "instruments": {
+    "instA": {
+      "base_bias_nm": 0
+    },
+    "instB": {
+      "base_bias_nm": -1
+    }
+  }
+}

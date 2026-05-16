@@ -1,0 +1,102 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 5,
+      "event_id": "ev_extend_alpha",
+      "kind": "extend_validity",
+      "payload": {
+        "add_days": 10,
+        "kid": "k_alpha"
+      },
+      "scope": "global"
+    },
+    {
+      "accepted": true,
+      "day": 7,
+      "event_id": "ev_emerg_gold",
+      "kind": "audience_emergency",
+      "payload": {
+        "start_day": 38,
+        "surrogate_audience": "https://legacy/root",
+        "target_server_id": "srv_gold",
+        "until_day": 45
+      },
+      "scope": "server"
+    },
+    {
+      "accepted": true,
+      "day": 30,
+      "event_id": "ev_revoke_beta",
+      "kind": "revoke_key",
+      "payload": {
+        "effective_day": 35,
+        "kid": "k_beta"
+      },
+      "scope": "global"
+    },
+    {
+      "accepted": false,
+      "day": 12,
+      "event_id": "ev_ignored_false",
+      "kind": "extend_validity",
+      "payload": {
+        "add_days": 3,
+        "kid": "k_zeta"
+      },
+      "scope": "global"
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "event_id": "ev_future_day",
+      "kind": "extend_validity",
+      "payload": {
+        "add_days": 1,
+        "kid": "k_zeta"
+      },
+      "scope": "global"
+    },
+    {
+      "accepted": true,
+      "day": 50,
+      "event_id": "ev_future_day_block",
+      "kind": "revoke_key",
+      "payload": {
+        "effective_day": 1,
+        "kid": "k_zeta"
+      },
+      "scope": "global"
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "event_id": "ev_unknown_kind",
+      "kind": "rotate_signing_alg",
+      "payload": {},
+      "scope": "global"
+    },
+    {
+      "accepted": true,
+      "day": 9,
+      "event_id": "ev_dup_extend_alpha",
+      "kind": "extend_validity",
+      "payload": {
+        "add_days": 5,
+        "kid": "k_alpha"
+      },
+      "scope": "global"
+    },
+    {
+      "accepted": true,
+      "day": 9,
+      "event_id": "ev_dup_extend_alpha_late",
+      "kind": "extend_validity",
+      "payload": {
+        "add_days": 1,
+        "kid": "k_alpha"
+      },
+      "scope": "global"
+    }
+  ]
+}

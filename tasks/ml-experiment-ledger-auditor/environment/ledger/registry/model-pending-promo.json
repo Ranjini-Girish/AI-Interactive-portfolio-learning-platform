@@ -1,0 +1,6 @@
+{
+  "id": "model-pending-promo",
+  "candidate_checkpoint": "ckpt-J",
+  "target_tier": "staging",
+  "governance_review_status": "pending"
+}

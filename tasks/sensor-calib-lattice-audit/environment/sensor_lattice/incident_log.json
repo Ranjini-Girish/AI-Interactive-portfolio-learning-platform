@@ -1,0 +1,61 @@
+[
+  {
+    "accepted": true,
+    "batch_id": "batch-b1",
+    "day": 105,
+    "event_id": "e01",
+    "kind": "batch_contamination"
+  },
+  {
+    "accepted": true,
+    "day": 100,
+    "duration_days": 1,
+    "event_id": "e00",
+    "kind": "lab_freeze",
+    "lab_id": "lab-beta"
+  },
+  {
+    "accepted": true,
+    "day": 119,
+    "duration_days": 3,
+    "event_id": "e02",
+    "kind": "lab_freeze",
+    "lab_id": "lab-beta"
+  },
+  {
+    "accepted": true,
+    "day": 90,
+    "event_id": "e03",
+    "extra_days": 25,
+    "kind": "recall_extend",
+    "tier": "gold"
+  },
+  {
+    "accepted": true,
+    "day": 112,
+    "event_id": "e04",
+    "kind": "sensor_suppress",
+    "sensor_id": "s-gamma-05"
+  },
+  {
+    "accepted": false,
+    "batch_id": "batch-a2",
+    "day": 118,
+    "event_id": "e05",
+    "kind": "batch_contamination"
+  },
+  {
+    "accepted": true,
+    "day": 122,
+    "event_id": "e06",
+    "kind": "sensor_suppress",
+    "sensor_id": "s-alpha-04"
+  },
+  {
+    "accepted": true,
+    "day": 80,
+    "event_id": "e07",
+    "kind": "operator_note",
+    "sensor_id": "s-alpha-01"
+  }
+]

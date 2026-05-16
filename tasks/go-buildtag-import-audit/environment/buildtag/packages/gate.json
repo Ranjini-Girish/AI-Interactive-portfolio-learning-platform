@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/indexer"
+      ],
+      "name": "main.go"
+    }
+  ],
+  "package_key": "gate",
+  "package_path": "github.com/acme/gateway"
+}

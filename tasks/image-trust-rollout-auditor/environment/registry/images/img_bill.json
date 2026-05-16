@@ -1,0 +1,8 @@
+{
+  "image_id": "img_bill",
+  "service_id": "svc_billing",
+  "digest": "sha256:bill001",
+  "previous_digest": "sha256:bill000",
+  "base_risk": 50,
+  "signatures": ["k_primary_b", "k_secondary_a"]
+}

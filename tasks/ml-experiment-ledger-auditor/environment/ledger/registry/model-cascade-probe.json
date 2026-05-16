@@ -1,0 +1,6 @@
+{
+  "id": "model-cascade-probe",
+  "candidate_checkpoint": "ckpt-M",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

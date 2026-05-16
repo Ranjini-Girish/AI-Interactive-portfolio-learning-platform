@@ -1,0 +1,11 @@
+{
+  "batch_id": "batch-b2",
+  "depends_on": [
+    "s-beta-03"
+  ],
+  "measured_ppm": 26,
+  "reference_ppm": 25,
+  "sensor_id": "s-beta-04",
+  "tier": "bronze",
+  "uncertainty_ppm": 3
+}

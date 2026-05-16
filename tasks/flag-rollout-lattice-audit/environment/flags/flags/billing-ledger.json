@@ -1,0 +1,17 @@
+{
+  "default_pct": 10,
+  "flag_id": "billing-ledger",
+  "overrides": [
+    {
+      "pct": 30,
+      "priority": 20,
+      "segment_id": "enterprise"
+    },
+    {
+      "pct": 90,
+      "priority": 80,
+      "segment_id": "internal"
+    }
+  ],
+  "tier": "gold"
+}

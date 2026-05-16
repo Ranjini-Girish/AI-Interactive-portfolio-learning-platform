@@ -1,0 +1,14 @@
+{
+  "conflicts": 20,
+  "dataset_id": "ds-gamma",
+  "day_end": 100,
+  "day_start": 95,
+  "depends_on": [
+    "w-beta-2"
+  ],
+  "labels_total": 800,
+  "positives": 288,
+  "reviewer_rejects": 20,
+  "source_model_id": "m-gamma",
+  "window_id": "w-gamma-1"
+}

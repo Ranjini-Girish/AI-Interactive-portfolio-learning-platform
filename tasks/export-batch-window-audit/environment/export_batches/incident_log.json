@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 14,
+      "event_id": "e00",
+      "kind": "source_compromise",
+      "source_id": "h-p1"
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "delta": 1,
+      "event_id": "e01",
+      "kind": "cap_bump",
+      "warehouse_id": "r-east"
+    },
+    {
+      "accepted": true,
+      "day": 14,
+      "event_id": "e02",
+      "kind": "source_compromise",
+      "source_id": "h-p2"
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "event_id": "e03",
+      "kind": "freeze_warehouse",
+      "warehouse_id": "r-west"
+    },
+    {
+      "accepted": true,
+      "batch_id": "b-mon",
+      "day": 11,
+      "end_day": 20,
+      "event_id": "e04",
+      "kind": "batch_embargo",
+      "start_day": 10
+    },
+    {
+      "accepted": true,
+      "day": 16,
+      "delta": 99,
+      "event_id": "e05",
+      "kind": "cap_bump",
+      "warehouse_id": "r-east"
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "event_id": "e06",
+      "kind": "unknown_kind"
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "delta": 5,
+      "event_id": "e07",
+      "kind": "credit_grant",
+      "warehouse_id": "r-west"
+    }
+  ]
+}

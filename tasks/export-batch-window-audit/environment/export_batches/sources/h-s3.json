@@ -1,0 +1,16 @@
+{
+  "exported_batches": [
+    "b-app",
+    "b-base",
+    "b-net"
+  ],
+  "source_id": "h-s3",
+  "sync_windows": [
+    [
+      10,
+      20
+    ]
+  ],
+  "tier": "staging",
+  "warehouse_id": "r-east"
+}

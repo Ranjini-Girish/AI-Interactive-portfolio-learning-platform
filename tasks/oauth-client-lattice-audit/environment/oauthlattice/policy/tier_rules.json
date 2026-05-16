@@ -1,0 +1,21 @@
+{
+  "pkce_for_auth_code": {
+    "bronze": {
+      "confidential": "required",
+      "public": "required"
+    },
+    "gold": {
+      "confidential": "relaxed",
+      "public": "required"
+    },
+    "silver": {
+      "confidential": "required",
+      "public": "required"
+    }
+  },
+  "redirect_mode": {
+    "bronze": "prefix_or_localhost_public",
+    "gold": "exact",
+    "silver": "prefix"
+  }
+}

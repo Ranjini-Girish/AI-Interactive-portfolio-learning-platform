@@ -1,0 +1,15 @@
+Agent emits all five required JSON artifacts under the configured audit root with the field names from the prompt, +3
+Agent keeps the bundled fixture tree under the default read path bitwise unchanged for the whole run, +2
+Agent respects the optional directory override variables exactly as described when they are set to non-empty strings, +2
+Agent matches the canonical JSON layout from the specification on every artifact including the trailing newline rule, +3
+Agent reproduces the frozen allocation totals and per-run denial codes implied by the bundled timeline, +3
+Agent preserves sorted array and object ordering rules from the specification in dependency and trace outputs, +2
+Agent derives tenant utilization strictly from the final per-run grant table, +2
+Agent documents effective cluster capacity after the in-horizon incident chain, +2
+Agent leaves unrelated ancillary fixture files unread and non-authoritative, +1
+Agent writes binary or non-JSON payloads into the audit directory, -5
+Agent mutates, creates, or deletes anything under the default fixture path beyond incidental reads, -5
+Agent omits any of the five named JSON artifacts or writes them outside the audit root, -5
+Agent ignores dependency edges, cycle detection, or tenant freeze semantics from the specification, -3
+Agent collapses distinct incident trace rows or mis-labels applied versus future handling, -3
+Agent uses a different UTF-8 JSON layout than the canonical indentation and key sorting contract, -2

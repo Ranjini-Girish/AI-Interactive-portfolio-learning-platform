@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 10,
+      "kind": "lot_recall",
+      "lot_id": "LOT_BAD",
+      "note": "vendor notice"
+    },
+    {
+      "accepted": false,
+      "day": 24,
+      "kind": "lot_recall",
+      "lot_id": "LOT_OK",
+      "note": "superseded"
+    },
+    {
+      "accepted": true,
+      "day": 12,
+      "kind": "temperature_spike",
+      "note": "unsupported kind"
+    },
+    {
+      "accepted": true,
+      "day": 24,
+      "kind": "lot_recall",
+      "lot_id": "LOT_MISSING",
+      "note": "unknown lot key"
+    },
+    {
+      "accepted": true,
+      "day": 40,
+      "kind": "lot_recall",
+      "lot_id": "LOT_OK",
+      "note": "future day ignored"
+    }
+  ]
+}

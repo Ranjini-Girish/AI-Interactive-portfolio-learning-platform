@@ -1,0 +1,17 @@
+{
+  "element": "Na",
+  "lines": [
+    {
+      "label": "D1",
+      "line_id": "NA_D1",
+      "rel_int": 100,
+      "wave_nm": 589
+    },
+    {
+      "label": "D2",
+      "line_id": "NA_D2",
+      "rel_int": 90,
+      "wave_nm": 590
+    }
+  ]
+}

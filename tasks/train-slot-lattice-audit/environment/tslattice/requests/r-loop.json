@@ -1,0 +1,8 @@
+{
+  "depends_on": "r-loop",
+  "run_id": "r-loop",
+  "rung": "bronze",
+  "slots_asked": 1,
+  "submit_day": 5,
+  "tenant_id": "lab-west"
+}

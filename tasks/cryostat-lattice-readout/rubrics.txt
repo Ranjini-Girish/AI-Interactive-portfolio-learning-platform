@@ -1,0 +1,17 @@
+Agent reads `/app/cryostat/SPEC.md` before other inputs, +2
+Agent writes all four JSON files under `/app/audit/` with sorted keys and a single trailing newline, +3
+Agent honours `CLR_DATA_DIR` and `CLR_AUDIT_DIR` overrides when set, +2
+Agent implements the audit in Go under `/app/src/` with a `package main` source tree and a buildable binary at `/app/bin/clreadout`, +5
+Agent leaves every file under `/app/cryostat/` byte-identical, -3
+Agent omits any required `/app/audit/` filename or adds extra files there, -5
+Agent emits JSON with unsorted object keys at any depth, -3
+Agent uses a language other than Go for the implementation tree, -5
+Agent writes outputs that fail pinned SHA-256 fixtures or canonical output hashes, -5
+Agent describes or encodes relaxation rounds fewer or greater than three, -3
+Agent fabricates sensor ids not present in `sensors/*.json`, -5
+Agent treats negative or zero ADC rows as valid candidates instead of rejecting them, -3
+Agent picks the latest single reading instead of computing the median over the K most recent in-window kept readings, -3
+Agent skips the calibration drift correction or applies it without honouring `drift_grace_days`, -3
+Agent evaluates verdict-aware edge freezing from current-round temperatures instead of end-of-previous-round temperatures, -5
+Agent splits combined incidents out of the documented `incident_log.json` order, -2
+Agent drops `reasons` tags mandated for overlay, calibration drift, rig warm offsets, lattice fault, or strap quench, -3

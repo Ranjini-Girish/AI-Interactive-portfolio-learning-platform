@@ -1,0 +1,70 @@
+{
+  "plate_id": "P07",
+  "run_day": 22,
+  "wells": [
+    {
+      "batch_id": "B1",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.1,
+      "role": "blank",
+      "well_id": "A01"
+    },
+    {
+      "batch_id": "B1",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.1,
+      "role": "blank",
+      "well_id": "A02"
+    },
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B1",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.5,
+      "role": "sample",
+      "sample_id": "S10",
+      "well_id": "B01"
+    },
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B1",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.55,
+      "role": "sample",
+      "sample_id": "S11",
+      "well_id": "B02"
+    },
+    {
+      "batch_id": "B3",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.1,
+      "role": "blank",
+      "well_id": "C01"
+    },
+    {
+      "batch_id": "B3",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.1,
+      "role": "blank",
+      "well_id": "C02"
+    },
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B3",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.6,
+      "role": "sample",
+      "sample_id": "H10",
+      "well_id": "D01"
+    },
+    {
+      "assay_id": "igg_kinetic",
+      "batch_id": "B3",
+      "lot_id": "LOT_OK",
+      "raw_value": 0.7,
+      "role": "sample",
+      "sample_id": "H11",
+      "well_id": "D02"
+    }
+  ]
+}

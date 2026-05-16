@@ -1,0 +1,14 @@
+{
+  "dep_path": "github.com/acme/logger",
+  "versions": [
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v2.0.0",
+      "vuln_advisories": []
+    }
+  ]
+}

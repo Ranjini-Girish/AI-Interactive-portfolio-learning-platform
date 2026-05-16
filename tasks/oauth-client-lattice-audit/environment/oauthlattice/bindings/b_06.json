@@ -1,0 +1,6 @@
+{
+  "binding_id": "b_06",
+  "client_id": "c_epsilon",
+  "requested_redirect": "https://epsilon.example.com/callback",
+  "resource_id": "r_combo"
+}

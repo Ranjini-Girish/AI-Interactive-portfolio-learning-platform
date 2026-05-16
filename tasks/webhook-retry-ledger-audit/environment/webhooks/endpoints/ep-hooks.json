@@ -1,0 +1,5 @@
+{
+  "endpoint_id": "ep-hooks",
+  "rate_limited": false,
+  "signing_profile": "sp-hooks"
+}

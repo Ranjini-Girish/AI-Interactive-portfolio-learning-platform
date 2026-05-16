@@ -1,0 +1,41 @@
+{
+  "anchor_key_ids": [
+    "k_root"
+  ],
+  "keys": {
+    "k_ci": {
+      "parent_key_id": "k_root"
+    },
+    "k_d1": {
+      "parent_key_id": "k_d2"
+    },
+    "k_d2": {
+      "parent_key_id": "k_d3"
+    },
+    "k_d3": {
+      "parent_key_id": "k_d4"
+    },
+    "k_d4": {
+      "parent_key_id": "k_root"
+    },
+    "k_leaf": {
+      "parent_key_id": "k_orphan"
+    },
+    "k_mid": {
+      "parent_key_id": "k_release"
+    },
+    "k_orphan": {
+      "parent_key_id": "k_leaf"
+    },
+    "k_release": {
+      "parent_key_id": "k_root"
+    },
+    "k_root": {
+      "parent_key_id": null
+    },
+    "k_vendor": {
+      "parent_key_id": "k_root"
+    }
+  },
+  "max_chain_depth": 3
+}

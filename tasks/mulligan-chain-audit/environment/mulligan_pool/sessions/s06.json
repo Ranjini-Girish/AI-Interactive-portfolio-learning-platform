@@ -1,0 +1,21 @@
+{
+  "chain": [
+    {
+      "action": "keep",
+      "hand": [
+        "Counterspell",
+        "Forest",
+        "Island",
+        "Mountain",
+        "Plains",
+        "Swamp",
+        "Wastes"
+      ],
+      "step": 0
+    }
+  ],
+  "deck_id": "d06",
+  "format_id": "fmt-modern",
+  "played_day": 109,
+  "session_id": "s06"
+}

@@ -1,0 +1,11 @@
+{
+  "service_id": "api-gateway",
+  "windows": [
+    {"error_pct": 2, "minute": 55, "p95_ms": 170, "qps": 980},
+    {"error_pct": 2, "minute": 56, "p95_ms": 172, "qps": 1000},
+    {"error_pct": 3, "minute": 57, "p95_ms": 176, "qps": 990},
+    {"error_pct": 2, "minute": 58, "p95_ms": 174, "qps": 1010},
+    {"error_pct": 3, "minute": 59, "p95_ms": 180, "qps": 995},
+    {"error_pct": 3, "minute": 60, "p95_ms": 182, "qps": 900}
+  ]
+}

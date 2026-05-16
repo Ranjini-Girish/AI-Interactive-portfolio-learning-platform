@@ -1,0 +1,15 @@
+{
+  "day": 42,
+  "records": [
+    {
+      "flag_id": "billing-ledger",
+      "segment_id": "internal",
+      "users": 2100
+    },
+    {
+      "flag_id": "checkout-v3",
+      "segment_id": "enterprise-eu",
+      "users": 5100
+    }
+  ]
+}

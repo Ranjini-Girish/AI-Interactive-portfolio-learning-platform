@@ -1,0 +1,61 @@
+[
+  {
+    "accepted": true,
+    "day": 18,
+    "event_id": "e01",
+    "key_id": "k_primary_b",
+    "kind": "key_compromise"
+  },
+  {
+    "accepted": true,
+    "day": 19,
+    "event_id": "e02",
+    "image_id": "img_lab",
+    "kind": "risk_override",
+    "risk_value": 88
+  },
+  {
+    "accepted": true,
+    "day": 19,
+    "event_id": "e03",
+    "image_id": "img_lab",
+    "kind": "risk_override",
+    "risk_value": 92
+  },
+  {
+    "accepted": true,
+    "day": 20,
+    "event_id": "e04",
+    "image_id": "img_lab",
+    "kind": "force_allow"
+  },
+  {
+    "accepted": true,
+    "day": 20,
+    "event_id": "e05",
+    "image_id": "img_bill",
+    "kind": "force_allow"
+  },
+  {
+    "accepted": true,
+    "day": 20,
+    "event_id": "e06",
+    "image_id": "img_api",
+    "kind": "risk_override",
+    "risk_value": 62
+  },
+  {
+    "accepted": false,
+    "day": 17,
+    "event_id": "e07",
+    "key_id": "k_legacy",
+    "kind": "key_compromise"
+  },
+  {
+    "accepted": true,
+    "day": 22,
+    "event_id": "e08",
+    "image_id": "img_ops",
+    "kind": "force_allow"
+  }
+]

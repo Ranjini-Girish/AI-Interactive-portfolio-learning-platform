@@ -1,0 +1,9 @@
+{
+  "max_mulligans_by_tier": {
+    "bronze": 5,
+    "gold": 2,
+    "silver": 3
+  },
+  "opening_hand_size": 7,
+  "shared_mulligan_pool": 2
+}

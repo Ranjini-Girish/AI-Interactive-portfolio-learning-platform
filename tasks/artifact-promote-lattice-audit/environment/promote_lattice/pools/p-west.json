@@ -1,0 +1,5 @@
+{
+  "max_promotions_per_day": 2,
+  "pool_id": "p-west",
+  "tier": "staging"
+}

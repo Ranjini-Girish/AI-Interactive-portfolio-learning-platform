@@ -1,0 +1,7 @@
+{
+  "build_cost": 4,
+  "module_id": "m03",
+  "prereqs": [
+    "m01"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "artifact_id": "art_gateway",
+  "deployment_tier": "production",
+  "digest": "sha256:5500000000000000000000000000000000000000000000000000000000000005",
+  "repository": "ghcr.io/fleet/gateway",
+  "signatures": [
+    {
+      "key_id": "k_ci",
+      "payload_digest": "sha256:5500000000000000000000000000000000000000000000000000000000000005",
+      "policy_rank": 1,
+      "predicate_type": "provenance",
+      "referential_material_digests": [],
+      "signature_id": "sig_gateway_ci",
+      "signer_email": "rel@org.prod"
+    }
+  ]
+}

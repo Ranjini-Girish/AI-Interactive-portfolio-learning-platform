@@ -1,0 +1,16 @@
+{
+  "auth_mode": "oauth2",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/cycle/beta",
+      "params": [],
+      "response_fields": [
+        {"name": "beta_state", "type": "string"},
+        {"name": "beta_value", "type": "integer"}
+      ],
+      "status_codes": [200]
+    }
+  ],
+  "service_id": "svc.cycle.beta",
+  "tier": "silver"
+}

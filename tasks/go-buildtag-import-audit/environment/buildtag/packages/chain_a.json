@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/chain_b"
+      ],
+      "name": "a.go"
+    }
+  ],
+  "package_key": "chain_a",
+  "package_path": "github.com/acme/chain_a"
+}

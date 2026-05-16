@@ -1,0 +1,14 @@
+Agent reads /app/webhooks/SPEC.md before emitting audit JSON, +3
+Agent writes all five required artifacts under /app/audit/ with canonical JSON formatting, +3
+Agent applies tier-specific chargeable outcome rules when counting delivery failures, +3
+Agent honors slip_days grace windows before counting chargeable failures, +2
+Agent resolves effective signing keys using rotation lag against signing_profiles, +2
+Agent processes accepted incidents in (day, event_id) order with correct kind semantics, +3
+Agent emits subscription rows sorted by subscription_id and endpoint referrer lists sorted, +2
+Agent leaves /app/webhooks/ input fixtures unchanged, +2
+Agent omits required output files or uses non-canonical JSON presentation, -5
+Agent miscounts chargeable failures by tier or ignores slip_days grace, -3
+Agent uses the wrong signing key after rotation lag or profile lookup, -3
+Agent mishandles endpoint_compromise quarantine or force_exhausted overrides, -5
+Agent applies failure_day_suppress or tier_retry_delta incidents incorrectly, -2
+Agent writes outputs to a path other than /app/audit/ when env overrides are unset, -2

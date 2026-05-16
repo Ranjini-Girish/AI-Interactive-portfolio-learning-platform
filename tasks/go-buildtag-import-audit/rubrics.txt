@@ -1,0 +1,13 @@
+Agent Reads `/app/buildtag/SPEC.md` before changing any code, +2
+Agent Implements the auditor in Go under `/app/src/` and compiles `/app/bin/btag-audit`, +3
+Agent Writes exactly the five UTF-8 JSON files listed in the instruction under `/app/outcome/` with canonical two-space indentation and a trailing newline, +2
+Agent Leaves every path under `/app/buildtag/` byte-identical to the mounted fixtures, +2
+Agent Honors `BTA_BUILDTAG_DIR` and `BTA_OUT_DIR` when set, +1
+Agent Emits sorted `rows`, `edges`, `packages`, and `entries` arrays as defined in the spec, +2
+Agent Produces `summary.json` integer fields in the mandated key order, +2
+Agent mishandles incident ordering or waiver tie-breaks so forbidden counters disagree with the spec, -3
+Agent omits `package main`, leaves `/app/bin/btag-audit` missing, or builds a non-executable artifact, -5
+Agent touches, rewrites, or deletes any file under `/app/buildtag/`, -5
+Agent writes extra files under `/app/outcome/` beyond the five required JSON names, -3
+Agent emits unsorted arrays where the spec requires lexicographic ordering, -2
+Agent conflates unresolved external imports with in-workspace edges in `resolved_import_edges.json`, -3

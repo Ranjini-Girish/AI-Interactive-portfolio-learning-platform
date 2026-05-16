@@ -1,0 +1,27 @@
+{
+  "dep_path": "github.com/acme/crypto",
+  "versions": [
+    {
+      "affected_symbols": [
+        "github.com/acme/crypto/legacy.Cipher"
+      ],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": true,
+      "retract_reason": "weak_primitives",
+      "version": "v0.1.0",
+      "vuln_advisories": [
+        "GO-2024-crypto"
+      ]
+    },
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.19",
+      "pseudo": false,
+      "retracted": false,
+      "retract_reason": null,
+      "version": "v0.2.0",
+      "vuln_advisories": []
+    }
+  ]
+}

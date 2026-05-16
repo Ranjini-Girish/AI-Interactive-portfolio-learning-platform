@@ -1,0 +1,18 @@
+{
+  "group_id": "cg.payments-billing",
+  "subscription": "literal:t.payments.events",
+  "members": [
+    {
+      "member_id": "m01-pay",
+      "consumption_capacity_mbps": 80
+    },
+    {
+      "member_id": "m02-pay",
+      "consumption_capacity_mbps": 80
+    },
+    {
+      "member_id": "m03-pay",
+      "consumption_capacity_mbps": 80
+    }
+  ]
+}

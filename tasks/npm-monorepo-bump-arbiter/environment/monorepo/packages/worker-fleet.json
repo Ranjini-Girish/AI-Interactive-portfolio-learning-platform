@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "flax-http": {
+      "exports_used": ["import", "require"],
+      "range": "^3.0.0",
+      "scope": "prod"
+    },
+    "kiln-bundler": {
+      "exports_used": ["require"],
+      "range": "^99.0.0",
+      "scope": "prod"
+    },
+    "tessera-utils": {
+      "exports_used": ["import"],
+      "range": "^0.9.0",
+      "scope": "prod"
+    }
+  },
+  "dev_dependencies": {},
+  "engines_node": ">=19.0.0 <23.0.0",
+  "name": "@aurum/worker-fleet",
+  "version": "1.5.0"
+}

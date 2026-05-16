@@ -1,0 +1,11 @@
+{
+  "client_id": "c_alpha",
+  "client_type": "confidential",
+  "grant_types": ["authorization_code", "client_credentials"],
+  "redirect_uris": [
+    "https://alpha.example.com/cb",
+    "https://alpha.example.com/cb/alt"
+  ],
+  "registered_scopes": ["admin.ui", "api.write", "reports.view"],
+  "tier_declared": "gold"
+}

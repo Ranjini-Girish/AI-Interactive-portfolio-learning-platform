@@ -1,0 +1,12 @@
+{
+  "advisory_id": "GO-2024-grpc",
+  "affected_symbols": [
+    "google.golang.org/grpc.Server"
+  ],
+  "affected_versions": [
+    "v1.60.0"
+  ],
+  "dep_path": "google.golang.org/grpc",
+  "fixed_in": null,
+  "severity": "high"
+}

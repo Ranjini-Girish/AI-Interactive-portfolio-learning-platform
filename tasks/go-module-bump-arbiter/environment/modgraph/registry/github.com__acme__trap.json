@@ -1,0 +1,14 @@
+{
+  "dep_path": "github.com/acme/trap",
+  "versions": [
+    {
+      "affected_symbols": [],
+      "min_go_version": "1.18",
+      "pseudo": false,
+      "retracted": true,
+      "retract_reason": "broken_build",
+      "version": "v1.0.0",
+      "vuln_advisories": []
+    }
+  ]
+}

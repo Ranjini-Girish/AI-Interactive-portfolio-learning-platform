@@ -1,0 +1,14 @@
+Agent emits five output files at /app/audit/ as deterministic JSON with two-space indent, sorted keys at every level, trailing newline, and stable list ordering so two correct runs are byte-identical, +3
+Agent silently drops incident events whose kind is not in {key_compromise, ca_compromise, audit_review} or whose day exceeds current_day or whose serial does not match a known certificate, and counts each in summary.ignored_incident_events, +3
+Agent walks each domain's chain via issuer_serial from the leaf, anchoring in chain_config.trusted_roots, treating leaf_missing, intermediate_missing, chain_too_long, and cycle_detected each as their own chain failure mode with the chain list ending at the failure point, +5
+Agent picks the OCSP response with the largest produced_day when multiple responses share the same serial, classifies status=good with stale<=ocsp_stale_days as valid, status=revoked as revoked, and status=unknown or stale or absent as soft_fail, +3
+Agent computes the SAN match per tier policy: production requires every expected_san to appear exactly in leaf.san, staging additionally accepts wildcard *.X matching one-label expansions, and internal compares only against subject_cn, +5
+Agent assigns a preliminary verdict in the order chain_unreachable then expired then revoked then untrusted then warning then valid, picking the first applicable label, +3
+Agent overrides the preliminary verdict to compromised when a leaf has an accepted key_compromise event or its chain visits a serial with an accepted ca_compromise event, +5
+Agent overrides the preliminary verdict to tainted when a non-compromised chain shares at least one intermediate (excluding leaf and root serials) with a compromised chain, +3
+Agent applies an applicable accepted audit_review with the largest day (ties broken by largest list index) only when the domain is not currently compromised, and adds audit_review_override to the reasons list of the affected domain, +3
+Agent computes ca_risk.intermediates with one entry per intermediate file, listing trusted_root_anchor as null when the chain does not reach a trusted root, domains_signed by direct chain-walk visits, and tainted_domains restricted to domains whose final verdict is tainted because of this intermediate, +3
+Agent leaves every input file under /app/certs unchanged so the dataset remains byte-identical after the audit completes, -2
+Agent treats all OCSP responses as good when the latest one is good and ignores the staleness window, -3
+Agent omits compromised or tainted as possible verdicts and reports such domains as untrusted or warning instead, -5
+Agent omits one or more of the required output files (chain_audit.json, expiry_report.json, ocsp_summary.json, ca_risk.json, summary.json) under /app/audit/, -3

@@ -1,0 +1,7 @@
+{
+  "weights": {
+    "internal": 100,
+    "production": 300,
+    "staging": 200
+  }
+}

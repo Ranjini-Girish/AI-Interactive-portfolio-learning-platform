@@ -1,0 +1,34 @@
+{
+  "excludes": [],
+  "go_version_min": "1.20",
+  "module_path": "notifier",
+  "replaces": [
+    {
+      "from_path": "golang.org/x/net",
+      "to_path": "k8s.io/apimachinery",
+      "to_version": "v0.28.0"
+    },
+    {
+      "from_path": "google.golang.org/grpc",
+      "to_path": "google.golang.org/grpc",
+      "to_version": "v1.59.0"
+    }
+  ],
+  "requires": [
+    {
+      "dep_path": "golang.org/x/net",
+      "min_version": "v0.10.0",
+      "reachability_symbols": [
+        "golang.org/x/net/trace"
+      ]
+    },
+    {
+      "dep_path": "google.golang.org/grpc",
+      "min_version": "v1.58.0",
+      "reachability_symbols": [
+        "google.golang.org/grpc/credentials"
+      ]
+    }
+  ],
+  "tools": []
+}

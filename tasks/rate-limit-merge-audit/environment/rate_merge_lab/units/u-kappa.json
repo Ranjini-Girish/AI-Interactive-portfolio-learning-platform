@@ -1,0 +1,8 @@
+{
+  "dropins": [
+    "d1.json"
+  ],
+  "host_id": "h-west",
+  "service_id": "u-kappa",
+  "unit_class": "legacy"
+}

@@ -1,0 +1,12 @@
+{
+  "rules": [
+    {
+      "action": "deny",
+      "audit_tier": "production",
+      "dst_zones": ["z_void_missing"],
+      "priority": 1,
+      "rule_id": "r_unknown_dst",
+      "src_zones": ["z_dmz"]
+    }
+  ]
+}

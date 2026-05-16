@@ -1,0 +1,5 @@
+{
+  "description": "preprod",
+  "zone_id": "z_staging",
+  "zone_tier": "staging"
+}

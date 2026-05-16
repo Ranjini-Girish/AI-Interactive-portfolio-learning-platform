@@ -1,0 +1,17 @@
+{
+  "auth_mode": "api_key",
+  "endpoints": [
+    {
+      "endpoint_id": "GET /v1/legacy/export",
+      "params": [
+        {"name": "date", "required": true, "type": "string"}
+      ],
+      "response_fields": [
+        {"name": "rows", "type": "array"}
+      ],
+      "status_codes": [200, 400, 401]
+    }
+  ],
+  "service_id": "svc.legacy.exporter",
+  "tier": "bronze"
+}

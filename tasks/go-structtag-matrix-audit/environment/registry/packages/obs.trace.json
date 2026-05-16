@@ -1,0 +1,1 @@
+{"module_path":"example.com/obs","package_id":"obs.trace","structs":[{"fields":[{"field_id":"T","go_name":"T","tags":{"json":"trace,omitempty"}}],"struct_id":"Span"}]}

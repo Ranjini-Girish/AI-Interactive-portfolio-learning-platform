@@ -1,0 +1,20 @@
+{
+  "rules": [
+    {
+      "action": "allow",
+      "audit_tier": "production",
+      "dst_zones": ["*"],
+      "priority": 40,
+      "rule_id": "r_egress_any_allow",
+      "src_zones": ["z_egress"]
+    },
+    {
+      "action": "deny",
+      "audit_tier": "staging",
+      "dst_zones": ["z_db"],
+      "priority": 1,
+      "rule_id": "r_staging_db_shadow",
+      "src_zones": ["z_staging"]
+    }
+  ]
+}

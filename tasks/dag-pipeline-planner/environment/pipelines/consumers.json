@@ -1,0 +1,10 @@
+{
+  "edges": [
+    {"consumer": "feature-store", "producer": "etl-daily"},
+    {"consumer": "feature-store", "producer": "ml-training"},
+    {"consumer": "log-archive", "producer": "feature-store"},
+    {"consumer": "log-archive", "producer": "realtime-ingest"},
+    {"consumer": "log-archive", "producer": "reporting"},
+    {"consumer": "reporting", "producer": "etl-daily"}
+  ]
+}

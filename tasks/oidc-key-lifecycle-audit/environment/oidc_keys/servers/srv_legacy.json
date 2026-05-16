@@ -1,0 +1,5 @@
+{
+  "required_audience": "https://legacy/root",
+  "server_id": "srv_legacy",
+  "tier": "bronze"
+}

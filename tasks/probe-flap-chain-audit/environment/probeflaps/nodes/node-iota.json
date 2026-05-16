@@ -1,0 +1,15 @@
+{
+  "node_id": "node-iota",
+  "parent_id": null,
+  "probes_by_day": {
+    "103": "fail",
+    "104": "fail",
+    "105": "fail",
+    "106": "fail",
+    "107": "ok",
+    "108": "ok",
+    "109": "ok",
+    "110": "ok"
+  },
+  "tier": "silver"
+}

@@ -1,0 +1,17 @@
+{
+  "module_id": "cart",
+  "module_path": "example.com/cart",
+  "replaces": [
+    {
+      "from": "example.com/cycle-a",
+      "to": "example.com/cycle-b"
+    },
+    {
+      "from": "example.com/cycle-b",
+      "to": "example.com/cycle-a"
+    }
+  ],
+  "requires": [
+    "example.com/cycle-a"
+  ]
+}

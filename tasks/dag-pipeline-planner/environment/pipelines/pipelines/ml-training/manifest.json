@@ -1,0 +1,5 @@
+{
+  "name": "ml-training",
+  "sla_hours": 4,
+  "tier": "staging"
+}

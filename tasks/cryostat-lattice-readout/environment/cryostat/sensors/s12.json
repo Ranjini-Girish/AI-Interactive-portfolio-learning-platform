@@ -1,0 +1,9 @@
+{
+  "sensor_id": "s12",
+  "strap_id": "strap-g",
+  "rig_id": "east",
+  "tier": "secondary",
+  "commissioned_day": 0,
+  "last_calibration_day": 5,
+  "nominal_range_millic": [80000, 80800]
+}

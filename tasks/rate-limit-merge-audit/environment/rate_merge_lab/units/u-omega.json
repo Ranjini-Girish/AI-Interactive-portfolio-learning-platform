@@ -1,0 +1,9 @@
+{
+  "dropins": [
+    "d1.json",
+    "d4.json"
+  ],
+  "host_id": "h-south",
+  "service_id": "u-omega",
+  "unit_class": "standard"
+}

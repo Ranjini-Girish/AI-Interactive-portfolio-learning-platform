@@ -1,0 +1,67 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 98,
+      "event_id": "e00",
+      "kind": "tier_threshold_delta",
+      "target_tier": "silver",
+      "delta": 5
+    },
+    {
+      "accepted": true,
+      "day": 100,
+      "event_id": "e01",
+      "kind": "tier_threshold_delta",
+      "target_tier": "silver",
+      "delta": 1
+    },
+    {
+      "accepted": true,
+      "day": 103,
+      "event_id": "e02",
+      "kind": "fail_day_suppress",
+      "days": [
+        101,
+        102
+      ],
+      "service_id": "svc-beta"
+    },
+    {
+      "accepted": true,
+      "day": 104,
+      "event_id": "e03",
+      "kind": "fail_day_suppress",
+      "days": [
+        999
+      ],
+      "service_id": "svc-beta"
+    },
+    {
+      "accepted": true,
+      "day": 102,
+      "event_id": "e04",
+      "kind": "silver_spike"
+    },
+    {
+      "accepted": true,
+      "day": 105,
+      "event_id": "e05",
+      "kind": "force_open",
+      "service_id": "svc-delta"
+    },
+    {
+      "accepted": true,
+      "day": 106,
+      "event_id": "e06",
+      "kind": "force_open",
+      "service_id": "svc-alpha"
+    },
+    {
+      "accepted": true,
+      "day": 105,
+      "event_id": "e07",
+      "kind": "unknown_future_kind"
+    }
+  ]
+}

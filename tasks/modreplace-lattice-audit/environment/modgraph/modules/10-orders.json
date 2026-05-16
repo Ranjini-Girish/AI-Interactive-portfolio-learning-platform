@@ -1,0 +1,14 @@
+{
+  "module_id": "orders",
+  "module_path": "example.com/orders",
+  "replaces": [
+    {
+      "from": "example.com/lib",
+      "to": "example.com/lib-orders"
+    }
+  ],
+  "requires": [
+    "example.com/lib",
+    "example.com/pay"
+  ]
+}

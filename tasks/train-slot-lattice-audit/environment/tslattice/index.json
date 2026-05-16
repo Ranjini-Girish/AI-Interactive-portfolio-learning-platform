@@ -1,0 +1,21 @@
+{
+  "tenant_files": [
+    "tenants/lab-east.json",
+    "tenants/lab-west.json",
+    "tenants/solo.json"
+  ],
+  "request_files": [
+    "requests/r-blocked.json",
+    "requests/r-child.json",
+    "requests/r-cy-a.json",
+    "requests/r-cy-b.json",
+    "requests/r-east-late.json",
+    "requests/r-future.json",
+    "requests/r-ghost.json",
+    "requests/r-loop.json",
+    "requests/r-override.json",
+    "requests/r-parent.json",
+    "requests/r-sat-a.json",
+    "requests/r-sat-b.json"
+  ]
+}

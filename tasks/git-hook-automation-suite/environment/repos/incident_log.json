@@ -1,0 +1,15 @@
+{
+  "events": [
+    {"kind": "emergency_waiver", "repo": "auth-svc", "hook_kind": "pre-push", "day": 115, "duration_days": 10},
+    {"kind": "emergency_waiver", "repo": "billing", "hook_kind": "commit-msg", "day": 100, "duration_days": 10},
+    {"kind": "compromise", "repo": "legacy-shop", "day": 95},
+    {"kind": "audit_override", "repo": "data-platform", "target_compliance": "compliant", "day": 90},
+    {"kind": "audit_override", "repo": "data-platform", "target_compliance": "non_compliant", "day": 110},
+    {"kind": "emergency_waiver", "repo": "ghost-repo", "hook_kind": "pre-push", "day": 100, "duration_days": 5},
+    {"kind": "emergency_waiver", "repo": "frontend", "hook_kind": "pre-push", "day": 80, "duration_days": 5},
+    {"kind": "compromise", "repo": "auth-svc", "day": 117},
+    {"kind": "audit_override", "repo": "frontend", "target_compliance": "compliant", "day": 119},
+    {"kind": "tampering_alert", "repo": "billing", "day": 100},
+    {"kind": "compromise", "repo": "infra-tools", "day": 121}
+  ]
+}

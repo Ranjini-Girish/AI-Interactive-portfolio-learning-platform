@@ -1,0 +1,11 @@
+{
+  "home_region": "east",
+  "preferred_arena_ids": [
+    "a_east"
+  ],
+  "roster_size": 6,
+  "seed_score": 85,
+  "stamina": 62,
+  "team_id": "t_echo",
+  "tier": "silver"
+}

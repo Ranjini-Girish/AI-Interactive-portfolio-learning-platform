@@ -1,0 +1,6 @@
+{
+  "id": "model-fresh-staging",
+  "candidate_checkpoint": "ckpt-R",
+  "target_tier": "staging",
+  "governance_review_status": "approved"
+}

@@ -1,0 +1,13 @@
+{
+  "host": "gamma",
+  "snapshots": [
+    {"id": "gamma-001", "kind": "full",        "taken_day": 15,  "size_mb": 120, "parent_id": null,         "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0001"},
+    {"id": "gamma-002", "kind": "incremental", "taken_day": 80,  "size_mb": 25,  "parent_id": "gamma-001",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0002"},
+    {"id": "gamma-003", "kind": "incremental", "taken_day": 180, "size_mb": 30,  "parent_id": "gamma-002",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0003"},
+    {"id": "gamma-005", "kind": "incremental", "taken_day": 240, "size_mb": 40,  "parent_id": "gamma-004",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0005"},
+    {"id": "gamma-006", "kind": "incremental", "taken_day": 300, "size_mb": 35,  "parent_id": "gamma-005",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0006"},
+    {"id": "gamma-007", "kind": "incremental", "taken_day": 350, "size_mb": 25,  "parent_id": "gamma-006",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0007"},
+    {"id": "gamma-008", "kind": "incremental", "taken_day": 360, "size_mb": 20,  "parent_id": "gamma-007",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0008"},
+    {"id": "gamma-009", "kind": "incremental", "taken_day": 363, "size_mb": 15,  "parent_id": "gamma-008",  "sha256_chain": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc0009"}
+  ]
+}

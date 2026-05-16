@@ -1,0 +1,8 @@
+{
+  "depends_on": null,
+  "run_id": "r-future",
+  "rung": "gold",
+  "slots_asked": 1,
+  "submit_day": 99,
+  "tenant_id": "solo"
+}

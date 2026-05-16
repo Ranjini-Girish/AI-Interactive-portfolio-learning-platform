@@ -1,0 +1,35 @@
+{
+  "events": [
+    {
+      "seq": 1,
+      "day": 3,
+      "kind": "cap_trim",
+      "cluster_slot_cap": 6
+    },
+    {
+      "seq": 2,
+      "day": 6,
+      "kind": "cap_trim",
+      "cluster_slot_cap": 5
+    },
+    {
+      "seq": 3,
+      "day": 7,
+      "kind": "freeze_tenant",
+      "tenant_id": "lab-east"
+    },
+    {
+      "seq": 4,
+      "day": 9,
+      "kind": "rung_override",
+      "run_id": "r-override",
+      "new_rung": "gold"
+    },
+    {
+      "seq": 99,
+      "day": 20,
+      "kind": "cap_trim",
+      "cluster_slot_cap": 1
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "model-runtime-blown",
+  "candidate_checkpoint": "ckpt-Q",
+  "target_tier": "staging",
+  "governance_review_status": "approved"
+}

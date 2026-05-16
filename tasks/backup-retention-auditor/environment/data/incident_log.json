@@ -1,0 +1,12 @@
+{
+  "events": [
+    {"day": 250, "kind": "chain_break",      "snapshot_id": "gamma-005",   "containment_window_days": 0,   "evidence": "operator-reseed"},
+    {"day": 200, "kind": "tamper",           "snapshot_id": "epsilon-003", "containment_window_days": 100, "evidence": "checksum-mismatch"},
+    {"day": 360, "kind": "tamper",           "snapshot_id": "eta-005",     "containment_window_days": 20,  "evidence": "audit-anomaly"},
+    {"day": 250, "kind": "restore_failure",  "snapshot_id": "alpha-010",   "containment_window_days": 0,   "evidence": "media-error"},
+    {"day": 310, "kind": "chain_break",      "snapshot_id": "zeta-004",    "containment_window_days": 0,   "evidence": "scheduled-truncation"},
+    {"day": 999, "kind": "future_event",     "snapshot_id": "alpha-001",   "containment_window_days": 0,   "evidence": "ignored"},
+    {"day": 50,  "kind": "tamper",           "snapshot_id": "phantom-001", "containment_window_days": 30,  "evidence": "unknown-snapshot-ignored"},
+    {"day": 150, "kind": "tamper",           "snapshot_id": "alpha-005",   "containment_window_days": 60,  "evidence": "predates-snapshot-must-be-rejected"}
+  ]
+}

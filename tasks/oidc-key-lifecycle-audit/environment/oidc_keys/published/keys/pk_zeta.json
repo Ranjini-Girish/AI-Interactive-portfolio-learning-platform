@@ -1,0 +1,11 @@
+{
+  "alg_family": "RS256",
+  "allowed_audience_prefixes": [
+    "https://svc/b"
+  ],
+  "kid": "k_zeta",
+  "not_after_day": 120,
+  "not_before_day": 0,
+  "record_id": "pub_zeta_1",
+  "sequence": 1
+}

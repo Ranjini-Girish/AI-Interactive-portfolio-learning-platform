@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "cnf": [],
+      "imports": [
+        "github.com/acme/forbiddenlib"
+      ],
+      "name": "ok.go"
+    }
+  ],
+  "package_key": "waived",
+  "package_path": "github.com/acme/waived"
+}

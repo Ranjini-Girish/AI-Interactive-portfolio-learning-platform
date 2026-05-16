@@ -1,0 +1,8 @@
+{
+  "dropins": [
+    "d3.json"
+  ],
+  "host_id": "h-west",
+  "service_id": "u-gamma",
+  "unit_class": "standard"
+}

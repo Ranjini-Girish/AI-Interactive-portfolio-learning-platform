@@ -1,0 +1,8 @@
+{
+  "dropins": [
+    "d5.json"
+  ],
+  "host_id": "h-south",
+  "service_id": "u-zeta",
+  "unit_class": "standard"
+}

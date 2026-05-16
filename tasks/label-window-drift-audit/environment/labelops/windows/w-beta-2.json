@@ -1,0 +1,14 @@
+{
+  "conflicts": 45,
+  "dataset_id": "ds-beta",
+  "day_end": 100,
+  "day_start": 95,
+  "depends_on": [
+    "w-beta-1"
+  ],
+  "labels_total": 1000,
+  "positives": 600,
+  "reviewer_rejects": 15,
+  "source_model_id": "m-beta",
+  "window_id": "w-beta-2"
+}

@@ -1,0 +1,56 @@
+{
+  "excludes": [
+    {
+      "dep_path": "golang.org/x/text",
+      "version": "v0.5.0"
+    }
+  ],
+  "go_version_min": "1.22",
+  "module_path": "platform",
+  "replaces": [
+    {
+      "from_path": "github.com/acme/utils",
+      "to_path": "github.com/acme/utils2",
+      "to_version": "v3.0.0"
+    },
+    {
+      "from_path": "golang.org/x/net",
+      "to_path": "github.com/acme/telemetry",
+      "to_version": "v1.2.0"
+    },
+    {
+      "from_path": "google.golang.org/grpc",
+      "to_path": "google.golang.org/grpc",
+      "to_version": "v1.60.0"
+    }
+  ],
+  "requires": [
+    {
+      "dep_path": "github.com/acme/cache",
+      "min_version": "v1.0.0",
+      "reachability_symbols": []
+    },
+    {
+      "dep_path": "github.com/acme/crypto",
+      "min_version": "v0.2.0",
+      "reachability_symbols": [
+        "github.com/acme/crypto/modern.AEAD"
+      ]
+    },
+    {
+      "dep_path": "github.com/acme/utils",
+      "min_version": "v1.0.0",
+      "reachability_symbols": []
+    },
+    {
+      "dep_path": "golang.org/x/text",
+      "min_version": "v0.5.0",
+      "reachability_symbols": [
+        "golang.org/x/text/unicode/norm"
+      ]
+    }
+  ],
+  "tools": [
+    "github.com/acme/logger"
+  ]
+}

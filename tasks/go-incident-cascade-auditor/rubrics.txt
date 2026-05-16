@@ -1,0 +1,13 @@
+Agent emits all five required report files in /app/report with valid JSON content, +5
+Agent preserves the read-only fixtures under /app/signals without any byte changes, -5
+Agent enforces accepted-event filtering by current_minute, kind, and field validity rules, +3
+Agent computes base severities from effective error, latency, and qps-drop thresholds per tier, +3
+Agent applies transitive reverse-dependency warning propagation from critical roots, +3
+Agent applies active node quarantine elevation and final severity override precedence correctly, +3
+Agent produces deterministic sorting for services, roots, pages, and nodes exactly as specified, +2
+Agent assigns paging priorities p1/p2/p3 using the documented severity and reason precedence, +2
+Agent computes node status states healthy/quarantined/hotspot/quarantined_hotspot correctly, +2
+Agent writes canonical UTF-8 JSON with two-space indentation, sorted object keys, and trailing newline, +2
+Agent fails to compile or provide an executable Go binary at /app/bin/auditor, -5
+Agent implements the task in a non-Go language or bypasses the required binary execution path, -3
+Agent includes extra files in /app/report or omits any required report artifact, -2

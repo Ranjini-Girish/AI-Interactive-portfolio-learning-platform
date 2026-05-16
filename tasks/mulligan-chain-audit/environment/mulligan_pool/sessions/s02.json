@@ -1,0 +1,64 @@
+{
+  "chain": [
+    {
+      "action": "mulligan",
+      "hand": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "step": 0
+    },
+    {
+      "action": "mulligan",
+      "hand": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "step": 1
+    },
+    {
+      "action": "mulligan",
+      "hand": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "step": 2
+    },
+    {
+      "action": "mulligan",
+      "hand": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "step": 3
+    },
+    {
+      "action": "keep",
+      "hand": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "step": 4
+    }
+  ],
+  "deck_id": "d02",
+  "format_id": "fmt-modern",
+  "played_day": 101,
+  "session_id": "s02"
+}

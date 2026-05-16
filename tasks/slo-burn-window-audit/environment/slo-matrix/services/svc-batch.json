@@ -1,0 +1,13 @@
+{
+  "minutes_by_day": {
+    "10": { "bad_minutes": 2 },
+    "11": { "bad_minutes": 2 },
+    "12": { "bad_minutes": 2 },
+    "13": { "bad_minutes": 2 },
+    "14": { "bad_minutes": 2 },
+    "8": { "bad_minutes": 2 },
+    "9": { "bad_minutes": 2 }
+  },
+  "service_id": "svc-batch",
+  "tier": "silver"
+}

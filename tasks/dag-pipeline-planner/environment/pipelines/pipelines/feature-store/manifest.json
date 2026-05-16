@@ -1,0 +1,5 @@
+{
+  "name": "feature-store",
+  "sla_hours": 12,
+  "tier": "dev"
+}

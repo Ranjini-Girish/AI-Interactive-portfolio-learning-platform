@@ -1,0 +1,6 @@
+{
+  "id": "model-summarize-v1",
+  "candidate_checkpoint": "ckpt-D",
+  "target_tier": "research",
+  "governance_review_status": "approved"
+}

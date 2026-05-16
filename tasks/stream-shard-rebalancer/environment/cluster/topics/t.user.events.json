@@ -1,0 +1,19 @@
+{
+  "topic_id": "t.user.events",
+  "partitions": 4,
+  "tier": "silver",
+  "target_lag_messages": 1500,
+  "current_throughput_mbps_per_partition": 35,
+  "current_lag_messages": {
+    "0": 300,
+    "1": 250,
+    "2": 180,
+    "3": 220
+  },
+  "current_leader_map": {
+    "0": "b07",
+    "1": "b02",
+    "2": "b10",
+    "3": "b08"
+  }
+}

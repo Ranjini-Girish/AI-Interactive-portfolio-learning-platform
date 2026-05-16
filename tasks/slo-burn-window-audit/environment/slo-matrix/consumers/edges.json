@@ -1,0 +1,16 @@
+{
+  "edges": [
+    {
+      "consumer_id": "svc-batch",
+      "producer_id": "svc-notify"
+    },
+    {
+      "consumer_id": "svc-gateway",
+      "producer_id": "svc-cache"
+    },
+    {
+      "consumer_id": "svc-ledger",
+      "producer_id": "svc-gateway"
+    }
+  ]
+}

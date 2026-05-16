@@ -1,0 +1,20 @@
+{
+  "fragile": {
+    "capacity_weight": 3,
+    "max_dose_mgy": 60,
+    "min_quality_pct": 95,
+    "window_grace_min": 0
+  },
+  "primary": {
+    "capacity_weight": 2,
+    "max_dose_mgy": 120,
+    "min_quality_pct": 90,
+    "window_grace_min": 10
+  },
+  "secondary": {
+    "capacity_weight": 1,
+    "max_dose_mgy": 80,
+    "min_quality_pct": 75,
+    "window_grace_min": 5
+  }
+}

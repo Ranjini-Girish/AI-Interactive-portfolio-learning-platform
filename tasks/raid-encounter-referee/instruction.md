@@ -1,0 +1,5 @@
+The raid tournament fixtures are stored under `/app/raid/` as JSON files: player records in `/app/raid/players/`, team tiers in `/app/raid/teams/tiers.json`, rules in `/app/raid/policy/rules.json`, duel history in `/app/raid/history/duel_history.json`, loot crates in `/app/raid/loot/crates.json`, incidents in `/app/raid/incidents/incident_log.json`, and clock values in `/app/raid/pool_state.json`. The exact contract for incident acceptance, status precedence, rematch handling, loot priority scoring, bench-state assignment, summary counters, required sorting, and canonical JSON formatting is defined in `/app/raid/SPEC.md`.
+
+Implement the referee in Go. Place source files under `/app/src/` and compile a single executable to `/app/bin/referee`. When that executable runs against `/app/raid/`, it must create exactly five files in `/app/results/`: `match_cards.json`, `loot_draft.json`, `sanction_board.json`, `bench_plan.json`, and `summary.json`.
+
+Treat `/app/raid/` as read-only. Output files must be UTF-8 JSON with two-space indentation, sorted object keys at every level, and exactly one trailing newline.

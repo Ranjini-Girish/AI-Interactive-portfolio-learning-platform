@@ -1,0 +1,70 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 40,
+      "event_id": "e001",
+      "extra_days": 2,
+      "kind": "extend_grace",
+      "target_tier": "silver"
+    },
+    {
+      "accepted": true,
+      "day": 55,
+      "delta": 1,
+      "event_id": "e002",
+      "kind": "renewal_cap_delta",
+      "target_tier": "bronze"
+    },
+    {
+      "accepted": true,
+      "day": 70,
+      "event_id": "e003",
+      "host_id": "host-gamma",
+      "kind": "freeze_renewals"
+    },
+    {
+      "accepted": true,
+      "day": 80,
+      "event_id": "e004",
+      "kind": "slot_compromise",
+      "slot_id": "slot-vault"
+    },
+    {
+      "accepted": true,
+      "day": 85,
+      "event_id": "e005",
+      "host_id": "host-delta",
+      "kind": "host_compromise"
+    },
+    {
+      "accepted": true,
+      "day": 90,
+      "event_id": "e006",
+      "host_id": "host-alpha",
+      "kind": "force_expire",
+      "slot_id": "slot-alpha1"
+    },
+    {
+      "accepted": false,
+      "day": 95,
+      "event_id": "e007",
+      "host_id": "host-beta",
+      "kind": "force_expire",
+      "slot_id": "slot-shared"
+    },
+    {
+      "accepted": true,
+      "day": 110,
+      "event_id": "e008",
+      "host_id": "host-eta",
+      "kind": "freeze_renewals"
+    },
+    {
+      "accepted": true,
+      "day": 60,
+      "event_id": "e009",
+      "kind": "unknown_kind"
+    }
+  ]
+}

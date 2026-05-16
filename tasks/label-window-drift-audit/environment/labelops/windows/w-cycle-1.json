@@ -1,0 +1,14 @@
+{
+  "conflicts": 12,
+  "dataset_id": "ds-cycle-a",
+  "day_end": 96,
+  "day_start": 90,
+  "depends_on": [
+    "w-cycle-2"
+  ],
+  "labels_total": 600,
+  "positives": 310,
+  "reviewer_rejects": 12,
+  "source_model_id": "m-cycle",
+  "window_id": "w-cycle-1"
+}

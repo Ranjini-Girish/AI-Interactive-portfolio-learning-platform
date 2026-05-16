@@ -1,0 +1,41 @@
+{
+  "intermediates": [
+    {
+      "compromised": false,
+      "domains_signed": 2,
+      "serial": "int-asia-1",
+      "tainted_domains": [],
+      "trusted_root_anchor": "root-asiatrust"
+    },
+    {
+      "compromised": false,
+      "domains_signed": 3,
+      "serial": "int-eu-1",
+      "tainted_domains": [
+        "staging.example.com"
+      ],
+      "trusted_root_anchor": "root-eutrust"
+    },
+    {
+      "compromised": true,
+      "domains_signed": 2,
+      "serial": "int-eu-1-sub",
+      "tainted_domains": [],
+      "trusted_root_anchor": "root-eutrust"
+    },
+    {
+      "compromised": false,
+      "domains_signed": 5,
+      "serial": "int-us-1",
+      "tainted_domains": [],
+      "trusted_root_anchor": "root-globaltrust"
+    },
+    {
+      "compromised": false,
+      "domains_signed": 1,
+      "serial": "int-us-2",
+      "tainted_domains": [],
+      "trusted_root_anchor": "root-globaltrust"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "host": "epsilon",
+  "snapshots": [
+    {"id": "epsilon-001", "kind": "full",        "taken_day": 50,  "size_mb": 100, "parent_id": null,           "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0001"},
+    {"id": "epsilon-002", "kind": "incremental", "taken_day": 120, "size_mb": 20,  "parent_id": "epsilon-001",  "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0002"},
+    {"id": "epsilon-003", "kind": "incremental", "taken_day": 180, "size_mb": 25,  "parent_id": "epsilon-002",  "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0003"},
+    {"id": "epsilon-004", "kind": "incremental", "taken_day": 240, "size_mb": 30,  "parent_id": "epsilon-003",  "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0004"},
+    {"id": "epsilon-005", "kind": "incremental", "taken_day": 320, "size_mb": 20,  "parent_id": "epsilon-004",  "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0005"},
+    {"id": "epsilon-006", "kind": "incremental", "taken_day": 355, "size_mb": 15,  "parent_id": "epsilon-005",  "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0006"},
+    {"id": "epsilon-007", "kind": "incremental", "taken_day": 363, "size_mb": 10,  "parent_id": "epsilon-006",  "sha256_chain": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee0007"}
+  ]
+}

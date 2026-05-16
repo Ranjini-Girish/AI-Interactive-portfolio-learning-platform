@@ -1,0 +1,7 @@
+{
+  "applied_bundles": [],
+  "host_id": "h-d1",
+  "maintenance_windows": [[1, 5]],
+  "region": "r-west",
+  "tier": "development"
+}
