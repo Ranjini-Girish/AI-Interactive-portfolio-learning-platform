@@ -1,0 +1,237 @@
+---
+name: snorkel-experts-e2e
+description: >-
+  Automate Snorkel Experts Portal (experts.snorkel-ai.com) login, new-task
+  submission, and revision flows using Playwright E2E under e2e/ plus
+  terminus_zip.py for flat zips. Use when the user asks to submit a Terminus
+  task on the platform, run headed/browser E2E, upload a task zip, revise a
+  submission, refresh auth session, or use submit:new / SNORKEL_TASK_DIR /
+  SNORKEL_SUBMIT workflows in Airdawg_terminal.
+disable-model-invocation: true
+---
+
+# Snorkel Experts Portal — Playwright E2E
+
+Automate **https://experts.snorkel-ai.com** for Terminus Edition-2 trainers:
+Cognito login → Home → **Submission Start** or **Revise** → upload zip →
+platform checkboxes → optional static checks → **Submit**.
+
+**Ground truth for task authoring / zip rules:** `.cursor/rules/terminus-project.mdc`  
+**Task creation narrative:** `terminus-task-creator` skill  
+**Zip CLI:** `tools/terminus-task-tools/terminus_zip.py` (see `terminus-zip-tools` rule)
+
+This skill covers **browser automation only** (`e2e/`). It does not replace
+`local-qc`, `stb harbor run`, or CodeBuild agent trials.
+
+---
+
+## One-time setup
+
+From repo root:
+
+```powershell
+cd e2e
+npm install
+npx playwright install chromium
+copy .env.example .env
+# Edit .env: SNORKEL_EMAIL, SNORKEL_PASSWORD (never commit .env)
+npx playwright test tests/auth.setup.ts --project=setup
+```
+
+Saved session: `e2e/.auth/snorkel-user.json` (gitignored). Re-run auth setup when
+login expires.
+
+---
+
+## Mandatory order (new submission)
+
+Do **not** skip local gates before browser submit.
+
+```
+1. Task passes local authoring gates (terminus-project.mdc / terminus-task-creator)
+2. python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>
+3. python tools/terminus-task-tools/terminus_zip.py clean tasks/<name>
+4. python tools/terminus-task-tools/terminus_zip.py build tasks/<name>
+   → tasks/<name>.zip (flat root, no rubrics.txt)
+5. Playwright E2E (this skill) — dry run first, then live submit
+6. Two-cycle rubric workflow on platform UI (human edits; see terminus-project.mdc)
+```
+
+---
+
+## Environment variables (`e2e/.env`)
+
+| Variable | Purpose |
+|----------|---------|
+| `SNORKEL_EMAIL` / `SNORKEL_PASSWORD` | Cognito login (required for auth setup) |
+| `SNORKEL_TASK_DIR` | Task folder; E2E runs `terminus_zip.py clean` + `build` |
+| `SNORKEL_TASK_ZIP` | Existing flat zip (skip build if already built) |
+| `SNORKEL_DRY_RUN=1` | Upload + form only; **no** platform **Submit** |
+| `SNORKEL_SUBMIT=1` | Click **Submit** (triggers CI / agent runs) |
+| `SNORKEL_STATIC_CHECKS=1` | Click **Check feedback** before submit |
+| `SNORKEL_REGENERATE_RUBRIC=0` | Skip rubric checkbox (default **on** for cycle 1) |
+| `SNORKEL_REVISION_TASK_ID` | UUID on revision card (else first **Revise**) |
+| `SNORKEL_SEND_TO_REVIEWER=0` | Optional: uncheck **Send to reviewer?** (default **checked**) |
+| `HEADED=1` | Visible browser (with CLI wrapper or npm scripts) |
+
+Use **either** `SNORKEL_TASK_DIR` **or** `SNORKEL_TASK_ZIP`, not both unless intentional.
+
+---
+
+## Cycle 1 — New task submission (platform)
+
+Matches `EC-Training-Docs/02_Task_Submission_Guide.md` §15 and
+`terminus-project.mdc` two-cycle rubric protocol.
+
+| Step | Platform UI | E2E default |
+|------|-------------|-------------|
+| 1 | Home → **Terminus-2nd-Edition** → **Submission** → **Start** | `openTerminusSubmissionStart()` |
+| 2 | Upload flat `.zip` | `uploadSubmissionZip()` |
+| 3 | **Prompt Check** attestation | checked |
+| 4 | **Generate rubric(s)** | checked |
+| 5 | **Send to reviewer?** | **checked** |
+| 6 | Fast static checks (optional) | `SNORKEL_STATIC_CHECKS=1` |
+| 7 | **Submit** | only when `SNORKEL_SUBMIT=1` |
+
+### Commands (PowerShell, from `e2e/`)
+
+```powershell
+$env:SNORKEL_TASK_DIR = '..\tasks\ingest-watermark-skew-audit'
+
+# Dry run — safe rehearsal
+$env:SNORKEL_DRY_RUN = '1'
+npm run submit:new:headed
+
+# Live cycle-1 submit
+Remove-Item Env:SNORKEL_DRY_RUN -ErrorAction SilentlyContinue
+$env:SNORKEL_SUBMIT = '1'
+$env:SNORKEL_STATIC_CHECKS = '1'
+npm run submit:new:live:headed
+```
+
+CLI wrapper (same tests):
+
+```powershell
+$env:SNORKEL_TASK_DIR = '..\tasks\my-task'
+$env:HEADED = '1'
+node scripts/submit-new-task.mjs          # dry
+node scripts/submit-new-task.mjs --live # submit
+```
+
+---
+
+## Cycle 2+ — Revision
+
+After email / task appears under **Tasks to be revised**:
+
+| Step | Platform | E2E |
+|------|----------|-----|
+| 1 | Home → **Revise** on task UUID | `SNORKEL_REVISION_TASK_ID` or first card |
+| 2 | Review CI / edit rubric in UI | manual or prior CI |
+| 3 | Re-upload zip if task changed | `SNORKEL_TASK_ZIP` + revision flow `uploadZip` |
+| 4 | **Send to reviewer?** | **on** (default) |
+| 5 | **Generate rubric(s)** | on if task changed materially |
+| 6 | **Submit** | `SNORKEL_SUBMIT=1` on dedicated revision test |
+
+```powershell
+$env:SNORKEL_REVISION_TASK_ID = '<assignment-uuid-from-home-card>'
+$env:SNORKEL_TASK_ZIP = '..\tasks\my-task.zip'
+npm run flow:revision:iterate:headed
+
+# Full revise + submit (gated)
+$env:SNORKEL_SUBMIT = '1'
+npx playwright test tests/revision-flow.spec.ts -g "full revise submit" --headed
+```
+
+**Cycle 2 platform rubric rule:** uncheck **Generate rubric(s)** before **Send to
+reviewer** if you already edited the rubric in the textbox (see
+`terminus-project.mdc` — leaving it checked can overwrite edits).
+
+---
+
+## Auth / login only
+
+Cognito form: **Email address**, **Password**, **Sign in** (`lib/snorkel-auth.ts`).
+
+```powershell
+npm run login:headed
+# or refresh stored session:
+npm run auth:setup
+```
+
+---
+
+## npm scripts (in `e2e/package.json`)
+
+| Script | Action |
+|--------|--------|
+| `auth:setup` | Login + save `.auth/snorkel-user.json` |
+| `login:headed` | Fresh Cognito login test (visible) |
+| `submit:new` | Dry upload + form |
+| `submit:new:live` | Cycle-1 submit (`SNORKEL_SUBMIT=1`) |
+| `submit:new:headed` / `submit:new:live:headed` | Headed variants |
+| `flow:submission:headed` | Open submission workspace only |
+| `flow:revision:headed` | Open first revision card |
+| `test:flows` | Submission + revision specs (headless) |
+
+---
+
+## Code map (`e2e/`)
+
+| Path | Role |
+|------|------|
+| `lib/snorkel-auth.ts` | Cognito login, session assertions |
+| `lib/snorkel-home.ts` | `/home`, Submission **Start**, **Revise** |
+| `lib/task-zip.ts` | `SNORKEL_TASK_*` + `terminus_zip.py` build |
+| `lib/submission-flow.ts` | `runNewTaskSubmission()` |
+| `lib/revision-flow.ts` | `runRevisionFlow()` |
+| `tests/submit-new-task.spec.ts` | **Primary E2E** for new submit |
+| `tests/revision-flow.spec.ts` | Revision E2E |
+| `scripts/submit-new-task.mjs` | CLI → Playwright |
+| `playwright.config.ts` | `storageState`, Chrome UA (avoids 403) |
+
+Extend flows in `lib/*.ts`; add specs under `tests/`; wire npm scripts in
+`package.json`.
+
+---
+
+## Agent checklist
+
+When the user asks to submit a task:
+
+- [ ] Confirm task name under `tasks/<name>/`
+- [ ] Run `terminus_zip.py preflight` + `build` (or set `SNORKEL_TASK_DIR`)
+- [ ] Ensure `e2e/.env` credentials exist; run `auth:setup` if session stale
+- [ ] Run **dry** submit first (`SNORKEL_DRY_RUN=1` + headed if debugging)
+- [ ] Only set `SNORKEL_SUBMIT=1` after user confirms
+- [ ] **Send to reviewer** is checked by default in E2E; set `SNORKEL_SEND_TO_REVIEWER=0` to uncheck
+- [ ] Never commit `.env`, `.auth/`, or passwords into the repo
+
+When implementing changes:
+
+- [ ] Prefer extending `runNewTaskSubmission` / `runRevisionFlow` over ad-hoc selectors
+- [ ] Keep Chrome `userAgent` on all contexts (headless 403 without it)
+- [ ] Do not click **Submit** in tests unless env gate explicit
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| `403 Forbidden` on experts.snorkel-ai.com | Use project `userAgent`; do not use bare Playwright default |
+| Cognito not found | Wait for redirect; use `auth:setup` |
+| Upload fails | Zip must be flat root (`terminus_zip.py verify`) |
+| **Submit** disabled | Complete Prompt Check + upload; run static checks |
+| Wrong project card | Submission **Start** is index `1` on home (main Terminus, not Assessment) |
+
+More detail: [reference.md](reference.md)
+
+---
+
+## Related skills / rules
+
+- **terminus-task-creator** — author task before submit
+- **terminus-task-tools-home** — where `terminus_zip.py` lives
+- **terminus-zip-tools** rule (`tasks/**`) — zip/preflight invocations
+- **terminus-project.mdc** — submission protocol, rubric two-cycle, fatal mistakes
