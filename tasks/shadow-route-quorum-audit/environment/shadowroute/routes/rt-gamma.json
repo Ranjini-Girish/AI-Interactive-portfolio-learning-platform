@@ -1,0 +1,12 @@
+{
+  "depends_on": [],
+  "model_id": "m-gamma",
+  "route_id": "rt-gamma",
+  "shadow_samples": [
+    {"accepted": true, "day": 81, "latency_ms": 20},
+    {"accepted": true, "day": 85, "latency_ms": 22},
+    {"accepted": true, "day": 94, "latency_ms": 90},
+    {"accepted": true, "day": 96, "latency_ms": 18}
+  ],
+  "tier": "bronze"
+}

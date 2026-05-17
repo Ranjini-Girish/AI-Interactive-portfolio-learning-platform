@@ -1,0 +1,13 @@
+Agent writes all five required JSON files under /app/audit/, +3
+Agent leaves every file under /app/shadowroute/ unchanged, +2
+Agent applies tier-weighted effective_quorum per SPEC.md, +3
+Agent classifies dependency-blocked routes with zero shadow_fraction_effective, +2
+Agent applies median-of-K latency degradation only when K in-window samples exist, +3
+Agent quarantines routes tied to accepted model_compromise through depends_on, +3
+Agent emits canonical JSON with sorted keys and a single trailing newline, +2
+Agent omits any required top-level output key, -3
+Agent modifies bundled input fixtures under /app/shadowroute/, -3
+Agent ignores overlay exclude_models when computing sample_ok, -2
+Agent treats route_freeze as quarantine instead of hold status, -2
+Agent emits dependency blocked_chains without hold_upstream or compromised_upstream reasons, -2
+Agent skips degrade_report rows for routes classified degraded, -2

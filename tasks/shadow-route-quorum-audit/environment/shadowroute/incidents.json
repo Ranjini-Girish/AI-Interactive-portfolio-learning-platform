@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 88,
+      "kind": "model_compromise",
+      "model_id": "m-toxic"
+    },
+    {
+      "accepted": true,
+      "day": 90,
+      "kind": "route_freeze",
+      "model_id": "m-zeta"
+    },
+    {
+      "accepted": false,
+      "day": 92,
+      "kind": "model_compromise",
+      "model_id": "m-decoy"
+    }
+  ]
+}

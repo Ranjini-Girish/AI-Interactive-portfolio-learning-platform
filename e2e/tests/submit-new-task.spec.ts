@@ -1,5 +1,10 @@
 import { test } from '@playwright/test';
-import { resolveSendToReviewer, runNewTaskSubmission } from '../lib/submission-flow';
+import {
+  resolveRegenerateRubric,
+  resolveSendToReviewer,
+  resolveStaticChecks,
+  runNewTaskSubmission,
+} from '../lib/submission-flow';
 import {
   resolveTaskNameFromEnv,
   saveSubmissionMetadata,
@@ -26,11 +31,13 @@ test.describe('Submit new Terminus task (E2E)', () => {
     test.setTimeout(300_000);
 
     const zipPath = resolveTaskZipPathOrThrow();
+    const regenerateRubric = resolveRegenerateRubric();
+    const runStaticChecks = resolveStaticChecks();
     const result = await runNewTaskSubmission(page, {
       zipPath,
       confirmPromptCheck: true,
-      regenerateRubric: true,
-      runStaticChecks: false,
+      regenerateRubric,
+      runStaticChecks,
       submitToPlatform: false,
     });
 
@@ -44,8 +51,8 @@ test.describe('Submit new Terminus task (E2E)', () => {
         zipPath,
         options: {
           sendToReviewer: resolveSendToReviewer(),
-          regenerateRubric: true,
-          staticChecks: false,
+          regenerateRubric,
+          staticChecks: runStaticChecks,
         },
       });
       console.log('Saved metadata:', metaPath);
@@ -60,9 +67,8 @@ test.describe('Submit new Terminus task (E2E)', () => {
     test.setTimeout(600_000);
 
     const zipPath = resolveTaskZipPathOrThrow();
-    const runStaticChecks = process.env.SNORKEL_STATIC_CHECKS !== '0';
-
-    const regenerateRubric = process.env.SNORKEL_REGENERATE_RUBRIC !== '0';
+    const regenerateRubric = resolveRegenerateRubric();
+    const runStaticChecks = resolveStaticChecks();
     const result = await runNewTaskSubmission(page, {
       zipPath,
       confirmPromptCheck: true,

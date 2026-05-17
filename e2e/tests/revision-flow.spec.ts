@@ -1,5 +1,9 @@
 import { test } from '@playwright/test';
-import { resolveSendToReviewer } from '../lib/submission-flow';
+import {
+  resolveRegenerateRubric,
+  resolveSendToReviewer,
+  resolveStaticChecks,
+} from '../lib/submission-flow';
 import {
   resolveTaskNameFromEnv,
   saveSubmissionMetadata,
@@ -43,8 +47,8 @@ test.describe('Snorkel Experts — Revision flow', () => {
     test.skip(process.env.SNORKEL_SUBMIT !== '1', 'Set SNORKEL_SUBMIT=1 to run live platform submit');
 
     const zipPath = resolveTaskZipPath();
-    const regenerateRubric = process.env.SNORKEL_REGENERATE_RUBRIC === '1';
-    const staticChecks = process.env.SNORKEL_STATIC_CHECKS === '1';
+    const regenerateRubric = resolveRegenerateRubric();
+    const staticChecks = resolveStaticChecks();
     const result = await runRevisionFlow(page, {
       taskId: resolveRevisionTaskId(),
       zipPath,

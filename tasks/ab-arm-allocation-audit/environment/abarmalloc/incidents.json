@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 22,
+      "experiment_id": "exp-04",
+      "kind": "experiment_compromise"
+    },
+    {
+      "accepted": true,
+      "day": 21,
+      "experiment_id": "exp-05",
+      "kind": "freeze_rollout"
+    }
+  ]
+}

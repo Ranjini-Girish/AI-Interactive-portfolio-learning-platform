@@ -1,0 +1,5 @@
+Platform ops needs a frozen audit of distributed key ownership across an epoch window: overlay policies, chained migrations within the same epoch, anchor holds, and compromised-node quarantine must be applied without altering the bundled evidence tree.
+
+Produce exactly five UTF-8 JSON documents under `/app/audit/` named `key_profiles.json`, `migration_rollups.json`, `stale_report.json`, `compromise_report.json`, and `summary.json`. Status vocabulary, overlay merge order, epoch bucket completeness, migration chaining, rollup caps, and canonical JSON layout are defined in `/app/keymigrate/SPEC.md`.
+
+Bundled inputs live under `/app/keymigrate/`. When `KME_DATA_DIR` is set to a non-empty value it replaces the input root; when `KME_AUDIT_DIR` is set to a non-empty value it replaces the output directory. If either variable is unset or empty, reads default to `/app/keymigrate/` and writes to `/app/audit/`. Create the output directory when missing. Do not modify the bundled `/app/keymigrate/` tree.

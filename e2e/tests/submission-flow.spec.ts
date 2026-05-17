@@ -19,9 +19,7 @@ test.describe('Snorkel Experts — Submission flow', () => {
     await runSubmissionFlow(page, {
       zipPath,
       confirmPromptCheck: true,
-      runStaticChecks: false,
       submitToPlatform: false,
-      regenerateRubric: true,
     });
   });
 
@@ -34,8 +32,6 @@ test.describe('Snorkel Experts — Submission flow', () => {
     await runSubmissionFlow(page, {
       zipPath,
       confirmPromptCheck: true,
-      regenerateRubric: true,
-      runStaticChecks: process.env.SNORKEL_STATIC_CHECKS === '1',
       submitToPlatform: true,
     });
   });

@@ -1,0 +1,5 @@
+{
+  "epoch_span": 7,
+  "grace_epochs": 3,
+  "weight_floor": 1
+}

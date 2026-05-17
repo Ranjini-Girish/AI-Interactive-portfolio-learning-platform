@@ -1,0 +1,6 @@
+{
+  "grace_days": 5,
+  "latency_median_k": 3,
+  "quorum_min": 4,
+  "sample_floor": 10
+}

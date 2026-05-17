@@ -1,0 +1,10 @@
+{
+  "depends_on": [],
+  "model_id": "m-excluded",
+  "route_id": "rt-iota",
+  "shadow_samples": [
+    {"accepted": true, "day": 91, "latency_ms": 50},
+    {"accepted": true, "day": 93, "latency_ms": 52}
+  ],
+  "tier": "gold"
+}

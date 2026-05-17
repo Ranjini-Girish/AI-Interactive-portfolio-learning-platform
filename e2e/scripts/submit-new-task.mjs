@@ -8,7 +8,7 @@
  *   set SNORKEL_DRY_RUN=1
  *   node scripts/submit-new-task.mjs
  *
- *   # Live cycle-1 submit (static checks + Submit; Send to reviewer ON)
+ *   # Live cycle-1 submit (static checks on by default; Send to reviewer ON)
  *   set SNORKEL_TASK_DIR=..\tasks\export-batch-window-audit
  *   set SNORKEL_SUBMIT=1
  *   node scripts/submit-new-task.mjs --live

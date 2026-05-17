@@ -68,8 +68,8 @@ Do **not** skip local gates before browser submit.
 | `SNORKEL_TASK_ZIP` | Existing flat zip (skip build if already built) |
 | `SNORKEL_DRY_RUN=1` | Upload + form only; **no** platform **Submit** |
 | `SNORKEL_SUBMIT=1` | Click **Submit** (triggers CI / agent runs) |
-| `SNORKEL_STATIC_CHECKS=1` | Click **Check feedback** before submit |
-| `SNORKEL_REGENERATE_RUBRIC=0` | Skip rubric checkbox (default **on** for cycle 1) |
+| `SNORKEL_STATIC_CHECKS=0` | Skip **Check feedback** / fast static checks (default **on**) |
+| `SNORKEL_REGENERATE_RUBRIC=1` | Check **Generate rubric(s)** (default **off**) |
 | `SNORKEL_REVISION_TASK_ID` | UUID on revision card (else first **Revise**) |
 | `SNORKEL_SEND_TO_REVIEWER=0` | Optional: uncheck **Send to reviewer?** (default **checked**) |
 | `SNORKEL_SAVE_METADATA=1` | Default in `.env.example` — save `tasks/<name>/platform-submission.json` on live and dry runs |
@@ -90,9 +90,9 @@ Matches `EC-Training-Docs/02_Task_Submission_Guide.md` §15 and
 | 1 | Home → **Terminus-2nd-Edition** → **Submission** → **Start** | `openTerminusSubmissionStart()` |
 | 2 | Upload flat `.zip` | `uploadSubmissionZip()` |
 | 3 | **Prompt Check** attestation | checked |
-| 4 | **Generate rubric(s)** | checked |
+| 4 | **Generate rubric(s)** | **unchecked** (default) |
 | 5 | **Send to reviewer?** | **checked** |
-| 6 | Fast static checks (optional) | `SNORKEL_STATIC_CHECKS=1` |
+| 6 | Fast static checks | **on** (default; `SNORKEL_STATIC_CHECKS=0` to skip) |
 | 7 | **Submit** | only when `SNORKEL_SUBMIT=1` |
 
 ### Commands (PowerShell, from `e2e/`)
@@ -104,10 +104,9 @@ $env:SNORKEL_TASK_DIR = '..\tasks\ingest-watermark-skew-audit'
 $env:SNORKEL_DRY_RUN = '1'
 npm run submit:new:headed
 
-# Live cycle-1 submit
+# Live cycle-1 submit (static checks on by default)
 Remove-Item Env:SNORKEL_DRY_RUN -ErrorAction SilentlyContinue
 $env:SNORKEL_SUBMIT = '1'
-$env:SNORKEL_STATIC_CHECKS = '1'
 npm run submit:new:live:headed
 ```
 
@@ -132,8 +131,9 @@ After email / task appears under **Tasks to be revised**:
 | 2 | Review CI / edit rubric in UI | manual or prior CI |
 | 3 | Re-upload zip if task changed | `SNORKEL_TASK_ZIP` + revision flow `uploadZip` |
 | 4 | **Send to reviewer?** | **on** (default) |
-| 5 | **Generate rubric(s)** | on if task changed materially |
-| 6 | **Submit** | `SNORKEL_SUBMIT=1` on dedicated revision test |
+| 5 | **Generate rubric(s)** | **off** (default; `SNORKEL_REGENERATE_RUBRIC=1` to check) |
+| 6 | Fast static checks | **on** (default) |
+| 7 | **Submit** | `SNORKEL_SUBMIT=1` on dedicated revision test |
 
 ```powershell
 $env:SNORKEL_REVISION_TASK_ID = '<assignment-uuid-from-home-card>'
@@ -145,9 +145,10 @@ $env:SNORKEL_SUBMIT = '1'
 npx playwright test tests/revision-flow.spec.ts -g "full revise submit" --headed
 ```
 
-**Cycle 2 platform rubric rule:** uncheck **Generate rubric(s)** before **Send to
-reviewer** if you already edited the rubric in the textbox (see
-`terminus-project.mdc` — leaving it checked can overwrite edits).
+**Cycle 2 platform rubric rule:** E2E leaves **Generate rubric(s)** unchecked by
+default. Set `SNORKEL_REGENERATE_RUBRIC=1` only when you intentionally want a
+fresh auto-generated rubric (see `terminus-project.mdc` — leaving it checked
+after manual rubric edits can overwrite them).
 
 ---
 
@@ -208,7 +209,8 @@ When the user asks to submit a task:
 - [ ] Run **dry** submit first (`SNORKEL_DRY_RUN=1` + headed if debugging)
 - [ ] Only set `SNORKEL_SUBMIT=1` after user confirms
 - [ ] Every run writes `tasks/<name>/platform-submission.json` by default, including a `tracker` object matching the Cognyzer Google Sheet columns (trainer, task ID, status, task name, date, language, domain, etc.)
-- [ ] **Send to reviewer** is checked by default in E2E; set `SNORKEL_SEND_TO_REVIEWER=0` to uncheck
+- [ ] **Send to reviewer** is checked by default; set `SNORKEL_SEND_TO_REVIEWER=0` to uncheck
+- [ ] **Generate rubric** is unchecked by default; **static checks** run by default (`SNORKEL_REGENERATE_RUBRIC=1` / `SNORKEL_STATIC_CHECKS=0` to override)
 - [ ] Never commit `.env`, `.auth/`, or passwords into the repo
 
 When implementing changes:

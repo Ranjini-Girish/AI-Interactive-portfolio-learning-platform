@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "epoch": 14,
+      "kind": "node_compromise",
+      "node_id": "nd-bad"
+    }
+  ]
+}

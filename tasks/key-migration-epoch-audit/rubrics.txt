@@ -1,0 +1,13 @@
+Agent writes all five JSON artifacts with canonical formatting per SPEC, +2
+Agent keeps /app/keymigrate read-only and honors KME_DATA_DIR and KME_AUDIT_DIR overrides, +2
+Agent merges overlays in basename order then applies bucket_cap and min_migrations_per_bucket, +3
+Agent chains migrations within the same epoch in migration_id order, +3
+Agent applies node compromise quarantine before anchor hold and weight-floor drops, +3
+Agent sorts keys, nodes, migration rows, and report lists by ascending identifiers, +2
+Agent omits any required JSON artifact or breaks canonical serialization, -5
+Agent mutates bundled fixtures or ignores overlay exclude_nodes, -3
+Agent includes partial epoch buckets or migrations outside the inclusive window, -3
+Agent applies anchor overrides before compromise quarantine or counts dropped keys in rollups, -3
+Agent emits unsorted bucket arrays or wrong final_owner on chained migrations, -2
+Agent treats epoch staleness as inclusive at the grace boundary, -2
+Agent drops trailing newline on any audit file, -2

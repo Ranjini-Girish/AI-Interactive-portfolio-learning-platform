@@ -91,6 +91,18 @@ export function resolveSendToReviewer(override?: boolean): boolean {
   return process.env.SNORKEL_SEND_TO_REVIEWER !== '0';
 }
 
+/** Default false; set SNORKEL_REGENERATE_RUBRIC=1 to check Generate rubric(s). */
+export function resolveRegenerateRubric(override?: boolean): boolean {
+  if (override !== undefined) return override;
+  return process.env.SNORKEL_REGENERATE_RUBRIC === '1';
+}
+
+/** Default true; set SNORKEL_STATIC_CHECKS=0 to skip Check feedback / fast static checks. */
+export function resolveStaticChecks(override?: boolean): boolean {
+  if (override !== undefined) return override;
+  return process.env.SNORKEL_STATIC_CHECKS !== '0';
+}
+
 export async function runFastStaticChecks(page: Page): Promise<void> {
   await expect(page.getByText(/Fast static checks/i)).toBeVisible();
   const checkButton = page
@@ -124,17 +136,17 @@ export async function submitToPlatform(page: Page): Promise<void> {
 
 /**
  * Full new-task submission per Terminus Edition-2 cycle-1:
- * Home → Submission Start → upload zip → Prompt Check → rubric on → send-to-reviewer on
- * → optional static checks → optional Submit.
+ * Home → Submission Start → upload zip → Prompt Check → rubric off (default) → send-to-reviewer on
+ * → static checks on (default) → optional Submit.
  */
 export async function runNewTaskSubmission(
   page: Page,
   options: SubmissionFlowOptions,
 ): Promise<NewTaskSubmissionResult> {
   const confirmPrompt = options.confirmPromptCheck ?? true;
-  const regenerateRubric = options.regenerateRubric ?? true;
+  const regenerateRubric = resolveRegenerateRubric(options.regenerateRubric);
   const sendToReviewer = resolveSendToReviewer(options.sendToReviewer);
-  const staticChecks = options.runStaticChecks ?? false;
+  const staticChecks = resolveStaticChecks(options.runStaticChecks);
   const submit = options.submitToPlatform ?? false;
 
   await openTerminusSubmissionStart(page);
@@ -145,9 +157,7 @@ export async function runNewTaskSubmission(
     await confirmPromptAttestation(page);
   }
 
-  if (regenerateRubric) {
-    await setRegenerateRubric(page, true);
-  }
+  await setRegenerateRubric(page, regenerateRubric);
 
   await setSendToReviewer(page, sendToReviewer);
 

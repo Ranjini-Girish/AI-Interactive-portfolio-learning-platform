@@ -1,0 +1,10 @@
+{
+  "depends_on": [],
+  "model_id": "m-beta",
+  "route_id": "rt-beta",
+  "shadow_samples": [
+    {"accepted": true, "day": 70, "latency_ms": 30},
+    {"accepted": true, "day": 75, "latency_ms": 32}
+  ],
+  "tier": "silver"
+}

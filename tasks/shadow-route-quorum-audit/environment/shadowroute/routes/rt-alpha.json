@@ -1,0 +1,12 @@
+{
+  "depends_on": [],
+  "model_id": "m-alpha",
+  "route_id": "rt-alpha",
+  "shadow_samples": [
+    {"accepted": true, "day": 82, "latency_ms": 40},
+    {"accepted": true, "day": 88, "latency_ms": 42},
+    {"accepted": true, "day": 94, "latency_ms": 44},
+    {"accepted": true, "day": 97, "latency_ms": 43}
+  ],
+  "tier": "gold"
+}

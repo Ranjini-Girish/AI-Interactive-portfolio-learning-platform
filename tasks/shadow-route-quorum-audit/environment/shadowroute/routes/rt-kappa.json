@@ -1,0 +1,9 @@
+{
+  "depends_on": [],
+  "model_id": "m-kappa",
+  "route_id": "rt-kappa",
+  "shadow_samples": [
+    {"accepted": true, "day": 94, "latency_ms": 15}
+  ],
+  "tier": "bronze"
+}

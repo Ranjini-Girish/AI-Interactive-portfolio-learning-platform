@@ -1,0 +1,2 @@
+m-pin-hold hold
+m-pin-shadow shadow_only

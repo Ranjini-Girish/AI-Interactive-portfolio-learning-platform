@@ -1,0 +1,9 @@
+{
+  "depends_on": [],
+  "model_id": "m-pin-shadow",
+  "route_id": "rt-eta",
+  "shadow_samples": [
+    {"accepted": true, "day": 92, "latency_ms": 25}
+  ],
+  "tier": "silver"
+}

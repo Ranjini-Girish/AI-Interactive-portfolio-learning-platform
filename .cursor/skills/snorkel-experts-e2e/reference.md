@@ -32,6 +32,16 @@ page.getByLabel('Password')
 page.getByRole('button', { name: 'Sign in' })
 ```
 
+## E2E checkbox defaults
+
+| Control | Default | Override |
+|---------|---------|----------|
+| Generate rubric(s) | **unchecked** | `SNORKEL_REGENERATE_RUBRIC=1` |
+| Fast static checks | **on** (Check feedback) | `SNORKEL_STATIC_CHECKS=0` |
+| Send to reviewer? | **checked** | `SNORKEL_SEND_TO_REVIEWER=0` |
+
+Implemented in `e2e/lib/submission-flow.ts` (`resolveRegenerateRubric`, `resolveStaticChecks`).
+
 ## Playwright selectors (submission form)
 
 ```typescript

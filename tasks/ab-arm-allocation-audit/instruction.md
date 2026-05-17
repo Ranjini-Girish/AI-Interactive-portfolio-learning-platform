@@ -1,0 +1,5 @@
+The experimentation platform needs a frozen allocation audit that merges overlay policy, scores A/B arms against metric gates inside a day window, inherits parent holdout percentages, applies anchor pauses, and quarantines compromised studies without touching the bundled evidence tree.
+
+Produce five UTF-8 JSON documents under `/app/audit/` named `experiment_profiles.json`, `tier_rollups.json`, `arm_eligibility.json`, `compromise_report.json`, and `summary.json`. Status vocabulary, overlay merge order, holdout inheritance, tier exposure caps, allocation splitting, and canonical JSON layout are defined in `/app/abarmalloc/SPEC.md`.
+
+Bundled inputs live under `/app/abarmalloc/`. When `AAA_DATA_DIR` is set to a non-empty value it replaces the input root; when `AAA_AUDIT_DIR` is set to a non-empty value it replaces the output directory. If either variable is unset or empty, reads default to `/app/abarmalloc/` and writes to `/app/audit/`. Create the output directory when missing. Do not modify the bundled `/app/abarmalloc/` tree.

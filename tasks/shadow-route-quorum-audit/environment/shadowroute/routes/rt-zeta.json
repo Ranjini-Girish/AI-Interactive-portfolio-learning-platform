@@ -1,0 +1,10 @@
+{
+  "depends_on": [],
+  "model_id": "m-zeta",
+  "route_id": "rt-zeta",
+  "shadow_samples": [
+    {"accepted": true, "day": 89, "latency_ms": 36},
+    {"accepted": true, "day": 94, "latency_ms": 38}
+  ],
+  "tier": "gold"
+}

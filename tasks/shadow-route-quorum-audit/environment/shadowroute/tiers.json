@@ -1,0 +1,14 @@
+{
+  "bronze": {
+    "quorum_weight": 0.6,
+    "shadow_fraction": 0.08
+  },
+  "gold": {
+    "quorum_weight": 1.0,
+    "shadow_fraction": 0.25
+  },
+  "silver": {
+    "quorum_weight": 0.8,
+    "shadow_fraction": 0.15
+  }
+}

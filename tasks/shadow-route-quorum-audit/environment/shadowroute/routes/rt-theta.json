@@ -1,0 +1,9 @@
+{
+  "depends_on": [],
+  "model_id": "m-pin-hold",
+  "route_id": "rt-theta",
+  "shadow_samples": [
+    {"accepted": true, "day": 93, "latency_ms": 27}
+  ],
+  "tier": "gold"
+}

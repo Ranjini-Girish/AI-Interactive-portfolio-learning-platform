@@ -1,0 +1,4 @@
+{
+  "bucket_cap": 4,
+  "exclude_nodes": ["nd-noisy"]
+}

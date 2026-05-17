@@ -85,19 +85,22 @@ Track all tasks to maintain diversity requirements across submissions.
 | 68 | hedge-call-latency-audit       | debugging                       | hard | small | go, bash | 0 | draft (oracle 18/18 pytest Docker; tier hedge delay + min-latency hedge win + per-tier budget cap + compromise root cascade; 24 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/hedge-call-latency-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 | 69 | rollup-window-merge-audit      | data-processing                 | hard | small | go, bash | 0 | submission-ready (oracle 15/15 pytest local; overlay merge + partial-bucket exclusion + watermark staleness + source_compromise quarantine; 22 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/rollup-window-merge-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 | 70 | wasm-cap-lattice-audit         | security                        | hard | small | go, bash | 0 | draft (oracle 18/18 pytest local; filtered re-export closure + cap_rank host merge + import_freeze + module_compromise forward quarantine; 22 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/wasm-cap-lattice-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
+| 71 | ab-arm-allocation-audit        | machine-learning                | hard | small | go, bash | 0 | submission-ready (oracle 19/19 pytest local; overlay merge + metric gates + parent holdout inheritance + tier exposure cap + experiment compromise/freeze/anchor precedence; 25 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/ab-arm-allocation-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
+| 72 | shadow-route-quorum-audit      | machine-learning                | hard | small | go, bash | 0 | draft (oracle 16/16 pytest local; tier quorum weighting + median-of-K latency degrade + dependency hold block + model_compromise quarantine cascade; 24 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/shadow-route-quorum-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
+| 73 | key-migration-epoch-audit      | data-processing                 | hard | small | go, bash | 0 | draft (oracle 16/16 pytest local; overlay merge + same-epoch migration chaining + weight_floor drops + node_compromise quarantine; 44 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/key-migration-epoch-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 
 ---
 
 ## Diversity Dashboard
 
-### By Category (counted over the 70 logged tasks above)
+### By Category (counted over the 73 logged tasks above)
 | Category | Count | % |
 |----------|-------|---|
-| system-administration | 8 | 12% |
+| system-administration | 8 | 11% |
 | software-engineering | 7 | 10% |
-| data-processing | 10 | 14% |
+| data-processing | 11 | 15% |
 | security | 8 | 11% |
-| machine-learning | 6 | 9% |
+| machine-learning | 8 | 11% |
 | debugging | 7 | 10% |
 | build-and-dependency-management | 6 | 9% |
 | scientific-computing | 7 | 10% |
@@ -109,21 +112,21 @@ Track all tasks to maintain diversity requirements across submissions.
 ### By Codebase Size
 | Size | Count | % |
 |------|-------|---|
-| small | 70 | 100% |
+| small | 73 | 100% |
 | large | 0 | - |
 
 ### By Difficulty
 | Difficulty | Count | % |
 |------------|-------|---|
 | medium | 0 | - |
-| hard | 70 | 100% |
+| hard | 73 | 100% |
 
 ### By Language
 | Language | Count | Difficulty Requirement |
 |----------|-------|----------------------|
 | python | 18 | must be hard (compliant) |
 | typescript | 2 | (no language-specific gate; hard preferred) |
-| go     | 34 | (no language-specific gate; hard preferred) |
+| go     | 35 | (no language-specific gate; hard preferred) |
 | rust   | 4  | (no language-specific gate; hard preferred) |
 | bash   | 18 | (no language-specific gate) |
 

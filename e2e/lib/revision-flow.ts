@@ -2,7 +2,9 @@ import { expect, type Page } from '@playwright/test';
 import path from 'node:path';
 import { openRevisionTask, waitForSubmissionWorkspace } from './snorkel-home';
 import {
+  resolveRegenerateRubric,
   resolveSendToReviewer,
+  resolveStaticChecks,
   resolveTaskZipPath,
   runFastStaticChecks,
   setSendToReviewer,
@@ -68,15 +70,13 @@ export async function runRevisionFlow(
     await uploadSubmissionZip(page, zipPath);
   }
 
-  const regenerateRubric = options.regenerateRubric;
-  if (regenerateRubric !== undefined) {
-    await setRegenerateRubric(page, regenerateRubric);
-  }
+  const regenerateRubric = resolveRegenerateRubric(options.regenerateRubric);
+  await setRegenerateRubric(page, regenerateRubric);
 
   const sendToReviewer = resolveSendToReviewer(options.sendToReviewer);
   await setSendToReviewer(page, sendToReviewer);
 
-  const staticChecks = options.runStaticChecks ?? false;
+  const staticChecks = resolveStaticChecks(options.runStaticChecks);
   if (staticChecks) {
     await runFastStaticChecks(page);
   }

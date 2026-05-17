@@ -1,0 +1,14 @@
+Agent writes all five JSON artifacts with canonical formatting per SPEC, +2
+Agent keeps /app/abarmalloc read-only and honors AAA_DATA_DIR and AAA_AUDIT_DIR overrides, +2
+Agent merges overlays in basename order and applies min_observations plus exclude_arms, +3
+Agent inherits parent holdout percentages when parent_id is lexicographically smaller, +3
+Agent applies experiment compromise, freeze rollout, and anchor pause in precedence order, +3
+Agent enforces tier exposure_cap by zeroing later experiments within each tier, +2
+Agent sorts experiment rows, tier rollup entries, and eligibility arms deterministically, +2
+Agent omits any required JSON artifact or breaks canonical serialization, -5
+Agent mutates bundled experiment fixtures or ignores merged exclude_arms, -3
+Agent treats stale_flag as overriding anchor hold or freeze precedence, -3
+Agent allocates across ineligible arms or skips remainder to smallest arm_id, -3
+Agent includes frozen or quarantined experiments in tier rollups, -2
+Agent uses strict greater-than grace comparison incorrectly at the boundary, -2
+Agent drops trailing newline on any audit file, -2

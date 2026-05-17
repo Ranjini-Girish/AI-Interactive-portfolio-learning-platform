@@ -1,0 +1,4 @@
+{
+  "arm_cap": 2,
+  "exclude_arms": ["arm-b"]
+}

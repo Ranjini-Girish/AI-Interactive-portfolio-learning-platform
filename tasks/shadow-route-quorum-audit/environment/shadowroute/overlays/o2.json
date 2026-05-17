@@ -1,0 +1,4 @@
+{
+  "exclude_models": ["m-excluded"],
+  "route_cap": 8
+}

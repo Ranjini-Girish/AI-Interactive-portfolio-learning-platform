@@ -1,0 +1,9 @@
+{
+  "depends_on": ["m-toxic"],
+  "model_id": "m-delta",
+  "route_id": "rt-delta",
+  "shadow_samples": [
+    {"accepted": true, "day": 90, "latency_ms": 35}
+  ],
+  "tier": "gold"
+}

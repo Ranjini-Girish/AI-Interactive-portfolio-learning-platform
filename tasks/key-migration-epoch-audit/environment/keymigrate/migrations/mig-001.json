@@ -1,0 +1,7 @@
+{
+  "epoch": 12,
+  "from_node": "nd-alpha",
+  "key_hash": "km-01",
+  "migration_id": "mig-001",
+  "to_node": "nd-beta"
+}

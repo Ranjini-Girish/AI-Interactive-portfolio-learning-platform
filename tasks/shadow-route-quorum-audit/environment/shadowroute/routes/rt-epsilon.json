@@ -1,0 +1,9 @@
+{
+  "depends_on": ["m-frozen"],
+  "model_id": "m-epsilon",
+  "route_id": "rt-epsilon",
+  "shadow_samples": [
+    {"accepted": true, "day": 91, "latency_ms": 28}
+  ],
+  "tier": "silver"
+}

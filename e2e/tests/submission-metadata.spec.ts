@@ -3,6 +3,10 @@ import os from 'node:os';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 import {
+  resolveRegenerateRubric,
+  resolveStaticChecks,
+} from '../lib/submission-flow';
+import {
   parseSubmissionUrl,
   saveSubmissionMetadata,
   shouldSaveSubmissionMetadata,
@@ -17,6 +21,19 @@ test.describe('submission metadata', () => {
       submissionSlug: 'sub-2',
       assignmentId: 'abc-def',
     });
+  });
+
+  test('resolveRegenerateRubric and resolveStaticChecks defaults', () => {
+    const prev = { ...process.env };
+    delete process.env.SNORKEL_REGENERATE_RUBRIC;
+    delete process.env.SNORKEL_STATIC_CHECKS;
+    expect(resolveRegenerateRubric()).toBe(false);
+    expect(resolveStaticChecks()).toBe(true);
+    process.env.SNORKEL_REGENERATE_RUBRIC = '1';
+    process.env.SNORKEL_STATIC_CHECKS = '0';
+    expect(resolveRegenerateRubric()).toBe(true);
+    expect(resolveStaticChecks()).toBe(false);
+    process.env = prev;
   });
 
   test('shouldSaveSubmissionMetadata defaults', () => {
@@ -51,8 +68,8 @@ test.describe('submission metadata', () => {
       zipPath,
       options: {
         sendToReviewer: true,
-        regenerateRubric: true,
-        staticChecks: false,
+        regenerateRubric: false,
+        staticChecks: true,
       },
     });
 

@@ -1,0 +1,23 @@
+{
+  "arms": [
+    {
+      "arm_id": "arm-p",
+      "observations": [
+        {"day": 22, "value": 30},
+        {"day": 24, "value": 25}
+      ]
+    },
+    {
+      "arm_id": "arm-q",
+      "observations": [
+        {"day": 23, "value": 16},
+        {"day": 25, "value": 22}
+      ]
+    }
+  ],
+  "experiment_id": "exp-03",
+  "holdout_pct": 5,
+  "last_observation_day": 26,
+  "parent_id": "exp-02",
+  "tier": "bronze"
+}
