@@ -1,5 +1,10 @@
 import { test } from '@playwright/test';
-import { runNewTaskSubmission } from '../lib/submission-flow';
+import { resolveSendToReviewer, runNewTaskSubmission } from '../lib/submission-flow';
+import {
+  resolveTaskNameFromEnv,
+  saveSubmissionMetadata,
+  shouldSaveSubmissionMetadata,
+} from '../lib/submission-metadata';
 import { resolveTaskZipPathOrThrow } from '../lib/task-zip';
 
 /**
@@ -29,6 +34,23 @@ test.describe('Submit new Terminus task (E2E)', () => {
       submitToPlatform: false,
     });
 
+    if (shouldSaveSubmissionMetadata(result.submitted)) {
+      const metaPath = saveSubmissionMetadata({
+        taskName: resolveTaskNameFromEnv(zipPath) ?? '',
+        flow: 'new',
+        dryRun: true,
+        submitted: false,
+        submissionUrl: result.submissionUrl,
+        zipPath,
+        options: {
+          sendToReviewer: resolveSendToReviewer(),
+          regenerateRubric: true,
+          staticChecks: false,
+        },
+      });
+      console.log('Saved metadata:', metaPath);
+    }
+
     test.info().attach('submission-url', { body: result.submissionUrl });
   });
 
@@ -40,13 +62,32 @@ test.describe('Submit new Terminus task (E2E)', () => {
     const zipPath = resolveTaskZipPathOrThrow();
     const runStaticChecks = process.env.SNORKEL_STATIC_CHECKS !== '0';
 
+    const regenerateRubric = process.env.SNORKEL_REGENERATE_RUBRIC !== '0';
     const result = await runNewTaskSubmission(page, {
       zipPath,
       confirmPromptCheck: true,
-      regenerateRubric: process.env.SNORKEL_REGENERATE_RUBRIC !== '0',
+      regenerateRubric,
       runStaticChecks,
       submitToPlatform: true,
     });
+
+    if (shouldSaveSubmissionMetadata(result.submitted)) {
+      const metaPath = saveSubmissionMetadata({
+        taskName: resolveTaskNameFromEnv(zipPath) ?? '',
+        flow: 'new',
+        dryRun: false,
+        submitted: true,
+        submissionUrl: result.submissionUrl,
+        zipPath,
+        options: {
+          sendToReviewer: resolveSendToReviewer(),
+          regenerateRubric,
+          staticChecks: runStaticChecks,
+        },
+      });
+      console.log('Saved metadata:', metaPath);
+      test.info().attach('platform-metadata', { body: metaPath });
+    }
 
     console.log('Submitted:', result.zipPath);
     console.log('URL:', result.submissionUrl);

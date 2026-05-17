@@ -65,6 +65,17 @@ npx playwright test tests/revision-flow.spec.ts
 npx playwright test tests/login.spec.ts
 ```
 
+## Platform metadata file
+
+After a **live** submit (`SNORKEL_SUBMIT=1`), E2E appends to:
+
+`tasks/<task-name>/platform-submission.json`
+
+Fields include `submissionUrl`, parsed `projectId` / `submissionSlug` /
+`assignmentId`, zip path + SHA-256, checkbox flags, and a `submissions[]`
+history (cycle 1 + revisions). Set `SNORKEL_SAVE_METADATA=1` to also record
+dry-run rehearsals; `SNORKEL_SAVE_METADATA=0` to disable.
+
 ## Example: ingest-watermark-skew-audit
 
 ```powershell

@@ -72,6 +72,8 @@ Do **not** skip local gates before browser submit.
 | `SNORKEL_REGENERATE_RUBRIC=0` | Skip rubric checkbox (default **on** for cycle 1) |
 | `SNORKEL_REVISION_TASK_ID` | UUID on revision card (else first **Revise**) |
 | `SNORKEL_SEND_TO_REVIEWER=0` | Optional: uncheck **Send to reviewer?** (default **checked**) |
+| `SNORKEL_SAVE_METADATA=0` | Disable writing `tasks/<name>/platform-submission.json` after live submit |
+| `SNORKEL_SAVE_METADATA=1` | Also save metadata on dry runs (rehearsal URLs) |
 | `HEADED=1` | Visible browser (with CLI wrapper or npm scripts) |
 
 Use **either** `SNORKEL_TASK_DIR` **or** `SNORKEL_TASK_ZIP`, not both unless intentional.
@@ -183,6 +185,7 @@ npm run auth:setup
 | `lib/snorkel-auth.ts` | Cognito login, session assertions |
 | `lib/snorkel-home.ts` | `/home`, Submission **Start**, **Revise** |
 | `lib/task-zip.ts` | `SNORKEL_TASK_*` + `terminus_zip.py` build |
+| `lib/submission-metadata.ts` | `tasks/<name>/platform-submission.json` after submit |
 | `lib/submission-flow.ts` | `runNewTaskSubmission()` |
 | `lib/revision-flow.ts` | `runRevisionFlow()` |
 | `tests/submit-new-task.spec.ts` | **Primary E2E** for new submit |
@@ -204,6 +207,7 @@ When the user asks to submit a task:
 - [ ] Ensure `e2e/.env` credentials exist; run `auth:setup` if session stale
 - [ ] Run **dry** submit first (`SNORKEL_DRY_RUN=1` + headed if debugging)
 - [ ] Only set `SNORKEL_SUBMIT=1` after user confirms
+- [ ] Live submit writes `tasks/<name>/platform-submission.json` (URL, ids, zip SHA-256, flags)
 - [ ] **Send to reviewer** is checked by default in E2E; set `SNORKEL_SEND_TO_REVIEWER=0` to uncheck
 - [ ] Never commit `.env`, `.auth/`, or passwords into the repo
 

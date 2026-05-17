@@ -22,6 +22,13 @@ export type RevisionFlowOptions = {
   submitToPlatform?: boolean;
 };
 
+export type RevisionFlowResult = {
+  revisionTaskId: string;
+  submissionUrl: string;
+  zipPath?: string;
+  submitted: boolean;
+};
+
 export async function assertRevisionWorkspace(page: Page, taskId?: string): Promise<void> {
   await waitForSubmissionWorkspace(page);
   await expect(page).toHaveURL(/\/projects\/[^/]+\/submission-[^/]+\/review/);
@@ -52,7 +59,7 @@ export async function setRegenerateRubric(page: Page, enabled: boolean): Promise
 export async function runRevisionFlow(
   page: Page,
   options: RevisionFlowOptions = {},
-): Promise<string> {
+): Promise<RevisionFlowResult> {
   const taskId = await openRevisionTask(page, options.taskId);
   await assertRevisionWorkspace(page, taskId);
 
@@ -61,24 +68,33 @@ export async function runRevisionFlow(
     await uploadSubmissionZip(page, zipPath);
   }
 
-  if (options.regenerateRubric !== undefined) {
-    await setRegenerateRubric(page, options.regenerateRubric);
+  const regenerateRubric = options.regenerateRubric;
+  if (regenerateRubric !== undefined) {
+    await setRegenerateRubric(page, regenerateRubric);
   }
 
-  await setSendToReviewer(page, resolveSendToReviewer(options.sendToReviewer));
+  const sendToReviewer = resolveSendToReviewer(options.sendToReviewer);
+  await setSendToReviewer(page, sendToReviewer);
 
-  if (options.runStaticChecks) {
+  const staticChecks = options.runStaticChecks ?? false;
+  if (staticChecks) {
     await runFastStaticChecks(page);
   }
 
-  if (options.submitToPlatform) {
+  const submit = options.submitToPlatform ?? false;
+  if (submit) {
     await page.getByRole('button', { name: 'Submit' }).click();
     await expect(page.getByText(/submitted|saving/i).first()).toBeVisible({
       timeout: 120_000,
     });
   }
 
-  return taskId;
+  return {
+    revisionTaskId: taskId,
+    submissionUrl: page.url(),
+    zipPath: zipPath ?? undefined,
+    submitted: submit,
+  };
 }
 
 export function resolveRevisionTaskId(): string | undefined {

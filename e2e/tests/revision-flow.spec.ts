@@ -1,4 +1,11 @@
 import { test } from '@playwright/test';
+import { resolveSendToReviewer } from '../lib/submission-flow';
+import {
+  resolveTaskNameFromEnv,
+  saveSubmissionMetadata,
+  shouldSaveSubmissionMetadata,
+} from '../lib/submission-metadata';
+import { resolveTaskZipPath } from '../lib/task-zip';
 import {
   assertRevisionWorkspace,
   resolveRevisionTaskId,
@@ -35,12 +42,37 @@ test.describe('Snorkel Experts — Revision flow', () => {
   test('full revise submit when SNORKEL_SUBMIT=1', async ({ page }) => {
     test.skip(process.env.SNORKEL_SUBMIT !== '1', 'Set SNORKEL_SUBMIT=1 to run live platform submit');
 
-    await runRevisionFlow(page, {
+    const zipPath = resolveTaskZipPath();
+    const regenerateRubric = process.env.SNORKEL_REGENERATE_RUBRIC === '1';
+    const staticChecks = process.env.SNORKEL_STATIC_CHECKS === '1';
+    const result = await runRevisionFlow(page, {
       taskId: resolveRevisionTaskId(),
-      uploadZip: !!resolveRevisionTaskId() && !!process.env.SNORKEL_TASK_ZIP,
-      regenerateRubric: process.env.SNORKEL_REGENERATE_RUBRIC === '1',
-      runStaticChecks: process.env.SNORKEL_STATIC_CHECKS === '1',
+      zipPath,
+      uploadZip: !!zipPath,
+      regenerateRubric,
+      runStaticChecks: staticChecks,
       submitToPlatform: true,
     });
+
+    if (shouldSaveSubmissionMetadata(result.submitted) && zipPath) {
+      const metaPath = saveSubmissionMetadata({
+        taskName: resolveTaskNameFromEnv(zipPath) ?? '',
+        flow: 'revision',
+        dryRun: false,
+        submitted: true,
+        submissionUrl: result.submissionUrl,
+        zipPath,
+        revisionTaskId: result.revisionTaskId,
+        options: {
+          sendToReviewer: resolveSendToReviewer(),
+          regenerateRubric,
+          staticChecks,
+        },
+      });
+      console.log('Saved metadata:', metaPath);
+      test.info().attach('platform-metadata', { body: metaPath });
+    }
+
+    test.info().attach('submission-url', { body: result.submissionUrl });
   });
 });
