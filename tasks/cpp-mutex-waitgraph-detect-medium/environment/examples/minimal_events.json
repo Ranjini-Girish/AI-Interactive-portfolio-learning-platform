@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "mutex": "edge",
+      "op": "acquire",
+      "seq": 0,
+      "task": "solo",
+      "tick": 0
+    }
+  ]
+}

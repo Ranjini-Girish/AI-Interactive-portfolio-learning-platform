@@ -1,0 +1,17 @@
+{
+  "active_profiles": [
+    "default",
+    "web"
+  ],
+  "already_started": [],
+  "cluster_id": "r-west",
+  "health_streak": {},
+  "rollout_windows": [
+    [
+      1,
+      5
+    ]
+  ],
+  "stack_id": "h-d1",
+  "tier": "development"
+}

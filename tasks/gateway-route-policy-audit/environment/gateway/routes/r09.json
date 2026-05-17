@@ -1,0 +1,1 @@
+{"pack_id":"iota","rules":[{"id":"admin-block","host":"api.example.com","host_type":"exact","path_prefix":"/admin","methods":["*"],"decision":"deny"}]}

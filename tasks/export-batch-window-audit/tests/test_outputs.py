@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "c33f50de42d40b0349faa23130630681040a08e7b209a9fa81b17192104be08f",
+    "SPEC.md": "d73e3fb75e911c7a9099379c374bb4fa22a060ed469d605912130731657a4294",
     "ancillary/channel_tag.json": "605a72b76e44bfe91f45c52cd61a4ad660b6837aee55c48b70db3465217f4800",
     "ancillary/ci_guard.json": "5a0d912b82837f38d2ade81fd312a8e5c2fb0ef47010d33ed2e15ed844d1cd1d",
     "ancillary/watermark.txt": "97a9429e6ab4ee389687ba491a90a08318c2df7ab1633bd6d24e4d8778c069ab",

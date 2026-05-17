@@ -18,7 +18,15 @@ Let `renewal_window_lo = current_day - (W - 1)`.
 
 ## Witness-only day floor
 
-If `policy.witness_day_floor` is present and parses as an integer, let `F` be that value; if absent, `F` is 0. Witness attestation days use inclusive lower bound `witness_lo = max(renewal_window_lo, F)` and inclusive upper bound `current_day`. This bound applies only to witness day filtering; `window_renewals` still uses `renewal_window_lo` through `current_day` unchanged.
+If `policy.witness_day_floor` is present and parses as an integer, let `F` be that value; if absent, `F` is 0. Let `witness_lo = max(renewal_window_lo, F)`. This bound applies only to witness day filtering; `window_renewals` still uses `renewal_window_lo` through `current_day` unchanged.
+
+## Witness staleness
+
+Let `S = policy.witness_staleness_days` (required integer ≥ 1). The effective witness inclusive lower day is `witness_eff_lo = max(witness_lo, current_day - S + 1)`. Attestations must satisfy `witness_eff_lo <= day <= current_day` to be day-eligible.
+
+## Renewal burst limits
+
+`policy.renewal_burst_limit_by_tier` is required with keys `bronze`, `gold`, and `silver` (each a non-negative integer). Compare `window_renewals` to the subject lease's tier limit only when evaluating burst throttling below.
 
 ## Incidents
 
@@ -37,7 +45,7 @@ Unknown kinds or missing required fields: ignore the event.
 
 ## Policy knobs
 
-`renewal_window_days` is required (≥ 1). Optional `witness_day_floor` (integer); when absent, treat as 0 for witness lower-bound math only.
+`renewal_window_days` is required (≥ 1). `witness_staleness_days` is required (≥ 1). `renewal_burst_limit_by_tier` is required as above. Optional `witness_day_floor` (integer); when absent, treat as 0 for witness lower-bound math only.
 
 ## Tier baselines
 
@@ -51,15 +59,21 @@ Unknown kinds or missing required fields: ignore the event.
 
 For each `slot_id`, count distinct `host_id` values among all leases referencing that slot (across all host files). `contested` is true when the count is ≥ 2.
 
+## Provisional cohost status (witness eligibility)
+
+Before final witness scoring on a contested slot `S`, compute **provisional status** for every `(host_id, slot_id)` lease on `S` using the status precedence below but **skipping step 4** (treat witness sufficiency as passed for that provisional pass only). Do not apply witness eligibility filtering inside this provisional pass.
+
+An attestation is **witness-eligible** when its `witness_host` is in `cohosts(S)` and the provisional status of that witness on `S` is not one of `witness_pending`, `frozen`, or `burst_throttled`. Quarantined provisional cohosts remain eligible witnesses.
+
 ## Witness sufficiency (contested slots only)
 
 When `contested` is false, witness checks pass.
 
-When contested, build the set `cohosts(S)` of every `host_id` that appears on any lease with `slot_id == S` across all host files.
+When contested, build `cohosts(S)` as every `host_id` on any lease with `slot_id == S`.
 
-For a lease on subject host `H` and slot `S`, consider attestations in `witnesses/S.json` where `subject_host == H`, `witness_host != H`, `witness_host` is an element of `cohosts(S)`, and `witness_lo <= day <= current_day`. Deduplicate by `(witness_host, day)` using the first attestation in file order for each pair. Let `witness_score` be the number of deduplicated pairs. Sufficiency holds when `witness_score >= quorum`. Otherwise the lease is `witness_pending` (unless quarantined, frozen, or forced expired first).
+For subject host `H` on slot `S`, consider witness-eligible attestations in `witnesses/S.json` where `subject_host == H`, `witness_host != H`, `witness_host ∈ cohosts(S)`, and `witness_eff_lo <= day <= current_day`. Deduplicate by `(witness_host, day)` (first in file order). Let `witness_score` be the deduplicated pair count. Sufficiency holds when `witness_score >= quorum`. Otherwise the lease is `witness_pending` unless a higher-precedence final rule applies first.
 
-`witness_pairs_credited` on each lease row is 0 when witness sufficiency is not evaluated for that lease (rules 1–3 matched first, or the slot is uncontested). Otherwise it equals `witness_score` computed for that lease, including partial scores when insufficient.
+`witness_pairs_credited` is 0 when final evaluation never reaches step 4 (rules 1–3 matched, or the slot is uncontested). Otherwise it equals `witness_score`, including partial scores when insufficient.
 
 ## Status precedence (per lease)
 
@@ -68,15 +82,16 @@ Evaluate in order; first match wins:
 1. `host_compromise` on this host, or `slot_compromise` on this slot → `quarantined`, `renewal_blocked` true.
 2. Kept `force_expire` for this `(host_id, slot_id)` → `expired`, `renewal_blocked` true, reasons must include `force_expire_incident`.
 3. Kept `freeze_renewals` for this host → `frozen`, `renewal_blocked` true.
-4. If contested and witness insufficient → `witness_pending`, `renewal_blocked` true.
+4. If contested and witness insufficient (eligible attestations only) → `witness_pending`, `renewal_blocked` true.
 5. If `current_day > lease_until_day + base_grace` → `expired`, `renewal_blocked` true.
 6. If `current_day > lease_until_day` → `grace`, `renewal_blocked` false.
-7. If `renew_count >= base_max_renewals` → `renewal_capped`, `renewal_blocked` true.
-8. Otherwise → `active`, `renewal_blocked` false.
+7. If `window_renewals > renewal_burst_limit_by_tier[tier]` → `burst_throttled`, `renewal_blocked` true.
+8. If `renew_count >= base_max_renewals` → `renewal_capped`, `renewal_blocked` true.
+9. Otherwise → `active`, `renewal_blocked` false.
 
 ## Reasons array
 
-When status is `expired` and not solely from `force_expire_incident`, include `past_grace` if rule 5 would apply ignoring force. When status is `renewal_capped`, include `renewal_cap_reached`. When status is `witness_pending`, include `insufficient_witnesses`. When status is `grace`, emit empty reasons. For `quarantined`, `frozen`, and `active`, emit empty reasons unless `force_expire_incident` applies (only on forced expire).
+When status is `expired` and not solely from `force_expire_incident`, include `past_grace` if rule 5 would apply ignoring force. When status is `renewal_capped`, include `renewal_cap_reached`. When status is `burst_throttled`, include `renewal_burst_exceeded`. When status is `witness_pending`, include `insufficient_witnesses`. When status is `grace`, emit empty reasons. For `quarantined`, `frozen`, and `active`, emit empty reasons unless `force_expire_incident` applies (only on forced expire).
 
 `reasons` are strictly increasing ASCII, unique.
 
@@ -102,6 +117,6 @@ Canonical JSON: UTF-8, two-space indent, ASCII only, keys sorted lexicographical
 
 ### summary.json
 
-- `leases_total`, `quarantined_leases`, `frozen_leases`, `witness_pending_leases`, `expired_leases`, `grace_leases`, `renewal_capped_leases`, `active_leases` (counts by final status), `contested_slots`, `applied_incident_events`, `ignored_incident_events`.
+- `leases_total`, `quarantined_leases`, `frozen_leases`, `witness_pending_leases`, `expired_leases`, `grace_leases`, `burst_throttled_leases`, `renewal_capped_leases`, `active_leases` (counts by final status), `contested_slots`, `applied_incident_events`, `ignored_incident_events`.
 
 Count `ignored_incident_events` as events in the log that are not kept (rejected, future day, unknown kind, or missing fields).

@@ -1,0 +1,8 @@
+{
+  "edges": [
+    {
+      "child": "o-beta",
+      "parent": "o-alpha"
+    }
+  ]
+}

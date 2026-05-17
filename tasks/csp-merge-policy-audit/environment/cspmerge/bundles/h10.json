@@ -1,0 +1,9 @@
+{
+  "bundle_id": "h10",
+  "delivery_mode": "enforce",
+  "directives": {
+    "default-src": ["'self'"]
+  },
+  "nonces": [],
+  "origin_id": "o-eta"
+}

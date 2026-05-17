@@ -1,0 +1,9 @@
+{
+  "bundle_id": "m40",
+  "delivery_mode": "enforce",
+  "directives": {
+    "default-src": ["'self'"]
+  },
+  "nonces": [],
+  "origin_id": "o-theta"
+}

@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "cluster": "c-west",
+      "effective_day": 115,
+      "kind": "cluster_compromise"
+    },
+    {
+      "forced_tier": "bronze",
+      "kind": "force_tier",
+      "slice_id": "s-07"
+    }
+  ]
+}

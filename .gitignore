@@ -21,3 +21,10 @@ _wrla_build/
 # Submission / build artifacts
 *.zip
 tasks/*.zip
+
+# Playwright E2E (e2e/)
+e2e/node_modules/
+e2e/.env
+e2e/.auth/
+e2e/test-results/
+e2e/playwright-report/

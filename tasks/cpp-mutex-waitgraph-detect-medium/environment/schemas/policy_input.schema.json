@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["detect_cycles", "fifo_waiters", "note_on_tick"],
+  "properties": {
+    "detect_cycles": { "type": "boolean" },
+    "fifo_waiters": { "type": "boolean" },
+    "note_on_tick": { "type": "boolean" }
+  }
+}

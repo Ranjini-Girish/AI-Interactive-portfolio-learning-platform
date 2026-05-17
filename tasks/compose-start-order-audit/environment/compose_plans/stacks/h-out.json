@@ -1,0 +1,16 @@
+{
+  "active_profiles": [
+    "default"
+  ],
+  "already_started": [],
+  "cluster_id": "r-east",
+  "health_streak": {},
+  "rollout_windows": [
+    [
+      1,
+      5
+    ]
+  ],
+  "stack_id": "h-out",
+  "tier": "development"
+}

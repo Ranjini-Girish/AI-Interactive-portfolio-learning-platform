@@ -16,7 +16,7 @@ RUN apt-get update \
   && /root/.local/bin/uv pip install --python /opt/test-venv/bin/python \
     pytest==8.4.1 \
     pytest-json-ctrf==0.3.5 \
-  && rm -rf /root/.cache/uv /root/.local/share/uv \
+  && rm -rf /root/.cache/uv \
   && apt-get purge -y curl \
   && apt-get autoremove -y \
   && rm -rf /var/lib/apt/lists/*

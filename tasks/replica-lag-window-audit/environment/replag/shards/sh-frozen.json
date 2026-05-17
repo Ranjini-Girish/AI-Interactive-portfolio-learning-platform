@@ -1,0 +1,8 @@
+{
+  "samples": [
+    {"day": 95, "lag_bytes": 300000, "witness_lag_bytes": 310000},
+    {"day": 97, "lag_bytes": 320000, "witness_lag_bytes": 330000}
+  ],
+  "shard_id": "sh-frozen",
+  "tier": "silver"
+}

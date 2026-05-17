@@ -1,0 +1,1 @@
+patch-slot-lattice-audit fixture bundle

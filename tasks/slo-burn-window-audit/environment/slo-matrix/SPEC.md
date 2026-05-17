@@ -17,15 +17,15 @@ Read `incident_log.events`. Keep only events with `accepted == true` and `day <=
 Supported kinds (others ignored):
 
 - `tier_budget_delta`: `target_tier` in {`gold`,`silver`,`bronze`} and integer `delta_minutes`. Adds `delta_minutes` to the running tier error-budget total for all later per-service budget work (additive across events).
-- `burn_freeze`: `service_id`, integer `freeze_start_day`, integer `freeze_end_day` (inclusive). For that service, every day `d` with `freeze_start_day <= d <= freeze_end_day` contributes 0 bad minutes when summing any window (multiple freezes union).
+- `burn_freeze`: `service_id`, integer `freeze_start_day`, integer `freeze_end_day` (inclusive). For that service, every day `d` with `freeze_start_day <= d <= freeze_end_day` contributes 0 bad minutes when summing the **slow** window only (`W = S`). Fast-window sums (`W = F`) always use raw `bad_minutes` even on frozen days. Multiple freezes union per service.
 - `service_compromise`: `service_id`. Cross-cutting override below.
-- `slo_review_override`: `service_id` and `target_status` in {`ok`,`warning`,`breached`}. After numeric status is known, set this service’s final `slo_status` to `target_status` and include literal `slo_review_override` in `reasons` (even when `target_status` equals the numeric status).
+- `slo_review_override`: `service_id` and `target_status` in {`ok`,`warning`,`breached`}. After compromise handling below, set this service’s final `slo_status` to `target_status` and include literal `slo_review_override` in `reasons` (even when `target_status` equals the numeric status). If the same service also has a kept `service_compromise`, a `target_status` of `ok` is treated as `warning` instead.
 
 Malformed events (missing required fields, wrong types) are ignored like unsupported kinds.
 
 ## Tier error budget
 
-`base_budget = policy.error_budget_minutes_by_tier[tier]`. Add all applied `tier_budget_delta.delta_minutes` for that tier. Result is `error_budget_minutes` (minimum 1: if sum ≤ 0, use 1).
+`base_budget = policy.error_budget_minutes_by_tier[tier]`. Add all applied `tier_budget_delta.delta_minutes` for that tier. If `policy.max_error_budget_minutes_by_tier[tier]` exists, cap the sum to that maximum. Result is `error_budget_minutes` (minimum 1: if sum ≤ 0, use 1).
 
 ## Window burn (integer only)
 
@@ -43,7 +43,15 @@ Emit `burn_rate_milli_fast` and `burn_rate_milli_slow` using `W = F` and `W = S`
 
 `effective_burn_rate_milli = max(burn_rate_milli_fast, burn_rate_milli_slow)`.
 
-`remaining_budget_minutes = max(0, allowed_bad(S) - consumed_bad(S))` before compromise override.
+## Inherited consumer burn inflation
+
+Compute dependency taint (next section) before numeric status. Let `factor = policy.inherited_burn_milli_factor` (integer ≥ 1; if absent, treat as 1000).
+
+For each service that appears as `consumer_id` in any well-formed edge and has `taint_status == inherited_compromise` in `dependency_taint.json`, replace:
+
+`effective_burn_rate_milli = (effective_burn_rate_milli * factor) // 1000`.
+
+`remaining_budget_minutes = max(0, allowed_bad(S) - consumed_bad(S))` uses slow-window figures only and is computed before compromise override.
 
 ## Numeric slo_status
 

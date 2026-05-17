@@ -1,4 +1,4 @@
-Platform reliability needs a frozen snapshot of per-service SLO burn after tier-scaled error budgets, fast-versus-slow window burn aggregation, maintenance burn-freeze windows, operator review overrides, and upstream compromise taint on dependent consumers are all evaluated against the same pool day.
+Platform reliability needs a frozen snapshot of per-service SLO burn after tier-scaled and capped error budgets, fast-versus-slow window burn aggregation with maintenance freezes that apply only to the slow window, inherited-consumer burn inflation on dependency-tainted services, operator review overrides with compromise floors, and upstream compromise taint on dependent consumers are all evaluated against the same pool day.
 
 Write five UTF-8 JSON documents under the audit directory named `burn_report.json`, `tier_budgets.json`, `dependency_taint.json`, `incident_journal.json`, and `summary.json`. Every field name, sort order, incident kind, and integer burn formula tied to `pool_state.current_day` lives in `SPEC.md` at the root of the read directory, including the canonical JSON layout each file must use.
 

@@ -1,0 +1,1 @@
+{"pack_id":"gamma","rules":[{"id":"corp-edge","host":"*.corp.test","host_type":"suffix","path_prefix":"/","methods":["GET"],"decision":"allow"}]}

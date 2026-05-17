@@ -1,0 +1,11 @@
+Agent emits six output files at /app/audit/ as deterministic JSON with two-space indent, sorted keys at every level, ASCII-only strings, trailing newline, and stable list ordering so two correct runs are byte-identical, +3
+Agent deduplicates each guild and quest pair by highest day, then highest witness, then last occurrence in the submissions file, +3
+Agent detects prerequisite cycles and marks affected quests chain_blocked while validating acyclic quests require strictly earlier prerequisite completion days per guild, +5
+Agent tracks per-chain_tag pity streaks across chronological attempts and applies pity_multiplier_percent with per-tier reputation caps on successful completions, +5
+Agent voids completions for quest_sabotage, taints valid rows on other guilds in the same cluster when any guild in that cluster has a void row, then applies guild_freeze and payout_review in the documented order, +5
+Agent trims cluster tier totals that exceed reputation_cap_by_tier by subtracting from the highest-day valid rows first (tie-break lexicographic quest_id), recording raw_total and capped_total, +3
+Agent leaves every input file under /app/bounty unchanged so the dataset remains byte-identical after the audit completes, -2
+Agent applies payout_review to guilds that have tainted or void completion rows, -5
+Agent counts pity streaks only on deduplicated winning attempts per quest instead of chronological attempt history on the chain_tag, -3
+Agent applies cluster taint to the guild that owns the void row instead of to other guilds in the same cluster, -5
+Agent omits one or more required output files under /app/audit/, -3

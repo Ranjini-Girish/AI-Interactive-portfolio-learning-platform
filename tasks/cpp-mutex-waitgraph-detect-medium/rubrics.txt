@@ -1,0 +1,13 @@
+Agent assigned mutex owner on acquire when owner was null and logged N_ACQUIRE, +5
+Agent enqueued tasks on blocking acquire and emitted E_BLOCKED when owner was set, +3
+Agent emitted W_CYCLE when detect_cycles and a new wait edge closed a directed cycle, +5
+Agent dequeued waiters on release using FIFO when fifo_waiters is true or LIFO when false, +3
+Agent rejected try_acquire without enqueueing when mutex was held and counted try_acquire_rejected, +2
+Agent required release task to match current owner and emitted E_WRONG_OWNER on mismatch, +3
+Agent sorted wait_edges by waiter then mutex and diagnostics by severity code then mutex, +2
+Agent wrote all five outputs as canonical sorted-key JSON with trailing newline, +2
+Agent accepted exactly two positional path arguments for data and output directories, +2
+Agent left every file under /app/data unchanged after the run, +2
+Agent modified or deleted any file under /app/data during replay, -5
+Agent shipped hand-written report JSON instead of output from the compiled binary, -5
+Agent produced outputs with wrong indentation unsorted keys or missing final newline, -3

@@ -1,0 +1,10 @@
+{
+  "samples": [
+    {"day": 90, "lag_bytes": 1800000, "witness_lag_bytes": 1850000},
+    {"day": 93, "lag_bytes": 1900000, "witness_lag_bytes": 1920000},
+    {"day": 95, "lag_bytes": 2000000, "witness_lag_bytes": 2050000},
+    {"day": 97, "lag_bytes": 2100000, "witness_lag_bytes": 2150000}
+  ],
+  "shard_id": "sh-silver-warn",
+  "tier": "silver"
+}

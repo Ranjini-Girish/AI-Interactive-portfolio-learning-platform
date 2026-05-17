@@ -1,0 +1,3 @@
+# Mutex wait-graph replay
+
+Replay a dense event log against initial mutex records. Each mutex has a nullable `owner` and an internal waiter queue (not serialized in inputs). `acquire` assigns the owner when free or enqueues the task. `try_acquire` assigns when free or rejects without enqueueing. `release` requires the `task` field to match the current owner, clears ownership, then dequeues one waiter when `fifo_waiters` is true (FIFO) or false (LIFO). When `detect_cycles` is true, after each blocking `acquire` the tool builds a wait-for graph (each queued waiter points to the mutex owner) and emits `W_CYCLE` if the new edge completes a directed cycle. `tick` optionally emits `N_TICK` when `note_on_tick` is true.

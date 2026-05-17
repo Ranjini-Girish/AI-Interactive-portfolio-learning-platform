@@ -42,6 +42,14 @@
     },
     {
       "accepted": true,
+      "day": 14,
+      "event_id": "e09",
+      "kind": "slo_review_override",
+      "service_id": "svc-notify",
+      "target_status": "ok"
+    },
+    {
+      "accepted": true,
       "day": 15,
       "event_id": "e05",
       "kind": "service_compromise",

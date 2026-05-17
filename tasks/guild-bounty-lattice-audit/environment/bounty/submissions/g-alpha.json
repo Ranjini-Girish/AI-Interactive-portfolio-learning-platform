@@ -1,0 +1,11 @@
+{
+  "attempts": [
+    {"day": 5, "quest_id": "q-trail", "witness": 80},
+    {"day": 8, "quest_id": "q-wolf", "witness": 60},
+    {"day": 9, "quest_id": "q-wolf", "witness": 65},
+    {"day": 10, "quest_id": "q-wolf", "witness": 85},
+    {"day": 12, "quest_id": "q-bear", "witness": 90},
+    {"day": 11, "quest_id": "q-cycle-a", "witness": 95}
+  ],
+  "guild_id": "g-alpha"
+}

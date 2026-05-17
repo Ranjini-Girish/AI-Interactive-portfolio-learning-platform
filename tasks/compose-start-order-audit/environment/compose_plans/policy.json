@@ -1,0 +1,32 @@
+{
+  "max_warmup_cost_per_stack": {
+    "development": 90,
+    "production": 90,
+    "staging": 5
+  },
+  "tier_calendar": {
+    "development": [
+      [
+        1,
+        31
+      ]
+    ],
+    "production": [
+      [
+        10,
+        20
+      ]
+    ],
+    "staging": [
+      [
+        1,
+        31
+      ]
+    ]
+  },
+  "tier_rank": {
+    "development": 2,
+    "production": 0,
+    "staging": 1
+  }
+}

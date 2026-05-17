@@ -1,0 +1,16 @@
+{
+  "mutexes": [
+    {
+      "name": "alpha",
+      "owner": null
+    },
+    {
+      "name": "beta",
+      "owner": null
+    },
+    {
+      "name": "gamma",
+      "owner": "init-hold"
+    }
+  ]
+}

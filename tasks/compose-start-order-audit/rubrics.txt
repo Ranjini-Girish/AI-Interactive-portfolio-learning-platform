@@ -1,0 +1,13 @@
+Agent reads /app/compose_plans/SPEC.md before emitting outputs, +3
+Agent writes all five required JSON files under /app/audit/, +3
+Agent preserves stack_plan.stacks sorted by ascending stack_id, +2
+Agent applies service dependency, profile overlap, and rollout-window intersection rules, +3
+Agent debits cluster start credits only for scheduled services, +3
+Agent defers stacks for insufficient warmup credits before cluster-cap exhaustion when both limits apply, +2
+Agent records kept incidents in incident_journal applied_events order, +2
+Agent emits canonical UTF-8 JSON with sorted keys and a trailing newline, +2
+Agent modifies files under the input root, -5
+Agent omits one or more required audit JSON files, -3
+Agent schedules a service while its cluster warmup pool is insufficient, -3
+Agent ignores an active stack_compromise or freeze_cluster incident, -3
+Agent uses non-canonical JSON formatting in audit outputs, -2

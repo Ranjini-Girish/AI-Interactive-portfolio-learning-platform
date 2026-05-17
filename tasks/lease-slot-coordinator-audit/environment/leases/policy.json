@@ -9,8 +9,14 @@
     "gold": 5,
     "silver": 4
   },
+  "renewal_burst_limit_by_tier": {
+    "bronze": 4,
+    "gold": 3,
+    "silver": 2
+  },
   "renewal_window_days": 7,
   "witness_day_floor": 96,
+  "witness_staleness_days": 4,
   "witness_quorum_by_tier": {
     "bronze": 1,
     "gold": 2,

@@ -1,0 +1,20 @@
+{
+  "grace_days_after_failover": 3,
+  "median_reject_ratio": 0.5,
+  "median_window_k": 4,
+  "tier_thresholds": {
+    "bronze": {
+      "critical_lag_bytes": 9000000,
+      "warn_lag_bytes": 5000000
+    },
+    "gold": {
+      "critical_lag_bytes": 2000000,
+      "warn_lag_bytes": 800000
+    },
+    "silver": {
+      "critical_lag_bytes": 4000000,
+      "warn_lag_bytes": 1500000
+    }
+  },
+  "witness_skew_bytes": 500000
+}

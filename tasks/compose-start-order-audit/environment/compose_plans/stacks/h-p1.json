@@ -1,0 +1,21 @@
+{
+  "active_profiles": [
+    "default",
+    "web"
+  ],
+  "already_started": [
+    "b-base"
+  ],
+  "cluster_id": "r-east",
+  "health_streak": {
+    "b-base": 5
+  },
+  "rollout_windows": [
+    [
+      10,
+      20
+    ]
+  ],
+  "stack_id": "h-p1",
+  "tier": "production"
+}

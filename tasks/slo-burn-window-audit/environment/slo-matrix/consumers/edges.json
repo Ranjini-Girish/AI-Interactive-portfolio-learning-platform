@@ -11,6 +11,18 @@
     {
       "consumer_id": "svc-ledger",
       "producer_id": "svc-gateway"
+    },
+    {
+      "consumer_id": "svc-worker",
+      "producer_id": "svc-notify"
+    },
+    {
+      "consumer_id": "svc-search",
+      "producer_id": "svc-worker"
+    },
+    {
+      "consumer_id": "svc-worker",
+      "producer_id": "svc-search"
     }
   ]
 }

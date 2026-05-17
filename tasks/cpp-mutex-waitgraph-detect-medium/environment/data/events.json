@@ -1,0 +1,88 @@
+{
+  "events": [
+    {
+      "mutex": null,
+      "op": "tick",
+      "seq": 0,
+      "task": null,
+      "tick": 0
+    },
+    {
+      "mutex": "alpha",
+      "op": "acquire",
+      "seq": 1,
+      "task": "t1",
+      "tick": 1
+    },
+    {
+      "mutex": "beta",
+      "op": "acquire",
+      "seq": 2,
+      "task": "t2",
+      "tick": 1
+    },
+    {
+      "mutex": "alpha",
+      "op": "acquire",
+      "seq": 3,
+      "task": "t3",
+      "tick": 2
+    },
+    {
+      "mutex": "beta",
+      "op": "acquire",
+      "seq": 4,
+      "task": "t4",
+      "tick": 2
+    },
+    {
+      "mutex": "beta",
+      "op": "acquire",
+      "seq": 5,
+      "task": "t1",
+      "tick": 3
+    },
+    {
+      "mutex": "alpha",
+      "op": "acquire",
+      "seq": 6,
+      "task": "t2",
+      "tick": 3
+    },
+    {
+      "mutex": "alpha",
+      "op": "try_acquire",
+      "seq": 7,
+      "task": "t5",
+      "tick": 4
+    },
+    {
+      "mutex": "gamma",
+      "op": "release",
+      "seq": 8,
+      "task": "init-hold",
+      "tick": 5
+    },
+    {
+      "mutex": "gamma",
+      "op": "acquire",
+      "seq": 9,
+      "task": "t4",
+      "tick": 5
+    },
+    {
+      "mutex": "alpha",
+      "op": "release",
+      "seq": 10,
+      "task": "t1",
+      "tick": 6
+    },
+    {
+      "mutex": null,
+      "op": "tick",
+      "seq": 11,
+      "task": null,
+      "tick": 7
+    }
+  ]
+}

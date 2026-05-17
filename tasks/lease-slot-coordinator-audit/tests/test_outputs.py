@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "1ed558e4e4ed5a963e74a2e2896559fabc0b08184e9fd9334d481aff72488a29",
+    "SPEC.md": "d3d534c30e2355e93ed5d9ad82131e7c0d478bd14c9156976c8232348673f1fe",
     "ancillary/channel_tag.json": "e126bc42853253544ba41531f545b9ec37571c52e130c59a2a341fedcaf9e257",
     "ancillary/ci_guard.json": "e4bf72f56e6bd79ee2a85031d5cdaaf6f079eb459edb6fe32cd2d4d66f135dd9",
     "ancillary/extra_one.json": "e00f12c9c6be456940cb7be775df45edec8597a5528482899e7b25d6daf09c50",
@@ -38,7 +38,7 @@ EXPECTED_INPUT_HASHES = {
     "hosts/host-kappa.json": "032b14222c8ad5de867644d7d6d7a3853755e0d4b896af6b4870028c0ee58545",
     "hosts/host-zeta.json": "28fe3dc7e257d5e4c0027d0039bf028182265613f352d075fbcc0910209c6d85",
     "incident_log.json": "982464e2eb81608c5fcf15c5fa4e19923f9cf815c820427b152e329325336908",
-    "policy.json": "6288610991cc80867b9fa0854c0b303880482e4cfd0201f63b3012a8873c5cf9",
+    "policy.json": "2c7f7d5155e61ab28d0832971b639a87544f926b66b8f49cc1059d48a207496e",
     "pool_state.json": "d08fc110d88d5fd10ee292e6075d32f5944d4f2ea4b07fd132824a072b52304a",
     "slots/slot-alpha1.json": "f498af5429fc4946f261aeab04334c4fcc9518f9efc0262ba42abbc981cbebee",
     "slots/slot-beta2.json": "499f39d8a1fe9022de0707d2e01357acb38f211c004d00ac0fdfba00aaca11ff",
@@ -57,27 +57,28 @@ EXPECTED_INPUT_HASHES = {
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
     "incident_journal.json": "8150cbbc2d6d15475a03530ac92c2990575d6bbdd8ada2af8eb6d0ad1dba129e",
-    "lease_verdicts.json": "fe7ab620171723eede418a21da39e6537556eb173188cadfc952556253d6cffc",
+    "lease_verdicts.json": "e0f529885614e47bdc7c3e9e5cd466544b319537dbabde6e61b81a84dd0911aa",
     "slot_contention.json": "050ae4b683a93cf4e1355d0d020e51cda8cb2bac8ad515f145dbe074a54e2bae",
-    "summary.json": "0cc993e35ac162b64448e67cdc596201a3549fa59d0fb374f5a7ab32dff6278f",
+    "summary.json": "ff010fe0a1be0756381797c08acd05f53cc1724b42d5efb021cd0f59d2c5b6ae",
     "tier_policy.json": "7e0962b1544ea1afe868afaa2270121773a73d911d868f0f2de0ed8c2f09d8bb",
 }
 
 EXPECTED_FIELD_HASHES = {
     "incident_journal.applied_events": "3b28a63148977c2377ce54522f58ee9c5f2d9e4c04e95354693ce76c00fbae3a",
-    "lease_verdicts.leases": "be97254e4615b262612730a56514444b74f0281649540af867a4a5c27c3ed334",
+    "lease_verdicts.leases": "7a2b0701badb801f692d0bb9006704bcec48e14dd1c5e232539237980af47a9d",
     "slot_contention.slots": "09a7e982e6d7e6eb151d7edbee2898713bc95dd9af7b74c356b15299fc0591e1",
-    "summary.active_leases": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+    "summary.active_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.applied_incident_events": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+    "summary.burst_throttled_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.contested_slots": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-    "summary.expired_leases": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    "summary.expired_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.frozen_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.grace_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.ignored_incident_events": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
     "summary.leases_total": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
     "summary.quarantined_leases": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
     "summary.renewal_capped_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
-    "summary.witness_pending_leases": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+    "summary.witness_pending_leases": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
     "tier_policy.tiers": "0b77b60ec0ae427f5689edc55223b50655546d0ef7b097586261a8b85bdd630f",
 }
 
@@ -141,6 +142,7 @@ class TestReportStructure:
         for key in (
             "active_leases",
             "applied_incident_events",
+            "burst_throttled_leases",
             "contested_slots",
             "expired_leases",
             "frozen_leases",
@@ -250,29 +252,45 @@ class TestLeaseVerdictSemantics:
         assert r["computed_status"] == "renewal_capped"
         assert r["reasons"] == ["renewal_cap_reached"]
 
-    def test_active_with_sufficient_witnesses(self, outputs: dict[str, object]) -> None:
-        """`host-alpha` on contested `slot-shared` stays active when two in-window
-        co-tenant attestations from `host-beta` satisfy the gold quorum."""
+    def test_burst_throttled_on_shared_slot(self, outputs: dict[str, object]) -> None:
+        """`host-alpha` on contested `slot-shared` exceeds the gold renewal-burst
+        limit even though two witness pairs were credited."""
         r = self._row(outputs, "host-alpha", "slot-shared")
-        assert r["computed_status"] == "active"
-        assert r["renewal_blocked"] is False
+        assert r["computed_status"] == "burst_throttled"
+        assert r["renewal_blocked"] is True
+        assert r["reasons"] == ["renewal_burst_exceeded"]
+        assert r["witness_pairs_credited"] == 2
 
-    def test_host_eta_zeta6_active_with_cotenant_witness(self, outputs: dict[str, object]) -> None:
-        """Silver `host-eta` on contested `slot-zeta6` credits only `host-zeta` as a
-        co-tenant witness, which is enough for silver quorum."""
-        r = self._row(outputs, "host-eta", "slot-zeta6")
-        assert r["computed_status"] == "active"
-        assert r["renewal_blocked"] is False
-
-    def test_host_bronze_expired_after_cotenant_witnesses_clear(
+    def test_provisional_veto_blocks_beta_shared_witness(
         self, outputs: dict[str, object]
     ) -> None:
-        """`host-bronze` on `slot-bronze3` first satisfies witness sufficiency with two
-        in-window co-tenant rows from `host-iota`, then still expires past grace."""
-        r = self._row(outputs, "host-bronze", "slot-bronze3")
-        assert r["computed_status"] == "expired"
+        """`host-beta` on `slot-shared` loses `host-alpha` as a witness because
+        provisional burst throttling on alpha disqualifies that cohost."""
+        r = self._row(outputs, "host-beta", "slot-shared")
+        assert r["computed_status"] == "witness_pending"
+        assert r["reasons"] == ["insufficient_witnesses"]
+        assert r["witness_pairs_credited"] == 0
+
+    def test_host_eta_zeta6_witness_pending_after_veto(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """Silver `host-eta` on contested `slot-zeta6` cannot use `host-zeta` after
+        provisional burst throttling removes that cohost from witness eligibility."""
+        r = self._row(outputs, "host-eta", "slot-zeta6")
+        assert r["computed_status"] == "witness_pending"
         assert r["renewal_blocked"] is True
-        assert r["reasons"] == ["past_grace"]
+        assert r["witness_pairs_credited"] == 0
+
+    def test_host_bronze_witness_pending_after_staleness(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`host-bronze` on `slot-bronze3` retains only one stale-window witness pair
+        after the witness staleness horizon, so quorum two is not met."""
+        r = self._row(outputs, "host-bronze", "slot-bronze3")
+        assert r["computed_status"] == "witness_pending"
+        assert r["renewal_blocked"] is True
+        assert r["reasons"] == ["insufficient_witnesses"]
+        assert r["witness_pairs_credited"] == 1
 
     def test_host_beta_beta2_active_via_quarantined_cotenant_witness(
         self, outputs: dict[str, object]
@@ -283,16 +301,9 @@ class TestLeaseVerdictSemantics:
         assert r["computed_status"] == "active"
         assert r["renewal_blocked"] is False
 
-    def test_witness_pairs_bronze_after_day_floor(self, outputs: dict[str, object]) -> None:
-        """`host-bronze` on contested `slot-bronze3` credits two deduplicated co-tenant
-        pairs after the witness-day floor removes day-95 rows. Verifies
-        `witness_pairs_credited` matches the witness score used before grace or expiry."""
-        r = self._row(outputs, "host-bronze", "slot-bronze3")
-        assert r["witness_pairs_credited"] == 2
-
-    def test_witness_pairs_shared_active_row(self, outputs: dict[str, object]) -> None:
-        """Contest `slot-shared` credits two post-floor pairs for `host-alpha` from
-        `host-beta` on distinct days."""
+    def test_witness_pairs_shared_burst_row(self, outputs: dict[str, object]) -> None:
+        """Contest `slot-shared` still credits two post-staleness pairs for `host-alpha`
+        from `host-beta` before burst throttling applies."""
         r = self._row(outputs, "host-alpha", "slot-shared")
         assert r["witness_pairs_credited"] == 2
 
@@ -390,5 +401,6 @@ class TestSummaryCounts:
         assert sm["witness_pending_leases"] == tallies.get("witness_pending", 0)
         assert sm["expired_leases"] == tallies.get("expired", 0)
         assert sm["grace_leases"] == tallies.get("grace", 0)
+        assert sm["burst_throttled_leases"] == tallies.get("burst_throttled", 0)
         assert sm["renewal_capped_leases"] == tallies.get("renewal_capped", 0)
         assert sm["active_leases"] == tallies.get("active", 0)

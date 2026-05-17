@@ -1,0 +1,5 @@
+{
+  "detect_cycles": false,
+  "fifo_waiters": true,
+  "note_on_tick": false
+}

@@ -1,0 +1,9 @@
+{
+  "bundle_id": "g02",
+  "delivery_mode": "report-only",
+  "directives": {
+    "img-src": ["https://img.example"]
+  },
+  "nonces": [],
+  "origin_id": "o-gamma"
+}

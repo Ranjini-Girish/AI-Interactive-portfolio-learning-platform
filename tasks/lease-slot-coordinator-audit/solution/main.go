@@ -14,11 +14,13 @@ type poolState struct {
 }
 
 type policy struct {
-	GraceDaysByTier      map[string]int `json:"grace_days_by_tier"`
-	MaxRenewalsByTier    map[string]int `json:"max_renewals_by_tier"`
-	RenewalWindowDays    int            `json:"renewal_window_days"`
-	WitnessDayFloor      int            `json:"witness_day_floor"`
-	WitnessQuorumByTier  map[string]int `json:"witness_quorum_by_tier"`
+	GraceDaysByTier         map[string]int `json:"grace_days_by_tier"`
+	MaxRenewalsByTier       map[string]int `json:"max_renewals_by_tier"`
+	RenewalBurstLimitByTier map[string]int `json:"renewal_burst_limit_by_tier"`
+	RenewalWindowDays       int            `json:"renewal_window_days"`
+	WitnessDayFloor         int            `json:"witness_day_floor"`
+	WitnessStalenessDays    int            `json:"witness_staleness_days"`
+	WitnessQuorumByTier     map[string]int `json:"witness_quorum_by_tier"`
 }
 
 type hostDoc struct {
@@ -109,6 +111,9 @@ func run(dataDir, auditDir string) error {
 	if pol.RenewalWindowDays < 1 {
 		pol.RenewalWindowDays = 1
 	}
+	if pol.WitnessStalenessDays < 1 {
+		pol.WitnessStalenessDays = 1
+	}
 
 	incRaw, err := os.ReadFile(filepath.Join(dataDir, "incident_log.json"))
 	if err != nil {
@@ -188,6 +193,11 @@ func run(dataDir, auditDir string) error {
 	if pol.WitnessDayFloor > witnessLo {
 		witnessLo = pol.WitnessDayFloor
 	}
+	witnessEffLo := witnessLo
+	staleLo := ps.CurrentDay - pol.WitnessStalenessDays + 1
+	if staleLo > witnessEffLo {
+		witnessEffLo = staleLo
+	}
 
 	slotHosts := map[string]map[string]bool{}
 	allLeases := []struct {
@@ -219,12 +229,17 @@ func run(dataDir, auditDir string) error {
 		contested[sid] = len(list) >= 2
 	}
 
-	leaseRows := make([]leaseRow, 0, len(allLeases))
-	statusCounts := map[string]int{
-		"quarantined": 0, "frozen": 0, "witness_pending": 0,
-		"expired": 0, "grace": 0, "renewal_capped": 0, "active": 0,
+	type leaseCtx struct {
+		host      hostDoc
+		lease     leaseRec
+		baseGrace int
+		baseMax   int
+		winRen    int
+		quorum    int
+		burstLim  int
 	}
 
+	ctxs := make([]leaseCtx, 0, len(allLeases))
 	for _, pair := range allLeases {
 		h := pair.host
 		l := pair.lease
@@ -234,33 +249,65 @@ func run(dataDir, auditDir string) error {
 		if baseMax < 0 {
 			baseMax = 0
 		}
-		winRen := windowSum(h.RenewalsByDay, winLo, ps.CurrentDay)
-
 		quorum := pol.WitnessQuorumByTier[tier]
 		if sd, ok := slots[l.SlotID]; ok && sd.WitnessQuorumOverride != nil {
 			quorum = *sd.WitnessQuorumOverride
 		}
+		ctxs = append(ctxs, leaseCtx{
+			host:      h,
+			lease:     l,
+			baseGrace: baseGrace,
+			baseMax:   baseMax,
+			winRen:    windowSum(h.RenewalsByDay, winLo, ps.CurrentDay),
+			quorum:    quorum,
+			burstLim:  pol.RenewalBurstLimitByTier[tier],
+		})
+	}
 
-		status, blocked, reasons, witPairs := computeStatus(
-			h.HostID, l, ps.CurrentDay, baseGrace, baseMax,
+	provisional := make(map[string]map[string]string)
+	for _, c := range ctxs {
+		st, _, _, _ := computeStatus(
+			c.host.HostID, c.lease, ps.CurrentDay, c.baseGrace, c.baseMax, c.winRen, c.burstLim,
 			hostComp, slotComp, freezeHosts, forceExpire,
-			contested[l.SlotID], quorum, witnesses[l.SlotID], witnessLo, ps.CurrentDay,
-			slotHosts[l.SlotID],
+			false, c.quorum, witnesses[c.lease.SlotID], witnessEffLo, ps.CurrentDay,
+			slotHosts[c.lease.SlotID], provisional, true,
+		)
+		if provisional[c.host.HostID] == nil {
+			provisional[c.host.HostID] = map[string]string{}
+		}
+		provisional[c.host.HostID][c.lease.SlotID] = st
+	}
+
+	leaseRows := make([]leaseRow, 0, len(ctxs))
+	statusCounts := map[string]int{
+		"quarantined": 0, "frozen": 0, "witness_pending": 0,
+		"expired": 0, "grace": 0, "burst_throttled": 0,
+		"renewal_capped": 0, "active": 0,
+	}
+
+	for _, c := range ctxs {
+		h := c.host
+		l := c.lease
+		status, blocked, reasons, witPairs := computeStatus(
+			h.HostID, l, ps.CurrentDay, c.baseGrace, c.baseMax, c.winRen, c.burstLim,
+			hostComp, slotComp, freezeHosts, forceExpire,
+			contested[l.SlotID], c.quorum, witnesses[l.SlotID], witnessEffLo, ps.CurrentDay,
+			slotHosts[l.SlotID], provisional, false,
 		)
 		statusCounts[status]++
 		leaseRows = append(leaseRows, leaseRow{
 			ComputedStatus:       status,
-			EffectiveGrace:       baseGrace,
+			EffectiveGrace:       c.baseGrace,
 			HostID:               h.HostID,
 			LeaseUntilDay:        l.LeaseUntilDay,
-			LastRenewDay:        l.LastRenewDay,
-			MaxRenewals:          baseMax,
+			LastRenewDay:         l.LastRenewDay,
+			MaxRenewals:          c.baseMax,
 			RenewCount:           l.RenewCount,
 			RenewalBlocked:       blocked,
 			Reasons:              reasons,
 			SlotID:               l.SlotID,
-			Tier:                 tier,
-			WindowRenewals:       winRen,
+			Tier:                 h.Tier,
+			WindowRenewals:       c.winRen,
 			WitnessPairsCredited: witPairs,
 		})
 	}
@@ -324,6 +371,7 @@ func run(dataDir, auditDir string) error {
 		"witness_pending_leases":    statusCounts["witness_pending"],
 		"expired_leases":            statusCounts["expired"],
 		"grace_leases":              statusCounts["grace"],
+		"burst_throttled_leases":    statusCounts["burst_throttled"],
 		"renewal_capped_leases":     statusCounts["renewal_capped"],
 		"active_leases":             statusCounts["active"],
 		"contested_slots":           contestedSlots,
@@ -350,10 +398,11 @@ func run(dataDir, auditDir string) error {
 }
 
 func computeStatus(
-	hostID string, l leaseRec, currentDay, baseGrace, baseMax int,
+	hostID string, l leaseRec, currentDay, baseGrace, baseMax, winRen, burstLim int,
 	hostComp, slotComp, freezeHosts, forceExpire map[string]bool,
-	contested bool, quorum int, wd witnessDoc, witnessLo, currentHi int,
-	cohosts map[string]bool,
+	contested bool, quorum int, wd witnessDoc, witnessEffLo, currentHi int,
+	cohosts map[string]bool, provisional map[string]map[string]string,
+	provisionalPass bool,
 ) (status string, blocked bool, reasons []string, witnessPairs int) {
 	reasons = []string{}
 	if hostComp[hostID] || slotComp[l.SlotID] {
@@ -365,8 +414,10 @@ func computeStatus(
 	if freezeHosts[hostID] {
 		return "frozen", true, reasons, 0
 	}
-	if contested {
-		score, sufficient := witnessScore(wd, hostID, witnessLo, currentHi, quorum, cohosts)
+	if contested && !provisionalPass {
+		score, sufficient := witnessScore(
+			wd, hostID, witnessEffLo, currentHi, quorum, cohosts, provisional, l.SlotID,
+		)
 		if !sufficient {
 			return "witness_pending", true, []string{"insufficient_witnesses"}, score
 		}
@@ -378,14 +429,38 @@ func computeStatus(
 	if currentDay > l.LeaseUntilDay {
 		return "grace", false, reasons, witnessPairs
 	}
+	if winRen > burstLim {
+		return "burst_throttled", true, []string{"renewal_burst_exceeded"}, witnessPairs
+	}
 	if l.RenewCount >= baseMax {
 		return "renewal_capped", true, []string{"renewal_cap_reached"}, witnessPairs
 	}
 	return "active", false, reasons, witnessPairs
 }
 
+func witnessEligible(
+	witnessHost, slotID string,
+	provisional map[string]map[string]string,
+) bool {
+	bySlot, ok := provisional[witnessHost]
+	if !ok {
+		return true
+	}
+	st, ok := bySlot[slotID]
+	if !ok {
+		return true
+	}
+	switch st {
+	case "witness_pending", "frozen", "burst_throttled":
+		return false
+	default:
+		return true
+	}
+}
+
 func witnessScore(
-	wd witnessDoc, hostID string, lo, hi, quorum int, cohosts map[string]bool,
+	wd witnessDoc, hostID string, lo, hi, quorum int,
+	cohosts map[string]bool, provisional map[string]map[string]string, slotID string,
 ) (int, bool) {
 	seen := map[string]bool{}
 	for _, a := range wd.Attestations {
@@ -393,6 +468,9 @@ func witnessScore(
 			continue
 		}
 		if !cohosts[a.WitnessHost] {
+			continue
+		}
+		if !witnessEligible(a.WitnessHost, slotID, provisional) {
 			continue
 		}
 		if a.Day < lo || a.Day > hi {

@@ -1,0 +1,11 @@
+Agent writes all five JSON artifacts with canonical formatting per SPEC, +2
+Agent keeps /app/featstore read-only and honors FSF_DATA_DIR and FSF_AUDIT_DIR overrides, +2
+Agent applies force_tier notes after capacity capping and cluster compromise before freshness labels, +3
+Agent lists slice rows and lineage events in ascending slice_id order, +2
+Agent aligns cluster rollups and summary totals with final freshness labels, +2
+Agent omits any required JSON artifact or breaks canonical serialization, -5
+Agent mutates slice fixtures or ignores row-count capacity floors, -3
+Agent marks lineage_lag when parent freshness is fresh and grace is satisfied, -3
+Agent emits unsorted cluster maps or partial freshness tally objects, -2
+Agent uses stale budgets for the wrong effective tier, -2
+Agent drops trailing newline on any audit file, -2

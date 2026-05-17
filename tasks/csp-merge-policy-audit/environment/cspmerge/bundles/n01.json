@@ -1,0 +1,9 @@
+{
+  "bundle_id": "n01",
+  "delivery_mode": "enforce",
+  "directives": {
+    "script-src": ["'self'"]
+  },
+  "nonces": ["nonce-shared"],
+  "origin_id": "o-epsilon"
+}

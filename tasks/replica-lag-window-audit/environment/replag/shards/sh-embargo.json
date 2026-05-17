@@ -1,0 +1,7 @@
+{
+  "samples": [
+    {"day": 97, "lag_bytes": 300000, "witness_lag_bytes": 310000}
+  ],
+  "shard_id": "sh-embargo",
+  "tier": "gold"
+}

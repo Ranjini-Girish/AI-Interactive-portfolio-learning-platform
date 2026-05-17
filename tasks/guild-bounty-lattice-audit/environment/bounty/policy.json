@@ -1,0 +1,11 @@
+{
+  "min_witness": 70,
+  "pity_streak_threshold": 2,
+  "pity_multiplier_percent": 150,
+  "reputation_cap_by_tier": {
+    "bronze": 120,
+    "silver": 200,
+    "gold": 300
+  },
+  "max_prereq_depth": 8
+}

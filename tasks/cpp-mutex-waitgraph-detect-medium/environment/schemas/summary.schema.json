@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "acquires_blocked",
+    "acquires_succeeded",
+    "cycles_detected",
+    "releases",
+    "ticks",
+    "total_events",
+    "try_acquire_rejected",
+    "wakes_from_queue"
+  ],
+  "properties": {
+    "acquires_blocked": { "type": "integer" },
+    "acquires_succeeded": { "type": "integer" },
+    "cycles_detected": { "type": "integer" },
+    "releases": { "type": "integer" },
+    "ticks": { "type": "integer" },
+    "total_events": { "type": "integer" },
+    "try_acquire_rejected": { "type": "integer" },
+    "wakes_from_queue": { "type": "integer" }
+  }
+}

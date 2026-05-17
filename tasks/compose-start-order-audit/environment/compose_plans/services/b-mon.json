@@ -1,0 +1,10 @@
+{
+  "depends_on": [],
+  "health_days_required": 0,
+  "priority": 4,
+  "profiles": [
+    "monitoring"
+  ],
+  "service_id": "b-mon",
+  "warmup_cost": 15
+}

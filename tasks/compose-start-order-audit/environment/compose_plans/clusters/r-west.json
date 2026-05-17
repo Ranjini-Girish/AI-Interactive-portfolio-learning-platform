@@ -1,0 +1,5 @@
+{
+  "cluster_id": "r-west",
+  "max_starts_per_day": 1,
+  "start_credits": 2
+}

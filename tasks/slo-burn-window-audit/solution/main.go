@@ -19,10 +19,12 @@ type tierThreshold struct {
 }
 
 type policy struct {
-	BurnThresholdMilliByTier map[string]tierThreshold `json:"burn_threshold_milli_by_tier"`
-	ErrorBudgetMinutesByTier map[string]int           `json:"error_budget_minutes_by_tier"`
-	FastWindowDays           int                      `json:"fast_window_days"`
-	SlowWindowDays           int                      `json:"slow_window_days"`
+	BurnThresholdMilliByTier     map[string]tierThreshold `json:"burn_threshold_milli_by_tier"`
+	ErrorBudgetMinutesByTier     map[string]int           `json:"error_budget_minutes_by_tier"`
+	FastWindowDays               int                      `json:"fast_window_days"`
+	InheritedBurnMilliFactor     int                      `json:"inherited_burn_milli_factor"`
+	MaxErrorBudgetMinutesByTier  map[string]int           `json:"max_error_budget_minutes_by_tier"`
+	SlowWindowDays               int                      `json:"slow_window_days"`
 }
 
 type incidentLog struct {
@@ -154,13 +156,18 @@ func run(dataDir, auditDir string) error {
 	})
 
 	tiersOut := map[string]any{}
+	adjustedByTier := map[string]int{}
 	for _, tier := range []string{"bronze", "gold", "silver"} {
 		base := pol.ErrorBudgetMinutesByTier[tier]
 		ds := deltaByTier[tier]
 		adj := base + ds
+		if cap, ok := pol.MaxErrorBudgetMinutesByTier[tier]; ok && adj > cap {
+			adj = cap
+		}
 		if adj < 1 {
 			adj = 1
 		}
+		adjustedByTier[tier] = adj
 		tiersOut[tier] = map[string]any{
 			"adjusted_budget_minutes": adj,
 			"base_budget_minutes":     base,
@@ -171,27 +178,56 @@ func run(dataDir, auditDir string) error {
 	slowStart := ps.CurrentDay - (pol.SlowWindowDays - 1)
 	fastStart := ps.CurrentDay - (pol.FastWindowDays - 1)
 
+	adj := buildAdjacency(edges)
+	consumerIDs := consumerSet(edges)
+	inheritedConsumers := map[string]bool{}
+	taintRows := make([]map[string]any, 0, len(consumerIDs))
+	inheritedN := 0
+	for _, cid := range consumerIDs {
+		producers := reachableProducers(cid, compromised, adj)
+		status := "clean"
+		if len(producers) > 0 {
+			status = "inherited_compromise"
+			inheritedConsumers[cid] = true
+			inheritedN++
+		}
+		taintRows = append(taintRows, map[string]any{
+			"compromised_producers": producers,
+			"consumer_id":           cid,
+			"taint_status":          status,
+		})
+	}
+
+	inheritedFactor := pol.InheritedBurnMilliFactor
+	if inheritedFactor < 1 {
+		inheritedFactor = 1000
+	}
+
 	burnRows := make([]map[string]any, 0, len(services))
 	okN, warnN, breachN := 0, 0, 0
 
 	for _, sv := range services {
-		budget := pol.ErrorBudgetMinutesByTier[sv.Tier] + deltaByTier[sv.Tier]
+		budget := adjustedByTier[sv.Tier]
 		if budget < 1 {
 			budget = 1
 		}
 		th := pol.BurnThresholdMilliByTier[sv.Tier]
+		freezes := freezeRanges[sv.ServiceID]
 
-		consumedSlow := sumBad(sv, slowStart, ps.CurrentDay, freezeRanges[sv.ServiceID])
+		consumedSlow := sumBad(sv, slowStart, ps.CurrentDay, freezes, true)
 		allowedSlow := (budget * pol.SlowWindowDays) / pol.SlowWindowDays
 		burnSlow := burnMilli(consumedSlow, allowedSlow)
 
-		consumedFast := sumBad(sv, fastStart, ps.CurrentDay, freezeRanges[sv.ServiceID])
+		consumedFast := sumBad(sv, fastStart, ps.CurrentDay, freezes, false)
 		allowedFast := (budget * pol.FastWindowDays) / pol.SlowWindowDays
 		burnFast := burnMilli(consumedFast, allowedFast)
 
 		effective := burnSlow
 		if burnFast > effective {
 			effective = burnFast
+		}
+		if inheritedConsumers[sv.ServiceID] {
+			effective = (effective * inheritedFactor) / 1000
 		}
 
 		status := numericStatus(effective, th.Warning, th.Critical)
@@ -207,6 +243,9 @@ func run(dataDir, auditDir string) error {
 			reasons = append(reasons, "service_compromise")
 		}
 		if tgt, ok := overrideStatus[sv.ServiceID]; ok {
+			if compromised[sv.ServiceID] && tgt == "ok" {
+				tgt = "warning"
+			}
 			status = tgt
 			reasons = append(reasons, "slo_review_override")
 		}
@@ -232,24 +271,6 @@ func run(dataDir, auditDir string) error {
 			"service_id":                 sv.ServiceID,
 			"slo_status":                 status,
 			"tier":                       sv.Tier,
-		})
-	}
-
-	adj := buildAdjacency(edges)
-	consumerIDs := consumerSet(edges)
-	taintRows := make([]map[string]any, 0, len(consumerIDs))
-	inheritedN := 0
-	for _, cid := range consumerIDs {
-		producers := reachableProducers(cid, compromised, adj)
-		status := "clean"
-		if len(producers) > 0 {
-			status = "inherited_compromise"
-			inheritedN++
-		}
-		taintRows = append(taintRows, map[string]any{
-			"compromised_producers": producers,
-			"consumer_id":           cid,
-			"taint_status":          status,
 		})
 	}
 
@@ -286,10 +307,10 @@ func run(dataDir, auditDir string) error {
 	return nil
 }
 
-func sumBad(sv serviceDoc, start, end int, freezes [][2]int) int {
+func sumBad(sv serviceDoc, start, end int, freezes [][2]int, applyFreeze bool) int {
 	total := 0
 	for d := start; d <= end; d++ {
-		if frozen(d, freezes) {
+		if applyFreeze && frozen(d, freezes) {
 			continue
 		}
 		key := strconv.Itoa(d)

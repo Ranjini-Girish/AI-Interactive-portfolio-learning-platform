@@ -22,7 +22,7 @@ OUTPUT_FILES = (
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "5cd7932dc3826a2d081f38a6e3f5932cce1857dd05e825be38e89e80491e7498",
+    "SPEC.md": "e9f8948f61b9e5ad5ebe05fb921e54f3fb164b29754b9679f3fb06996c11543f",
     "ancillary/channel_tag.json": "0cff3eacf13bf169e82fc67fd2ed3901d9a26fdee91b2cb41bad7ff04752fff1",
     "ancillary/ci_guard.json": "943bb35ebaa33b1044813809135f029537859528790c387a7c84110a4b0b9b7b",
     "ancillary/extra_one.json": "e00f12c9c6be456940cb7be775df45edec8597a5528482899e7b25d6daf09c50",
@@ -30,15 +30,15 @@ EXPECTED_INPUT_HASHES = {
     "ancillary/packaging_stamp.json": "0d92f1a3d7ea78c4bfdd94c4f58c637c450f20e1e8aaac775994aada43df5b53",
     "ancillary/watermark.txt": "f1a4fd10b44971d72cd31a8353d8e6e287b3651021c0a0a52fcfb9561bf80d63",
     "consumers/consumer_index.json": "df1e2eddf36bac7ba733374ee869fa49b74b19f1d2a015fe52e197b6abc2dde3",
-    "consumers/edges.json": "1226e346a0c4f92a88989af77457e60b180819ecd6fd6b9426d2d766f5f1b94d",
-    "incident_log.json": "c5c5a84b24597435d58fb9d3111266112cbb0cda779cd4fe9fcfe471477499ac",
+    "consumers/edges.json": "c145c77bf2fc82051091dcfb2d0e209876427b2fc26b1ffed31402a5abaeb5a7",
+    "incident_log.json": "b12add0a5f873d4638ad8d6bed1aca39bce25353a95c51f7c1db3f65ce4cc90a",
     "meta/notes.txt": "3f12d422cff5139faafdec39b2d25ca3e580df0e3ff865ad9837fa3973733aa1",
     "meta/version.json": "c9c45fc4c7426cd631c8321a07e7b2966d45d8e07cf13d36ef6b9a5ead5fef7e",
-    "policy.json": "ac792a8b08f510f9425a0869a036c824da3f6d1f72e23ed0e41f1a9c1313649c",
+    "policy.json": "291c56b1d64177cdf4d05a0a6810ec3f64c45df1a040815e7480da1e6c356972",
     "pool_state.json": "068206e07450b8139d6edc2382747b73ac1c38a8daf4f5d877b99cd473a5e2b7",
     "services/svc-auth.json": "8d47a81e9256e820852f1780307f1c6717382c7fab080d42cd182b02b1a5e265",
     "services/svc-batch.json": "95e7ceca86113ffadc4e4c93832130a3d5dd22587198176e61a7476fcabe9ed9",
-    "services/svc-cache.json": "5a70f00fbdd3f383daa0632be266bb5da4dd45d8fd4208ba4e92a7f3d067c114",
+    "services/svc-cache.json": "d13196db7963ed9e91a4af7f5b40e8970507d913821cb09e8e678ab41a19e8c1",
     "services/svc-gateway.json": "b5f34fefb56d2ba9232758e2dbfcb8d3345693b1f86de1f0efff1a852734ad80",
     "services/svc-ledger.json": "9af65b57ef2cffd3118dd3fcbbea3e3089836393a7e43e41b729ca0e105b7e9c",
     "services/svc-notify.json": "185e7e7f9631087b909325776bfefa1c6fe5b46531725b1c20f69f08c1c3b183",
@@ -48,27 +48,27 @@ EXPECTED_INPUT_HASHES = {
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "burn_report.json": "972ce6ea954a8ef74a5e590b06807de0bda92cf7e9a15e1cf9a9b9ab2b53e488",
-    "tier_budgets.json": "4304070b9d581c1bda513179a4e87bcf66650ac81004eda086e4c3a25d5421db",
-    "dependency_taint.json": "8815e3cc849a08e9b00faf8f214b1958eb70cff2cddc9e7b8cf3a086428a3e9a",
-    "incident_journal.json": "1bb88807e3404dc1cb9a710ca7f0da4830162f62fb62ab4e96d2a7e02a5d85c6",
-    "summary.json": "09482ea6e1b9be728c13d3cf2dfd66e14e5f5401b15a82797150efd310470282",
+    "burn_report.json": "d4e4aba6ba4a1346df61c66d1ae714eea23aeaa961cba2f67af61980648566cf",
+    "tier_budgets.json": "8163f3b4668caccbe6984e5d3df2181d3bc6ec875645af10a32fdae75262e2d5",
+    "dependency_taint.json": "dd27473aa3c97ff438c6e2693d34c1db2434be7aa880d1bb2c7a11c12ee27154",
+    "incident_journal.json": "a2dd68c9ee1f27f96c5011c67f9890b1580194387c487fa838ad1a9d95baaa74",
+    "summary.json": "33ad8b6a932775ba2bb23871b5d963b3df98f1b316b38c599bfdc152ec2a4a49",
 }
 
 
 EXPECTED_FIELD_HASHES = {
-    "burn_report.services": "2646d9df251a572ef1aa949ea1931071a038cc842b78b880435697796491bdb9",
-    "tier_budgets.tiers": "7c5dc8862de2deb4e830c9d7f17b9e41fc8c0a0b52ceec47fe8a09508c1051e9",
-    "dependency_taint.consumers": "b0b6c0c5ce315cc8a61993589e442170dd6a4f30da467376c267de82370ed9e9",
-    "incident_journal.applied_events": "c9f0ecc44289454ee36e03dd8bfee6a195026ea5121d09c2bf5c59c911cf0291",
-    "summary.applied_incident_events": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-    "summary.breached_services": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    "burn_report.services": "4dea92c7f8d9dca9b92a7d13aa7faba576cdfab329cd1e26e716c3ebbd646945",
+    "tier_budgets.tiers": "545fd1acce3782bffe7c3647c4525d650b1f54f2eca9ffe363ef1db8d8b28742",
+    "dependency_taint.consumers": "7bc2b1baec1e4a93c8cb5909c7d8d70011e3bd699a9e6a7270469bb043a74478",
+    "incident_journal.applied_events": "dd3a447e5d0717bc2a9ba6a258799f71da025137fb6d706b075b7acea6b0168e",
+    "summary.applied_incident_events": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+    "summary.breached_services": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
     "summary.compromise_services": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.ignored_incident_events": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-    "summary.inherited_compromise_consumers": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
-    "summary.ok_services": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    "summary.inherited_compromise_consumers": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    "summary.ok_services": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.services_total": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
-    "summary.warning_services": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    "summary.warning_services": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
 }
 
 
@@ -224,19 +224,21 @@ class TestBurnSemantics:
         assert r["effective_burn_rate_milli"] == 6428
         assert r["slo_status"] == "breached"
 
-    def test_cache_freeze_keeps_gold_ok(self, outputs: dict[str, object]) -> None:
-        """`svc-cache` stays ok after frozen days zero out late-window bad minutes."""
+    def test_cache_slow_freeze_only_fast_counts_day14(self, outputs: dict[str, object]) -> None:
+        """`svc-cache` stays ok: freeze zeros slow-window days 12-14 but fast still uses day 14."""
         r = self._row(outputs, "svc-cache")
         assert r["consumed_bad_minutes_slow"] == 32
+        assert r["burn_rate_milli_fast"] == 428
+        assert r["burn_rate_milli_slow"] == 640
         assert r["effective_burn_rate_milli"] == 640
         assert r["slo_status"] == "ok"
 
-    def test_notify_compromise_forces_breach(self, outputs: dict[str, object]) -> None:
-        """`svc-notify` is numerically mild but compromised with zero remaining budget."""
+    def test_notify_compromise_override_floors_ok_to_warning(self, outputs: dict[str, object]) -> None:
+        """`svc-notify` keeps zero remaining budget but review override ok becomes warning."""
         r = self._row(outputs, "svc-notify")
-        assert r["slo_status"] == "breached"
+        assert r["slo_status"] == "warning"
         assert r["remaining_budget_minutes"] == 0
-        assert r["reasons"] == ["service_compromise"]
+        assert r["reasons"] == ["service_compromise", "slo_review_override"]
 
     def test_auth_review_override_warning(self, outputs: dict[str, object]) -> None:
         """`svc-auth` is overridden to warning despite numeric breach-level burn."""
@@ -244,21 +246,37 @@ class TestBurnSemantics:
         assert r["slo_status"] == "warning"
         assert r["reasons"] == ["slo_review_override"]
 
-    def test_ledger_silver_warning_band(self, outputs: dict[str, object]) -> None:
-        """`svc-ledger` lands in warning from tier-adjusted silver thresholds."""
+    def test_ledger_silver_warning_after_budget_cap(self, outputs: dict[str, object]) -> None:
+        """`svc-ledger` lands in warning after silver budget cap and fast-window burn."""
         r = self._row(outputs, "svc-ledger")
         assert r["tier"] == "silver"
-        assert r["allowed_bad_minutes_slow"] == 40
+        assert r["allowed_bad_minutes_slow"] == 38
+        assert r["burn_rate_milli_fast"] == 800
+        assert r["effective_burn_rate_milli"] == 800
         assert r["slo_status"] == "warning"
 
-    def test_search_bronze_breached(self, outputs: dict[str, object]) -> None:
-        """`svc-search` breaches because the fast window burn exceeds the bronze critical band."""
+    def test_search_inherited_burn_inflation_breached(self, outputs: dict[str, object]) -> None:
+        """`svc-search` breaches after inherited-consumer burn inflation on tainted dependency."""
         r = self._row(outputs, "svc-search")
         assert r["tier"] == "bronze"
         assert r["slo_status"] == "breached"
         assert r["burn_rate_milli_slow"] == 1050
         assert r["burn_rate_milli_fast"] == 1500
-        assert r["effective_burn_rate_milli"] == 1500
+        assert r["effective_burn_rate_milli"] == 3750
+
+    def test_batch_inherited_inflation_breaches_silver(self, outputs: dict[str, object]) -> None:
+        """`svc-batch` breaches from inherited burn inflation despite mild raw burn."""
+        r = self._row(outputs, "svc-batch")
+        assert r["tier"] == "silver"
+        assert r["effective_burn_rate_milli"] == 1000
+        assert r["slo_status"] == "breached"
+
+    def test_worker_inherited_inflation_breaches_bronze(self, outputs: dict[str, object]) -> None:
+        """`svc-worker` breaches after inherited burn uplift on notify-tainted consumer."""
+        r = self._row(outputs, "svc-worker")
+        assert r["tier"] == "bronze"
+        assert r["effective_burn_rate_milli"] == 1250
+        assert r["slo_status"] == "breached"
 
 
 class TestDependencyTaint:
@@ -271,6 +289,13 @@ class TestDependencyTaint:
         batch = next(r for r in rows if r["consumer_id"] == "svc-batch")
         assert batch["taint_status"] == "inherited_compromise"
         assert batch["compromised_producers"] == ["svc-notify"]
+
+    def test_search_cycle_lists_notify_producer_only(self, outputs: dict[str, object]) -> None:
+        """`svc-search` inherits via worker cycle but only direct compromised producers are listed."""
+        rows = outputs["dependency_taint.json"]["consumers"]
+        search = next(r for r in rows if r["consumer_id"] == "svc-search")
+        assert search["taint_status"] == "inherited_compromise"
+        assert search["compromised_producers"] == ["svc-notify"]
 
     def test_gateway_clean_without_upstream_compromise(self, outputs: dict[str, object]) -> None:
         """`svc-gateway` depends on `svc-cache`, which is not compromised."""
@@ -300,7 +325,7 @@ class TestIncidentJournal:
         """The bundled log applies the four well-formed incidents before the pool day."""
         evs = outputs["incident_journal.json"]["applied_events"]
         ids = {str(e["event_id"]) for e in evs}
-        assert ids == {"e01", "e02", "e03", "e04"}
+        assert ids == {"e01", "e02", "e03", "e04", "e09"}
 
     def test_journal_covers_all_supported_kinds(self, outputs: dict[str, object]) -> None:
         """Each supported incident kind appears at least once in the applied journal."""
@@ -317,14 +342,14 @@ class TestIncidentJournal:
 class TestTierBudgets:
     """Tier budget table reflects policy plus applied deltas."""
 
-    def test_silver_adjusted_budget_after_delta(self, outputs: dict[str, object]) -> None:
-        """Silver tier gains five minutes from the applied tier_budget_delta incident."""
+    def test_silver_adjusted_budget_capped_after_delta(self, outputs: dict[str, object]) -> None:
+        """Silver tier delta sums to 40 but policy cap clamps adjusted budget to 38."""
         tiers = outputs["tier_budgets.json"]["tiers"]
         assert isinstance(tiers, dict)
         silver = tiers["silver"]
         assert silver["base_budget_minutes"] == 35
         assert silver["delta_sum_minutes"] == 5
-        assert silver["adjusted_budget_minutes"] == 40
+        assert silver["adjusted_budget_minutes"] == 38
 
 
 class TestSummaryCounts:

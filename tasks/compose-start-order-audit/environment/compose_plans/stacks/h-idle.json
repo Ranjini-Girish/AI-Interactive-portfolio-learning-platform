@@ -1,0 +1,31 @@
+{
+  "active_profiles": [
+    "default",
+    "web"
+  ],
+  "already_started": [
+    "b-app",
+    "b-base",
+    "b-db",
+    "b-heavy",
+    "b-mon",
+    "b-net"
+  ],
+  "cluster_id": "r-east",
+  "health_streak": {
+    "b-app": 5,
+    "b-base": 5,
+    "b-db": 5,
+    "b-heavy": 5,
+    "b-mon": 5,
+    "b-net": 5
+  },
+  "rollout_windows": [
+    [
+      10,
+      20
+    ]
+  ],
+  "stack_id": "h-idle",
+  "tier": "production"
+}

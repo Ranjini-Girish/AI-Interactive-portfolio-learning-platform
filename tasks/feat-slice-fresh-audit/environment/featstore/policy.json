@@ -1,0 +1,13 @@
+{
+  "lineage_grace_days": 2,
+  "row_floors": {
+    "bronze": 100,
+    "gold": 1000,
+    "silver": 500
+  },
+  "staleness_days": {
+    "bronze": 14,
+    "gold": 3,
+    "silver": 7
+  }
+}

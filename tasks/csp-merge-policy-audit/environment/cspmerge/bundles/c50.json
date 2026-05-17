@@ -1,0 +1,9 @@
+{
+  "bundle_id": "c50",
+  "delivery_mode": "enforce",
+  "directives": {
+    "style-src": ["'self'", "https://styles.example"]
+  },
+  "nonces": [],
+  "origin_id": "o-delta"
+}

@@ -1,0 +1,5 @@
+{
+  "cluster_id": "r-east",
+  "max_starts_per_day": 2,
+  "start_credits": 2
+}

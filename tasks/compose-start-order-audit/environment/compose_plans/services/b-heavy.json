@@ -1,0 +1,12 @@
+{
+  "depends_on": [
+    "b-base"
+  ],
+  "health_days_required": 0,
+  "priority": 2,
+  "profiles": [
+    "default"
+  ],
+  "service_id": "b-heavy",
+  "warmup_cost": 6
+}

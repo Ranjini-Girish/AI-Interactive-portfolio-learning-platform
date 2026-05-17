@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 14,
+      "event_id": "e00",
+      "kind": "stack_compromise",
+      "stack_id": "h-p1"
+    },
+    {
+      "accepted": true,
+      "cluster_id": "r-east",
+      "day": 11,
+      "delta": 1,
+      "event_id": "e01",
+      "kind": "cap_bump"
+    },
+    {
+      "accepted": true,
+      "day": 14,
+      "event_id": "e02",
+      "kind": "stack_compromise",
+      "stack_id": "h-p2"
+    },
+    {
+      "accepted": true,
+      "cluster_id": "r-west",
+      "day": 12,
+      "event_id": "e03",
+      "kind": "freeze_cluster"
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "end_day": 20,
+      "event_id": "e04",
+      "kind": "service_embargo",
+      "service_id": "b-mon",
+      "start_day": 10
+    },
+    {
+      "accepted": true,
+      "cluster_id": "r-east",
+      "day": 16,
+      "delta": 99,
+      "event_id": "e05",
+      "kind": "cap_bump"
+    },
+    {
+      "accepted": true,
+      "day": 15,
+      "event_id": "e06",
+      "kind": "unknown_kind"
+    },
+    {
+      "accepted": true,
+      "cluster_id": "r-west",
+      "day": 15,
+      "delta": 5,
+      "event_id": "e07",
+      "kind": "credit_grant"
+    }
+  ]
+}

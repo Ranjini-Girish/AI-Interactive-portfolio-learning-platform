@@ -1,0 +1,7 @@
+{
+  "samples": [
+    {"day": 96, "lag_bytes": 200000, "witness_lag_bytes": 210000}
+  ],
+  "shard_id": "sh-cycle-a",
+  "tier": "silver"
+}

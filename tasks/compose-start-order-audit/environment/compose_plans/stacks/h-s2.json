@@ -1,0 +1,22 @@
+{
+  "active_profiles": [
+    "default",
+    "web"
+  ],
+  "already_started": [
+    "b-base"
+  ],
+  "cluster_id": "r-west",
+  "health_streak": {
+    "b-app": 1,
+    "b-net": 0
+  },
+  "rollout_windows": [
+    [
+      15,
+      15
+    ]
+  ],
+  "stack_id": "h-s2",
+  "tier": "staging"
+}

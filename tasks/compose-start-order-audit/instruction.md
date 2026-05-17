@@ -1,0 +1,5 @@
+Platform operators need a frozen compose rollout replay for every stack after tier-scoped rollout-window intersection, profile overlap gating, per-service health-streak warmup requirements, service embargo incidents, accepted-event warmup penalties, and stack compromise quarantine are evaluated on the same timeline anchored to `pool_state.current_day`. The outcome must be reproducible without mutating the bundled input tree.
+
+Write five UTF-8 JSON artifacts under `/app/audit/` named `stack_plan.json`, `cluster_ledger.json`, `service_matrix.json`, `incident_journal.json`, and `summary.json`. Grammar for stacks, services, clusters, disposition values, incident kinds, and canonical JSON formatting is defined in `/app/compose_plans/SPEC.md`.
+
+Bundled evidence lives under `/app/compose_plans/`. A non-empty `CSOA_DATA_DIR` overrides the input root; a non-empty `CSOA_AUDIT_DIR` overrides the output directory. When a variable is unset or empty, that side falls back to `/app/compose_plans/` for reads and `/app/audit/` for writes. Create the output directory if needed. Do not modify files under the input root during the audit run.

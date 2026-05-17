@@ -1,4 +1,10 @@
 {
+  "inherited_burn_milli_factor": 2500,
+  "max_error_budget_minutes_by_tier": {
+    "bronze": 20,
+    "gold": 50,
+    "silver": 38
+  },
   "burn_threshold_milli_by_tier": {
     "bronze": {
       "critical": 800,

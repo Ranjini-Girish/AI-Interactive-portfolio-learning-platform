@@ -1,0 +1,11 @@
+{
+  "events": [
+    {"kind": "quest_sabotage", "quest_id": "q-wolf", "day": 8},
+    {"kind": "guild_freeze", "guild_id": "g-delta", "day": 40},
+    {"kind": "payout_review", "guild_id": "g-beta", "target_payout": "withheld", "day": 43},
+    {"kind": "payout_review", "guild_id": "g-beta", "target_payout": "paid", "day": 45},
+    {"kind": "quest_sabotage", "quest_id": "q-missing", "day": 10},
+    {"kind": "guild_freeze", "guild_id": "g-ghost", "day": 5},
+    {"kind": "payout_review", "guild_id": "g-gamma", "target_payout": "paid", "day": 48}
+  ]
+}

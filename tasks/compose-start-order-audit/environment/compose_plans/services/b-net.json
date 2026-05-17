@@ -1,0 +1,13 @@
+{
+  "depends_on": [
+    "b-base"
+  ],
+  "health_days_required": 0,
+  "priority": 1,
+  "profiles": [
+    "default",
+    "web"
+  ],
+  "service_id": "b-net",
+  "warmup_cost": 1
+}
