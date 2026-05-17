@@ -22,12 +22,12 @@ OUTPUT_FILES = (
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "29c7103489350dcca84ef052aec4d611013b043efda2edd384b9675c89d683d1",
-    "anchors/t1.txt": "0111f7554519f7126c570c154b894f1fbcddf4faa126f6d644b974dab6c77411",
-    "anchors/t2.txt": "333d36c15ed252b52c66eda5bf9c1ad3e730b6d6eef9401a336db63ccf7558e7",
-    "anchors/t3.txt": "16691bb6cb08a74f1a31391b670055beae1009beeb789b8edc6a48dc97eefa66",
-    "ancillary/a1.json": "edb6ed214d3807cfb593fe9c23e11f00c087899e7312cd7d542fa4819468df0a",
-    "ancillary/a2.json": "0e3a764bd4de34415dc368625baca10eefb7d5d506f998a1b26d46804e5cd94b",
+    "SPEC.md": "b8fd712de97949b32bcfc88fbd7ecba5f6375d00b551c25d44e57061b9b2b6e1",
+    "anchors/t1.txt": "5900de7e80d71d649ebe63a329451616110c9e9f94fcde1b0ff1769532d25869",
+    "anchors/t2.txt": "27e6fa350b49ab5910e6d4eb6356dae6bbd93926c6480561e71a1e8bcc5fb300",
+    "anchors/t3.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ancillary/a1.json": "1c8cee6f83000e606bd0d9100de00f44bfc3f7520b2f82734902296945c4aeb7",
+    "ancillary/a2.json": "0e185fc149c6662bdc1dde5e35095476f721ea9c3589e676ca63af78a7e7f4d0",
     "incidents.json": "1abb679ab8e120c5468f217da5309881b2c5dba57e8a090234a0ad17415405fd",
     "ledger/lane.json": "0c0116ea2b944464ca414bd18bd8a5e0c2859963f4e3e92bc3f4754264fd3766",
     "ledger/tag.json": "9e169d5a8bd1b5655bf9242e165edcf97a9f54d6fdb6be8aa2ebe73ac7902a57",
@@ -50,18 +50,18 @@ EXPECTED_INPUT_HASHES = {
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "anomaly_events.json": "eddd81c2dfa690a6828df014b65aa0a039aad403f3ce547d38583119a42b536f",
-    "endpoint_profiles.json": "501439f210ab7043527370b18d11ef19052cfcd28aa88becba56e5aa090222b7",
-    "mad_summary.json": "c26f1cc64803c460b7d728f4bfe896ab5d5934c34b2d19a20be33160d0162af9",
-    "summary.json": "7bf79e78218c236a442ec0f003347e831ce30d11e8d842a3401588ff0fab7203",
-    "tier_rollups.json": "1e65e44404fb5ec8d59a22cb07ee4711c845d69e0bebf55bddd2e473c769d880",
+    "anomaly_events.json": "2374b627fbb0a6b3c2f0cba124e886d9e5d8e1f06be22c228c260c5e5c845ccc",
+    "endpoint_profiles.json": "947ac63ac5b6b2bf98b9c23c67f8a1d035b277ef99b4ea2ac564df3989048b53",
+    "mad_summary.json": "fb4592fca00ff3dc7ba5ed4f4c9c9b36a873c9878b7d07dd84ace173496517bc",
+    "summary.json": "c3bcada997692b15bd1c87c4432501f1de073003fc62d06bcab8e03271e9b331",
+    "tier_rollups.json": "eb8d2f08c4235cff8dc68b7d2bad4abd4caaa8e143e4a55e7c0244cc486e5dff",
 }
 
 
 EXPECTED_FIELD_HASHES = {
-    "endpoint_profiles.endpoints": "6cdb392a5ed26dbcb96a0ff6f13bf06315002f8f5c9c5200e7be576864b1cd4c",
+    "endpoint_profiles.endpoints": "97a61bafdf53733f27079c1c0a17668d43c6851464a159cd67392ede9e65b247",
     "summary.regions": "1852c030138195237b6c7a06b787f7760ba93b8b2a202ff62b1c38ae020cee10",
-    "tier_rollups.tiers": "0fa33aefc590b65063d60379cc419ccef6dca821d43bb27a69479efc3064947c",
+    "tier_rollups.tiers": "2f34c484998d127e1cf1d3d033f5503b7527276dcf845a15b59d756f2db89860",
 }
 
 
@@ -168,10 +168,26 @@ class TestTierSemantics:
         assert r["tier"] == "SLOW"
         assert r["anomaly_flag"] is False
 
+    def test_anchor_then_demotion_on_ep03(self, outputs: dict[str, object]) -> None:
+        """`ep-03` is anchor-forced FAST then demoted to MODERATE for low kbps."""
+        r = self._row(outputs, "ep-03")
+        assert r["tier"] == "MODERATE"
+
+    def test_anchor_override_reverted_by_demotion_on_ep05(self, outputs: dict[str, object]) -> None:
+        """`ep-05` is anchor-forced MODERATE then demoted back to SLOW for low kbps."""
+        r = self._row(outputs, "ep-05")
+        assert r["tier"] == "SLOW"
+        assert r["anomaly_flag"] is True
+
     def test_high_rtt_success_triggers_anomaly(self, outputs: dict[str, object]) -> None:
-        """`ep-06` is a successful probe with an extreme RTT so MAD marks it."""
+        """`ep-06` is a successful probe with an extreme RTT so regional MAD marks it."""
         r = self._row(outputs, "ep-06")
         assert r["anomaly_flag"] is True
+
+    def test_mad_excluded_probe_not_flagged(self, outputs: dict[str, object]) -> None:
+        """`ep-04` is excluded from the MAD sample and never receives an anomaly flag."""
+        r = self._row(outputs, "ep-04")
+        assert r["anomaly_flag"] is False
 
 
 class TestAnomalyJournal:
@@ -185,32 +201,48 @@ class TestAnomalyJournal:
         assert ids == sorted(ids)
 
     def test_expected_outlier_endpoints(self, outputs: dict[str, object]) -> None:
-        """The bundled dataset emits MAD outliers on four successful endpoints."""
+        """The bundled dataset emits regional MAD outliers on three successful endpoints."""
         evs = outputs["anomaly_events.json"]["events"]
         ids = {str(e["endpoint_id"]) for e in evs}
-        assert ids == {"ep-04", "ep-05", "ep-06", "ep-12"}
+        assert ids == {"ep-05", "ep-06", "ep-12"}
 
 
 class TestRollups:
-    """Tier rollups reflect final labels after incidents."""
+    """Tier rollups reflect final labels after incidents and demotion."""
 
-    def test_us_slow_bucket_counts_forced_row(self, outputs: dict[str, object]) -> None:
-        """US region records three SLOW rows including the forced endpoint."""
+    def test_us_slow_bucket_counts_demoted_rows(self, outputs: dict[str, object]) -> None:
+        """US region records four SLOW rows after anchor and throughput demotions."""
         tiers = outputs["tier_rollups.json"]["tiers"]
         assert isinstance(tiers, dict)
         us = tiers["us"]
         assert isinstance(us, dict)
-        assert int(us["SLOW"]) == 3
+        assert int(us["SLOW"]) == 4
         assert int(us["FAILED"]) == 1
 
 
 class TestMadSummary:
-    """MAD summary exposes population stats."""
+    """Per-region MAD summary exposes population stats."""
 
-    def test_mad_sample_size_matches_success_pool(self, outputs: dict[str, object]) -> None:
-        """Twelve successful probes feed the MAD sample in the bundled dataset."""
+    def test_regions_sorted_and_sample_sizes(self, outputs: dict[str, object]) -> None:
+        """Each region reports five successful non-excluded probes in the MAD sample."""
         ms = outputs["mad_summary.json"]
         assert isinstance(ms, dict)
-        assert int(ms["sample_size"]) == 12
-        assert ms["global_median_ms"] is not None
-        assert ms["global_mad_ms"] is not None
+        regions = ms["regions"]
+        assert isinstance(regions, list)
+        names = [str(r["region"]) for r in regions]
+        assert names == sorted(names)
+        for row in regions:
+            assert int(row["sample_size"]) == 5
+            assert row["global_median_ms"] is not None
+            assert row["global_mad_ms"] is not None
+
+
+class TestSummaryTotals:
+    """Summary counters reconcile with endpoint rows."""
+
+    def test_summary_demotion_and_anomaly_totals(self, outputs: dict[str, object]) -> None:
+        """Summary exposes six throughput demotions and three regional anomalies."""
+        sm = outputs["summary.json"]
+        assert isinstance(sm, dict)
+        assert int(sm["throughput_demoted_total"]) == 6
+        assert int(sm["anomaly_total"]) == 3

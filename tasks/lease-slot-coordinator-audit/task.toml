@@ -3,7 +3,7 @@ version = "2.0"
 [metadata]
 author_name = "anonymous"
 author_email = "anonymous"
-difficulty = "hard"
+difficulty = "medium"
 category = "system-administration"
 subcategories = []
 number_of_milestones = 0
@@ -20,10 +20,8 @@ timeout_sec = 600.0
 timeout_sec = 1800.0
 
 [environment]
+allow_internet = false
 build_timeout_sec = 600.0
 cpus = 2
 memory_mb = 3072
 storage_mb = 10240
-gpu_required = false
-network_required = false
-workdir = "/app"

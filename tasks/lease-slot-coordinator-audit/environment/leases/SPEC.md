@@ -53,7 +53,27 @@ Unknown kinds or missing required fields: ignore the event.
 
 `base_max_renewals = policy.max_renewals_by_tier[tier]` plus all applied `renewal_cap_delta.delta` for that tier. After sums, clamp to minimum 0.
 
-`quorum = slot.witness_quorum_override` if present in the slot file, else `policy.witness_quorum_by_tier[tier]`.
+## Witness quorum (two distinct values)
+
+Do not mix these definitions; they answer different questions.
+
+### Per-lease witness sufficiency (`sufficiency_quorum`)
+
+For each lease on slot `S` whose subject host `H` has tier `T`:
+
+- If `slots/S.json` includes `witness_quorum_override`, `sufficiency_quorum` equals that override.
+- Otherwise `sufficiency_quorum = policy.witness_quorum_by_tier[T]` using the **subject host's** tier.
+
+Use `sufficiency_quorum` only for status precedence step 4 (`witness_pending`), for `witness_pairs_credited` on leases that reach step 4, and for provisional cohost witness scoring. It is **per lease** and may differ across cohosts on the same contested slot.
+
+### Reporting quorum (`quorum_required` in `slot_contention.json`)
+
+`quorum_required` is **reporting metadata only**. It never drives lease status, provisional cohost passes, or witness sufficiency.
+
+For each slot `S`:
+
+- If `witness_quorum_override` is present in `slots/S.json`, `quorum_required` equals that override.
+- Otherwise `quorum_required = policy.witness_quorum_by_tier["bronze"]` (the policy bronze-tier default, not any cohost's tier).
 
 ## Slot contention
 
@@ -71,7 +91,7 @@ When `contested` is false, witness checks pass.
 
 When contested, build `cohosts(S)` as every `host_id` on any lease with `slot_id == S`.
 
-For subject host `H` on slot `S`, consider witness-eligible attestations in `witnesses/S.json` where `subject_host == H`, `witness_host != H`, `witness_host ∈ cohosts(S)`, and `witness_eff_lo <= day <= current_day`. Deduplicate by `(witness_host, day)` (first in file order). Let `witness_score` be the deduplicated pair count. Sufficiency holds when `witness_score >= quorum`. Otherwise the lease is `witness_pending` unless a higher-precedence final rule applies first.
+For subject host `H` on slot `S`, consider witness-eligible attestations in `witnesses/S.json` where `subject_host == H`, `witness_host != H`, `witness_host ∈ cohosts(S)`, and `witness_eff_lo <= day <= current_day`. Deduplicate by `(witness_host, day)` (first in file order). Let `witness_score` be the deduplicated pair count. Compute `sufficiency_quorum` for this lease as defined above. Sufficiency holds when `witness_score >= sufficiency_quorum`. Otherwise the lease is `witness_pending` unless a higher-precedence final rule applies first.
 
 `witness_pairs_credited` is 0 when final evaluation never reaches step 4 (rules 1–3 matched, or the slot is uncontested). Otherwise it equals `witness_score`, including partial scores when insufficient.
 
@@ -113,7 +133,7 @@ Canonical JSON: UTF-8, two-space indent, ASCII only, keys sorted lexicographical
 
 ### slot_contention.json
 
-- `slots`: map keyed by `slot_id` ascending. Each value: `capacity`, `contested` (bool), `active_hosts` (sorted host_id strings), `quorum_required` (int). `quorum_required` is the slot file's `witness_quorum_override` when present; otherwise `policy.witness_quorum_by_tier["bronze"]`.
+- `slots`: map keyed by `slot_id` ascending. Each value: `capacity`, `contested` (bool), `active_hosts` (sorted host_id strings), `quorum_required` (int). Populate `quorum_required` using the reporting-quorum rules above; do not substitute a cohost tier or a per-lease `sufficiency_quorum`.
 
 ### summary.json
 

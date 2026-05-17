@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "d3d534c30e2355e93ed5d9ad82131e7c0d478bd14c9156976c8232348673f1fe",
+    "SPEC.md": "8a0814aa96dcf74c0efc3630a3a800b54789e93017d96931b8a9aeb43ea3c87c",
     "ancillary/channel_tag.json": "e126bc42853253544ba41531f545b9ec37571c52e130c59a2a341fedcaf9e257",
     "ancillary/ci_guard.json": "e4bf72f56e6bd79ee2a85031d5cdaaf6f079eb459edb6fe32cd2d4d66f135dd9",
     "ancillary/extra_one.json": "e00f12c9c6be456940cb7be775df45edec8597a5528482899e7b25d6daf09c50",
@@ -343,6 +343,16 @@ class TestTierPolicy:
 class TestSlotContention:
     """Contention map lists sorted hosts and quorum metadata."""
 
+    def _row(
+        self, outputs: dict[str, object], host_id: str, slot_id: str
+    ) -> dict[str, object]:
+        rows = outputs["lease_verdicts.json"]["leases"]
+        assert isinstance(rows, list)
+        for r in rows:
+            if isinstance(r, dict) and r.get("host_id") == host_id and r.get("slot_id") == slot_id:
+                return r
+        raise AssertionError(f"missing lease row {host_id}/{slot_id}")
+
     def test_shared_slot_is_contested(self, outputs: dict[str, object]) -> None:
         """`slot-shared` lists both alpha and beta hosts as active."""
         slots = outputs["slot_contention.json"]["slots"]
@@ -356,6 +366,17 @@ class TestSlotContention:
         """`slot-bronze3` documents the witness quorum override from its slot file."""
         slots = outputs["slot_contention.json"]["slots"]
         assert slots["slot-bronze3"]["quorum_required"] == 2
+
+    def test_zeta6_reporting_quorum_differs_from_gold_sufficiency(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`slot-zeta6` reports bronze-tier quorum_required while gold `host-zeta`
+        still needs two witness pairs for sufficiency."""
+        slots = outputs["slot_contention.json"]["slots"]
+        assert slots["slot-zeta6"]["quorum_required"] == 1
+        r = self._row(outputs, "host-zeta", "slot-zeta6")
+        assert r["computed_status"] == "witness_pending"
+        assert r["witness_pairs_credited"] == 1
 
 
 class TestIncidentJournal:

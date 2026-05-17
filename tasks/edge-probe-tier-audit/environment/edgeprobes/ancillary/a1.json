@@ -1,4 +1,6 @@
 {
-  "guard": "noop",
-  "id": "ept-a1"
+  "region_min_kbps": {
+    "eu": 24,
+    "us": 70
+  }
 }

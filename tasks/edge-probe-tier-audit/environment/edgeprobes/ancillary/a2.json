@@ -1,4 +1,6 @@
 {
-  "guard": "noop",
-  "id": "ept-a2"
+  "mad_exclude": [
+    "ep-04",
+    "ep-h03"
+  ]
 }
