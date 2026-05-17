@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 20,
+      "kind": "source_compromise",
+      "source_id": "src-bad"
+    }
+  ]
+}

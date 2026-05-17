@@ -1,0 +1,6 @@
+{
+  "capabilities": ["env.config"],
+  "declared_imports": ["debug.unsafe", "env.config"],
+  "module_id": "mod-gold-deny",
+  "tier": "gold"
+}

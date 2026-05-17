@@ -1,0 +1,6 @@
+{
+  "capabilities": ["env.config"],
+  "declared_imports": ["env.config"],
+  "module_id": "mod-bronze-worker",
+  "tier": "bronze"
+}

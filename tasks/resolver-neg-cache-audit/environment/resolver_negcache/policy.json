@@ -1,0 +1,7 @@
+{
+  "nodata_code": 2,
+  "nodata_ttl_days": 5,
+  "nx_ttl_days": 7,
+  "nxdomain_code": 3,
+  "stale_grace_days": 2
+}

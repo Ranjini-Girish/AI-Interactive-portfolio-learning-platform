@@ -1,0 +1,6 @@
+{
+  "capabilities": ["fs.read", "log.emit", "net.connect"],
+  "declared_imports": ["env.config", "fs.read", "net.connect"],
+  "module_id": "mod-gold-hub",
+  "tier": "gold"
+}

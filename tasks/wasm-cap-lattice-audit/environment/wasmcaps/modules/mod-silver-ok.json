@@ -1,0 +1,6 @@
+{
+  "capabilities": ["env.config", "fs.read", "log.emit"],
+  "declared_imports": ["env.config", "env.secret", "log.emit"],
+  "module_id": "mod-silver-ok",
+  "tier": "silver"
+}

@@ -1,0 +1,8 @@
+{
+  "call_id": "hc-b02",
+  "correlation_root": "batch-b",
+  "hedge_latency_ms": null,
+  "primary_latency_ms": 250,
+  "service_tier": "bronze",
+  "status": "primary_timeout"
+}

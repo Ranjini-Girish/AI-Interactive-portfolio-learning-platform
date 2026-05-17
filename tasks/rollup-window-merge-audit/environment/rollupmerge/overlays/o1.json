@@ -1,0 +1,5 @@
+{
+  "bucket_cap": 5,
+  "exclude_sources": ["src-noisy"],
+  "min_sample_count": 2
+}

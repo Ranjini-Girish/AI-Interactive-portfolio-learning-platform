@@ -1,0 +1,10 @@
+{
+  "samples": [
+    {"day": 10, "value": 5},
+    {"day": 13, "value": 5},
+    {"day": 15, "value": 5}
+  ],
+  "series_id": "sr-09",
+  "source_id": "src-a",
+  "watermark_day": 28
+}

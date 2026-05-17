@@ -1,0 +1,13 @@
+Agent writes all five JSON artifacts with canonical formatting per SPEC, +2
+Agent keeps /app/rollupmerge read-only and honors RWM_DATA_DIR and RWM_AUDIT_DIR overrides, +2
+Agent merges overlays in basename order then applies min_sample_count and bucket_cap during rollups, +3
+Agent excludes partial trailing buckets and samples outside the inclusive window, +3
+Agent applies watermark staleness, anchor holds, and source compromise quarantine in precedence order, +3
+Agent sorts series rows, bucket contributors, and report lists by ascending series_id, +2
+Agent omits any required JSON artifact or breaks canonical serialization, -5
+Agent mutates bundled series fixtures or ignores overlay exclude_sources, -3
+Agent counts samples toward buckets without meeting min_sample_count or includes partial buckets, -3
+Agent applies anchor overrides before compromise quarantine or drops excluded sources from profiles, -3
+Agent emits unsorted bucket arrays or omits null window_sum for quarantined series, -2
+Agent treats watermark staleness as inclusive at the grace boundary, -2
+Agent drops trailing newline on any audit file, -2

@@ -1,41 +1,21 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { buildTrackerRow } from '../../shared/terminus-tracker/build-row';
+import type {
+  SubmissionFlowKind,
+  SubmissionRecord,
+  TaskPlatformMetadata,
+} from '../../shared/terminus-tracker/metadata';
+
+export type { SubmissionFlowKind, SubmissionRecord, TaskPlatformMetadata };
+export type { TrackerRow } from '../../shared/terminus-tracker/schema';
 
 const METADATA_FILENAME = 'platform-submission.json';
 
 function repoRoot(): string {
   return process.env.SNORKEL_E2E_REPO_ROOT ?? path.resolve(__dirname, '..', '..');
 }
-
-export type SubmissionFlowKind = 'new' | 'revision';
-
-export type SubmissionRecord = {
-  recordedAt: string;
-  flow: SubmissionFlowKind;
-  dryRun: boolean;
-  submitted: boolean;
-  submissionUrl: string;
-  projectId: string | null;
-  submissionSlug: string | null;
-  assignmentId: string | null;
-  revisionTaskId: string | null;
-  zipPath: string;
-  zipBytes: number | null;
-  zipSha256: string | null;
-  options: {
-    sendToReviewer: boolean;
-    regenerateRubric: boolean;
-    staticChecks: boolean;
-  };
-};
-
-export type TaskPlatformMetadata = {
-  taskName: string;
-  updatedAt: string;
-  latest: SubmissionRecord;
-  submissions: SubmissionRecord[];
-};
 
 export type SaveSubmissionMetadataInput = {
   taskName: string;
@@ -87,6 +67,12 @@ export function resolveTaskNameFromEnv(zipPath?: string): string | undefined {
   return undefined;
 }
 
+function resolveTaskDir(): string | undefined {
+  const fromDir = process.env.SNORKEL_TASK_DIR;
+  if (!fromDir) return undefined;
+  return path.resolve(repoRoot(), fromDir);
+}
+
 function zipFingerprint(zipPath: string): { zipBytes: number | null; zipSha256: string | null } {
   try {
     const buf = fs.readFileSync(zipPath);
@@ -103,11 +89,9 @@ export function metadataPathForTask(taskName: string): string {
   return path.join(repoRoot(), 'tasks', taskName, METADATA_FILENAME);
 }
 
-/** Default on for live submit; dry run only when SNORKEL_SAVE_METADATA=1. */
-export function shouldSaveSubmissionMetadata(submitted: boolean): boolean {
-  if (process.env.SNORKEL_SAVE_METADATA === '0') return false;
-  if (submitted) return true;
-  return process.env.SNORKEL_SAVE_METADATA === '1';
+/** Default on for live and dry runs; set SNORKEL_SAVE_METADATA=0 to disable. */
+export function shouldSaveSubmissionMetadata(_submitted: boolean): boolean {
+  return process.env.SNORKEL_SAVE_METADATA !== '0';
 }
 
 export function buildSubmissionRecord(input: SaveSubmissionMetadataInput): SubmissionRecord {
@@ -140,6 +124,25 @@ export function saveSubmissionMetadata(input: SaveSubmissionMetadataInput): stri
   }
 
   const record = buildSubmissionRecord({ ...input, taskName });
+  const parsed = parseSubmissionUrl(input.submissionUrl);
+  const taskDir = resolveTaskDir();
+
+  const tracker = buildTrackerRow(
+    {
+      taskName,
+      taskDir,
+      flow: input.flow,
+      dryRun: input.dryRun,
+      submitted: input.submitted,
+      submissionUrl: input.submissionUrl,
+      assignmentId: parsed.assignmentId,
+      submissionSlug: parsed.submissionSlug,
+      revisionTaskId: input.revisionTaskId ?? parsed.assignmentId,
+      sendToReviewer: input.options.sendToReviewer,
+    },
+    {},
+  );
+
   const outPath = metadataPathForTask(taskName);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
 
@@ -156,6 +159,7 @@ export function saveSubmissionMetadata(input: SaveSubmissionMetadataInput): stri
   const doc: TaskPlatformMetadata = {
     taskName,
     updatedAt: record.recordedAt,
+    tracker,
     latest: record,
     submissions,
   };

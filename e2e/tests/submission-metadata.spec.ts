@@ -23,7 +23,7 @@ test.describe('submission metadata', () => {
     const prev = { ...process.env };
     delete process.env.SNORKEL_SAVE_METADATA;
     expect(shouldSaveSubmissionMetadata(true)).toBe(true);
-    expect(shouldSaveSubmissionMetadata(false)).toBe(false);
+    expect(shouldSaveSubmissionMetadata(false)).toBe(true);
     process.env.SNORKEL_SAVE_METADATA = '1';
     expect(shouldSaveSubmissionMetadata(false)).toBe(true);
     process.env.SNORKEL_SAVE_METADATA = '0';
@@ -76,6 +76,8 @@ test.describe('submission metadata', () => {
     expect(doc.submissions).toHaveLength(2);
     expect(doc.latest.flow).toBe('revision');
     expect(doc.latest.assignmentId).toBe('uuid-1');
+    expect(doc.tracker).toBeDefined();
+    expect(doc.tracker.taskName).toBe('demo-task');
 
     if (prevRoot === undefined) delete process.env.SNORKEL_E2E_REPO_ROOT;
     else process.env.SNORKEL_E2E_REPO_ROOT = prevRoot;

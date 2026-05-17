@@ -1,0 +1,6 @@
+{
+  "capabilities": ["env.config", "log.emit"],
+  "declared_imports": ["env.config", "log.emit"],
+  "module_id": "mod-bronze-ok",
+  "tier": "bronze"
+}

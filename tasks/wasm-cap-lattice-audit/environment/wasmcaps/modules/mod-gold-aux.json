@@ -1,0 +1,6 @@
+{
+  "capabilities": ["fs.write", "net.bind"],
+  "declared_imports": ["fs.write", "net.bind"],
+  "module_id": "mod-gold-aux",
+  "tier": "gold"
+}

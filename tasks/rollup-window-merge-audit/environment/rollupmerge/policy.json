@@ -1,0 +1,5 @@
+{
+  "bucket_days": 7,
+  "grace_days": 3,
+  "value_floor": 0
+}

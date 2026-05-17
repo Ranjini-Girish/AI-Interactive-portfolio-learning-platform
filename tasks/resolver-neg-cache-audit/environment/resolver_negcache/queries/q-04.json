@@ -1,0 +1,9 @@
+{
+  "observed_day": 94,
+  "qname": "nodata.example.com",
+  "qtype": "AAAA",
+  "query_id": "q-04",
+  "resolver_id": "res-a",
+  "response_code": 2,
+  "zone_id": "z-public"
+}

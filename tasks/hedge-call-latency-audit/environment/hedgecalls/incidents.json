@@ -1,0 +1,60 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 40,
+      "event_id": "ev-credit-silver",
+      "kind": "force_budget_credit",
+      "scope": {
+        "credit": 1,
+        "service_tier": "silver"
+      }
+    },
+    {
+      "accepted": true,
+      "day": 41,
+      "event_id": "ev-comp-batch",
+      "kind": "hedge_compromise",
+      "scope": {
+        "correlation_root": "batch-x"
+      }
+    },
+    {
+      "accepted": true,
+      "day": 42,
+      "event_id": "ev-bump-bronze",
+      "kind": "hedge_delay_bump",
+      "scope": {
+        "bump_ms": 30,
+        "service_tier": "bronze"
+      }
+    },
+    {
+      "accepted": false,
+      "day": 10,
+      "event_id": "ev-reject-false",
+      "kind": "hedge_compromise",
+      "scope": {
+        "call_id": "hc-g01"
+      }
+    },
+    {
+      "accepted": true,
+      "day": 99,
+      "event_id": "ev-future",
+      "kind": "hedge_compromise",
+      "scope": {
+        "call_id": "hc-s02"
+      }
+    },
+    {
+      "accepted": true,
+      "day": 5,
+      "event_id": "ev-unknown-kind",
+      "kind": "sla_freeze",
+      "scope": {
+        "call_id": "hc-g01"
+      }
+    }
+  ]
+}

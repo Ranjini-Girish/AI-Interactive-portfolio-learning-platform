@@ -1,0 +1,5 @@
+Resolver operators need a frozen negative-cache replay that merges NXDOMAIN and NODATA TTL math, per-zone ancillary TTL bumps, longest-suffix zone rebinding, hint overrides from text files, and incident-driven holds, zone flushes, and resolver compromise poisoning on the same timeline anchored to `pool_state.current_day`. The outcome must be reproducible without mutating the bundled input tree.
+
+Write five UTF-8 JSON artifacts under `/app/audit/` named `query_profiles.json`, `zone_rollups.json`, `stale_events.json`, `incident_journal.json`, and `summary.json`. Grammar for zones, queries, cache-status vocabulary, incident kinds, and canonical JSON formatting is defined in `/app/resolver_negcache/SPEC.md`.
+
+Bundled evidence lives under `/app/resolver_negcache/`. A non-empty `RNCA_DATA_DIR` overrides the input root; a non-empty `RNCA_AUDIT_DIR` overrides the output directory. When a variable is unset or empty, that side falls back to `/app/resolver_negcache/` for reads and `/app/audit/` for writes. Create the output directory if needed. Do not modify files under the input root during the audit run.

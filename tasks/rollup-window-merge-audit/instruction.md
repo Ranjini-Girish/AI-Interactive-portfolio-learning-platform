@@ -1,0 +1,5 @@
+Analytics needs a frozen rollup window audit that merges overlay policies, aligns metric samples to complete day buckets inside the configured window, flags stale watermarks, applies anchor holds, and quarantines compromised sources without rewriting the bundled evidence tree.
+
+Produce five UTF-8 JSON documents under `/app/audit/` named `series_profiles.json`, `bucket_rollups.json`, `stale_report.json`, `compromise_report.json`, and `summary.json`. Status vocabulary, overlay merge order, bucket completeness rules, per-series sums, rollup caps, and canonical JSON layout are defined in `/app/rollupmerge/SPEC.md`.
+
+Bundled inputs live under `/app/rollupmerge/`. When `RWM_DATA_DIR` is set to a non-empty value it replaces the input root; when `RWM_AUDIT_DIR` is set to a non-empty value it replaces the output directory. If either variable is unset or empty, reads default to `/app/rollupmerge/` and writes to `/app/audit/`. Create the output directory when missing. Do not modify the bundled `/app/rollupmerge/` tree.

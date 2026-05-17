@@ -1,0 +1,19 @@
+{
+  "events": [
+    {
+      "day": 97,
+      "kind": "negative_hold",
+      "query_id": "q-10"
+    },
+    {
+      "day": 98,
+      "kind": "resolver_compromise",
+      "resolver_id": "res-b"
+    },
+    {
+      "day": 99,
+      "kind": "zone_flush",
+      "zone_id": "z-corp"
+    }
+  ]
+}

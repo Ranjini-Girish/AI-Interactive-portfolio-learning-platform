@@ -1,0 +1,13 @@
+Agent emits all five required JSON files under the audit directory with canonical formatting, +3
+Agent preserves call row ordering by ascending call_id in call_verdicts.json, +2
+Agent applies tier-scaled hedge delay before deciding whether a hedge path may start, +3
+Agent consumes per-tier hedge budget only when a hedge actually fires and reports hedge_budget_exhausted when the cap is reached, +3
+Agent selects effective latency as the minimum of primary and hedge on successful primaries when a hedge fires, +2
+Agent propagates hedge_compromise incidents across every call sharing a disabled correlation root, +3
+Agent records anchor hedge_disabled lines for individual call ids without disabling unrelated roots, +2
+Agent merges override delay bumps and budget credits in ascending override basename order, +2
+Agent rejects incidents outside supported kinds or future pool days in the incident journal, +2
+Agent modifies any file under the bundled hedgecalls evidence tree, -5
+Agent omits compromise_report disabled root or call id lists required by the spec, -3
+Agent hardcodes verdict rows instead of deriving them from policy, pool day, and trace inputs, -5
+Agent writes outputs that are not canonical JSON per SPEC.md, -2

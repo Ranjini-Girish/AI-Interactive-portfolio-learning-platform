@@ -1,0 +1,12 @@
+Agent reads /app/wasmcaps/SPEC.md before writing audit JSON, +3
+Agent emits all five required JSON files under /app/audit/ with canonical encoding, +3
+Agent computes iterative re-export closures before allowlist checks, +3
+Agent applies module_compromise forward propagation along re-export links, +3
+Agent merges host-slot capabilities with cap_rank category precedence, +2
+Agent processes incidents in ascending day then event_id order, +2
+Agent writes incident_journal accepted and ignored arrays with rejection reasons, +2
+Agent leaves every file under /app/wasmcaps/ unchanged, -3
+Agent omits any required top-level output key from the audit bundle, -3
+Agent uses non-canonical JSON formatting on audit outputs, -2
+Agent mutates bundled module or policy inputs during the run, -5
+Agent hardcodes audit JSON without reading the fixture tree, -5

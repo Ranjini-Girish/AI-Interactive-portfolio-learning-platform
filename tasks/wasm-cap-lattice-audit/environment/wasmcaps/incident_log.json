@@ -1,0 +1,41 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 40,
+      "event_id": "ev-ign-false",
+      "kind": "module_compromise",
+      "scope": {"module_id": "mod-gold-hub"}
+    },
+    {
+      "day": 50,
+      "event_id": "ev-future",
+      "kind": "capability_revoke",
+      "scope": {"capability": "log.emit"}
+    },
+    {
+      "day": 41,
+      "event_id": "ev-unsupported",
+      "kind": "sandbox_reset",
+      "scope": {}
+    },
+    {
+      "day": 38,
+      "event_id": "ev-revoke-log",
+      "kind": "capability_revoke",
+      "scope": {"capability": "log.emit"}
+    },
+    {
+      "day": 39,
+      "event_id": "ev-freeze-bronze",
+      "kind": "import_freeze",
+      "scope": {"module_id": "mod-bronze-lite"}
+    },
+    {
+      "day": 40,
+      "event_id": "ev-compromise-hub",
+      "kind": "module_compromise",
+      "scope": {"module_id": "mod-gold-hub"}
+    }
+  ]
+}

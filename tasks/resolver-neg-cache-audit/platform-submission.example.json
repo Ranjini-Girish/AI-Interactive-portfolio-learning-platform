@@ -1,0 +1,41 @@
+{
+  "taskName": "resolver-neg-cache-audit",
+  "updatedAt": "2026-05-17T12:00:00.000Z",
+  "tracker": {
+    "trainerName": "Cognyzer",
+    "taskId": "00000000-0000-0000-0000-000000000000",
+    "taskStatus": "Ready for Submission",
+    "taskName": "resolver-neg-cache-audit",
+    "date": "05/17/2026",
+    "submittedOnId": "",
+    "language": "Go",
+    "domain": "system-administration",
+    "taskFolderLink": "resolver-neg-cache-audit.zip",
+    "uploadedToSnorkel": "",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-17T12:00:00.000Z",
+    "flow": "new",
+    "dryRun": true,
+    "submitted": false,
+    "submissionUrl": "https://experts.snorkel-ai.com/projects/example/submission-1/review",
+    "projectId": "example",
+    "submissionSlug": "1",
+    "assignmentId": null,
+    "revisionTaskId": null,
+    "zipPath": "tasks/resolver-neg-cache-audit.zip",
+    "zipBytes": 12000,
+    "zipSha256": "…",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": true,
+      "staticChecks": false
+    }
+  },
+  "submissions": []
+}

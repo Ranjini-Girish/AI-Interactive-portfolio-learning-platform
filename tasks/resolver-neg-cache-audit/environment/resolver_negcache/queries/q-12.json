@@ -1,0 +1,9 @@
+{
+  "observed_day": 100,
+  "qname": "orphan.legacy.example.com",
+  "qtype": "TXT",
+  "query_id": "q-12",
+  "resolver_id": "res-d",
+  "response_code": 3,
+  "zone_id": "z-legacy"
+}

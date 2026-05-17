@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "from": "mod-gold-hub",
+      "prefix_filters": ["env.", "net."],
+      "to": "mod-silver-edge"
+    },
+    {
+      "from": "mod-silver-edge",
+      "prefix_filters": ["env."],
+      "to": "mod-bronze-worker"
+    },
+    {
+      "from": "mod-gold-hub",
+      "prefix_filters": ["fs."],
+      "to": "mod-bronze-cache"
+    },
+    {
+      "from": "mod-silver-ok",
+      "prefix_filters": ["env."],
+      "to": "mod-bronze-lite"
+    }
+  ]
+}

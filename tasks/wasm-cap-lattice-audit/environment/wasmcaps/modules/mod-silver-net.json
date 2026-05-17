@@ -1,0 +1,6 @@
+{
+  "capabilities": ["net.connect"],
+  "declared_imports": ["net.connect"],
+  "module_id": "mod-silver-net",
+  "tier": "silver"
+}

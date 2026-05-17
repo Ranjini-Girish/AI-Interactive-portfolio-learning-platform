@@ -1,0 +1,6 @@
+{
+  "capabilities": ["fs.read"],
+  "declared_imports": ["fs.read"],
+  "module_id": "mod-bronze-cache",
+  "tier": "bronze"
+}

@@ -1,0 +1,5 @@
+Security review needs a frozen WASM capability lattice audit that replays module manifests, tier allowlists, filtered re-export links, host-slot capability merges ranked by policy order, and incident-driven quarantine propagation along export chains plus capability revokes and import freezes.
+
+Produce five UTF-8 JSON documents under `/app/audit/` named `module_verdicts.json`, `import_closure.json`, `capability_lattice.json`, `incident_journal.json`, and `summary.json`. Verdict enums, closure rules, lattice merge precedence, incident acceptance rules, and canonical JSON layout are defined in `/app/wasmcaps/SPEC.md`.
+
+Bundled inputs live under `/app/wasmcaps/`. When `WCA_DATA_DIR` is set to a non-empty value it replaces the input root; when `WCA_AUDIT_DIR` is set to a non-empty value it replaces the output directory. If either variable is unset or empty, reads default to `/app/wasmcaps/` and writes to `/app/audit/`. Create the output directory when missing. Do not modify the bundled `/app/wasmcaps/` tree.

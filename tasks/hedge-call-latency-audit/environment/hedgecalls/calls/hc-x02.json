@@ -1,0 +1,8 @@
+{
+  "call_id": "hc-x02",
+  "correlation_root": "batch-x",
+  "hedge_latency_ms": 35,
+  "primary_latency_ms": 80,
+  "service_tier": "silver",
+  "status": "success"
+}

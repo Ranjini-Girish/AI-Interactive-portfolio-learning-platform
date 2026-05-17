@@ -1,0 +1,9 @@
+{
+  "observed_day": 85,
+  "qname": "beta.example.com",
+  "qtype": "A",
+  "query_id": "q-02",
+  "resolver_id": "res-a",
+  "response_code": 3,
+  "zone_id": "z-public"
+}

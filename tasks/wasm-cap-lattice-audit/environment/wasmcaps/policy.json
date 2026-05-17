@@ -1,0 +1,17 @@
+{
+  "cap_rank": [
+    "net.bind",
+    "net.connect",
+    "fs.read",
+    "fs.write",
+    "env.secret",
+    "env.config",
+    "log.emit"
+  ],
+  "import_deny_substrings": ["__syscall", "debug.unsafe"],
+  "supported_incident_kinds": [
+    "capability_revoke",
+    "import_freeze",
+    "module_compromise"
+  ]
+}

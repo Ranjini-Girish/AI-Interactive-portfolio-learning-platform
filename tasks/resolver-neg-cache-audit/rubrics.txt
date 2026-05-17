@@ -1,0 +1,13 @@
+Agent reads /app/resolver_negcache/SPEC.md before emitting outputs, +3
+Agent writes all five required JSON files under /app/audit/, +3
+Agent rebinds each query zone via longest suffix match with lexicographic tie-break, +3
+Agent merges ancillary zone_ttl_bump overlays in ascending ancillary basename order, +2
+Agent applies stale_grace between base TTL expiry and hard expiry, +2
+Agent sorts query_profiles.queries by ascending query_id, +2
+Agent applies incident precedence resolver_compromise over zone_flush over negative_hold, +3
+Agent emits canonical UTF-8 JSON with sorted keys and a trailing newline, +2
+Agent modifies files under the input root, -5
+Agent omits one or more required audit JSON files, -3
+Agent ignores a resolver_compromise or zone_flush incident on an eligible query, -3
+Agent uses non-canonical JSON formatting in audit outputs, -2
+Agent leaves rebound_zone_id equal to the file zone_id when a longer suffix exists, -3

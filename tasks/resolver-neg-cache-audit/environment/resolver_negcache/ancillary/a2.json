@@ -1,0 +1,6 @@
+{
+  "zone_ttl_bump": {
+    "z-corp": 1,
+    "z-public": 3
+  }
+}

@@ -73,8 +73,15 @@ After a **live** submit (`SNORKEL_SUBMIT=1`), E2E appends to:
 
 Fields include `submissionUrl`, parsed `projectId` / `submissionSlug` /
 `assignmentId`, zip path + SHA-256, checkbox flags, and a `submissions[]`
-history (cycle 1 + revisions). Set `SNORKEL_SAVE_METADATA=1` to also record
-dry-run rehearsals; `SNORKEL_SAVE_METADATA=0` to disable.
+history (cycle 1 + revisions). Recorded by default on live and dry runs;
+set `SNORKEL_SAVE_METADATA=0` to disable.
+
+## Terminus tracker Google Sheet (Cognyzer)
+
+Spreadsheet ID: `1JUcSX_6xjLYiQM0_otTRY-ud6xhFY-RxEmYIPRyipGA`  
+URL: https://docs.google.com/spreadsheets/d/1JUcSX_6xjLYiQM0_otTRY-ud6xhFY-RxEmYIPRyipGA/edit  
+
+Configured in `terminus-tracker/.env.local` as `GOOGLE_SHEETS_SPREADSHEET_ID`. Upload `platform-submission.json` or use the form at `npm run dev` (port 3100).
 
 ## Example: ingest-watermark-skew-audit
 

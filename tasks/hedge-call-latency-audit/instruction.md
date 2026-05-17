@@ -1,0 +1,5 @@
+Platform reliability needs a frozen hedge-call latency audit that replays hedged RPC traces with tier-scaled hedge delays, per-tier hedge budgets merged from override files and accepted incidents, minimum-latency selection between primary and hedge paths, and compromise or anchor-driven hedge suppression that can disable entire correlation batches without rewriting the evidence tree.
+
+Produce five UTF-8 JSON documents under `/app/audit/` named `call_verdicts.json`, `hedge_budget.json`, `compromise_report.json`, `incident_journal.json`, and `summary.json`. Status enums, budget math, incident acceptance rules, anchor line format, and canonical JSON layout are defined in `/app/hedgecalls/SPEC.md`.
+
+Bundled inputs live under `/app/hedgecalls/`. When `HCL_DATA_DIR` is set to a non-empty value it replaces the input root; when `HCL_AUDIT_DIR` is set to a non-empty value it replaces the output directory. If either variable is unset or empty, reads default to `/app/hedgecalls/` and writes to `/app/audit/`. Create the output directory when missing. Do not modify the bundled `/app/hedgecalls/` tree.

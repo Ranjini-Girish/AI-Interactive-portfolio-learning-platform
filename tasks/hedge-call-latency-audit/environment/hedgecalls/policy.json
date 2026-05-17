@@ -1,0 +1,23 @@
+{
+  "hedge_budget_per_window": {
+    "bronze": 1,
+    "gold": 3,
+    "silver": 2
+  },
+  "hedge_delay_ms_per_tier": {
+    "bronze": 120,
+    "gold": 50,
+    "silver": 80
+  },
+  "sla_max_ms_per_tier": {
+    "bronze": 200,
+    "gold": 100,
+    "silver": 150
+  },
+  "supported_incident_kinds": [
+    "force_budget_credit",
+    "hedge_compromise",
+    "hedge_delay_bump"
+  ],
+  "window_ms": 10000
+}
