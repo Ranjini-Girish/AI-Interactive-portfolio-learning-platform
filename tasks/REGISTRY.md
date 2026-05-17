@@ -83,18 +83,20 @@ Track all tasks to maintain diversity requirements across submissions.
 | 66 | compose-start-order-audit      | build-and-dependency-management | hard | small | go, bash | 0 | draft (oracle 29/29 pytest local; profile overlap + health-streak warmup + rollout-window intersection + stack compromise quarantine; 28 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/compose-start-order-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 | 67 | resolver-neg-cache-audit       | system-administration           | hard | small | go, bash | 0 | draft (oracle 17/17 pytest local; suffix rebinding + ancillary TTL bump + stale_grace window + hint merge + incident precedence compromise>flush>hold; 28 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/resolver-neg-cache-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 | 68 | hedge-call-latency-audit       | debugging                       | hard | small | go, bash | 0 | draft (oracle 18/18 pytest Docker; tier hedge delay + min-latency hedge win + per-tier budget cap + compromise root cascade; 24 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/hedge-call-latency-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
+| 69 | rollup-window-merge-audit      | data-processing                 | hard | small | go, bash | 0 | submission-ready (oracle 15/15 pytest local; overlay merge + partial-bucket exclusion + watermark staleness + source_compromise quarantine; 22 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/rollup-window-merge-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
+| 70 | wasm-cap-lattice-audit         | security                        | hard | small | go, bash | 0 | draft (oracle 18/18 pytest local; filtered re-export closure + cap_rank host merge + import_freeze + module_compromise forward quarantine; 22 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/wasm-cap-lattice-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 
 ---
 
 ## Diversity Dashboard
 
-### By Category (counted over the 68 logged tasks above)
+### By Category (counted over the 70 logged tasks above)
 | Category | Count | % |
 |----------|-------|---|
 | system-administration | 8 | 12% |
 | software-engineering | 7 | 10% |
-| data-processing | 9 | 13% |
-| security | 7 | 10% |
+| data-processing | 10 | 14% |
+| security | 8 | 11% |
 | machine-learning | 6 | 9% |
 | debugging | 7 | 10% |
 | build-and-dependency-management | 6 | 9% |
@@ -107,21 +109,21 @@ Track all tasks to maintain diversity requirements across submissions.
 ### By Codebase Size
 | Size | Count | % |
 |------|-------|---|
-| small | 68 | 100% |
+| small | 70 | 100% |
 | large | 0 | - |
 
 ### By Difficulty
 | Difficulty | Count | % |
 |------------|-------|---|
 | medium | 0 | - |
-| hard | 68 | 100% |
+| hard | 70 | 100% |
 
 ### By Language
 | Language | Count | Difficulty Requirement |
 |----------|-------|----------------------|
 | python | 18 | must be hard (compliant) |
 | typescript | 2 | (no language-specific gate; hard preferred) |
-| go     | 33 | (no language-specific gate; hard preferred) |
+| go     | 34 | (no language-specific gate; hard preferred) |
 | rust   | 4  | (no language-specific gate; hard preferred) |
 | bash   | 18 | (no language-specific gate) |
 
@@ -313,3 +315,4 @@ Track pass rates for difficulty verification.
 ### sensor-calib-lattice-audit (draft 2026-05-15 — oracle 20/20 pytest; 28 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/sensor-calib-lattice-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
 ### cdc-lag-compactor-audit (draft 2026-05-15 — oracle 12/12 pytest in container; 25 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cdc-lag-compactor-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
 ### hedge-call-latency-audit (draft 2026-05-17 — oracle 18/18 pytest in Docker; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/hedge-call-latency-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### wasm-cap-lattice-audit (draft 2026-05-17 — oracle 18/18 pytest local; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/wasm-cap-lattice-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
