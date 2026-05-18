@@ -26,11 +26,12 @@ This workspace creates tasks for Snorkel.ai's Terminal-Bench (Terminus Edition-2
 ## Fatal Mistakes (instant rejection)
 1. Unpinned Docker base image — every `FROM` needs `@sha256:<digest>`
 2. `codebase_size = "minimal"` — blocked; use `small` or `large`
-3. Python task with easy model difficulty — Python must be hard (<=20% pass rate)
+3. Python task with easy model difficulty — Python must be hard (per the new bands in "Difficulty calibration" below)
 4. `COPY tests/` or `COPY solution/` in Dockerfile — tests are mounted at runtime
 5. Missing `reward.txt` — `test.sh` must ALWAYS write 0 or 1 to `/logs/verifier/reward.txt`
 6. **Solution leakage** — `solution/solve.sh` content, logic, file path, or even its name MUST NEVER appear in `instruction.md` or `tests/test_outputs.py`. See policy below.
 7. **Lint failures in `tests/test_outputs.py`** — the platform's `run_static_checks.py --version edition_2` invokes `ruff check` over the entire task directory. ANY ruff error is a BUILD-phase failure. F401 (unused imports) is the most common offender; an unused `import re` or `import collections` ships, the build prints `❌ /root/tasks/tbench-task: ruff found N error(s)` and rejects the submission. Run `python -m ruff check tasks/<name>/` locally before zipping.
+8. **Runtime internet access is disabled.** Per the May 2026 platform announcement, every `task.toml` MUST declare `[environment].allow_internet = false` (the static checker rejects missing field with `Missing required field: environment.allow_internet (must be false)`). The runtime sandbox blocks all network traffic, so `tests/test.sh` MUST NOT `apt-get install`, `pip install`, `curl … | sh`, `uv install`, or `uvx <pkg>` with download semantics. All verifier dependencies — `pytest`, `pytest-json-ctrf`, and any task-specific Python or system packages the tests import — MUST be pre-installed in `environment/Dockerfile` at image-build time. See "Verifier shape under `allow_internet = false`" below for the canonical `test.sh` and `Dockerfile` patterns. This invalidates every `curl … | sh` + `uvx` `test.sh` shape that shipped before May 2026; legacy tasks being resubmitted MUST be migrated.
 
 ## Solution Non-Leakage Policy (HIGH severity, always enforced)
 
@@ -66,11 +67,82 @@ If a reviewer (LLMaJ, Agent Review, or human) flags any leakage concern, treat i
 task-name/
 ├── instruction.md          # Concise, human-written, absolute paths, no hints
 ├── task.toml               # version 2.0, all metadata fields filled
-├── environment/Dockerfile  # Pinned base image + deps
+├── environment/Dockerfile  # Pinned base image, pre-installs pytest + pytest-json-ctrf
+│                           # + any task-specific Python / system deps
 ├── solution/solve.sh       # #!/bin/bash, set -euo pipefail, deterministic
-├── tests/test.sh           # uv + pytest runner, always writes reward.txt
+├── tests/test.sh           # NO network at runtime — just `python -m pytest`, always writes reward.txt
 └── tests/test_outputs.py   # Behavioral tests with docstrings, anti-cheat
 ```
+
+## Verifier shape under `allow_internet = false`
+
+Two coupled files; one without the other is broken.
+
+### `environment/Dockerfile` MUST pre-install every verifier dep
+
+```dockerfile
+FROM python:3.13-slim-bookworm@sha256:<digest>
+
+# System packages the agent's runtime / verifier needs. Add task-specific
+# system deps here. apt is forbidden at verifier runtime.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        tmux \
+        asciinema \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python deps the verifier imports. Add task-specific imports
+# (e.g. `requests`, `pyyaml`, `tomli`) here. pip is forbidden at verifier
+# runtime.
+RUN python -m pip install --no-cache-dir \
+    pytest==8.4.1 \
+    pytest-json-ctrf==0.3.5
+
+WORKDIR /app
+```
+
+For non-Python tasks (Go, Rust, C++, bash-only), pick a base image with the toolchain already on board (`golang:1.23-bookworm@sha256:…`, `rust:1.82-bookworm@sha256:…`, `gcc:13.3.0-bookworm@sha256:…`), then ALSO `apt-get install python3 python3-pip` (or use a multi-stage build) and `pip install pytest pytest-json-ctrf`. The verifier still runs Python pytest regardless of the agent's target language — but you MUST install Python explicitly when the base image lacks it. Reminder from `tb2-task-rejection-signals.mdc §1`: installing `python3` in an otherwise-non-Python image is ONLY acceptable when the verifier needs it; the prose in `instruction.md` must not hint that Python is a valid solution path.
+
+### `tests/test.sh` MUST be a thin pytest wrapper (no network calls)
+
+```bash
+#!/bin/bash
+mkdir -p /logs/verifier
+
+# Defensive eager writes — keeps Doc-06 crash-safety even though the
+# Dockerfile owns dependency installation now.
+echo 0 > /logs/verifier/reward.txt
+echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
+
+if [ "$PWD" = "/" ]; then
+    echo "Error: No working directory set. Please set a WORKDIR in your Dockerfile before running this script."
+    exit 1
+fi
+
+python -m pytest -o cache_dir=/tmp/pytest_cache \
+  --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+RC=$?
+
+if [ "$RC" -eq 0 ]; then
+  echo 1 > /logs/verifier/reward.txt
+else
+  echo 0 > /logs/verifier/reward.txt
+fi
+
+exit "$RC"
+```
+
+Forbidden in `tests/test.sh` (rejected at platform CI and at runtime since the network is blocked):
+
+- `apt-get update` / `apt-get install`
+- `pip install` / `python -m pip install`
+- `curl` / `wget` (including the canonical `curl -LsSf https://astral.sh/uv/…/install.sh | sh`)
+- `uv install`, `uvx -p 3.13 -w pytest …`, any `uvx <pkg>` that triggers a download
+- `npm install`, `cargo install`, `go install`, `gem install`, …
+- Any `RUN`-time fetch of an external archive (the runtime can't reach the network)
+
+If your tests import a Python package not in the standard library, that package MUST be in the `pip install` line of `environment/Dockerfile`. If your tests shell out to a CLI tool, that tool MUST be in the apt install line. Period.
 
 ## Rubric Rules
 - Every line: starts with "Agent", ends with ", +/-N" where N is 1, 2, 3, or 5
@@ -206,6 +278,8 @@ The platform runs this script during the BUILD phase of CodeBuild. Empirically o
 | Difficulty | `task.toml [metadata] difficulty ∈ {medium, hard}` | Always `hard` for python tasks |
 | codebase_size match | the literal in `task.toml` matches the actual file count under `environment/` (excluding `Dockerfile` and `docker-compose.yaml`) | edition_2: `small` requires **≥ 20** files; aim ≥ 22 for margin |
 | codebase_size value | `task.toml [metadata] codebase_size ∈ {small, large}` | Never `minimal` |
+| `[environment].workdir` | required field; canonical value `"/app"` matches the Dockerfile's `WORKDIR` and `tests/test.sh`'s WORKDIR guard | Always include `workdir = "/app"` (mirror non-`/app` Dockerfiles verbatim) |
+| `[environment].allow_internet` | required field; must literally be `false`. Missing this field fails BUILD with `Missing required field: environment.allow_internet (must be false)` | Always include `allow_internet = false` |
 | `verifier.timeout_sec` | within platform-allowed range | Use the default-template values (600.0) |
 | `agent.timeout_sec` | within platform-allowed range | Use the default-template values (1500.0) |
 | `tests/test.sh` uses pytest | grep for `pytest` invocation | Copy `default-template/tests/test.sh` verbatim |
@@ -374,9 +448,28 @@ These are positive rules to follow when writing `tests/test_outputs.py` and craf
 
 5. **When adding a new fixture to fix a coverage gap, pick a host/entity that is already in the non-clean state.** E.g., to add an `unexpected_break` snapshot without disturbing `clean_hosts_marked_ok` and other host-status tests, attach it to a host that already has `chain_issues` (vs. a host currently `ok`, which would change its status and ripple through ≥3 unrelated tests).
 
-## Difficulty calibration — Python-must-be-hard gate
+## Difficulty calibration (May 2026 bands — Hard → Medium → Easy)
 
-**The platform rejects Python tasks where any model achieves >50% pass rate.** Specifically: at least one of the two reference agents (`terminus-claude-opus-4-6` and `terminus-gpt5-2`) must score **≤20% pass rate** across 5 trials, OR the task is rejected with `Difficulty: ❌ EASY - Requires at least HARD for python` even if every other QC pass is green (Quality Check, Agent Review, Test Quality Review).
+The platform applies the bands in the order below and stops at the first match. Always classify against the **best** model first; if HARD condition #1 fails, fall back to the **worst** model.
+
+| Band | Conditions (evaluated in order) |
+|---|---|
+| **HARD** | (1) `accuracy_best_model ≤ 20%` — OR — (2) `accuracy_best_model > 20%` AND `accuracy_worst_model ≤ 20%` |
+| **MEDIUM** | (3) `20% < accuracy_worst_model ≤ 60%` |
+| **EASY** | (4) `60% < accuracy_worst_model ≤ 80%` (any higher and the task is rejected as trivial) |
+
+Worked example (taken from the platform announcement):
+
+```
+terminus-claude-opus-4-6: 100.0% (5/5 runs)  ← best
+terminus-gpt5-2:           20.0% (1/5 runs)  ← worst
+
+HARD condition #1 fails because the best model scored 100%.
+HARD condition #2 passes because the worst model scored 20%.
+Result: HARD.
+```
+
+**Python tasks must qualify as HARD** (either condition #1 or #2). A Python task that lands in MEDIUM or EASY is rejected with `Difficulty: ❌ EASY - Requires at least HARD for python` even if every other QC pass is green (Quality Check, Agent Review, Test Quality Review).
 
 **A spec that fully describes the algorithm in plain English is too easy.** Once SPEC.md says "do X then Y then Z", a frontier model translates it directly. To genuinely qualify as "hard", the implementation must require either (a) multiple interacting algorithmic phases that compound errors, (b) graph/recursive reasoning beyond simple iteration, or (c) subtle invariants that only show up when several rules are correctly composed.
 

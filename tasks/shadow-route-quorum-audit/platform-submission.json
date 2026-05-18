@@ -1,0 +1,80 @@
+{
+  "taskName": "shadow-route-quorum-audit",
+  "updatedAt": "2026-05-17T14:20:54.355Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "",
+    "taskStatus": "Ready for Submission",
+    "taskName": "shadow-route-quorum-audit",
+    "date": "05/17/2026",
+    "submittedOnId": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "shadow-route-quorum-audit.zip",
+    "uploadedToSnorkel": "",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-17T14:20:54.355Z",
+    "flow": "new",
+    "dryRun": true,
+    "submitted": false,
+    "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review",
+    "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+    "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "assignmentId": null,
+    "revisionTaskId": null,
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\shadow-route-quorum-audit.zip",
+    "zipBytes": 18675,
+    "zipSha256": "640164ff0bbf7586a8c66183003f14772cbd1a2f005fdc96a3bbbd78b9eb7828",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": true,
+      "staticChecks": false
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-17T14:18:38.948Z",
+      "flow": "new",
+      "dryRun": true,
+      "submitted": false,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": null,
+      "revisionTaskId": null,
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+      "zipBytes": 25660,
+      "zipSha256": "a5d5a76c9fb99cdf9719917a9f130cd2c472950f18d4257d18dff86b07677ed6",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": true,
+        "staticChecks": false
+      }
+    },
+    {
+      "recordedAt": "2026-05-17T14:20:54.355Z",
+      "flow": "new",
+      "dryRun": true,
+      "submitted": false,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": null,
+      "revisionTaskId": null,
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\shadow-route-quorum-audit.zip",
+      "zipBytes": 18675,
+      "zipSha256": "640164ff0bbf7586a8c66183003f14772cbd1a2f005fdc96a3bbbd78b9eb7828",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": true,
+        "staticChecks": false
+      }
+    }
+  ]
+}

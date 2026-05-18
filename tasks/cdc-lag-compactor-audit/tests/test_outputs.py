@@ -1,6 +1,7 @@
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 from collections import Counter, defaultdict, deque
 from pathlib import Path
@@ -8,7 +9,7 @@ from pathlib import Path
 
 DATA_DIR = Path(os.environ.get("CDC_DATA_DIR", "/app/cdc"))
 AUDIT_DIR = Path(os.environ.get("CDC_AUDIT_DIR", "/app/audit"))
-EXPECTED_INPUT_HASH = "a9add2115a7f5d2ceb44a2aacc55eccf03a7deb4f1622ae30f28c186ce3f00a8"
+EXPECTED_INPUT_HASH = "aec5b37e7bab93772c56b5e0ab7c0f9b0245e1ed6df78e1a15055c0f57e58807"
 EXPECTED_FIELD_HASHES = {'partition_lag.json': '81307cd73c8b160f99493c21c995b9dbf37144340a16bd8c19fd042ae7437869', 'compaction_plan.json': '4a0225230caab86bc024cd3a9d18274a93393411d139318c469148ad8c2006ac', 'replay_risk.json': '981286747db577aedfc80a8843448643aee0473606569900fc7f3084843012d0', 'quarantine_graph.json': '42f08eebf455287295266ca4a18d01cb5754b4544232e5d77d9d9ea2f345b408', 'summary.json': '2a556e11fd3edade61cf948f98dfc4f6a01810fbb418ffd784b99f4604eaba94'}
 REPORTS = [
     "partition_lag.json",
@@ -456,20 +457,50 @@ class TestSummary:
         )
 
 
+def _rust_source_bundle():
+    source_files = list(Path("/app/auditor/src").glob("*.rs"))
+    assert source_files, "expected Rust sources under /app/auditor/src"
+    contents = "\n".join(path.read_text(encoding="utf-8") for path in source_files)
+    total_lines = sum(len(path.read_text(encoding="utf-8").splitlines()) for path in source_files)
+    assert total_lines >= 150, "Rust source is too small for the full audit contract"
+    lowered = contents.lower()
+    assert "serde" in lowered or "json" in lowered, "Rust source must parse or emit JSON"
+    assert "fn main" in contents
+    return contents
+
+
+def _mutated_cdc_dir(tmp_path: Path) -> Path:
+    copied = tmp_path / "cdc_mutated"
+    shutil.copytree(DATA_DIR, copied)
+    pool = copied / "pool_state.tsv"
+    rows = pool.read_text(encoding="utf-8").splitlines()
+    pool.write_text(rows[0].replace("|20", "|21") + "\n", encoding="utf-8")
+    return copied
+
+
 class TestRustExecutable:
     def test_rust_binary_recreates_reports(self, tmp_path):
-        """The required Rust executable regenerates byte-equivalent report content."""
-        source_files = list(Path("/app/auditor/src").glob("*.rs"))
-        assert source_files
-        assert any("fn main" in path.read_text(encoding="utf-8") for path in source_files)
+        """The Rust executable recomputes reports from CDC_DATA_DIR, not cached audit files."""
+        _rust_source_bundle()
         binary = Path("/app/bin/cdc-audit")
         assert binary.is_file()
         assert os.access(binary, os.X_OK)
-        regen = tmp_path / "audit"
-        regen.mkdir()
+
+        baseline = tmp_path / "audit_baseline"
+        baseline.mkdir()
         env = os.environ.copy()
         env["CDC_DATA_DIR"] = str(DATA_DIR)
-        env["CDC_AUDIT_DIR"] = str(regen)
+        env["CDC_AUDIT_DIR"] = str(baseline)
         subprocess.run([str(binary)], check=True, env=env)
         for name in REPORTS:
-            assert json.loads((regen / name).read_text(encoding="utf-8")) == read_report(name)
+            assert json.loads((baseline / name).read_text(encoding="utf-8")) == read_report(name)
+
+        mutated = _mutated_cdc_dir(tmp_path)
+        regen = tmp_path / "audit_mutated"
+        regen.mkdir()
+        env["CDC_DATA_DIR"] = str(mutated)
+        env["CDC_AUDIT_DIR"] = str(regen)
+        subprocess.run([str(binary)], check=True, env=env)
+        original_lag = read_report("partition_lag.json")
+        mutated_lag = json.loads((regen / "partition_lag.json").read_text(encoding="utf-8"))
+        assert mutated_lag != original_lag, "binary must recompute output when inputs change"

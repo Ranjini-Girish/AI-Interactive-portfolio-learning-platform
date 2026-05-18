@@ -60,19 +60,28 @@ Hosts with no schedulable bundle and not quarantined/frozen are `idle`.
 
 ## Blocked candidate ledger
 
-For every host, for every bundle file id that is not in `applied_bundles` and was not scheduled today, emit one `blocked_candidates` row with the single highest-precedence reason among:
+For every host, emit a `blocked_candidates` row for every bundle file id that is not in `applied_bundles` and was not scheduled today. Each row carries a single `reason`. Two of the seven reasons are host-scoped fates that override every per-bundle reason on that host; the remaining five are per-bundle conditions evaluated independently for each row.
+
+Host-scoped reasons (apply to every row on the affected host, in strict precedence top-down):
 
 | Reason | Condition |
 |--------|-----------|
-| `quarantine` | active compromise on host |
-| `region_frozen` | active freeze on host region |
-| `capacity_deferred` | host ended `deferred_capacity` |
-| `embargoed` | embargo covers audit day |
-| `outside_window` | audit day outside effective window |
-| `missing_dependency` | some `depends_on` not applied |
-| `reboot_over_budget` | bundle reboot_minutes exceeds policy budget while dependencies/window/embargo otherwise pass |
+| `quarantine` | the host ended `quarantined` (active `host_compromise`) |
+| `region_frozen` | the host ended `frozen_region` (active `freeze_region` on its region) |
 
-Precedence order above is strict (top wins). Sort rows by ascending `bundle_id`.
+If neither host-scoped reason applies, each row gets the single highest-precedence per-bundle reason from this list (top-down):
+
+| Reason | Condition |
+|--------|-----------|
+| `capacity_deferred` | this row's bundle is the host's chosen candidate (per "Bundle candidacy" plus the priority/`bundle_id` tie-break) and the host ended `deferred_capacity` in the capacity pass |
+| `embargoed` | a kept `bundle_embargo` covers the audit day for this row's `bundle_id` |
+| `outside_window` | the audit day is outside the host's effective maintenance window |
+| `missing_dependency` | some id in this row's bundle's `depends_on` is not in `applied_bundles` |
+| `reboot_over_budget` | this row's bundle has `reboot_minutes` greater than `reboot_budget_minutes_per_host` while its `depends_on`, the effective window, and the embargo otherwise pass |
+
+`capacity_deferred` therefore appears on **at most one row per host** — the bundle that would have been scheduled before the regional cap pushed the host into `deferred_capacity`. Every other unscheduled bundle on the same deferred host takes its reason from `embargoed` / `outside_window` / `missing_dependency` / `reboot_over_budget` per its own per-bundle conditions.
+
+Within each host, sort the emitted rows by ascending ASCII `bundle_id`.
 
 ## Outputs (five files under `/app/audit/`)
 

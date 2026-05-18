@@ -11,7 +11,7 @@ from pathlib import Path
 import pytest
 
 DATA_DIR = Path(os.environ.get("SCLA_DATA_DIR", "/app/sensor_lattice"))
-AUDIT_DIR = Path(os.environ.get("SCLA_AUDIT_DIR", "/app/audit"))
+AUDIT_DIR = Path(os.environ.get("SCLA_AUDIT_DIR", "/app/calibration_audit"))
 SRC_DIR = Path(os.environ.get("SCLA_SRC_DIR", "/app/src"))
 BIN_DIR = Path(os.environ.get("SCLA_BIN_DIR", "/app/bin"))
 
@@ -24,7 +24,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "eb518a1286621a8125202a69a76ce24f3cca5f9b3769d36c9baa6b2d08ad99fa",
+    "SPEC.md": "7343892fd3069c84aadbf2986938b38f2ee4ac16ca01965522b280eb85d1e9ea",
     "batches/batch-a1.json": "3a4bc2eee81965cd863460bcb67e3d3a92b772aa9af6dff96281c4d71d484a6b",
     "batches/batch-a2.json": "1165a99b6c688a7aff7e21d18e633c4df14a960893577a085240d43089c5ec32",
     "batches/batch-b1.json": "4eaf4a0469db6d880be7454e58356a23e74a935ae97223537e4b76621c0b2208",

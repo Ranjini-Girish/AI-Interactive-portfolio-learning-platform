@@ -1,6 +1,11 @@
 {
   "idle_timeout_ms": 120000,
   "max_lease_ms": 300000,
-  "max_size": 10,
-  "min_size": 3
+  "max_size": 14,
+  "min_size": 12,
+  "segment_floors": {
+    "alpha": 6,
+    "beta": 1,
+    "gamma": 2
+  }
 }

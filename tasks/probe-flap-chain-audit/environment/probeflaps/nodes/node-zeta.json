@@ -10,5 +10,19 @@
     "109": "ok",
     "110": "ok"
   },
-  "tier": "bronze"
+  "tier": "bronze",
+  "tier_history": [
+    {
+      "as_of_day": 95,
+      "tier": "silver"
+    },
+    {
+      "as_of_day": 102,
+      "tier": "silver"
+    },
+    {
+      "as_of_day": 200,
+      "tier": "gold"
+    }
+  ]
 }

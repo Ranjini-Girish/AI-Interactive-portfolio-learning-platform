@@ -12,11 +12,14 @@ Thumbs.db
 # Terminus local dev (per task)
 local-audit/
 local-plan/
+local-bin/
+local-build/
+local-*-build/
+_*_build/
 run_oracle_local.py
 compute_hashes.py
 _verify_oracles.py
 _dev_compute_hashes.py
-_wrla_build/
 
 # Submission / build artifacts
 *.zip

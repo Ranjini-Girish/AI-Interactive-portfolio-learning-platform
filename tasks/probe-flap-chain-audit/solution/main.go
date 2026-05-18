@@ -24,11 +24,24 @@ type incidentLog struct {
 	Events []map[string]any `json:"events"`
 }
 
+type tierHistoryEntry struct {
+	AsOfDay int    `json:"as_of_day"`
+	Tier    string `json:"tier"`
+}
+
 type nodeDoc struct {
-	NodeID      string            `json:"node_id"`
-	ParentID    *string           `json:"parent_id"`
-	ProbesByDay map[string]string `json:"probes_by_day"`
-	Tier        string            `json:"tier"`
+	NodeID      string             `json:"node_id"`
+	ParentID    *string            `json:"parent_id"`
+	ProbesByDay map[string]string  `json:"probes_by_day"`
+	Tier        string             `json:"tier"`
+	TierHistory []tierHistoryEntry `json:"tier_history"`
+}
+
+type crossRefDoc struct {
+	DirectedPressure []struct {
+		From string `json:"from"`
+		To   string `json:"to"`
+	} `json:"directed_pressure"`
 }
 
 type nodeResult struct {
@@ -79,6 +92,14 @@ func run(dataDir, auditDir string) error {
 	}
 	var il incidentLog
 	if err := json.Unmarshal(incRaw, &il); err != nil {
+		return err
+	}
+	crossRaw, err := os.ReadFile(filepath.Join(dataDir, "links", "cross_refs.json"))
+	if err != nil {
+		return err
+	}
+	var cr crossRefDoc
+	if err := json.Unmarshal(crossRaw, &cr); err != nil {
 		return err
 	}
 
@@ -152,7 +173,6 @@ func run(dataDir, auditDir string) error {
 	if baseW < 1 {
 		baseW = 1
 	}
-	tiersOut := map[string]any{}
 	for _, tier := range []string{"bronze", "gold", "silver"} {
 		bf := pol.FailThresholdByTier[tier]
 		bfl := pol.FlapThresholdByTier[tier]
@@ -181,20 +201,6 @@ func run(dataDir, auditDir string) error {
 		effectiveFlapTh[tier] = efl
 		effectiveSoak[tier] = es
 		tierSpan[tier] = span
-		tiersOut[tier] = map[string]any{
-			"base_fail_threshold":         bf,
-			"base_flap_threshold":         bfl,
-			"base_rolling_window_days":    baseW,
-			"base_soak_days":              bs,
-			"effective_fail_threshold":    ef,
-			"effective_flap_threshold":    efl,
-			"effective_rolling_span_days":   span,
-			"effective_soak_days":         es,
-			"fail_delta_sum":              fd,
-			"flap_delta_sum":              fld,
-			"rolling_span_delta_sum":      rsd,
-			"soak_delta_sum":              sd,
-		}
 	}
 
 	journal := make([]map[string]any, 0, len(applied))
@@ -211,19 +217,24 @@ func run(dataDir, auditDir string) error {
 	})
 
 	byID := map[string]nodeDoc{}
+	effectiveTier := map[string]string{}
 	for _, n := range nodes {
 		byID[n.NodeID] = n
+		effectiveTier[n.NodeID] = computeEffectiveTier(n, ps.CurrentDay)
 	}
 
 	order := topoOrder(nodes)
-	results := map[string]nodeResult{}
-	rows := make([]map[string]any, 0, len(nodes))
+	primary := map[string]nodeResult{}
+	suppressedFailDays := map[string][]int{}
+	rowDraft := map[string]map[string]any{}
 
 	for _, nid := range order {
 		n := byID[nid]
-		winStart := ps.CurrentDay - (tierSpan[n.Tier] - 1)
+		teff := effectiveTier[nid]
+		winStart := ps.CurrentDay - (tierSpan[teff] - 1)
 		rawFail := countFails(n.ProbesByDay, winStart, ps.CurrentDay)
 		rawFlap := countFlaps(n.ProbesByDay, winStart, ps.CurrentDay)
+
 		effFlap := rawFlap
 		for _, ev := range applied {
 			if strVal(ev["kind"]) != "flap_day_suppress" {
@@ -249,6 +260,7 @@ func run(dataDir, auditDir string) error {
 		}
 
 		effFail := rawFail
+		suppressedSet := map[int]bool{}
 		for _, ev := range applied {
 			if strVal(ev["kind"]) != "fail_day_suppress" {
 				continue
@@ -263,6 +275,10 @@ func run(dataDir, auditDir string) error {
 				if n.ProbesByDay[strconv.Itoa(d)] != "fail" {
 					continue
 				}
+				if suppressedSet[d] {
+					continue
+				}
+				suppressedSet[d] = true
 				if effFail > 0 {
 					effFail--
 				}
@@ -271,15 +287,21 @@ func run(dataDir, auditDir string) error {
 		if effFail < 0 {
 			effFail = 0
 		}
+		suppDays := make([]int, 0, len(suppressedSet))
+		for d := range suppressedSet {
+			suppDays = append(suppDays, d)
+		}
+		sort.Ints(suppDays)
+		suppressedFailDays[nid] = suppDays
 
-		lastFail := lastFailDay(n.ProbesByDay, winStart, ps.CurrentDay)
-		effFailTh := effectiveFailTh[n.Tier]
-		effFlapTh := effectiveFlapTh[n.Tier]
-		effSoak := effectiveSoak[n.Tier]
+		lastFail := lastFailDayExcluding(n.ProbesByDay, winStart, ps.CurrentDay, suppressedSet)
+		effFailTh := effectiveFailTh[teff]
+		effFlapTh := effectiveFlapTh[teff]
+		effSoak := effectiveSoak[teff]
 
 		var parentDegraded bool
 		if n.ParentID != nil && *n.ParentID != "" {
-			if pr, ok := results[*n.ParentID]; ok {
+			if pr, ok := primary[*n.ParentID]; ok {
 				parentDegraded = pr.Degraded
 			}
 		}
@@ -318,7 +340,7 @@ func run(dataDir, auditDir string) error {
 			reasons = uniqSort(reasons)
 		}
 
-		results[nid] = nodeResult{ComputedStatus: status, Degraded: degraded, Reasons: reasons}
+		primary[nid] = nodeResult{ComputedStatus: status, Degraded: degraded, Reasons: reasons}
 
 		var lastFailOut any
 		if lastFail != nil {
@@ -330,9 +352,10 @@ func run(dataDir, auditDir string) error {
 			parentOut = *n.ParentID
 		}
 
-		rows = append(rows, map[string]any{
+		rowDraft[nid] = map[string]any{
 			"node_id":                    nid,
 			"tier":                       n.Tier,
+			"effective_tier":             teff,
 			"parent_id":                  parentOut,
 			"raw_failures":               rawFail,
 			"raw_flap_transitions":       rawFlap,
@@ -342,15 +365,86 @@ func run(dataDir, auditDir string) error {
 			"effective_flap_threshold":   effFlapTh,
 			"effective_soak_days":        effSoak,
 			"last_fail_day":              lastFailOut,
-			"computed_status":            status,
-			"degraded":                   degraded,
-			"reasons":                    reasons,
-		})
+			"suppressed_fail_days":       suppDays,
+		}
 	}
 
-	sort.Slice(rows, func(i, j int) bool {
-		return strVal(rows[i]["node_id"]) < strVal(rows[j]["node_id"])
-	})
+	pressureSources := map[string][]string{}
+	for _, edge := range cr.DirectedPressure {
+		if edge.From == edge.To {
+			continue
+		}
+		srcPrim, srcOK := primary[edge.From]
+		if !srcOK {
+			continue
+		}
+		if _, dstOK := primary[edge.To]; !dstOK {
+			continue
+		}
+		if !srcPrim.Degraded {
+			continue
+		}
+		pressureSources[edge.To] = append(pressureSources[edge.To], edge.From)
+	}
+	for k, v := range pressureSources {
+		pressureSources[k] = uniqSort(v)
+	}
+
+	finalStatus := map[string]nodeResult{}
+	pressuredOutput := make([]map[string]any, 0)
+	for _, nid := range sortedKeys(byID) {
+		pr := primary[nid]
+		sources := pressureSources[nid]
+		if pr.ComputedStatus == "healthy" && len(sources) > 0 {
+			finalStatus[nid] = nodeResult{
+				ComputedStatus: "cross_ref_pressured",
+				Degraded:       false,
+				Reasons:        []string{"cross_ref_pressure"},
+			}
+			pressuredOutput = append(pressuredOutput, map[string]any{
+				"node_id":          nid,
+				"pressure_sources": sources,
+			})
+		} else {
+			finalStatus[nid] = pr
+		}
+	}
+
+	rows := make([]map[string]any, 0, len(nodes))
+	for _, nid := range sortedKeys(byID) {
+		row := rowDraft[nid]
+		fs := finalStatus[nid]
+		row["computed_status"] = fs.ComputedStatus
+		row["degraded"] = fs.Degraded
+		row["reasons"] = fs.Reasons
+		rows = append(rows, row)
+	}
+
+	tierAssigned := map[string]int{"bronze": 0, "gold": 0, "silver": 0}
+	for _, n := range nodes {
+		t := effectiveTier[n.NodeID]
+		if _, ok := tierAssigned[t]; ok {
+			tierAssigned[t]++
+		}
+	}
+	tiersOut := map[string]any{}
+	for _, tier := range []string{"bronze", "gold", "silver"} {
+		tiersOut[tier] = map[string]any{
+			"assigned_nodes":              tierAssigned[tier],
+			"base_fail_threshold":         pol.FailThresholdByTier[tier],
+			"base_flap_threshold":         pol.FlapThresholdByTier[tier],
+			"base_rolling_window_days":    baseW,
+			"base_soak_days":              pol.SoakDaysByTier[tier],
+			"effective_fail_threshold":    effectiveFailTh[tier],
+			"effective_flap_threshold":    effectiveFlapTh[tier],
+			"effective_rolling_span_days": tierSpan[tier],
+			"effective_soak_days":         effectiveSoak[tier],
+			"fail_delta_sum":              failDelta[tier],
+			"flap_delta_sum":              flapDelta[tier],
+			"rolling_span_delta_sum":      rollSpanDelta[tier],
+			"soak_delta_sum":              soakDelta[tier],
+		}
+	}
 
 	children := map[string][]string{}
 	for _, n := range nodes {
@@ -368,17 +462,17 @@ func run(dataDir, auditDir string) error {
 		ch := children[pid]
 		sort.Strings(ch)
 		pst := "healthy"
-		if pr, ok := results[pid]; ok {
-			pst = pr.ComputedStatus
+		if fr, ok := finalStatus[pid]; ok {
+			pst = fr.ComputedStatus
 		}
 		parentsOut[pid] = map[string]any{
-			"child_nodes":    ch,
-			"parent_status":  pst,
+			"child_nodes":   ch,
+			"parent_status": pst,
 		}
 	}
 
-	healthyN, soakingN, unhealthyN, flappingN, isolatedN, inheritedN, degradedN := 0, 0, 0, 0, 0, 0, 0
-	for _, r := range results {
+	healthyN, soakingN, unhealthyN, flappingN, isolatedN, inheritedN, degradedN, crossRefN := 0, 0, 0, 0, 0, 0, 0, 0
+	for _, r := range finalStatus {
 		switch r.ComputedStatus {
 		case "healthy":
 			healthyN++
@@ -392,6 +486,8 @@ func run(dataDir, auditDir string) error {
 			isolatedN++
 		case "inherited_degraded":
 			inheritedN++
+		case "cross_ref_pressured":
+			crossRefN++
 		}
 		if r.Degraded {
 			degradedN++
@@ -399,16 +495,17 @@ func run(dataDir, auditDir string) error {
 	}
 
 	summary := map[string]any{
-		"applied_incident_events":   len(journal),
-		"degraded_nodes":            degradedN,
-		"flapping_nodes":            flappingN,
-		"healthy_nodes":             healthyN,
-		"ignored_incident_events":   ignored,
-		"inherited_degraded_nodes":  inheritedN,
-		"isolated_nodes":            isolatedN,
-		"nodes_total":               len(nodes),
-		"soaking_nodes":             soakingN,
-		"unhealthy_nodes":           unhealthyN,
+		"applied_incident_events":    len(journal),
+		"cross_ref_pressured_nodes":  crossRefN,
+		"degraded_nodes":             degradedN,
+		"flapping_nodes":             flappingN,
+		"healthy_nodes":              healthyN,
+		"ignored_incident_events":    ignored,
+		"inherited_degraded_nodes":   inheritedN,
+		"isolated_nodes":             isolatedN,
+		"nodes_total":                len(nodes),
+		"soaking_nodes":              soakingN,
+		"unhealthy_nodes":            unhealthyN,
 	}
 
 	if err := os.MkdirAll(auditDir, 0o755); err != nil {
@@ -426,10 +523,42 @@ func run(dataDir, auditDir string) error {
 	if err := writeJSON(filepath.Join(auditDir, "dependency_touchpoints.json"), map[string]any{"parents": parentsOut}); err != nil {
 		return err
 	}
+	if err := writeJSON(filepath.Join(auditDir, "cross_ref_overlay.json"), map[string]any{"pressured_nodes": pressuredOutput}); err != nil {
+		return err
+	}
 	if err := writeJSON(filepath.Join(auditDir, "summary.json"), summary); err != nil {
 		return err
 	}
 	return nil
+}
+
+func computeEffectiveTier(n nodeDoc, currentDay int) string {
+	best := -1
+	bestTier := n.Tier
+	for _, h := range n.TierHistory {
+		if h.AsOfDay > currentDay {
+			continue
+		}
+		if h.Tier != "gold" && h.Tier != "silver" && h.Tier != "bronze" {
+			continue
+		}
+		if h.AsOfDay > best {
+			best = h.AsOfDay
+			bestTier = h.Tier
+		} else if h.AsOfDay == best {
+			bestTier = h.Tier
+		}
+	}
+	return bestTier
+}
+
+func sortedKeys[V any](m map[string]V) []string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
 }
 
 func topoOrder(nodes []nodeDoc) []string {
@@ -523,10 +652,10 @@ func probePairDiffers(m map[string]string, d int) bool {
 	return prev != cur
 }
 
-func lastFailDay(m map[string]string, start, end int) *int {
+func lastFailDayExcluding(m map[string]string, start, end int, excluded map[int]bool) *int {
 	last := -1
 	for d := start; d <= end; d++ {
-		if m[strconv.Itoa(d)] == "fail" {
+		if m[strconv.Itoa(d)] == "fail" && !excluded[d] {
 			last = d
 		}
 	}
@@ -633,12 +762,14 @@ func uniqSort(in []string) []string {
 	sort.Strings(in)
 	out := make([]string, 0, len(in))
 	var prev string
+	first := true
 	for _, s := range in {
-		if s == prev {
+		if !first && s == prev {
 			continue
 		}
 		out = append(out, s)
 		prev = s
+		first = false
 	}
 	return out
 }

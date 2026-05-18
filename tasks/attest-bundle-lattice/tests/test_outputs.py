@@ -27,7 +27,7 @@ REQUIRED_OUTPUT_FILES = [
 ]
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "cb74fd653858da4a10375c59e6838d60959cc87142e00fd2f07c1fe72713658c",
+    "SPEC.md": "700abca94d86d2367a15a87348d8fd02b015764aeb276dffe7d79dda1e79344c",
     "artifacts/art_admin.json": "40f7c75b5cf08093a0c3af440f46578435b85a4f4f950e004f9a61f209418e9b",
     "artifacts/art_batch.json": "c29155257d653d49eee3cb80a0d0a249c5bc1973147467b46f898b5ac267a5a1",
     "artifacts/art_cache.json": "6b3385d3e368c557de07b026f5a8910037586f2c20584a2f4cde161819b70224",

@@ -1,6 +1,6 @@
 # Attestation bundle lattice — normative specification
 
-All paths are under `/app/attest/`. Canonical JSON output uses UTF-8, two-space indent, `sort_keys=True` at every object level, `separators=(",", ": ")` when hashing inner values, and each file ends with exactly one trailing newline.
+All paths are under `/app/attest/`. Canonical JSON output uses UTF-8 with `ensure_ascii=False`, two-space indent, `sort_keys=True` at every object level, and each file ends with exactly one trailing newline.
 
 ## Inputs
 

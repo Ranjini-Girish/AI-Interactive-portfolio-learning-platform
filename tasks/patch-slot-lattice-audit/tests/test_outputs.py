@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "6e502177bcb251f62e234eed5df316b883b2eaa58d9c0a4d7b22ee17c98a745a",
+    "SPEC.md": "7506c858c39aa763c2b29528abd385f38e0475fc3c5b46e30c4a1b809c26a300",
     "ancillary/channel_tag.json": "605a72b76e44bfe91f45c52cd61a4ad660b6837aee55c48b70db3465217f4800",
     "ancillary/ci_guard.json": "5a0d912b82837f38d2ade81fd312a8e5c2fb0ef47010d33ed2e15ed844d1cd1d",
     "ancillary/watermark.txt": "97a9429e6ab4ee389687ba491a90a08318c2df7ab1633bd6d24e4d8778c069ab",
@@ -136,6 +136,38 @@ class TestReportStructure:
             canon = _canonical(outputs[name])
             digest = _sha256_bytes(canon.encode("utf-8"))
             assert digest == expected, f"output mismatch for {name}"
+
+    def test_output_files_are_strictly_canonical_bytes(self) -> None:
+        """Each audit file must match the documented byte layout independently of
+        the data hashes: UTF-8, two-space indent, ASCII-only escapes, object keys
+        sorted lexicographically at every depth, `: ` between keys and values, and
+        exactly one trailing `\\n` at EOF. A compact or 4-space-indented file with
+        correct data still satisfies the data hashes but must fail this check."""
+        for name in OUTPUT_FILES:
+            path = AUDIT_DIR / name
+            raw = path.read_bytes()
+            try:
+                parsed = json.loads(raw)
+            except json.JSONDecodeError as exc:
+                raise AssertionError(f"{name} is not valid JSON: {exc}") from exc
+            try:
+                raw.decode("ascii")
+            except UnicodeDecodeError as exc:
+                raise AssertionError(
+                    f"{name} contains non-ASCII bytes; ensure_ascii escaping required"
+                ) from exc
+            assert raw.endswith(b"\n"), f"{name} missing trailing newline"
+            assert not raw.endswith(b"\n\n"), f"{name} has more than one trailing newline"
+            expected_bytes = (
+                json.dumps(parsed, indent=2, sort_keys=True, ensure_ascii=True).encode(
+                    "utf-8"
+                )
+                + b"\n"
+            )
+            assert raw == expected_bytes, (
+                f"{name} bytes do not match the documented canonical layout "
+                f"(2-space indent, sorted keys, ASCII-only, single trailing newline)"
+            )
 
     def test_field_hashes(self, outputs: dict[str, object]) -> None:
         """Selected nested fields must match their pinned canonical digests."""
@@ -290,11 +322,39 @@ class TestVerdictSemantics:
     def test_deferred_host_cites_capacity_on_chosen_bundle(
         self, outputs: dict[str, object]
     ) -> None:
-        """`h-s3` defers `b-db` with `capacity_deferred` after the east cap fills."""
+        """`capacity_deferred` is bundle-scoped: on deferred `h-s3` only the chosen
+        bundle `b-db` carries it. `b-heavy` keeps `reboot_over_budget` and `b-mon`
+        keeps `embargoed` per their own per-bundle conditions, proving the ledger
+        does not blanket every row on a deferred host with `capacity_deferred`."""
         row = self._row(outputs, "h-s3")
         assert row["host_status"] == "deferred_capacity"
         reasons = {bc["bundle_id"]: bc["reason"] for bc in row["blocked_candidates"]}
         assert reasons.get("b-db") == "capacity_deferred"
+        assert reasons.get("b-heavy") == "reboot_over_budget"
+        assert reasons.get("b-mon") == "embargoed"
+        capacity_rows = [
+            bc for bc in row["blocked_candidates"] if bc["reason"] == "capacity_deferred"
+        ]
+        assert len(capacity_rows) == 1
+
+    def test_deferred_host_other_bundles_keep_per_bundle_reasons(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`h-d2` defers `b-net` with `capacity_deferred`; the remaining unscheduled
+        bundles surface a mix of `missing_dependency` and other per-bundle reasons
+        rather than a uniform `capacity_deferred`, exercising the bundle-scoped rule
+        across a host that has more than two non-applied bundles."""
+        row = self._row(outputs, "h-d2")
+        assert row["host_status"] == "deferred_capacity"
+        reasons = {bc["bundle_id"]: bc["reason"] for bc in row["blocked_candidates"]}
+        assert reasons.get("b-net") == "capacity_deferred"
+        capacity_count = sum(1 for r in reasons.values() if r == "capacity_deferred")
+        assert capacity_count == 1
+        non_capacity_reasons = {r for r in reasons.values() if r != "capacity_deferred"}
+        assert non_capacity_reasons.issubset(
+            {"embargoed", "outside_window", "missing_dependency", "reboot_over_budget"}
+        )
+        assert non_capacity_reasons, "deferred host must surface at least one per-bundle reason"
 
     def test_idle_host_has_no_pending_bundles(self, outputs: dict[str, object]) -> None:
         """`h-idle` already applied every bundle and stays idle with an empty block list."""

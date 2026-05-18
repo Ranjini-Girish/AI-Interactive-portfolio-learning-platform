@@ -1,0 +1,8 @@
+{
+  "checkout_tick_ms": null,
+  "entered_idle_tick_ms": 4900000,
+  "parent_wrapper_id": "w11",
+  "phase": "idle",
+  "segment": "gamma",
+  "wrapper_id": "w14"
+}

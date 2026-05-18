@@ -607,12 +607,65 @@ func readJSON(path string, out any) error {
 }
 
 func writeJSON(path string, v any) error {
-	data, err := json.MarshalIndent(v, "", "  ")
+	data, err := json.MarshalIndent(canonicalize(v), "", "  ")
 	if err != nil {
 		return err
 	}
 	data = append(data, '\n')
 	return os.WriteFile(path, data, 0o644)
+}
+
+func canonicalize(v any) any {
+	switch t := v.(type) {
+	case map[string]any:
+		out := make(map[string]any, len(t))
+		keys := make([]string, 0, len(t))
+		for k := range t {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+		for _, k := range keys {
+			out[k] = canonicalize(t[k])
+		}
+		return out
+	case []map[string]any:
+		out := make([]map[string]any, len(t))
+		for i, row := range t {
+			out[i] = canonicalize(row).(map[string]any)
+		}
+		return out
+	case []any:
+		out := make([]any, len(t))
+		for i, row := range t {
+			out[i] = canonicalize(row)
+		}
+		return out
+	case []sourceRow:
+		out := make([]map[string]any, len(t))
+		for i, row := range t {
+			sched := row.ScheduledBatch
+			out[i] = map[string]any{
+				"blocked_candidates": canonicalize(row.BlockedCandidates),
+				"scheduled_batch":    sched,
+				"source_id":          row.SourceID,
+				"source_status":      row.SourceStatus,
+				"tier":               row.Tier,
+				"warehouse_id":       row.WarehouseID,
+			}
+		}
+		return out
+	case []blockedRow:
+		out := make([]map[string]any, len(t))
+		for i, row := range t {
+			out[i] = map[string]any{
+				"batch_id": row.BatchID,
+				"reason":   row.Reason,
+			}
+		}
+		return out
+	default:
+		return v
+	}
 }
 
 func loadSources(dir string) ([]sourceDoc, error) {

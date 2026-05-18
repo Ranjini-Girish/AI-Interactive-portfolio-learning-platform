@@ -1,0 +1,20 @@
+{
+  "node_id": "node-nu",
+  "parent_id": null,
+  "probes_by_day": {
+    "104": "ok",
+    "105": "fail",
+    "106": "fail",
+    "107": "ok",
+    "108": "ok",
+    "109": "ok",
+    "110": "ok"
+  },
+  "tier": "bronze",
+  "tier_history": [
+    {
+      "as_of_day": 100,
+      "tier": "gold"
+    }
+  ]
+}

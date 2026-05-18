@@ -83,6 +83,28 @@
       "kind": "fail_day_suppress",
       "days": [106],
       "node_id": "node-iota"
+    },
+    {
+      "accepted": true,
+      "day": 109,
+      "event_id": "e11",
+      "kind": "fail_day_suppress",
+      "days": [108],
+      "node_id": "node-omega"
+    },
+    {
+      "accepted": true,
+      "day": 109,
+      "event_id": "e12",
+      "kind": "extend_soak_delta",
+      "delta": 3
+    },
+    {
+      "accepted": true,
+      "day": 200,
+      "event_id": "e13",
+      "kind": "force_unhealthy",
+      "node_id": "node-mu"
     }
   ]
 }

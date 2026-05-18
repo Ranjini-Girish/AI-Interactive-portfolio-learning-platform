@@ -8,14 +8,16 @@ author_email = "anonymous"
 difficulty = "unknown"
 category = "software-engineering"
 # Options for subcategories are: "long_context", "tool_specific", "api_integration", "db_interaction", "ui_building"
+# Use [] when none apply; never invent custom values (CodeBuild rejects).
 subcategories = [ ]
 # The number of milestones in the task (can be zero if not a milestone task)
 number_of_milestones = 0
-# Size of the codebase: minimal -> 0-20 files, small -> 20+ files, large -> 200+ files
+# Size of the codebase: minimal -> 0-19 files, small -> 20+ files, large -> 200+ files
+# `minimal` is blocked in this workspace; ship `small` (>=20 env files) or `large`.
 codebase_size = "minimal"
 # Coding languages used in the oracle solution or required by the agent
 languages = [ "bash" ]
-# For tool_specific, api_integration, and db_interaction subcategories, please include specific tool, api framework, or database software
+# Keep 3-6 tags; every tag must point at concrete code in the reference solver.
 tags = [ "file-operations",]
 # Estimated time to complete (minutes)
 expert_time_estimate_min = 60
@@ -29,8 +31,15 @@ timeout_sec = 450.0
 [agent]
 timeout_sec = 900.0
 
-# Sandbox environment limits
+# Sandbox environment limits.
+# Platform CI rejects submissions whose [environment] block is missing
+# `allow_internet = false` (BUILD error: "Missing required field:
+# environment.allow_internet (must be false)"). `workdir = "/app"` is
+# defensive — at least one prior rejection cited a missing `workdir`
+# field; include it and mirror the Dockerfile's WORKDIR.
 [environment]
+allow_internet = false
+workdir = "/app"
 build_timeout_sec = 600.0
 cpus = 2
 memory_mb = 4096

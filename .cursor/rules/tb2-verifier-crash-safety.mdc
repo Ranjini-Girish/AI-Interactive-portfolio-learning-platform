@@ -1,246 +1,159 @@
 ---
-description: TB-2.0 `tests/test.sh` must be crash-safe — `/logs/verifier/{reward.txt,ctrf.json}` must exist on every exit path (the Doc-06 reviewer criterion)
+description: TB-2.0 `tests/test.sh` must be crash-safe AND must not touch the network — `/logs/verifier/{reward.txt,ctrf.json}` must exist on every exit path (Doc-06), and every verifier dep must be pre-installed in `environment/Dockerfile` (May 2026 `allow_internet = false` mandate).
 globs: Accepted_TB_2.0/submissions/**/tests/test.sh
 alwaysApply: false
 ---
 
-# Verifier Crash-Safety (Doc-06)
+# Verifier Crash-Safety + No-Internet Contract (Doc-06, May 2026)
 
-`tests/test.sh` is the harness's only contract with the grader. On every exit path — happy path, early guard, dependency-install failure, pytest collection crash, SIGTERM at the `[verifier].timeout_sec` boundary — Harbor must be able to read `/logs/verifier/reward.txt` and `/logs/verifier/ctrf.json`. If either file is missing, the platform synthesises a "verifier did not run" row that bypasses the real grading signal. The Doc-06 reviewer criterion is the highest-severity rejection cause and gets graded against the static `tests/test.sh` text, not against runtime stats — adding Harbor-level `--retries` does not fix it.
+`tests/test.sh` is the harness's only contract with the grader. Two requirements must hold simultaneously:
 
-## The five paths that leave reward / ctrf unwritten
+1. **Doc-06 crash-safety** — on every exit path (happy path, WORKDIR guard, pytest collection crash, SIGTERM at the `[verifier].timeout_sec` boundary), Harbor must be able to read `/logs/verifier/reward.txt` and `/logs/verifier/ctrf.json`. If either file is missing the platform synthesises a "verifier did not run" row that bypasses the real grading signal.
 
-Any of these in `tests/test.sh` is enough to fail Doc-06:
+2. **No runtime internet access** — since the May 2026 platform announcement, `[environment].allow_internet = false` is enforced at the sandbox level. `tests/test.sh` MUST NOT `apt-get install`, `pip install`, `curl`, `wget`, `uv install`, or `uvx <pkg>` with download semantics. Every verifier dep (`pytest`, `pytest-json-ctrf`, plus task-specific Python or system packages) MUST be pre-installed in `environment/Dockerfile`.
 
-1. `exit 1` on a `[ "$PWD" = "/" ]` WORKDIR guard placed **before** the `mkdir -p /logs/verifier && echo 0 > reward.txt` line.
-2. `mkdir -p /logs/verifier` failing (read-only filesystem, parent dir missing) — subsequent `echo 0 > …` silently fails too.
-3. `uvx`, `pytest`, or `pytest-json-ctrf` failing to initialise (uv not on PATH, transient PyPI failure, syntax error in `test_outputs.py`). `reward.txt` may be `0` from an eager write, but `ctrf.json` was never produced — pytest never reached the `--ctrf` writer.
-4. `sha256sum -c -` mismatch on the uv installer (or any other integrity step) with no `|| exit 1` and no `set -e` — script continues to `sh /tmp/uv-install.sh` and runs unverified, OR exits later with no reward write.
-5. `[verifier].timeout_sec` SIGKILL hitting the script mid-pytest — `reward.txt` partial write, `ctrf.json` empty or missing.
+These requirements compose. The old V2 canonical "curl + uv + uvx" pattern is now forbidden on BOTH axes: the static checker rejects the calls, AND the blocked network means they'd hang or fail at runtime — taking the script down with them before reward.txt is written.
 
-Pair this rule with `tb2-anti-cheat-completeness.mdc §4` (sha256 hard-gate) — that section is necessary but not sufficient on its own. Adding `|| exit 1` to a script with no trap *creates new unwritten-reward paths*, so the two patterns must ship together.
+## Canonical post-May-2026 shape
 
-## The fix: eager writes + `trap ensure_files EXIT`
-
-The skeleton is the same regardless of base image. Two variants differ only in how `uv` gets onto `PATH`.
-
-### Variant A: verbatim V2 (Python-slim or any Dockerfile without `curl` pre-installed)
-
-Use when the Dockerfile is `python:3.13-slim`, `debian:bookworm-slim` without `curl` in the apt install list, or anything similar. `apt-get install -y curl` plus `curl … install.sh | sh` run at verifier time.
+This is the shape `default-template/tests/test.sh` ships and the shape every active task should converge on.
 
 ```bash
 #!/bin/bash
-set -e
-
 mkdir -p /logs/verifier
+
+# Defensive eager writes — Doc-06 crash-safety. Keeps reward.txt and
+# ctrf.json populated even if the WORKDIR guard below fires (or pytest
+# segfaults before producing CTRF output).
 echo 0 > /logs/verifier/reward.txt
 echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
-
-ensure_files() {
-    if [ ! -f /logs/verifier/ctrf.json ]; then
-        echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
-    fi
-    if [ ! -f /logs/verifier/reward.txt ]; then
-        echo 0 > /logs/verifier/reward.txt
-    fi
-}
-trap ensure_files EXIT
-
-if [ "$PWD" = "/" ]; then
-    echo "Error: No working directory set. Please set a WORKDIR in your Dockerfile."
-    exit 1
-fi
-
-apt-get update -qq
-apt-get install -y -qq curl
-
-curl -LsSf https://astral.sh/uv/0.9.5/install.sh | sh
-
-source $HOME/.local/bin/env
-
-set +e
-uvx \
-  -p 3.13 \
-  -w pytest==8.4.1 \
-  -w pytest-json-ctrf==0.3.5 \
-  pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
-
-if [ $? -eq 0 ]; then
-  echo 1 > /logs/verifier/reward.txt
-else
-  echo 0 > /logs/verifier/reward.txt
-fi
-```
-
-### Variant B: smart graft (Dockerfile with `curl` already in the image)
-
-Use when the Dockerfile is `debian:bookworm-slim` (or similar) with `curl` in the apt install list. Skips runtime apt, conditional-installs uv only when missing, and verifies the installer SHA-256 against `UV_INSTALL_SHA256=8402ab80d2ef…` (the value already pinned in image-build Dockerfiles).
-
-```bash
-#!/bin/bash
-# Test-only dependencies are bootstrapped here at test time (uv + pytest) so
-# the image build itself stays free of test deps. The uv installer URL and
-# its body are sha256-pinned for reproducibility.
-
-set -e
-
-mkdir -p /logs/verifier
-echo 0 > /logs/verifier/reward.txt
-echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
-
-ensure_files() {
-    if [ ! -f /logs/verifier/ctrf.json ]; then
-        echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
-    fi
-    if [ ! -f /logs/verifier/reward.txt ]; then
-        echo 0 > /logs/verifier/reward.txt
-    fi
-}
-trap ensure_files EXIT
-
-export PATH="/root/.local/bin:/usr/local/bin:$PATH"
 
 if [ "$PWD" = "/" ]; then
     echo "Error: No working directory set. Please set a WORKDIR in your Dockerfile before running this script."
     exit 1
 fi
 
-if ! command -v uv >/dev/null 2>&1; then
-    UV_INSTALL_SHA256="8402ab80d2ef54d7044a71ea4e4e1e8db3b20c87c7bffbc30bff59f1e80ebbd5"
-    curl -LsSf --retry 5 --retry-delay 3 --retry-connrefused \
-        https://astral.sh/uv/0.9.5/install.sh -o /tmp/uv-install.sh
-    echo "${UV_INSTALL_SHA256}  /tmp/uv-install.sh" | sha256sum -c - || exit 1
-    sh /tmp/uv-install.sh
-    rm -f /tmp/uv-install.sh
-fi
+python -m pytest -o cache_dir=/tmp/pytest_cache \
+  --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+RC=$?
 
-set +e
-uvx \
-  -p 3.13 \
-  -w pytest==8.4.1 \
-  -w pytest-json-ctrf==0.3.5 \
-  pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
-
-if [ $? -eq 0 ]; then
+if [ "$RC" -eq 0 ]; then
   echo 1 > /logs/verifier/reward.txt
 else
   echo 0 > /logs/verifier/reward.txt
 fi
+
+exit "$RC"
 ```
 
-## Variant C (Dockerfile-baked `curl` + `uv`)
-
-Some Edition-2 maintainer checklists now require **`curl` and `uv` to be installed in `environment/Dockerfile`** during image build, with a **slim `tests/test.sh`** that only runs `uvx … pytest` (plus the Doc-06 eager `reward.txt` / `ctrf.json` writes, `trap ensure_files EXIT`, `WORKDIR` guard, and `set +e` before pytest — identical spine to Variant A after dependencies exist).
-
-Typical Dockerfile additions:
+The matching `environment/Dockerfile` block (Python-based base; pick the equivalent for Go / Rust / C++ bases and install Python alongside):
 
 ```dockerfile
-RUN apt-get update -qq \
-    && apt-get install -y -qq --no-install-recommends ca-certificates curl \
-    && curl -LsSf https://astral.sh/uv/0.9.5/install.sh | sh \
+FROM python:3.13-slim-bookworm@sha256:<digest>
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        tmux \
+        asciinema \
+        ca-certificates \
     && rm -rf /var/lib/apt/lists/*
-ENV PATH="/root/.local/bin:${PATH}"
+
+RUN python -m pip install --no-cache-dir \
+    pytest==8.4.1 \
+    pytest-json-ctrf==0.3.5 \
+    # add task-specific Python deps the verifier imports below
+    # e.g. requests==2.32.3, pyyaml==6.0.2, tomli==2.0.1
+
+WORKDIR /app
 ```
 
-`tests/test.sh` **must not** repeat `apt-get install curl` or pipe the uv installer when Variant C is in force — duplicate bootstrap is a reviewer warning and adds verifier-time failure modes.
+## What the eager writes defend against (May 2026 surface)
 
-## Variant selection
+Before May 2026 the dominant failure modes were network-based (apt flake, PyPI flake, uv installer fetch). With the network blocked, the surviving failure modes are narrower but still real:
 
-**Unless Variant C is required for the task**, default to **Variant A** everywhere. Reviewers have consistently pushed back on Variant B submissions even when Variant B is technically more robust (SHA-pin + retry + conditional install). The empirical pattern across `cpp-arp-neighbor-cache-replay-medium`, `cpp-tail-sampling-trace-replay-medium`, `cpp-singleflight-coalesce-replay-medium`, and `cpp-lease-fencing-replay-medium` is that the canonical sample `test.sh` shape is Variant A, and any divergence (header comments, `export PATH=...`, SHA-pin block, retry flags) gets flagged as nonconforming to the reviewer's reference.
+1. **`mkdir -p /logs/verifier` succeeds, but the WORKDIR guard fires.** If the Dockerfile is misconfigured (no `WORKDIR`), `exit 1` runs without the happy-path reward write. The eager `echo 0 > /logs/verifier/reward.txt` placed BEFORE the guard catches this.
+2. **`python -m pytest` exit status captured by `RC=$?` covers most pytest failure modes** — non-zero exit, collection crash, `--ctrf` plugin failure. The `if/else` always writes reward.
+3. **SIGKILL at the `[verifier].timeout_sec` boundary** still leaves the script dead mid-pytest. The eager writes mean reward.txt is `0` and ctrf.json is a valid (empty) skeleton — Harbor reads "verifier ran, 0 tests passed" instead of synthesising "verifier did not run".
+4. **`python` binary missing from the Dockerfile** (rare — usually caught at image-build time): `RC=$?` captures `127`, reward stays `0` from the eager write.
 
-The historical corollary was that **`environment/Dockerfile` should NOT bake `curl` in** — let `test.sh` install `curl` at verifier time via `apt-get install -y -qq curl`. **When Variant C applies**, install `curl` and `uv` in the Dockerfile instead and keep `test.sh` to `uvx` only. Otherwise keep only true compile/link deps in the Dockerfile (`ca-certificates`, `g++`, `make`, `nlohmann-json3-dev`, `libssl-dev` if the agent's binary actually links against OpenSSL) and use Variant A for verifier bootstrap.
-
-| Dockerfile signal | Variant | Co-edit |
-|---|---|---|
-| `python:3.13-slim` or any base without `curl` in `apt-get install` | **A (verbatim V2)** | none |
-| `debian:bookworm-slim` + `curl` in `apt-get install` line | **A (verbatim V2)** | **drop `curl` from the Dockerfile** |
-| Base image pre-installs `uv` itself (very rare; `gcc:13.x` + explicit `uv` install) | **B (smart graft)** | only acceptable case for Variant B |
-| Portal checklist / maintainer guidance: `curl` + uv installer run in Dockerfile; `test.sh` has no `apt-get` / no uv `curl` line | **C (Dockerfile deps)** | slim `test.sh`; same Doc-06 spine as A |
-
-Don't mix A/B/C bootstrap paths (e.g. Dockerfile installs uv **and** `test.sh` curls the installer). Variant A re-installs `uv` every verifier run (the cost is one extra network call); Variant B uses what the image already provides; Variant C pays the network cost once at build time.
-
-### Trade-off you must articulate when proposing Variant A → B hardening
-
-If you find yourself wanting to upgrade a Variant A `test.sh` to Variant B because of a 1-in-10 transient curl/apt flake, stop and check whether the reviewer for the parent task series has already rejected Variant B elsewhere. If yes (it has across the C++ replay series), the right move is to **leave Variant A in place and absorb the flake at the harness retry layer** rather than reland Variant B and trigger another round of review pushback. Document the flake observation in the PR description but don't ship hardening that the reviewer will revert.
-
-## Five non-obvious rules the pattern encodes
-
-1. **Eager writes go BEFORE the WORKDIR guard.** If `[ "$PWD" = "/" ]` `exit 1` fires, the trap still runs because it was installed earlier — but the eager writes already placed valid files. The trap is belt-and-suspenders, not the primary safety net.
-2. **`set -e` at the top, `set +e` immediately before pytest.** pytest's non-zero exit is the normal "tests failed" path and must drop to the explicit `if [ $? -eq 0 ]` check. Without `set +e`, the script aborts on pytest failure and the reward stays at `0` only because of the eager write — fragile.
-3. **`|| exit 1` on every integrity check** (sha256sum, b2sum, gpg verify). Even with `set -e`, `sha256sum -c -` pipes through `echo`; the pipeline exit code can be masked if `pipefail` isn't set. Inline `|| exit 1` is more grep-able and survives subshells.
-4. **The `ensure_files` body checks `[ ! -f … ]`, not file emptiness.** A partial write from a SIGKILL still counts as present; Harbor will parse it. If the partial write produces an invalid CTRF JSON, that's a separate (acceptable) failure mode — better than the synthetic "verifier did not run" row.
-5. **`source $HOME/.local/bin/env`** (Variant A) assumes `$HOME` resolves to `/root` under Harbor's exec context. Variant B's `export PATH=…` is more robust when `$HOME` is stripped.
+The optional `trap ensure_files EXIT` defence (eager-write guard repeated inside an EXIT trap) is still defensible but no longer strictly required. The official skeleton omits it; whether you keep it is a per-task judgement call. The two eager writes + the WORKDIR guard placement are the non-negotiable parts.
 
 ## Pre-submit grep checks
 
 Run from the task root:
 
 ```bash
-# 1. Both eager writes present at the top of test.sh
+# 1. Eager writes present at the top of test.sh (BEFORE the WORKDIR guard)
 rg -n "echo 0 > /logs/verifier/reward.txt" tests/test.sh \
-  || echo "WARN: eager reward.txt write missing"
+  || echo "WARN: eager reward.txt write missing — Doc-06 crash-safety gap"
 rg -n '"version":"1.0.0"' tests/test.sh \
-  || echo "WARN: skeleton ctrf.json write missing"
+  || echo "WARN: eager ctrf.json skeleton write missing"
 
-# 2. Trap installed
-rg -n "trap ensure_files EXIT" tests/test.sh \
-  || echo "WARN: ensure_files trap missing - script is not crash-safe"
+# 2. Forbidden network calls anywhere in test.sh
+rg -nE 'apt-get (update|install)|^\s*pip install|python -m pip install|curl |wget |uv install|uvx |npm install|cargo install|go install' tests/test.sh \
+  && echo "WARN: tests/test.sh contains a forbidden runtime install/network line"
 
-# 3. WORKDIR guard not before the eager writes
-grep -n 'PWD' tests/test.sh | head -1 \
-  | awk -F: '{ pwd_line=$1 }
-             END {
-               getline mkdir_line < "/dev/stdin"
-             }' \
-  # simpler: visually verify mkdir line < PWD line in `cat -n tests/test.sh`
+# 3. The reward-by-RC branch exists (RC=$? captured, if/else writes reward)
+rg -n '^RC=\$\?' tests/test.sh \
+  || echo "WARN: pytest exit code not captured into RC — reward may be wrong on test failure"
 
-# 4. set -e at top, set +e before uvx
-rg -n "^set -e$" tests/test.sh | head -1 \
-  || echo "WARN: set -e missing at top"
-rg -n "^set \+e$" tests/test.sh | head -1 \
-  || echo "WARN: set +e before pytest missing (script will abort on pytest failure)"
-
-# 5. sha256sum has hard gate (only if Variant B with sha-verify)
-rg -n "sha256sum -c" tests/test.sh \
-  | rg -v "\|\| exit" \
-  && echo "WARN: sha256sum without || exit 1 (silent-pass risk)"
-
-# 6. Pick one bootstrap surface: Variant C (Dockerfile uv) XOR A/B (test.sh curl)
-if rg -q "curl -LsSf" environment/Dockerfile && rg -q "curl -LsSf" tests/test.sh; then
-  echo "WARN: uv installer appears in both Dockerfile and test.sh — use Variant C (image only) or A/B (test.sh), not both"
-fi
+# 4. pytest invocation looks reasonable
+rg -n 'python -m pytest .* --ctrf /logs/verifier/ctrf.json' tests/test.sh \
+  || echo "WARN: canonical pytest invocation missing"
 ```
 
 Each `WARN:` is a likely reviewer flag.
 
-## Variant decision flowchart
+## Migration recipe (pre-May-2026 → May-2026 shape)
 
+Tasks built before May 2026 typically have the old V2 shape:
+
+```bash
+#!/bin/bash
+set -e
+mkdir -p /logs/verifier
+echo 0 > /logs/verifier/reward.txt
+echo '{"version":"1.0.0", ...}' > /logs/verifier/ctrf.json
+ensure_files() { ... }
+trap ensure_files EXIT
+if [ "$PWD" = "/" ]; then exit 1; fi
+apt-get update -qq                              # ← forbidden
+apt-get install -y -qq curl                     # ← forbidden
+curl -LsSf https://astral.sh/uv/0.9.5/install.sh | sh  # ← forbidden
+source $HOME/.local/bin/env
+set +e
+uvx \                                           # ← forbidden
+  -p 3.13 \
+  -w pytest==8.4.1 \
+  -w pytest-json-ctrf==0.3.5 \
+  pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+if [ $? -eq 0 ]; then echo 1 > /logs/verifier/reward.txt; else echo 0 > /logs/verifier/reward.txt; fi
 ```
-Does the portal / maintainer checklist require curl + uv in Dockerfile
-with a slim test.sh (no runtime apt / no runtime uv curl)?
-├── Yes → Variant C (Dockerfile installs curl + uv; PATH includes
-│         ~/.local/bin; test.sh = Doc-06 spine + uvx pytest only)
-└── No  → Default: Variant A (canonical sample shape). Drop curl from the
-          Dockerfile if it's currently there. Keep only true C++ build deps.
 
-          Is uv pre-installed in the base image (very rare; gcc:13.x with
-          explicit RUN curl ... uv install)?
-          ├── No  → Variant A (verbatim V2)
-          └── Yes → Variant B (smart graft, with `if ! command -v uv` block)
-```
+To migrate:
 
-The Variant B "skip apt because curl is already in the image" optimisation has been rejected by reviewers across at least four C++ replay tasks. Stop reaching for it on Dockerfiles that have curl baked in — **unless you are deliberately on Variant C**, drop curl from the Dockerfile instead and stay on Variant A.
+1. **Move pytest into the Dockerfile.** Add to `environment/Dockerfile`:
+   ```dockerfile
+   RUN python -m pip install --no-cache-dir pytest==8.4.1 pytest-json-ctrf==0.3.5
+   ```
+   For non-Python base images, ALSO add `python3 python3-pip` to the apt install line first (and reference them as `python3 -m pytest` / `python3 -m pip install` accordingly). Reminder from `tb2-task-rejection-signals.mdc §1`: only add `python3` to non-Python bases when the verifier actually needs it; do not let the prose in `instruction.md` hint that Python is a valid solution path.
+2. **Identify task-specific verifier deps.** Grep `tests/test_outputs.py` for `import` lines that aren't stdlib; add each to the Dockerfile pip install line.
+3. **Replace `tests/test.sh` with the canonical shape above.**
+4. **Confirm `task.toml` has `[environment].allow_internet = false`** (see `tb2-task-rejection-signals.mdc §13`).
+5. **Rebuild and re-verify the zip** with `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` — it warns on both forbidden-call patterns and missing toml fields.
 
 ## Sister rules
 
-- `tb2-anti-cheat-completeness.mdc §4` covers the literal `sha256sum -c - || exit 1` line. This rule covers the broader crash-safety pattern that makes that hard exit safe (otherwise `|| exit 1` itself becomes an unwritten-reward path).
-- `tb2-task-rejection-signals.mdc §11` is the master-checklist entry pointing at this rule.
-- `tb2-prelaunch-checklist.mdc` Stage 5 includes the crash-safe verifier as part of the manual eyes-on review.
+- `tb2-task-rejection-signals.mdc §11` — master-checklist entry pointing at this rule.
+- `tb2-task-rejection-signals.mdc §13` — `task.toml [environment].allow_internet = false` requirement.
+- `tb2-task-rejection-signals.mdc §14` — full forbidden-call table.
+- `tb2-anti-cheat-completeness.mdc §4` — sha256sum hard-gate on Dockerfile-baked external binaries (when present, must still ship with `|| exit 1`).
+- `tb2-prelaunch-checklist.mdc` — Stage 5 manual eyes-on review.
 
 ## Origin
 
-Derived from manual reviewer feedback ("the verifier is not crash-safe: it has at least five independent paths where a failure leaves `/logs/verifier/reward.txt` unwritten — Doc-06 first and highest-severity reviewer criterion") and a Harbor `terminus_2 send_keys` flake on `cpp-link-resolution-audit-hard` that surfaced the synthetic "verifier did not run" row.
+This rule was first written for the pre-May-2026 world, when `tests/test.sh` was responsible for bootstrapping `curl`, `uv`, and pytest at verifier time. Two variants (A: verbatim V2; B: smart graft with sha256-pinned conditional install) plus a then-emerging Variant C (Dockerfile-baked uv) were the spectrum of accepted shapes.
 
-The two-variant split was originally discovered while normalising `tests/test.sh` across the submission tree: Python-slim image tasks (`sbom-vulnerability-impact-hard`, `limit-order-book-matching-medium`, `ansible-dependency-impact-hard`) needed runtime curl + uv install (Variant A), while C++ debian-bookworm tasks with `curl` in the Dockerfile (`cpp-region-coalescer-replay-medium`, `cpp-circuit-breaker-replay-medium`, `cpp-bgp-best-path-replay-medium`, `cpp-image-layer-dedupe-replay-medium`) could keep their existing supply-chain hardening (SHA-pinned conditional install + retry flags) and just graft the trap on top (Variant B).
+The May 2026 platform announcement collapsed all three variants into a single rule: every verifier dep is pre-installed in `environment/Dockerfile`, `tests/test.sh` is a thin pytest wrapper, and the runtime sandbox blocks all network calls. The reasoning is straightforward — pre-installation removes the largest source of flakiness in the verifier (transient PyPI / apt failures), and the network block hardens the sandbox against agents that try to exfiltrate or hardcode against external services.
 
-The "default to Variant A everywhere; drop curl from Dockerfile" guidance was added after reviewers consistently pushed back on Variant B submissions across `cpp-arp-neighbor-cache-replay-medium`, `cpp-tail-sampling-trace-replay-medium`, `cpp-singleflight-coalesce-replay-medium`, and `cpp-lease-fencing-replay-medium`. The empirical signal is that the canonical sample `test.sh` shape (Variant A) is what reviewers grade against, even though Variant B is technically more robust against network flakes.
+The remaining Doc-06 surface (eager writes + WORKDIR-guard placement) survives the migration unchanged.

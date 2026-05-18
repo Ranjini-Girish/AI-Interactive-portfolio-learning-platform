@@ -1,6 +1,36 @@
 {
-  "pairs": [
-    ["node-alpha", "node-epsilon"],
-    ["node-beta", "node-lambda"]
+  "directed_pressure": [
+    {
+      "from": "node-iota",
+      "to": "node-eta"
+    },
+    {
+      "from": "node-delta",
+      "to": "node-theta"
+    },
+    {
+      "from": "node-alpha",
+      "to": "node-theta"
+    },
+    {
+      "from": "node-eta",
+      "to": "node-theta"
+    },
+    {
+      "from": "node-gamma",
+      "to": "node-eta"
+    },
+    {
+      "from": "node-iota",
+      "to": "node-omega"
+    },
+    {
+      "from": "node-theta",
+      "to": "node-theta"
+    },
+    {
+      "from": "node-unknown",
+      "to": "node-eta"
+    }
   ]
 }

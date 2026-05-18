@@ -10,6 +10,7 @@ Agent omits a required audit file or writes non-UTF-8 JSON, -5
 Agent schedules a bundle while a required dependency remains unapplied, -5
 Agent assigns more hosts than the effective regional cap allows, -3
 Agent emits `scheduled_bundle` on a `quarantined` or `frozen_region` host row, -3
-Agent mislabels a deferred would-be bundle without `capacity_deferred` in `blocked_candidates`, -3
+Agent mislabels the chosen-then-deferred bundle without `capacity_deferred` in `blocked_candidates`, -3
+Agent assigns `capacity_deferred` to bundles other than the host's chosen candidate on a deferred host, -3
 Agent writes audit JSON with unsorted object keys or missing trailing newline, -2
 Agent places artifacts outside `/app/audit/` while claiming completion, -5

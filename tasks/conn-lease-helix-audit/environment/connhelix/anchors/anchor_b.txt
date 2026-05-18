@@ -1,1 +1,4 @@
-anchor-b
+# rolling tick refreshes
+w13 4950000
+w17 4910000
+w03 4900000

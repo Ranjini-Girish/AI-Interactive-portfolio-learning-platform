@@ -22,9 +22,9 @@ OUTPUT_FILES = (
 
 EXPECTED_INPUT_HASHES = {
     "SPEC.md": "d73e3fb75e911c7a9099379c374bb4fa22a060ed469d605912130731657a4294",
-    "ancillary/channel_tag.json": "605a72b76e44bfe91f45c52cd61a4ad660b6837aee55c48b70db3465217f4800",
+    "ancillary/channel_tag.json": "daa37797d5d8ce4f7c97683e123b3090f558f3ca6b80769f1458f64eda877d0b",
     "ancillary/ci_guard.json": "5a0d912b82837f38d2ade81fd312a8e5c2fb0ef47010d33ed2e15ed844d1cd1d",
-    "ancillary/watermark.txt": "97a9429e6ab4ee389687ba491a90a08318c2df7ab1633bd6d24e4d8778c069ab",
+    "ancillary/watermark.txt": "499aed02a51e0df3198b27accc82fa957ff2545b9550206e4950048374415ab3",
     "batches/b-app.json": "54d07ae77a273491360688a61b67e89e105fda3a25a15cee5d68d4cca3b96526",
     "batches/b-base.json": "b335506a7b8b42430d20bd970cc679e23bffe03b83c46f28c04e3ffb6193fef1",
     "batches/b-db.json": "ca12803397ffd8105b02fb1e843394429626abee6083401ab62f578819d38106",

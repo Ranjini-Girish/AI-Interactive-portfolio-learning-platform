@@ -1,15 +1,19 @@
 Agent reads /app/probeflaps/SPEC.md before emitting audit JSON, +3
-Agent writes all five required JSON files under /app/audit/ with canonical formatting, +5
+Agent writes all six required JSON files under /app/audit/ with canonical formatting, +5
+Agent resolves the audit-day effective tier from each node's tier_history before any threshold lookup, +3
 Agent evaluates parent nodes before children when applying inheritance rules, +3
-Agent applies tier-scaled fail, flap, and soak thresholds with incident deltas, +3
-Agent derives per-tier rolling-window bounds from span deltas before counting fails and flap transitions, +3
-Agent applies flap-day and fail-day suppressions against the node’s tier window and threshold comparisons, +3
-Agent respects status precedence including isolate and force_unhealthy directives, +3
-Agent emits dependency_touchpoints with sorted child node lists, +2
+Agent applies tier-scaled fail, flap, and soak thresholds against the effective tier, +3
+Agent derives per-tier rolling-window bounds from span deltas using effective tier before counting fails and flap transitions, +3
+Agent applies flap-day suppressions and fail-day suppressions to both the effective counts and the most recent unsuppressed fail day used for soak, +3
+Agent computes the cross-reference overlay after every node's primary status is fixed and only reclassifies otherwise-healthy nodes, +3
+Agent respects primary status precedence including isolate and force_unhealthy directives, +3
+Agent emits dependency_touchpoints with sorted child node lists and overlay-adjusted parent_status values, +2
 Agent leaves /app/probeflaps/ input files unchanged, +2
 Agent modifies any file under /app/probeflaps/, -5
 Agent omits one or more required audit output files, -5
 Agent emits computed_status values outside the spec enum set, -3
 Agent evaluates children before their parent status is known, -3
-Agent skips incident_journal entries for accepted in-window events, -2
+Agent treats the static tier field as the effective tier for any node that carries a tier_history entry valid on the audit day, -3
+Agent forgets to exclude fail-suppressed days from the most recent fail day used by the soak gate, -3
+Agent applies cross-reference pressure transitively through non-degraded intermediaries or before primary statuses are fixed, -3
 Agent collapses every tier to the same rolling-window span while claiming tier deltas, -3

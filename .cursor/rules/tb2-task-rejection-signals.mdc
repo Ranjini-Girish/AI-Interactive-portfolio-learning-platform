@@ -117,15 +117,31 @@ Combine with: SHA-256 input hashes (so the agent can't mutate inputs), a "fresh-
 
 For the implementation-level gaps that reviewers find in submissions that *almost* implement this section (fail-open manifest checks, untested output files, missing rebuild-from-sources tests, production-grade answer keys leaked into `/app/examples/`, missing test docstrings, alt-policy modes only tested against the Python reference instead of the binary), see `tb2-anti-cheat-completeness.mdc`.
 
-## 7. Empirical pass rate must clear the difficulty band
+## 7. Empirical pass rate must clear the difficulty band (May 2026 bands)
 
-Per `EC-Training-Docs/03 §2.1`:
+The platform evaluates bands in order **HARD → MEDIUM → EASY** and stops at the first match. Always compute against the **best** of the two reference agents (`terminus-claude-opus-4-6`, `terminus-gpt5-2`) first; if HARD condition #1 fails, fall back to the **worst** model.
 
-- **Hard**: ≤ 20% pass rate (so 1/5 minimum, 0/5 fails the bar)
-- **Medium**: 21–80%
-- **Easy**: > 80% (rejected entirely)
+| Band | Conditions (evaluated top-down, stop at first match) |
+|---|---|
+| **HARD** | (1) `accuracy_best ≤ 20%` — OR — (2) `accuracy_best > 20%` AND `accuracy_worst ≤ 20%` |
+| **MEDIUM** | (3) `20% < accuracy_worst ≤ 60%` |
+| **EASY** | (4) `60% < accuracy_worst ≤ 80%` (above 80% = rejected as trivial) |
+| _below floor_ | If 0/5 across BOTH agents the task is "unsolvable" and sent back |
 
-If 0/5 across both gpt-5.2 and claude-opus-4-6, the task is "unsolvable" by current frontier agents and gets sent back. The fix is almost always:
+Worked example from the platform announcement:
+
+```
+terminus-claude-opus-4-6: 100.0% (5/5)  ← best
+terminus-gpt5-2:           20.0% (1/5)  ← worst
+
+HARD #1 fails (best=100%).
+HARD #2 passes (worst=20%).
+→ HARD.
+```
+
+**Python tasks must qualify as HARD** — landing in MEDIUM or EASY triggers `Difficulty: ❌ EASY - Requires at least HARD for python` regardless of other QC results.
+
+If both agents land at 0/5, the task is unsolvable by current frontier agents. The fix is almost always:
 
 1. Tighten ambiguous diagnostic / output-emission rules.
 2. Restate the most common agent misunderstanding inline (the "two semantic points worth restating" pattern).
@@ -194,34 +210,53 @@ python3 -c "import tomllib,sys; t=tomllib.load(open('task.toml','rb'))['metadata
   || echo "WARN: tags count out of [3,6] range"
 ```
 
-## 11. `tests/test.sh` must be crash-safe (Doc-06)
+## 11. `tests/test.sh` must NOT touch the network (May 2026)
 
-The Doc-06 reviewer criterion is the first and highest-severity rejection cause. `tests/test.sh` must guarantee that `/logs/verifier/reward.txt` AND `/logs/verifier/ctrf.json` exist on every exit path — happy path, early WORKDIR guard, dependency-install failure, pytest collection crash, SIGTERM at the `[verifier].timeout_sec` boundary. If either is missing, the platform synthesises a "verifier did not run" row that bypasses the real grading signal.
+Since the `allow_internet = false` mandate, `tests/test.sh` runs in a fully network-blocked sandbox. The script MUST be a thin pytest wrapper over dependencies that `environment/Dockerfile` already installed. Any `apt-get`, `pip install`, `curl`, `wget`, `uv install`, or `uvx <pkg>` line that triggers a download is now a HARD failure mode — at best the call hangs until the verifier timeout, at worst the script exits before writing `/logs/verifier/reward.txt` and the platform synthesises a "verifier did not run" row.
 
-The minimal shape is: eager writes (`echo 0 > reward.txt` + skeleton ctrf JSON) before any guard, an `ensure_files` function registered with `trap … EXIT`, `set -e` at the top with `set +e` immediately before the pytest invocation. The full pattern (with two image-dependent variants and a pre-submit grep checklist) is in `tb2-verifier-crash-safety.mdc`.
-
-Note: Harbor's `--retries` does NOT fix this. The criterion is graded against the static `tests/test.sh` text, not against runtime retry stats.
+The minimal modern shape (matches `default-template/tests/test.sh`):
 
 ```bash
-# ❌ BAD - five independent paths leave reward.txt unwritten
 #!/bin/bash
-if [ "$PWD" = "/" ]; then exit 1; fi   # ← exits before reward write
-mkdir -p /logs/verifier                # ← may fail (no trap fallback)
-uvx pytest ...                         # ← may crash before any write
-echo 1 > /logs/verifier/reward.txt     # ← never reached on any of above
-
-# ✅ GOOD - reward.txt + ctrf.json present on every exit (see focused rule)
-#!/bin/bash
-set -e
 mkdir -p /logs/verifier
+
+# Defensive eager writes — Doc-06 crash-safety, kept because the WORKDIR
+# guard below still has an unwritten-reward path otherwise.
 echo 0 > /logs/verifier/reward.txt
-echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},...}}' > /logs/verifier/ctrf.json
-ensure_files() { ... }
-trap ensure_files EXIT
-# ... rest of script ...
+echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
+
+if [ "$PWD" = "/" ]; then
+    echo "Error: No working directory set. Please set a WORKDIR in your Dockerfile before running this script."
+    exit 1
+fi
+
+python -m pytest -o cache_dir=/tmp/pytest_cache \
+  --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+RC=$?
+
+if [ "$RC" -eq 0 ]; then
+  echo 1 > /logs/verifier/reward.txt
+else
+  echo 0 > /logs/verifier/reward.txt
+fi
+
+exit "$RC"
 ```
 
-This pattern composes with `tb2-anti-cheat-completeness.mdc §4` (sha256sum hard-gate). Either one alone leaves gaps — `|| exit 1` without the trap creates a NEW unwritten-reward path, and the trap without `|| exit 1` lets a corrupted installer run unverified. Both ship together.
+The reciprocal Dockerfile must pre-install pytest, pytest-json-ctrf, plus any task-specific Python or system packages the tests import. See `terminus-project.mdc` "Verifier shape under `allow_internet = false`" for the canonical Dockerfile and the full forbidden-call list. The full crash-safety reasoning (eager writes, the WORKDIR-guard gap, optional `trap ensure_files EXIT` defence) is in `tb2-verifier-crash-safety.mdc`.
+
+Forbidden lines in `tests/test.sh` (each one alone is a rejection signal):
+
+```bash
+# ❌ all of these are now hard failures
+apt-get update            ;  apt-get install -y curl
+pip install something
+curl -LsSf https://astral.sh/uv/0.9.5/install.sh | sh
+uv install pytest
+uvx -p 3.13 -w pytest==8.4.1 -w pytest-json-ctrf==0.3.5 pytest …   # ← old V2 canonical, now banned
+```
+
+Note: Harbor's `--retries` does NOT fix the crash-safety gaps. Doc-06 is graded against the static `test.sh` text, not against runtime retry stats. The patterns above also compose with `tb2-anti-cheat-completeness.mdc §4` (sha256sum hard-gate) when the Dockerfile pre-installs an external integrity-checked binary.
 
 ## 12. Metadata, directory name, and test docstring must agree on difficulty
 
@@ -248,39 +283,103 @@ head -1 tests/test_outputs.py
 
 The `expert_time_estimate_min` / `junior_time_estimate_min` fields should also fall in the band's typical range (medium ≈ 60–180 expert min, hard ≈ 180–360). If a reviewer asks to bump difficulty hard → medium or vice versa, ALL of these get touched, not just `task.toml`.
 
-## 13. `task.toml [environment]` must include `workdir`
+## 13. `task.toml [environment]` must include `workdir` AND `allow_internet`
 
-The submission validator treats `[environment].workdir` as a **required** field. Submissions whose `task.toml` has an `[environment]` block without `workdir` (or no `[environment]` block at all) get flagged with:
+The submission validator treats BOTH `[environment].workdir` and `[environment].allow_internet` as **required** fields. Submissions whose `task.toml` is missing either get flagged at the BUILD phase with messages like:
 
 > `[environment]` in `task.toml` is missing the required `workdir` field.
 
-The canonical value is `workdir = "/app"`, matching every Dockerfile's `WORKDIR /app` line and the `tests/test.sh` WORKDIR guard (`if [ "$PWD" = "/" ]; then exit 1; fi`). If the Dockerfile uses a different working directory, mirror that value here verbatim.
+> `Missing required field: environment.allow_internet (must be false)`
+
+The `allow_internet` literal must be `false` — it is not enough to omit a value and let it default; the static checker enforces the explicit `= false`. The canonical `workdir` value is `"/app"`, matching every Dockerfile's `WORKDIR /app` line and the `tests/test.sh` WORKDIR guard (`if [ "$PWD" = "/" ]; then exit 1; fi`). If the Dockerfile uses a different working directory, mirror that value here verbatim.
 
 ```toml
-# ❌ BAD - missing workdir
+# ❌ BAD - missing workdir AND allow_internet
 [environment]
-gpu_required = false
-network_required = false
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 3072
+storage_mb = 10240
 
-# ✅ GOOD - workdir present and matches the Dockerfile's WORKDIR
+# ❌ ALSO BAD - workdir present but allow_internet missing
 [environment]
-gpu_required = false
-network_required = false
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 3072
+storage_mb = 10240
 workdir = "/app"
+
+# ✅ GOOD - both required fields present, allow_internet literally false
+[environment]
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 3072
+storage_mb = 10240
+workdir = "/app"
+allow_internet = false
 ```
 
-Pre-submit grep:
+Pre-submit grep (both fields):
 
 ```bash
-rg -nA5 '^\[environment\]' task.toml | rg -q '^workdir\s*=' \
+rg -nA8 '^\[environment\]' task.toml | rg -q '^workdir\s*=' \
   || echo "WARN: task.toml [environment].workdir missing"
+rg -nA8 '^\[environment\]' task.toml | rg -q '^allow_internet\s*=\s*false' \
+  || echo "WARN: task.toml [environment].allow_internet missing or not literally false"
 ```
+
+PowerShell equivalent (Windows authoring host):
+
+```powershell
+$env_block = (Get-Content task.toml -Raw) -split '\r?\n' `
+  | Select-String -Pattern '^\[environment\]' -Context 0,8
+$env_block.ToString() -match '(?m)^workdir\s*=' `
+  -or (Write-Warning 'task.toml [environment].workdir missing')
+$env_block.ToString() -match '(?m)^allow_internet\s*=\s*false' `
+  -or (Write-Warning 'task.toml [environment].allow_internet missing or not literally false')
+```
+
+The repo's `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` runs both checks automatically and prints `WARNING:` lines on the same `stderr` as the codebase-size mismatch warning.
 
 ### Difficulty in `task.toml` must match the automated check
 
 Reviewers run an automated difficulty classifier against every submission. When `task.toml` declares `difficulty = "medium"` but the classifier returns `hard` (or vice versa), the mismatch is a separate rejection signal from §7's empirical pass-rate band. Align `task.toml difficulty`, the directory-name suffix (`-medium` / `-hard`), the `tests/test_outputs.py` opening docstring, and the time-estimate fields in one pass; see `tb2-difficulty-calibration.mdc` for the calibration heuristic.
 
 When this fires, fix it via the four-source alignment (toml difficulty, directory name suffix, docstring, time estimates) — patching the toml field alone leaves three other artifacts disagreeing, which is itself a separate rejection signal.
+
+## 14. No runtime dependency installation in `tests/test.sh` (May 2026)
+
+Since the platform now declares `allow_internet = false` at the sandbox level, any line in `tests/test.sh` that fetches a package or binary from the network is rejected on two axes: (a) a static CI pattern match flags the forbidden call, and (b) at runtime the network is blocked so the call hangs or fails before reaching pytest. Symptom from the platform UI: a green build but every trial reports "verifier did not run" or a synthetic 0 reward — masking the real grading signal entirely.
+
+The complete forbidden list (each one is a rejection signal on its own):
+
+| Forbidden line | Why it ran in older tasks | Where to move it |
+|---|---|---|
+| `apt-get update` / `apt-get install -y curl` | bootstrapping `curl` for the uv installer | move to `environment/Dockerfile` apt block |
+| `curl -LsSf https://astral.sh/uv/0.9.5/install.sh \| sh` | installing uv at verifier time | drop — use `python -m pip install` in Dockerfile |
+| `source $HOME/.local/bin/env` | adding uv to PATH | drop — uv is no longer needed |
+| `uvx -p 3.13 -w pytest==8.4.1 -w pytest-json-ctrf==0.3.5 pytest …` | the old V2 canonical test.sh line | replace with `python -m pytest …` after pre-installing pytest in Dockerfile |
+| `pip install <pkg>` | task-specific Python deps | move the package to `python -m pip install` line in Dockerfile |
+| `wget https://…` | downloading datasets / binaries | pre-bake into Dockerfile or commit under `environment/` |
+| `npm install` / `cargo install` / `go install` | runtime tool install | move to Dockerfile RUN block |
+| `gh auth login` / any other login step | external service | not allowed; restructure the task to avoid external services |
+
+Pre-submit grep:
+
+```bash
+rg -nE 'apt-get (update|install)|^\s*pip install|python -m pip install|curl |wget |uv install|uvx |npm install|cargo install|go install' tests/test.sh \
+  && echo "WARN: tests/test.sh contains a forbidden runtime install line"
+```
+
+PowerShell equivalent:
+
+```powershell
+Select-String -Path tests/test.sh -Pattern '(apt-get (update|install))|(^\s*pip install)|(python -m pip install)|(curl )|(wget )|(uv install)|(uvx )|(npm install)|(cargo install)|(go install)'
+```
+
+`tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` runs both this check and the §13 `[environment]` field check automatically; see that tool for the canonical machine-checkable wording.
+
+The Doc-06 crash-safety pattern (eager `echo 0 > reward.txt`, optional `ensure_files` trap) survives the migration — it just no longer needs to wrap an apt+curl+uv bootstrap. The canonical minimal post-migration `test.sh` is in §11 and in `default-template/tests/test.sh`.
 
 ## Related focused rules
 
@@ -303,4 +402,6 @@ Distilled from recurring manual-reviewer feedback patterns:
 
 - §11 (Doc-06 crash-safety) — surfaced repeatedly when a runtime flake leaves `/logs/verifier/reward.txt` unwritten and the platform synthesises a "verifier did not run" row.
 - §12 (difficulty alignment) — flagged across multiple reviews where the `-medium` / `-hard` directory suffix, `task.toml difficulty` field, test-suite docstring, and time-estimate fields disagreed in pairs or triples.
-- §13 (task.toml field completeness) — observed when a missing `[environment].workdir` field combined with a `difficulty` mismatch produced two independent rejection signals in one review pass. The lesson generalises: every field the validator parses needs to be present AND consistent with the other four artifacts that mirror it.
+- §13 (task.toml field completeness) — first observed when a missing `[environment].workdir` field combined with a `difficulty` mismatch produced two independent rejection signals in one review pass. Later expanded after the platform also began enforcing `[environment].allow_internet` (literally `false`) with the BUILD-phase message `Missing required field: environment.allow_internet (must be false)`. The lesson generalises: every field the validator parses needs to be present AND consistent with the other four artifacts that mirror it.
+- §14 (no runtime installs in `tests/test.sh`) — added after the May 2026 platform announcement that introduced `allow_internet = false` as a runtime guarantee, not just a task.toml flag. The old V2 canonical test.sh (`apt-get install -y curl` + `curl … | sh` + `uvx -p 3.13 -w pytest pytest …`) is now a hard failure on three axes: the static checker flags the forbidden calls, the runtime network is blocked so the curl hangs, and Doc-06 still expects `/logs/verifier/reward.txt` to exist. All three are repaired by moving deps into `environment/Dockerfile` and shrinking `tests/test.sh` to a `python -m pytest` invocation.
+- §7 (difficulty bands rewrite) — replaced the simple `≤20% / 21-80% / >80%` thresholds with the May 2026 ordered HARD → MEDIUM → EASY classifier (best-model condition first, then worst-model fallback). The motivating change: a task where the best model scores 100% used to read as "easy" under the simple band even when the worst model scored 20%; under the new bands it correctly classifies as HARD via condition #2.

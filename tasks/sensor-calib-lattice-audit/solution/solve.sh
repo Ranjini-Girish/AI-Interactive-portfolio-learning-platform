@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+# Harbor and login shells may start with a minimal PATH that omits the Go
+# toolchain shipped in the golang image.
+export PATH="/usr/local/go/bin:${PATH:-/usr/bin:/bin}"
+
 SRC_DIR="${SCLA_SRC_DIR:-/app/src}"
 BIN_DIR="${SCLA_BIN_DIR:-/app/bin}"
 mkdir -p "$SRC_DIR" "$BIN_DIR"
@@ -219,7 +223,7 @@ func main() {
 	}
 	outDir := os.Getenv("SCLA_AUDIT_DIR")
 	if outDir == "" {
-		outDir = "/app/audit"
+		outDir = "/app/calibration_audit"
 	}
 
 	var policy Policy
