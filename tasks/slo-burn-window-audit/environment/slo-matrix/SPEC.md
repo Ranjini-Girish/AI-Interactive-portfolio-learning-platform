@@ -75,7 +75,11 @@ If a kept `slo_review_override` names this `service_id` (latest event wins on du
 
 Let `compromised` be the set of `service_id` values with a kept `service_compromise`.
 
-For each `consumer_id` appearing as `consumer_id` in any well-formed edge, compute the set of `producer_id` values reachable by following edges from any compromised service along producer→consumer direction (transitive closure). `taint_status` is `inherited_compromise` if that set is non-empty, else `clean`. `compromised_producers` is the sorted unique ASCII list of producers in that reachable set (empty when `clean`).
+For each `consumer_id` appearing as `consumer_id` in any well-formed edge, a compromised root `service_id` **taint-reaches** the consumer when there is a path of well-formed edges from that root as `producer_id` to the consumer along producer→consumer direction (transitive closure). `taint_status` is `inherited_compromise` if at least one compromised root taint-reaches the consumer, else `clean`.
+
+`compromised_producers` lists only the compromised roots that taint-reach the consumer: the sorted unique ASCII list of `service_id` values from `compromised` that taint-reach the consumer (empty when `clean`). Do not include intermediary producers that appear only as hops on the path; only original `service_compromise` sources belong in this list.
+
+Example: edges `svc-notify → svc-worker`, `svc-worker → svc-search`, and `svc-search → svc-worker` form a cycle through `svc-worker`. If `svc-notify` is the only compromised root, then `svc-worker` and `svc-search` both have `taint_status == inherited_compromise` and `compromised_producers == ["svc-notify"]` — not `["svc-notify", "svc-worker"]`, because `svc-worker` is an intermediary hop, not a compromised root.
 
 ## Outputs (five UTF-8 JSON files in the audit directory)
 
