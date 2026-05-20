@@ -26,8 +26,8 @@ Read `incident_log.events` (array). Keep only events with `accepted == true` and
 
 Supported `kind` values:
 
-- `tier_retry_delta`: fields `target_tier` ∈ {`gold`,`silver`,`bronze`} and integer `delta`. Adds `delta` to the running retry budget for that tier (additive across events).
-- `failure_day_suppress`: fields `subscription_id` and `days` (array of integers). For each integer `d` in `days`, if `d` is in the rolling window for the named subscription, the outcome on `d` is chargeable for its tier, and the day is **not** excluded by the `slip_days` rule above, decrement the post-slip running failure tally used for suppressions by 1 (floor at 0; each matching `(subscription_id,d)` pair from this single event subtracts at most once). If `d` is slip-excused, this pair does nothing.
+- `tier_retry_delta`: fields `target_tier` ∈ {`gold`,`silver`,`bronze`} and integer `delta`. Adds `delta` to the running retry budget for that tier (additive across events; a tier's `delta_sum` is the signed sum, may be negative).
+- `failure_day_suppress`: fields `subscription_id` and `days` (array of integers). For each integer `d` in `days`, if `d` is in the rolling window for the named subscription, the outcome on `d` is chargeable for its tier, the day is **not** excluded by the `slip_days` rule above, and the `(subscription_id, d)` pair has not already been consumed by a previously-processed `failure_day_suppress` event in `(day, event_id)` order, decrement the post-slip running failure tally used for suppressions by 1 (floor at 0). Each `(subscription_id, d)` pair contributes at most one subtraction across all kept `failure_day_suppress` events combined: the first event in `(day, event_id)` order to cover that pair consumes it, and any later event referencing the same pair is a silent no-op for that pair. A slip-excused pair is never consumed and never decrements the tally.
 - `bronze_surge`: no extra targets. While this event is among kept events, every subscription whose `tier` is `bronze` adds integer `policy.bronze_surge_extra_failures` to `effective_failures` after suppressions below.
 - `endpoint_compromise`: fields `endpoint_id`. After all numeric work for every subscription on that endpoint, those subscriptions must emit `disposition` `quarantined`, `retries_exhausted` true, and `reasons` must include `endpoint_compromise` (even if other reasons also apply).
 - `force_exhausted`: fields `subscription_id`. After numeric work for that subscription, if kept, emit `disposition` `exhausted`, `retries_exhausted` true, and include `force_exhausted_incident` in `reasons`.
@@ -44,15 +44,22 @@ Each signing profile has `keys`: array of `{ "key_id": string, "valid_from_day":
 
 ## Retry budget
 
-`base_budget = policy.retries_by_tier[tier]`. Add all applied `tier_retry_delta.delta` for that tier. `adjusted_retry_budget = max(1, base_budget + delta_sum)`.
+`base_budget = policy.retries_by_tier[tier]`. Add all applied `tier_retry_delta.delta` for that tier (the signed `delta_sum`, which may be negative). `adjusted_retry_budget = max(1, base_budget + delta_sum)`.
+
+## Previous-window carryover
+
+`pool_state.previous_window_carryover` is an optional map from `subscription_id` to a non-negative integer; absence of the map or absence of a key is treated as `0`. Let `raw_carryover[sub] = previous_window_carryover[sub]` (defaulting to `0`).
+
+Carryover is conditionally suppressed per-subscription: if the `delta_sum` for the subscription's tier is **strictly negative** (i.e. the tier had its retry budget tightened by net `tier_retry_delta` events in this audit), the carryover is treated as `0` for that subscription. Otherwise the carryover passes through unchanged. The applied amount is reported in each subscription row as the integer `carryover_failures` (always present; `0` when suppressed, missing from the map, or `0` in the map).
 
 ## Penalties and ordering
 
 1. `raw_chargeable` counts chargeable outcomes in the window, honoring `slip_days` grace per day.
-2. Apply all `failure_day_suppress` subtractions (floor 0).
+2. Apply all `failure_day_suppress` subtractions (floor 0, with the cross-event pair-deduplication rule above).
 3. If tier is `bronze` and any kept `bronze_surge` exists, add `policy.bronze_surge_extra_failures` (default 0 if missing).
 4. If tier is `gold` and the endpoint's `rate_limited` is true, add `policy.gold_endpoint_throttle_extra_failures` (default 0 if missing).
-5. The sum is `effective_failures`.
+5. Add `carryover_failures` (after the per-subscription suppression rule above).
+6. The sum is `effective_failures`.
 
 ## Disposition and retries_exhausted
 
@@ -75,6 +82,7 @@ Otherwise include:
 - `retry_budget_exhausted` when `effective_failures >= adjusted_retry_budget` would hold ignoring force and quarantine flags.
 - `bronze_surge_active` when bronze surge applied and `policy.bronze_surge_extra_failures > 0`.
 - `gold_endpoint_throttle_penalty` when gold throttle penalty contributed a strictly positive amount.
+- `previous_window_carryover` when `carryover_failures > 0` AND `effective_failures >= adjusted_retry_budget` would hold ignoring force and quarantine flags.
 
 `reasons` must be strictly increasing ASCII order, unique strings.
 
@@ -84,7 +92,7 @@ Canonical JSON: UTF-8, two-space indent, ASCII only, object keys sorted lexicogr
 
 ### subscription_verdicts.json
 
-- `subscriptions`: array sorted by ascending `subscription_id`. Each object: `subscription_id`, `tier`, `endpoint_id`, `raw_chargeable` (int), `effective_failures` (int), `adjusted_retry_budget` (int), `effective_signing_key_id` (string), `disposition` (`active`|`exhausted`|`quarantined`), `retries_exhausted` (bool), `reasons` (array).
+- `subscriptions`: array sorted by ascending `subscription_id`. Each object: `subscription_id`, `tier`, `endpoint_id`, `raw_chargeable` (int), `carryover_failures` (int), `effective_failures` (int), `adjusted_retry_budget` (int), `effective_signing_key_id` (string), `disposition` (`active`|`exhausted`|`quarantined`), `retries_exhausted` (bool), `reasons` (array).
 
 ### tier_retry_budgets.json
 

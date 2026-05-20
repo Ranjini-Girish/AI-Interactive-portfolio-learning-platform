@@ -1,0 +1,10 @@
+{
+  "client_id": "c_br",
+  "seed_rules": [
+    {
+      "action": "deny",
+      "pattern": "site/+/+/alarm"
+    }
+  ],
+  "shadow_parent": "c_root"
+}

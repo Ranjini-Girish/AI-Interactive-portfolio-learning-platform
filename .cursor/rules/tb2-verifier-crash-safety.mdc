@@ -35,16 +35,21 @@ fi
 
 python -m pytest -o cache_dir=/tmp/pytest_cache \
   --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
-RC=$?
 
-if [ "$RC" -eq 0 ]; then
-  echo 1 > /logs/verifier/reward.txt
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
 else
-  echo 0 > /logs/verifier/reward.txt
+    echo 0 > /logs/verifier/reward.txt
 fi
-
-exit "$RC"
 ```
+
+> **Two non-obvious requirements baked into the last five lines** — see "Static-check suffix requirement" below for the full reasoning:
+>
+> 1. The exit-code check is the literal `$?`, NOT a `$RC`/`$rc` variable.
+> 2. The `fi` is the LAST non-blank line of the file — no trailing `exit "$RC"`.
+> 3. 4-space indentation inside the if/else branches.
+>
+> Harbor grades on `/logs/verifier/reward.txt`, not on the script's exit code, so dropping `exit "$RC"` is functionally a no-op for grading.
 
 The matching `environment/Dockerfile` block (Python-based base; pick the equivalent for Go / Rust / C++ bases and install Python alongside):
 
@@ -66,6 +71,41 @@ RUN python -m pip install --no-cache-dir \
 
 WORKDIR /app
 ```
+
+## Static-check suffix requirement (the `if [ $? -eq 0 ]` literal pattern)
+
+`run_static_checks.py --version edition_2` does a **literal-text match** on the tail of `tests/test.sh`. A mismatch is a BUILD-phase rejection with the message:
+
+```
+❌ /root/tasks/tbench-task/tests/test.sh: Must end with the reward section:
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
+else
+    echo 0 > /logs/verifier/reward.txt
+fi
+```
+
+The last five non-blank lines of `tests/test.sh` MUST be EXACTLY:
+
+```bash
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
+else
+    echo 0 > /logs/verifier/reward.txt
+fi
+```
+
+Three trap-doors that have all shipped to the platform and failed this gate:
+
+| Broken shape | Why it fails | Fix |
+|---|---|---|
+| `RC=$?` capture + `if [ "$RC" -eq 0 ]; then` | Static checker is doing a literal grep for `$?`, NOT bash-equivalent code | Drop the `RC=$?` line; use `$?` directly in the `if` |
+| 2-space indentation inside the if / else branches (`  echo 1 > …`) | Literal match expects 4 spaces | Re-indent to 4 spaces |
+| Trailing `exit "$RC"` (or any command) after `fi` | `fi` must be the LAST non-blank line | Delete the trailing `exit` — Harbor grades on `/logs/verifier/reward.txt`, not on script exit code |
+
+The functional argument for dropping `RC=$?` and `exit "$RC"`: `$?` immediately after `pytest` (with only a blank line in between — blanks do not change `$?`) IS pytest's exit code, so the literal-pattern form is bash-equivalent to the captured form. The grader reads `/logs/verifier/reward.txt`, never the script's exit code.
+
+Historical note: `default-template/tests/test.sh` and the four most-recently-built tasks all shipped the `$RC` shape under the assumption it was bash-idiomatic; that assumption was wrong on the May 2026 static checker. The default-template and the four affected tasks have been migrated; see "Sister rules" below.
 
 ## What the eager writes defend against (May 2026 surface)
 
@@ -93,14 +133,22 @@ rg -n '"version":"1.0.0"' tests/test.sh \
 rg -nE 'apt-get (update|install)|^\s*pip install|python -m pip install|curl |wget |uv install|uvx |npm install|cargo install|go install' tests/test.sh \
   && echo "WARN: tests/test.sh contains a forbidden runtime install/network line"
 
-# 3. The reward-by-RC branch exists (RC=$? captured, if/else writes reward)
-rg -n '^RC=\$\?' tests/test.sh \
-  || echo "WARN: pytest exit code not captured into RC — reward may be wrong on test failure"
+# 3. Literal reward-section suffix (static-check gate; see section above).
+#    These three patterns must ALL be absent, and the file MUST end with the
+#    `if [ $? -eq 0 ]; then … fi` block (no trailing `exit "$RC"`).
+rg -n '^\s*RC\s*=\s*\$\?' tests/test.sh \
+  && echo "WARN: RC=\$? capture present — static checker wants \$? used directly in the if branch"
+rg -n '^\s*exit\s+"\$RC"' tests/test.sh \
+  && echo "WARN: trailing 'exit \"\$RC\"' present — 'fi' must be the LAST non-blank line"
+rg -nU 'if \[ \$\? -eq 0 \]; then\n    echo 1 > /logs/verifier/reward\.txt\nelse\n    echo 0 > /logs/verifier/reward\.txt\nfi\s*\Z' tests/test.sh \
+  || echo "WARN: tests/test.sh does NOT end with the byte-exact reward section (use \$?, 4-space indent, no trailing exit)"
 
 # 4. pytest invocation looks reasonable
 rg -n 'python -m pytest .* --ctrf /logs/verifier/ctrf.json' tests/test.sh \
   || echo "WARN: canonical pytest invocation missing"
 ```
+
+`python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` runs all three suffix checks automatically (added May 2026 alongside the migration); a `❌` BUILD failure on the suffix gate means the local preflight was skipped or the test.sh was edited post-preflight.
 
 Each `WARN:` is a likely reviewer flag.
 
@@ -138,9 +186,9 @@ To migrate:
    ```
    For non-Python base images, ALSO add `python3 python3-pip` to the apt install line first (and reference them as `python3 -m pytest` / `python3 -m pip install` accordingly). Reminder from `tb2-task-rejection-signals.mdc §1`: only add `python3` to non-Python bases when the verifier actually needs it; do not let the prose in `instruction.md` hint that Python is a valid solution path.
 2. **Identify task-specific verifier deps.** Grep `tests/test_outputs.py` for `import` lines that aren't stdlib; add each to the Dockerfile pip install line.
-3. **Replace `tests/test.sh` with the canonical shape above.**
+3. **Replace `tests/test.sh` with the canonical shape above.** In particular, the reward branch MUST use the literal `if [ $? -eq 0 ]` pattern (NOT `RC=$?` + `if [ "$RC" -eq 0 ]`), and the `fi` MUST be the last non-blank line of the file (NO trailing `exit "$RC"`). See "Static-check suffix requirement" above for the failure message and rationale.
 4. **Confirm `task.toml` has `[environment].allow_internet = false`** (see `tb2-task-rejection-signals.mdc §13`).
-5. **Rebuild and re-verify the zip** with `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` — it warns on both forbidden-call patterns and missing toml fields.
+5. **Rebuild and re-verify the zip** with `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` — it warns on forbidden-call patterns, missing toml fields, AND the literal-suffix gate.
 
 ## Sister rules
 
@@ -157,3 +205,5 @@ This rule was first written for the pre-May-2026 world, when `tests/test.sh` was
 The May 2026 platform announcement collapsed all three variants into a single rule: every verifier dep is pre-installed in `environment/Dockerfile`, `tests/test.sh` is a thin pytest wrapper, and the runtime sandbox blocks all network calls. The reasoning is straightforward — pre-installation removes the largest source of flakiness in the verifier (transient PyPI / apt failures), and the network block hardens the sandbox against agents that try to exfiltrate or hardcode against external services.
 
 The remaining Doc-06 surface (eager writes + WORKDIR-guard placement) survives the migration unchanged.
+
+A late-May-2026 platform update tightened `tests/test.sh` enforcement further with a literal-text match on the reward-section suffix (the `Must end with the reward section:` message documented in "Static-check suffix requirement" above). The bash-idiomatic `RC=$?` + `if [ "$RC" -eq 0 ]` + trailing `exit "$RC"` shape that `default-template/tests/test.sh` and four in-flight tasks had inherited from older guidance failed this gate; this rule, the default template, the master checklist in `tb2-task-rejection-signals.mdc §11/§15`, the `terminus-project.mdc` canonical example, and the `terminus-task-creator` skill were all updated in the same pass so future tasks ship the conforming literal pattern by construction.

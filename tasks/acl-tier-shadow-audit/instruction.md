@@ -1,0 +1,5 @@
+You are closing a governance review for tiered publish and subscribe access overlays that shipped to staging. The snapshot combines per-client seeds, bronze through gold tier files, shadow inheritance via parent links, and operator incidents that strip tier introductions for a named introducer or quarantine full subtrees from an anchor client. Freeze that posture on `pool_state.current_day` without editing evidence.
+
+Read `/app/acl_tier/SPEC.md` for pattern matching on `/` segments with `+` and `#`, owned merge rules, root-to-leaf shadow upserts with monotonic `rule_seq`, incident ordering, and probe tie-breaks. Inputs are the whole `/app/acl_tier/` tree. Do not modify files there.
+
+Emit three UTF-8 JSON files under `/app/audit/`: `effective_access.json`, `probe_verdicts.json`, and `summary.json`. Each uses two-space indentation, sorted object keys at every level, and exactly one trailing newline. Non-empty `ATSA_DATA_DIR` and `ATSA_AUDIT_DIR` override the defaults `/app/acl_tier/` and `/app/audit/`; create the audit directory when missing.

@@ -30,6 +30,12 @@ type solventFile struct {
 	ViscosityPoints []viscosityPoint `json:"viscosity_points"`
 }
 
+type probeFile struct {
+	ProbeID   string `json:"probe_id"`
+	ChainID   string `json:"chain_id,omitempty"`
+	ChainRole string `json:"chain_role,omitempty"`
+}
+
 type measurement struct {
 	MeasurementID        string  `json:"measurement_id"`
 	ProbeID              string  `json:"probe_id"`
@@ -102,6 +108,13 @@ func isIgnoredEvent(ev rawEvent, corpusProbes map[string]struct{}, corpusSolvent
 			return true
 		}
 	case "recall_lift":
+		if ev.SolventID == "" || !contains(corpusSolvents, ev.SolventID) {
+			return true
+		}
+		if ev.ProbeID != "" && !contains(corpusProbes, ev.ProbeID) {
+			return true
+		}
+	case "recall_relift":
 		if ev.SolventID == "" || !contains(corpusSolvents, ev.SolventID) {
 			return true
 		}
@@ -220,7 +233,7 @@ func selectBenchDelta(
 	return *best.ev.DeltaK, &best.ev
 }
 
-func stictionActive(
+func directStictionActive(
 	evts []rawEvent,
 	m measurement,
 	corpusProbes map[string]struct{},
@@ -245,6 +258,54 @@ func stictionActive(
 			continue
 		}
 		if lookback != nil && ev.Day < low {
+			continue
+		}
+		return true
+	}
+	return false
+}
+
+func chainPropagatedStictionActive(
+	evts []rawEvent,
+	m measurement,
+	corpusProbes map[string]struct{},
+	corpusSolvents map[string]struct{},
+	lookback *int,
+	probeRoles map[string]string,
+	probeChains map[string]string,
+) bool {
+	mChain, mHasChain := probeChains[m.ProbeID]
+	mRole := probeRoles[m.ProbeID]
+	if !mHasChain || mChain == "" || mRole != "secondary" {
+		return false
+	}
+	var propLow int
+	if lookback != nil {
+		propLow = m.RunDay - (*lookback / 2)
+	}
+	for _, ev := range evts {
+		if isIgnoredEvent(ev, corpusProbes, corpusSolvents) {
+			continue
+		}
+		if ev.Kind != "probe_stiction" {
+			continue
+		}
+		// Chain propagation never fires for the event's own probe.
+		if ev.ProbeID == m.ProbeID {
+			continue
+		}
+		evChain, evHasChain := probeChains[ev.ProbeID]
+		evRole := probeRoles[ev.ProbeID]
+		if !evHasChain || evChain == "" || evRole != "primary" {
+			continue
+		}
+		if evChain != mChain {
+			continue
+		}
+		if ev.Day > m.RunDay {
+			continue
+		}
+		if lookback != nil && ev.Day < propLow {
 			continue
 		}
 		return true
@@ -286,6 +347,35 @@ func liftLatestDay(evts []rawEvent, m measurement, corpusProbes map[string]struc
 			continue
 		}
 		if ev.Kind != "recall_lift" {
+			continue
+		}
+		if ev.SolventID != m.SolventID {
+			continue
+		}
+		if ev.Day > m.RunDay {
+			continue
+		}
+		if ev.ProbeID != "" && ev.ProbeID != m.ProbeID {
+			continue
+		}
+		if ev.Day > best {
+			best = ev.Day
+			winners = []int{i}
+		} else if ev.Day == best {
+			winners = append(winners, i)
+		}
+	}
+	return best, winners
+}
+
+func reliftLatestDay(evts []rawEvent, m measurement, corpusProbes map[string]struct{}, corpusSolvents map[string]struct{}) (int, []int) {
+	var winners []int
+	best := -1
+	for i, ev := range evts {
+		if isIgnoredEvent(ev, corpusProbes, corpusSolvents) {
+			continue
+		}
+		if ev.Kind != "recall_relift" {
 			continue
 		}
 		if ev.SolventID != m.SolventID {
@@ -412,6 +502,32 @@ func main() {
 		solvents[sf.SolventID] = sf.ViscosityPoints
 	}
 
+	probePaths, err := filepath.Glob(filepath.Join(dataDir, "probes", "*.json"))
+	if err != nil {
+		panic(err)
+	}
+	sort.Strings(probePaths)
+	probeRoles := map[string]string{}
+	probeChains := map[string]string{}
+	for _, p := range probePaths {
+		b, err := os.ReadFile(p)
+		if err != nil {
+			panic(err)
+		}
+		var pf probeFile
+		if err := json.Unmarshal(b, &pf); err != nil {
+			panic(err)
+		}
+		role := pf.ChainRole
+		if role != "primary" && role != "secondary" {
+			role = ""
+		}
+		if pf.ChainID != "" && role != "" {
+			probeRoles[pf.ProbeID] = role
+			probeChains[pf.ProbeID] = pf.ChainID
+		}
+	}
+
 	measPaths, err := filepath.Glob(filepath.Join(dataDir, "measurements", "*.json"))
 	if err != nil {
 		panic(err)
@@ -449,6 +565,8 @@ func main() {
 	solventVoid := 0
 	radiusClamped := 0
 	driftCapped := 0
+	chainPropagatedVoid := 0
+	recallRelift := 0
 
 	var entries []map[string]any
 
@@ -457,7 +575,10 @@ func main() {
 	statuses := make([]string, len(ms))
 	recallWinnerIdx := make([][]int, len(ms))
 	liftWinnerIdx := make([][]int, len(ms))
+	reliftWinnerIdx := make([][]int, len(ms))
 	recallActiveForMeas := make([]bool, len(ms))
+	directStictionForMeas := make([]bool, len(ms))
+	chainStictionForMeas := make([]bool, len(ms))
 
 	for i, m := range ms {
 		deltaRaw, contribIDs := driftWindowContributors(inc.Events, m, corpusProbes, corpusSolvents)
@@ -473,24 +594,42 @@ func main() {
 
 		rMaxDay, rWinners := recallLatestDay(inc.Events, m, corpusProbes, corpusSolvents)
 		lMaxDay, lWinners := liftLatestDay(inc.Events, m, corpusProbes, corpusSolvents)
+		rlMaxDay, rlWinners := reliftLatestDay(inc.Events, m, corpusProbes, corpusSolvents)
 		recallWinnerIdx[i] = rWinners
 		liftWinnerIdx[i] = lWinners
+		reliftWinnerIdx[i] = rlWinners
 
 		recallApplies := false
 		if rMaxDay >= 0 {
-			if lMaxDay < 0 || rMaxDay > lMaxDay {
+			latestSurvive := rMaxDay
+			if rlMaxDay > latestSurvive {
+				latestSurvive = rlMaxDay
+			}
+			if latestSurvive >= lMaxDay {
 				recallApplies = true
 			}
 		}
 		recallActiveForMeas[i] = recallApplies
 
+		direct := directStictionActive(inc.Events, m, corpusProbes, corpusSolvents, pool.StictionLookbackDays)
+		chained := chainPropagatedStictionActive(inc.Events, m, corpusProbes, corpusSolvents, pool.StictionLookbackDays, probeRoles, probeChains)
+		directStictionForMeas[i] = direct
+		chainStictionForMeas[i] = chained
+
 		status := "ok"
-		if stictionActive(inc.Events, m, corpusProbes, corpusSolvents, pool.StictionLookbackDays) {
+		if direct || chained {
 			status = "probe_void"
 		} else if recallApplies {
 			status = "solvent_void"
 		}
 		statuses[i] = status
+
+		if status == "probe_void" && !direct && chained {
+			chainPropagatedVoid++
+		}
+		if rMaxDay >= 0 && recallApplies && rlMaxDay >= 0 && rlMaxDay >= lMaxDay {
+			recallRelift++
+		}
 
 		Tbase := m.TempReportedK + pool.KelvinOffsetGlobal
 		Tvisc := Tbase + deltaD
@@ -554,20 +693,72 @@ func main() {
 		}
 	}
 
-	for _, m := range ms {
-		for _, ev := range inc.Events {
-			if isIgnoredEvent(ev, corpusProbes, corpusSolvents) {
-				continue
-			}
-			if ev.Kind != "probe_stiction" {
-				continue
-			}
-			if ev.ProbeID == m.ProbeID && ev.Day <= m.RunDay {
+	// (b) probe_stiction directly active OR chain-propagated for at least one measurement.
+	for i, m := range ms {
+		_ = m
+		if directStictionForMeas[i] {
+			for _, ev := range inc.Events {
+				if isIgnoredEvent(ev, corpusProbes, corpusSolvents) {
+					continue
+				}
+				if ev.Kind != "probe_stiction" {
+					continue
+				}
+				if ev.ProbeID != m.ProbeID {
+					continue
+				}
+				if ev.Day > m.RunDay {
+					continue
+				}
+				low := m.RunDay
+				if pool.StictionLookbackDays != nil {
+					low = m.RunDay - *pool.StictionLookbackDays
+				}
+				if pool.StictionLookbackDays != nil && ev.Day < low {
+					continue
+				}
 				applied[ev.EventID] = struct{}{}
+			}
+		}
+		if chainStictionForMeas[i] {
+			mChain, mHasChain := probeChains[m.ProbeID]
+			mRole := probeRoles[m.ProbeID]
+			if mHasChain && mRole == "secondary" {
+				var propLow int
+				if pool.StictionLookbackDays != nil {
+					propLow = m.RunDay - (*pool.StictionLookbackDays / 2)
+				}
+				for _, ev := range inc.Events {
+					if isIgnoredEvent(ev, corpusProbes, corpusSolvents) {
+						continue
+					}
+					if ev.Kind != "probe_stiction" {
+						continue
+					}
+					if ev.ProbeID == m.ProbeID {
+						continue
+					}
+					evChain, evHasChain := probeChains[ev.ProbeID]
+					evRole := probeRoles[ev.ProbeID]
+					if !evHasChain || evRole != "primary" {
+						continue
+					}
+					if evChain != mChain {
+						continue
+					}
+					if ev.Day > m.RunDay {
+						continue
+					}
+					if pool.StictionLookbackDays != nil && ev.Day < propLow {
+						continue
+					}
+					applied[ev.EventID] = struct{}{}
+				}
 			}
 		}
 	}
 
+	// (c) solvent_recall: latest matching for some measurement and recall active for that measurement.
 	for i := range ms {
 		if !recallActiveForMeas[i] {
 			continue
@@ -577,6 +768,7 @@ func main() {
 		}
 	}
 
+	// (d) recall_lift: applicable to some measurement with l_max_day >= r_max_day (regardless of relift).
 	for i := range ms {
 		if len(recallWinnerIdx[i]) == 0 {
 			continue
@@ -594,6 +786,22 @@ func main() {
 		}
 	}
 
+	// (e) recall_relift: applicable to some measurement with r_max defined, recall active, day == rl_max_day.
+	for i := range ms {
+		if !recallActiveForMeas[i] {
+			continue
+		}
+		if len(recallWinnerIdx[i]) == 0 {
+			continue
+		}
+		if len(reliftWinnerIdx[i]) == 0 {
+			continue
+		}
+		for _, idx := range reliftWinnerIdx[i] {
+			applied[inc.Events[idx].EventID] = struct{}{}
+		}
+	}
+
 	appliedList := make([]string, 0, len(applied))
 	for id := range applied {
 		appliedList = append(appliedList, id)
@@ -601,12 +809,14 @@ func main() {
 	sort.Strings(appliedList)
 
 	summary := map[string]any{
+		"chain_propagated_void_count":        chainPropagatedVoid,
 		"drift_capped_count":                 driftCapped,
 		"ignored_incident_events":            ignored,
 		"measurements_total":                 len(ms),
 		"ok_count":                           okCount,
 		"probe_void_count":                   probeVoid,
 		"radius_clamped_count":               radiusClamped,
+		"recall_relift_count":                recallRelift,
 		"solvent_void_count":                 solventVoid,
 		"viscosity_extrapolation_high_count": highEx,
 		"viscosity_extrapolation_low_count":  lowEx,

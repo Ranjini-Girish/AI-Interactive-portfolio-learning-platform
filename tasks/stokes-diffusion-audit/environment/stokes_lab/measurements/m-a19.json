@@ -1,0 +1,9 @@
+{
+  "measurement_id": "m-a19",
+  "probe_id": "p2",
+  "solvent_id": "acetone",
+  "solute_id": "s-dye",
+  "hydrodynamic_radius_nm": 0.6,
+  "temp_reported_K": 270.0,
+  "run_day": 26
+}

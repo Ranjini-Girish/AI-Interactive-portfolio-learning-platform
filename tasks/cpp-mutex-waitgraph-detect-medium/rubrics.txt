@@ -6,7 +6,7 @@ Agent rejected try_acquire without enqueueing when mutex was held and counted tr
 Agent required release task to match current owner and emitted E_WRONG_OWNER on mismatch, +3
 Agent sorted wait_edges by waiter then mutex and diagnostics by severity code then mutex, +2
 Agent wrote all five outputs as canonical sorted-key JSON with trailing newline, +2
-Agent accepted exactly two positional path arguments for data and output directories, +2
+Agent exited non-zero on wrong arity, missing inputs, malformed JSON, schema violations, or unknown ops, +2
 Agent left every file under /app/data unchanged after the run, +2
 Agent modified or deleted any file under /app/data during replay, -5
 Agent shipped hand-written report JSON instead of output from the compiled binary, -5

@@ -49,9 +49,9 @@ Track all tasks to maintain diversity requirements across submissions.
 | 32 | oauth-client-lattice-audit      | security                        | hard | small | python | 0 | submission-ready (oracle 65/65 pytest; ruff+leakage clean; 30 env files vs small; local-qc static CI green; flat zip tasks/oauth-client-lattice-audit.zip 21258 bytes excludes rubrics; harbor trials pending) | 2026-05-14 |
 | 33 | gossip-presence-replay          | data-processing                 | hard | small | rust, bash | 0 | draft (adapted from TB gossip medium; merged inbox + presence ledger + Rust Cargo reference; 16 env files; ruff+leakage clean; Docker not verified locally) | 2026-05-14 |
 | 34 | nist-line-match-audit           | scientific-computing            | hard | small | go, bash | 0 | draft (oracle 13/13 pytest; 18 env files vs small; optical catalog matching + incident bias/suppress; ruff+leakage clean; harbor trials pending) | 2026-05-14 |
-| 35 | stokes-diffusion-audit          | scientific-computing            | hard | small | go | 0 | submission-ready (review fixes: task.toml tags in [3,6]; instruction two-paragraph prose ~174w + exit-zero; tests: entry key set + /app/src package main + /app/bin/stokesdiff executable + SDA_AUDIT_DIR/SDA_DATA_DIR rerun hash checks; removed stray local-src/; 32 pytest; 31 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/stokes-diffusion-audit.zip ~1.98MB rubrics excluded; re-run harbor oracle + GPT-5.2/Opus trials; Snorkel two-cycle rubric) | 2026-05-16 |
+| 35 | stokes-diffusion-audit          | scientific-computing            | hard | small | go | 0 | submission-ready (LLM review pass 2026-05-19 confirmed READY TO USE; the two flagged "weaknesses" — Dockerfile-baked test deps and SPEC-delegated instruction.md — are mandated design choices per `tb2-task-rejection-signals.mdc` §3,§4,§11,§14, not defects; instruction two-paragraph prose ~340w pointing at /app/stokes_lab/SPEC.md; tests: entry key set + /app/src package main + /app/bin/stokesdiff executable + SDA_AUDIT_DIR/SDA_DATA_DIR rerun hash checks; 32 pytest; 37 env files vs CodeBuild small≥20; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/stokes-diffusion-audit.zip 30582 bytes 44 entries forward-slash rubrics+caches excluded; harbor GPT-5.2/Opus trials + two-cycle Snorkel rubric) | 2026-05-19 |
 | 36 | cryostat-lattice-readout        | scientific-computing            | hard | small | go    | 0 | revised v2 (rebuild: Go-only after TRIVIAL feedback on python v1 - both opus 4.6 + gpt-5.2 hit 100%; oracle 72/72 pytest; 25 env files vs CodeBuild small>=20; +3 compound twists - median-of-K-with-rejection aggregation, calibration drift past grace, verdict-aware end-of-prev-round edge freezing; Go binary anti-cheat re-execution; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cryostat-lattice-readout.zip 23985 bytes excludes rubrics; harbor trials pending) | 2026-05-15 |
-| 37 | breaker-ledger-audit            | debugging                       | hard | small | go, bash | 0 | draft (oracle 14/14 pytest; 21 env files vs CodeBuild small>=20; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/breaker-ledger-audit.zip; harbor trials pending) | 2026-05-14 |
+| 37 | breaker-ledger-audit            | software-engineering            | hard | small | go, bash | 0 | draft (oracle 14/14 pytest; 21 env files vs CodeBuild small>=20; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/breaker-ledger-audit.zip; harbor trials pending) | 2026-05-14 |
 | 38 | train-slot-lattice-audit        | machine-learning                | hard | small | go    | 0 | draft (oracle 17/17 pytest; 23 env files vs small; Go reference binary built at verify time; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/train-slot-lattice-audit.zip; harbor trials pending) | 2026-05-15 |
 | 39 | infer-blend-quota-audit         | machine-learning                | hard | small | go, bash | 0 | submission-ready (oracle 11/11 pytest; 20 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/infer-blend-quota-audit.zip 15880 bytes rubrics excluded; harbor trials pending) | 2026-05-15 |
 | 40 | rate-limit-merge-audit          | system-administration           | hard | small | go, bash | 0 | draft (oracle 9/9 pytest; 23 env files vs small; class+drop-in merge + legacy reverse order + incidents + compromise quarantine + host caps; ruff+leakage+terminus preflight green; harbor trials pending) | 2026-05-15 |
@@ -88,20 +88,23 @@ Track all tasks to maintain diversity requirements across submissions.
 | 71 | ab-arm-allocation-audit        | machine-learning                | hard | small | go, bash | 0 | submission-ready (oracle 19/19 pytest local; overlay merge + metric gates + parent holdout inheritance + tier exposure cap + experiment compromise/freeze/anchor precedence; 25 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/ab-arm-allocation-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
 | 72 | shadow-route-quorum-audit      | machine-learning                | hard | small | go, bash | 0 | resubmit-ready (oracle fix: `solve.sh` exports PATH so `go` resolves under harbor's non-login bash; verified end-to-end in `golang:1.23-bookworm` container with stripped PATH — oracle exit 0, 16/16 pytest; 24 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/shadow-route-quorum-audit.zip 18781 bytes rubrics+platform-submission excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-18 |
 | 73 | key-migration-epoch-audit      | data-processing                 | hard | small | go, bash | 0 | draft (oracle 16/16 pytest local; overlay merge + same-epoch migration chaining + weight_floor drops + node_compromise quarantine; 44 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/key-migration-epoch-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-17 |
+| 74 | pool-window-spill-audit        | data-processing                 | hard | small | go, bash | 0 | submission-ready (oracle 12/12 pytest; `_tmp_audit` dev dir removed; `terminus_zip.py` skips `_tmp_audit` on clean/build; ruff+leak-check+preflight+verify-task green; flat zip `tasks/pool-window-spill-audit.zip` 16293 bytes, 32 entries, rubrics excluded; Docker oracle + harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-19 |
+| 75 | acl-tier-shadow-audit          | security                        | hard | small | python, bash | 0 | draft (oracle 14/14 pytest; tier cascade + shadow merge + tier_strip then quarantine; 25 env files vs small; ruff+leak-check+terminus preflight green; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-19 |
+| 76 | relay-hop-cap-audit            | debugging                       | hard | small | go, bash | 0 | draft (oracle 15/15 pytest local; per-hop epoch caps with carry cap, cumulative cap_add, halt-resume clearing carry, all-or-nothing admits; 24 env files vs small; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/relay-hop-cap-audit.zip rubrics excluded; harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-19 |
 
 ---
 
 ## Diversity Dashboard
 
-### By Category (counted over the 73 logged tasks above)
+### By Category (counted over the 76 logged tasks above)
 | Category | Count | % |
 |----------|-------|---|
 | system-administration | 8 | 11% |
-| software-engineering | 7 | 10% |
-| data-processing | 11 | 15% |
-| security | 8 | 11% |
+| software-engineering | 7 | 9% |
+| data-processing | 12 | 16% |
+| security | 9 | 12% |
 | machine-learning | 8 | 11% |
-| debugging | 7 | 10% |
+| debugging | 8 | 11% |
 | build-and-dependency-management | 6 | 9% |
 | scientific-computing | 7 | 10% |
 | games | 6 | 9% |
@@ -112,19 +115,19 @@ Track all tasks to maintain diversity requirements across submissions.
 ### By Codebase Size
 | Size | Count | % |
 |------|-------|---|
-| small | 73 | 100% |
+| small | 76 | 100% |
 | large | 0 | - |
 
 ### By Difficulty
 | Difficulty | Count | % |
 |------------|-------|---|
 | medium | 0 | - |
-| hard | 73 | 100% |
+| hard | 76 | 100% |
 
 ### By Language
 | Language | Count | Difficulty Requirement |
 |----------|-------|----------------------|
-| python | 18 | must be hard (compliant) |
+| python | 19 | must be hard (compliant) |
 | typescript | 2 | (no language-specific gate; hard preferred) |
 | go     | 35 | (no language-specific gate; hard preferred) |
 | rust   | 4  | (no language-specific gate; hard preferred) |
@@ -319,3 +322,4 @@ Track pass rates for difficulty verification.
 ### cdc-lag-compactor-audit (draft 2026-05-15 — oracle 12/12 pytest in container; 25 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cdc-lag-compactor-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
 ### hedge-call-latency-audit (draft 2026-05-17 — oracle 18/18 pytest in Docker; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/hedge-call-latency-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
 ### wasm-cap-lattice-audit (draft 2026-05-17 — oracle 18/18 pytest local; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/wasm-cap-lattice-audit.zip rubrics excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)
+### stokes-diffusion-audit (submission-ready 2026-05-19 — LLM review pass READY TO USE; oracle 32/32 pytest; ruff+leak-check+terminus preflight+verify-task green; 37 env files vs small; flat zip tasks/stokes-diffusion-audit.zip 30582 bytes rubrics+caches excluded; needs harbor GPT-5.2/Opus 4.6 trials and two-cycle Snorkel submission)

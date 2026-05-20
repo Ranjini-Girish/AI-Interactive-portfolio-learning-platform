@@ -57,6 +57,22 @@
       "day": 106,
       "event_id": "w07",
       "kind": "unknown_future_kind"
+    },
+    {
+      "accepted": true,
+      "day": 101,
+      "event_id": "w08",
+      "kind": "tier_retry_delta",
+      "target_tier": "bronze",
+      "delta": -3
+    },
+    {
+      "accepted": true,
+      "day": 110,
+      "event_id": "w09",
+      "kind": "failure_day_suppress",
+      "days": [109],
+      "subscription_id": "sub-beta"
     }
   ]
 }

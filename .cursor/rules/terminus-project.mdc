@@ -121,17 +121,22 @@ if [ "$PWD" = "/" ]; then
 fi
 
 python -m pytest -o cache_dir=/tmp/pytest_cache \
-  --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
-RC=$?
+    --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
 
-if [ "$RC" -eq 0 ]; then
-  echo 1 > /logs/verifier/reward.txt
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
 else
-  echo 0 > /logs/verifier/reward.txt
+    echo 0 > /logs/verifier/reward.txt
 fi
-
-exit "$RC"
 ```
+
+**Static-check trap on the last five lines.** `run_static_checks.py --version edition_2` does a literal-text match on the tail of `tests/test.sh`. The reward block MUST:
+
+- Use the literal `if [ $? -eq 0 ]` form — **NOT** `RC=$?` + `if [ "$RC" -eq 0 ]`.
+- Indent the `echo` lines with **4 spaces** (not 2 or 1).
+- Be the **last non-blank content** of the file — **NO trailing `exit "$RC"`** after `fi`.
+
+Mismatch fails BUILD with `❌ /root/tasks/tbench-task/tests/test.sh: Must end with the reward section: …`. See `.cursor/rules/tb2-task-rejection-signals.mdc §15` for the full failure table and `tb2-verifier-crash-safety.mdc` "Static-check suffix requirement" for migration. The repo's `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` enforces this gate locally.
 
 Forbidden in `tests/test.sh` (rejected at platform CI and at runtime since the network is blocked):
 
@@ -285,7 +290,7 @@ The platform runs this script during the BUILD phase of CodeBuild. Empirically o
 | `tests/test.sh` uses pytest | grep for `pytest` invocation | Copy `default-template/tests/test.sh` verbatim |
 | `tests/test.sh` `-rA` flag | grep for `-rA` on the pytest line | Same — keep the canonical line |
 | **`ruff check tasks/<name>/`** | Zero ruff errors across the entire task directory | Run `python -m ruff check tasks/<name>/` locally before zipping. Common failures: F401 (unused import), F811 (redefinition), E501 (long line if `line-length` is configured tighter than ruff default of 88). |
-| `tests/test.sh` reward section | Final lines write 0/1 to `/logs/verifier/reward.txt` | Use the EXIT-trap pattern from `default-template/tests/test.sh` |
+| `tests/test.sh` reward section | **Literal-text match** on the last five non-blank lines (the `if [ $? -eq 0 ]; then … fi` block). Mismatch fails BUILD with `❌ Must end with the reward section: …` | Use `$?` directly (not `$RC`), 4-space indented branches, NO trailing `exit "$RC"` after `fi`. See `tb2-task-rejection-signals.mdc §15` |
 | Blacklisted commercial DBs | No `oracle`, `mssql-server`, `mongodb-enterprise`, etc. | Use Postgres / SQLite / Redis / open-source only |
 | `instruction_check` | LLMaJ confirms `instruction.md` is well-formed prose | Keep instruction.md 130-180 words, prose only, no headers/bullets/code |
 

@@ -1,0 +1,10 @@
+{
+  "client_id": "c_x4",
+  "seed_rules": [
+    {
+      "action": "allow",
+      "pattern": "vault/+/read/#"
+    }
+  ],
+  "shadow_parent": null
+}

@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "097bf84a2d0086c0fc85e264fdae51b32767caf4e5683f391142dccaeb6fd4e5",
+    "SPEC.md": "e8be766794523bc2b91770e984cfbd29c2fbc5bf08b64553007a2213807ae4a9",
     "ancillary/ci_guard.json": "eba1ec125cc5942f93adccde1abea1add7ca5796cbc79a8b3851c97c1f1d1758",
     "ancillary/delivery_tag.json": "ebf9c0a86c94267a6595f5e12eee041940f738de86180414c4ed9560672dfada",
     "ancillary/extra_one.json": "bb52a85cf33ee17d6969543cd02d140ed27e8d223072a82083552bc64076af20",
@@ -31,9 +31,9 @@ EXPECTED_INPUT_HASHES = {
     "endpoints/ep-internal.json": "78912f7420f0455c22b053404f1f7e438a999c90d24cf4c7ff7165617f55059a",
     "endpoints/ep-partner.json": "b42f9278915db11cfcf9114dc3753a3c0aa9fb636e20368998d57b494caf77ab",
     "endpoints/ep-public.json": "0db672feb4bc1f3ad48687e80478fcea4a9ae870621e66ba4efb5fe990c8b488",
-    "incident_log.json": "948218f6b8ca8fe5f3c88e7823caaefc09054ff53144f36f705368aa76986640",
+    "incident_log.json": "9aa05cf804415f6e694cfb77fddfb128c49ffb507653424fde3d462cb130bfb0",
     "policy.json": "9fccfca4346ffa1b5184ca60bfd4e371ce19bf6b5bc0707f420d2996481ed436",
-    "pool_state.json": "bc383d68e9727a5442852b4f4b55c1302361c4e1666ecd6ffd26fb181095b1c7",
+    "pool_state.json": "92066811574abf75489fec47a6d2d8961c1a71ae7b600e20d48cda83b4c03dc3",
     "signing_profiles/sp-hooks.json": "2fd4b3793eafce27e3f5d20f65cf226f29f288d082a421c478660dec2fac9cb4",
     "signing_profiles/sp-internal.json": "74c59c8a912a1a5b4cf1a9b99729b9b98dc0bc1a80ce59832826b29f187a7a2d",
     "signing_profiles/sp-partner.json": "3c4b36c595107fdb5fcdd384679a1b313422b65c818a3a68fb5b56e923e63210",
@@ -50,25 +50,25 @@ EXPECTED_INPUT_HASHES = {
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
     "endpoint_touchpoints.json": "267b6cecd5ed6d7de72ef498873712feafc00e4dc65656bba99cabd8ba81e4a9",
-    "incident_journal.json": "1d8e847e20ece0e2ac0b2373ba7791912b88cd6497f7505fd18111f3bd6eec41",
-    "subscription_verdicts.json": "2eb4aaff43233ff4bd4b2e8dc51e821cb373f1ac58bd4804fb439253708b715d",
-    "summary.json": "27b2c71f097dcf7be564cb261e3eab7cde2caa7b884feea7bfbe6f1d1601c29e",
-    "tier_retry_budgets.json": "58dd87a8e7cd827c7ce5fdd8d051b63ba9cf2e4380d782b48c302604b51b58ec",
+    "incident_journal.json": "6b2562172e09bb96e89acb70c5ae61ee3378f5ee9edd70e05dd456f7b170ea6f",
+    "subscription_verdicts.json": "709de620c089e475040f387abd2e3fade01a99fea3831db0fa5d036633bbdcc6",
+    "summary.json": "60fac55c05eec6c434e4f67c224b0e452a4246540269f50df468f3e6e862bff8",
+    "tier_retry_budgets.json": "40f0b30b545c4a86f843ee704cf58e294d3333e176985edd495c90e975d2cd76",
 }
 
 EXPECTED_FIELD_HASHES = {
     "endpoint_touchpoints.endpoints": "f9759ca57555e70040d358f832ba3c8f1084b36bbc2cf9e6282ae808378095b0",
-    "incident_journal.applied_events": "1532b39edc7b7e3802deac2cf5b5e1756300fbdffeed046db8e870e9d04dd277",
-    "subscription_verdicts.subscriptions": "4c8145eb01d3be8eb8715fbf5350cb13ce29b0a4a47bf67a7dc64881d8757948",
-    "summary.applied_incident_events": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+    "incident_journal.applied_events": "5803ddf42f3c16197029e0a7c50dc0ad20b40d5d444e967f2818d6386dc11ac0",
+    "subscription_verdicts.subscriptions": "35b0b6cfcc20fb92d68a5d7936d9d2b4fac2ada958210717fa58b65f86b98f77",
+    "summary.applied_incident_events": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
     "summary.bronze_surge_active": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
     "summary.endpoints_total": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-    "summary.exhausted_subscriptions": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+    "summary.exhausted_subscriptions": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
     "summary.gold_subscriptions_with_throttle_penalty": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.ignored_incident_events": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
     "summary.quarantined_subscriptions": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.subscriptions_total": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
-    "tier_retry_budgets.tiers": "d9e40b90cdcd1c5b3f5d83a80dc940f24a46725d06a89cdac73ce01e61aab479",
+    "tier_retry_budgets.tiers": "18f4a98f20a22dc1f76116ddb23aa954a3511547b56f7538deaa91f29eb301d1",
 }
 
 
@@ -191,13 +191,14 @@ class TestDispositionSemantics:
         raise AssertionError(f"missing subscription row {sid}")
 
     def test_active_row_has_empty_reasons(self, outputs: dict[str, object]) -> None:
-        """`sub-eta` stays active under gold budget with a single chargeable timeout."""
+        """`sub-eta` stays active under gold budget with a single chargeable timeout and zero carryover."""
         r = self._row(outputs, "sub-eta")
         assert r["disposition"] == "active"
         assert r["retries_exhausted"] is False
         assert r["reasons"] == []
         assert r["raw_chargeable"] == 1
         assert r["effective_failures"] == 1
+        assert r["carryover_failures"] == 0
 
     def test_quarantined_endpoint_compromise(self, outputs: dict[str, object]) -> None:
         """`sub-delta` on a compromised endpoint is quarantined with the compromise reason."""
@@ -209,11 +210,12 @@ class TestDispositionSemantics:
     def test_force_exhausted_without_chargeable_failures(
         self, outputs: dict[str, object]
     ) -> None:
-        """`sub-epsilon` is forced exhausted even with zero chargeable deliveries."""
+        """`sub-epsilon` is forced exhausted even with zero chargeable deliveries and zero carryover."""
         r = self._row(outputs, "sub-epsilon")
         assert r["disposition"] == "exhausted"
         assert r["raw_chargeable"] == 0
         assert r["effective_failures"] == 0
+        assert r["carryover_failures"] == 0
         assert r["reasons"] == ["force_exhausted_incident"]
 
     def test_gold_throttle_penalty_pairs_with_budget_exhaustion(
@@ -245,8 +247,9 @@ class TestDispositionSemantics:
         self, outputs: dict[str, object]
     ) -> None:
         """`sub-beta` uses slip grace on day 106 so that failure stays out of the slip-adjusted
-        raw tally, while a `failure_day_suppress` on counted day 109 removes one post-slip
-        failure before budgets are compared."""
+        raw tally, while a `failure_day_suppress` event on counted day 109 removes one post-slip
+        failure before budgets are compared. A second suppress event also targeting (sub-beta, 109)
+        is a silent no-op because the pair is already consumed by the earlier event."""
         r = self._row(outputs, "sub-beta")
         assert r["tier"] == "silver"
         assert r["raw_chargeable"] == 5
@@ -255,6 +258,7 @@ class TestDispositionSemantics:
         assert r["disposition"] == "active"
         assert r["retries_exhausted"] is False
         assert r["reasons"] == []
+        assert r["carryover_failures"] == 0
 
     def test_bronze_ignores_rate_limited_outcomes(self, outputs: dict[str, object]) -> None:
         """`sub-gamma` bronze tier excludes rate_limited days from the raw chargeable count."""
@@ -262,6 +266,89 @@ class TestDispositionSemantics:
         assert r["tier"] == "bronze"
         assert r["raw_chargeable"] == 4
         assert r["effective_failures"] == 6
+
+
+class TestPreviousWindowCarryover:
+    """Verify the previous-window carryover rule and its tier-driven suppression."""
+
+    def _row(self, outputs: dict[str, object], sid: str) -> dict[str, object]:
+        rows = outputs["subscription_verdicts.json"]["subscriptions"]
+        assert isinstance(rows, list)
+        for r in rows:
+            if isinstance(r, dict) and r.get("subscription_id") == sid:
+                return r
+        raise AssertionError(f"missing subscription row {sid}")
+
+    def test_carryover_applied_when_tier_delta_sum_non_negative(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`sub-theta` (silver) inherits a carryover of 3 from the previous window. Silver's net
+        tier_retry_delta is positive so the carryover passes through, lifts effective_failures
+        from 2 to 5, exhausts the silver budget of 5, and adds the `previous_window_carryover`
+        reason next to `retry_budget_exhausted`."""
+        r = self._row(outputs, "sub-theta")
+        assert r["tier"] == "silver"
+        assert r["raw_chargeable"] == 2
+        assert r["carryover_failures"] == 3
+        assert r["effective_failures"] == 5
+        assert r["adjusted_retry_budget"] == 5
+        assert r["disposition"] == "exhausted"
+        assert r["retries_exhausted"] is True
+        assert r["reasons"] == ["previous_window_carryover", "retry_budget_exhausted"]
+
+    def test_carryover_suppressed_when_tier_delta_sum_negative(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`sub-gamma` (bronze) carries 5 in `pool_state.previous_window_carryover`, but bronze's
+        net `tier_retry_delta.delta_sum` is strictly negative for this run, so the carryover is
+        suppressed: `carryover_failures` reports 0 and the row's `effective_failures` is computed
+        as if the carryover were not present. The `previous_window_carryover` reason is therefore
+        absent even though the row is exhausted."""
+        r = self._row(outputs, "sub-gamma")
+        assert r["tier"] == "bronze"
+        assert r["raw_chargeable"] == 4
+        assert r["carryover_failures"] == 0
+        assert r["effective_failures"] == 6
+        assert r["disposition"] == "exhausted"
+        assert "previous_window_carryover" not in r["reasons"]
+
+    def test_carryover_zero_when_missing_or_zero_in_pool_state(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """Subscriptions whose `pool_state.previous_window_carryover` value is 0 (or absent)
+        report `carryover_failures` 0 regardless of tier delta sign."""
+        for sid in (
+            "sub-alpha",
+            "sub-beta",
+            "sub-delta",
+            "sub-epsilon",
+            "sub-eta",
+            "sub-zeta",
+        ):
+            r = self._row(outputs, sid)
+            assert r["carryover_failures"] == 0, f"unexpected carryover for {sid}"
+
+
+class TestRetryBudgetAdjustments:
+    """Verify negative-delta tier_retry_delta events flow through to adjusted_retry_budget."""
+
+    def test_bronze_budget_clamped_at_one(self, outputs: dict[str, object]) -> None:
+        """The bronze tier received a strictly negative `tier_retry_delta.delta_sum`. The
+        `adjusted_retry_budget` for every bronze subscription is `max(1, 6 + delta_sum)`,
+        which equals 3 for the bundled trace, while `tier_retry_budgets.tiers.bronze` exposes
+        the same arithmetic at the tier level."""
+        rows = outputs["subscription_verdicts.json"]["subscriptions"]
+        assert isinstance(rows, list)
+        for r in rows:
+            if r.get("tier") == "bronze":
+                assert r["adjusted_retry_budget"] == 3, (
+                    f"unexpected bronze adjusted_retry_budget for {r['subscription_id']}"
+                )
+        tiers = outputs["tier_retry_budgets.json"]["tiers"]
+        bronze = tiers["bronze"]
+        assert bronze["base_budget"] == 6
+        assert bronze["delta_sum"] == -3
+        assert bronze["adjusted_retry_budget"] == 3
 
 
 class TestSigningResolution:
@@ -304,7 +391,8 @@ class TestIncidentJournal:
         assert keys == sorted(keys)
 
     def test_journal_includes_expected_event_ids(self, outputs: dict[str, object]) -> None:
-        """The bundled log applies the six well-formed incidents the spec names."""
+        """The bundled log applies eight well-formed incidents the spec names, including the
+        duplicate failure_day_suppress that exercises cross-event pair deduplication."""
         evs = outputs["incident_journal.json"]["applied_events"]
         ids = {str(e["event_id"]) for e in evs}
-        assert ids == {"w01", "w02", "w03", "w04", "w05", "w06"}
+        assert ids == {"w01", "w02", "w03", "w04", "w05", "w06", "w08", "w09"}

@@ -13,11 +13,13 @@ import (
 )
 
 type policy struct {
-	IdleTimeoutMs int            `json:"idle_timeout_ms"`
-	MaxLeaseMs    int            `json:"max_lease_ms"`
-	MaxSize       int            `json:"max_size"`
-	MinSize       int            `json:"min_size"`
-	SegmentFloors map[string]int `json:"segment_floors"`
+	CascadeDepthCap int            `json:"cascade_depth_cap"`
+	IdleTimeoutMs   int            `json:"idle_timeout_ms"`
+	MaxLeaseMs      int            `json:"max_lease_ms"`
+	MaxSize         int            `json:"max_size"`
+	MinSize         int            `json:"min_size"`
+	RenewalQuorum   int            `json:"renewal_quorum"`
+	SegmentFloors   map[string]int `json:"segment_floors"`
 }
 
 type poolState struct {
@@ -37,12 +39,13 @@ type rawWindow struct {
 }
 
 type wrapperDoc struct {
-	CheckoutTickMs    any     `json:"checkout_tick_ms"`
-	EnteredIdleTickMs any     `json:"entered_idle_tick_ms"`
-	ParentWrapperID   *string `json:"parent_wrapper_id"`
-	Phase             string  `json:"phase"`
-	Segment           string  `json:"segment"`
-	WrapperID         string  `json:"wrapper_id"`
+	BoundChannels     []string `json:"bound_channels"`
+	CheckoutTickMs    any      `json:"checkout_tick_ms"`
+	EnteredIdleTickMs any      `json:"entered_idle_tick_ms"`
+	ParentWrapperID   *string  `json:"parent_wrapper_id"`
+	Phase             string   `json:"phase"`
+	Segment           string   `json:"segment"`
+	WrapperID         string   `json:"wrapper_id"`
 }
 
 func getenv(k, def string) string {
@@ -82,6 +85,12 @@ func run(dataDir, auditDir string) error {
 	if pol.MaxLeaseMs <= 0 || pol.MaxSize <= 0 || pol.IdleTimeoutMs < 0 || pol.MinSize < 0 {
 		return fmt.Errorf("invalid policy bounds")
 	}
+	if pol.RenewalQuorum <= 0 {
+		return fmt.Errorf("invalid renewal_quorum")
+	}
+	if pol.CascadeDepthCap <= 0 {
+		return fmt.Errorf("invalid cascade_depth_cap")
+	}
 	for seg, floor := range pol.SegmentFloors {
 		if floor < 0 {
 			return fmt.Errorf("invalid segment floor for %s", seg)
@@ -114,6 +123,21 @@ func run(dataDir, auditDir string) error {
 		idIndex[w.WrapperID] = i
 	}
 
+	boundSet := make(map[string]map[string]struct{}, len(wrappers))
+	for _, w := range wrappers {
+		if len(w.BoundChannels) == 0 {
+			return fmt.Errorf("wrapper %s missing bound_channels", w.WrapperID)
+		}
+		s := make(map[string]struct{}, len(w.BoundChannels))
+		for _, c := range w.BoundChannels {
+			if c == "" {
+				return fmt.Errorf("wrapper %s has empty channel id", w.WrapperID)
+			}
+			s[c] = struct{}{}
+		}
+		boundSet[w.WrapperID] = s
+	}
+
 	for _, w := range wrappers {
 		switch w.Phase {
 		case "leased":
@@ -138,10 +162,21 @@ func run(dataDir, auditDir string) error {
 		return err
 	}
 
-	renewals, ignoredRenewalIDs, err := loadAnchors(filepath.Join(dataDir, "anchors"), idIndex, wrappers)
+	maxRenewal, distinctChannels, ignoredRenewalIDs, err := loadAnchors(
+		filepath.Join(dataDir, "anchors"), idIndex, wrappers, boundSet,
+	)
 	if err != nil {
 		return err
 	}
+
+	underQuorumIDs := make([]string, 0)
+	for _, w := range wrappers {
+		ch := distinctChannels[w.WrapperID]
+		if ch >= 1 && ch < pol.RenewalQuorum {
+			underQuorumIDs = append(underQuorumIDs, w.WrapperID)
+		}
+	}
+	sort.Strings(underQuorumIDs)
 
 	T := ps.EvalTickMs
 	verdict := make(map[string]string, len(wrappers))
@@ -158,8 +193,10 @@ func run(dataDir, auditDir string) error {
 		}
 		co, _ := asInt64(w.CheckoutTickMs)
 		eff := co
-		if r, ok := renewals[w.WrapperID]; ok && r > eff {
-			eff = r
+		if distinctChannels[w.WrapperID] >= pol.RenewalQuorum {
+			if r, ok := maxRenewal[w.WrapperID]; ok && r > eff {
+				eff = r
+			}
 		}
 		lease := T - eff
 		if lease > int64(pol.MaxLeaseMs) {
@@ -196,16 +233,17 @@ func run(dataDir, auditDir string) error {
 		depth        int
 	}
 	var cascades []cascadeInfo
+	orphanCount := 0
 	for _, w := range wrappers {
 		if leakSet[w.WrapperID] {
 			continue
 		}
 		anc := w.ParentWrapperID
 		depth := 1
+		var foundLeak string
 		for anc != nil {
 			if leakSet[*anc] {
-				cascades = append(cascades, cascadeInfo{id: w.WrapperID, parentLeakID: *anc, depth: depth})
-				verdict[w.WrapperID] = "reclaimed_cascade"
+				foundLeak = *anc
 				break
 			}
 			next := wrappers[idIndex[*anc]].ParentWrapperID
@@ -215,6 +253,16 @@ func run(dataDir, auditDir string) error {
 			anc = next
 			depth++
 		}
+		if foundLeak == "" {
+			continue
+		}
+		if depth > pol.CascadeDepthCap {
+			verdict[w.WrapperID] = "cascade_orphaned"
+			orphanCount++
+			continue
+		}
+		cascades = append(cascades, cascadeInfo{id: w.WrapperID, parentLeakID: foundLeak, depth: depth})
+		verdict[w.WrapperID] = "reclaimed_cascade"
 	}
 
 	sort.Slice(cascades, func(i, j int) bool {
@@ -243,7 +291,8 @@ func run(dataDir, auditDir string) error {
 	idleLive := 0
 	segmentLive := map[string]int{}
 	for _, w := range wrappers {
-		if verdict[w.WrapperID] == "reclaimed_leak" || verdict[w.WrapperID] == "reclaimed_cascade" {
+		v := verdict[w.WrapperID]
+		if v == "reclaimed_leak" || v == "reclaimed_cascade" {
 			continue
 		}
 		segmentLive[w.Segment]++
@@ -263,7 +312,8 @@ func run(dataDir, auditDir string) error {
 		if w.Phase != "idle" {
 			continue
 		}
-		if v := verdict[w.WrapperID]; v == "reclaimed_leak" || v == "reclaimed_cascade" {
+		v := verdict[w.WrapperID]
+		if v == "reclaimed_leak" || v == "reclaimed_cascade" || v == "cascade_orphaned" {
 			continue
 		}
 		enter, _ := asInt64(w.EnteredIdleTickMs)
@@ -429,6 +479,7 @@ func run(dataDir, auditDir string) error {
 	}
 
 	counters := map[string]any{
+		"cascade_orphans":           orphanCount,
 		"cascade_reclaims":          count("reclaimed_cascade"),
 		"eval_tick_ms":              T,
 		"healthy_idle_remaining":    count("healthy_idle"),
@@ -445,10 +496,11 @@ func run(dataDir, auditDir string) error {
 	}
 
 	summary := map[string]any{
-		"eval_tick_ms":     T,
-		"ignored_renewals": ignoredRenewalIDs,
-		"segments":         segList,
-		"unique_verdicts":  uniqList,
+		"eval_tick_ms":          T,
+		"ignored_renewals":      ignoredRenewalIDs,
+		"segments":              segList,
+		"under_quorum_renewals": underQuorumIDs,
+		"unique_verdicts":       uniqList,
 	}
 
 	out := map[string]any{
@@ -538,23 +590,30 @@ func detectParentCycles(wrappers []wrapperDoc, idx map[string]int) error {
 	return nil
 }
 
-func loadAnchors(dir string, idIndex map[string]int, wrappers []wrapperDoc) (map[string]int64, []string, error) {
-	renewals := map[string]int64{}
+func loadAnchors(
+	dir string,
+	idIndex map[string]int,
+	wrappers []wrapperDoc,
+	boundSet map[string]map[string]struct{},
+) (map[string]int64, map[string]int, []string, error) {
+	maxRenewal := map[string]int64{}
+	channels := map[string]map[string]struct{}{}
 	ignored := map[string]struct{}{}
 	ents, err := os.ReadDir(dir)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return renewals, []string{}, nil
+			return maxRenewal, map[string]int{}, []string{}, nil
 		}
-		return nil, nil, err
+		return nil, nil, nil, err
 	}
 	for _, e := range ents {
 		if e.IsDir() || filepath.Ext(e.Name()) != ".txt" {
 			continue
 		}
+		channel := strings.TrimSuffix(e.Name(), ".txt")
 		f, err := os.Open(filepath.Join(dir, e.Name()))
 		if err != nil {
-			return nil, nil, err
+			return nil, nil, nil, err
 		}
 		sc := bufio.NewScanner(f)
 		for sc.Scan() {
@@ -569,13 +628,13 @@ func loadAnchors(dir string, idIndex map[string]int, wrappers []wrapperDoc) (map
 			parts := strings.Fields(trimmed)
 			if len(parts) != 2 {
 				f.Close()
-				return nil, nil, fmt.Errorf("malformed anchor record %q in %s", line, e.Name())
+				return nil, nil, nil, fmt.Errorf("malformed anchor record %q in %s", line, e.Name())
 			}
 			id := parts[0]
 			tick, err := strconv.ParseInt(parts[1], 10, 64)
 			if err != nil {
 				f.Close()
-				return nil, nil, fmt.Errorf("malformed anchor tick %q in %s", parts[1], e.Name())
+				return nil, nil, nil, fmt.Errorf("malformed anchor tick %q in %s", parts[1], e.Name())
 			}
 			idx, known := idIndex[id]
 			if !known {
@@ -586,21 +645,33 @@ func loadAnchors(dir string, idIndex map[string]int, wrappers []wrapperDoc) (map
 				ignored[id] = struct{}{}
 				continue
 			}
-			if existing, ok := renewals[id]; !ok || tick > existing {
-				renewals[id] = tick
+			if _, inBound := boundSet[id][channel]; !inBound {
+				ignored[id] = struct{}{}
+				continue
 			}
+			if existing, ok := maxRenewal[id]; !ok || tick > existing {
+				maxRenewal[id] = tick
+			}
+			if channels[id] == nil {
+				channels[id] = map[string]struct{}{}
+			}
+			channels[id][channel] = struct{}{}
 		}
 		f.Close()
 		if err := sc.Err(); err != nil {
-			return nil, nil, err
+			return nil, nil, nil, err
 		}
+	}
+	distinct := map[string]int{}
+	for id, set := range channels {
+		distinct[id] = len(set)
 	}
 	out := make([]string, 0, len(ignored))
 	for id := range ignored {
 		out = append(out, id)
 	}
 	sort.Strings(out)
-	return renewals, out, nil
+	return maxRenewal, distinct, out, nil
 }
 
 func asInt64(v any) (int64, bool) {

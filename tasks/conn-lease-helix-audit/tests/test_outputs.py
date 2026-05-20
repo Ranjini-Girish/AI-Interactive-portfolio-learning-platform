@@ -22,62 +22,68 @@ OUTPUT_FILES = (
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "887d8a8a0dd472ac3f227fed16785610b7ff7c9bbe94f2f0d312ed45d984e362",
-    "anchors/anchor_a.txt": "c72883c4ef0c5773d87479ccdc2ea1a9aecf906175463b3b89b9dab8738e8331",
-    "anchors/anchor_b.txt": "4558978b8fb40e9b5da3e0565f94fafc3d000155eaf6400c8a058735230d3c40",
-    "anchors/anchor_c.txt": "4b578769ed30ac1717257e72fc48533b9d1e7b55c11fb5130ffc33eb431d4a18",
-    "anchors/anchor_d.txt": "6b2c9c1ccef270630400e6789de3953b6ddbed094b6233a8a906c1f2437636a7",
+    "SPEC.md": "90a17c18c33569e05cf64f5616b97166dd8fa4240a1c01bde25524bc459e03a4",
+    "anchors/anchor_a.txt": "2711b54830332b6d62df18d35a0cd94b78dc381ee35009128aeb738322a88322",
+    "anchors/anchor_b.txt": "acdbf60cc8a2cc4eecf2dbbf915fed5f387e1f58517cf3b115276c5575a87fc8",
+    "anchors/anchor_c.txt": "058ceb700bfe5ee7f8776908e2dd1f83bc69045f21cc39eb47afa127a5368751",
+    "anchors/anchor_d.txt": "5c87404553971914a30d2415ef70f97e7d241b22c7c5031538ed54e6a5967b24",
     "ancillary/ci_guard.json": "4580708db19b1d964fcd82ec0cf886bd9ea07d9f7719429a884802a76dd12376",
     "ancillary/pack_meta.json": "6506b77e7fe396ff0ac815da5d8d715e4f284abfeab8dcb2ad78057687cdb61d",
     "freeze_windows.json": "350a5fbcc1e932eed8e71e3ff3acacf4dea3518d181c4cc4749476f7342706ac",
     "ledger/channel_tag.json": "d2579cb9aec47c6c952eb80ff89244ec078cac2297fd19f40d102165f0624ebb",
     "ledger/ci_guard.json": "f5ef9b929a5cd47393aa715612c7f88a4c634a2ec9f1c1ef30aecae9ace987f4",
-    "policy.json": "1acb2d09160e5c357d12c33f3e1423f24ac37962dddf19213ee4d1ac11cf1f37",
+    "policy.json": "b90ea61d74af8878e0618993c3dbe778162eaede513fa13210cf4a0513bddd40",
     "pool_state.json": "f1e210eb78671cb2824139c28678617be0401170a879aa01848f43c5881253bc",
-    "wrappers/w01.json": "2ef447bac846c972d382163b97bad99a7da1057e679f8bb19a5003b155d6eb5e",
-    "wrappers/w02.json": "8f3c042090bfa7990fece2755ce06f01798d8eaa35ebe19f16f8078a49ed1bdc",
-    "wrappers/w03.json": "f0a963357e427cce580febd87b855cd6fa312bce5bd79a575a188856914972c2",
-    "wrappers/w04.json": "45cfd5c00a5012f10ac642cb0d87f624efcbad7a2323eb17cbbc5f3b43f7d536",
-    "wrappers/w05.json": "c26f2e63758eaf679237656b9ff8c1c33fb1e9358f658ad2c0a31af9108e3b23",
-    "wrappers/w06.json": "f292dbe71001cd538fb5829bceeb40d005a2e967530608f14a8285e1d27fb0ae",
-    "wrappers/w07.json": "c53ed18e09cf9a0de3c6517e24728380f30d9dd96d2c1c32ed6e3b20966a3810",
-    "wrappers/w08.json": "269e39a2309caf6c82605290c217b57360f51894e2a414bafee89a432144ac09",
-    "wrappers/w09.json": "2cf7332f7b8a67dc100b5b3574d9b9c682897b4e40c7c9d19b539cc3b35edfd5",
-    "wrappers/w10.json": "57e00d3a44ef7d04c51e1d478e72798bed642180134e6b78c1e7a35f324d6e1d",
-    "wrappers/w11.json": "12961f1fca8689a5c9c67298e2a5256199dc5e22a502a680ebd6106cfe2a3ec3",
-    "wrappers/w12.json": "d33510754e18b912770e82ce75d7380474c9d5ed972e66b66e3bce434fad23cd",
-    "wrappers/w13.json": "4d130f1413a1c750b79647fb29b1cf438932924507a22d52bc4d116b1c1c86fb",
-    "wrappers/w14.json": "5115f92de65e6d09bc7a3e8c662db0c31895d957aa32a610f14f81313330cb5c",
-    "wrappers/w15.json": "f56a944a93605b13cae059d5ac4eefab4cfe319a1a67599c7833967924df7d81",
-    "wrappers/w16.json": "b094094e7dcd0ef11cf3a8de189bfa993a09b5b888ad70f02d769c422691f299",
-    "wrappers/w17.json": "9c6e561cf90bb902b8fbc6adbf2c2d086c8388430d3b4b2a0b66ffd1f66738af",
-    "wrappers/w18.json": "ff12f9140ac70562ede27b0f5723735951ebac573a86999b1067a206e59467fa",
-    "wrappers/w19.json": "b701576934179be4e327513a34dbc19d8bb796e02839cc8cd23f8c0fe0440358",
-    "wrappers/w20.json": "2634c3d0b970a781d406b075d9f140245845939cf7db79d60e88cece4f910a8e",
-    "wrappers/w21.json": "f2f504f45d4e4812f1515073354d76c3535546d1d7ba0cbc96a5eeacbc4c5a58",
-    "wrappers/w22.json": "00aa96d4d8f73be41f1547da350bb2ab733f886aa5765bfb8c832ed18452cdbe",
+    "wrappers/w01.json": "f2c2e83bb75db15b82172a330cee923940c0e2d675852a4673c6664889be6418",
+    "wrappers/w02.json": "a5cfaade9bfd488113c80b29608f2bcb4d443061e5a1df31316bb1126448df7e",
+    "wrappers/w03.json": "def46d09b55053b1e3d4b8f73fbcff68909d06b6cf9bbfe35e2c4d321d0c44fd",
+    "wrappers/w04.json": "c8a6c26029f40b2725fdda1daecb4d430c7160f6cf7b63e93da71719f3d04bc9",
+    "wrappers/w05.json": "07a9929b4cef2efac81e92040fa608fabc0962c8ee3377ee6552ac41b95efdc4",
+    "wrappers/w06.json": "5701f4b5b4086ef5f4c4075b7c145fec2aee507a4025b90f99b63150104df196",
+    "wrappers/w07.json": "e0658ade6cc39a71d4774cdba9fbd74fef9e32a9b257d17857312a54c5490fc9",
+    "wrappers/w08.json": "07e75b40448943ddfc2d71b6b4b9a362ade50f50562f1593a2705a52b34447f1",
+    "wrappers/w09.json": "552a6b135b51fb69afe17f5c410870b7a2e48a317fd38875e1d32ffbc19ad98b",
+    "wrappers/w10.json": "2a31689109da8b986cbe651b0d2aeac8af312fc8563514467becf6e9e05ba9e6",
+    "wrappers/w11.json": "b4d109e6e09cbf14dfb427c11a263f3fc5cba53c1cb1e9f671d7b28bd0bf8c2b",
+    "wrappers/w12.json": "ecbab0f1bf64f6740e1d66ef25e018112314977a52c6aff937718496c034a2d4",
+    "wrappers/w13.json": "f2a7e2794c649041301eaadd086ddaad725e7e3955150e4e5801a55ed10418e2",
+    "wrappers/w14.json": "a7c820b686ff84f99e8db806d01d60885a1e196fd31f141d1e0b6e17d826eb44",
+    "wrappers/w15.json": "0ae9e86712123d191c91f02c8a8fa693d8253b7e817abb6753e131f01e597a0c",
+    "wrappers/w16.json": "3f8b2c084d05352be6c6c975fe8e09361955dc1b5e4099ff417480adcd9f2446",
+    "wrappers/w17.json": "ea89381b8ff48b386ad22404de24bc4440e643d2ee2fab659706e7d6afd136a0",
+    "wrappers/w18.json": "4e1ecb0c151ba10ca5fe8180b5be491c4208b2b678c4b8420edbd23b8351320a",
+    "wrappers/w19.json": "7b0d533e98e2b680e4c179464e1e5b0a475b25088043e7ebdbb835d34da61402",
+    "wrappers/w20.json": "08b840999b0b10fc2dcf346649339828c4c2907fb03c62b5a255eb2a942708ca",
+    "wrappers/w21.json": "591e4827cd76becad0594a583062de404c4e8754a02659ff56bb20a686611f67",
+    "wrappers/w22.json": "371a89dad527f4d592fc235002e4108772a99c10d1720d7a227f7764b474afc9",
+    "wrappers/w23.json": "d17f6b672ccc98fde9bd6cb3984474a1bed7408617ecc8f1611b567382202290",
+    "wrappers/w24.json": "7b6d2fb2eeb144495e5160712cfb8f68deba3f8790302120adaef56387dad9d8",
+    "wrappers/w25.json": "d2e8333592d0873a78bca1684c7df07dd668492a4dfde59281ccd7b788e20257",
 }
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
     "freeze_echo.json": "09b386abf0facc917d08ce8ae31cda70aab9f50956f3afbe2f0fd865cd45b899",
-    "pool_counters.json": "a02b2c9f7831585c5c2b5ef1d1bec3808bb26ca284c62386f15b5ef9bce47609",
-    "reclaim_events.json": "29f74793d82382d9163e9ecf229d6819d5268a76c2d10354fc4496fae916e891",
-    "summary.json": "1591bbb07691e7bd4f441fb40a2c958d694d7f7a7cda0372794d24651f8ac591",
-    "wrapper_verdicts.json": "77c0b61e301b6fba81df9aa4069d6250203147b8d1dc3efe03c00d10c50b27e0",
+    "pool_counters.json": "61c43231d60b28324352638111b790b397b3a9bdce05df055b1b915bf9c0feb5",
+    "reclaim_events.json": "fab653218ac0e0725b68354839fb9b712f9a69b727696caee8a0069b28fff347",
+    "summary.json": "ce3eb1c948aaa5751c159a2cf292509917f9594ffe42a183ee0315ee4c79639b",
+    "wrapper_verdicts.json": "e182465195c535f386e6b3b15c1d34b191680c5a846baaf9218078485a40d95c",
 }
 
 
 EXPECTED_FIELD_HASHES = {
+    "pool_counters.cascade_orphans": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "pool_counters.cascade_reclaims": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
     "pool_counters.idle_evictions": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
     "pool_counters.idle_retained_cap_global": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "pool_counters.idle_retained_cap_segment": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
-    "reclaim_events.events": "d9df5aa9e9b814e61fca17d9332e36718a0c1fe4b8be77231dca4c0d10ade9ef",
-    "summary.ignored_renewals": "e956fc48edc46e54908e36fd5cce6e1d9f2c85d0aaab138d974ed32cea4d0acc",
+    "pool_counters.leak_reclaims": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+    "reclaim_events.events": "d5b542a5971194ea1babb2d075ed4c02d0126b1295be755d99f862e792c212f6",
+    "summary.ignored_renewals": "5fefa4fe71ed107dea27f8d562cce90a6f572d8e5d1a223037f303d6357a0d56",
     "summary.segments": "a3e185260009ab5be7bb16f3bed296075f27322fb87d99209710a28ef3e8d99e",
-    "summary.unique_verdicts": "373fc79963aa8f7182985d7e826f8745c2df15cc861097ba387a1597e729faa7",
-    "wrapper_verdicts.wrappers": "c455982a94e7c33a20a6ba00ee6f0f10f41b0fa0ecfab52fb1c06d9c01f3b943",
+    "summary.under_quorum_renewals": "99cbeb3d799785b13d37ff64772c3c88bf83ec96cb2c3c853912c6f8a4262c23",
+    "summary.unique_verdicts": "bd84ae09ffb5a08816fef9102eb12442757f6afef349e322e0edb9cf8259dd2d",
+    "wrapper_verdicts.wrappers": "47bf63be0057d11b23d7d58d5173aea984f721f09b3fc36b698256fa2792827d",
 }
 
 
@@ -137,7 +143,7 @@ class TestReportStructure:
 
         sm = outputs["summary.json"]
         assert isinstance(sm, dict)
-        for key in ("ignored_renewals", "segments", "unique_verdicts"):
+        for key in ("ignored_renewals", "segments", "under_quorum_renewals", "unique_verdicts"):
             field = f"summary.{key}"
             assert (
                 _sha256_bytes(_canonical(sm[key]).encode("utf-8"))
@@ -147,10 +153,12 @@ class TestReportStructure:
         pc = outputs["pool_counters.json"]
         assert isinstance(pc, dict)
         for key in (
+            "cascade_orphans",
             "cascade_reclaims",
             "idle_evictions",
             "idle_retained_cap_global",
             "idle_retained_cap_segment",
+            "leak_reclaims",
         ):
             field = f"pool_counters.{key}"
             assert (
@@ -213,7 +221,6 @@ class TestReclaimOrdering:
         for pid in cascade_groups:
             assert pid not in seen, f"cascade rows for {pid} are not contiguous"
             seen.add(pid)
-        # Each contiguous group must appear in leak-rank order.
         rank = {pid: i for i, pid in enumerate(leak_order)}
         assert [rank[g] for g in cascade_groups] == sorted(rank[g] for g in cascade_groups)
 
@@ -240,9 +247,17 @@ class TestReclaimOrdering:
         idle_ids = [str(e["wrapper_id"]) for e in evs if str(e["kind"]) == "idle_reclaim"]
         assert idle_ids == ["w10", "w03", "w22"]
 
+    def test_orphan_excluded_from_events(self, outputs: dict[str, object]) -> None:
+        """Wrappers classified as `cascade_orphaned` must NOT appear in the reclaim event journal."""
+        evs = outputs["reclaim_events.json"]["events"]
+        rows = outputs["wrapper_verdicts.json"]["wrappers"]
+        orphan_ids = {str(r["wrapper_id"]) for r in rows if r["verdict"] == "cascade_orphaned"}
+        event_ids = {str(e["wrapper_id"]) for e in evs}
+        assert orphan_ids.isdisjoint(event_ids)
+
 
 class TestRenewalSemantics:
-    """Anchor renewal pass folds into the leak computation."""
+    """Anchor renewal pass folds into the leak computation with channel and quorum rules."""
 
     def _row(self, outputs: dict[str, object], wid: str) -> dict[str, object]:
         rows = outputs["wrapper_verdicts.json"]["wrappers"]
@@ -252,9 +267,18 @@ class TestRenewalSemantics:
                 return r
         raise AssertionError(f"missing wrapper row {wid}")
 
-    def test_renewal_rescues_apparent_leak(self, outputs: dict[str, object]) -> None:
-        """`w01` would exceed the lease cap by raw checkout but is rescued by the latest renewal."""
+    def test_renewal_rescues_apparent_leak_when_quorum_met(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w01` would exceed the lease cap by raw checkout but is rescued by renewals across the quorate channel set."""
         r = self._row(outputs, "w01")
+        assert r["verdict"] == "healthy_leased"
+
+    def test_multi_channel_rescue_marks_healthy(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w23` would leak on raw checkout; renewals from three permitted channels rescue it."""
+        r = self._row(outputs, "w23")
         assert r["verdict"] == "healthy_leased"
 
     def test_renewal_against_idle_wrapper_is_ignored(
@@ -280,8 +304,71 @@ class TestRenewalSemantics:
         assert list(ignored) == sorted(set(ignored))
 
 
+class TestChannelBinding:
+    """Off-channel renewal records are ignored and surface in summary.ignored_renewals."""
+
+    def _row(self, outputs: dict[str, object], wid: str) -> dict[str, object]:
+        rows = outputs["wrapper_verdicts.json"]["wrappers"]
+        assert isinstance(rows, list)
+        for r in rows:
+            if isinstance(r, dict) and r.get("wrapper_id") == wid:
+                return r
+        raise AssertionError(f"missing wrapper row {wid}")
+
+    def test_off_channel_renewal_added_to_ignored(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w24` and `w17` each receive at least one renewal from a channel not in their `bound_channels`; both wrapper ids must surface in ignored_renewals."""
+        ignored = outputs["summary.json"]["ignored_renewals"]
+        assert "w17" in ignored
+        assert "w24" in ignored
+
+
+class TestQuorumSemantics:
+    """Renewal rescue is gated on distinct-channel quorum."""
+
+    def _row(self, outputs: dict[str, object], wid: str) -> dict[str, object]:
+        rows = outputs["wrapper_verdicts.json"]["wrappers"]
+        assert isinstance(rows, list)
+        for r in rows:
+            if isinstance(r, dict) and r.get("wrapper_id") == wid:
+                return r
+        raise AssertionError(f"missing wrapper row {wid}")
+
+    def test_under_quorum_renewals_surfaced(self, outputs: dict[str, object]) -> None:
+        """Wrappers with applicable renewals from fewer distinct channels than the quorum must surface in summary.under_quorum_renewals."""
+        sm = outputs["summary.json"]
+        uqr = sm["under_quorum_renewals"]
+        assert "w17" in uqr
+        assert "w24" in uqr
+        assert list(uqr) == sorted(set(uqr))
+
+    def test_under_quorum_falls_back_to_raw_checkout(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w24` has applicable renewals from only one channel; the quorum failure makes it fall back to its raw checkout, exceeding the lease cap and emitting `reclaimed_leak`."""
+        r = self._row(outputs, "w24")
+        assert r["verdict"] == "reclaimed_leak"
+
+    def test_leak_event_for_under_quorum_records_raw_lease(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """The leak event for `w24` reports the effective lease against raw checkout (eval_tick 5000000 minus checkout 4400000 = 600000)."""
+        evs = outputs["reclaim_events.json"]["events"]
+        w24 = next(e for e in evs if e.get("wrapper_id") == "w24")
+        assert int(w24["lease_ms"]) == 600000
+
+    def test_wrapper_with_no_applicable_renewals_not_under_quorum(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w11` and `w12` have zero applicable renewals; the spec excludes such wrappers from under_quorum_renewals."""
+        uqr = outputs["summary.json"]["under_quorum_renewals"]
+        assert "w11" not in uqr
+        assert "w12" not in uqr
+
+
 class TestCascadeSemantics:
-    """Cascade reclaim propagates through parent_wrapper_id chains."""
+    """Cascade reclaim propagates through parent_wrapper_id chains within the depth cap."""
 
     def _row(self, outputs: dict[str, object], wid: str) -> dict[str, object]:
         rows = outputs["wrapper_verdicts.json"]["wrappers"]
@@ -301,13 +388,15 @@ class TestCascadeSemantics:
         r = self._row(outputs, "w14")
         assert r["verdict"] == "reclaimed_cascade"
 
-    def test_transitive_grandchild_is_cascaded(self, outputs: dict[str, object]) -> None:
-        """`w15` reaches a leak only via its grandparent and must still be reclaimed_cascade."""
+    def test_transitive_grandchild_at_cap_is_cascaded(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w15` reaches a leak via two hops; that equals the cap and must still be reclaimed_cascade."""
         r = self._row(outputs, "w15")
         assert r["verdict"] == "reclaimed_cascade"
 
     def test_cascade_depth_recorded(self, outputs: dict[str, object]) -> None:
-        """The transitive grandchild `w15` is recorded at depth 2; direct children at depth 1."""
+        """The grandchild `w15` is recorded at depth 2; direct children at depth 1."""
         evs = outputs["reclaim_events.json"]["events"]
         by_id = {str(e["wrapper_id"]): e for e in evs if str(e["kind"]) == "cascade_reclaim"}
         assert int(by_id["w13"]["depth"]) == 1
@@ -331,6 +420,49 @@ class TestCascadeSemantics:
         """`w21` has a parent (`w02`) that is healthy; the chain hits no leak so no cascade applies."""
         r = self._row(outputs, "w21")
         assert r["verdict"] == "healthy_idle"
+
+
+class TestCascadeOrphan:
+    """Cascade descendants beyond the depth cap receive `cascade_orphaned` and stay live."""
+
+    def _row(self, outputs: dict[str, object], wid: str) -> dict[str, object]:
+        rows = outputs["wrapper_verdicts.json"]["wrappers"]
+        assert isinstance(rows, list)
+        for r in rows:
+            if isinstance(r, dict) and r.get("wrapper_id") == wid:
+                return r
+        raise AssertionError(f"missing wrapper row {wid}")
+
+    def test_descendant_beyond_cap_is_orphaned(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`w25` reaches leak `w11` only at a hop distance above the cap and must be `cascade_orphaned`."""
+        r = self._row(outputs, "w25")
+        assert r["verdict"] == "cascade_orphaned"
+
+    def test_orphan_appears_in_unique_verdicts(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`cascade_orphaned` must surface in summary.unique_verdicts when any wrapper carries it."""
+        uv = outputs["summary.json"]["unique_verdicts"]
+        assert "cascade_orphaned" in uv
+
+    def test_orphan_counter_matches_verdict_count(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """`pool_counters.cascade_orphans` must equal the number of `cascade_orphaned` verdicts."""
+        rows = outputs["wrapper_verdicts.json"]["wrappers"]
+        pc = outputs["pool_counters.json"]
+        n = sum(1 for r in rows if r["verdict"] == "cascade_orphaned")
+        assert int(pc["cascade_orphans"]) == n
+        assert n >= 1
+
+    def test_orphan_is_live_for_segment_floor(
+        self, outputs: dict[str, object]
+    ) -> None:
+        """Orphans contribute to segment_live: with `w25` counted in alpha, `w18` is retained because evicting it would push alpha below its floor."""
+        r = self._row(outputs, "w18")
+        assert r["verdict"] == "idle_retained_cap"
 
 
 class TestEvictionGuards:
@@ -395,6 +527,7 @@ class TestPoolCounters:
 
         assert int(pc["leak_reclaims"]) == cnt("reclaimed_leak")
         assert int(pc["cascade_reclaims"]) == cnt("reclaimed_cascade")
+        assert int(pc["cascade_orphans"]) == cnt("cascade_orphaned")
         assert int(pc["idle_evictions"]) == cnt("reclaimed_idle")
         assert int(pc["idle_preserved_freeze"]) == cnt("idle_preserved_freeze")
         assert int(pc["idle_retained_cap"]) == cnt("idle_retained_cap")

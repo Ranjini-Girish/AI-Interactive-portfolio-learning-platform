@@ -1,0 +1,10 @@
+{
+  "client_id": "c_root",
+  "seed_rules": [
+    {
+      "action": "allow",
+      "pattern": "site/#"
+    }
+  ],
+  "shadow_parent": null
+}

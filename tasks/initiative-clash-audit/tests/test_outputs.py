@@ -1,4 +1,4 @@
-"""Verifier suite for initiative-clash-audit."""
+"""Verifier suite for initiative-clash-audit (medium)."""
 
 from __future__ import annotations
 
@@ -16,8 +16,8 @@ OUTPUT_FILES = ("turn_order.json", "clashes.json", "summary.json")
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "78e1d784881116ed3dccfd3306c187169ecbd8a9c840f425b876501e1732650c",
-    "incidents.json": "cb203105447ec9bff582d945ae0790a1475f2c611c62351bfbe4cc69a63790a6",
+    "SPEC.md": "dcc0871f2eabe9e07958752a6617c432571b6919046190004a4bd6c404a06ce7",
+    "incidents.json": "e24c0b437d34e85359a3877f2a9b800cbfd2638ae080b990221cfae4b0380825",
     "loadouts/u01.json": "b0323fdba549839dc4e5ebf7b42b27fad1e0b79595d7f7cfa2c1c6af1db18207",
     "loadouts/u02.json": "2029fb94c546b5a9ddc5937c2557b91b89fe743d2db100f3f91bc9f0e24034f3",
     "loadouts/u03.json": "800013d3615c68c1741dc66e9488aae1b229950d37fb7b8c6b3a2d751e4208eb",
@@ -29,7 +29,7 @@ EXPECTED_INPUT_HASHES = {
     "loadouts/u09.json": "b0323fdba549839dc4e5ebf7b42b27fad1e0b79595d7f7cfa2c1c6af1db18207",
     "loadouts/u10.json": "4ce9436087de02290b4b2989b203c9846596254feef0992be02f84ddcd95c6aa",
     "overclock.json": "a031f0843665e6730c1ed644190fbc0d82f4a7c6453f1bce99d8ed82d8492756",
-    "policy.json": "2e10a178b1e75572901832f3ca4ef4c64976a2c4bd1121c07141e0912de6bcf7",
+    "policy.json": "7110fdf48873b94e0d4fd1d229533f706d0ce2c54e1779d72e38bdb55e45739e",
     "units/u01.json": "b65c7067c866263a0a5fd3ca7547181f6fe883b2d4e403f0e4b8cf10bf6400a4",
     "units/u02.json": "1d6d28484be173cfb2e9bd4b155419957dac98589413f2285f335a8fcfa907e5",
     "units/u03.json": "38174e9f593dade6ed9e8fffe3b5b9c34139d9828b741203b9bec5b41e04edfb",
@@ -44,17 +44,17 @@ EXPECTED_INPUT_HASHES = {
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "turn_order.json": "be4970ca1e931319a01f171ae179ae700c09fdbf8d5b7a5561ea7d44369f87e2",
+    "turn_order.json": "92840942007564073b6574f0ab73482ad6b5066ed2df3ece6cb56797d879dd13",
     "clashes.json": "b120c28477c5d71babb7c71fea14ea50966fe51c3fa38878643fd519b1234c30",
-    "summary.json": "c04839a9c2f454251bfdaf49a4e24ec355e8d6682911dfc05209ade76e6fc229",
+    "summary.json": "7aaf2ce243b47d61d2dad02b36e741d4975fdf6488cfaafb94af9df39aecbeeb",
 }
 
 
 EXPECTED_FIELD_HASHES = {
     "clashes.clashes": "dd672ef87e8eb3d71dda516f46b4a7c62583d4599fc1d12ccb0d08e3a3e11918",
-    "summary.band_counts": "e442ad2b9c27b358bda6c2a3fdd480405aea3207fe978f1a166693efc1bbc332",
+    "summary.band_counts": "c17bcb6bc7464b079c4ae9453a4f9102fbd16e50cebc381e7b1bbd68bfad6361",
     "summary.status_counts": "2ecc05b32dc24bcf2c8a4bb810aaaec2b059b524cf99ceca6bc841c15a4c102a",
-    "turn_order.ordered_unit_ids": "2cad33cce2be4e568c5a1e9572126fc32c213a9fad952f9e3952305c502dc385",
+    "turn_order.ordered_unit_ids": "1e2fd66931792d0a261dc6a1926560dc0a6883b38702022964d6a367f9951b88",
     "turn_order.per_unit.u03": "d87039150866220e643d53460545e64760892f2c19771e4c703da073feb2242f",
 }
 
@@ -217,6 +217,41 @@ class TestTurnOrdering:
         order = outputs["turn_order.json"]["ordered_unit_ids"]
         tail = [order.index("u09"), order.index("u08"), order.index("u02")]
         assert tail == sorted(tail)
+
+
+class TestBraceStackedThrottleSuppress:
+    """Cover brace lifts, stacked throttle markers, and stim suppressors."""
+
+    def test_u01_brace_applies_before_blocked_stim(self, outputs: dict[str, object]) -> None:
+        """Brace must lift the base stack while suppress cancels the same-day stim bonus."""
+        row = outputs["turn_order.json"]["per_unit"]["u01"]
+        assert isinstance(row, dict)
+        assert row["priority_score"] == 102
+
+    def test_u10_stim_suppressed_keeps_base_score(self, outputs: dict[str, object]) -> None:
+        """A stim row paired with suppress must not add stim_delta to u10."""
+        row = outputs["turn_order.json"]["per_unit"]["u10"]
+        assert isinstance(row, dict)
+        assert row["priority_score"] == 108
+
+    def test_u04_double_throttle_moves_two_steps(self, outputs: dict[str, object]) -> None:
+        """Two same-day thermal_throttle hits stack before the roster band ceiling."""
+        row = outputs["turn_order.json"]["per_unit"]["u04"]
+        assert isinstance(row, dict)
+        assert row["throttled"] is True
+        assert row["intrinsic_band"] == 1
+        assert row["final_band"] == 3
+
+
+class TestEchoPriorityCoupling:
+    """Cover optional echo coupling against jammed allies."""
+
+    def test_echo_sink_requires_priority_window(self, outputs: dict[str, object]) -> None:
+        """With echo_max_abs_priority_delta set, u03 still couples to the jammed alpha ally."""
+        row = outputs["turn_order.json"]["per_unit"]["u03"]
+        assert isinstance(row, dict)
+        assert row["echo_sunk"] is True
+        assert outputs["summary.json"]["echo_sink_count"] >= 1
 
 
 class TestOverclockSemantics:

@@ -1,0 +1,10 @@
+{
+  "client_id": "c_go",
+  "seed_rules": [
+    {
+      "action": "allow",
+      "pattern": "site/ny/rack1/+"
+    }
+  ],
+  "shadow_parent": "c_sl"
+}

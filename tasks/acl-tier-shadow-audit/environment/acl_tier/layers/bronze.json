@@ -1,0 +1,25 @@
+{
+  "additions": [
+    {
+      "action": "deny",
+      "client_id": "c_root",
+      "pattern": "site/ny/#"
+    },
+    {
+      "action": "allow",
+      "client_id": "c_br",
+      "pattern": "site/ny/hall/+"
+    },
+    {
+      "action": "deny",
+      "client_id": "c_x2",
+      "pattern": "edge/#"
+    },
+    {
+      "action": "deny",
+      "client_id": "c_x4",
+      "pattern": "vault/a/read/#"
+    }
+  ],
+  "tier": "bronze"
+}

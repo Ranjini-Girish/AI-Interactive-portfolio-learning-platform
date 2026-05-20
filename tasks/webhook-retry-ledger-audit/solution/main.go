@@ -10,7 +10,8 @@ import (
 )
 
 type poolState struct {
-	CurrentDay int `json:"current_day"`
+	CurrentDay              int            `json:"current_day"`
+	PreviousWindowCarryover map[string]int `json:"previous_window_carryover"`
 }
 
 type policy struct {
@@ -206,6 +207,7 @@ func run(dataDir, auditDir string) error {
 		}
 	}
 
+	consumedSuppressPairs := map[string]bool{}
 	for _, sub := range subs {
 		ep := endpoints[sub.EndpointID]
 		grace := pol.GraceDaysByTier[sub.Tier]
@@ -225,7 +227,15 @@ func run(dataDir, auditDir string) error {
 				}
 				key := strconv.Itoa(d)
 				outcome := sub.OutcomesByDay[key]
-				if isChargeable(sub.Tier, outcome) && !slipExcuses(sub, d, grace) && rf > 0 {
+				if !isChargeable(sub.Tier, outcome) || slipExcuses(sub, d, grace) {
+					continue
+				}
+				pair := sub.SubscriptionID + "|" + key
+				if consumedSuppressPairs[pair] {
+					continue
+				}
+				consumedSuppressPairs[pair] = true
+				if rf > 0 {
 					rf--
 				}
 			}
@@ -241,6 +251,21 @@ func run(dataDir, auditDir string) error {
 		if sub.Tier == "gold" && ep.RateLimited && goldThrottle > 0 {
 			eff += goldThrottle
 		}
+
+		rawCarryover := 0
+		if ps.PreviousWindowCarryover != nil {
+			if v, ok := ps.PreviousWindowCarryover[sub.SubscriptionID]; ok {
+				rawCarryover = v
+			}
+		}
+		if rawCarryover < 0 {
+			rawCarryover = 0
+		}
+		carryover := rawCarryover
+		if deltaByTier[sub.Tier] < 0 {
+			carryover = 0
+		}
+		eff += carryover
 
 		baseBudget := pol.RetriesByTier[sub.Tier]
 		adjBudget := baseBudget + deltaByTier[sub.Tier]
@@ -281,6 +306,9 @@ func run(dataDir, auditDir string) error {
 		if sub.Tier == "gold" && ep.RateLimited && goldThrottle > 0 {
 			reasons = append(reasons, "gold_endpoint_throttle_penalty")
 		}
+		if carryover > 0 && numericExhaust {
+			reasons = append(reasons, "previous_window_carryover")
+		}
 		reasons = uniqSort(reasons)
 
 		if disposition == "active" {
@@ -298,6 +326,7 @@ func run(dataDir, auditDir string) error {
 
 		subOut = append(subOut, map[string]any{
 			"adjusted_retry_budget":    adjBudget,
+			"carryover_failures":       carryover,
 			"disposition":              disposition,
 			"effective_failures":       eff,
 			"effective_signing_key_id": signKey,

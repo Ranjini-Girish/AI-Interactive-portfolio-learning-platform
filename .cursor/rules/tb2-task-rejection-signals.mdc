@@ -232,16 +232,19 @@ fi
 
 python -m pytest -o cache_dir=/tmp/pytest_cache \
   --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
-RC=$?
 
-if [ "$RC" -eq 0 ]; then
-  echo 1 > /logs/verifier/reward.txt
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
 else
-  echo 0 > /logs/verifier/reward.txt
+    echo 0 > /logs/verifier/reward.txt
 fi
-
-exit "$RC"
 ```
+
+Three non-obvious requirements baked into the last five lines (see §15 below for the full rejection signal):
+
+1. The exit-code check is the literal `$?`, NOT a `$RC`/`$rc` variable.
+2. The `fi` is the LAST non-blank line of the file — no trailing `exit "$RC"`.
+3. 4-space indentation inside the if/else branches.
 
 The reciprocal Dockerfile must pre-install pytest, pytest-json-ctrf, plus any task-specific Python or system packages the tests import. See `terminus-project.mdc` "Verifier shape under `allow_internet = false`" for the canonical Dockerfile and the full forbidden-call list. The full crash-safety reasoning (eager writes, the WORKDIR-guard gap, optional `trap ensure_files EXIT` defence) is in `tb2-verifier-crash-safety.mdc`.
 
@@ -381,6 +384,60 @@ Select-String -Path tests/test.sh -Pattern '(apt-get (update|install))|(^\s*pip 
 
 The Doc-06 crash-safety pattern (eager `echo 0 > reward.txt`, optional `ensure_files` trap) survives the migration — it just no longer needs to wrap an apt+curl+uv bootstrap. The canonical minimal post-migration `test.sh` is in §11 and in `default-template/tests/test.sh`.
 
+## 15. `tests/test.sh` MUST end with the byte-exact reward-section suffix
+
+`run_static_checks.py --version edition_2` does a **literal-text match** on the tail of `tests/test.sh`. A mismatch is a BUILD-phase rejection with the message:
+
+```
+❌ /root/tasks/tbench-task/tests/test.sh: Must end with the reward section:
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
+else
+    echo 0 > /logs/verifier/reward.txt
+fi
+```
+
+The last five non-blank lines of `tests/test.sh` MUST be EXACTLY:
+
+```bash
+if [ $? -eq 0 ]; then
+    echo 1 > /logs/verifier/reward.txt
+else
+    echo 0 > /logs/verifier/reward.txt
+fi
+```
+
+Three rejection-causing variants — all of which shipped in real submissions before this rule:
+
+| Broken shape | Why it fails | Fix |
+|---|---|---|
+| `RC=$?` capture + `if [ "$RC" -eq 0 ]; then` | Static checker greps for the literal `$?`, not bash-equivalent semantics | Drop the `RC=$?` line; put `$?` directly in the `if` |
+| 2-space indentation inside the if / else branches (`  echo 1 > …`) | Literal match expects 4-space indent | Re-indent to 4 spaces |
+| Trailing `exit "$RC"` (or any command) after `fi` | `fi` must be the LAST non-blank line of the file | Delete the trailing `exit` — Harbor grades on `/logs/verifier/reward.txt`, not the script exit code |
+
+The functional argument for dropping `RC=$?` and `exit "$RC"`: `$?` immediately after `pytest` (with only a blank line separator — blanks do not change `$?`) IS pytest's exit code, so the required form is bash-equivalent to the captured form. The grader reads `/logs/verifier/reward.txt`, never the script's exit code.
+
+Pre-submit guard (the repo CLI runs all three checks automatically):
+
+```bash
+python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>
+# warns: "tests/test.sh: does NOT end with the byte-exact reward section …"
+#        "tests/test.sh: `RC=$?` capture present …"
+#        "tests/test.sh: trailing `exit \"$RC\"` present …"
+```
+
+PowerShell raw checks (if you cannot run the preflight tool):
+
+```powershell
+$ts = Get-Content tasks/<name>/tests/test.sh -Raw
+if ($ts -match '(?m)^\s*RC\s*=\s*\$\?')           { Write-Warning 'RC=$? capture present' }
+if ($ts -match '(?m)^\s*exit\s+"\$RC"')            { Write-Warning 'trailing exit "$RC" present' }
+$want = "if [ `$? -eq 0 ]; then`n    echo 1 > /logs/verifier/reward.txt`nelse`n    echo 0 > /logs/verifier/reward.txt`nfi`n"
+if (-not $ts.EndsWith($want)) { Write-Warning 'tests/test.sh does not end with byte-exact reward suffix' }
+```
+
+Migration recipe and full rationale: `tb2-verifier-crash-safety.mdc` ("Static-check suffix requirement").
+
 ## Related focused rules
 
 This master checklist composes with the focused rules:
@@ -405,3 +462,5 @@ Distilled from recurring manual-reviewer feedback patterns:
 - §13 (task.toml field completeness) — first observed when a missing `[environment].workdir` field combined with a `difficulty` mismatch produced two independent rejection signals in one review pass. Later expanded after the platform also began enforcing `[environment].allow_internet` (literally `false`) with the BUILD-phase message `Missing required field: environment.allow_internet (must be false)`. The lesson generalises: every field the validator parses needs to be present AND consistent with the other four artifacts that mirror it.
 - §14 (no runtime installs in `tests/test.sh`) — added after the May 2026 platform announcement that introduced `allow_internet = false` as a runtime guarantee, not just a task.toml flag. The old V2 canonical test.sh (`apt-get install -y curl` + `curl … | sh` + `uvx -p 3.13 -w pytest pytest …`) is now a hard failure on three axes: the static checker flags the forbidden calls, the runtime network is blocked so the curl hangs, and Doc-06 still expects `/logs/verifier/reward.txt` to exist. All three are repaired by moving deps into `environment/Dockerfile` and shrinking `tests/test.sh` to a `python -m pytest` invocation.
 - §7 (difficulty bands rewrite) — replaced the simple `≤20% / 21-80% / >80%` thresholds with the May 2026 ordered HARD → MEDIUM → EASY classifier (best-model condition first, then worst-model fallback). The motivating change: a task where the best model scores 100% used to read as "easy" under the simple band even when the worst model scored 20%; under the new bands it correctly classifies as HARD via condition #2.
+
+- §15 (`tests/test.sh` byte-exact reward-section suffix) — surfaced when `patch-slot-lattice-audit` failed BUILD with `Must end with the reward section: if [ $? -eq 0 ]; then …`. Four sibling tasks (`conn-lease-helix-audit`, `sensor-calib-lattice-audit`, `shadow-route-quorum-audit`, `stokes-diffusion-audit`) and `default-template/tests/test.sh` had inherited the bash-idiomatic `RC=$?` + `if [ "$RC" -eq 0 ]` + trailing `exit "$RC"` shape, which is functionally equivalent but rejected by the static checker's literal-text match. The migration: drop `RC=$?`, change the condition to literal `$?`, indent the branches to 4 spaces, and delete the trailing `exit`. The local-preflight tool was extended to catch all three mismatch modes the same day.

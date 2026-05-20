@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "accepted": false,
+      "day": 1,
+      "event_id": "e00",
+      "kind": "quarantine_subtree",
+      "target_client": "c_root"
+    },
+    {
+      "accepted": true,
+      "day": 8,
+      "event_id": "e01",
+      "kind": "tier_strip",
+      "strip_introducer": "c_root",
+      "tier": "bronze"
+    },
+    {
+      "accepted": true,
+      "day": 30,
+      "event_id": "e02",
+      "kind": "quarantine_subtree",
+      "target_client": "c_br"
+    },
+    {
+      "accepted": true,
+      "day": 50,
+      "event_id": "e04",
+      "kind": "noop_review_marker"
+    }
+  ]
+}

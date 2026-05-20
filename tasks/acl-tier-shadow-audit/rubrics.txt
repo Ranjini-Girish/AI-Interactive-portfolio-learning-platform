@@ -1,0 +1,13 @@
+Agent emits all three audit JSON files under `/app/audit/` with canonical formatting, +3
+Agent preserves bundled evidence under `/app/acl_tier/` without edits, -3
+Agent lists `effective_access.clients` sorted by `client_id`, +2
+Agent honors shadow merge and tier cascade before incidents, +3
+Agent applies `tier_strip` before `quarantine_subtree` when days dictate that ordering, +2
+Agent matches `+` and `#` wildcard semantics from SPEC for probes, +3
+Agent leaves anchor files unread but untouched, -2
+Agent confuses quarantine-only denial with pattern matched denial, -3
+Agent drops `rule_seq` monotonicity or mis-orders nested `rules`, -3
+Agent miscounts `ignored_incidents` for rejected or unsupported log rows, -2
+Agent writes probe rows out of `policy.probes` order, -2
+Agent omits `tier_origin` or `introducer` fields on non-quarantine rules, -3
+Agent uses non-canonical JSON (tabs, unsorted keys, or missing trailing newline), -5

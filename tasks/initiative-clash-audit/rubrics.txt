@@ -15,3 +15,7 @@ Agent writes helper sources outside /app/ or deletes shipped inputs while produc
 Agent matches band_counts and echo_sink_count totals to the ordered roster without drift, +2
 Agent preserves stim-aware ordering when base scores collide inside the same intrinsic band, +2
 Agent keeps per_unit flags consistent with policy, incidents, overclock, and escort data for every unit id, +2
+Agent ignores brace incidents or hard-codes brace_lift instead of reading policy, -3
+Agent collapses repeated thermal_throttle rows into a single step before the band ceiling, -3
+Agent applies stim_delta even when a same-day suppress marker exists for that unit, -3
+Agent omits the echo priority window check when echo_max_abs_priority_delta is present in policy, -3

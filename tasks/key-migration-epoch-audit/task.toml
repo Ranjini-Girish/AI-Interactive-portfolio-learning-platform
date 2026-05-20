@@ -27,3 +27,4 @@ storage_mb = 10240
 gpu_required = false
 network_required = false
 workdir = "/app"
+allow_internet = false

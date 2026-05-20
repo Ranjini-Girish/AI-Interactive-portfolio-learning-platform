@@ -1,0 +1,6 @@
+{
+  "probe_id": "p5",
+  "label": "mobile-epsilon",
+  "chain_id": "C-mobile",
+  "chain_role": "secondary"
+}

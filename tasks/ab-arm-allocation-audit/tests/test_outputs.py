@@ -109,29 +109,38 @@ class TestReportStructure:
         for name, expected in EXPECTED_OUTPUT_CANONICAL_HASHES.items():
             canon = _canonical(outputs[name])
             digest = _sha256_bytes(canon.encode("utf-8"))
-            assert digest == expected, f"output mismatch for {name}"
+            assert digest == expected, (
+                f"output mismatch for {name}: "
+                f"got {digest[:12]}\u2026 expected {expected[:12]}\u2026"
+            )
 
     def test_field_hashes(self, outputs: dict[str, object]) -> None:
         """Selected nested fields must match their pinned canonical digests."""
         ep = outputs["experiment_profiles.json"]
         assert isinstance(ep, dict)
-        assert (
-            _sha256_bytes(_canonical(ep["experiments"]).encode("utf-8"))
-            == EXPECTED_FIELD_HASHES["experiment_profiles.experiments"]
+        ep_digest = _sha256_bytes(_canonical(ep["experiments"]).encode("utf-8"))
+        ep_expected = EXPECTED_FIELD_HASHES["experiment_profiles.experiments"]
+        assert ep_digest == ep_expected, (
+            f"field mismatch for experiment_profiles.experiments: "
+            f"got {ep_digest[:12]}\u2026 expected {ep_expected[:12]}\u2026"
         )
 
         tr = outputs["tier_rollups.json"]
         assert isinstance(tr, dict)
-        assert (
-            _sha256_bytes(_canonical(tr["tiers"]).encode("utf-8"))
-            == EXPECTED_FIELD_HASHES["tier_rollups.tiers"]
+        tr_digest = _sha256_bytes(_canonical(tr["tiers"]).encode("utf-8"))
+        tr_expected = EXPECTED_FIELD_HASHES["tier_rollups.tiers"]
+        assert tr_digest == tr_expected, (
+            f"field mismatch for tier_rollups.tiers: "
+            f"got {tr_digest[:12]}\u2026 expected {tr_expected[:12]}\u2026"
         )
 
         sm = outputs["summary.json"]
         assert isinstance(sm, dict)
-        assert (
-            _sha256_bytes(_canonical(sm["quarantined_total"]).encode("utf-8"))
-            == EXPECTED_FIELD_HASHES["summary.quarantined_total"]
+        sm_digest = _sha256_bytes(_canonical(sm["quarantined_total"]).encode("utf-8"))
+        sm_expected = EXPECTED_FIELD_HASHES["summary.quarantined_total"]
+        assert sm_digest == sm_expected, (
+            f"field mismatch for summary.quarantined_total: "
+            f"got {sm_digest[:12]}\u2026 expected {sm_expected[:12]}\u2026"
         )
 
 

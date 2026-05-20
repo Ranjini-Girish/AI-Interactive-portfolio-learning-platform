@@ -1,0 +1,10 @@
+{
+  "client_id": "c_x3",
+  "seed_rules": [
+    {
+      "action": "deny",
+      "pattern": "edge/+/+/raw"
+    }
+  ],
+  "shadow_parent": "c_x2"
+}

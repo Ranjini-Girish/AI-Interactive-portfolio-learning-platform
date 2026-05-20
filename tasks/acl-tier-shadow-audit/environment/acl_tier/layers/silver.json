@@ -1,0 +1,15 @@
+{
+  "additions": [
+    {
+      "action": "allow",
+      "client_id": "c_root",
+      "pattern": "site/ny/+/temp"
+    },
+    {
+      "action": "allow",
+      "client_id": "c_sl",
+      "pattern": "site/+/rack1/+"
+    }
+  ],
+  "tier": "silver"
+}

@@ -9,7 +9,7 @@ RUN set -eux; \
         curl \
         g++ \
         make \
-        nlohmann-json3-dev; \
+        nlohmann-json3-dev=3.11.2-1; \
     curl -LsSf https://astral.sh/uv/0.9.5/install.sh | sh; \
     /root/.local/bin/uv venv /opt/test-venv --python 3.13; \
     /root/.local/bin/uv pip install --python /opt/test-venv/bin/python \

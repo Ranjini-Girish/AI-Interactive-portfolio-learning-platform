@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["actions"],
+  "properties": {
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mutex", "op", "seq", "task", "tick"],
+        "properties": {
+          "mutex": { "type": "string" },
+          "op": {
+            "type": "string",
+            "enum": ["acquire", "try_acquire", "release", "wake"]
+          },
+          "seq": { "type": "integer", "minimum": 0 },
+          "task": { "type": "string" },
+          "tick": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

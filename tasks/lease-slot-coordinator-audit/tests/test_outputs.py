@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "8a0814aa96dcf74c0efc3630a3a800b54789e93017d96931b8a9aeb43ea3c87c",
+    "SPEC.md": "1e78390afb98c388f2b026687333a53992217c15f8b74f4ce39e64b7f05c96b4",
     "ancillary/channel_tag.json": "e126bc42853253544ba41531f545b9ec37571c52e130c59a2a341fedcaf9e257",
     "ancillary/ci_guard.json": "e4bf72f56e6bd79ee2a85031d5cdaaf6f079eb459edb6fe32cd2d4d66f135dd9",
     "ancillary/extra_one.json": "e00f12c9c6be456940cb7be775df45edec8597a5528482899e7b25d6daf09c50",
@@ -179,6 +179,53 @@ class TestReportStructure:
             _sha256_bytes(_canonical(tp["tiers"]).encode("utf-8"))
             == EXPECTED_FIELD_HASHES["tier_policy.tiers"]
         )
+
+
+class TestOnDiskCanonicalFormat:
+    """Verify the on-disk byte layout matches the canonical contract.
+
+    The hash-locked tests above re-canonicalise via `json.loads` before
+    hashing, so they pass even when an agent ships minified JSON, four-space
+    indent, or output with no trailing newline. These checks gate the
+    byte-level requirements stated in SPEC.md ("two-space indent, ASCII
+    only, ... exactly one trailing newline at EOF") directly against the
+    file as written.
+    """
+
+    def test_outputs_are_ascii_only(self) -> None:
+        """Each output file must contain only ASCII bytes."""
+        for name in OUTPUT_FILES:
+            raw = (AUDIT_DIR / name).read_bytes()
+            assert all(b < 0x80 for b in raw), f"{name}: non-ASCII bytes present"
+
+    def test_outputs_have_single_trailing_newline(self) -> None:
+        """Each output file ends with exactly one trailing newline."""
+        for name in OUTPUT_FILES:
+            raw = (AUDIT_DIR / name).read_bytes()
+            assert raw.endswith(b"\n"), f"{name}: missing trailing newline"
+            assert not raw.endswith(b"\n\n"), (
+                f"{name}: more than one trailing newline at EOF"
+            )
+
+    def test_outputs_use_two_space_indent(self) -> None:
+        """Each output file's bytes match `json.dumps(..., indent=2)` + newline.
+
+        Comparing against `json.dumps` with `indent=2` (default separators)
+        rejects minified output, four-space indent, missing trailing newline,
+        and stray whitespace. Re-loading + re-dumping preserves the on-disk
+        key order, so this check is independent of the per-section key
+        ordering covered by the hash-locked tests above.
+        """
+        for name in OUTPUT_FILES:
+            raw = (AUDIT_DIR / name).read_bytes()
+            body = json.loads(raw)
+            expected = (
+                json.dumps(body, indent=2, ensure_ascii=True).encode("utf-8") + b"\n"
+            )
+            assert raw == expected, (
+                f"{name}: on-disk bytes do not match the canonical layout "
+                "(two-space indent, ASCII, single trailing newline)"
+            )
 
 
 class TestLeaseOrdering:

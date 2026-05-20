@@ -1,8 +1,14 @@
 {
   "events": [
     {"day": 13, "kind": "jam", "unit_id": "u01"},
+    {"day": 14, "kind": "brace", "unit_id": "u01"},
+    {"day": 14, "kind": "stim", "unit_id": "u01"},
+    {"day": 14, "kind": "suppress", "unit_id": "u01"},
     {"day": 14, "kind": "jam", "unit_id": "u07"},
     {"day": 14, "kind": "stim", "unit_id": "u05"},
+    {"day": 14, "kind": "stim", "unit_id": "u10"},
+    {"day": 14, "kind": "suppress", "unit_id": "u10"},
+    {"day": 14, "kind": "thermal_throttle", "unit_id": "u04"},
     {"day": 14, "kind": "thermal_throttle", "unit_id": "u04"}
   ]
 }

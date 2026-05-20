@@ -6,7 +6,7 @@ All inputs are UTF-8 JSON. The audit day is `pool_state.current_day` (integer). 
 
 Let `W = policy.rolling_window_days` (integer ≥ 1). The inclusive window of days is every integer `d` with `current_day - (W - 1) <= d <= current_day`.
 
-For each service, `outcomes_by_day` maps day strings (decimal digits only) to exactly `"ok"` or `"fail"`. Days absent from the map are ignored (neither ok nor fail). `raw_failures` counts entries in the window whose value is `"fail"`.
+For each service, `outcomes_by_day` maps day strings (decimal digits only) to exactly `"ok"` or `"fail"`. Days absent from the map are ignored (neither ok nor fail). Let `raw_failures` be the count of window entries whose value is `"fail"`. Emit that integer unchanged as the `raw_failures` field in each service row; `fail_day_suppress` and tier penalties change only how `effective_failures` is derived, not this emitted tally.
 
 ## Incidents
 
@@ -15,8 +15,8 @@ Read `incident_log.events` (array). Keep only events with `accepted == true` and
 Supported `kind` values:
 
 - `tier_threshold_delta`: fields `target_tier` ∈ {`gold`,`silver`,`bronze`} and integer `delta`. Adds `delta` to the running threshold for that tier for all later calculations (additive across events).
-- `fail_day_suppress`: fields `service_id` and `days` (array of integers). For each integer `d` in `days`, if `d` is inside the rolling window for the named service and that service’s `outcomes_by_day` for decimal string of `d` equals `"fail"`, decrement `raw_failures` by 1 (stop at 0; each matching `(service_id,d)` pair from this single event can subtract at most once).
-- `silver_spike`: no extra targets. While this event is present among the kept events, every service whose `tier` is `silver` adds integer `policy.silver_spike_extra_failures` to its `effective_failures` after penalties below (see Ordering).
+- `fail_day_suppress`: fields `service_id` and `days` (array of integers). For each integer `d` in `days`, if `d` is inside the rolling window for the named service and that service’s `outcomes_by_day` for decimal string of `d` equals `"fail"`, count one suppression credit toward that service (each matching `(service_id,d)` pair from this single event counts at most once). Suppression credits reduce the failure tally used for threshold math only; they do not change the emitted `raw_failures` field.
+- `silver_spike`: no extra targets. While this event is present among the kept events, every service whose `tier` is `silver` adds integer `policy.silver_spike_extra_failures` when computing `effective_failures` (see Ordering).
 - `force_open`: fields `service_id`. After all numeric work for that service, if this event is kept, the service’s emitted `computed_state` must be `open` and `reasons` must include the literal string `force_open_incident` (even if other reasons also apply). `tripped` must be true.
 
 Events with unknown `kind`, unknown `accepted` type, or missing required fields for their kind are ignored entirely (as if not present).
@@ -31,7 +31,9 @@ Each service references `upstream_id` naming a file `upstreams/<id>.json` (the `
 
 ## Penalties and ordering
 
-1. Start from `raw_failures` after all `fail_day_suppress` subtractions (floored at 0).
+Let `suppressed_failures` be the value obtained by starting at `raw_failures` and processing every kept `fail_day_suppress` event in incident order: for each event targeting this service, for each suppression credit implied by that event’s rules, subtract 1 from the running tally, but never subtract when the tally is already 0 (so later credits may no-op once the tally is exhausted).
+
+1. Start from `suppressed_failures`.
 2. If the service tier is `gold` and its upstream `degraded` is true, add `policy.gold_upstream_degraded_extra_failures` (integer, default 0 if missing).
 3. If the service tier is `silver` and any kept event has `kind` `silver_spike`, add `policy.silver_spike_extra_failures` (integer, default 0 if missing).
 4. The sum is `effective_failures`.
@@ -63,7 +65,7 @@ Canonical JSON for every output file: UTF-8, two-space indent, ASCII only, objec
 Top-level object:
 
 - `services`: array of objects, one per input service file, sorted by ascending `service_id`.
-- Each object fields: `service_id` (string), `tier`, `upstream_id`, `raw_failures` (int), `effective_failures` (int), `adjusted_threshold` (int), `computed_state` (`closed` or `open`), `tripped` (bool), `reasons` (array of strings, sorted unique).
+- Each object fields: `service_id` (string), `tier`, `upstream_id`, `raw_failures` (int, the window `"fail"` count before suppression), `effective_failures` (int), `adjusted_threshold` (int), `computed_state` (`closed` or `open`), `tripped` (bool), `reasons` (array of strings, sorted unique).
 
 ### tier_thresholds.json
 

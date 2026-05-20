@@ -117,7 +117,7 @@ When status is `expired` and not solely from `force_expire_incident`, include `p
 
 ## Outputs (five files under `/app/audit/`)
 
-Canonical JSON: UTF-8, two-space indent, ASCII only, keys sorted lexicographically at every object depth, colon plus single space, no trailing spaces on lines, exactly one trailing newline at EOF.
+Canonical JSON: UTF-8, two-space indent, ASCII only, keys in the per-section order listed below, colon plus single space, no trailing spaces on lines, exactly one trailing newline at EOF.
 
 ### lease_verdicts.json
 
@@ -129,7 +129,7 @@ Canonical JSON: UTF-8, two-space indent, ASCII only, keys sorted lexicographical
 
 ### incident_journal.json
 
-- `applied_events`: array in process order; each element includes `day`, `event_id`, `kind`, plus kind-specific optional fields (`target_tier`, `extra_days`, `delta`, `host_id`, `slot_id`). Omit unused keys. Keys sorted inside each object.
+- `applied_events`: array in process order; each element includes `day`, `event_id`, `kind`, plus kind-specific optional fields (`target_tier`, `extra_days`, `delta`, `host_id`, `slot_id`). Omit unused keys. Emit keys in the order listed.
 
 ### slot_contention.json
 

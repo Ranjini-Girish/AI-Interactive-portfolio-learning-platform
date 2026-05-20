@@ -19,18 +19,11 @@ if [ "$PWD" = "/" ]; then
     exit 1
 fi
 
-for out in mutex_state.json wait_edges.json action_log.json diagnostics.json summary.json; do
-    rm -f "/app/output/${out}"
-done
-mkdir -p /app/output
-make -C /app/environment build
-/usr/local/bin/mtxgraph /app/data /app/output
-
-set +e
-pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+python -m pytest -o cache_dir=/tmp/pytest_cache \
+  --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
 
 if [ $? -eq 0 ]; then
-  echo 1 > /logs/verifier/reward.txt
+    echo 1 > /logs/verifier/reward.txt
 else
-  echo 0 > /logs/verifier/reward.txt
+    echo 0 > /logs/verifier/reward.txt
 fi

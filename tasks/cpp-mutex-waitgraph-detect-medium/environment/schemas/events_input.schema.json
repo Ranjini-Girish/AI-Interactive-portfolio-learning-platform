@@ -10,10 +10,13 @@
         "required": ["mutex", "op", "seq", "task", "tick"],
         "properties": {
           "mutex": { "type": ["string", "null"] },
-          "op": { "type": "string" },
-          "seq": { "type": "integer" },
+          "op": {
+            "type": "string",
+            "enum": ["tick", "acquire", "release", "try_acquire"]
+          },
+          "seq": { "type": "integer", "minimum": 0 },
           "task": { "type": ["string", "null"] },
-          "tick": { "type": "integer" }
+          "tick": { "type": "integer", "minimum": 0 }
         }
       }
     }

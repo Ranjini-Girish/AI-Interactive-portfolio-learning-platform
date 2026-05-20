@@ -34,7 +34,7 @@ REQUIRED_OUTPUT_FILES = [
 ]
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "5de568be43fb009734395d30122c0b106d185f508305747f7b24d2ceb7c3e96a",
+    "SPEC.md": "aab0926f981cded7f84f35a0e900e65ee1ede8f7966676730968509ef7d296df",
     "modules/00-gateway.json": "894a0c1a9cbd06007ccafd3d914d907bd82032ded0693939d98114300de3759b",
     "modules/01-common.json": "538ed717154f3e65a0a10b6e4e45ac8496dd4b3e2787d2bd7e4b577f374411fc",
     "modules/02-auth.json": "cd9170246fafd99a0e99aa4ce90526768ba2c4a76672dbd4d11fec355b92b336",
@@ -351,20 +351,51 @@ class TestImplementationLanguage:
     """Go sources and binary must reproduce ``/app/audit`` from ``/app/modgraph``."""
 
     def test_go_source_contains_package_main(self):
-        """``/app/src`` must contain Go files declaring ``package main``."""
+        """``/app/src`` must contain at least one Go source file declaring ``package main``."""
         assert SRC_DIR.is_dir(), f"{SRC_DIR} must exist"
         go_files = list(SRC_DIR.rglob("*.go"))
         assert go_files, f"no .go files under {SRC_DIR}"
-        has_main = any(
-            re.search(r"^\s*package\s+main\b", p.read_text(encoding="utf-8", errors="replace"), re.MULTILINE)
-            for p in go_files
-        )
-        assert has_main, f"no file under {SRC_DIR} declares package main"
+        has_main_pkg = False
+        has_main_func = False
+        for src_path in go_files:
+            text = src_path.read_text(encoding="utf-8", errors="replace")
+            if re.search(r"^\s*package\s+main\b", text, re.MULTILINE):
+                has_main_pkg = True
+            if re.search(r"^\s*func\s+main\s*\(\s*\)\s*\{", text, re.MULTILINE):
+                has_main_func = True
+        assert has_main_pkg, f"no file under {SRC_DIR} declares package main"
+        assert has_main_func, f"no file under {SRC_DIR} declares func main()"
 
     def test_binary_present(self):
         """``/app/bin/lattice-auditor`` must exist and be executable."""
         assert BIN_PATH.is_file(), f"{BIN_PATH} must exist"
         assert os.access(BIN_PATH, os.X_OK), f"{BIN_PATH} must be executable"
+
+    def test_binary_is_go_toolchain_build(self):
+        """``/app/bin/lattice-auditor`` must carry embedded Go build info from the Go toolchain."""
+        assert BIN_PATH.is_file(), f"{BIN_PATH} must exist"
+        go_exe = shutil.which("go")
+        assert go_exe is not None, "go toolchain must be available on PATH for the verifier"
+        result = subprocess.run(
+            [go_exe, "version", "-m", str(BIN_PATH)],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert result.returncode == 0, (
+            f"`go version -m {BIN_PATH}` failed (rc={result.returncode}); "
+            f"the artefact is not a recognisable Go binary.\n"
+            f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
+        )
+        first_line = result.stdout.splitlines()[0] if result.stdout else ""
+        assert re.search(r"\bgo1\.\d+", first_line), (
+            f"`go version -m` did not report a go1.x toolchain for {BIN_PATH}; "
+            f"first line was: {first_line!r}"
+        )
+        assert "\tmod\t" in result.stdout or "\tpath\t" in result.stdout, (
+            f"`go version -m` did not report embedded build info for {BIN_PATH}; "
+            f"full output:\n{result.stdout}"
+        )
 
     def test_binary_reproduces_audit(self):
         """Fresh run with ``/app/audit`` unavailable must recreate identical bytes."""

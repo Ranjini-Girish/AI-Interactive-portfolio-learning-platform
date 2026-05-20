@@ -1,0 +1,33 @@
+{
+  "cascade_tiers": [
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "probes": [
+    {
+      "client_id": "c_root",
+      "topic": "site/ny/rack1/temp"
+    },
+    {
+      "client_id": "c_go",
+      "topic": "site/ny/rack1/temp"
+    },
+    {
+      "client_id": "c_x2",
+      "topic": "edge/west/cam1/snap"
+    },
+    {
+      "client_id": "c_nope",
+      "topic": "any/topic"
+    },
+    {
+      "client_id": "c_x4",
+      "topic": "vault/a/read/status"
+    },
+    {
+      "client_id": "c_x2",
+      "topic": "mystery/only/topic"
+    }
+  ]
+}

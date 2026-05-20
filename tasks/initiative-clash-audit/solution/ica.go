@@ -11,14 +11,16 @@ import (
 )
 
 type policyFile struct {
-	BandRules    []struct {
+	BandRules []struct {
 		Band        int `json:"band"`
 		MinPriority int `json:"min_priority"`
 	} `json:"band_rules"`
-	CurrentDay   int            `json:"current_day"`
-	FactionFavor map[string]int `json:"faction_favor"`
-	StanceDelta  map[string]int `json:"stance_delta"`
-	StimDelta    int            `json:"stim_delta"`
+	BraceLift               int            `json:"brace_lift"`
+	CurrentDay              int            `json:"current_day"`
+	EchoMaxAbsPriorityDelta *int           `json:"echo_max_abs_priority_delta"`
+	FactionFavor            map[string]int `json:"faction_favor"`
+	StanceDelta             map[string]int `json:"stance_delta"`
+	StimDelta               int            `json:"stim_delta"`
 }
 
 type incidentFile struct {
@@ -179,7 +181,14 @@ func applyEscortAnchoring(states []unitState) {
 	}
 }
 
-func computeEchoSunk(states []unitState) {
+func iabs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+func computeEchoSunk(states []unitState, echoMax *int) {
 	for i := range states {
 		if states[i].Jammed {
 			continue
@@ -188,10 +197,16 @@ func computeEchoSunk(states []unitState) {
 			if other.UnitID == states[i].UnitID {
 				continue
 			}
-			if other.Jammed && other.Faction == states[i].Faction && other.Intrinsic == states[i].Intrinsic {
-				states[i].EchoSunk = true
-				break
+			if !other.Jammed || other.Faction != states[i].Faction || other.Intrinsic != states[i].Intrinsic {
+				continue
 			}
+			if echoMax != nil {
+				if iabs(other.Priority-states[i].Priority) > *echoMax {
+					continue
+				}
+			}
+			states[i].EchoSunk = true
+			break
 		}
 	}
 }
@@ -333,6 +348,11 @@ func main() {
 
 	worst := maxBand(pol.BandRules)
 
+	braceLift := pol.BraceLift
+	if braceLift <= 0 {
+		braceLift = 2
+	}
+
 	states := make([]unitState, 0, len(unitPaths))
 	for _, p := range unitPaths {
 		var uf unitFile
@@ -348,8 +368,10 @@ func main() {
 		}
 		base := uf.BasePriority + stanceDelta(pol.StanceDelta, uf.Stance) + bonus
 
-		stimmed := false
-		th := false
+		hasStim := false
+		suppress := false
+		braced := false
+		throttleHits := 0
 		jm := false
 		for _, ev := range inc.Events {
 			if ev.UnitID != uf.UnitID || ev.Day != pol.CurrentDay {
@@ -357,13 +379,23 @@ func main() {
 			}
 			switch ev.Kind {
 			case "stim":
-				stimmed = true
+				hasStim = true
+			case "suppress":
+				suppress = true
+			case "brace":
+				braced = true
 			case "thermal_throttle":
-				th = true
+				throttleHits++
 			case "jam":
 				jm = true
 			}
 		}
+
+		if braced {
+			base += braceLift
+		}
+
+		stimmed := hasStim && !suppress
 
 		score := base
 		if stimmed {
@@ -373,9 +405,10 @@ func main() {
 
 		_, over := ocSet[uf.UnitID]
 
+		th := throttleHits > 0
 		final := intr
 		if th {
-			final = intr + 1
+			final = intr + throttleHits
 			if final > worst {
 				final = worst
 			}
@@ -409,7 +442,7 @@ func main() {
 	}
 
 	applyEscortAnchoring(states)
-	computeEchoSunk(states)
+	computeEchoSunk(states, pol.EchoMaxAbsPriorityDelta)
 
 	rosterMaxFinal := 0
 	for _, s := range states {

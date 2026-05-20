@@ -5,7 +5,9 @@
     {"band": 2, "min_priority": 40},
     {"band": 3, "min_priority": 0}
   ],
+  "brace_lift": 2,
   "current_day": 14,
+  "echo_max_abs_priority_delta": 15,
   "faction_favor": {
     "alpha": 3,
     "beta": 0,

@@ -1,0 +1,10 @@
+{
+  "client_id": "c_x2",
+  "seed_rules": [
+    {
+      "action": "allow",
+      "pattern": "edge/west/cam1/snap"
+    }
+  ],
+  "shadow_parent": null
+}

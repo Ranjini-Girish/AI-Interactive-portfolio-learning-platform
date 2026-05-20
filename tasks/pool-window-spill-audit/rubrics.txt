@@ -1,0 +1,13 @@
+Agent emits all five audit JSON files under `/app/audit/`, +3
+Agent mirrors canonical UTF-8 JSON layout spelled out in `/app/poolspill/SPEC.md`, +3
+Agent preserves deterministic lexicographic sorting on every list-shaped field, +2
+Agent reconciles `summary.json` counters with admissions, spills, and drops, +2
+Agent stages remainder bytes through spill edges before halt truncation applies, +2
+Agent maps each primary arrival into exactly one window bucket using the policy window length, +2
+Agent mutates any fixture under `/app/poolspill/`, -3
+Agent omits a required audit file or emits invalid JSON, -5
+Agent ignores incident ordering when adjusting ceilings, -3
+Agent collapses halt drops into spill rows or vice versa, -3
+Agent breaks stable ordering on admissions, spills, drops, or windows, -2
+Agent inflates summary counters away from reconciled detail lists, -3
+Agent applies halt spill thresholds before honoring ceiling bumps or shaves, -2
