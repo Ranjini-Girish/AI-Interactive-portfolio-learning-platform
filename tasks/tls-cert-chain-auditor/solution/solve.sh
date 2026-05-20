@@ -35,6 +35,7 @@ def main():
     cfg = load_json(DATA / "chain_config.json")
     trusted_roots = set(cfg["trusted_roots"])
     deprecated_algos = set(cfg.get("deprecated_signature_algos", []))
+    soft_fail_untrusted = set(cfg.get("soft_fail_untrusted_tiers", []))
 
     leafs = {}
     for fp in sorted((DATA / "leafs").glob("*.json")):
@@ -179,13 +180,23 @@ def main():
             return all(e == cn for e in expected_list)
         return False
 
-    def chain_intermediates(chain, fail):
-        if fail is not None or len(chain) < 2:
+    def chain_intermediates(chain):
+        if len(chain) < 2:
             return []
         return [s for s in chain[1:-1] if s in intermediates]
 
-    def intermediate_revoked(chain, fail):
-        return any(ocsp_state(s) == "revoked" for s in chain_intermediates(chain, fail))
+    def intermediate_revoked(chain):
+        return any(ocsp_state(s) == "revoked" for s in chain_intermediates(chain))
+
+    def worst_ocsp_for_domain(leaf_serial, chain):
+        states = [ocsp_state(leaf_serial)]
+        for serial in chain_intermediates(chain):
+            states.append(ocsp_state(serial))
+        if "revoked" in states:
+            return "revoked"
+        if "soft_fail" in states:
+            return "soft_fail"
+        return "valid"
 
     def add_deprecated_reasons(reasons, leaf, chain, tier, fail):
         if fail is not None:
@@ -198,7 +209,7 @@ def main():
             return
         if leaf is not None and leaf.get("signature_algo") in deprecated_algos:
             reasons.add(dep_label if tier == "production" else warn_label)
-        for serial in chain_intermediates(chain, fail):
+        for serial in chain_intermediates(chain):
             cert = intermediates.get(serial)
             if cert and cert.get("signature_algo") in deprecated_algos:
                 reasons.add(dep_label if tier == "production" else warn_label)
@@ -220,7 +231,7 @@ def main():
     for d in domains:
         dom = d["domain"]
         fail = domain_walk_failure[dom]
-        domain_intermediate_set[dom] = set(chain_intermediates(domain_chain[dom], fail))
+        domain_intermediate_set[dom] = set(chain_intermediates(domain_chain[dom]))
 
     compromised_intermediates_in_chains = set()
     for dom, visits in domain_visits_compromised_ca.items():
@@ -265,13 +276,17 @@ def main():
 
         add_deprecated_reasons(reasons, leaf, chain, tier, fail)
 
+        pin = d.get("required_intermediate")
+        if fail is None and pin and pin not in chain_intermediates(chain):
+            reasons.add("pinning_violation")
+
         leaf_ocsp = ocsp_state(leaf_serial)
         if leaf_ocsp == "revoked":
             reasons.add("revoked")
         elif leaf_ocsp == "soft_fail":
             reasons.add("ocsp_soft_fail")
 
-        inter_revoked = intermediate_revoked(chain, fail)
+        inter_revoked = intermediate_revoked(chain)
         if inter_revoked:
             reasons.add("intermediate_revoked")
 
@@ -284,7 +299,9 @@ def main():
         elif (
             "key_size_too_small" in reasons
             or "san_mismatch" in reasons
+            or "pinning_violation" in reasons
             or (tier == "production" and "deprecated_signature" in reasons)
+            or (tier in soft_fail_untrusted and leaf_ocsp == "soft_fail")
         ):
             preliminary = "untrusted"
         elif (
@@ -348,14 +365,17 @@ def main():
     write_json(OUT / "expiry_report.json", {"buckets": buckets})
 
     ocsp_details = []
-    by_state = {"valid": 0, "revoked": 0, "soft_fail": 0}
+    by_state_leaf = {"valid": 0, "revoked": 0, "soft_fail": 0}
+    by_ocsp_worst = {"valid": 0, "revoked": 0, "soft_fail": 0}
     for d in domains:
         ls = d["leaf_serial"]
         state = ocsp_state(ls)
         ocsp_details.append({"domain": d["domain"], "leaf_serial": ls, "ocsp_state": state})
-        by_state[state] += 1
+        by_state_leaf[state] += 1
+        worst = worst_ocsp_for_domain(ls, domain_chain[d["domain"]])
+        by_ocsp_worst[worst] += 1
     ocsp_details.sort(key=lambda x: x["domain"])
-    write_json(OUT / "ocsp_summary.json", {"by_state": by_state, "details": ocsp_details})
+    write_json(OUT / "ocsp_summary.json", {"by_state": by_state_leaf, "details": ocsp_details})
 
     inter_records = []
     for serial in sorted(intermediates.keys()):
@@ -407,7 +427,7 @@ def main():
         "ignored_incident_events": ignored,
         "by_preliminary_verdict": by_preliminary,
         "by_verdict": by_verdict,
-        "by_ocsp_state": by_state,
+        "by_ocsp_state": by_ocsp_worst,
         "compromised_cas": sorted(ca_compromised),
     }
     write_json(OUT / "summary.json", summary)

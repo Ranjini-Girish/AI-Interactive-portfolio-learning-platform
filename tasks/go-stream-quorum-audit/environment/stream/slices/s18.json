@@ -1,0 +1,10 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "pi",
+    "tick": 200,
+    "voter": "p1",
+    "weight": 1
+  }
+]

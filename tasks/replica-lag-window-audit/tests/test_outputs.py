@@ -22,7 +22,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "e231fbcba84f24f9e5c2a17ec5575ef6d7572ef0e795935b393ac8ced3b38487",
+    "SPEC.md": "9d6c9e3272ef5cf79ec4785b909fa6ba679f7a2d884feb6bc0b6373f5f0937d4",
     "anchors/a1.txt": "8df2c7a078641bb9e41a65daab75ae215aa1fbd7feca2958f7cb97fab59f5e1c",
     "anchors/a2.txt": "1044062d699dbe27ebdbf4404e0049605962d812b53dc6ba436acc5c17f7c8b4",
     "anchors/a3.txt": "dcac498516c0a83445e4ebe2c80209f282910fa52eee36d6813cda6918e6fb31",
@@ -516,12 +516,13 @@ class TestFlushPlan:
         assert "parent:sh-parent" in by_id["sh-child"]["reasons"]
 
     def test_cycle_shards_blocked(self, outputs: dict[str, object]) -> None:
-        """Shards in the dependency cycle must use blocked_cycle flush status."""
+        """Cycle members must use blocked_cycle with reasons exactly cycle only."""
         entries = outputs["flush_plan.json"]["entries"]
         for sid in ("sh-cycle-a", "sh-cycle-b"):
             row = next(e for e in entries if e["shard_id"] == sid)
             assert row["flush_status"] == "blocked_cycle"
             assert row["reasons"] == ["cycle"]
+            assert not any(r.startswith("parent:") for r in row["reasons"])
 
 
 class TestDependencyPlan:
@@ -531,6 +532,14 @@ class TestDependencyPlan:
         """The sh-cycle-a and sh-cycle-b pair must appear as one directed cycle."""
         cycles = outputs["dependency_plan.json"]["cycles"]
         assert ["sh-cycle-a", "sh-cycle-b"] in cycles
+
+    def test_order_greedy_lexicographic_topo(
+        self, outputs: dict[str, object], reference: dict[str, object]
+    ) -> None:
+        """order must follow greedy smallest-ready shard_id topo, not batch waves."""
+        assert outputs["dependency_plan.json"]["order"] == reference[
+            "dependency_plan.json"
+        ]["order"]
 
 
 class TestIncidentTrace:

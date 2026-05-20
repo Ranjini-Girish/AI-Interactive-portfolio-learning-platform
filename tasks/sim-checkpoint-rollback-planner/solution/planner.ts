@@ -21,33 +21,9 @@ function sortKeysDeep(v: unknown): unknown {
   return out;
 }
 
-/** Match Python json.dumps for whole floats (e.g. 252.0 not 252). */
-function pythonizeNumericJson(text: string): string {
-  const twoDecKeys = [
-    "estimated_cost_node_hours",
-    "estimated_walltime_hours",
-    "total_estimated_cost_node_hours",
-  ];
-  for (const key of twoDecKeys) {
-    text = text.replace(
-      new RegExp(`("${key}"): (-?\\d+)([,\n])`, "g"),
-      (_m, qkey: string, num: string, tail: string) => `${qkey}: ${num}.0${tail}`,
-    );
-  }
-  const fourDecKeys = ["change_pct", "current_value", "oldest_value", "volatility_ratio"];
-  for (const key of fourDecKeys) {
-    text = text.replace(
-      new RegExp(`("${key}"): (-?\\d+)([,\n])`, "g"),
-      (_m, qkey: string, num: string, tail: string) => `${qkey}: ${num}.0${tail}`,
-    );
-  }
-  return text;
-}
-
 function writeJson(name: string, payload: unknown): void {
   const sorted = sortKeysDeep(payload);
-  let text = JSON.stringify(sorted, null, 2) + "\n";
-  text = pythonizeNumericJson(text);
+  const text = JSON.stringify(sorted, null, 2) + "\n";
   fs.mkdirSync(OUT, { recursive: true });
   fs.writeFileSync(path.join(OUT, name), text, "utf-8");
 }
@@ -57,42 +33,9 @@ function readJson<T>(rel: string): T {
   return JSON.parse(fs.readFileSync(p, "utf-8")) as T;
 }
 
-/** Python 3 `str(x)` for every scalar that can appear in SPEC `reason` strings for this dataset. */
-const REASON_SCALAR_TABLE: [number, string][] = [
-  [0, "0"],
-  [0.001, "0.001"],
-  [0.002, "0.002"],
-  [0.003, "0.003"],
-  [0.005, "0.005"],
-  [0.007, "0.007"],
-  [0.009, "0.009"],
-  [0.02, "0.02"],
-  [0.2, "0.2"],
-  [0.3, "0.3"],
-  [0.5, "0.5"],
-  [1.0, "1.0"],
-  [1.5, "1.5"],
-  [2, "2"],
-  [80.0, "80.0"],
-  [85.0, "85.0"],
-  [92.0, "92.0"],
-  [99.0, "99.0"],
-  [100.0, "100.0"],
-  [140.0, "140.0"],
-  [160.0, "160.0"],
-  [180.0, "180.0"],
-  [190.0, "190.0"],
-  [200.0, "200.0"],
-  [210.0, "210.0"],
-];
-
-function reasonScalarStr(n: number): string {
-  for (const [v, s] of REASON_SCALAR_TABLE) {
-    if (Object.is(n, v) || Math.abs(n - v) < 1e-12) {
-      return s;
-    }
-  }
-  throw new Error(`reason scalar not in fixture table: ${n}`);
+/** ECMAScript JSON.stringify for a finite number (SPEC reason tokens). */
+function jsonNumberStr(n: number): string {
+  return JSON.stringify(n);
 }
 
 function mean(xs: number[]): number {
@@ -533,18 +476,18 @@ function buildPlanEntry(simId: string): [Json, Json] {
   for (const metricName of violatedMetrics) {
     if (metricName === "residual_norm") {
       reasonParts.push(
-        `residual_norm=${reasonScalarStr(metrics.residual_norm)}>${reasonScalarStr(residualMax)}`,
+        `residual_norm=${jsonNumberStr(metrics.residual_norm)}>${jsonNumberStr(residualMax)}`,
       );
     } else if (metricName === "energy_drift_pct") {
       reasonParts.push(
-        `energy_drift_pct=${reasonScalarStr(metrics.energy_drift_pct)}>${reasonScalarStr(energyMax)}`,
+        `energy_drift_pct=${jsonNumberStr(metrics.energy_drift_pct)}>${jsonNumberStr(energyMax)}`,
       );
     } else if (metricName === "samples_per_second") {
       reasonParts.push(
-        `samples_per_second=${reasonScalarStr(metrics.samples_per_second)}<${reasonScalarStr(spsMin)}`,
+        `samples_per_second=${jsonNumberStr(metrics.samples_per_second)}<${jsonNumberStr(spsMin)}`,
       );
     } else if (metricName === "nan_count") {
-      reasonParts.push(`nan_count=${reasonScalarStr(metrics.nan_count ?? 0)}>0`);
+      reasonParts.push(`nan_count=${jsonNumberStr(metrics.nan_count ?? 0)}>0`);
     }
   }
   if (directCompromise) {

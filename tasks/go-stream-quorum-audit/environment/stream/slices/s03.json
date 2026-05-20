@@ -1,0 +1,27 @@
+[
+  {
+    "epoch": 1,
+    "escrow": true,
+    "phase": "commit",
+    "stream": "gamma",
+    "tick": 90,
+    "voter": "c1",
+    "weight": 2
+  },
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "gamma",
+    "tick": 95,
+    "voter": "c2",
+    "weight": 2
+  },
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "gamma",
+    "tick": 100,
+    "voter": "c3",
+    "weight": 2
+  }
+]

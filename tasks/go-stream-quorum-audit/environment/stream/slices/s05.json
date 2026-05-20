@@ -1,0 +1,29 @@
+[
+  {
+    "epoch": 1,
+    "late": true,
+    "phase": "prepare",
+    "stream": "delta",
+    "tick": 55,
+    "voter": "d1",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "late": true,
+    "phase": "prepare",
+    "stream": "delta",
+    "tick": 56,
+    "voter": "d2",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "late": true,
+    "phase": "prepare",
+    "stream": "delta",
+    "tick": 57,
+    "voter": "d3",
+    "weight": 1
+  }
+]

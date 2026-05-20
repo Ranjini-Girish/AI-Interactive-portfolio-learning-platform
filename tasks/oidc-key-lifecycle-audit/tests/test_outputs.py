@@ -30,7 +30,7 @@ REQUIRED_OUTPUT_FILES = sorted(
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "f7bd66aa7629f280cb8d2e8e7450abb7563eb25503a7772bf2ee16c813c1ff1f",
+    "SPEC.md": "db4536d47434978c790ae120a31db45f22542d74c29c71dd65b347a8e1b29e58",
     "governance" + "/" + j("policy"): "45725a45f7be4579639ea5d68175a5cd080877ce4fa36634371bad80f1e36f6a",
     j("incident_log"): "7fa91c89efe72161359b71c4b89bac6a6c35b41f6e21c6eea3cc55197a77da14",
     j("pool_state"): "eb72be0b2ec395d874110a8a105f8f8adca9f32d7b6fd16a5d02a5812d39b3e7",

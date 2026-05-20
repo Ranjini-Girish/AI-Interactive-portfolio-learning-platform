@@ -28,57 +28,60 @@ REQUIRED_OUTPUT_FILES = [
 ]
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md":                                                   "02a6be3b83fe120ab0c91723b57f3560115920cffbdcb5b99769a906ede3591e",
-    "chain_config.json":                                         "4a2bfae4e54697cadc7e462c24278f53db44812c2933f6b580a9c341b3f7098a",
-    "incident_log.json":                                         "df2b8be55f3bcbfd941d5b12768954d6ea30c859d160c58b9f738e5296b73346",
-    "ocsp_responses.json":                                       "3077389416ef1b815a325d976810f956bb3e15085f4f0bc4968476d1fb03a431",
-    "pool_state.json":                                           "cb7407fb08999e9118ce059c3125314591168f15c6a7422325f58d1286e40a60",
-    "intermediates/int-asia-1.json":                             "81b671f6742715e7d9536b50438e6ec68bbe00c354609946aab66480a99ce2ca",
-    "intermediates/int-eu-1-sub.json":                           "abc7e2af93a9cea343caec05d84013ea32b20886139d16e6523ed816f07c873c",
-    "intermediates/int-eu-1.json":                               "042c35185e534e7984f21fc2985f5428c879c7af702bdd81059d843082523bdd",
-    "intermediates/int-us-1.json":                               "cd444dee5ed9e298a72c6445b308615bb413727e3131ee459f615821334aaf5e",
-    "intermediates/int-us-2.json":                               "48f7a927b527f71517beca97dd7c9d74c4e5ac82638e42138a28a31198dbc8a8",
-    "leafs/leaf-api-v1.json":                                    "4e1d1abe1a452aa556f93456ac9656a4e023f80deba1fdddd88c97537a983d4d",
-    "leafs/leaf-cdn-v1.json":                                    "5f5755d242dda12974502e92bc8847796982491a65f4bcf9285e694be437df4c",
-    "leafs/leaf-edge-v1.json":                                   "f093b3e29be68f955eb8930384e593e06099f158f5105586b03734ea1453fd24",
-    "leafs/leaf-internal-v1.json":                               "b361b0486f9359b57b1d1ffe024ba9a00f3383ccaebc522470332ab014cefbf5",
-    "leafs/leaf-internal-v2.json":                               "aa34d17c1e2faebb433b480caac470bf7c02a7387dba69b0e53cb0aafb6b92af",
-    "leafs/leaf-legacy-v1.json":                                 "9f40c1e2e79ae79b24ebc1497d5aecfca860ee862855f6ad198e5d3cfd3b37d4",
-    "leafs/leaf-ops-v1.json":                                    "81406d6f51ae21462f4b4b87f48d2353c6e8148b0d006f1e28a9ce6188404f09",
-    "leafs/leaf-revoked-v1.json":                                "c4fa69aa03fa54a0c22ccb71f7c51833812c9a4f96d2d707a9603f5b1e4b6925",
-    "leafs/leaf-shop-v1.json":                                   "4eeb30317e6478d88b79803c5027e505ded115f98c69792b351e09dc46eafe83",
-    "leafs/leaf-staging-v1.json":                                "0699eb09f8e00236774fca0b934cc82d47f9f79a165cadf292dc98ce89805d8c",
-    "leafs/leaf-staging-v2.json":                                "719dd578e4084e241ccbd86924f1d34f6018880963bb61debfbdfc11be35bf75",
-    "domains/internal/internal-app.example.lan.json":            "0c292f0a4301661e4b65de66b878acade877cfca1605c1a7f982c931545bce27",
-    "domains/internal/internal-tools.example.lan.json":          "4980f7e2064a23c05ae47e05322351d7dd3de401ccd573f8f5a174ac74db672a",
-    "domains/production/api.example.com.json":                   "757e4fcbfbf421759e1e0d15d6657aef35771b734428ed0cde35de925b8c7bad",
-    "domains/production/cdn.example.com.json":                   "7552e26369f7d80ebc5b67834fa57b6b554539525e1473634f0a7d357a916442",
-    "domains/production/edge.example.com.json":                  "a1a1d6bef2e5b291e1512112a6c3bd7eec2764e35e7c5ce2b874f8337e5f19bd",
-    "domains/production/legacy.example.org.json":                "d7f4b93d5b988814df3f576f3366a3d68f8bdf761a0fc7cebb1e19e7508817c6",
-    "domains/production/ops.example.io.json":                    "aa994d9b3b29018b3e0b9e372700bee30ce206f87c704f62b17af6b099682ca9",
-    "domains/production/revoked-svc.example.com.json":           "e2b01de6a0213395450f103473294309ec57edc7221130004e029645ddd139a6",
-    "domains/production/shop.example.net.json":                  "7a32250d8c42749956a15a86fdca53171103c7be3ac7fe34d6a19ba643f14be3",
-    "domains/staging/staging-app.example.com.json":              "f06f71c19f44682b9188fe0a20bf494618ebfa7650cf90150f19db0d28bfc599",
-    "domains/staging/staging.example.com.json":                  "93bac54b8707b5b466401e6692505acc28f2eeac35307da4d82bbaac8a2d0b92",
+    "SPEC.md": "7403d2215147e61531a24c997a87aa37dae997923e72fc1d4eb21cae4abae3c3",
+    "chain_config.json": "f13d99feea1c2a3184891da1baede48f97f98119870cb3f224609a1aab01b350",
+    "incident_log.json": "df2b8be55f3bcbfd941d5b12768954d6ea30c859d160c58b9f738e5296b73346",
+    "ocsp_responses.json": "991fa1250dbc21a1c416f13050c5e22bac9e713a25c1a1c262a310fbb4a49662",
+    "pool_state.json": "cb7407fb08999e9118ce059c3125314591168f15c6a7422325f58d1286e40a60",
+    "intermediates/int-asia-1.json": "81b671f6742715e7d9536b50438e6ec68bbe00c354609946aab66480a99ce2ca",
+    "intermediates/int-eu-1-sub.json": "abc7e2af93a9cea343caec05d84013ea32b20886139d16e6523ed816f07c873c",
+    "intermediates/int-eu-1.json": "042c35185e534e7984f21fc2985f5428c879c7af702bdd81059d843082523bdd",
+    "intermediates/int-us-1.json": "cd444dee5ed9e298a72c6445b308615bb413727e3131ee459f615821334aaf5e",
+    "intermediates/int-us-2.json": "48f7a927b527f71517beca97dd7c9d74c4e5ac82638e42138a28a31198dbc8a8",
+    "leafs/leaf-api-v1.json": "4e1d1abe1a452aa556f93456ac9656a4e023f80deba1fdddd88c97537a983d4d",
+    "leafs/leaf-cdn-v1.json": "5f5755d242dda12974502e92bc8847796982491a65f4bcf9285e694be437df4c",
+    "leafs/leaf-edge-v1.json": "f093b3e29be68f955eb8930384e593e06099f158f5105586b03734ea1453fd24",
+    "leafs/leaf-internal-v1.json": "b361b0486f9359b57b1d1ffe024ba9a00f3383ccaebc522470332ab014cefbf5",
+    "leafs/leaf-internal-v2.json": "aa34d17c1e2faebb433b480caac470bf7c02a7387dba69b0e53cb0aafb6b92af",
+    "leafs/leaf-legacy-v1.json": "9f40c1e2e79ae79b24ebc1497d5aecfca860ee862855f6ad198e5d3cfd3b37d4",
+    "leafs/leaf-ops-v1.json": "81406d6f51ae21462f4b4b87f48d2353c6e8148b0d006f1e28a9ce6188404f09",
+    "leafs/leaf-pin-v1.json": "d7dfac458f3a1ba5d5e7b255e4f78799707b6ba05e3ba054ef20cf4c787612b6",
+    "leafs/leaf-portal-v1.json": "462fc8300153e4ae45c462213d11298e5fe4982d31b654f6cbdb63adb7a7c835",
+    "leafs/leaf-revoked-v1.json": "c4fa69aa03fa54a0c22ccb71f7c51833812c9a4f96d2d707a9603f5b1e4b6925",
+    "leafs/leaf-shop-v1.json": "4eeb30317e6478d88b79803c5027e505ded115f98c69792b351e09dc46eafe83",
+    "leafs/leaf-staging-v1.json": "0699eb09f8e00236774fca0b934cc82d47f9f79a165cadf292dc98ce89805d8c",
+    "leafs/leaf-staging-v2.json": "719dd578e4084e241ccbd86924f1d34f6018880963bb61debfbdfc11be35bf75",
+    "domains/internal/internal-app.example.lan.json": "0c292f0a4301661e4b65de66b878acade877cfca1605c1a7f982c931545bce27",
+    "domains/internal/internal-tools.example.lan.json": "4980f7e2064a23c05ae47e05322351d7dd3de401ccd573f8f5a174ac74db672a",
+    "domains/production/api.example.com.json": "757e4fcbfbf421759e1e0d15d6657aef35771b734428ed0cde35de925b8c7bad",
+    "domains/production/cdn.example.com.json": "7552e26369f7d80ebc5b67834fa57b6b554539525e1473634f0a7d357a916442",
+    "domains/production/edge.example.com.json": "a1a1d6bef2e5b291e1512112a6c3bd7eec2764e35e7c5ce2b874f8337e5f19bd",
+    "domains/production/legacy.example.org.json": "d7f4b93d5b988814df3f576f3366a3d68f8bdf761a0fc7cebb1e19e7508817c6",
+    "domains/production/ops.example.io.json": "aa994d9b3b29018b3e0b9e372700bee30ce206f87c704f62b17af6b099682ca9",
+    "domains/production/portal.example.com.json": "d9b04fa23498659583fca36770cf30b8938b16e193f97bb88af9e33a1d01b4f7",
+    "domains/production/revoked-svc.example.com.json": "e2b01de6a0213395450f103473294309ec57edc7221130004e029645ddd139a6",
+    "domains/production/shop.example.net.json": "7a32250d8c42749956a15a86fdca53171103c7be3ac7fe34d6a19ba643f14be3",
+    "domains/staging/staging-app.example.com.json": "6f5043aaf83a12548f58a279d9b96a61686737c63b5292e0caf95f19c7574382",
+    "domains/staging/staging.example.com.json": "93bac54b8707b5b466401e6692505acc28f2eeac35307da4d82bbaac8a2d0b92",
 }
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "chain_audit.json":   "6f656ab5066f6fee7c5db80b6a1a3baf471cc65841dde2629f107391acde6fc4",
-    "expiry_report.json": "bc7a49ae7eb5fb293fe26e47831efe5b05a4e6f681444368181a9144ef13a700",
-    "ocsp_summary.json":  "bd3b7b63ef0285325234d04b5bbdc9abe63e5de8a4fad9f45ac6f6b8d42068fa",
-    "ca_risk.json":       "f0cc2e55120697cce74b5dbe812dc059356a8509753ff44334b813ba73d5fbed",
-    "summary.json":       "b3d4c65d493bc7f0d16fb715a6f63b2e8d1e2215891d03fd67612354a2f7eac7",
+    "chain_audit.json": "a8bf91bc53074c31061b7aa7341594851a9ea941d9036ea13588d813333dc709",
+    "expiry_report.json": "46423288209c66110090381fd89124f0e5936d2d3731f90671f64cf0f7c99bcd",
+    "ocsp_summary.json": "104ec7bdc856b396b4471f61245af7656242373ec76a0005a09279b6322c8ce8",
+    "ca_risk.json": "54a0b34f77531eebc8b917c204df45deef5a138565658a0e10ffd69bcf193cea",
+    "summary.json": "73d5ebc8f00574e5905cdcdafcc7c18862d8f2cfc5dd7028bb914e6e3619c16a",
 }
 
 EXPECTED_FIELD_HASHES = {
-    "chain_audit.domains":            "33b614acaa2a0baebeb8a89010c7b4b340d3dbdf425b3e80388acc368879433c",
-    "expiry_report.buckets":          "74fe2f0cfcc317da51b1a91d2cc2ff6d87c11cc95534daac7cc36882dba1ea44",
-    "ocsp_summary.details":           "3c6f84549422fd6fbb61e61219e02d2a36430a18e1442052ef09e270c9ba63ba",
-    "ca_risk.intermediates":          "7d6f3e6ef92ce023d0d1b43d4a2ce2ec7a17c4a7f347c7d11883bbbe33c77bb3",
-    "summary.by_verdict":             "1240da8359118fa7d4cc27072cdc8daa716a1b75af828bae8bac277221e6af05",
-    "summary.by_ocsp_state":          "ea1c14496d15cd8b4566703e3724c3e40669eb4e8fb2abf823de272b0ff22669",
-    "summary.compromised_cas":        "9af690fa8ca2f502f5cdbe5c20b8cd4a05b3a9947fc06a7fa6656c7e4aedd0ce",
-    "summary.by_preliminary_verdict": "11d5c8d80fca116a81c3d7d2217073ecff22acf8f2638a7c1dcdcc53eca0c97a",
+    "chain_audit.domains": "dcfd63b5d3b2628b99ac4b33a28d253d0fc25caa090ac137367e796e8bd31e9b",
+    "expiry_report.buckets": "b14e305a562937b3fa8aa064e989c02b5bea50e4b8e1e0d2602aace50feb6a11",
+    "ocsp_summary.details": "ad451d1371e83505f701d8620c267826bfc09e004e81e11f3a024579f06f6a75",
+    "ca_risk.intermediates": "cb07ae810c7983bb437e1a9df84c09a877642cc7f3cc0020d35398a87b3842d7",
+    "summary.by_verdict": "3dce95a0a00fe9f230c15bd2434764fd15bb4cc82bcaa5a52cf1fec30cb7f043",
+    "summary.by_ocsp_state": "77121a7c8bc2af79367943f0cbc47e189f4226fa1fb3d01c0c4437ec39c54b73",
+    "summary.compromised_cas": "9af690fa8ca2f502f5cdbe5c20b8cd4a05b3a9947fc06a7fa6656c7e4aedd0ce",
+    "summary.by_preliminary_verdict": "3ec31aa1798adfce27fda34264af6142365ed6e5d820cb9bfbf1e00890017324",
 }
 
 
@@ -354,6 +357,20 @@ class TestChainAudit:
         assert app["verdict"] == "revoked"
         assert "intermediate_revoked" in app["reasons"]
 
+    def test_known_pinning_violation_staging_app(self, loaded_outputs):
+        """required_intermediate absent from a successful chain yields untrusted."""
+        domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
+        app = next(d for d in domains if d["domain"] == "staging-app.example.com")
+        assert app["verdict"] == "untrusted"
+        assert "pinning_violation" in app["reasons"]
+
+    def test_known_production_stale_ocsp_untrusted(self, loaded_outputs):
+        """Production tiers listed in soft_fail_untrusted_tiers elevate leaf soft_fail to untrusted."""
+        domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
+        portal = next(d for d in domains if d["domain"] == "portal.example.com")
+        assert portal["verdict"] == "untrusted"
+        assert "ocsp_soft_fail" in portal["reasons"]
+
     def test_compromise_overrides_audit_review(self, loaded_outputs):
         """A compromised domain ignores audit_review even when target is 'valid'."""
         domains = loaded_outputs["chain_audit.json"]["obj"]["domains"]
@@ -509,6 +526,71 @@ class TestSummary:
         """by_ocsp_state values sum to total_domains."""
         s = loaded_outputs["summary.json"]["obj"]
         assert sum(s["by_ocsp_state"].values()) == s["total_domains"]
+
+    def test_summary_by_ocsp_worst_of_chain(self, loaded_outputs):
+        """summary.by_ocsp_state uses worst leaf+intermediate OCSP, not leaf-only counts."""
+        chain_by_domain = {
+            d["domain"]: d["chain"]
+            for d in loaded_outputs["chain_audit.json"]["obj"]["domains"]
+        }
+        leaf_by_domain = {}
+        for tier in (DATA_DIR / "domains").iterdir():
+            if not tier.is_dir():
+                continue
+            for fp in tier.glob("*.json"):
+                doc = json.loads(fp.read_text(encoding="utf-8"))
+                leaf_by_domain[doc["domain"]] = doc["leaf_serial"]
+
+        with open(DATA_DIR / "ocsp_responses.json", encoding="utf-8") as f:
+            ocsp_doc = json.load(f)
+        with open(DATA_DIR / "pool_state.json", encoding="utf-8") as f:
+            current_day = json.load(f)["current_day"]
+        with open(DATA_DIR / "chain_config.json", encoding="utf-8") as f:
+            stale_days = json.load(f)["ocsp_stale_days"]
+        inter_set = {p.stem for p in (DATA_DIR / "intermediates").glob("*.json")}
+
+        def pick_state(serial):
+            best = None
+            best_idx = -1
+            for idx, r in enumerate(ocsp_doc.get("responses", [])):
+                if r.get("serial") != serial:
+                    continue
+                pd = r["produced_day"]
+                if best is None or pd > best["produced_day"] or (
+                    pd == best["produced_day"] and idx > best_idx
+                ):
+                    best = r
+                    best_idx = idx
+            if best is None:
+                return "soft_fail"
+            if best["status"] == "revoked":
+                return "revoked"
+            stale = (current_day - best["produced_day"]) > stale_days
+            if best["status"] == "good" and not stale:
+                return "valid"
+            return "soft_fail"
+
+        def worst_for_chain(leaf_serial, chain):
+            states = [pick_state(leaf_serial)]
+            for serial in chain[1:-1]:
+                if serial in inter_set:
+                    states.append(pick_state(serial))
+            if "revoked" in states:
+                return "revoked"
+            if "soft_fail" in states:
+                return "soft_fail"
+            return "valid"
+
+        expected = {"valid": 0, "revoked": 0, "soft_fail": 0}
+        for domain, chain in chain_by_domain.items():
+            expected[worst_for_chain(leaf_by_domain[domain], chain)] += 1
+        assert loaded_outputs["summary.json"]["obj"]["by_ocsp_state"] == expected
+
+    def test_ocsp_summary_leaf_only_differs_from_summary(self, loaded_outputs):
+        """ocsp_summary.by_state counts leaves only; summary.by_ocsp_state is worst-of-chain."""
+        ocsp_leaf = loaded_outputs["ocsp_summary.json"]["obj"]["by_state"]
+        summary_ocsp = loaded_outputs["summary.json"]["obj"]["by_ocsp_state"]
+        assert ocsp_leaf != summary_ocsp
 
     def test_compromised_cas_pass_through(self, loaded_outputs):
         """compromised_cas matches the accepted ca_compromise event serials."""

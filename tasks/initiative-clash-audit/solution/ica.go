@@ -17,8 +17,10 @@ type policyFile struct {
 	} `json:"band_rules"`
 	BraceLift               int            `json:"brace_lift"`
 	CurrentDay              int            `json:"current_day"`
+	DefendBlocksOverclock   bool           `json:"defend_blocks_overclock"`
 	EchoMaxAbsPriorityDelta *int           `json:"echo_max_abs_priority_delta"`
 	FactionFavor            map[string]int `json:"faction_favor"`
+	JamCascadeSlack         *int           `json:"jam_cascade_slack"`
 	StanceDelta             map[string]int `json:"stance_delta"`
 	StimDelta               int            `json:"stim_delta"`
 }
@@ -60,6 +62,7 @@ type unitState struct {
 	EchoSunk    bool
 	Throttled   bool
 	Overclocked bool
+	HasRally    bool
 }
 
 func readJSON(path string, dst any) {
@@ -186,6 +189,56 @@ func iabs(x int) int {
 		return -x
 	}
 	return x
+}
+
+func applyJamCascade(states []unitState, slack int) {
+	for {
+		changed := false
+		for _, src := range states {
+			if !src.Jammed {
+				continue
+			}
+			for i := range states {
+				if states[i].Jammed || states[i].Faction != src.Faction {
+					continue
+				}
+				if iabs(states[i].Priority-src.Priority) <= slack {
+					states[i].Jammed = true
+					changed = true
+				}
+			}
+		}
+		if !changed {
+			break
+		}
+	}
+}
+
+func applyRallyLifts(states []unitState, maxBand int) {
+	rallyIDs := make([]string, 0)
+	for i := range states {
+		if states[i].HasRally {
+			rallyIDs = append(rallyIDs, states[i].UnitID)
+		}
+	}
+	sort.Strings(rallyIDs)
+	byID := map[string]*unitState{}
+	for i := range states {
+		byID[states[i].UnitID] = &states[i]
+	}
+	for _, id := range rallyIDs {
+		u := byID[id]
+		nb := u.Final + 1
+		if nb > maxBand {
+			nb = maxBand
+		}
+		u.Final = nb
+		for i := range states {
+			if states[i].Faction == u.Faction && states[i].Final < u.Final {
+				states[i].Final = u.Final
+			}
+		}
+	}
 }
 
 func computeEchoSunk(states []unitState, echoMax *int) {
@@ -371,6 +424,7 @@ func main() {
 		hasStim := false
 		suppress := false
 		braced := false
+		hasRally := false
 		throttleHits := 0
 		jm := false
 		for _, ev := range inc.Events {
@@ -384,6 +438,8 @@ func main() {
 				suppress = true
 			case "brace":
 				braced = true
+			case "rally":
+				hasRally = true
 			case "thermal_throttle":
 				throttleHits++
 			case "jam":
@@ -403,7 +459,8 @@ func main() {
 		}
 		intr := intrinsicBand(score, pol.BandRules)
 
-		_, over := ocSet[uf.UnitID]
+		_, listed := ocSet[uf.UnitID]
+		over := listed && !(pol.DefendBlocksOverclock && uf.Stance == "defend")
 
 		th := throttleHits > 0
 		final := intr
@@ -438,10 +495,16 @@ func main() {
 			Jammed:      jm,
 			Throttled:   th,
 			Overclocked: overclocked,
+			HasRally:    hasRally,
 		})
 	}
 
+	if pol.JamCascadeSlack != nil {
+		applyJamCascade(states, *pol.JamCascadeSlack)
+	}
+
 	applyEscortAnchoring(states)
+	applyRallyLifts(states, worst)
 	computeEchoSunk(states, pol.EchoMaxAbsPriorityDelta)
 
 	rosterMaxFinal := 0

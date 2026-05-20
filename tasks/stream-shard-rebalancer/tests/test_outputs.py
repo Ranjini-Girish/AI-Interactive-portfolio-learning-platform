@@ -10,9 +10,10 @@ hand-tweaked JSON.
 The task is constrained to a Go implementation: the agent must produce a Go
 source tree under ``/app/src/`` and a compiled binary at ``/app/bin/rebalancer``
 whose execution against ``/app/cluster/`` populates ``/app/plan/``. Tests in
-``TestImplementationLanguage`` enforce that constraint by re-running the
-agent's binary into a temporary directory and comparing its output against the
-files left in ``/app/plan/`` byte-for-byte.
+``TestImplementationLanguage`` enforce that constraint by confirming the
+deliverable is a native ELF binary with Go toolchain build metadata, by
+re-running the agent's binary into a temporary directory, and by comparing its
+output against the files left in ``/app/plan/`` byte-for-byte.
 """
 
 from __future__ import annotations
@@ -750,6 +751,47 @@ class TestImplementationLanguage:
         file - the compiled artifact of the Go source under ``/app/src/``."""
         assert BIN_PATH.is_file(), f"{BIN_PATH} must exist (compiled rebalancer binary)"
         assert os.access(BIN_PATH, os.X_OK), f"{BIN_PATH} must be executable"
+
+    def test_binary_is_native_elf_executable(self):
+        """``/app/bin/rebalancer`` must be a native compiled ELF executable,
+        not a shell/Python wrapper that merely invokes another language."""
+        head = BIN_PATH.read_bytes()[:4]
+        assert head != b"#!/b" and head != b"#!/u" and head != b"#!/p", (
+            f"{BIN_PATH} must not be a script (header={head!r})"
+        )
+        assert head == b"\x7fELF", (
+            f"{BIN_PATH} must be an ELF executable produced by a Go compiler (header={head!r})"
+        )
+
+    def test_rebalancer_binary_built_from_go(self):
+        """``/app/bin/rebalancer`` must carry Go build metadata from the Go
+        toolchain, ruling out a Python/shell pipeline that only writes JSON."""
+        go_bin = shutil.which("go")
+        if go_bin:
+            result = subprocess.run(
+                [go_bin, "version", "-m", str(BIN_PATH)],
+                capture_output=True,
+                text=True,
+                timeout=30,
+                check=False,
+            )
+            first_line = (result.stdout or "").splitlines()[0] if result.stdout else ""
+            assert result.returncode == 0 and re.search(r"\bgo1\.\d+", first_line), (
+                f"`go version -m` did not identify a Go-compiled binary "
+                f"(rc={result.returncode}, first_line={first_line!r}, "
+                f"stderr={(result.stderr or '')[:300]!r})"
+            )
+            assert "\tmod\t" in result.stdout or "\tpath\t" in result.stdout, (
+                f"`go version -m` did not report embedded module/path build info "
+                f"for {BIN_PATH}:\n{result.stdout}"
+            )
+        else:
+            data = BIN_PATH.read_bytes()
+            assert (
+                b"go.buildinfo" in data
+                or b"Go build" in data
+                or b"runtime.go" in data
+            ), f"{BIN_PATH} does not contain Go build metadata"
 
     def test_binary_reproduces_plan(self):
         """A fresh execution of ``/app/bin/rebalancer`` against

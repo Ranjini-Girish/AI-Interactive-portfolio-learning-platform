@@ -19,3 +19,7 @@ Agent ignores brace incidents or hard-codes brace_lift instead of reading policy
 Agent collapses repeated thermal_throttle rows into a single step before the band ceiling, -3
 Agent applies stim_delta even when a same-day suppress marker exists for that unit, -3
 Agent omits the echo priority window check when echo_max_abs_priority_delta is present in policy, -3
+Agent applies overclock penalties to defend-stance units when defend_blocks_overclock is true, -3
+Agent skips iterative jam_cascade_slack spreading within a faction after direct jams, -3
+Agent runs rally lifts before escort anchoring or omits the faction sweep after a rally row, -3
+Agent uses base_priority_score instead of priority_score when measuring jam cascade proximity, -3

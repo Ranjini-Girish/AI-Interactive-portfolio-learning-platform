@@ -7,12 +7,14 @@
   ],
   "brace_lift": 2,
   "current_day": 14,
+  "defend_blocks_overclock": true,
   "echo_max_abs_priority_delta": 15,
   "faction_favor": {
     "alpha": 3,
     "beta": 0,
     "gamma": 0
   },
+  "jam_cascade_slack": 14,
   "stance_delta": {
     "attack": 5,
     "defend": -2,

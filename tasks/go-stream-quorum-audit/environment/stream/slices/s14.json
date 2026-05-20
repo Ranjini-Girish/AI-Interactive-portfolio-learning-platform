@@ -1,0 +1,44 @@
+[
+  {
+    "epoch": 2,
+    "escrow": true,
+    "phase": "commit",
+    "stream": "lambda",
+    "tick": 150,
+    "voter": "l4",
+    "weight": 1
+  },
+  {
+    "epoch": 2,
+    "escrow": true,
+    "phase": "commit",
+    "stream": "lambda",
+    "tick": 155,
+    "voter": "l5",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "mu",
+    "tick": 120,
+    "voter": "m1",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "mu",
+    "tick": 125,
+    "voter": "m2",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "mu",
+    "tick": 130,
+    "voter": "m3",
+    "weight": 1
+  }
+]

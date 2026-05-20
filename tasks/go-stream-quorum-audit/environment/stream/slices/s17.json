@@ -1,0 +1,26 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "omicron",
+    "tick": 130,
+    "voter": "o1",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "omicron",
+    "tick": 135,
+    "voter": "o2",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "omicron",
+    "tick": 140,
+    "voter": "o3",
+    "weight": 1
+  }
+]

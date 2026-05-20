@@ -1,0 +1,5 @@
+{
+  "cutoff": 200,
+  "grace": 10,
+  "watermark": 50
+}

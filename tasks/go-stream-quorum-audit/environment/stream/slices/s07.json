@@ -1,0 +1,19 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "epsilon",
+    "tick": 30,
+    "voter": "e1",
+    "weight": 5
+  },
+  {
+    "epoch": 1,
+    "late": true,
+    "phase": "prepare",
+    "stream": "epsilon",
+    "tick": 190,
+    "voter": "e2",
+    "weight": 1
+  }
+]

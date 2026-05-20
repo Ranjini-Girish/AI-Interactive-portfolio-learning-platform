@@ -1,0 +1,26 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "theta",
+    "tick": 90,
+    "voter": "t1",
+    "weight": 3
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "iota",
+    "tick": 188,
+    "voter": "i1",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "iota",
+    "tick": 189,
+    "voter": "i2",
+    "weight": 1
+  }
+]

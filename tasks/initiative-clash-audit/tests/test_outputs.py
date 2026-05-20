@@ -1,4 +1,4 @@
-"""Verifier suite for initiative-clash-audit (medium)."""
+"""Verifier suite for initiative-clash-audit (hard)."""
 
 from __future__ import annotations
 
@@ -16,8 +16,8 @@ OUTPUT_FILES = ("turn_order.json", "clashes.json", "summary.json")
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "dcc0871f2eabe9e07958752a6617c432571b6919046190004a4bd6c404a06ce7",
-    "incidents.json": "e24c0b437d34e85359a3877f2a9b800cbfd2638ae080b990221cfae4b0380825",
+    "SPEC.md": "0b9b83d7b86c00614f8e16398af317941673d4c2a61f10e279a8eff4f1d70e13",
+    "incidents.json": "a7d05e4d76d26c35df9057bd5e67031ade005f30e99f7049437585e4ce858cdf",
     "loadouts/u01.json": "b0323fdba549839dc4e5ebf7b42b27fad1e0b79595d7f7cfa2c1c6af1db18207",
     "loadouts/u02.json": "2029fb94c546b5a9ddc5937c2557b91b89fe743d2db100f3f91bc9f0e24034f3",
     "loadouts/u03.json": "800013d3615c68c1741dc66e9488aae1b229950d37fb7b8c6b3a2d751e4208eb",
@@ -28,8 +28,8 @@ EXPECTED_INPUT_HASHES = {
     "loadouts/u08.json": "0e1debb7119e35a0dc60b3d0c6a222e3c2eb7a967cdc7605e480b27eda7ee79a",
     "loadouts/u09.json": "b0323fdba549839dc4e5ebf7b42b27fad1e0b79595d7f7cfa2c1c6af1db18207",
     "loadouts/u10.json": "4ce9436087de02290b4b2989b203c9846596254feef0992be02f84ddcd95c6aa",
-    "overclock.json": "a031f0843665e6730c1ed644190fbc0d82f4a7c6453f1bce99d8ed82d8492756",
-    "policy.json": "7110fdf48873b94e0d4fd1d229533f706d0ce2c54e1779d72e38bdb55e45739e",
+    "overclock.json": "166ff0de4f13d7697bb0d33c7c5c322441fc2850e041e3fa7c736125b2823036",
+    "policy.json": "2f9ecd26bb1814ae80970cccd660fece94cb70d994d417230ba316bd9048a57d",
     "units/u01.json": "b65c7067c866263a0a5fd3ca7547181f6fe883b2d4e403f0e4b8cf10bf6400a4",
     "units/u02.json": "1d6d28484be173cfb2e9bd4b155419957dac98589413f2285f335a8fcfa907e5",
     "units/u03.json": "38174e9f593dade6ed9e8fffe3b5b9c34139d9828b741203b9bec5b41e04edfb",
@@ -44,17 +44,17 @@ EXPECTED_INPUT_HASHES = {
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "turn_order.json": "92840942007564073b6574f0ab73482ad6b5066ed2df3ece6cb56797d879dd13",
+    "turn_order.json": "71f5f84213e5a90a8c71329e33ed44017121394a3a1abba90d5a05f3331ecc51",
     "clashes.json": "b120c28477c5d71babb7c71fea14ea50966fe51c3fa38878643fd519b1234c30",
-    "summary.json": "7aaf2ce243b47d61d2dad02b36e741d4975fdf6488cfaafb94af9df39aecbeeb",
+    "summary.json": "6a262e36e983e4a66a6bc458cb33585875d9bea2180ae41dc9b0931cb05d5d77",
 }
 
 
 EXPECTED_FIELD_HASHES = {
     "clashes.clashes": "dd672ef87e8eb3d71dda516f46b4a7c62583d4599fc1d12ccb0d08e3a3e11918",
-    "summary.band_counts": "c17bcb6bc7464b079c4ae9453a4f9102fbd16e50cebc381e7b1bbd68bfad6361",
-    "summary.status_counts": "2ecc05b32dc24bcf2c8a4bb810aaaec2b059b524cf99ceca6bc841c15a4c102a",
-    "turn_order.ordered_unit_ids": "1e2fd66931792d0a261dc6a1926560dc0a6883b38702022964d6a367f9951b88",
+    "summary.band_counts": "dc1491cd1a8b1b8f58e66bf88be0a397ffde69e5f493828a0d3f37a197e1d41f",
+    "summary.status_counts": "7524143bea5119bee8377bc6b111111d869feccc4a00e8508fffc0e5ffd403da",
+    "turn_order.ordered_unit_ids": "2a9f961b1dafb1c31b28db7caa7370efe8419512c6140a56205d24bb05f1be2f",
     "turn_order.per_unit.u03": "d87039150866220e643d53460545e64760892f2c19771e4c703da073feb2242f",
 }
 
@@ -198,19 +198,20 @@ class TestClashLedger:
 class TestTurnOrdering:
     """Pin ordering rules inside dense final bands."""
 
-    def test_u05_precedes_u06_after_stim_sort(self, outputs: dict[str, object]) -> None:
-        """Stim raises u05 priority inside band two so it sorts ahead of u06."""
+    def test_u05_priority_above_u06_after_stim(self, outputs: dict[str, object]) -> None:
+        """Stim raises u05 priority_score above u06 even after rally pulls both into band three."""
+        per = outputs["turn_order.json"]["per_unit"]
+        assert per["u05"]["priority_score"] > per["u06"]["priority_score"]
         order = outputs["turn_order.json"]["ordered_unit_ids"]
-        assert isinstance(order, list)
         i5 = order.index("u05")
         i6 = order.index("u06")
-        assert i5 < i6
+        assert i6 < i5
 
-    def test_u10_leads_and_u09_closes(self, outputs: dict[str, object]) -> None:
-        """Highest priority skirmisher opens the queue and the slowest closes it."""
+    def test_u10_leads_and_u05_closes(self, outputs: dict[str, object]) -> None:
+        """Highest priority skirmisher opens the queue and the jammed gamma anchor closes it."""
         order = outputs["turn_order.json"]["ordered_unit_ids"]
         assert order[0] == "u10"
-        assert order[-1] == "u02"
+        assert order[-1] == "u05"
 
     def test_escort_tail_inverts_priority(self, outputs: dict[str, object]) -> None:
         """Escort-anchored units in the roster tail band sort by ascending priority."""
@@ -270,3 +271,37 @@ class TestOverclockSemantics:
         assert isinstance(row, dict)
         assert row["throttled"] is True
         assert row["overclocked"] is False
+
+    def test_u07_defend_blocks_overclock_penalty(self, outputs: dict[str, object]) -> None:
+        """Defend stance must ignore overclock list movement when policy blocks it."""
+        row = outputs["turn_order.json"]["per_unit"]["u07"]
+        assert isinstance(row, dict)
+        assert row["final_band"] == row["intrinsic_band"]
+        assert row["overclocked"] is False
+
+
+class TestJamCascade:
+    """Cover same-faction proximity jam spreading after direct jams."""
+
+    def test_u06_jammed_by_gamma_cascade(self, outputs: dict[str, object]) -> None:
+        """A jammed gamma anchor must cascade to u06 within the bundled slack window."""
+        row = outputs["turn_order.json"]["per_unit"]["u06"]
+        assert isinstance(row, dict)
+        assert row["jammed"] is True
+
+    def test_u03_not_jammed_when_slack_too_tight(self, outputs: dict[str, object]) -> None:
+        """Alpha ally u03 stays unjammed when priority delta exceeds jam_cascade_slack."""
+        row = outputs["turn_order.json"]["per_unit"]["u03"]
+        assert isinstance(row, dict)
+        assert row["jammed"] is False
+        assert row["echo_sunk"] is True
+
+
+class TestRallyFactionLift:
+    """Cover post-escort rally lifts that drag faction mates into higher bands."""
+
+    def test_rally_pulls_gamma_units_to_tail_band(self, outputs: dict[str, object]) -> None:
+        """u06 rally must lift u05 and u06 into the roster tail band after escort anchoring."""
+        per = outputs["turn_order.json"]["per_unit"]
+        assert per["u05"]["final_band"] == 3
+        assert per["u06"]["final_band"] == 3

@@ -1,0 +1,18 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "xi",
+    "tick": 160,
+    "voter": "x1",
+    "weight": 2
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "xi",
+    "tick": 165,
+    "voter": "x2",
+    "weight": 2
+  }
+]

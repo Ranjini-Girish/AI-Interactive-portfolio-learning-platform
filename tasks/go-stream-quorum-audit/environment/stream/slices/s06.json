@@ -1,0 +1,18 @@
+[
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "delta",
+    "tick": 180,
+    "voter": "d4",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "commit",
+    "stream": "delta",
+    "tick": 185,
+    "voter": "d5",
+    "weight": 1
+  }
+]

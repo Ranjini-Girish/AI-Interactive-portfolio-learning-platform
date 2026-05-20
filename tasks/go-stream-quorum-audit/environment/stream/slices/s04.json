@@ -1,0 +1,26 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "beta",
+    "tick": 120,
+    "voter": "x3",
+    "weight": 1
+  },
+  {
+    "epoch": 2,
+    "phase": "prepare",
+    "stream": "beta",
+    "tick": 150,
+    "voter": "x1",
+    "weight": 3
+  },
+  {
+    "epoch": 2,
+    "phase": "prepare",
+    "stream": "beta",
+    "tick": 160,
+    "voter": "x2",
+    "weight": 1
+  }
+]

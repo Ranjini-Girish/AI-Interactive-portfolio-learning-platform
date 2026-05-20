@@ -52,7 +52,7 @@ For each server, determine whether an `audience_emergency` survivor targets its 
 
 Collect every signing-eligible key that matches the effective audience. Sort those kids ascending and store as `eligible_kids`.
 
-Choose `chosen_kid`: if the list is empty, use the empty string. Otherwise pick the key that maximizes `(sequence, not_after_effective, kid)` using integer compares for the first two fields and ASCII compare for `kid`; break any residual tie by smallest `kid`.
+Choose `chosen_kid`: if the list is empty, use the empty string. Otherwise choose the key with the largest `sequence`; among ties, the largest `not_after_effective`; among ties, the smallest `kid` (lexicographic).
 
 ## Pairwise overlap
 

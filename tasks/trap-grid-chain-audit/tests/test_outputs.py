@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "4095199093580e2c0fefd5ecce842d729d3f0a52929ee7c854de6f6f1d6b670d",
+    "SPEC.md": "db4c43203f593249eb30cac4d9f9a856e90a030aa761972e8a72d8f11523d48f",
     "anchors/a1.txt": "d58b76ef6935b283f63cd1c648d0a0a2a236daeb5160c6fc114f91d56d808441",
     "anchors/a2.txt": "0669e4f2d6a4a61669bbffb5707d53a3df17b72376d071980f2213f1ec2ba903",
     "grid/dims.json": "73f2be6b123b7232bb0a7b59ade19ab75522fe28c7f2ebc6f2124718637cd707",
@@ -30,7 +30,7 @@ EXPECTED_INPUT_HASHES = {
     "manifest/seq.json": "ba3ec5a89c28644af0903bf25c6b6bb8b7a320ffd8df972395eb86a293a59ee3",
     "manifest/tag.json": "9ac8a324807ab8cc4472a3494e2b5006422b38aaeda4a0e2487f56797419e77d",
     "policy.json": "6f5ba9d92747b9ec467d3f597520e56307cd483df0fc727518f50f8f572807a9",
-    "pool_state.json": "34c7ac9f42ea261b688a37b2285a4015785fd5b9c4431b6f239e86768e5f3a9e",
+    "pool_state.json": "6e068ef4b012fed1bb72352e9ff9afdddbefda48e73ba292ee94f9f53ba2ca4b",
     "rooms.json": "a8ee2c655830d2b9fa9277232f80058be8c5db5d2b27a95f17edade8d6074b12",
     "traps/t01.json": "962844331d1947e518dfa911b6abfc524592eecd7e1695b425fbf6bcf957e8e7",
     "traps/t02.json": "d6e6aa2b9b5a695fe87ad4fd5d638533867842f0fe62b62d64835164912d4559",
@@ -47,17 +47,18 @@ EXPECTED_INPUT_HASHES = {
 }
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "trap_states.json": "c030b6e2e2d35b7b061656fe7d948c20508bd1f7bbe84977a382de8fccb92910",
-    "trigger_plan.json": "d65e3c53b2bafe3e67b704c3abcebbf83ca650e6ca8548a1771fb65a55dbf1a6",
-    "disarm_plan.json": "f21422daa589c12ee822a8e7dfd3c2e159185ae75363552d77e603d9f342c413",
+    "trap_states.json": "ddfcd20961b77c97fe9cdf3c278f271cdb15a23b81040cdae4f5a5a0b636c72d",
+    "trigger_plan.json": "ffc859150c16861c602cb60cb530537cf7d25949d14b53224af1fb2dcd601373",
+    "disarm_plan.json": "322e741457464576cf9dc92722af86e4847740a151cc6ca328eec19b3544804b",
     "room_status.json": "05394b3b3ce6605a6b5bb223b82d485b365e645c94f6d2ca75f8b064d5cbba3b",
-    "summary.json": "041f9be52eb89b18a820e47d28a36afaf5f511f47b486d94c31d8bdcb7b6ab3c",
+    "summary.json": "8317c0d87375721a2b72a8740c1756ac6388bfb6ae167359bc4cb06f881f8d9b",
 }
 
 EXPECTED_FIELD_HASHES = {
+    "disarm_plan.entries.t11": "7eb9d324266b4fa6d34b56a290c98d211b6e1ae3b51efa1fba48ec400259c0de",
     "summary.hazardous_rooms": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
     "trap_states.traps.t03": "5de160857834a7cd95d3f6fac6de7e073895d79b4d866cb06560aec93d709fec",
-    "trigger_plan.waves": "f05673cfc3a516aa1fc5e240831691579d9196d57deac42fea1a069b448b5692",
+    "trigger_plan.waves": "300af5e5c2e878e55e8b5ec6ca9954ed5cb095dd17ad2daa568ef4ae72fe739e",
 }
 
 
@@ -141,10 +142,15 @@ class TestReportStructure:
             _sha256_bytes(_canonical(summary["hazardous_rooms"]).encode("utf-8"))
             == EXPECTED_FIELD_HASHES["summary.hazardous_rooms"]
         )
+        disarm = _disarm_index(outputs)
+        assert (
+            _sha256_bytes(_canonical(disarm["t11"]).encode("utf-8"))
+            == EXPECTED_FIELD_HASHES["disarm_plan.entries.t11"]
+        )
 
 
 class TestChainPropagation:
-    """Cover undirected link waves and hop indexing."""
+    """Cover jam-echo muting, hop tightening, and wave ordering."""
 
     def test_wave_zero_lists_initial_pulses(self, outputs: dict[str, object]) -> None:
         """Wave zero must include every armed initial pulse plus the forced cooldown trap."""
@@ -152,16 +158,19 @@ class TestChainPropagation:
         assert isinstance(waves, list) and waves
         assert waves[0] == ["t01", "t03", "t09"]
 
-    def test_chain_reaches_t04_on_hop_two(self, outputs: dict[str, object]) -> None:
-        """Linked traps must appear on later waves with the documented hop index."""
+    def test_jam_echo_stops_t01_outbound_chain(self, outputs: dict[str, object]) -> None:
+        """Jam-echo on t01 must keep linked hall-a traps off later waves."""
         traps = _trap_index(outputs)
-        assert traps["t04"]["chain_hops"] == 2
-        assert traps["t02"]["chain_hops"] == 1
+        assert traps["t02"]["final_state"] == "armed_idle"
+        assert traps["t02"]["chain_hops"] == -1
+        assert traps["t04"]["final_state"] == "armed_idle"
+        assert traps["t04"]["chain_hops"] == -1
 
-    def test_t10_follows_t09(self, outputs: dict[str, object]) -> None:
-        """Hall-d pair must chain from the hall-d seed pulse."""
+    def test_t10_chains_from_t09_only(self, outputs: dict[str, object]) -> None:
+        """Hop one must list only the hall-d neighbor reachable from t09."""
         waves = outputs["trigger_plan.json"]["waves"]
-        assert waves[1] == ["t02", "t10"]
+        assert len(waves) >= 2
+        assert waves[1] == ["t10"]
 
 
 class TestCooldownAndForce:
@@ -181,7 +190,7 @@ class TestCooldownAndForce:
 
 
 class TestDisarmStatuses:
-    """Pin tier cap, boost, hot cooloff, and sealed blocks."""
+    """Pin tier cap, boost, hot cooloff, sealed blocks, and slot budget."""
 
     def test_effective_cap_includes_boost(self, outputs: dict[str, object]) -> None:
         """Same-day disarm_boost must raise the silver cap from three to four."""
@@ -202,6 +211,10 @@ class TestDisarmStatuses:
     def test_t12_not_applicable(self, outputs: dict[str, object]) -> None:
         """Disarmed fixtures must use the not_applicable status."""
         assert _disarm_index(outputs)["t12"]["disarm_status"] == "not_applicable"
+
+    def test_t11_blocked_budget_after_t07(self, outputs: dict[str, object]) -> None:
+        """Consumable disarm slots must block later eligible traps."""
+        assert _disarm_index(outputs)["t11"]["disarm_status"] == "blocked_budget"
 
 
 class TestRoomStatus:
@@ -233,6 +246,12 @@ class TestSummaryTotals:
         suppressed = sum(
             1 for t in traps.values() if t["final_state"] == "cooldown_suppressed"
         )
+        disarmed = sum(
+            1
+            for t in _disarm_index(outputs).values()
+            if t["disarm_status"] == "disarmed"
+        )
         assert summary["triggered_total"] == triggered
         assert summary["sealed_total"] == sealed
         assert summary["cooldown_suppressed_total"] == suppressed
+        assert summary["disarmed_total"] == disarmed

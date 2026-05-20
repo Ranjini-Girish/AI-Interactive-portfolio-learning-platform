@@ -23,11 +23,14 @@ The dataset under `/app/certs/` contains:
   "max_chain_depth": <int>,
   "key_size_min_per_tier": {"production": 2048, "staging": 2048, "internal": 1024},
   "san_policy_per_tier": {"production": "exact", "staging": "wildcard_ok", "internal": "cn_only"},
-  "deprecated_signature_algos": ["<str>", ...]
+  "deprecated_signature_algos": ["<str>", ...],
+  "soft_fail_untrusted_tiers": ["<str>", ...]
 }
 ```
 
-A domain file `domains/<tier>/<domain>.json` is `{"domain": "<str>", "tier": "<str>", "leaf_serial": "<str>", "expected_san": ["<str>", ...]}`.
+`soft_fail_untrusted_tiers` lists tier names (subset of `production`, `staging`, `internal`). When a domain's tier appears in this list and its leaf's `ocsp_state` is `"soft_fail"`, the preliminary verdict is `"untrusted"` rather than `"warning"` (see Per-domain preliminary verdict).
+
+A domain file `domains/<tier>/<domain>.json` is `{"domain": "<str>", "tier": "<str>", "leaf_serial": "<str>", "expected_san": ["<str>", ...]}` with an optional `"required_intermediate": "<str>"` when the domain must visit a specific intermediate serial on every successful chain walk.
 
 A leaf or intermediate certificate file at `leafs/<serial>.json` or `intermediates/<serial>.json` is:
 
@@ -71,7 +74,9 @@ An OCSP response is **stale** iff `pool_state.current_day - produced_day > chain
 - `"revoked"` if the response has `status == "revoked"`.
 - `"soft_fail"` if the response has `status == "unknown"` OR the matched response is stale OR no matching response exists.
 
-Apply this to each domain's leaf serial to obtain the leaf's `ocsp_state`. Apply the same rules to every intermediate serial that appears in the domain's successful chain list at positions `1` through `len(chain)-2` (excluding the leaf and the trusted root) to obtain that intermediate's OCSP state. A domain has **intermediate_revoked** when any such intermediate's OCSP state is `"revoked"`.
+Apply this to each domain's leaf serial to obtain the leaf's `ocsp_state`. Apply the same rules to every intermediate serial that appears in the domain's chain list at positions `1` through `len(chain)-2` whenever those positions are intermediates (excluding the leaf and the trusted root) to obtain that intermediate's OCSP state. A domain has **intermediate_revoked** when any such intermediate's OCSP state is `"revoked"`.
+
+**Worst-of-chain OCSP for summary.** For `summary.by_ocsp_state` only, bucket each domain by the worst OCSP state among its leaf and every intermediate at chain positions `1` through `len(chain)-2` (intermediate files only; skip missing serials). Precedence is `revoked` > `soft_fail` > `valid`. This rollup is independent of `ocsp_summary.json`, which still records leaf serial OCSP per domain in `details` and counts only leaf states in its own `by_state`.
 
 ## Chain validation
 
@@ -101,6 +106,10 @@ SAN matching depends on tier:
 
 If SAN matching fails, the leaf has `san_ok == false`.
 
+## Intermediate pinning
+
+When a domain file includes `"required_intermediate": "<serial>"` and the chain walk **succeeds** (no chain failure reason), the serial must appear among chain positions `1` through `len(chain)-2`. If it does not, add reason `pinning_violation` and treat the domain as failing the untrusted preliminary gate below. Pinning is not evaluated when the walk fails.
+
 ## Deprecated signature algorithms
 
 `chain_config.deprecated_signature_algos` lists algorithm name strings. For a domain whose chain walk **succeeded** (no chain failure reason applies):
@@ -117,7 +126,7 @@ Compute a **preliminary** verdict for each domain; the **first** matching label 
 - `"chain_unreachable"` — the chain walk failed (any of `leaf_missing`, `intermediate_missing`, `chain_too_long`, `cycle_detected`).
 - `"expired"` — the leaf is expired or not yet valid.
 - `"revoked"` — the leaf's `ocsp_state == "revoked"` OR `intermediate_revoked` is true.
-- `"untrusted"` — `key_size_ok` is false OR `san_ok` is false OR (`domain.tier == "production"` AND `deprecated_signature` is among the collected reasons).
+- `"untrusted"` — `key_size_ok` is false OR `san_ok` is false OR `pinning_violation` is among the collected reasons OR (`domain.tier == "production"` AND `deprecated_signature` is among the collected reasons) OR (`domain.tier` is listed in `chain_config.soft_fail_untrusted_tiers` AND the leaf's `ocsp_state` is `"soft_fail"`).
 - `"warning"` — `expiry_bucket == "warning"` OR the leaf's `ocsp_state == "soft_fail"` OR (`domain.tier == "staging"` AND `deprecated_signature_warn` is among the collected reasons).
 - `"valid"` — none of the above.
 
@@ -167,6 +176,7 @@ All five outputs are written under `/app/audit/`. List ordering is part of the c
 | `intermediate_revoked`    | `intermediate_revoked` is true for the domain                                                                                                      |
 | `key_size_too_small`      | `leaf.key_size < key_size_min_per_tier[domain.tier]`                                                                                             |
 | `san_mismatch`            | SAN matching for the domain's tier policy fails                                                                                                  |
+| `pinning_violation`       | `required_intermediate` is set, the chain walk succeeded, and that serial is absent from chain positions `1` through `len(chain)-2`              |
 | `deprecated_signature`    | a listed `signature_algo` on the leaf or a chain intermediate and `domain.tier == "production"`                                                |
 | `deprecated_signature_warn` | a listed `signature_algo` on the leaf or a chain intermediate and `domain.tier == "staging"`                                                   |
 | `expiry_warning`          | `0 <= leaf.not_after_day - current_day <= expiry_warn_days`                                                                                      |
@@ -190,7 +200,7 @@ Each bucket list is sorted by `(days_to_expiry ascending, domain ascending)`. `d
 {"by_state": {"valid": <int>, "revoked": <int>, "soft_fail": <int>}, "details": [{"domain": "<str>", "leaf_serial": "<str>", "ocsp_state": "<str>"}]}
 ```
 
-`details` is sorted by `domain` ascending. `by_state` has all three keys.
+`details` is sorted by `domain` ascending. `by_state` has all three keys and counts **leaf** `ocsp_state` only (one entry per domain in `details`).
 
 ### `/app/audit/ca_risk.json`
 
@@ -206,7 +216,7 @@ Each bucket list is sorted by `(days_to_expiry ascending, domain ascending)`. `d
 {"current_day": <int>, "audit_version": "<str>", "total_domains": <int>, "total_intermediates": <int>, "ignored_incident_events": <int>, "by_preliminary_verdict": {"valid": <int>, "warning": <int>, "expired": <int>, "revoked": <int>, "untrusted": <int>, "chain_unreachable": <int>}, "by_verdict": {"valid": <int>, "warning": <int>, "expired": <int>, "revoked": <int>, "untrusted": <int>, "chain_unreachable": <int>, "compromised": <int>, "tainted": <int>}, "by_ocsp_state": {"valid": <int>, "revoked": <int>, "soft_fail": <int>}, "compromised_cas": ["<serial>", ...]}
 ```
 
-`compromised_cas` is sorted ascending. Every key in `by_preliminary_verdict`, `by_verdict`, and `by_ocsp_state` must appear with an integer value (zero if absent). `by_preliminary_verdict` has exactly the six preliminary labels and counts domains before the compromise cascade; `by_verdict` has all eight final labels and counts domains after compromise, audit_review, and quarantine passes.
+`compromised_cas` is sorted ascending. Every key in `by_preliminary_verdict`, `by_verdict`, and `by_ocsp_state` must appear with an integer value (zero if absent). `by_preliminary_verdict` has exactly the six preliminary labels and counts domains before the compromise cascade; `by_verdict` has all eight final labels and counts domains after compromise, audit_review, and quarantine passes. `by_ocsp_state` uses the worst-of-chain rollup described under OCSP interpretation (not the leaf-only counts from `ocsp_summary.by_state`).
 
 ## Canonical encoding
 

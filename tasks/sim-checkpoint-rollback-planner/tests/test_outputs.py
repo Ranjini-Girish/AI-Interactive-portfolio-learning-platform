@@ -12,6 +12,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import os
 import statistics
 from collections import deque
@@ -32,7 +33,7 @@ OUTPUT_FILES = (
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "61fd5040b56e1e77ade7e22fb8cf973450b62e282a99fab79cf3f097359221be",
+    "SPEC.md": "d96a71b93dfcd28af355622c2ae8d3f5cd4843c83da159756a577e6704c74ec5",
     "dependencies.json": "e5264ca9e31592fec25b5a6fb040e518c9840b134cf749fc9aaae5a5b8f7a578",
     "governance/policy.json": "31d57a90d5fd13bc5076d57830ddf8287d0f6abaf53ca3d279eb3923b9f1ee6b",
     "history/run_history.csv": "a743d66ed381c3c68ef7795859b274d8aa24a2ff11913c51dc7a022ad894e9db",
@@ -59,16 +60,16 @@ EXPECTED_INPUT_HASHES = {
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
     "chronic_runs.json": "563212d603104bd084ccaf45484e73bd8d1afb9a70003c9f174a2f1f661bfecd",
     "dependency_order.json": "a0a747d07e18ef3dccbb01f885344f8c065adb619b7bdb5c8d8afb0b6acaa643",
-    "rollback_plan.json": "26cdf3bae0c385fccc5984196992998186945f826b155deb27b3add2f50684be",
+    "rollback_plan.json": "bdaf380530178c89f6857623749158e3fe01d3f9e695e6edeb2763977fbd1074",
     "summary.json": "c3c16ef8a225bb002e5fb1f2d3ae3effa32dcdc00abe578d092f12160dde04b5",
-    "trend_report.json": "55fb3f0d8187c2c4c4374144bdbe4f67471c553cc77a3728167c41242794be03",
+    "trend_report.json": "1376469bfa06e910b4e75f9f4a7a40b80c4cf3975bb4ab69c3871a3b6eadb3be",
 }
 
 EXPECTED_FIELD_HASHES = {
     "chronic_runs.chronic": "64e9693d73c31269444c280dacdc88e9d6cc60fab27dfaa6125b2eef5ce87ed1",
     "dependency_order.consumers_to_pause": "a5ed9b7353426a7f7cc6d21f8f89a5919c17ed4c9f87498f508f098fb72e495e",
     "dependency_order.order": "0f8a44221f7be625d9841357e7b7ca923682fe91fb88ab54687a5e255e9dc304",
-    "rollback_plan.plans": "df0dbb80ca3d4a0ebbbf013276414b97b788a4e9eae207507ac062f259241de0",
+    "rollback_plan.plans": "024ef08d575f0c9f164f27c739f6b1ba2587c3d3ae69373de7085422847a1dc2",
     "summary.current_day": "6af1f692e9496c6d0b668316eccb93276ae6b6774fa728aac31ff40a38318760",
     "summary.dependency_chain_max_depth": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
     "summary.force_pinned_count": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
@@ -84,7 +85,7 @@ EXPECTED_FIELD_HASHES = {
     "summary.simulations_skipped_quiesce": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
     "summary.total_estimated_cost_node_hours": "a692c0a2eecbfba2a196d3229225af3d081730f1e591771f0b22e70a5b7f0ec0",
     "summary.total_simulations_checked": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61",
-    "trend_report.trends": "9f5c1d220b958d666f517cc8352838b7c614a4d80682c8614077d6328d4746b7",
+    "trend_report.trends": "b1f61e66d5e922f196ec705bc7dbc7ef4f8cb3aadabbbd13377d73625f62e26c",
 }
 
 
@@ -92,8 +93,42 @@ def _sha(s: str) -> str:
     return hashlib.sha256(s.encode("utf-8")).hexdigest()
 
 
+def _json_number_str(n: float | int) -> str:
+    """ECMAScript JSON.stringify for a finite number (SPEC reason tokens)."""
+    if isinstance(n, bool):
+        return json.dumps(n)
+    if isinstance(n, int):
+        return str(n)
+    if isinstance(n, float) and math.isfinite(n) and n == int(n):
+        return str(int(n))
+    return json.dumps(n)
+
+
+def _normalize_json_numbers(value):
+    """Coerce whole-valued floats to int so canonical JSON matches JSON.stringify."""
+    if isinstance(value, float):
+        if math.isfinite(value) and value == int(value):
+            return int(value)
+        return value
+    if isinstance(value, dict):
+        return {k: _normalize_json_numbers(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_normalize_json_numbers(v) for v in value]
+    return value
+
+
 def _canonical(value) -> str:
+    """Compact canonical JSON for input anti-cheat (raw float forms preserved)."""
     return json.dumps(value, sort_keys=True, separators=(",", ":"))
+
+
+def _canonical_output(value) -> str:
+    """Compact canonical JSON for output hash locks (JSON.stringify number rules)."""
+    return json.dumps(
+        _normalize_json_numbers(value),
+        sort_keys=True,
+        separators=(",", ":"),
+    )
 
 
 def _load_json(path: Path):
@@ -375,13 +410,22 @@ def _build_reference():
         reason_parts = []
         for metric_name in violated_metrics:
             if metric_name == "residual_norm":
-                reason_parts.append(f"residual_norm={m['residual_norm']}>{residual_max}")
+                reason_parts.append(
+                    f"residual_norm={_json_number_str(m['residual_norm'])}>"
+                    f"{_json_number_str(residual_max)}"
+                )
             elif metric_name == "energy_drift_pct":
-                reason_parts.append(f"energy_drift_pct={m['energy_drift_pct']}>{energy_max}")
+                reason_parts.append(
+                    f"energy_drift_pct={_json_number_str(m['energy_drift_pct'])}>"
+                    f"{_json_number_str(energy_max)}"
+                )
             elif metric_name == "samples_per_second":
-                reason_parts.append(f"samples_per_second={m['samples_per_second']}<{sps_min}")
+                reason_parts.append(
+                    f"samples_per_second={_json_number_str(m['samples_per_second'])}<"
+                    f"{_json_number_str(sps_min)}"
+                )
             elif metric_name == "nan_count":
-                reason_parts.append(f"nan_count={m['nan_count']}>0")
+                reason_parts.append(f"nan_count={_json_number_str(m['nan_count'])}>0")
         if is_direct:
             reason_parts.append(f"dataset_compromise:{manifest['inputs_dataset']}")
         if is_corruption:
@@ -454,7 +498,17 @@ def _build_reference():
                 "total_rollbacks": total_rb,
             })
 
-    healthy = sum(1 for sid, lab in classifications.items() if lab == "healthy" and sid not in direct_compromised)
+    healthy = 0
+    for sim_id in manifests:
+        if classifications.get(sim_id) != "healthy":
+            continue
+        if sim_id in direct_compromised:
+            continue
+        if sim_id in corruption_events:
+            continue
+        if telemetry[sim_id].get("nan_count", 0) > 0:
+            continue
+        healthy += 1
     skip_cap = sum(1 for sid, lab in classifications.items() if lab == "skipped_capacity" and sid not in direct_compromised)
     skip_grace = sum(1 for sid, lab in classifications.items() if lab == "skipped_grace" and sid not in direct_compromised)
     skip_quiesce = sum(1 for sid, lab in classifications.items() if lab == "skipped_quiesce" and sid not in direct_compromised)
@@ -557,7 +611,7 @@ class TestReportStructure:
     @pytest.mark.parametrize("name", OUTPUT_FILES)
     def test_artifact_hash(self, outputs, name):
         """Canonical-form JSON of each artifact must hash to its locked digest."""
-        digest = _sha(_canonical(outputs[name]))
+        digest = _sha(_canonical_output(outputs[name]))
         assert digest == EXPECTED_OUTPUT_CANONICAL_HASHES[name], name
 
 
@@ -566,7 +620,7 @@ class TestRollbackPlan:
 
     def test_plans_field_hash(self, outputs):
         """The list of plans matches the locked canonical hash."""
-        digest = _sha(_canonical(outputs["rollback_plan.json"]["plans"]))
+        digest = _sha(_canonical_output(outputs["rollback_plan.json"]["plans"]))
         assert digest == EXPECTED_FIELD_HASHES["rollback_plan.plans"]
 
     def test_plans_match_reference(self, outputs, reference):
@@ -706,7 +760,7 @@ class TestTrendReport:
 
     def test_trends_field_hash(self, outputs):
         """The list of trends matches the locked canonical hash."""
-        digest = _sha(_canonical(outputs["trend_report.json"]["trends"]))
+        digest = _sha(_canonical_output(outputs["trend_report.json"]["trends"]))
         assert digest == EXPECTED_FIELD_HASHES["trend_report.trends"]
 
     def test_trends_match_reference(self, outputs, reference):
@@ -772,12 +826,12 @@ class TestDependencyOrder:
 
     def test_order_field_hash(self, outputs):
         """The order list matches the locked canonical hash."""
-        digest = _sha(_canonical(outputs["dependency_order.json"]["order"]))
+        digest = _sha(_canonical_output(outputs["dependency_order.json"]["order"]))
         assert digest == EXPECTED_FIELD_HASHES["dependency_order.order"]
 
     def test_consumers_field_hash(self, outputs):
         """consumers_to_pause matches the locked canonical hash."""
-        digest = _sha(_canonical(outputs["dependency_order.json"]["consumers_to_pause"]))
+        digest = _sha(_canonical_output(outputs["dependency_order.json"]["consumers_to_pause"]))
         assert digest == EXPECTED_FIELD_HASHES["dependency_order.consumers_to_pause"]
 
     def test_order_matches_reference(self, outputs, reference):
@@ -825,7 +879,7 @@ class TestChronicRuns:
 
     def test_chronic_field_hash(self, outputs):
         """The chronic list matches the locked canonical hash."""
-        digest = _sha(_canonical(outputs["chronic_runs.json"]["chronic"]))
+        digest = _sha(_canonical_output(outputs["chronic_runs.json"]["chronic"]))
         assert digest == EXPECTED_FIELD_HASHES["chronic_runs.chronic"]
 
     def test_chronic_matches_reference(self, outputs, reference):
@@ -857,7 +911,7 @@ class TestSummary:
     def test_summary_field_hash(self, outputs, field):
         """Each summary field hashes to its locked canonical digest."""
         value = outputs["summary.json"][field]
-        digest = _sha(_canonical(value))
+        digest = _sha(_canonical_output(value))
         assert digest == EXPECTED_FIELD_HASHES[f"summary.{field}"]
 
     def test_summary_matches_reference(self, outputs, reference):
@@ -921,3 +975,24 @@ class TestSummary:
         w = policy["peak_quiesce_window"]
         expected = w["start_day"] <= pool["current_day"] <= w["end_day"]
         assert outputs["summary.json"]["peak_quiesce_active"] == expected
+
+    def test_simulations_healthy_excludes_force_rolled_and_compromise(self, outputs, reference):
+        """simulations_healthy excludes force-rolled, corruption-forced, and compromised sims."""
+        assert outputs["summary.json"]["simulations_healthy"] == reference["summary"]["simulations_healthy"]
+        plan_ids = {p["sim_id"] for p in outputs["rollback_plan.json"]["plans"]}
+        incidents = _load_json(DATA_DIR / "incident_log.json")
+        pool = _load_json(DATA_DIR / "pool_state.json")
+        current_day = pool["current_day"]
+        corruption_sims = {
+            e["sim_id"]
+            for e in incidents.get("events", [])
+            if e.get("kind") == "corruption_confirmed"
+            and e.get("day", 10**9) <= current_day
+            and e.get("sim_id")
+        }
+        telemetry = _load_json(DATA_DIR / "metrics" / "current_telemetry.json")["telemetry"]
+        for sim_id, row in telemetry.items():
+            if row.get("nan_count", 0) > 0:
+                assert sim_id in plan_ids, f"nan force-roll {sim_id} must have a plan entry"
+            if sim_id in corruption_sims:
+                assert sim_id in plan_ids, f"corruption force-roll {sim_id} must have a plan entry"

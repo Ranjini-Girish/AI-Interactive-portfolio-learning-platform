@@ -1,0 +1,13 @@
+Agent writes exactly one report at /app/audit/report.json with the four required top-level keys and no others, +3
+Agent applies the watermark gate so sub-watermark rows drop unless late is true, +3
+Agent dedupes ballots within each stream-epoch-voter triple by later tick and manifest slice order on ties, +3
+Agent evaluates prepare groups before commit groups and tracks prepare-quorate chains across epochs, +3
+Agent applies commit escrow counting when prepare never quorates for the stream epoch, +3
+Agent logs LATE_TICK stale rows for open groups while exempting escrow commit voters without prepare quorate, +2
+Agent emits canonical JSON with two-space indentation, sorted keys, ASCII-only text, and no trailing newline, +2
+Agent modifies, renames, or adds anything under /app/stream/, -3
+Agent omits /app/audit/report.json or writes extra files under /app/audit/, -3
+Agent counts commit quorum using the prepare filter when prepare quorate is false instead of escrow-only weight, -3
+Agent includes sub-watermark weight in counted_sum without honoring the tick filter, -2
+Agent logs stale rows for escrow commit voters when prepare never quorated, -2
+Agent skips prepare-before-commit ordering or breaks epoch chain quorate inheritance, -3

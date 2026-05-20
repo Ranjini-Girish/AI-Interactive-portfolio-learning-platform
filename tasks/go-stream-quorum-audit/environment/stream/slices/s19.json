@@ -1,0 +1,11 @@
+[
+  {
+    "epoch": 1,
+    "late": true,
+    "phase": "prepare",
+    "stream": "rho",
+    "tick": 10,
+    "voter": "r1",
+    "weight": 4
+  }
+]

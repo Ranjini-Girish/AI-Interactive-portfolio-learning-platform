@@ -19,6 +19,15 @@ type policyFile struct {
 	TierDisarmCap     map[string]int `json:"tier_disarm_cap"`
 }
 
+type poolFile struct {
+	DisarmSlots     int    `json:"disarm_slots"`
+	EvaluationTag   string `json:"evaluation_tag"`
+}
+
+type tagFile struct {
+	Bundle string `json:"bundle"`
+}
+
 type incidentFile struct {
 	Events []struct {
 		Day    int    `json:"day"`
@@ -43,12 +52,12 @@ type roomsFile struct {
 }
 
 type trapFile struct {
-	Armed           bool `json:"armed"`
-	Difficulty      int  `json:"difficulty"`
-	InitialPulse    bool `json:"initial_pulse"`
-	LastTriggerDay  *int `json:"last_trigger_day"`
-	RoomID          string `json:"room_id"`
-	TrapID          string `json:"trap_id"`
+	Armed          bool `json:"armed"`
+	Difficulty     int  `json:"difficulty"`
+	InitialPulse   bool `json:"initial_pulse"`
+	LastTriggerDay *int `json:"last_trigger_day"`
+	RoomID         string `json:"room_id"`
+	TrapID         string `json:"trap_id"`
 }
 
 type trapState struct {
@@ -59,10 +68,9 @@ type trapState struct {
 	RoomID         string
 	TrapID         string
 	Sealed         bool
-	Triggered      bool
-	ChainHops      int
 	FinalState     string
 	DisarmStatus   string
+	ChainHops      int
 }
 
 func readJSON(path string, dst any) {
@@ -200,6 +208,12 @@ func main() {
 	var pol policyFile
 	readJSON(filepath.Join(dataDir, "policy.json"), &pol)
 
+	var pool poolFile
+	readJSON(filepath.Join(dataDir, "pool_state.json"), &pool)
+
+	var tag tagFile
+	readJSON(filepath.Join(dataDir, "manifest", "tag.json"), &tag)
+
 	var inc incidentFile
 	readJSON(filepath.Join(dataDir, "incidents.json"), &inc)
 
@@ -233,14 +247,8 @@ func main() {
 
 	sealedRooms := map[string]struct{}{}
 	forcePulse := map[string]struct{}{}
+	outboundMuted := map[string]struct{}{}
 	boost := false
-	type incRow struct {
-		day    int
-		kind   string
-		roomID string
-		trapID string
-	}
-	var applied []incRow
 	for _, ev := range inc.Events {
 		if ev.Day > pol.CurrentDay {
 			continue
@@ -248,15 +256,14 @@ func main() {
 		switch ev.Kind {
 		case "room_seal":
 			sealedRooms[ev.RoomID] = struct{}{}
-			applied = append(applied, incRow{ev.Day, ev.Kind, ev.RoomID, ""})
 		case "force_pulse":
 			forcePulse[ev.TrapID] = struct{}{}
-			applied = append(applied, incRow{ev.Day, ev.Kind, "", ev.TrapID})
 		case "disarm_boost":
 			if ev.Day == pol.CurrentDay {
 				boost = true
 			}
-			applied = append(applied, incRow{ev.Day, ev.Kind, "", ""})
+		case "jam_echo":
+			outboundMuted[ev.TrapID] = struct{}{}
 		}
 	}
 
@@ -269,6 +276,14 @@ func main() {
 	effectiveCap := pol.TierDisarmCap[pol.PartyTier]
 	if boost {
 		effectiveCap++
+	}
+
+	chainMax := pol.ChainMaxHops
+	if pool.EvaluationTag != tag.Bundle {
+		chainMax--
+		if chainMax < 0 {
+			chainMax = 0
+		}
 	}
 
 	adj := map[string][]string{}
@@ -286,6 +301,11 @@ func main() {
 
 	forced := func(id string) bool {
 		_, ok := forcePulse[id]
+		return ok
+	}
+
+	isMuted := func(id string) bool {
+		_, ok := outboundMuted[id]
 		return ok
 	}
 
@@ -313,10 +333,13 @@ func main() {
 
 	waves := [][]string{wave0}
 	prev := wave0
-	for hop := 1; hop <= pol.ChainMaxHops; hop++ {
+	for hop := 1; hop <= chainMax; hop++ {
 		var nxt []string
 		seen := map[string]struct{}{}
 		for _, id := range prev {
+			if isMuted(id) {
+				continue
+			}
 			for _, nb := range neighbors(id, adj) {
 				if _, ok := seen[nb]; ok {
 					continue
@@ -350,7 +373,6 @@ func main() {
 			continue
 		}
 		if _, ok := triggered[st.TrapID]; ok {
-			st.Triggered = true
 			st.FinalState = "triggered"
 			continue
 		}
@@ -378,6 +400,7 @@ func main() {
 	}
 	sort.Strings(ids)
 
+	remainingSlots := pool.DisarmSlots
 	disarmedTotal := 0
 	cooldownSuppressed := 0
 	triggeredTotal := 0
@@ -405,28 +428,29 @@ func main() {
 				status = "blocked_hot"
 			} else if st.Difficulty > effectiveCap {
 				status = "blocked_difficulty"
+			} else if remainingSlots <= 0 {
+				status = "blocked_budget"
 			} else {
 				status = "disarmed"
+				remainingSlots--
 			}
 		} else if st.Difficulty > effectiveCap {
 			status = "blocked_difficulty"
+		} else if remainingSlots <= 0 {
+			status = "blocked_budget"
 		} else {
 			status = "disarmed"
+			remainingSlots--
 		}
 		st.DisarmStatus = status
 		if status == "disarmed" {
 			disarmedTotal++
 		}
 		disarmEntries = append(disarmEntries, map[string]any{
-			"difficulty":     st.Difficulty,
-			"disarm_status":  status,
-			"trap_id":        id,
+			"difficulty":    st.Difficulty,
+			"disarm_status": status,
+			"trap_id":       id,
 		})
-	}
-
-	roomTrapIDs := map[string][]string{}
-	for _, rm := range rooms.Rooms {
-		roomTrapIDs[rm.RoomID] = append([]string{}, rm.TrapIDs...)
 	}
 
 	hazardousRooms := 0
@@ -471,19 +495,19 @@ func main() {
 	for _, id := range ids {
 		st := traps[id]
 		trapRows = append(trapRows, map[string]any{
-			"chain_hops":   st.ChainHops,
-			"difficulty":   st.Difficulty,
-			"final_state":  st.FinalState,
-			"room_id":      st.RoomID,
-			"trap_id":      id,
+			"chain_hops":  st.ChainHops,
+			"difficulty":  st.Difficulty,
+			"final_state": st.FinalState,
+			"room_id":     st.RoomID,
+			"trap_id":     id,
 		})
 	}
 
 	waveAny := make([]any, 0, len(waves))
 	for _, w := range waves {
 		row := make([]any, len(w))
-		for i, id := range w {
-			row[i] = id
+		for i, trapID := range w {
+			row[i] = trapID
 		}
 		waveAny = append(waveAny, row)
 	}
@@ -511,6 +535,4 @@ func main() {
 		"trap_total":                len(traps),
 		"triggered_total":           triggeredTotal,
 	})
-
-	_ = applied
 }

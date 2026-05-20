@@ -13,5 +13,6 @@
     "staging": "wildcard_ok",
     "internal": "cn_only"
   },
-  "deprecated_signature_algos": ["sha1-rsa", "md5-rsa"]
+  "deprecated_signature_algos": ["sha1-rsa", "md5-rsa"],
+  "soft_fail_untrusted_tiers": ["production"]
 }

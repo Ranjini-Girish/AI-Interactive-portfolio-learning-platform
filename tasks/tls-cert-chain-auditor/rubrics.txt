@@ -1,14 +1,12 @@
 Agent emits five output files at /app/audit/ as deterministic JSON with two-space indent, sorted keys at every level, trailing newline, and stable list ordering so two correct runs are byte-identical, +3
-Agent selects OCSP responses by largest produced_day with last-array-index tie-breaking and applies the same staleness rules to both leaf and chain-intermediate serials, +3
-Agent silently drops incident events whose kind is not in {key_compromise, ca_compromise, audit_review, quarantine_hold} or whose day exceeds current_day or whose serial/domain does not match a known certificate, and counts each in summary.ignored_incident_events, +3
-Agent walks each domain's chain via issuer_serial from the leaf, anchoring in chain_config.trusted_roots, treating leaf_missing, intermediate_missing, chain_too_long, and cycle_detected each as their own chain failure mode with the chain list ending at the failure point, +5
-Agent computes the preliminary verdict in order chain_unreachable then expired then revoked (leaf or intermediate OCSP) then untrusted (key size, SAN, or production deprecated signature) then warning (expiry window, leaf soft_fail, or staging deprecated warn) then valid, and records counts in summary.by_preliminary_verdict before the compromise cascade, +5
-Agent overrides the preliminary verdict to compromised when a leaf has an accepted key_compromise event or its chain visits a serial with an accepted ca_compromise event, then to tainted when a non-compromised chain shares at least one intermediate with a compromised chain, +5
-Agent applies an accepted audit_review with the largest day (ties broken by largest list index) only when the domain is not compromised and its preliminary verdict was not revoked, adding audit_review_override to reasons when it applies, +3
-Agent applies quarantine_hold after audit_review, downgrading domains whose verdict is valid or warning to untrusted and adding quarantine_hold to reasons, +3
-Agent computes ca_risk.intermediates with one entry per intermediate file, listing trusted_root_anchor as null when the chain does not reach a trusted root, domains_signed by direct chain-walk visits, and tainted_domains restricted to domains whose final verdict is tainted because of this intermediate, +3
+Agent selects OCSP responses by largest produced_day with last-array-index tie-breaking and applies staleness to leaf and chain-intermediate serials, +3
+Agent buckets summary.by_ocsp_state by worst OCSP among each domain's leaf and chain intermediates (revoked beats soft_fail beats valid) while ocsp_summary.json still reports leaf-only states, +5
+Agent enforces optional required_intermediate pinning on successful chain walks, adding pinning_violation and an untrusted preliminary verdict when the pin is absent from chain positions 1 through len-2, +3
+Agent elevates production domains whose leaf OCSP is soft_fail to preliminary untrusted when their tier is listed in chain_config.soft_fail_untrusted_tiers, +3
+Agent silently drops invalid incident events and counts each in summary.ignored_incident_events, walks chains with all four failure modes, applies the compromise cascade, audit_review, and quarantine passes in order, +5
+Agent computes ca_risk.intermediates with trusted_root_anchor, domains_signed, and tainted_domains scoped to final tainted verdicts, +3
 Agent leaves every input file under /app/certs unchanged so the dataset remains byte-identical after the audit completes, -2
+Agent copies ocsp_summary.by_state into summary.by_ocsp_state instead of the worst-of-chain rollup, -5
+Agent treats production leaf soft_fail OCSP as preliminary warning despite soft_fail_untrusted_tiers, -3
 Agent applies audit_review to domains whose preliminary verdict was revoked via intermediate OCSP, -5
-Agent applies quarantine_hold before audit_review or to domains already untrusted for other reasons, -3
-Agent omits summary.by_preliminary_verdict or counts preliminary and final verdicts in the same field, -3
-Agent omits one or more of the required output files (chain_audit.json, expiry_report.json, ocsp_summary.json, ca_risk.json, summary.json) under /app/audit/, -3
+Agent omits one or more required output files under /app/audit/, -3

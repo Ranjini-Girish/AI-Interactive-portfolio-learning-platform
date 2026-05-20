@@ -1,0 +1,20 @@
+[
+  {
+    "epoch": 1,
+    "escrow": true,
+    "phase": "commit",
+    "stream": "eta",
+    "tick": 140,
+    "voter": "h1",
+    "weight": 2
+  },
+  {
+    "epoch": 1,
+    "escrow": true,
+    "phase": "commit",
+    "stream": "eta",
+    "tick": 145,
+    "voter": "h2",
+    "weight": 2
+  }
+]

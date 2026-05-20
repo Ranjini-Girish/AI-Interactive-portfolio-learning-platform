@@ -1,0 +1,26 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "zeta",
+    "tick": 170,
+    "voter": "z1",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "zeta",
+    "tick": 175,
+    "voter": "z2",
+    "weight": 1
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "zeta",
+    "tick": 178,
+    "voter": "z3",
+    "weight": 1
+  }
+]

@@ -32,6 +32,8 @@ SKIP_DIR_NAMES = frozenset(
         "_local_audit",
         "_local_run",
         "_tmp_audit",
+        "_out",
+        "tools",
     }
 )
 SKIP_FILE_NAMES = frozenset({"rubrics.txt", ".DS_Store", "platform-submission.json"})
@@ -72,7 +74,14 @@ def cmd_clean(args: argparse.Namespace) -> int:
     for p in task.rglob("*.pyc"):
         p.unlink(missing_ok=True)
         removed += 1
-    for name in ("local-audit", "local-plan", "_local_audit", "_local_run", "_tmp_audit"):
+    for name in (
+        "local-audit",
+        "local-plan",
+        "_local_audit",
+        "_local_run",
+        "_tmp_audit",
+        "_out",
+    ):
         d = task / name
         if d.is_dir():
             _rm_tree(d)

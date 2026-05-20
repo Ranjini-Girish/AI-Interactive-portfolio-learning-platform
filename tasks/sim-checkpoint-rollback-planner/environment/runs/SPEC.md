@@ -87,6 +87,12 @@ Strategy and traffic share map directly from severity:
 
 `rollback_to_step` defaults to `last_known_good_step`; Twist 4 step 1 overrides to `0`; the canonical `corruption_confirmed` event from Twist 5, when it carries an explicit `safe_step` field, overrides to that integer.
 
+## JSON numeric rendering
+
+Every numeric field in the five output files uses **ECMAScript `JSON.stringify` semantics** (the same rendering a TypeScript planner emits with `JSON.stringify`). Whole-valued floats appear without a fractional suffix: `252`, not `252.0`; `1`, not `1.0`. Non-whole values keep the shortest decimal form (`0.02`, `8.7`, `1.5`). This rule applies to `estimated_cost_node_hours`, `estimated_walltime_hours`, `total_estimated_cost_node_hours`, the four-decimal trend fields, and every other JSON number. Do not use Python `str(float)` (which keeps a `.0` suffix on integers stored as floats).
+
+For `reason` metric tokens, format each scalar the same way `JSON.stringify` would render that number as a standalone value.
+
 ## Output schemas (5 files under `/app/plan/`)
 
 Every file is UTF-8, indented with two spaces, with object keys sorted ascending at every level, and ends in a single trailing newline.
@@ -108,7 +114,7 @@ Every file is UTF-8, indented with two spaces, with object keys sorted ascending
    - `M == "nan_count"`         →  `nan_count=<current>>0`
    - `M == "residual_norm"`     →  `residual_norm=<current>>{policy.residual_max}`
    - `M == "samples_per_second"`→  `samples_per_second=<current><{policy.samples_per_second_min}`
-   The value on the left of the comparator is the **raw** field as parsed from `current_telemetry.json` (no rounding); the value on the right is the **raw** policy threshold from `governance/policy.json`. Both numeric values are rendered with the implementation language's default short round-trip float-to-string representation — i.e. Python's `str(float)` / `f"{x}"` (so `0.02`, not `0.020`; `100.0`, not `100`; never scientific notation for in-range values). Use `<` only for `samples_per_second` (because the violation is "below the floor"); every other metric uses `>`. Integer telemetry fields (`nan_count`) render as plain integers (`nan_count=4>0`).
+   The value on the left of the comparator is the **raw** field as parsed from `current_telemetry.json` (no rounding); the value on the right is the **raw** policy threshold from `governance/policy.json`. Both numeric values use the JSON numeric rendering rule above (`JSON.stringify` semantics: `100`, not `100.0`, for whole-valued floats). Use `<` only for `samples_per_second` (because the violation is "below the floor"); every other metric uses `>`. Integer telemetry fields (`nan_count`) render as plain integers (`nan_count=4>0`).
 2. `dataset_compromise:<D>` — emitted iff Twist 4 step 1 applies, where `<D>` is the manifest's `inputs_dataset` string verbatim.
 3. `corruption_confirmed` — emitted iff this sim has an accepted `corruption_confirmed` event (independently of whether `nan_count` also fires; both can show up in the same reason).
 4. `forced_entry` — emitted **only** when none of the above tokens are present. This handles the rare degenerate case of a force-rolled sim with no telemetry violation, no NaN, and no compromise (it must still produce a non-empty reason).
@@ -119,8 +125,8 @@ The same metric tokens are also what populate `violated_metrics` (after the opti
 
 - A sim with only `residual_norm` over its threshold (raw value `0.245`, threshold `0.18`):
   `residual_norm=0.245>0.18`
-- A sim with both `energy_drift_pct` (`8.7` vs cap `5.0`) and `samples_per_second` (`140.0` vs floor `220.0`):
-  `energy_drift_pct=8.7>5.0; samples_per_second=140.0<220.0`
+- A sim with both `energy_drift_pct` (`8.7` vs cap `5`) and `samples_per_second` (`140` vs floor `220`):
+  `energy_drift_pct=8.7>5; samples_per_second=140<220`
 - A NaN-forced sim with `nan_count=4` and a corruption_confirmed event for it:
   `nan_count=4>0; corruption_confirmed`
 - A directly-compromised, otherwise-healthy sim whose `inputs_dataset` is `dset_climate_v3`:
@@ -178,4 +184,4 @@ A sim is **chronic** iff its CSV row has `total_rollbacks >= policy.chronic_runs
 }
 ```
 
-`total_simulations_checked` is the number of manifest files. `simulations_healthy` is the count of sims with no telemetry violation and no Twist 4 entry. `total_estimated_cost_node_hours` is the sum across `rollback_plan.plans[*].estimated_cost_node_hours`, rounded to 2 decimals. `dependency_chain_max_depth` is the maximum value of `len(depends_on_upstream)` across `dependency_order.order`. `peak_quiesce_active` is `true` iff `current_day ∈ policy.peak_quiesce_window`. `severity_breakdown` keys are sorted ascending and tally the severity field across `rollback_plan.plans`.
+`total_simulations_checked` is the number of manifest files. `simulations_healthy` counts manifest sims that are valid (present in both telemetry and window history), have **no** telemetry violation (including `nan_count == 0`), are **not** force-rolled (`nan_count > 0` or an accepted `corruption_confirmed` for that `sim_id`), are **not** directly compromised by Twist 4 step 1, and are **not** force-pinned — i.e. they pass Twist 1 gate 1 and never receive a rollback entry. Skipped sims (`skipped_capacity`, `skipped_grace`, `skipped_quiesce`) are not healthy. `total_estimated_cost_node_hours` is the sum across `rollback_plan.plans[*].estimated_cost_node_hours`, rounded to 2 decimals. `dependency_chain_max_depth` is the maximum value of `len(depends_on_upstream)` across `dependency_order.order`. `peak_quiesce_active` is `true` iff `current_day ∈ policy.peak_quiesce_window`. `severity_breakdown` keys are sorted ascending and tally the severity field across `rollback_plan.plans`.

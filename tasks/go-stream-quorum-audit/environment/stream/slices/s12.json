@@ -1,0 +1,26 @@
+[
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "kappa",
+    "tick": 60,
+    "voter": "k1",
+    "weight": 2
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "kappa",
+    "tick": 65,
+    "voter": "k2",
+    "weight": 2
+  },
+  {
+    "epoch": 1,
+    "phase": "prepare",
+    "stream": "kappa",
+    "tick": 70,
+    "voter": "k3",
+    "weight": 2
+  }
+]

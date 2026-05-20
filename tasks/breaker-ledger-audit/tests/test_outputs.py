@@ -22,7 +22,7 @@ OUTPUT_FILES = (
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "dac6140aa507ebd95ee1e6fb5bf348988d383d433e814c0c463aaa2e30e87bf7",
+    "SPEC.md": "ffb92279588e92e4555fa7db894f5e7f195f7697a5ea86db1a72e989fa38c7a7",
     "ancillary/channel_tag.json": "714c7991eafe678df33b2389961ceec73d4ee8cf9eeaf317a43445039e423ca1",
     "ancillary/ci_guard.json": "d03ef4bd5c68504af2a297e96b7e008a9b3ad2664a58c35f33d658dda1b9bdfd",
     "ancillary/extra_one.json": "bc94718310ce15c6f1e0ca731743d29edc905e77f1af2302a79e931a6f2888e2",
@@ -257,6 +257,17 @@ class TestUpstreamTouchpoints:
             assert isinstance(refs, list)
             srefs = [str(x) for x in refs]
             assert srefs == sorted(srefs)
+
+
+class TestSummaryCounts:
+    """Summary rollups must reflect decoy and malformed incidents in the bundled log."""
+
+    def test_ignored_incident_events_includes_decoys(self, outputs: dict[str, object]) -> None:
+        """Rejected, future-day, and unknown-kind rows are excluded from the journal but counted ignored."""
+        sm = outputs["summary.json"]
+        assert isinstance(sm, dict)
+        assert sm["ignored_incident_events"] == 3
+        assert sm["applied_incident_events"] == 5
 
 
 class TestIncidentJournal:
