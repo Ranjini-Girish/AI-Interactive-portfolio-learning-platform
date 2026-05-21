@@ -41,6 +41,58 @@ For each match, read the assertion and ask: "Is the precise predicate stated in 
 | "valid JSON" | "UTF-8 JSON parsed by `json.loads` without error" |
 | "sorted" | name the sort key + direction (ASCII-ascending, lex, by `seq`) |
 | "deterministic" | "byte-identical across runs" if a determinism test exists |
+| "creates `argv[2]` if missing" | "creates `argv[2]` and any missing parent directories" if the test passes a multi-level path |
+| "exit non-zero on malformed input" | also state "and does not create any of the named output files" if the test enforces it |
+| "writes outside `/app/output/` are forbidden" | scope to "outside `argv[2]`" if the test exercises non-`/app/output` out-dirs |
+
+### Filesystem-nuance traps (mkdir / output-dir scope)
+
+These three drift in nearly every multi-process replay task and reliably trip agents who read the prose literally:
+
+```markdown
+<!-- ❌ BAD - "creates argv[2] if missing" reads as a single-level mkdir; if the
+     test passes `tmp_path / "missing_out_dir" / "nested"`, std::filesystem::create_directories
+     becomes an undocumented requirement. -->
+The binary takes two positional arguments <data_dir> <out_dir> and creates
+argv[2] if missing.
+
+<!-- ✅ GOOD option 1 — document the recursive contract -->
+The binary takes two positional arguments <data_dir> <out_dir> and creates
+argv[2] (and any missing parent directories) if missing.
+
+<!-- ✅ GOOD option 2 — relax the test to a single missing level -->
+# In tests/test_outputs.py, change:
+odir = tmp_path / "missing_out_dir" / "nested"
+# to:
+odir = tmp_path / "missing_out_dir"
+```
+
+```markdown
+<!-- ❌ BAD - "writes outside /app/output/ (incl. /tmp) are forbidden" but the
+     parametrized tests pass /tmp/cron_argv_test/out as argv[2]; the agent's
+     binary MUST write there to pass those tests. -->
+During the run /app/data/, /app/build/, ... are immutable; writes outside
+/app/output/ (incl. /tmp) are forbidden.
+
+<!-- ✅ GOOD - scope the no-write rule to argv[2], with /app/output the official
+     run's value -->
+During the run /app/data/, /app/build/, ... are immutable; the binary may
+write only to the output directory passed as argv[2]. The official run uses
+/app/output/ as that directory.
+```
+
+```markdown
+<!-- ❌ BAD - test asserts non-zero exit AND no output files for malformed input,
+     but the prose only documents the exit-code half -->
+Exit non-zero on wrong arg count, internal failure, or malformed input.
+
+<!-- ✅ GOOD - both halves of test_malformed_input_exits_nonzero documented -->
+Exit non-zero on wrong arg count, internal failure, or malformed input; on
+malformed input the binary must not create any of <output1.json>,
+<output2.json>, ... in the output directory.
+```
+
+When the prose says "creates `argv[2]` if missing", read every test that passes a non-existent out-dir and check the missing-depth: a single-level `tmp_path / "out"` is honest mkdir; multi-level `tmp_path / "out" / "nested"` requires `create_directories`-style recursion that the prose hasn't promised.
 
 ## Tighten the trio together: instruction.md ↔ rubrics.txt ↔ tests/
 
@@ -143,6 +195,53 @@ rg -nU '"""[^"]*\b\w+\b[^"]*\band\b[^"]*\b\w+\b[^"]*"""[^=]*\bor\b' tests/test_o
   && echo "WARN: a docstring says X and Y but the assertion is X or Y - check coverage"
 ```
 
+## When you ADD a test, you also ADD the constraint to `instruction.md`
+
+The LLMaJ v2 `behavior_in_task_description` criterion is symmetric: it flags a task when `tests/test_outputs.py` enforces a behavior that `instruction.md` does not state, regardless of whether the behavior is "reasonable". The judge does NOT credit the task for the test catching a real bug — it flags the task for the silent contract clause.
+
+Two recurring shapes:
+
+### Shape 1 — anti-cheat / isolation tests for undocumented binary behavior
+
+Adding a test like `test_argv_isolation_no_writes_to_default_paths` (the binary, when called with `argv[2] = /tmp/foo`, must not also write to `/app/output/`) is reasonable as anti-cheat. But unless `instruction.md` states "the binary must write only to `argv[2]` and must not write to any other path" (and the rubric mirrors it; see the trio-drift section above), the judge flags the test as enforcing an undocumented behavior.
+
+Two ways out:
+
+1. **Document the constraint** in `instruction.md` (and mirror it in `rubrics.txt`). Then the trio is in sync.
+2. **Remove the test** and accept that the anti-cheat layer is one row weaker. Reviewers prefer this when the constraint is genuinely undocumented elsewhere in the spec (no schema clause, no `/app/docs/` mention).
+
+Do NOT keep the test silently — the judge will catch it on every re-submit.
+
+### Shape 2 — schema-validation tests for non-spec-anchored constraints
+
+Adding `jsonschema` validation tests against `environment/schemas/*.schema.json` is good — but `instruction.md` must explicitly call out the schemas as normative, e.g.:
+
+```markdown
+JSON Schemas in `/app/schemas/` are normative (Draft 2020-12,
+`additionalProperties: false`); the verifier validates each output and
+input against them.
+```
+
+Without that sentence, the judge reads the schema files as documentation-only and flags any schema-violation test as enforcing undocumented behavior. (Same goes for `additionalProperties: false` specifically — if the schemas use it and tests assert it, instruction must say "no extra fields" or equivalent.)
+
+### Detection pattern
+
+After writing a new `def test_*` or new helper assertion, grep `instruction.md` for the constraint it enforces:
+
+```bash
+# For every test that appears to enforce a behavior, find its keyword in
+# instruction.md. Misses are candidate underspecification gaps.
+rg -n '^def test_' tests/test_outputs.py | \
+  while read -r line; do
+    name=$(echo "$line" | sed -E 's/.*def (test_\w+).*/\1/')
+    keyword=$(echo "$name" | sed -E 's/test_(binary_)?//; s/_/ /g')
+    rg -q "$keyword" instruction.md \
+      || echo "WARN: no instruction.md mention for $name (keyword '$keyword')"
+  done
+```
+
+The output is heuristic — many tests will be near-misses on keyword. Use it as a worklist, not a hard gate.
+
 ## Sister rule
 
 Pair with `tb2-instruction-spec-consistency.mdc` — that rule covers contradictions; this rule covers underspecification. Both block acceptance and both fail under empirical eval, but the failure modes are distinct: contradictions trap the agent into a wrong answer; underspecifications let the agent's reasonable answer fall outside the assertion's narrower window.
@@ -155,3 +254,8 @@ Distilled from recurring manual-reviewer feedback patterns:
 - **Trio drift** — `instruction.md` was tightened to "exactly two positional arguments" but `rubrics.txt §4` still said "non-zero on a missing argument" — same prompt-test gap, one artifact further from the verifier.
 - **Missing test docstrings** — a verifier shipped with most of its `def test_*()` functions lacking docstrings. Reviewer flagged it under `informative_test_structure` with the standard *"Please add a short docstring to every test describing what the test verifies"* message; fix added a 1–4 line docstring per test.
 - **Docstring over-promise** — a `test_dataset_invariants` docstring named two diagnostic codes as expected from the bundled dataset, but the bundled policy could only emit one of them and the assertion used `CODE_A or CODE_B`, silently passing on `CODE_A` alone. Tightened the docstring to attribute the second code's coverage to the alt-policy block, and narrowed the assertion to the code the bundled policy actually produces.
+- **Filesystem nuances** — three patterns surfaced together on `cpp-cron-fire-replay-medium` and `cpp-outlier-detector-replay-medium`:
+  - `cpp-outlier-detector-replay-medium`: `instruction.md` said "creates `argv[2]` if missing", but the test passed `tmp_path / "missing_out_dir" / "nested"`, requiring `std::filesystem::create_directories`-style recursive creation. Reviewer guidance: *"`std::filesystem::create_directories(out_dir, mkec)` is part of the solution that acts recursively, but is a nuance that isn't specified."* Resolved by relaxing the test to a single missing level (`tmp_path / "missing_out_dir"`).
+  - `cpp-cron-fire-replay-medium`: `instruction.md` said "writes outside `/app/output/` (incl. `/tmp`) are forbidden", but `test_binary_honors_argv_paths` and 25 random-property trials passed `/tmp/cron_*/out` as `argv[2]`, requiring writes to `/tmp` to pass. Reviewer guidance: *"The tests invoke the binary with output directories under /tmp, so the task contract should instead say the binary may write only to the output directory passed as argv[2]."* Resolved by scoping the prose to "outside `argv[2]`" with `/app/output/` named as the official run's directory.
+  - `cpp-cron-fire-replay-medium`: `test_malformed_input_exits_nonzero` asserted both non-zero exit AND that none of the four output files were created on malformed input, but the prose only documented the exit-code half. Reviewer guidance: *"Please either document the no-output-on-malformed-input requirement or relax the test."* Resolved by extending the malformed-input clause to "exit non-zero … and does not create any of <named output files>".
+- **Added-test-vs-instruction trap** — during the 2026-05 revamp of `cpp-sticky-session-router-replay-medium`, two added tests tripped the LLMaJ `behavior_in_task_description` judge: (a) `test_anchor_argv_isolation_no_writes_to_default_paths` enforced that the binary, when given `argv[2] = tmp_path`, must not also write to `/app/output/` — instruction.md did not state this and removing the test was the chosen resolution; (b) schema-validation tests asserting `additionalProperties: false` and Draft 2020-12 conformance required instruction.md to explicitly call out `/app/schemas/` as normative — fixed by adding the sentence *"JSON Schemas in `/app/schemas/` are normative (Draft 2020-12, `additionalProperties: false`); the verifier validates each output and input against them."*. The lesson generalises: when you add a test, also add the constraint to instruction.md OR accept the weakened anti-cheat layer and remove the test.

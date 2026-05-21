@@ -1,0 +1,10 @@
+{
+  "base_quarantine": false,
+  "compaction_hold": false,
+  "hold_id": "",
+  "parent_segment_id": "seg-missing",
+  "record_epoch_high": 6,
+  "record_epoch_low": 5,
+  "segment_id": "seg-ember",
+  "writer_epoch": 12
+}

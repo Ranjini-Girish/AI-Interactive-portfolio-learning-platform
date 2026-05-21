@@ -1,0 +1,20 @@
+{
+  "host_id": "edge-ams-01",
+  "cap_rank": 45,
+  "offered_suite_ids": [
+    "TLS_EMPTY_RENEG_INFO_SCSV",
+    "GR_0001",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_AES_128_GCM_SHA256"
+  ],
+  "ech_client_configs": [
+    {
+      "label": "ECH_GREASE",
+      "ech_id": 7
+    },
+    {
+      "label": "REAL",
+      "ech_id": 1
+    }
+  ]
+}

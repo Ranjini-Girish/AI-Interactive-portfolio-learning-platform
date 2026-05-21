@@ -1,0 +1,8 @@
+{
+  "channel_id": "epsilon",
+  "points": [
+    {"t": 0, "v": 100},
+    {"t": 4, "v": 120}
+  ],
+  "tag": "grpC"
+}

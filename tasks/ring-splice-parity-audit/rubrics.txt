@@ -1,0 +1,16 @@
+Agent emits all five JSON artifacts under /app/audit with the required sorted ASCII formatting, +3
+Agent leaves every file under /app/ring_splice/ unchanged, +2
+Agent documents splice span, tail alignment, and wrap parity outcomes per SPEC, +2
+Agent applies incident suppression so suppressed ISO days vanish from operational ledgers, +2
+Agent classifies each retained snapshot into the tier ladder using policy thresholds, +2
+Agent records overrun slack, nominal, and overrun occupancy bands in the ledger, +2
+Agent keeps parity_bit and expected_xor bits aligned when occupancy stays inside the slack band, +2
+Agent lists suppressed days, their severities, and the active policy floor in the incident bundle, +2
+Agent sorts splice rows by day, ring, and window id as required, +1
+Agent sorts ledger, parity, and tier rows by day then ring, +1
+Agent modifies or adds any path under /app/ring_splice/, -3
+Agent writes fewer than five JSON files or names them incorrectly, -3
+Agent omits wrap parity states for in-band totals or fabricates splice ids, -3
+Agent leaves /app/audit empty or adds stray files beside the five reports, -2
+Agent introduces non-ASCII text or trailing newlines in any audit JSON, -2
+Agent ignores incident suppression and still emits rows for suppressed days, -3

@@ -1,0 +1,15 @@
+Agent Emits all five JSON artifacts under `/app/audit/` with canonical formatting per `/app/cipher_lattice/SPEC.md`, +5
+Agent Populates `revocation_lattice.trace` with per-event `revoked_count_after` values that match the ledger replay, +3
+Agent Honors `CSL_DATA_DIR` and `CSL_AUDIT_DIR` when overridden for local tooling, +2
+Agent Documents downgrade sentinel findings with the required pattern string, +2
+Agent Omits sentinel pseudo-suites from merged lattice nodes while still screening them, +3
+Agent Applies incident ordering and `pool_state.current_seq` gating exactly, +3
+Agent Computes host grease strip counters that match the spec rules, +2
+Agent Produces sorted `anchor_files` and lattice edges with stable tie-breaks, +2
+Agent Modifies any fixture under `/app/cipher_lattice/`, -5
+Agent Writes fewer than five audit files or names them incorrectly, -5
+Agent Emits JSON with unsorted keys, non-two-space indentation, or missing trailing newline, -3
+Agent Ignores cap ranks so ineligible suites appear as retained, -3
+Agent Skips forward-secrecy co-worsening when CBC families remain revoked, -3
+Agent Drops required fields from `summary.json` hosts rows, -2
+Agent Leaves merged lattice edges that reference suites outside the active set, -2

@@ -1,0 +1,8 @@
+{
+  "channel_id": "lambda",
+  "points": [
+    {"t": 10, "v": 1000},
+    {"t": 20, "v": 1010}
+  ],
+  "tag": "grpF"
+}

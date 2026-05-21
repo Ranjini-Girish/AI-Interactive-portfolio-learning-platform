@@ -1,0 +1,27 @@
+{
+  "events": [
+    {
+      "end_day": 50,
+      "frame_id": "f04",
+      "kind": "suppress_frame",
+      "start_day": 1
+    },
+    {
+      "addend": 99,
+      "end_day": 15,
+      "kind": "bias_window",
+      "start_day": 10,
+      "stream_id": "beta"
+    },
+    {
+      "accepted": true,
+      "day": 5,
+      "kind": "compromise_stream",
+      "stream_id": "gamma"
+    },
+    {
+      "kind": "noop_probe",
+      "note": "ignored_unknown_kind"
+    }
+  ]
+}

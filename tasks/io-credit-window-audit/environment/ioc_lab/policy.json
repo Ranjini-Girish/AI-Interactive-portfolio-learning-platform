@@ -1,0 +1,8 @@
+{
+  "hot_util": 80,
+  "median_k": 3,
+  "merge_gap_tol": 1,
+  "relief_delta": 8,
+  "depth_cap": 1.22,
+  "depth_per_qd": 0.01
+}

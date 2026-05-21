@@ -21,7 +21,7 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "157f951ec54c58f91816c0765e556f766ad71fa5a0bac2c46a0f0b49776ce596",
+    "SPEC.md": "4f2e1c4a1f3b0280dbe3196de242bdf580ffa834c625607c5726110604a87b8f",
     "ancillary/channel_tag.json": "e3d74bfeb74946b2879b8f397422443fc51989f52c9fcf7aa8ebdb55a60a6581",
     "ancillary/ci_guard.json": "83144d396179849e33a72a7a7106f9485c9af9928dac2b98f760566ab632218b",
     "ancillary/watermark.txt": "fc99585338cbe169c6f2625326957f2d3738ed6e890a100bdb834a155fbc4024",
@@ -78,6 +78,18 @@ def _sha256_bytes(data: bytes) -> str:
 
 def _canonical(value: object) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"))
+
+
+def _spec_canonical_json_bytes(value: object) -> bytes:
+    """UTF-8 bytes for SPEC.md canonical JSON (two-space indent, sorted keys, ASCII, one trailing newline)."""
+    text = json.dumps(
+        value,
+        indent=2,
+        sort_keys=True,
+        ensure_ascii=True,
+        allow_nan=False,
+    )
+    return (text + "\n").encode("utf-8")
 
 
 def _load_json(path: Path) -> object:
@@ -166,6 +178,31 @@ class TestReportStructure:
                 _sha256_bytes(_canonical(sm[key]).encode("utf-8"))
                 == EXPECTED_FIELD_HASHES[field]
             )
+
+    def test_output_files_match_spec_canonical_encodings(self, outputs: dict[str, object]) -> None:
+        """Each audit file's on-disk UTF-8 must match SPEC canonical JSON (indent, sorted keys, ASCII, one trailing newline)."""
+        for name in OUTPUT_FILES:
+            path = AUDIT_DIR / name
+            raw = path.read_bytes()
+            expected = _spec_canonical_json_bytes(outputs[name])
+            assert raw == expected, f"non-canonical on-disk JSON for {name}"
+
+
+class TestStageMatrixContract:
+    """Normative shape rules from SPEC.md for the stage matrix."""
+
+    def test_stage_matrix_lists_every_policy_stage_sorted(self, outputs: dict[str, object]) -> None:
+        """Each name in policy stage_order appears exactly once, ascending lexicographic target_stage."""
+        policy = _load_json(DATA_DIR / "policy.json")
+        assert isinstance(policy, dict)
+        raw_order = policy["stage_order"]
+        assert isinstance(raw_order, list)
+        want = sorted(str(s) for s in raw_order)
+        stages = outputs["stage_matrix.json"]["stages"]
+        assert isinstance(stages, list)
+        got = [str(row["target_stage"]) for row in stages]
+        assert got == want
+        assert len(got) == len(set(got))
 
 
 class TestArtifactOrdering:

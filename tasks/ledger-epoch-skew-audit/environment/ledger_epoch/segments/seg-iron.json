@@ -1,0 +1,10 @@
+{
+  "base_quarantine": true,
+  "compaction_hold": false,
+  "hold_id": "",
+  "parent_segment_id": null,
+  "record_epoch_high": 12,
+  "record_epoch_low": 9,
+  "segment_id": "seg-iron",
+  "writer_epoch": 40
+}

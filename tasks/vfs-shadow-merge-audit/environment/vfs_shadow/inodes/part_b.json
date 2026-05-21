@@ -1,0 +1,14 @@
+{
+  "rows": [
+    {
+      "bytes": 300,
+      "home_mount_id": "m09",
+      "inode_id": "i_beta"
+    },
+    {
+      "bytes": 200,
+      "home_mount_id": "m05",
+      "inode_id": "i_gamma"
+    }
+  ]
+}

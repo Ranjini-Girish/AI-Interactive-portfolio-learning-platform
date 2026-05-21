@@ -1,0 +1,18 @@
+{
+  "capacity": 256,
+  "consumer_tail_lo": 64,
+  "consumer_total": 320,
+  "high_water": 300,
+  "instrument_wrap_cons": 1,
+  "instrument_wrap_prod": 1,
+  "producer_total": 352,
+  "splice_windows": [
+    {
+      "claimed_span": 32,
+      "id": "g0",
+      "reported_wrap_parity": 1,
+      "tick_hi": 32,
+      "tick_lo": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "seq": 10,
+      "kind": "revoke_family",
+      "family": "cbc_weak"
+    },
+    {
+      "seq": 20,
+      "kind": "revoke_suite",
+      "suite_id": "TLS_RSA_WITH_AES_128_CBC_SHA"
+    },
+    {
+      "seq": 30,
+      "kind": "clear_revocation",
+      "suite_id": "TLS_RSA_WITH_AES_128_CBC_SHA"
+    },
+    {
+      "seq": 40,
+      "kind": "revoke_suite",
+      "suite_id": "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "delta_days": 2,
+      "kind": "skew_bump",
+      "scope_id": "s05"
+    },
+    {
+      "accepted": true,
+      "kind": "revoke_scope",
+      "scope_id": "s12"
+    },
+    {
+      "accepted": false,
+      "kind": "revoke_scope",
+      "scope_id": "s03"
+    }
+  ]
+}

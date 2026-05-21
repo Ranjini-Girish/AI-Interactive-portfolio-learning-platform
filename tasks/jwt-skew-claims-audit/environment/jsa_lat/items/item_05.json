@@ -1,0 +1,7 @@
+{
+  "clock_skew_days": 1,
+  "issued_day": 100,
+  "scope_id": "s05",
+  "tier": "bronze",
+  "ttl_days": 15
+}

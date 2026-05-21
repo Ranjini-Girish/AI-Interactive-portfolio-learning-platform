@@ -45,12 +45,15 @@ This spec defines inputs under `/app/gateway/` and the required JSON report at `
 - If `methods` is `["*"]`, any method matches.
 - Otherwise request method must be listed with exact case-sensitive equality.
 
-10. Path matching and winner selection
-- A rule is path-eligible if the request path begins with the rule `path_prefix` using byte-wise ASCII prefix rules.
-- Among path-eligible rules that also match host and method, keep those whose group (if any) exists, is non-cyclic, and passes header checks. Unknown group names: emit `unknown_group` violation with detail `pack=<pack_id> rule=<id> group=<name>` and exclude that rule. Cyclic group names: emit `rule_uses_cyclic_group` violation with the same detail shape and exclude that rule.
-- Global duplicate rule `id` strings across all packs: emit `duplicate_rule_id` violation with detail `id=<id>` once per duplicated id, and exclude every rule carrying any duplicated id from consideration.
-- Pick the winning rule by: (1) longest `path_prefix` length wins; (2) tie-break smaller `id` lexicographically; (3) tie-break smaller `pack_id` lexicographically.
-- If no winner, apply `default_decision` with reason `default`.
+10. Route rule validation and per-request winner selection
+- Global validation (single pass over every rule in every successfully read route pack, before any request is evaluated):
+  - Global duplicate rule `id` strings across all packs: emit `duplicate_rule_id` violation with detail `id=<id>` once per duplicated id, and exclude every rule carrying any duplicated id from consideration for every request.
+  - For each rule that declares a non-empty `group` name after trimming ASCII spaces: if that name is not a key in `groups.json`, emit `unknown_group` with detail `pack=<pack_id> rule=<id> group=<name>` and exclude that rule from consideration for every request (even when no sample request would ever match that rule’s host, path, or method). If the name is present but marked cyclic per section 5, emit `rule_uses_cyclic_group` with the same detail shape and exclude that rule from consideration for every request.
+- Per-request winner selection (only rules not excluded by global validation participate):
+  - A rule is path-eligible for a given request if the request path begins with the rule `path_prefix` using byte-wise ASCII prefix rules.
+  - Among path-eligible rules that also match host and method, keep those that declare no group or declare a group that exists, is non-cyclic, and passes the effective header requirements from section 6 for that request’s headers. Rules excluded earlier as unknown-group or cyclic-group references never appear here.
+  - Pick the winning rule by: (1) longest `path_prefix` length wins; (2) tie-break smaller `id` lexicographically; (3) tie-break smaller `pack_id` lexicographically.
+  - If no winner, apply `default_decision` with reason `default`.
 
 11. Incident override (Twist 4, cross-cutting)
 - After parsing incident policy, for each request, if `active` is true and host is in `locked_hosts`:

@@ -1,0 +1,9 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "feature": "color",
+      "kind": "ban_feature"
+    }
+  ]
+}

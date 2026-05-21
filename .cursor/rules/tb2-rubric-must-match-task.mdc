@@ -37,10 +37,6 @@ Re-tick the rubric-generation checkbox on resubmit so a fresh rubric is produced
 
 Reference: https://snorkel-ai.github.io/Terminus-EC-Training-stateful/portal/docs/understanding-tasks/rubrics
 
-## Phrasing (penalty rows)
-
-Every line still **starts with `Agent`** and ends with **`, +/-N`** per workspace authoring rules. For **negative** points, phrase the **desired artifact or invariant in positive grammar** (what a passing submission exhibits), and attach **`,-1` / `,-3` / `,-5`** so graders subtract when that outcome is missing. Avoid failure-led openings such as "Agent omits …", "Agent ignores …", or "Agent fails to …" — those read as trace commentary; prefer "Agent delivers …", "Agent applies …", or "Agent leaves … unchanged …" even when the line carries a negative score.
-
 ## Origin
 
 Derived from manual reviewer feedback on a BGP best-path replay task that shipped with a process-tree replay rubric attached.

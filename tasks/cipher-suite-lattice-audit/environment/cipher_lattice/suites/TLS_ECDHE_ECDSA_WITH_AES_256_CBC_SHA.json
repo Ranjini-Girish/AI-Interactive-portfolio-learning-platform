@@ -1,0 +1,6 @@
+{
+  "suite_id": "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+  "family": "cbc_weak",
+  "fs_band": "FS_SESSION",
+  "lattice_rank": 30
+}

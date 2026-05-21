@@ -1,0 +1,5 @@
+You are closing a bench review for an offline dispersion calibration bundle. The contract lives under `/app/disp_kernel_lab/`, especially `/app/disp_kernel_lab/SPEC.md`, which defines integer knot interpolation, per-sample gap magnitudes after band and incident adjustments, rolling digests, optional catalog-wide cap scaling, and how diagnostics accumulate on each track.
+
+Ship a deterministic Go program built with the stock Go toolchain already in the image. Keep authored sources under `/app/dispkg-src/` and place the compiled executable at `/app/dispbin/dispkernel`. The tool must read only `/app/disp_kernel_lab/`, avoid any network access, and write a single UTF-8 JSON report to `/app/audit/disp_gap.json`. That file must follow the SPEC canonical JSON rules: ASCII-only text, two-space indentation, sorted object keys at every depth, and exactly one trailing newline after the root object.
+
+Do not change any file under `/app/disp_kernel_lab/`; those bytes are pinned for grading. Exit non-zero when required JSON is missing or malformed before emitting output. On valid inputs emit the full report in one run even when some diagnostic arrays are empty.

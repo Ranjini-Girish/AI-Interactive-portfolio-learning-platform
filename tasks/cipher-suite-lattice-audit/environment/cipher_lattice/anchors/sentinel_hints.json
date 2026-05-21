@@ -1,0 +1,6 @@
+{
+  "sentinel_hints": [
+    "TLS_FALLBACK_SCSV",
+    "TLS_EMPTY_RENEG_INFO_SCSV"
+  ]
+}

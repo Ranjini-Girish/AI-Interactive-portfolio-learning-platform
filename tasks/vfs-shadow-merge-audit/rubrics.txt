@@ -1,0 +1,15 @@
+Agent writes all five audit JSON files under /app/audit using exactly the filenames named in the prompt, +5
+Agent honors subtree versus mount scoped freeze precedence and winning incident selection per mount, +3
+Agent applies pool anchored day indexing, shadow window gates, stale decay, and tier shadow weights exactly as SPEC states, +3
+Agent leaves every path under /app/vfs_shadow read-only without renaming or relocating inputs, +2
+Agent rolls child contributions using min of each child merged_total and that child's export_cap_bytes in snapshot ordering, +2
+Agent routes inode borrow chains to billing mounts and doubles broken-cycle rows on their home mount only, +2
+Agent keeps audit JSON minified UTF-8 without emitting extra siblings under /app/audit, +2
+Agent lists merge_graph nodes sorted by mount_id ascending, +1
+Agent lists inode_report rows sorted by inode_id ascending, +1
+Agent lists cap_violations violations sorted by mount_id ascending, +1
+Agent lists freeze_state mounts sorted by mount_id ascending, +1
+Agent deletes or edits any fixture byte under /app/vfs_shadow, -5
+Agent emits any extra filenames under /app/audit beyond the five contract artifacts, -3
+Agent hardcodes incident windows, pools, or caps instead of reading the JSON inputs, -3
+Agent ignores snapshot_seq tie ordering when summing child min clips, -5

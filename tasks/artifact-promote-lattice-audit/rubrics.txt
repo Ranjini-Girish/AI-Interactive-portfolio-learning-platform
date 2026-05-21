@@ -11,5 +11,5 @@ Agent promotes an artifact while a required dependency remains below the next st
 Agent assigns more promotions than the effective pool cap allows, -3
 Agent sets `promoted_to` on a `quarantined` or `pool_frozen` artifact row, -3
 Agent mislabels a deferred promotion without `capacity_deferred` in `blocked_promotions`, -3
-Agent writes audit JSON with unsorted object keys or missing trailing newline, -2
+Agent writes audit JSON outside the canonical UTF-8 layout in SPEC.md or omits a zero-count stage_matrix row for any stage listed in policy stage_order, -2
 Agent places artifacts outside `/app/audit/` while claiming completion, -5

@@ -1,0 +1,12 @@
+{
+  "band_bias": {
+    "ir": 0,
+    "vis": 2
+  },
+  "base": 31,
+  "collapse_lambda": true,
+  "current_day": 55,
+  "init": 7,
+  "modulus": 10009,
+  "phase_jump_q": 8000
+}

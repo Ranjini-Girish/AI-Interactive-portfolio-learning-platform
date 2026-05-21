@@ -1,0 +1,11 @@
+{
+  "host_id": "h-bad",
+  "rack_id": "a03",
+  "rated_mv": 12000,
+  "stages": [
+    [
+      "k06"
+    ]
+  ],
+  "tier": "alpha"
+}

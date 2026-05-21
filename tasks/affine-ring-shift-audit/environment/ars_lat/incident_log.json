@@ -1,0 +1,9 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "delta": 3,
+      "kind": "rotate_key"
+    }
+  ]
+}

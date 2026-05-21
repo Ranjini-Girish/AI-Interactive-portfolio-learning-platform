@@ -1,0 +1,10 @@
+{
+  "base_quarantine": false,
+  "compaction_hold": false,
+  "hold_id": "",
+  "parent_segment_id": "seg-silt",
+  "record_epoch_high": 38,
+  "record_epoch_low": 36,
+  "segment_id": "seg-tack",
+  "writer_epoch": 56
+}

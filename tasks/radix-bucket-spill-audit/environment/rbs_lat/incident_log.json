@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "bucket": 3,
+      "delta": 5,
+      "kind": "mass_nudge_bucket"
+    }
+  ]
+}

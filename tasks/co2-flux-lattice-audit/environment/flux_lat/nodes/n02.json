@@ -1,0 +1,8 @@
+{
+  "base": 30,
+  "cell": "c02",
+  "id": "n02",
+  "parent": "n01",
+  "shield": false,
+  "tier": "silver"
+}

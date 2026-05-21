@@ -1,0 +1,8 @@
+{
+  "channel_id": "theta",
+  "points": [
+    {"t": 3, "v": 6},
+    {"t": 6, "v": 12}
+  ],
+  "tag": "grpD"
+}

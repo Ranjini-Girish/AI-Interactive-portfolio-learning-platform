@@ -1,0 +1,12 @@
+Agent reads `/app/sga_data/SPEC.md` and emits all four JSON artifacts under `/app/sga_audit/` with canonical UTF-8 JSON, +3
+Agent implements the MHz guard coalesce audit in Go 1.23 under `/app/sga_tool/` and ships a `sgaudit` binary built from that module, +5
+Agent honours `SGA_DATA_DIR` and `SGA_AUDIT_DIR` overrides when non-empty while keeping read-only inputs untouched, +2
+Agent applies incident ordering, snapshot-day gating, and working-field mutations before the coalescing sweep, +3
+Agent merges only same-tier spans that satisfy the tightened gap and optional heat gate after mutations, +3
+Agent writes `segments.json`, `incident_trail.json`, `tier_rollup.json`, and `summary.json` with sorted keys and stable bin id ordering, +2
+Agent leaves ancillary anchors and wave stubs under `/app/sga_data/` unmodified, -3
+Agent emits JSON with unsorted keys, non-ASCII text, or missing trailing newline at EOF, -3
+Agent skips emitting any of the four required audit files or writes outside `/app/sga_audit/`, -5
+Agent coalesces production spans across the gap left after a middle bin strip, -3
+Agent ignores snapshot-day rules and applies late incidents or unknown kinds as if eligible, -3
+Agent fabricates occupancy or tier totals that disagree with emitted `segments.json` and `tier_rollup.json`, -3

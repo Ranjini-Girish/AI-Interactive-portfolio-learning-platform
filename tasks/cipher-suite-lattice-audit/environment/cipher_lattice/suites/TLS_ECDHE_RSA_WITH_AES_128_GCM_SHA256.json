@@ -1,0 +1,6 @@
+{
+  "suite_id": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+  "family": "gcm_tls12",
+  "fs_band": "FS_SESSION",
+  "lattice_rank": 40
+}

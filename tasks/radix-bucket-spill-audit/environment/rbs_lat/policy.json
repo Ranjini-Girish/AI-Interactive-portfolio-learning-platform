@@ -1,0 +1,4 @@
+{
+  "num_buckets": 8,
+  "per_bucket_cap": 40
+}

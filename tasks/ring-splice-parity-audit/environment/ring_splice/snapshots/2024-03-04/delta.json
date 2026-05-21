@@ -1,0 +1,10 @@
+{
+  "capacity": 256,
+  "consumer_tail_lo": 200,
+  "consumer_total": 200,
+  "high_water": 740,
+  "instrument_wrap_cons": 0,
+  "instrument_wrap_prod": 2,
+  "producer_total": 600,
+  "splice_windows": []
+}

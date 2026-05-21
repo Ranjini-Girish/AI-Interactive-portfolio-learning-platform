@@ -1,0 +1,10 @@
+{
+  "end_epoch": 600000,
+  "freeze_merge": true,
+  "incident_id": "inc-frost",
+  "pool_id": "east",
+  "precedence": 9,
+  "scope_kind": "subtree",
+  "scope_mount_id": "m02",
+  "start_epoch": 0
+}

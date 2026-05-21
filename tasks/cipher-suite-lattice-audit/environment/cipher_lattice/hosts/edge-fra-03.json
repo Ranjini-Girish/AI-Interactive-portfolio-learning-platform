@@ -1,0 +1,16 @@
+{
+  "host_id": "edge-fra-03",
+  "cap_rank": 85,
+  "offered_suite_ids": [
+    "GR_ACE1",
+    "TLS_CHACHA20_POLY1305_SHA256",
+    "TLS_AES_256_GCM_SHA384",
+    "TLS_FALLBACK_SCSV"
+  ],
+  "ech_client_configs": [
+    {
+      "label": "REAL",
+      "ech_id": 2
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    {
+      "suite_id": "TLS_AES_128_GCM_SHA256",
+      "role": "anchor"
+    },
+    {
+      "suite_id": "TLS_AES_256_GCM_SHA384",
+      "role": "anchor"
+    },
+    {
+      "suite_id": "TLS_CHACHA20_POLY1305_SHA256",
+      "role": "anchor"
+    },
+    {
+      "suite_id": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+      "role": "legacy"
+    },
+    {
+      "suite_id": "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+      "role": "legacy"
+    },
+    {
+      "suite_id": "TLS_RSA_WITH_AES_128_CBC_SHA",
+      "role": "legacy"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "streams": [
+    {
+      "frame_paths": [
+        "frames/f00.json",
+        "frames/f01.json",
+        "frames/f02.json",
+        "frames/f03.json",
+        "frames/f04.json"
+      ],
+      "stream_id": "alpha"
+    },
+    {
+      "frame_paths": [
+        "frames/f05.json",
+        "frames/f06.json"
+      ],
+      "stream_id": "beta"
+    },
+    {
+      "frame_paths": [
+        "frames/f07.json"
+      ],
+      "stream_id": "gamma"
+    },
+    {
+      "frame_paths": [
+        "frames/f08.json",
+        "frames/f09.json",
+        "frames/f10.json",
+        "frames/f11.json",
+        "frames/f12.json"
+      ],
+      "stream_id": "delta"
+    }
+  ]
+}

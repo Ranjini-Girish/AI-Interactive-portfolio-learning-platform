@@ -10,41 +10,10 @@ The TB-2.0 submission portal runs `python3 /app/scripts/harbor/run_static_checks
 
 ## What the pipeline validates
 
-1. `task.toml`: category, subcategories, difficulty, `codebase_size` matches `environment/` file count, verifier / agent timeout ranges, `[environment].workdir` + `allow_internet = false` literal.
-2. `tests/test.sh`: uses `pytest -rA`, contains no forbidden runtime-network calls (`apt-get`, `pip install`, `curl`, `wget`, `uv install`, `uvx`), AND ends with the byte-exact reward-section suffix (see next section).
+1. `task.toml`: category, subcategories, difficulty, `codebase_size` matches `environment/` file count, verifier / agent timeout ranges.
+2. `tests/test.sh`: uses `pytest -rA`, ends with the canonical reward section.
 3. `ruff check` on every Python file under the task (`tests/`, `solution/`, `scripts/`).
 4. No blacklisted commercial-DB drivers in any source file.
-
-## `tests/test.sh` reward-section suffix (literal text match)
-
-The pipeline does a **literal-text match** on the tail of `tests/test.sh`. A mismatch is a hard rejection with the message:
-
-```
-❌ /root/tasks/tbench-task/tests/test.sh: Must end with the reward section:
-if [ $? -eq 0 ]; then
-    echo 1 > /logs/verifier/reward.txt
-else
-    echo 0 > /logs/verifier/reward.txt
-fi
-```
-
-The last five non-blank lines must be EXACTLY:
-
-```bash
-if [ $? -eq 0 ]; then
-    echo 1 > /logs/verifier/reward.txt
-else
-    echo 0 > /logs/verifier/reward.txt
-fi
-```
-
-Three common mismatches (each shipped, each got rejected):
-
-- `RC=$?` capture + `if [ "$RC" -eq 0 ]; then` — the checker greps for the literal `$?`, not bash-equivalent semantics.
-- 2-space indentation inside the `if` / `else` (`  echo 1 > …`). The literal match expects 4 spaces.
-- A trailing `exit "$RC"` after `fi`. The `fi` must be the LAST non-blank line; Harbor grades on `/logs/verifier/reward.txt`, not the script's exit code.
-
-`python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>` enforces this gate locally. Full rationale and migration recipe are in `.cursor/rules/tb2-verifier-crash-safety.mdc` ("Static-check suffix requirement").
 
 ## Ruff is the most common blocker
 
@@ -89,4 +58,4 @@ Treat ruff failures the way you treat compile errors — they are hard gates, no
 
 ## Origin
 
-Derived from a CodeBuild static-checks rejection on a single F841 in `tests/test_outputs.py` of a circuit-breaker replay task. The reward-section suffix gate was added after the `patch-slot-lattice-audit` BUILD-phase failure in May 2026 — the bash-idiomatic `RC=$?` + `if [ "$RC" -eq 0 ]` + trailing `exit "$RC"` shape that had shipped in `default-template/` and four sibling tasks is functionally equivalent but is rejected by the static checker's literal-text match.
+Derived from a CodeBuild static-checks rejection on a single F841 in `tests/test_outputs.py` of a circuit-breaker replay task.

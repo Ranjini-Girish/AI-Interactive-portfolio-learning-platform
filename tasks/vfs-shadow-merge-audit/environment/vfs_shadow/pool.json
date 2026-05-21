@@ -1,0 +1,7 @@
+{
+  "pool_id": "east",
+  "anchor_epoch": 0,
+  "as_of_epoch": 250000,
+  "day_length_sec": 10000,
+  "shadow_stale_span_days": 4
+}

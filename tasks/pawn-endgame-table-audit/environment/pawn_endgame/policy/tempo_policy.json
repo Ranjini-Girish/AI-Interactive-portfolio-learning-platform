@@ -1,0 +1,5 @@
+{
+  "window_size": 4,
+  "exposed_remainders": [1, 3],
+  "carry_threshold": 5
+}

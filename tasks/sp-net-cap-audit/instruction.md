@@ -1,0 +1,5 @@
+You are wiring a bench audit for series-parallel capacitor racks drawn from the lab tree at `/app/spn_lab/`. Open `/app/spn_lab/SPEC.md` and treat it as the normative contract for network reduction, incident replay, frozen-rack snapshots, host compromise, thermal ceilings, and every sort order it names.
+
+Implement a Go program under `/app/spn_tool/` that declares `package main`, keeps the module file named `go.mod` beside your sources, and compiles to `/app/spn_tool/spnaudit`. That executable must read the fixtures using `SPN_DATA_DIR` when set (default `/app/spn_lab/`) and emit four JSON files into `SPN_AUDIT_DIR` when set (default `/app/spn_audit/`): `rack_equivalents.json`, `incident_applied.json`, `cap_working.json`, and `summary.json`. Each file must be ASCII-only UTF-8 with two-space indentation, alphabetically sorted object keys, and a single trailing newline.
+
+Files under `/app/spn_lab/anchors/` and `/app/spn_lab/ancillary/` are reference notes only; do not mutate anything under `/app/spn_lab/` while solving the task.

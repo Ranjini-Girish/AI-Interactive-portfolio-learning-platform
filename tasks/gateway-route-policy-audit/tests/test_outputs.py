@@ -10,7 +10,12 @@ DOMAIN = Path(os.environ.get("GRA_DATA_DIR", "/app/gateway"))
 OUT_PATH = Path(os.environ.get("GRA_AUDIT_PATH", "/app/out/gateway_audit.json"))
 
 
-EXPECTED_INPUT_FINGERPRINT = "ec477354d6b304e4abecf246d6425f75baa4fcfde6fe99c0d6885eae02bf134e"
+EXPECTED_INPUT_FINGERPRINT = "8c16180c01e8f2259908657630f21628542c407e4373971e1e3349babbb90a6a"
+
+# SHA-256 of the entire on-disk report bytes (UTF-8, two-space `encoding/json` layout, no trailing newline).
+EXPECTED_FULL_REPORT_SHA256 = (
+    "68da322a8615fc920ffd07812b0397057a5258c40d604eb1c404d2f5249046a4"
+)
 
 EXPECTED_FIELD_HASHES = {
     "evaluations": "58a4f763319814ea544c104f5c77c55d55bdc8cfc01d7c9c03628d3cf86ab547",
@@ -48,10 +53,26 @@ def _stable_hash(value) -> str:
 
 def _load_report():
     raw = OUT_PATH.read_bytes()
-    if raw.endswith(b"\n"):
-        raise AssertionError("Output must not have a trailing newline.")
+    _assert_raw_report_bytes(raw)
     obj = json.loads(raw.decode("utf-8"))
     return obj
+
+
+def _assert_raw_report_bytes(raw: bytes) -> None:
+    """Enforces on-disk UTF-8, LF-only, no trailing newline, and two-space indent steps."""
+    if raw.endswith(b"\n"):
+        raise AssertionError("Output must not have a trailing newline.")
+    text = raw.decode("utf-8")
+    if "\r" in text:
+        raise AssertionError("Output must use LF newlines only.")
+    for line in text.split("\n"):
+        if not line:
+            continue
+        lead = len(line) - len(line.lstrip(" "))
+        if lead % 2 != 0:
+            raise AssertionError("Every output line must use a multiple of two leading spaces.")
+        if line[:lead].replace(" ", "") != "":
+            raise AssertionError("Indentation must be spaces only (no tabs).")
 
 
 def _eval_by_id(report):
@@ -73,6 +94,13 @@ class TestReportStructure:
     def test_report_file_exists(self):
         """Ensures the report file is created at the required absolute path."""
         assert OUT_PATH.exists()
+
+    def test_full_report_raw_bytes_sha256(self):
+        """Locks the exact serialized bytes; parsing and re-serializing JSON is not equivalent."""
+        raw = OUT_PATH.read_bytes()
+        _assert_raw_report_bytes(raw)
+        got = hashlib.sha256(raw).hexdigest()
+        assert got == EXPECTED_FULL_REPORT_SHA256
 
     def test_top_level_keys_exact(self):
         """Ensures the report has exactly the required top-level keys and no others."""
@@ -177,9 +205,16 @@ class TestViolationsCoverage:
         assert dupes[0]["detail"] == "id=dup-open"
 
     def test_unknown_group_violation_present(self):
-        """Rules referencing undefined groups must emit unknown_group."""
+        """Global validation emits unknown_group for any rule with a missing group name, even if no request hits that route."""
         report = _load_report()
-        assert "unknown_group" in _violation_codes(report)
+        codes = _violation_codes(report)
+        assert "unknown_group" in codes
+        hits = [
+            v["detail"]
+            for v in report["violations"]
+            if v["code"] == "unknown_group"
+        ]
+        assert hits == ["pack=epsilon rule=ghost group=not-a-real-group"]
 
     def test_rule_uses_cyclic_group_violation_present(self):
         """Rules bound to cyclic groups must emit rule_uses_cyclic_group."""

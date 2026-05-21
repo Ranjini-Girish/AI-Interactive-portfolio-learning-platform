@@ -1,0 +1,10 @@
+{
+  "end_epoch": 600000,
+  "freeze_merge": false,
+  "incident_id": "inc-m10-tune",
+  "pool_id": "east",
+  "precedence": 12,
+  "scope_kind": "mount",
+  "scope_mount_id": "m10",
+  "start_epoch": 0
+}

@@ -1,0 +1,6 @@
+{
+  "suite_id": "TLS_CHACHA20_POLY1305_SHA256",
+  "family": "gcm_tls13",
+  "fs_band": "FS_FULL",
+  "lattice_rank": 70
+}

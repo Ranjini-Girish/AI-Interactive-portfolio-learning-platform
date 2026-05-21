@@ -9,6 +9,8 @@ RUN apt-get update \
         ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# Verifier runs pytest with no network (task.toml allow_internet = false); deps
+# belong here, not in tests/test.sh. See Terminus Edition-2 verifier Dockerfile pattern.
 RUN python3 -m pip install --no-cache-dir --break-system-packages \
         pytest==8.4.1 \
         pytest-json-ctrf==0.3.5

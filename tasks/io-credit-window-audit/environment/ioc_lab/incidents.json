@@ -1,0 +1,7 @@
+{
+  "spans": [
+    {"kind": "freeze", "start_t": 6, "end_t": 7},
+    {"kind": "embargo", "device_id": "d3", "start_t": 11, "end_t": 13},
+    {"kind": "credit_relief", "device_id": "d2", "start_t": 4, "end_t": 5}
+  ]
+}

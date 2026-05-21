@@ -185,10 +185,14 @@ def compute_reference(
         task = ev["task"]
 
         if op == "tick":
+            if mname is not None or task is not None:
+                raise ValueError("tick requires null mutex and task")
             ticks += 1
             if note_on_tick:
                 emit(seq, "N_TICK", None)
         elif op == "acquire":
+            if mname is None or task is None:
+                raise ValueError("acquire requires mutex and task")
             if mname not in mutexes:
                 emit(seq, "E_UNKNOWN_MUTEX", mname)
                 continue
@@ -214,6 +218,8 @@ def compute_reference(
                     cycles_detected += 1
                     emit(seq, "W_CYCLE", mname)
         elif op == "try_acquire":
+            if mname is None or task is None:
+                raise ValueError("try_acquire requires mutex and task")
             if mname not in mutexes:
                 emit(seq, "E_UNKNOWN_MUTEX", mname)
                 continue
@@ -235,6 +241,8 @@ def compute_reference(
                 try_rejected += 1
                 emit(seq, "E_BUSY_TRY", mname)
         elif op == "release":
+            if mname is None or task is None:
+                raise ValueError("release requires mutex and task")
             if mname not in mutexes:
                 emit(seq, "E_UNKNOWN_MUTEX", mname)
                 continue
@@ -419,12 +427,14 @@ def test_input_hashes_locked() -> None:
 
 
 def test_binary_runs_cleanly(binary_run_outputs: dict[str, Any]) -> None:
-    """Binary exits 0 and writes all five outputs with fresh mtimes."""
+    """Binary exits 0, leaves stdio silent on success, and writes five outputs."""
     rc = binary_run_outputs["returncode"]
     assert rc == 0, (
         f"mtxgraph rc={rc}\nstdout={binary_run_outputs['stdout']!r}\n"
         f"stderr={binary_run_outputs['stderr']!r}"
     )
+    assert binary_run_outputs["stdout"] == "", binary_run_outputs["stdout"]
+    assert binary_run_outputs["stderr"] == "", binary_run_outputs["stderr"]
     start = binary_run_outputs["start"]
     for path in ALL_OUT_PATHS:
         assert path.exists(), f"missing {path}"
@@ -722,6 +732,8 @@ def test_lifo_waiter_order_on_release(tmp_path: Path) -> None:
         timeout=60,
     )
     assert proc.returncode == 0, proc.stderr
+    assert proc.stdout == ""
+    assert proc.stderr == ""
     assert load_json(out_dir / "mutex_state.json") == expected["mutex_state"]
     wake_ops = [
         a for a in load_json(out_dir / "action_log.json")["actions"] if a["op"] == "wake"
@@ -772,6 +784,8 @@ def test_replay_on_alternate_valid_fixture(tmp_path: Path) -> None:
         timeout=60,
     )
     assert proc.returncode == 0, proc.stderr
+    assert proc.stdout == ""
+    assert proc.stderr == ""
     assert load_json(out_dir / "mutex_state.json") == expected["mutex_state"]
     assert load_json(out_dir / "wait_edges.json") == expected["wait_edges"]
     assert load_json(out_dir / "action_log.json") == expected["action_log"]
@@ -840,6 +854,8 @@ def test_cycle_detection_emits_w_cycle(tmp_path: Path) -> None:
         timeout=60,
     )
     assert proc.returncode == 0, proc.stderr
+    assert proc.stdout == ""
+    assert proc.stderr == ""
     assert load_json(out_dir / "summary.json")["cycles_detected"] == 1
     assert load_json(out_dir / "diagnostics.json") == expected["diagnostics"]
 
@@ -944,6 +960,188 @@ def test_binary_rejects_acquire_without_task(tmp_path: Path) -> None:
                     "op": "acquire",
                     "seq": 0,
                     "task": None,
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_release_without_task(tmp_path: Path) -> None:
+    """Release events with null task must exit non-zero."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": "edge",
+                    "op": "release",
+                    "seq": 0,
+                    "task": None,
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_try_acquire_without_task(tmp_path: Path) -> None:
+    """try_acquire events with null task must exit non-zero."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": "edge",
+                    "op": "try_acquire",
+                    "seq": 0,
+                    "task": None,
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_acquire_without_mutex(tmp_path: Path) -> None:
+    """Acquire events with null mutex must exit non-zero."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": None,
+                    "op": "acquire",
+                    "seq": 0,
+                    "task": "t1",
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_release_without_mutex(tmp_path: Path) -> None:
+    """Release events with null mutex must exit non-zero."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": None,
+                    "op": "release",
+                    "seq": 0,
+                    "task": "t1",
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_try_acquire_without_mutex(tmp_path: Path) -> None:
+    """try_acquire events with null mutex must exit non-zero."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": None,
+                    "op": "try_acquire",
+                    "seq": 0,
+                    "task": "t1",
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_tick_with_nonnull_mutex(tmp_path: Path) -> None:
+    """Tick events must carry JSON null mutex per /app/docs/events.md."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": "edge",
+                    "op": "tick",
+                    "seq": 0,
+                    "task": None,
+                    "tick": 0,
+                }
+            ]
+        }
+    )
+    proc = _malformed_run(
+        tmp_path,
+        mutexes_text=json.dumps(_VALID_MUTEXES),
+        events_text=bad_events,
+        policy_text=json.dumps(_BASE_POLICY),
+    )
+    assert proc.returncode != 0
+    _assert_no_complete_outputs(tmp_path)
+
+
+def test_binary_rejects_tick_with_nonnull_task(tmp_path: Path) -> None:
+    """Tick events must carry JSON null task per /app/docs/events.md."""
+    _ensure_built()
+    bad_events = json.dumps(
+        {
+            "events": [
+                {
+                    "mutex": None,
+                    "op": "tick",
+                    "seq": 0,
+                    "task": "spurious",
                     "tick": 0,
                 }
             ]

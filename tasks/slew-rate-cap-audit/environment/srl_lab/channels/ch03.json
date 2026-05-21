@@ -1,0 +1,8 @@
+{
+  "channel_id": "gamma",
+  "points": [
+    {"t": 0, "v": 0},
+    {"t": 10, "v": 50}
+  ],
+  "tag": "grpB"
+}

@@ -1,0 +1,7 @@
+{
+  "incident_eval_order": "file_order",
+  "thermal_ceiling_uj": {
+    "alpha": 800000,
+    "beta": 500000
+  }
+}

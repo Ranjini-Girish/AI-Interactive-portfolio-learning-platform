@@ -1,0 +1,48 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 3,
+      "event_id": "cap-soft",
+      "kind": "lineage_depth_cap",
+      "max_depth": 5
+    },
+    {
+      "accepted": true,
+      "day": 4,
+      "event_id": "q-1",
+      "kind": "manifest_quarantine",
+      "manifest_ids": [
+        "m03"
+      ]
+    },
+    {
+      "accepted": true,
+      "day": 8,
+      "event_id": "cap-tight",
+      "kind": "lineage_depth_cap",
+      "max_depth": 2
+    },
+    {
+      "accepted": false,
+      "day": 9,
+      "event_id": "rejected-cap",
+      "kind": "lineage_depth_cap",
+      "max_depth": 1
+    },
+    {
+      "accepted": true,
+      "day": 10,
+      "event_id": "noise",
+      "kind": "manifest_quarantine",
+      "manifest_ids": []
+    },
+    {
+      "accepted": true,
+      "day": 11,
+      "event_id": "future-cap",
+      "kind": "lineage_depth_cap",
+      "max_depth": 0
+    }
+  ]
+}

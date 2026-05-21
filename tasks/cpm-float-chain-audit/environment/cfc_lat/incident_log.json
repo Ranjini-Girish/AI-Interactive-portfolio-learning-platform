@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "add_days": 2,
+      "kind": "stretch_task",
+      "task_id": "t08"
+    }
+  ]
+}

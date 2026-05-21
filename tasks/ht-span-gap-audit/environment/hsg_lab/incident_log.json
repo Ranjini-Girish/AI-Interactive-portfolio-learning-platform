@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "apply_tick": 20,
+      "event_id": "late-drop",
+      "kind": "drop_tick",
+      "lane_id": "lane-a",
+      "tick": 4
+    },
+    {
+      "apply_tick": 4,
+      "event_id": "early-drop",
+      "kind": "drop_tick",
+      "lane_id": "lane-a",
+      "tick": 4
+    },
+    {
+      "apply_tick": 8,
+      "event_id": "noop-1",
+      "kind": "noop"
+    },
+    {
+      "apply_tick": 9,
+      "event_id": "weird",
+      "kind": "mystery"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "apply_step": 20,
+      "event_id": "late-revoke",
+      "kind": "revoke_bits",
+      "mask": 4,
+      "object_id": "obj-a"
+    },
+    {
+      "apply_step": 3,
+      "event_id": "early-revoke",
+      "kind": "revoke_bits",
+      "mask": 2,
+      "object_id": "obj-a"
+    },
+    {
+      "apply_step": 6,
+      "event_id": "noop-1",
+      "kind": "noop"
+    },
+    {
+      "apply_step": 7,
+      "event_id": "weird",
+      "kind": "mystery"
+    }
+  ]
+}

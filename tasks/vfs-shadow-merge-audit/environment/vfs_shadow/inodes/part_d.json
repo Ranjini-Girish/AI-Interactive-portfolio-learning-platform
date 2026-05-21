@@ -1,0 +1,21 @@
+{
+  "rows": [
+    {
+      "borrow_target": "i_z2",
+      "bytes": 100,
+      "home_mount_id": "m04",
+      "inode_id": "i_z1"
+    },
+    {
+      "borrow_target": "i_z1",
+      "bytes": 50,
+      "home_mount_id": "m04",
+      "inode_id": "i_z2"
+    },
+    {
+      "bytes": 60,
+      "home_mount_id": "m12",
+      "inode_id": "i_eta"
+    }
+  ]
+}

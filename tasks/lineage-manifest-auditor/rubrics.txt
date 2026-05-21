@@ -1,0 +1,15 @@
+Agent emits all five audit JSON files under `/app/audit/` with the canonical formatting contract from `/app/lineage_manifests/SPEC.md`, +5
+Agent applies quarantine incidents before resolving effective parents and depth walks, +3
+Agent intersects lineage depth caps across every accepted cap event and uses the minimum ceiling, +3
+Agent marks upstream tails that drain into a multi-vertex SCC as `in_cycle` while listing only the SCC core in `scc_lists`, +3
+Agent honors digest hygiene and retention-tier gates before emitting `tier_violations`, +2
+Agent records `incident_journal.applied_events` sorted by `(day, event_id)` with only accepted same-day-or-earlier events, +2
+Agent lists `manifest_graph.nodes` sorted by ascending `manifest_id`, +2
+Agent mutates, replaces, or rewrites any file under `/app/lineage_manifests/`, -5
+Agent omits a required audit file or writes non-UTF-8 JSON, -5
+Agent ignores `lineage_depth_cap` or `manifest_quarantine` payloads when building `policy_screen.json`, -5
+Agent treats quarantined ancestors as transparent instead of breaking the upward edge, -3
+Agent collapses multiple depth caps using the maximum instead of the minimum, -3
+Agent flags `in_cycle` only for ids inside `scc_lists` and leaves upstream feeders acyclic, -3
+Agent writes audit JSON with unsorted object keys or missing trailing newline, -2
+Agent places artifacts outside `/app/audit/` while claiming completion, -5

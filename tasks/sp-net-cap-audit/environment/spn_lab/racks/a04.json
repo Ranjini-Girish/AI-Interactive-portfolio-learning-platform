@@ -1,0 +1,11 @@
+{
+  "host_id": "h4",
+  "rack_id": "a04",
+  "rated_mv": 48000,
+  "stages": [
+    [
+      "k07"
+    ]
+  ],
+  "tier": "alpha"
+}

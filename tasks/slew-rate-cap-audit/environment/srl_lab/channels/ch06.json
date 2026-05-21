@@ -1,0 +1,8 @@
+{
+  "channel_id": "zeta",
+  "points": [
+    {"t": 4, "v": 200},
+    {"t": 8, "v": 210}
+  ],
+  "tag": "grpC"
+}

@@ -1,0 +1,32 @@
+{
+  "incidents": [
+    {
+      "accepted": true,
+      "day": 40,
+      "id": "e1",
+      "kind": "falseticker",
+      "target": "s03"
+    },
+    {
+      "accepted": true,
+      "day": 120,
+      "id": "e2",
+      "kind": "hold",
+      "target": "s07"
+    },
+    {
+      "accepted": false,
+      "day": 200,
+      "id": "e3",
+      "kind": "falseticker",
+      "target": "s01"
+    },
+    {
+      "accepted": true,
+      "day": 150,
+      "id": "e4",
+      "kind": "lift_hold",
+      "target": "s07"
+    }
+  ]
+}

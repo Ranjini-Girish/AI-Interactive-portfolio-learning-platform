@@ -1,0 +1,10 @@
+{
+  "base_quarantine": false,
+  "compaction_hold": false,
+  "hold_id": "",
+  "parent_segment_id": "seg-apex",
+  "record_epoch_high": 4,
+  "record_epoch_low": 3,
+  "segment_id": "seg-drift",
+  "writer_epoch": 12
+}

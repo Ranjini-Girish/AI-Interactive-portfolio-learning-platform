@@ -1,0 +1,11 @@
+{
+  "band_process_order": [
+    "L",
+    "S"
+  ],
+  "tier_emit_cap": {
+    "bronze": 5,
+    "gold": 10,
+    "silver": 7
+  }
+}

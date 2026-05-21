@@ -1,0 +1,19 @@
+{
+  "host_id": "edge-lhr-05",
+  "cap_rank": 55,
+  "offered_suite_ids": [
+    "TLS_AES_128_GCM_SHA256",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_EMPTY_RENEG_INFO_SCSV"
+  ],
+  "ech_client_configs": [
+    {
+      "label": "ECH_GREASE",
+      "ech_id": 3
+    },
+    {
+      "label": "ECH_GREASE",
+      "ech_id": 4
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Agent applies 32-bit revoke masks before aggregating combined rights, +3
+Agent emits canonical report.json with sorted keys and ASCII-only text, +3
+Agent preserves every byte under /app/abr_lab/ without reading anchors, +2
+Agent honors pool step gating before late incidents fire, +5
+Agent discovers grant files with the basename filter and POSIX sort, +2
+Agent splits Go sources under /app/src/abraudit and links /app/bin/abraudit, +2
+Agent aggregates distinct subjects per object with ASCII sort, +2
+Agent writes outputs outside /app/abr_audit/ or adds stray files, -3
+Agent mutates lab inputs or reads ancillary anchor payloads, -5
+Agent mis-handles two's complement mask inversion on revoke_bits rows, -3
+Agent fetches remote packages or uses non-standard-library networking, -5
+Agent omits trailing newline or injects non-ASCII into JSON, -2
+Agent hardcodes combined rights instead of recomputing from grants, -5

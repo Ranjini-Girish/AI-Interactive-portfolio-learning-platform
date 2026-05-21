@@ -1,0 +1,16 @@
+{
+  "forced_quarantine": [
+    "seg-lava"
+  ],
+  "incident_id": "INC-LE-2026-01",
+  "released_hold_ids": [
+    "hold-alpha"
+  ],
+  "skew_slack": 1,
+  "transitive_exempt_children": [
+    "seg-kite"
+  ],
+  "waived_skew_child_ids": [
+    "seg-drift"
+  ]
+}

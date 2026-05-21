@@ -1,0 +1,10 @@
+{
+  "base_quarantine": false,
+  "compaction_hold": false,
+  "hold_id": "",
+  "parent_segment_id": "seg-quip",
+  "record_epoch_high": 33,
+  "record_epoch_low": 31,
+  "segment_id": "seg-rung",
+  "writer_epoch": 54
+}

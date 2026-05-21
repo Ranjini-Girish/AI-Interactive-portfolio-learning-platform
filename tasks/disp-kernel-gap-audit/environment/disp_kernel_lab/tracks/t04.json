@@ -1,0 +1,11 @@
+{
+  "samples": [
+    {
+      "band_id": "ir",
+      "lambda_q": 2000,
+      "n_meas_q": 15800,
+      "phase_q": 0,
+      "sample_id": "z1"
+    }
+  ]
+}

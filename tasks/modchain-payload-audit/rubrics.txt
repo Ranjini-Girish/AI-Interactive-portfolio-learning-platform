@@ -1,0 +1,12 @@
+Agent reads `/app/mod_chain_lab/SPEC.md` and matches every sorting, hashing, and scaling rule before coding, +3
+Agent writes `/app/audit/mod_digest.json` as canonical ASCII JSON with nested sorted keys and a single trailing newline, +2
+Agent leaves every path under `/app/mod_chain_lab/` byte-identical, -5
+Agent reports a non-quarantined stream’s `mix_steps` that differs from its post-suppression frame count, -3
+Agent applies bias-window addends only during the inclusive day window for the named stream, -3
+Agent omits the `stream_compromised` diagnostic on any quarantined stream, -2
+Agent ignores unknown incident kinds instead of erroring the audit, +1
+Agent scales per-stream `terminal_residue` using the pooled cap formula whenever non-quarantined raw sums exceed the cap, +3
+Agent reads frame files not referenced by `catalog.json`, -5
+Agent emits extra top-level keys beyond `meta`, `stream_rollups`, and `summary`, -5
+Agent desynchronizes `meta` SHA-256 fields from the lab JSON files on disk, -3
+Agent builds the Rust release binary at `/app/target/release/modchain` from sources under `/app/`, +2

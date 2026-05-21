@@ -1,0 +1,19 @@
+{
+  "host_id": "edge-yyz-08",
+  "cap_rank": 100,
+  "offered_suite_ids": [
+    "GR_X1",
+    "GR_X2",
+    "TLS_AES_128_GCM_SHA256"
+  ],
+  "ech_client_configs": [
+    {
+      "label": "ECH_GREASE",
+      "ech_id": 11
+    },
+    {
+      "label": "REAL",
+      "ech_id": 5
+    }
+  ]
+}

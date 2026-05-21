@@ -1,0 +1,15 @@
+{
+  "host_id": "edge-dub-02",
+  "cap_rank": 100,
+  "offered_suite_ids": [
+    "TLS_RSA_WITH_AES_128_CBC_SHA",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+    "TLS_AES_256_GCM_SHA384"
+  ],
+  "ech_client_configs": [
+    {
+      "label": "GREASE",
+      "ech_id": 9
+    }
+  ]
+}

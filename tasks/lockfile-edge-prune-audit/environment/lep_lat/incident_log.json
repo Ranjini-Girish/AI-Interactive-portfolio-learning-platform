@@ -1,0 +1,9 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "kind": "prune_pkg",
+      "pkg": "fmt"
+    }
+  ]
+}

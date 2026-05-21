@@ -1,0 +1,13 @@
+event_id|day|kind|target|value_a|value_b|accepted
+e_hub|120|hub_compromise|n_quarantine_hub|0|0|true
+e_mux|130|mux_freeze|s_x|0|0|true
+e_stretch_hi|140|clock_stretch|n_bus_gold|35|0|true
+e_stretch_lo|135|clock_stretch|n_bus_gold|25|0|true
+e_dup_loser|136|clock_stretch|n_bus_gold|10|0|true
+e_nak_other|145|nak_burst|n_bronze_peer|0|0|true
+e_nak_frozen|146|nak_burst|n_frozen|0|0|true
+e_bad_kind|150|unknown_kind|n_bus_gold|0|0|true
+e_bad_target|151|mux_freeze|missing_seg|0|0|true
+e_future|300|clock_stretch|n_bus_gold|50|0|true
+e_reject|160|nak_burst|n_lonely|0|0|false
+e_nak_lonely|155|nak_burst|n_lonely|0|0|true

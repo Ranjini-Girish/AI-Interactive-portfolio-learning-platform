@@ -1,0 +1,13 @@
+Agent reads SPEC and bundled JSON without skipping incident ordering rules, +3
+Agent emits canonical report.json with sorted keys and stable rounding rules, +3
+Agent preserves every input byte under the lab directory, +2
+Agent handles tag merges and duplicate-time tie policy exactly as written, +5
+Agent applies pool-time gating before late incidents mutate series, +3
+Agent splits Go sources under /app/src/srlaudit and links /app/bin/srlaudit, +2
+Agent leaves anchors and ancillary paths unread and untouched, +2
+Agent omits secondary outputs or writes outside /app/srl_audit/, -3
+Agent mutates or rewrites any file under /app/srl_lab/, -5
+Agent ignores merge_by_tag or mis-orders channel glob discovery, -3
+Agent uses non-standard-library networking or fetches packages at runtime, -5
+Agent emits non-UTF-8 JSON or omits the trailing newline on report.json, -2
+Agent hardcodes numeric tables instead of computing from inputs, -5

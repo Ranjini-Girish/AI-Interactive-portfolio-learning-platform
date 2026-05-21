@@ -1,0 +1,13 @@
+Agent honors half-open interval removal and merge-gap sweep in order, +3
+Agent emits canonical report.json with sorted keys and stable layout, +3
+Agent preserves every byte under /app/hsg_lab/ without extra reads, +2
+Agent applies pool tick gating before late incidents mutate lanes, +5
+Agent discovers lane files with the basename filter and POSIX sort, +2
+Agent splits Go sources under /app/src/hsgaudit and links /app/bin/hsgaudit, +2
+Agent ignores anchors and ancillary directories entirely, +2
+Agent writes outputs outside /app/hsg_audit/ or adds stray files, -3
+Agent mutates lab inputs or reads forbidden anchor paths, -5
+Agent collapses merges using strict less-or-equal gap semantics incorrectly, -3
+Agent fetches remote packages or uses non-standard-library networking, -5
+Agent omits trailing newline or uses non-ASCII in JSON text, -2
+Agent hardcodes interval tables instead of deriving from inputs, -5

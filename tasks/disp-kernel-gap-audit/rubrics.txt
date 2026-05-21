@@ -1,0 +1,13 @@
+Agent writes /app/audit/disp_gap.json with meta, track_rollups, and summary exactly as SPEC requires, +3
+Agent keeps Go sources under /app/dispkg-src/ and the executable at /app/dispbin/dispkernel, +2
+Agent preserves canonical JSON layout including sorted keys and trailing newline, +3
+Agent honors knot interpolation and signed residual rules before absolute gap, +3
+Agent replays suppress_sample, bias_band, and compromise_track incidents against current_day, +3
+Agent applies collapse_lambda grouping and phase_jump_q discontinuity tagging, +3
+Agent leaves every file under /app/disp_kernel_lab/ byte-identical to the bundle, -3
+Agent emits partial JSON or omits required top-level keys, -3
+Agent reads network endpoints or shells out to remote installers, -5
+Agent ignores pool_state terminal_sum_cap scaling when the raw sum exceeds the cap, -3
+Agent mis-sorts track_rollups or diagnostics arrays relative to SPEC tie-breaks, -3
+Agent modifies bundled JSON fixtures or relaxes SHA-256 pinned inputs, -5
+Agent places the executable or report outside the stated /app paths, -2

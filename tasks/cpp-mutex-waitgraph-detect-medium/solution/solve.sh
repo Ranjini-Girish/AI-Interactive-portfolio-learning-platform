@@ -183,10 +183,6 @@ struct Sim {
     }
 
     void run_acquire(const Event& ev) {
-        if (!ev.mutex.has_value()) {
-            emit(ev.seq, "E_UNKNOWN_MUTEX", ev.mutex);
-            return;
-        }
         const std::string& name = *ev.mutex;
         if (!mutexes.count(name)) {
             emit(ev.seq, "E_UNKNOWN_MUTEX", ev.mutex);
@@ -216,10 +212,6 @@ struct Sim {
     }
 
     void run_try_acquire(const Event& ev) {
-        if (!ev.mutex.has_value() || !ev.task.has_value()) {
-            emit(ev.seq, "E_UNKNOWN_MUTEX", ev.mutex);
-            return;
-        }
         const std::string& name = *ev.mutex;
         if (!mutexes.count(name)) {
             emit(ev.seq, "E_UNKNOWN_MUTEX", ev.mutex);
@@ -244,10 +236,6 @@ struct Sim {
     }
 
     void run_release(const Event& ev) {
-        if (!ev.mutex.has_value() || !ev.task.has_value()) {
-            emit(ev.seq, "E_UNKNOWN_MUTEX", ev.mutex);
-            return;
-        }
         const std::string& name = *ev.mutex;
         if (!mutexes.count(name)) {
             emit(ev.seq, "E_UNKNOWN_MUTEX", ev.mutex);
@@ -341,14 +329,25 @@ int main(int argc, char** argv) try {
         if (!e.at("task").is_null()) ev.task = e.at("task").get<std::string>();
 
         if (ev.op == "tick") {
+            if (ev.mutex.has_value() || ev.task.has_value()) {
+                throw std::runtime_error("tick requires null mutex and task");
+            }
             sim.ticks++;
             if (sim.policy.note_on_tick) sim.emit(ev.seq, "N_TICK", std::nullopt);
         } else if (ev.op == "acquire") {
-            if (!ev.task.has_value()) throw std::runtime_error("acquire needs task");
+            if (!ev.mutex.has_value() || !ev.task.has_value()) {
+                throw std::runtime_error("acquire requires mutex and task");
+            }
             sim.run_acquire(ev);
         } else if (ev.op == "try_acquire") {
+            if (!ev.mutex.has_value() || !ev.task.has_value()) {
+                throw std::runtime_error("try_acquire requires mutex and task");
+            }
             sim.run_try_acquire(ev);
         } else if (ev.op == "release") {
+            if (!ev.mutex.has_value() || !ev.task.has_value()) {
+                throw std::runtime_error("release requires mutex and task");
+            }
             sim.run_release(ev);
         } else {
             throw std::runtime_error("unknown op");

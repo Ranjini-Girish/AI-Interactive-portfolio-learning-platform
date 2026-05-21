@@ -1,0 +1,12 @@
+Agent emits the five required JSON files under /app/audit/ using only the filenames from the prompt, +5
+Agent keeps every fixture under /app/i2c_bus/ bitwise stable, +3
+Agent authors Go under /app/src with package main and links /app/bin/i2caudit from that tree, +3
+Agent matches SPEC.md field names, ordering, and canonical JSON encoding, +5
+Agent honours incident winner selection before downstream propagation passes, +3
+Agent merges probe peaks with hold floors and stretch clamps exactly as specified, +3
+Agent adds any extra filenames under /app/audit/, -3
+Agent rewrites or deletes rows under /app/i2c_bus/, -5
+Agent skips quarantine expansion, mux freeze handling, collision resolution, or degraded classification when incidents demand them, -5
+Agent prints hand-authored JSON while /app/bin/i2caudit is a non-ELF stub, -5
+Agent leaves JSON unsorted, wrongly indented, or missing the trailing newline, -3
+Agent ignores IMX_BUS_DIR or IMX_AUDIT_DIR when choosing inputs or outputs, -2

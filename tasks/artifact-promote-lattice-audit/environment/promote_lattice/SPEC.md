@@ -84,7 +84,7 @@ Canonical JSON: UTF-8, two-space indent, ASCII only, object keys sorted lexicogr
 
 ### stage_matrix.json
 
-- `stages`: array sorted by ascending `target_stage`. Each object: `target_stage`, `artifacts_blocked` (int count of blocked rows citing this target), `artifacts_promoted` (int count of promotions to this target today).
+- `stages`: array sorted by ascending `target_stage`. It must include exactly one row for every stage name listed in `policy.json`'s `stage_order`, even when both `artifacts_blocked` and `artifacts_promoted` are zero for that stage. Each object: `target_stage`, `artifacts_blocked` (int count of blocked rows citing this target), `artifacts_promoted` (int count of promotions to this target today).
 
 ### incident_journal.json
 

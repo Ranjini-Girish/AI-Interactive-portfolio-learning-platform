@@ -1,0 +1,13 @@
+Agent writes `ledger.json` and `summary.json` under `/app/audit/` with the required top-level keys, +2
+Agent modifies any file under `/app/flux_lat/`, -3
+Agent emits canonical JSON with two-space indent, sorted keys, and trailing newline for both outputs, +2
+Agent leaves extra JSON files under `/app/audit/` beyond the two required names, -2
+Agent applies cell priors when computing non-compromised raw scores, +5
+Agent emits non-integer numeric fields in audit JSON, -3
+Agent orders ledger rows by descending `final_score` then ascending `id`, +3
+Agent omits any required boolean flag on a ledger row, -3
+Agent recomputes `summary.sum_final_scores` as the sum of ledger finals, +2
+Agent writes audit outputs outside `/app/audit/`, -2
+Agent marks a shielded subtree as compromised despite the shield carve-out, -5
+Agent merges pool bonuses into effective caps before applying tier multipliers, +3
+Agent ignores `horizon_day` when filtering accepted incidents, -5

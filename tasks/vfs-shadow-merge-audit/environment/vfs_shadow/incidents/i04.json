@@ -1,0 +1,10 @@
+{
+  "end_epoch": 600000,
+  "freeze_merge": true,
+  "incident_id": "inc-m05-edge",
+  "pool_id": "east",
+  "precedence": 11,
+  "scope_kind": "mount",
+  "scope_mount_id": "m05",
+  "start_epoch": 0
+}

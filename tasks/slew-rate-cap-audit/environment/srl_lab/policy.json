@@ -1,0 +1,5 @@
+{
+  "merge_by_tag": true,
+  "slew_cap_milli": 9500,
+  "tie_break_dup_t": "min_v"
+}

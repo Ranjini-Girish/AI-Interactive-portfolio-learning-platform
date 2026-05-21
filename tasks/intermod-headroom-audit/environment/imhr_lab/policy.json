@@ -1,0 +1,11 @@
+{
+  "current_day": 210,
+  "im_anchor_mhz": 2400,
+  "min_carrier_mhz": 100,
+  "min_separation_mhz": 5,
+  "tier_headroom_drop_mhz": {
+    "bronze": 18,
+    "gold": 2,
+    "silver": 6
+  }
+}

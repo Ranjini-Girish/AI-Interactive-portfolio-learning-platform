@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 120,
+      "event_id": "ev-001",
+      "kind": "site_freeze",
+      "target_site": "site-freeze-01"
+    },
+    {
+      "accepted": true,
+      "day": 155,
+      "event_id": "ev-002",
+      "kind": "site_compromise",
+      "target_site": "site-comp-01"
+    },
+    {
+      "accepted": true,
+      "day": 180,
+      "event_id": "ev-003",
+      "kind": "site_lift",
+      "target_site": "site-freeze-01"
+    },
+    {
+      "accepted": false,
+      "day": 200,
+      "event_id": "ev-004",
+      "kind": "site_compromise",
+      "target_site": "site-gold-02"
+    },
+    {
+      "accepted": true,
+      "day": 205,
+      "event_id": "ev-005",
+      "kind": "per_band_noise_lift",
+      "lift_mhz": 4,
+      "target_band": "L"
+    }
+  ]
+}

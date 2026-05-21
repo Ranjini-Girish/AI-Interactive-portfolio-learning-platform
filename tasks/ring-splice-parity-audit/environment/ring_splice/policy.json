@@ -1,0 +1,22 @@
+{
+  "incident_suppress_floor": 2,
+  "overrun_slack": 64,
+  "tiers": [
+    {
+      "high_water_max": 400,
+      "label": "calm"
+    },
+    {
+      "high_water_max": 720,
+      "label": "watch"
+    },
+    {
+      "high_water_max": 960,
+      "label": "pressure"
+    },
+    {
+      "high_water_max": 2000000,
+      "label": "breach"
+    }
+  ]
+}

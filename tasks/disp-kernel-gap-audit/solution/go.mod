@@ -1,0 +1,3 @@
+module dispkernel
+
+go 1.23.0

@@ -222,7 +222,7 @@ func run(dataDir, auditDir string) error {
 	}
 
 	poolLedger := buildPoolLedger(pools, effectiveCap, artRows)
-	stageMatrix := buildStageMatrix(artRows)
+	stageMatrix := buildStageMatrix(artRows, pol.StageOrder)
 	journal := buildJournal(kept)
 	summary := buildSummary(artRows, kept, ignored, il.Events)
 
@@ -288,7 +288,7 @@ func buildJournal(kept []map[string]any) []map[string]any {
 	return out
 }
 
-func buildStageMatrix(artRows []artifactRow) []map[string]any {
+func buildStageMatrix(artRows []artifactRow, stageOrder []string) []map[string]any {
 	sched := map[string]int{}
 	blocked := map[string]int{}
 	for _, r := range artRows {
@@ -299,7 +299,8 @@ func buildStageMatrix(artRows []artifactRow) []map[string]any {
 			blocked[br.TargetStage]++
 		}
 	}
-	targets := []string{"dev", "prod", "staging"}
+	targets := append([]string(nil), stageOrder...)
+	sort.Strings(targets)
 	var out []map[string]any
 	for _, st := range targets {
 		out = append(out, map[string]any{

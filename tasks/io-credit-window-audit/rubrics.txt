@@ -1,0 +1,14 @@
+Agent writes /app/audit/report.json with canonical JSON matching SPEC.md, +3
+Agent compiles Go sources under /app/src into a static /app/bin/iocagent binary, +5
+Agent applies freeze suppression before counting final hot ticks, +3
+Agent honors embargo spans that remove hot ticks for targeted devices, +3
+Agent lowers effective thresholds only while credit_relief spans are active, +2
+Agent merges separated bursts using merge_gap_tol without dropping interior cool ticks, +3
+Agent sorts devices by device_id ascending in the report output, +2
+Agent leaves every file under /app/ioc_lab/ byte-identical to the bundle, -5
+Agent emits malformed JSON or omits required summary counters, -5
+Agent skips median smoothing or mis-handles inclusive tick ranges, -5
+Agent collapses embargo boundaries incorrectly for d3, -3
+Agent writes outputs outside /app/audit/ or omits trailing newline on the report, -3
+Agent omits empty hot_windows arrays for cool devices, -2
+Agent hardcodes numeric answers instead of recomputing from inputs, -5

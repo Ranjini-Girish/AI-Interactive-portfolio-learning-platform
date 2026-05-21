@@ -1,0 +1,12 @@
+{
+  "base_bytes": 400,
+  "export_cap_bytes": 850,
+  "last_touch_pool_day": 24,
+  "mount_id": "m09",
+  "parent_mount_id": "m04",
+  "pool_id": "east",
+  "shadow_bytes": 100,
+  "shadow_day_hi": 30,
+  "shadow_day_lo": 0,
+  "tier": "silver"
+}

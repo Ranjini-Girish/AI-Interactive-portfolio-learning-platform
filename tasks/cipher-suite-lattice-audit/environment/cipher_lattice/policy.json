@@ -1,0 +1,24 @@
+{
+  "cipher_grease_prefix": "GR_",
+  "ech_grease_labels": [
+    "GREASE",
+    "ECH_GREASE"
+  ],
+  "fs_band_to_tier": {
+    "FS_FULL": "T1",
+    "FS_SESSION": "T2",
+    "STATIC": "T3"
+  },
+  "fs_co_worsen": {
+    "affects_suite_families": [
+      "gcm_tls13"
+    ],
+    "guard_revoked_family": "cbc_weak",
+    "steps": 1
+  },
+  "sentinel_suite_ids": [
+    "TLS_EMPTY_RENEG_INFO_SCSV",
+    "TLS_FALLBACK_SCSV"
+  ],
+  "sentinel_trailing_strong_fs": true
+}

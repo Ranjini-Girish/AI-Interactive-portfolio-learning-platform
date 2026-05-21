@@ -1,0 +1,11 @@
+{
+  "base": 131,
+  "current_day": 12,
+  "init": 17,
+  "modulus": 10009,
+  "tier_bias": {
+    "bronze": 0,
+    "gold": 3,
+    "silver": 1
+  }
+}

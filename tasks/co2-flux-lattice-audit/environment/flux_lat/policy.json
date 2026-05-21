@@ -1,0 +1,14 @@
+{
+  "freeze_floor": 3,
+  "horizon_day": 400,
+  "tier_cap": {
+    "bronze": 40,
+    "gold": 160,
+    "silver": 90
+  },
+  "tier_mult": {
+    "bronze": 1,
+    "gold": 3,
+    "silver": 2
+  }
+}

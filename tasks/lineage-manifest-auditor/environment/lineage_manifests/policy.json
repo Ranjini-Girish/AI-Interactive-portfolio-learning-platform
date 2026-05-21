@@ -1,0 +1,12 @@
+{
+  "retention_min_tier": {
+    "cold": "bronze",
+    "hot": "gold",
+    "warm": "silver"
+  },
+  "tier_rank": {
+    "bronze": 0,
+    "gold": 2,
+    "silver": 1
+  }
+}

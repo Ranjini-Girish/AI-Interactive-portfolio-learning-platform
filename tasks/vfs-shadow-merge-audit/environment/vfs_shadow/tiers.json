@@ -1,0 +1,12 @@
+{
+  "gold": {
+    "hard_cap": 9000,
+    "shadow_weight": 0.5,
+    "soft_cap": 6000
+  },
+  "silver": {
+    "hard_cap": 5200,
+    "shadow_weight": 1.0,
+    "soft_cap": 3500
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "beam_id": "b02",
+      "delta_deg": 15,
+      "kind": "nudge_beam"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "rows": [
+    {
+      "borrow_target": "i_epsilon",
+      "bytes": 150,
+      "home_mount_id": "m03",
+      "inode_id": "i_delta"
+    },
+    {
+      "bytes": 80,
+      "home_mount_id": "m07",
+      "inode_id": "i_epsilon"
+    }
+  ]
+}

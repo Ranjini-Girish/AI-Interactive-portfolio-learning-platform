@@ -1,0 +1,5 @@
+Compliance automation needs a reproducible audit of the frozen bundle under `/app/rbm_lat/` after pool timelines, policy caps, accepted incident deltas, and per-item evidence are applied together. The audit must stay read-only on the bundle tree and only write canonical JSON artifacts into the audit directory.
+
+The audit emits the UTF-8 JSON files named in `/app/rbm_lat/SPEC.md`, each using the canonical pretty-printer described there. The specification also lists sorting rules, incident vocabulary, and numeric rounding where floats appear. Non-empty `RBM_DATA_DIR` overrides the input root; non-empty `RBM_AUDIT_DIR` overrides `/app/audit/` for writes. When a variable is unset or empty, fall back to `/app/rbm_lat/` for reads and `/app/audit/` for writes. Create the audit directory when missing.
+
+Anchors and ancillary JSON under `/app/rbm_lat/anchors/` and `/app/rbm_lat/ancillary/` are informational for humans but must still be present unchanged for integrity checks that accompany the frozen bundle. The pool day in `pool_state.json` anchors every time-based comparison in this batch.

@@ -1,0 +1,8 @@
+{
+  "channel_id": "kappa",
+  "points": [
+    {"t": 2, "v": 20},
+    {"t": 4, "v": 22}
+  ],
+  "tag": "grpE"
+}

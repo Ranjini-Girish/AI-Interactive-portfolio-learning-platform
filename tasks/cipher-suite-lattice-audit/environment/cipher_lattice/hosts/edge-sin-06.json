@@ -1,0 +1,9 @@
+{
+  "host_id": "edge-sin-06",
+  "cap_rank": 100,
+  "offered_suite_ids": [
+    "TLS_FALLBACK_SCSV",
+    "TLS_AES_256_GCM_SHA384"
+  ],
+  "ech_client_configs": []
+}

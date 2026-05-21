@@ -1,0 +1,7 @@
+{
+  "intervals": [
+    {"hi": 2, "lo": 0},
+    {"hi": 5, "lo": 3}
+  ],
+  "lane_id": "lane-g"
+}

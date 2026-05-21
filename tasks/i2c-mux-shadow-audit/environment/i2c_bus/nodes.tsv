@@ -1,0 +1,12 @@
+node_id|tier|addr7|mux_segment|serial|parent
+n_bus_gold|gold|80|root|1|-
+n_bus_silver|silver|80|root|2|n_bus_gold
+n_bronze_peer|bronze|80|root|3|-
+n_silver_branch|silver|82|b1|4|n_bus_gold
+n_bronze_leaf|bronze|82|b1|5|n_silver_branch
+n_quarantine_hub|bronze|83|q0|6|n_bus_gold
+n_quarantine_child|bronze|84|q0|7|n_quarantine_hub
+n_frozen|gold|85|s_x|8|-
+n_mux_dup_a|gold|90|s_y|9|-
+n_mux_dup_b|silver|90|s_y|10|-
+n_lonely|silver|91|z9|11|-

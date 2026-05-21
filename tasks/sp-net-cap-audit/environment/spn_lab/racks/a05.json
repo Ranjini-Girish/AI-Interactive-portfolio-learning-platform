@@ -1,0 +1,15 @@
+{
+  "host_id": "h5",
+  "rack_id": "a05",
+  "rated_mv": 12000,
+  "stages": [
+    [
+      "k08",
+      "k09"
+    ],
+    [
+      "k10"
+    ]
+  ],
+  "tier": "beta"
+}

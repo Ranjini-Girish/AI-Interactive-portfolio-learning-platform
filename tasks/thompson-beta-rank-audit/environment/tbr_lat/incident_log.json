@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "arm_id": "a03",
+      "kind": "observe_win"
+    },
+    {
+      "accepted": true,
+      "arm_id": "a03",
+      "kind": "observe_win"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+Agent Reads `/app/spn_lab/SPEC.md` and follows stage ordering and parallel-vs-series rules without drifting, +5
+Agent Implements `package main` under `/app/spn_tool/` and produces `/app/spn_tool/spnaudit`, +3
+Agent Writes all four `/app/spn_audit/*.json` artifacts with sorted keys and trailing newlines, +3
+Agent Honors `SPN_DATA_DIR` and `SPN_AUDIT_DIR` when set for alternate paths, +2
+Agent Applies incident windows against `pool_state.json` `current_day` exactly as specified, +3
+Agent Distinguishes frozen-rack equivalence snapshots from global cap mutations, +3
+Agent Marks compromised-host racks as quarantine with null headroom and null ESR, +2
+Agent Classifies degraded racks with the exact `reasons` tokens from the spec, +2
+Agent Leaves every file under `/app/spn_lab/` byte-for-byte unchanged, +2
+Agent Emits JSON with ASCII-only text and a single trailing newline per output, +2
+Agent Omits `rack_equivalents.json` or any other mandated audit file, -5
+Agent Leaves `/app/spn_tool/spnaudit` missing or not executable after the build step, -5
+Agent Mutates, deletes, or rewrites anything under `/app/spn_lab/`, -3
+Agent Ignores `incident_eval_order` or replays `incident_log.json` out of order, -3
+Agent Confuses `incident_touch` with `esr_offset` or invents extra reason strings, -2
+Agent Writes `/app/spn_audit/*.json` with unsorted keys, non-canonical layout, or missing trailing newline, -2

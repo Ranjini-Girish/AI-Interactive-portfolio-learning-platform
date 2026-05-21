@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "amount": 3.25,
+      "kind": "credit_grant",
+      "user_id": "u04"
+    }
+  ]
+}

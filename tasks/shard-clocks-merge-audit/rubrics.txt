@@ -1,0 +1,13 @@
+Agent writes `segments_out.json` and `summary.json` under `/app/audit/` with the required keys, +2
+Agent modifies any file under `/app/clk_lat/`, -3
+Agent emits canonical JSON with sorted keys and trailing newline for both outputs, +2
+Agent leaves stray files under `/app/audit/` beyond the two required names, -2
+Agent applies falseticker, hold, and lift_hold ordering exactly as in `/app/clk_lat/SPEC.md`, +5
+Agent writes floating-point skew values, -3
+Agent sorts `rows` by ascending segment id, +3
+Agent omits any required boolean field on a row object, -3
+Agent recomputes `summary.sum_adjusted` from the emitted rows, +2
+Agent writes outputs outside `/app/audit/`, -2
+Agent treats a lifted hold as still frozen, -5
+Agent applies pool bonuses only when the segment is not frozen, +3
+Agent ignores `horizon_day` when filtering incidents, -5

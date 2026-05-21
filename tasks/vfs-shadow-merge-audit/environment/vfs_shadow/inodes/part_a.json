@@ -1,0 +1,10 @@
+{
+  "rows": [
+    {
+      "borrow_target": "i_beta",
+      "bytes": 120,
+      "home_mount_id": "m08",
+      "inode_id": "i_alpha"
+    }
+  ]
+}

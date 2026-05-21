@@ -10,8 +10,6 @@ TB-2.0 tasks routinely require byte-exact JSON output across multiple files. The
 
 Agents read `/app/examples/*.json` as part of the spec. An example showing inline arrays guides agents toward inline arrays — but `json.dumps(indent=2)` renders non-empty arrays multiline, so the byte-exact comparison fails.
 
-When the normative spec (for example `SPEC.md` or `instruction.md`) mandates **two-space indent, sorted keys, and a trailing newline**, verifier tests must lock **on-disk UTF-8 bytes** (or re-serialize parsed JSON with the same canonical serializer and compare equal to the file). Hashing only `json.dumps(..., sort_keys=True, separators=(",", ":"))` of the parsed object detects semantic drift but still passes files that violate the on-disk layout contract.
-
 ## Define the canonical serializer once
 
 In `instruction.md` (or `/app/docs/output_format.md`), state it explicitly so the agent has a single, unambiguous source of truth:

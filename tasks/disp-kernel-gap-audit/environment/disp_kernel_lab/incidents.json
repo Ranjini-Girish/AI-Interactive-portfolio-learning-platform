@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "day": 40,
+      "kind": "compromise_track",
+      "track_id": "trk-04"
+    },
+    {
+      "band_id": "vis",
+      "bias_q": -15,
+      "end_day": 60,
+      "kind": "bias_band",
+      "start_day": 10
+    },
+    {
+      "end_day": 99,
+      "kind": "suppress_sample",
+      "sample_id": "d3",
+      "start_day": 1,
+      "track_id": "trk-03"
+    }
+  ]
+}

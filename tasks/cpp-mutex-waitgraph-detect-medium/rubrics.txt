@@ -11,3 +11,4 @@ Agent left every file under /app/data unchanged after the run, +2
 Agent modified or deleted any file under /app/data during replay, -5
 Agent shipped hand-written report JSON instead of output from the compiled binary, -5
 Agent produced outputs with wrong indentation unsorted keys or missing final newline, -3
+Agent printed progress banners version lines or other chatter to stdout or stderr on exit code zero, -2

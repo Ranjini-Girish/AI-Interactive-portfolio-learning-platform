@@ -1,0 +1,18 @@
+{
+  "tracks": [
+    {"path": "tracks/t00.json", "track_id": "trk-00"},
+    {"path": "tracks/t01.json", "track_id": "trk-01"},
+    {"path": "tracks/t02.json", "track_id": "trk-02"},
+    {"path": "tracks/t03.json", "track_id": "trk-03"},
+    {"path": "tracks/t04.json", "track_id": "trk-04"},
+    {"path": "tracks/t05.json", "track_id": "trk-05"},
+    {"path": "tracks/t06.json", "track_id": "trk-06"},
+    {"path": "tracks/t07.json", "track_id": "trk-07"},
+    {"path": "tracks/t08.json", "track_id": "trk-08"},
+    {"path": "tracks/t09.json", "track_id": "trk-09"},
+    {"path": "tracks/t10.json", "track_id": "trk-10"},
+    {"path": "tracks/t11.json", "track_id": "trk-11"},
+    {"path": "tracks/t12.json", "track_id": "trk-12"},
+    {"path": "tracks/t13.json", "track_id": "trk-13"}
+  ]
+}

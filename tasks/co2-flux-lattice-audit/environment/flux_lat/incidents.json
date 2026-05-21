@@ -1,0 +1,39 @@
+{
+  "incidents": [
+    {
+      "accepted": true,
+      "day": 120,
+      "id": "i01",
+      "kind": "compromise",
+      "target": "n02"
+    },
+    {
+      "accepted": true,
+      "day": 200,
+      "id": "i02",
+      "kind": "freeze",
+      "target": "n05"
+    },
+    {
+      "accepted": true,
+      "day": 50,
+      "id": "i03",
+      "kind": "anchor_ok",
+      "target": "n04"
+    },
+    {
+      "accepted": false,
+      "day": 300,
+      "id": "i04",
+      "kind": "compromise",
+      "target": "n09"
+    },
+    {
+      "accepted": false,
+      "day": 90,
+      "id": "i05",
+      "kind": "freeze",
+      "target": "n01"
+    }
+  ]
+}

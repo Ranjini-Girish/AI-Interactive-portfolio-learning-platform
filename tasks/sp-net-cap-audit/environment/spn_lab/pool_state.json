@@ -1,0 +1,9 @@
+{
+  "compromised_hosts": [
+    "h-bad"
+  ],
+  "current_day": 15,
+  "frozen_racks": [
+    "a02"
+  ]
+}

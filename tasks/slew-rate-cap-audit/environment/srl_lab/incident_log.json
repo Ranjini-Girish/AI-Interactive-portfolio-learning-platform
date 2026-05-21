@@ -1,0 +1,30 @@
+{
+  "events": [
+    {
+      "apply_t": 50,
+      "channel_id": "alpha",
+      "end_t": 6,
+      "event_id": "late-zero",
+      "kind": "zero_window",
+      "start_t": 2
+    },
+    {
+      "apply_t": 5,
+      "channel_id": "alpha",
+      "end_t": 4,
+      "event_id": "early-zero",
+      "kind": "zero_window",
+      "start_t": 3
+    },
+    {
+      "apply_t": 12,
+      "event_id": "ghost",
+      "kind": "unknown_kind"
+    },
+    {
+      "apply_t": 8,
+      "event_id": "noop-1",
+      "kind": "noop"
+    }
+  ]
+}

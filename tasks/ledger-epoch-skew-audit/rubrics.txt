@@ -1,0 +1,12 @@
+Agent emits all five JSON artifacts under `/app/audit/` with stable UTF-8 encoding, +5
+Agent matches merge ordering and tie-break rules from `/app/ledger_epoch/SPEC.md`, +3
+Agent applies incident slack, waived skew ids, and released hold ids exactly as specified, +3
+Agent computes transitive quarantine honoring exempt children while keeping forced ids, +3
+Agent keeps object key ordering and indentation per SPEC for every emitted JSON object, +2
+Agent leaves every path under the read root bit-for-bit unchanged, -5
+Agent invents output filenames, keys, or encodings not described in the spec, -5
+Agent writes fewer than five audit files or skips creating the audit directory, -5
+Agent reads segment shards from outside `LES_DATA_DIR` when that override is set, -3
+Agent treats missing parents as propagation parents or silently drops skew coverage, -3
+Agent ignores compaction holds or mis-labels active gates after incident release lists, -2
+Agent emits duplicate segment ids or merges unknown directories into the catalog, -3

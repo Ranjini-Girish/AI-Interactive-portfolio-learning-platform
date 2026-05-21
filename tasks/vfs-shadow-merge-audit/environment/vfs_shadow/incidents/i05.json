@@ -1,0 +1,10 @@
+{
+  "end_epoch": 700000,
+  "freeze_merge": true,
+  "incident_id": "inc-m11-hold",
+  "pool_id": "east",
+  "precedence": 4,
+  "scope_kind": "mount",
+  "scope_mount_id": "m11",
+  "start_epoch": 0
+}

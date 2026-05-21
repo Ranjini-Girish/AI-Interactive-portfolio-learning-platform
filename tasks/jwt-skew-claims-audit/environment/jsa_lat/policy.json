@@ -1,0 +1,8 @@
+{
+  "expiry_grace_days": 1,
+  "tier_skew_cap": {
+    "bronze": 2,
+    "gold": 4,
+    "silver": 3
+  }
+}

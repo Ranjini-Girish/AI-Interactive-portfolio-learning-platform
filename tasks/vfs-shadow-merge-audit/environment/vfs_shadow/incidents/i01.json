@@ -1,0 +1,10 @@
+{
+  "end_epoch": 900000,
+  "freeze_merge": false,
+  "incident_id": "inc-base-watch",
+  "pool_id": "east",
+  "precedence": 1,
+  "scope_kind": "pool_wide",
+  "scope_mount_id": "m01",
+  "start_epoch": 0
+}

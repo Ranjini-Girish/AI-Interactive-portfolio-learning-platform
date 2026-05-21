@@ -1,0 +1,8 @@
+{
+  "channel_id": "iota",
+  "points": [
+    {"t": 0, "v": 5},
+    {"t": 2, "v": 15}
+  ],
+  "tag": "grpE"
+}

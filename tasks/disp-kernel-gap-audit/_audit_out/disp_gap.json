@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "base": 31,
+    "catalog_sha256": "93e4fd8a17ac2002789ad77ccfedf6037a7a68db50a153e8ba8e6d488f779808",
+    "current_day": 55,
+    "incidents_sha256": "239ca0c1fcec6950dcd0538d4d35ba4b8e2451398985fe272ef8e670e0fb285e",
+    "init": 7,
+    "knots_sha256": "a08815707ac8761ecfdd1f8022c7f06fbf3a1807a419df7fbb7c025061e61ddb",
+    "modulus": 10009,
+    "policy_sha256": "c9c579df6a276681806b1091766d2583c419f5f9e815ea742a7552772d3ea66b",
+    "pool_sha256": "8bbda948563802f5dd2bcc71307a80bd9c0f461d9ec097e814ba7f056953588c"
+  },
+  "summary": {
+    "cap_applied": true,
+    "quarantined_tracks": 1,
+    "scaled_sum": 114,
+    "total_samples_cataloged": 18,
+    "total_samples_kept": 15,
+    "tracks": 14
+  },
+  "track_rollups": [
+    {
+      "diagnostics": [
+        "phase_discontinuity"
+      ],
+      "gap_mix_steps": 2,
+      "samples_kept": 2,
+      "status": "ok",
+      "terminal_digest": 56,
+      "track_id": "trk-00"
+    },
+    {
+      "diagnostics": [
+        "extrap_low"
+      ],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-01"
+    },
+    {
+      "diagnostics": [
+        "lambda_collapsed"
+      ],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-02"
+    },
+    {
+      "diagnostics": [
+        "phase_discontinuity"
+      ],
+      "gap_mix_steps": 2,
+      "samples_kept": 2,
+      "status": "ok",
+      "terminal_digest": 47,
+      "track_id": "trk-03"
+    },
+    {
+      "diagnostics": [
+        "track_compromised"
+      ],
+      "gap_mix_steps": 0,
+      "samples_kept": 0,
+      "status": "quarantined",
+      "terminal_digest": 0,
+      "track_id": "trk-04"
+    },
+    {
+      "diagnostics": [
+        "unknown_band"
+      ],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-05"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-06"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-07"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-08"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-09"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-10"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-11"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-12"
+    },
+    {
+      "diagnostics": [],
+      "gap_mix_steps": 1,
+      "samples_kept": 1,
+      "status": "ok",
+      "terminal_digest": 1,
+      "track_id": "trk-13"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "base_quarantine": false,
+  "compaction_hold": false,
+  "hold_id": "",
+  "parent_segment_id": null,
+  "record_epoch_high": 21,
+  "record_epoch_low": 19,
+  "segment_id": "seg-lava",
+  "writer_epoch": 43
+}
