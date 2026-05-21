@@ -28,6 +28,8 @@ SKIP_DIR_NAMES = frozenset(
         ".pytest_cache",
         ".ruff_cache",
         "local-audit",
+        "local_audit",
+        "local_dwr_audit",
         "local-plan",
         "_local_audit",
         "_local_run",
@@ -76,6 +78,8 @@ def cmd_clean(args: argparse.Namespace) -> int:
         removed += 1
     for name in (
         "local-audit",
+        "local_audit",
+        "local_dwr_audit",
         "local-plan",
         "_local_audit",
         "_local_run",

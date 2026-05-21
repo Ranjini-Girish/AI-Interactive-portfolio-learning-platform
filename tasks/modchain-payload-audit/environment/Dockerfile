@@ -4,9 +4,11 @@ WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        asciinema \
         ca-certificates \
         python3 \
         python3-pip \
+        tmux \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && rm -rf /var/lib/apt/lists/*
 
@@ -29,6 +31,8 @@ RUN mkdir -p /opt/bootstrap/src \
     && printf 'fn main() {}\n' > /opt/bootstrap/src/main.rs \
     && cd /opt/bootstrap && cargo fetch \
     && rm -rf /opt/bootstrap
+
+ENV CARGO_NET_OFFLINE=true
 
 COPY mod_chain_lab/ /app/mod_chain_lab/
 

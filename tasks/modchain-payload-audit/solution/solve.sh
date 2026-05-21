@@ -351,6 +351,6 @@ fn main() {
 }
 RS
 
-cargo build --release
+cargo build --release --offline
 mkdir -p /app/audit
 /app/target/release/modchain

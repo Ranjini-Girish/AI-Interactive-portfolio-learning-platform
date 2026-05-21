@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+# Login shells (e.g. bash -lc) sometimes start with an empty PATH, which
+# hides the Go toolchain shipped in the golang image. Ensure it is visible
+# before invoking go.
+export PATH="/usr/local/go/bin:${PATH:-/usr/bin:/bin}"
+
 SOL_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 mkdir -p /app/src /app/bin /app/outcome

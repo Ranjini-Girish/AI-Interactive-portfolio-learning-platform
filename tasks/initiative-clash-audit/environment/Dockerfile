@@ -4,10 +4,12 @@ WORKDIR /app
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+ asciinema \
+ ca-certificates \
  python3 \
  python3-pip \
  python-is-python3 \
- ca-certificates \
+ tmux \
  && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --no-cache-dir --break-system-packages \

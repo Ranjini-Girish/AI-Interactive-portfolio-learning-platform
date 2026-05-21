@@ -50,6 +50,13 @@ EXPECTED_OUTPUT_CANONICAL_HASHES = {
 }
 
 
+EXPECTED_OUTPUT_ON_DISK_SHA256 = {
+    "turn_order.json": "830c6fc776c4b3d9fcc458ab30a1ff96d5d6ebeca7d75f17041e02bb67c574d4",
+    "clashes.json": "3fa1a89b33dba9e31d38803456fd3dfb1ba6eb2fad17d38579891e6167d63211",
+    "summary.json": "71e7cd4c9160008e22ce58857885c53424bd3167e4e2ed8f326822e54e1fbe48",
+}
+
+
 EXPECTED_FIELD_HASHES = {
     "clashes.clashes": "dd672ef87e8eb3d71dda516f46b4a7c62583d4599fc1d12ccb0d08e3a3e11918",
     "summary.band_counts": "dc1491cd1a8b1b8f58e66bf88be0a397ffde69e5f493828a0d3f37a197e1d41f",
@@ -98,11 +105,29 @@ class TestReportStructure:
     """Verify emitted JSON files exist and hash-lock to the canonical contract."""
 
     def test_output_canonical_hashes(self, outputs: dict[str, object]) -> None:
-        """Each audit file must match the canonical minified JSON digest."""
+        """Parsed JSON must match the semantic contract via a minified sorted-key digest."""
         for name, expected in EXPECTED_OUTPUT_CANONICAL_HASHES.items():
             canon = _canonical(outputs[name])
             digest = _sha256_bytes(canon.encode("utf-8"))
             assert digest == expected, f"output mismatch for {name}"
+
+    def test_output_on_disk_byte_hashes(self) -> None:
+        """Each audit file's exact on-disk UTF-8 bytes must match the spec's canonical layout digest."""
+        for name, expected in EXPECTED_OUTPUT_ON_DISK_SHA256.items():
+            path = AUDIT_DIR / name
+            raw = path.read_bytes()
+            digest = _sha256_bytes(raw)
+            assert digest == expected, f"on-disk byte mismatch for {name}"
+
+    def test_output_on_disk_utf8_no_trailing_whitespace_lines(self) -> None:
+        """On-disk audit JSON must be valid UTF-8 with no spaces or tabs at end of any line."""
+        for name in OUTPUT_FILES:
+            text = (AUDIT_DIR / name).read_text(encoding="utf-8")
+            for i, line in enumerate(text.splitlines(keepends=True), start=1):
+                body = line.rstrip("\r\n")
+                assert body == body.rstrip(" \t"), (
+                    f"{name}: line {i} has trailing horizontal whitespace"
+                )
 
     def test_field_hashes(self, outputs: dict[str, object]) -> None:
         """Selected nested fields must match their pinned canonical digests."""

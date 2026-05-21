@@ -4,7 +4,9 @@ All JSON consumed and emitted by the audit is UTF-8. On-disk audit files use JSO
 
 ## Inputs
 
-Read `/app/imhr_lab/policy.json`, `/app/imhr_lab/pool_state.json`, `/app/imhr_lab/incident_log.json`, `/app/imhr_lab/anchors/window.json`, and every `/app/imhr_lab/sites/*.json` file. Ignore `/app/imhr_lab/ancillary/` for computations; it is packaging metadata only.
+Let `LAB_ROOT` be the absolute path in environment variable `IMHA_DATA_DIR` when that variable is set to a non-empty string, otherwise `/app/imhr_lab`.
+
+Read `LAB_ROOT/policy.json`, `LAB_ROOT/pool_state.json`, `LAB_ROOT/incident_log.json`, `LAB_ROOT/anchors/window.json`, and every `LAB_ROOT/sites/*.json` file. Ignore `LAB_ROOT/ancillary/` for computations; it is packaging metadata only.
 
 Each site file contains string `site_id`, string `tier` (`gold`, `silver`, or `bronze`), string `band_tag` (members of `pool_state.band_process_order`), and integer array `emissions_mhz` (each MHz strictly positive).
 
@@ -60,13 +62,17 @@ If a full round across all bands admits nothing, stop.
 
 ## Intermodulation hits
 
-Consider unordered pairs of distinct registry entries with the same `band_tag` and different `site_id`. For pair MHz values `a` and `b` (use the two integers; pair is unordered so treat `{a,b}` with `a < b` lex by site then MHz for deterministic ordering), compute `t1 = 2*a - b` and `t2 = a + b - policy.im_anchor_mhz`.
+Consider unordered pairs of distinct registry entries with the same `band_tag` and different `site_id`. Order the two corners by `(site_id, mhz)` lexicographically (`site_id` ASCII ascending, then `mhz` ascending); let `a` be the MHz at the smaller corner and `b` the MHz at the larger corner. Compute only `t1 = 2*a - b` and `t2 = a + b - policy.im_anchor_mhz` (do not add other IM combinations).
 
 Collect integer `hit_mhz` values among `{t1, t2}` that equal the `mhz` field of any registry entry whose `band_tag` equals the pair's shared band. Deduplicate hit MHz values per pair, sort ascending. If non-empty, emit a hit record.
 
 Hit ordering: sort hit records by `(band_tag asc, site_low asc, mhz_low asc, site_high asc, mhz_high asc)` where `(site_low, mhz_low)` is the lexicographically smaller corner of the pair and the high corner is the other registry entry.
 
-## Outputs under `/app/audit/`
+## Outputs
+
+Let `AUDIT_ROOT` be the absolute path in environment variable `IMHA_AUDIT_DIR` when that variable is set to a non-empty string, otherwise `/app/audit`.
+
+Write `registry.json`, `intermod_hits.json`, and `summary.json` under `AUDIT_ROOT` (three separate files).
 
 ### `registry.json`
 

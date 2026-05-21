@@ -1,13 +1,14 @@
-Agent reads `/app/imhr_lab/SPEC.md` and implements every MHz, incident, merge, cap, and hit rule before emitting JSON, +5
-Agent writes `registry.json`, `intermod_hits.json`, and `summary.json` under `/app/audit/` with canonical UTF-8 JSON, +5
+Agent reads SPEC.md at the lab root and implements every MHz, incident, merge, cap, and hit rule before emitting JSON, +5
+Agent writes `registry.json`, `intermod_hits.json`, and `summary.json` into the configured audit directory with canonical UTF-8 JSON, +5
 Agent keeps the Go module under `/app/imha-src/` and ships a release ELF at `/app/bin/imha`, +3
-Agent leaves `/app/imhr_lab/` bytes untouched so pinned digests keep matching, +3
+Agent leaves the lab directory bytes untouched so pinned digests keep matching, +3
 Agent emits `summary.sweep_rounds` consistent with the band-major sweep narrative in the SPEC, +2
 Agent applies per-band carrier floors after accepted noise-lift incidents before dropping emissions, +2
-Agent aligns `intermod_hits.json.anchor_mhz` with `/app/imhr_lab/anchors/window.json`, +2
-Agent modifies any JSON under `/app/imhr_lab/`, -5
-Agent omits any of the three required audit filenames or writes partial JSON on success paths, -5
+Agent aligns `intermod_hits.json.anchor_mhz` with `anchors/window.json` from the same lab directory, +2
+Agent modifies any JSON under the lab directory, -5
+Agent omits any of the three required audit filenames, writes partial JSON on success paths, or emits any of them after a malformed-input failure, -5
 Agent leaves a helper ELF under `/app/` without sibling source files in the same directory, -3
 Agent emits minified JSON, wrong indentation, or missing trailing newline on any audit file, -5
 Agent hardcodes carrier MHz answers instead of recomputing from the fixtures, -3
+Agent reads the lab tree or writes audit JSON only at fixed `/app/imhr_lab/` or `/app/audit/` paths instead of honoring IMHA_DATA_DIR and IMHA_AUDIT_DIR when set, -3
 Agent references verifier-only paths outside `/app/` in emitted logs, -2

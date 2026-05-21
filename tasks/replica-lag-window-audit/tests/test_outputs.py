@@ -71,6 +71,20 @@ def _canonical(value: object) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"))
 
 
+def _spec_json_file_text(value: object) -> str:
+    """Serialize exactly as SPEC.md canonical JSON (two-space indent, sorted keys, ASCII, one trailing LF)."""
+    return (
+        json.dumps(
+            value,
+            indent=2,
+            sort_keys=True,
+            ensure_ascii=True,
+            separators=(",", ": "),
+        )
+        + "\n"
+    )
+
+
 def _load_json(path: Path) -> object:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -418,6 +432,14 @@ class TestReportStructure:
             canon = _canonical(outputs[name])
             digest = _sha256_bytes(canon.encode("utf-8"))
             assert digest == expected, f"output mismatch for {name}"
+
+    def test_output_on_disk_json_matches_spec_formatter(self, outputs: dict[str, object]) -> None:
+        """On-disk bytes must be ASCII-only SPEC canonical JSON, not merely parse-equal to it."""
+        for name in OUTPUT_FILES:
+            raw_bytes = (AUDIT_DIR / name).read_bytes()
+            text = raw_bytes.decode("ascii")
+            assert text.endswith("\n") and not text.endswith("\n\n")
+            assert text == _spec_json_file_text(outputs[name]), f"on-disk format mismatch for {name}"
 
     def test_field_hashes(self, outputs: dict[str, object]) -> None:
         """Selected nested fields must match their pinned canonical digests."""

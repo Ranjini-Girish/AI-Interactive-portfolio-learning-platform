@@ -1,4 +1,10 @@
-"""Verifier suite for trap-grid-chain-audit."""
+"""Verifier suite for trap-grid-chain-audit.
+
+Locks input fixtures with SHA-256, checks emitted JSON logic via parsed
+structures, pins minified canonical digests for cross-run stability, and
+asserts the on-disk UTF-8 bytes (including two-space layout, sorted keys,
+and the single trailing newline) match the normative on-disk serialization contract.
+"""
 
 from __future__ import annotations
 
@@ -52,6 +58,14 @@ EXPECTED_OUTPUT_CANONICAL_HASHES = {
     "disarm_plan.json": "322e741457464576cf9dc92722af86e4847740a151cc6ca328eec19b3544804b",
     "room_status.json": "05394b3b3ce6605a6b5bb223b82d485b365e645c94f6d2ca75f8b064d5cbba3b",
     "summary.json": "8317c0d87375721a2b72a8740c1756ac6388bfb6ae167359bc4cb06f881f8d9b",
+}
+
+EXPECTED_OUTPUT_RAW_HASHES = {
+    "trap_states.json": "ddc0f8331a952c10a2fd3845ceff475b5d7153b1ef732e45f248b1ca42a2533f",
+    "trigger_plan.json": "4d4f354a37b15c51a5654d5614b99bb0f536f4e09287d9012f6896ed86b82dc7",
+    "disarm_plan.json": "1516f71bdb4c52c19968874cbf404bd3223f38036ea420f0da7a42bb52bbb9c8",
+    "room_status.json": "890798e196e25ad7f7ffd9b9d1f218fc8646fd61eaee8d629edd71108e59bbe9",
+    "summary.json": "19ce6b16c55fd83f33d114e15a140f10029d3b2fb76170fe9319b748300ba41e",
 }
 
 EXPECTED_FIELD_HASHES = {
@@ -118,12 +132,27 @@ class TestInputIntegrity:
 class TestReportStructure:
     """Verify emitted JSON files exist and hash-lock to the canonical contract."""
 
+    def test_output_raw_byte_hashes(self) -> None:
+        """Each audit file's UTF-8 bytes must match the normative layout (indent, key order, newline)."""
+        for name, expected in EXPECTED_OUTPUT_RAW_HASHES.items():
+            path = AUDIT_DIR / name
+            digest = _sha256_bytes(path.read_bytes())
+            assert digest == expected, f"raw byte mismatch for {name} (formatting?)"
+
     def test_output_canonical_hashes(self, outputs: dict[str, object]) -> None:
         """Each audit file must match the canonical minified JSON digest."""
         for name, expected in EXPECTED_OUTPUT_CANONICAL_HASHES.items():
             canon = _canonical(outputs[name])
             digest = _sha256_bytes(canon.encode("utf-8"))
             assert digest == expected, f"output mismatch for {name}"
+
+    def test_output_files_single_trailing_newline(self) -> None:
+        """Root JSON objects must end with exactly one line feed after the closing brace."""
+        for name in OUTPUT_FILES:
+            raw = (AUDIT_DIR / name).read_text(encoding="utf-8")
+            assert raw.endswith("}\n"), (
+                f"{name} must end with exactly one LF immediately after the root closing brace"
+            )
 
     def test_field_hashes(self, outputs: dict[str, object]) -> None:
         """Selected nested fields must match their pinned canonical digests."""
@@ -167,9 +196,10 @@ class TestChainPropagation:
         assert traps["t04"]["chain_hops"] == -1
 
     def test_t10_chains_from_t09_only(self, outputs: dict[str, object]) -> None:
-        """Hop one must list only the hall-d neighbor reachable from t09."""
+        """Tag mismatch tightens chain hops so only wave zero and hop-one fire; hop one lists t10."""
         waves = outputs["trigger_plan.json"]["waves"]
-        assert len(waves) >= 2
+        assert isinstance(waves, list)
+        assert len(waves) == 2
         assert waves[1] == ["t10"]
 
 

@@ -4,9 +4,11 @@ WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        asciinema \
+        ca-certificates \
         python3 \
         python3-pip \
-        ca-certificates \
+        tmux \
     && rm -rf /var/lib/apt/lists/*
 
 # Verifier runs pytest with no network (task.toml allow_internet = false); deps

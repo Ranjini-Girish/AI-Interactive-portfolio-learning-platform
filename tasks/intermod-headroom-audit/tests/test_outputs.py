@@ -15,7 +15,7 @@ APP_ROOT = Path("/app")
 SOURCE_SUFFIXES = frozenset(
     {".c", ".cc", ".cpp", ".go", ".java", ".js", ".py", ".rs", ".sh", ".ts"}
 )
-_HELPER_SKIP_PARTS = frozenset({"imhr_lab", "audit", "imha-src"})
+_HELPER_SKIP_PARTS = frozenset({"imhr_lab", "audit", "imha-src", "bin"})
 
 DATA_DIR = Path(os.environ.get("IMHA_DATA_DIR", "/app/imhr_lab"))
 AUDIT_DIR = Path(os.environ.get("IMHA_AUDIT_DIR", "/app/audit"))
@@ -26,7 +26,7 @@ BINARY_PATH = Path("/app/bin/imha")
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "e77807171129239e3bacb43a5624951203e10891ee86bdd96c302e2ededd6c75",
+    "SPEC.md": "40a975c4374de52f241b8585791208b686e2f7cb593611c1b6bf7555d6e1b725",
     "anchors/window.json": "3f8b0758e35663f1b584658eb9ce32698bbe0d10f8febb23b910cf66c877e5a9",
     "ancillary/thresholds.json": "97f4841992ea0d4a819c5f83a64ef76607b721183efab16c418d35d3c05a86d6",
     "incident_log.json": "a5fe9650bb1574de5917957868c3adc3b7cd62f36bd049609b351f9a80850b24",
@@ -228,13 +228,50 @@ class TestHelperSources:
             )
 
 
+class TestGoDelivery:
+    """Go sources and release binary paths from the task prompt must exist on disk."""
+
+    def test_go_sources_exist_under_imha_src(self) -> None:
+        """At least one Go source file must live under /app/imha-src/ as required by the prompt."""
+        src_dir = Path("/app/imha-src")
+        assert src_dir.is_dir(), "expected /app/imha-src directory"
+        go_files = list(src_dir.rglob("*.go"))
+        assert len(go_files) >= 1, "expected at least one .go file under /app/imha-src"
+
+
+class TestBinaryMalformedInput:
+    """Malformed fixture runs must fail closed with no named audit artifacts."""
+
+    def test_malformed_policy_json_exits_without_audit_files(self, tmp_path: Path) -> None:
+        """Invalid policy.json must yield a non-zero exit and none of the three JSON outputs."""
+        assert BINARY_PATH.is_file(), "release binary must exist at /app/bin/imha"
+        staged = tmp_path / "imhr_lab"
+        shutil.copytree(DATA_DIR, staged)
+        (staged / "policy.json").write_text("{invalid", encoding="utf-8")
+        out_dir = tmp_path / "audit"
+        out_dir.mkdir()
+        env = os.environ.copy()
+        env["IMHA_DATA_DIR"] = str(staged)
+        env["IMHA_AUDIT_DIR"] = str(out_dir)
+        res = subprocess.run(
+            [str(BINARY_PATH)],
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=120,
+            check=False,
+        )
+        assert res.returncode != 0, res.stderr
+        for name in OUTPUT_FILES:
+            assert not (out_dir / name).is_file(), f"unexpected output file on error: {name}"
+
+
 class TestBinaryRerun:
     """End-to-end rerun against a copied dataset must reproduce the same digests."""
 
     def test_release_binary_replay_matches_hashes(self, tmp_path: Path) -> None:
         """Re-running the packaged Go binary on a fresh copy of the fixtures stays stable."""
-        if not BINARY_PATH.is_file():
-            pytest.skip("release binary not present in this harness layout")
+        assert BINARY_PATH.is_file(), "release binary must exist at /app/bin/imha"
         staged = tmp_path / "imhr_lab"
         shutil.copytree(DATA_DIR, staged)
         out_dir = tmp_path / "audit"

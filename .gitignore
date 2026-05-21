@@ -23,6 +23,8 @@ _dev_compute_hashes.py
 
 # Submission / build artifacts
 *.zip
+!Snorkel_Accepted_Tasks/
+!Snorkel_Accepted_Tasks/**/*.zip
 tasks/*.zip
 
 # Playwright E2E (e2e/)
