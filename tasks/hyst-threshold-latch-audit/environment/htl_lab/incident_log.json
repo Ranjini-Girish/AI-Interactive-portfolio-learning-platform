@@ -1,0 +1,15 @@
+{
+  "incidents": [
+    {
+      "add": 2.0, 
+      "kind": "bias_signal", 
+      "t0": 3, 
+      "t1": 4
+    }, 
+    {
+      "kind": "force_low", 
+      "t": 8, 
+      "until": 9
+    }
+  ]
+}

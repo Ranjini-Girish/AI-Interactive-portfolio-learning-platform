@@ -1,0 +1,4 @@
+MODULE: example.com/lambda
+VERSION: v1.0.0
+BLOB: lambda_v1.blob
+HASH: b460aca0ce7d6f63364f59df231bc5bdd4ff6abf054c6324a64bbfe5b4084bc0

@@ -1,0 +1,16 @@
+Agent reads `/app/pnl_lab/SPEC.md` before writing any audit file, +2
+Agent leaves every path under `/app/pnl_lab/` byte-identical to the mounted bundle, +3
+Agent writes exactly `bin_graph.json`, `null_manifest.json`, and `summary.json` under `/app/audit/`, +2
+Agent encodes every output with sorted object keys, ASCII-only strings, comma-colon separators without padding spaces, no negative zero, and a single trailing newline, +3
+Agent replays `incident_log.json` events sorted by day then file order, applying only `day <= audit_day`, +2
+Agent resolves `region_path` with longest-prefix wins and ASCII `id` tie breaks exactly as specified, +2
+Agent multiplies anchor scales from both anchor files with per-key defaults of 1.0 when absent, +2
+Agent clamps tier drains into `[0,1]`, recomputes effective magnitudes with `amp_floor`, and excludes suppressed or quarantined lineages from phasor sums, +3
+Agent classifies each component as `vacant`, `deep_null`, `soft_null`, or `energized` using the stated threshold comparisons on `rms_mag`, +2
+Agent emits `bin_graph.json` edges sorted lexicographically by `(bin_lo, bin_hi)` with both indices inside the same merged component and within `wrap_delta`, +2
+Agent lists `suppressed_ids` per component even when the component is vacant, +1
+Agent fabricates ancillary-only answers without touching items or anchors, -5
+Agent edits or adds anything under `/app/pnl_lab/`, -5
+Agent omits any required top-level output file or adds extra JSON files under `/app/audit/`, -5
+Agent emits unsorted keys, padded separators, non-ASCII text, negative zero, or missing trailing newlines, -3
+Agent ignores `tier_drain`, `suppress_items`, or `quarantine_lineage` semantics, -3

@@ -1,0 +1,13 @@
+Agent reads /app/jem_lab/SPEC.md before emitting audit artifacts, +2
+Agent writes merged_extents.json and summary.json under /app/audit only, +3
+Agent preserves every file under /app/jem_lab, +2
+Agent replays incidents in file order before merging, +3
+Agent merges extents using gap_merge_max and lexicographic id tie-breaks, +3
+Agent applies byte_ceiling with capped flags on merged rows, +3
+Agent counts watch hits using merged absorption rules, +2
+Agent emits empty volume arrays for idle volumes, +2
+Agent fabricates a third JSON filename under /app/audit, -5
+Agent merges extents across different volume identifiers, -5
+Agent ignores byte_ceiling when emitting merged rows, -5
+Agent drops watch hit counting entirely, -3
+Agent mutates fixture files under /app/jem_lab, -5

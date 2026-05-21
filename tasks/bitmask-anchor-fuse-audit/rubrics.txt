@@ -1,0 +1,13 @@
+Agent reads `/app/baf_lat/SPEC.md` and applies the fuse mask, base OR, and XOR accumulator exactly as written, +5
+Agent emits both JSON artifacts with canonical pretty JSON and trailing newline, +3
+Agent multiplies the tier factor only after popcount and scale are known, +2
+Agent leaves the entire `/app/baf_lat/` tree byte-identical to the shipped bundle, -3
+Agent adds unexpected top-level keys inside `fuse_ledger.json` beyond the required envelope, -2
+Agent applies XOR incidents in the wrong order or skips rejected rows, -5
+Agent omits the `base_or` OR stage after masking, -5
+Agent uses `scale` before the popcount instead of after, -3
+Agent sorts ledger rows other than ASCII `id` ascending, -3
+Agent ignores `BAF_DATA_DIR` / `BAF_AUDIT_DIR` routing when those variables are set, -3
+Agent mutates witness JSON under `anchors/` or `ancillary/`, -3
+Agent rounds scores with the wrong decimal count or rounding mode, -2
+Agent counts pop bits on the pre-fuse mask instead of the effective mask, -5

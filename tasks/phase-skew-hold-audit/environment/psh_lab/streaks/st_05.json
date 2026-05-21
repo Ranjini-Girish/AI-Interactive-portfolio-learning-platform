@@ -1,0 +1,11 @@
+{
+  "rows": [
+    {
+      "day": 400,
+      "instrument": "south",
+      "phase_deg": 120.0,
+      "quality": 0.96
+    }
+  ],
+  "site": "foxtrot"
+}

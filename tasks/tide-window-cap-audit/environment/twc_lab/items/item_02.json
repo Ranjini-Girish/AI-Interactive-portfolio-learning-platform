@@ -1,0 +1,9 @@
+{
+  "amplitude": 20, 
+  "anchor_day": 8, 
+  "base_lift": -1, 
+  "item_id": "p02", 
+  "period_days": 12, 
+  "region": "a", 
+  "tier": "silver"
+}

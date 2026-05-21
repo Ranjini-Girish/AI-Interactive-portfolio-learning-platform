@@ -1,0 +1,14 @@
+Agent reads `/app/qdw_lat/SPEC.md` and matches every inclusive window rule before emitting JSON, +5
+Agent writes both required audit files with canonical UTF-8 JSON, +3
+Agent keeps every float comparison aligned with the JSON literals in the items, +2
+Agent leaves every path under `/app/qdw_lat/` byte-identical to the shipped bundle, -3
+Agent invents extra top-level output files beyond the named pair, -2
+Agent rounds `weight_applied` and `total_weight` at the wrong stage or with the wrong tie rule, -5
+Agent ignores accepted `window_bump` deltas when extending the effective window, -5
+Agent updates last-accept timestamps after suppressed rows, -5
+Agent sorts ledger rows differently than `seq` then `key` ascending, -3
+Agent hard-codes audit paths instead of honouring `QDW_DATA_DIR` / `QDW_AUDIT_DIR`, -3
+Agent mutates anchor or ancillary witness JSON, -3
+Agent emits minified JSON or omits the trailing newline on any output, -2
+Agent treats rejected incidents as contributors to the window bump sum, -3
+Agent compares timestamps using integers when the spec requires float spacing, -2

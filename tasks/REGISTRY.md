@@ -51,7 +51,7 @@ Track all tasks to maintain diversity requirements across submissions.
 | 34 | nist-line-match-audit           | scientific-computing            | hard | small | go, bash | 0 | draft (oracle 13/13 pytest; 18 env files vs small; optical catalog matching + incident bias/suppress; ruff+leakage clean; harbor trials pending) | 2026-05-14 |
 | 35 | stokes-diffusion-audit          | scientific-computing            | hard | small | go | 0 | submission-ready (LLM review pass 2026-05-19 confirmed READY TO USE; the two flagged "weaknesses" — Dockerfile-baked test deps and SPEC-delegated instruction.md — are mandated design choices per `tb2-task-rejection-signals.mdc` §3,§4,§11,§14, not defects; instruction two-paragraph prose ~340w pointing at /app/stokes_lab/SPEC.md; tests: entry key set + /app/src package main + /app/bin/stokesdiff executable + SDA_AUDIT_DIR/SDA_DATA_DIR rerun hash checks; 32 pytest; 37 env files vs CodeBuild small≥20; ruff+leak-check+terminus preflight+verify-task green; flat zip tasks/stokes-diffusion-audit.zip 30582 bytes 44 entries forward-slash rubrics+caches excluded; harbor GPT-5.2/Opus trials + two-cycle Snorkel rubric) | 2026-05-19 |
 | 36 | cryostat-lattice-readout        | scientific-computing            | hard | small | go    | 0 | revised v2 (rebuild: Go-only after TRIVIAL feedback on python v1 - both opus 4.6 + gpt-5.2 hit 100%; oracle 72/72 pytest; 25 env files vs CodeBuild small>=20; +3 compound twists - median-of-K-with-rejection aggregation, calibration drift past grace, verdict-aware end-of-prev-round edge freezing; Go binary anti-cheat re-execution; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/cryostat-lattice-readout.zip 23985 bytes excludes rubrics; harbor trials pending) | 2026-05-15 |
-| 37 | breaker-ledger-audit            | software-engineering            | hard | small | go, bash | 0 | draft (oracle 15/15 pytest Docker; SPEC.md hash synced; allow_internet=false; go.mod in solution; zip rebuilt; harbor trials pending) | 2026-05-20 |
+| 37 | breaker-ledger-audit            | software-engineering            | hard | small | go, bash | 0 | resubmit-ready (Docker oracle 15/15 pytest in `breaker-ledger-audit:preflight` image with `bash -c` so `go` stays on PATH; tmux+asciinema in Dockerfile; crash-safe `test.sh` trap; ruff+leak-check+terminus preflight+verify green; flat zip `tasks/breaker-ledger-audit.zip` 29 entries rubrics excluded; Cycle-1 rubric regen then Cycle-2 Send to Reviewer; refresh GPT-5.2/Opus harbor trials as needed) | 2026-05-21 |
 | 38 | train-slot-lattice-audit        | machine-learning                | hard | small | go    | 0 | draft (oracle 17/17 pytest; 23 env files vs small; Go reference binary built at verify time; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/train-slot-lattice-audit.zip; harbor trials pending) | 2026-05-15 |
 | 39 | infer-blend-quota-audit         | machine-learning                | hard | small | go, bash | 0 | submission-ready (oracle 11/11 pytest; 20 env files vs small; ruff+leakage+terminus preflight+verify-task green; flat zip tasks/infer-blend-quota-audit.zip 15880 bytes rubrics excluded; harbor trials pending) | 2026-05-15 |
 | 40 | rate-limit-merge-audit          | system-administration           | hard | small | go, bash | 0 | draft (oracle 9/9 pytest; 23 env files vs small; class+drop-in merge + legacy reverse order + incidents + compromise quarantine + host caps; ruff+leakage+terminus preflight green; harbor trials pending) | 2026-05-15 |
@@ -152,22 +152,25 @@ Track all tasks to maintain diversity requirements across submissions.
 | 135 | phasor-null-lattice-audit             | scientific-computing            | hard | small | go, bash | 0 | draft (Go oracle 9/9 pytest local; phasor lattice + incidents + region anchors + DSU bins; 27 env files vs small; ruff+leak+terminus preflight green; harbor GPT-5.2/Opus trials + two-cycle platform pending) | 2026-05-21 |
 | 136 | ribbon-winding-quorum-audit           | scientific-computing            | hard | small | go, bash | 0 | draft (Go oracle ribbon winding quorum + cyclic anchors + tier trim; 24 env files vs small; ruff+terminus preflight green; needs harbor GPT-5.2/Opus trials + two-cycle platform) | 2026-05-21 |
 | 137 | prior-blend-rank-audit                | machine-learning                | hard | small | python, bash | 0 | draft (oracle 10/10 pytest local; prior-witness blend + incidents + quarantine + largest-remainder budget; 28 env files vs small; ruff+leak+terminus preflight pending; harbor GPT-5.2/Opus trials + two-cycle platform pending) | 2026-05-21 |
+| 138 | slot-backfill-merge-audit             | system-administration           | hard | small | python, bash | 0 | draft (oracle 3/3 pytest local; ledger slack widen + band mask + lane merge + hash-locked JSON; 22 env files vs small; ruff+leak+terminus preflight green; harbor GPT-5.2/Opus trials + two-cycle platform pending) | 2026-05-21 |
+| 139 | skew-bin-recalc-audit                 | data-processing                 | hard | small | python, bash | 0 | draft (oracle 3/3 pytest local; winsor + suppress + band mask + bin shift + hash-locked JSON; 22 env files vs small; ruff+leak+terminus preflight green; harbor GPT-5.2/Opus trials + two-cycle platform pending) | 2026-05-21 |
+| 140 | hyst-threshold-latch-audit            | debugging                       | hard | small | python, bash | 0 | draft (oracle 3/3 pytest local; bias + hysteresis + force_low + hash-locked JSON; 22 env files vs small; ruff+leak+terminus preflight green; harbor GPT-5.2/Opus trials + two-cycle platform pending) | 2026-05-21 |
 
 ---
 
 ## Diversity Dashboard
 
-### By Category (counted over the 130 logged tasks above)
+### By Category (counted over the 133 logged tasks above)
 | Category | Count | % |
 |----------|-------|---|
-| system-administration | 15 | 12% |
-| software-engineering | 11 | 9% |
-| data-processing | 22 | 17% |
-| security | 15 | 12% |
+| system-administration | 16 | 12% |
+| software-engineering | 11 | 8% |
+| data-processing | 23 | 17% |
+| security | 15 | 11% |
 | machine-learning | 11 | 8% |
-| debugging | 13 | 10% |
-| build-and-dependency-management | 11 | 9% |
-| scientific-computing | 19 | 15% |
+| debugging | 14 | 11% |
+| build-and-dependency-management | 11 | 8% |
+| scientific-computing | 19 | 14% |
 | games | 12 | 9% |
 | (5th accepted, tbd) | 1 | 1% |
 
@@ -176,7 +179,7 @@ Track all tasks to maintain diversity requirements across submissions.
 ### By Codebase Size
 | Size | Count | % |
 |------|-------|---|
-| small | 130 | 100% |
+| small | 133 | 100% |
 | large | 0 | - |
 
 ### By Difficulty

@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "accepted": true, 
+      "kind": "delta_k", 
+      "value": 0.4
+    }, 
+    {
+      "accepted": false, 
+      "kind": "delta_k", 
+      "value": 9.0
+    }
+  ]
+}

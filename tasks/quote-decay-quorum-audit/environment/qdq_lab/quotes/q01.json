@@ -1,0 +1,10 @@
+{
+  "half_life_days": 8.0,
+  "issued_day": 10,
+  "issuer": "oak",
+  "quote_id": "q01",
+  "raw_strength": -2.0,
+  "stance": -1,
+  "subject_id": "apple",
+  "tier": "silver"
+}

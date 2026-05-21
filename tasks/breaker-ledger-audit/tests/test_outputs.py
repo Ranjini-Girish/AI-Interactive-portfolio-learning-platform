@@ -1,4 +1,6 @@
-"""Behavioral tests for the breaker ledger audit task."""
+"""Verifier suite for the breaker ledger audit: frozen input digests, canonical
+JSON digests on emitted artifacts, and semantic spot checks on ordering and
+rollup fields."""
 
 from __future__ import annotations
 
@@ -71,20 +73,23 @@ EXPECTED_FIELD_HASHES = {
 
 
 def _sha256_bytes(data: bytes) -> str:
+    """Return the lowercase hex SHA-256 digest of the given byte string."""
     return hashlib.sha256(data).hexdigest()
 
 
 def _canonical(value: object) -> str:
+    """Serialize value with sorted keys and minified separators for digest-stable JSON."""
     return json.dumps(value, sort_keys=True, separators=(",", ":"))
 
 
 def _load_json(path: Path) -> object:
+    """Parse UTF-8 JSON from path and return the decoded object."""
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 @pytest.fixture(scope="session")
 def outputs() -> dict[str, object]:
-    """Load emitted audit artifacts once per session."""
+    """Load every required audit JSON from the audit directory once per session."""
     payload: dict[str, object] = {}
     for name in OUTPUT_FILES:
         path = AUDIT_DIR / name
@@ -180,6 +185,7 @@ class TestVerdictSemantics:
     """Spot-check bundled rows that exercise distinct spec branches."""
 
     def _row(self, outputs: dict[str, object], sid: str) -> dict[str, object]:
+        """Return the service verdict row dict for the given service_id or raise."""
         rows = outputs["service_verdicts.json"]["services"]
         assert isinstance(rows, list)
         for r in rows:

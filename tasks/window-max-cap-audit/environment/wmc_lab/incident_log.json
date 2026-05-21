@@ -1,0 +1,27 @@
+{
+  "events": [
+    {
+      "day": 1,
+      "event_id": "a",
+      "index": 9,
+      "kind": "zero_index"
+    },
+    {
+      "day": 2,
+      "event_id": "b",
+      "kind": "bump_cap",
+      "new_cap": 55
+    },
+    {
+      "day": 3,
+      "event_id": "c",
+      "kind": "unknown"
+    },
+    {
+      "day": 99,
+      "event_id": "d",
+      "kind": "bump_cap",
+      "new_cap": 99
+    }
+  ]
+}

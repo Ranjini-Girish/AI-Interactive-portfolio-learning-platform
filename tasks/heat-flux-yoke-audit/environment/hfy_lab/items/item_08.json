@@ -1,0 +1,10 @@
+{
+  "born_day": 100, 
+  "cell": "C1", 
+  "flux0_mw": 15, 
+  "item_id": "I08", 
+  "k_mw_per_day": 2, 
+  "region": "b", 
+  "tier": "gold", 
+  "yoke_id": "K0"
+}

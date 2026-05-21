@@ -1,0 +1,5 @@
+Operations needs a frozen replay audit of the ridge merge lab bundle under `/app/rgma_lab/` once incidents, anchor overlap, alias merging, tier scales, and the global microlambda cap are composed exactly as defined in `/app/rgma_lab/SPEC.md`. Keep the bundle read-only and write only the UTF-8 JSON outputs named there into the audit directory using its canonical JSON serializer. The bundled layout lists every host file that must be present.
+
+When `RGMA_DATA_DIR` is non-empty it overrides the read root; when `RGMA_AUDIT_DIR` is non-empty it overrides the write root. If either variable is unset or empty, keep `/app/rgma_lab/` for reads and `/app/audit/` for writes. Create the audit directory when missing.
+
+Secondary JSON under `/app/rgma_lab/anchors/` and `/app/rgma_lab/ancillary/` stays present for witness checks and must not be rewritten. `pool_state.json` and `domain_layout.json` are byte-identical witnesses for this revision; the quantitative replay lives entirely in the specification file.

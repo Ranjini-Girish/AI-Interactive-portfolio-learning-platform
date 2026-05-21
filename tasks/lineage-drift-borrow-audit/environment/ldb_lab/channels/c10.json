@@ -1,0 +1,6 @@
+{
+  "base_drift": 15,
+  "channel_id": "ch-jade",
+  "parent": "ch-bloom",
+  "tier": "bronze"
+}

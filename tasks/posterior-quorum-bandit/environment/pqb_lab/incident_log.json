@@ -1,0 +1,44 @@
+{
+  "incidents": [
+    {
+      "accepted": true,
+      "alpha_delta": 2,
+      "arm_id": "arm_a",
+      "day": 5,
+      "event_id": "e0",
+      "kind": "prior_bump"
+    },
+    {
+      "accepted": true,
+      "arm_id": "arm_h",
+      "day": 10,
+      "event_id": "e1",
+      "kind": "arm_freeze",
+      "thaw_day": 130
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "event_id": "e2",
+      "kind": "quorum_relief",
+      "relief": 1,
+      "round_id": "r02"
+    },
+    {
+      "accepted": false,
+      "alpha_delta": 9,
+      "arm_id": "arm_b",
+      "day": 3,
+      "event_id": "e3",
+      "kind": "prior_bump"
+    },
+    {
+      "accepted": true,
+      "alpha_delta": 1,
+      "arm_id": "arm_c",
+      "day": 200,
+      "event_id": "e4",
+      "kind": "prior_bump"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "id": "e_noise", 
+      "kind": "delete_extent"
+    }, 
+    {
+      "id": "e02", 
+      "kind": "shrink_end", 
+      "new_end": 118
+    }, 
+    {
+      "id": "e05", 
+      "kind": "shrink_end", 
+      "new_end": 260
+    }
+  ]
+}

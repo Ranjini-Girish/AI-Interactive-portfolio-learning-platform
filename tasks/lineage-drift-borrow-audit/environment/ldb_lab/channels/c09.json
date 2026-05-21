@@ -1,0 +1,6 @@
+{
+  "base_drift": 13,
+  "channel_id": "ch-iris",
+  "parent": "ch-heath",
+  "tier": "silver"
+}

@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "add": 2, 
+      "kind": "tier_k_boost", 
+      "tier": "gold"
+    }, 
+    {
+      "cell": "C4", 
+      "kind": "cell_excise"
+    }, 
+    {
+      "kind": "yoke_cap_rescale", 
+      "new_cap": 120, 
+      "yoke_id": "K0"
+    }
+  ]
+}

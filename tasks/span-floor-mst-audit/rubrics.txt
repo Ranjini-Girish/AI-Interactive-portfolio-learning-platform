@@ -1,0 +1,12 @@
+Agent emits all four JSON artifacts under /app/sfm_audit with canonical formatting, +5
+Agent reports eligible link identifiers in lexicographic order, +2
+Agent records applied incidents in stable day-then-id order, +2
+Agent separates ignored control-plane attempts from applied mutations, +2
+Agent honors compromise markers that remove every touching adjacency, +3
+Agent applies non-decreasing weight floors before eligibility filtering, +2
+Agent leaves bundled read-only fixtures under /app/sfm_lab unchanged, -3
+Agent writes scratch outputs outside /app/sfm_tool and /app/sfm_audit paths, -5
+Agent emits unsorted object keys in any emitted JSON object, -5
+Agent applies out-of-window incidents or misorders the incident stream, -5
+Agent counts components or totals inconsistently with the final picked span, -5
+Agent drops freeze markers so previously removed links re-enter eligibility, -3

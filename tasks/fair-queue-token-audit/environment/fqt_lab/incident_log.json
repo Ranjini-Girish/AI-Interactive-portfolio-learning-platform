@@ -1,0 +1,13 @@
+{
+  "events": [
+    {
+      "add": -1, 
+      "kind": "boost_weight", 
+      "queue": "Q1"
+    }, 
+    {
+      "kind": "freeze_queue", 
+      "queue": "Q2"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "day": 950,
+      "instrument": "west",
+      "phase_deg": 12.0,
+      "quality": 0.93
+    },
+    {
+      "day": 951,
+      "instrument": "west",
+      "phase_deg": 350.0,
+      "quality": 0.93
+    },
+    {
+      "day": 952,
+      "instrument": "west",
+      "phase_deg": 14.0,
+      "quality": 0.93
+    }
+  ],
+  "site": "mira"
+}

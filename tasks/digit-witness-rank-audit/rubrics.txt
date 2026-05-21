@@ -1,0 +1,11 @@
+Agent emits all four JSON artifacts under /app/dwr_audit with canonical formatting, +5
+Agent ranks each surviving lane by digit sums under the final radix, +3
+Agent merges witness rows with the global tie-break chain from the spec, +3
+Agent replays bump_radix and suppress_lane incidents inside the day window, +2
+Agent records ignored control attempts separately from applied mutations, +2
+Agent leaves bundled read-only fixtures under /app/dwr_lab unchanged, -3
+Agent writes outputs outside /app/dwr_audit or mutates unrelated paths, -5
+Agent drops suppressed lanes yet still counts them as active witnesses, -5
+Agent uses the wrong radix when rescoring digit sums after bumps, -5
+Agent emits unsorted object keys in any emitted JSON object, -5
+Agent misorders merged witnesses relative to digit sum and reading ties, -5

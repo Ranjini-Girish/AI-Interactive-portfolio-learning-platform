@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "day": 900,
+      "instrument": "south",
+      "phase_deg": 88.0,
+      "quality": 0.95
+    },
+    {
+      "day": 901,
+      "instrument": "south",
+      "phase_deg": 89.0,
+      "quality": 0.95
+    }
+  ],
+  "site": "lyra"
+}

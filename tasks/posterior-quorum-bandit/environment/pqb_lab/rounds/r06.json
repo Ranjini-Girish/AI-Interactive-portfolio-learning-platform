@@ -1,0 +1,22 @@
+{
+  "candidates": [
+    "arm_c",
+    "arm_d"
+  ],
+  "phase_token": "p06",
+  "pulls": [
+    {
+      "votes": [
+        {
+          "label": 0,
+          "rater_id": "u1"
+        },
+        {
+          "label": 0,
+          "rater_id": "u2"
+        }
+      ]
+    }
+  ],
+  "round_id": "r06"
+}

@@ -1,0 +1,39 @@
+{
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "lane_ids": [
+        "lane-delta"
+      ],
+      "pool_draw": 0,
+      "status": "quarantined",
+      "ticks": {
+        "lane-delta": 29
+      }
+    },
+    {
+      "cluster_id": 1,
+      "lane_ids": [
+        "lane-a",
+        "lane-b"
+      ],
+      "pool_draw": 20,
+      "status": "pool_satisfied",
+      "ticks": {
+        "lane-a": 157,
+        "lane-b": 160
+      }
+    },
+    {
+      "cluster_id": 2,
+      "lane_ids": [
+        "lane-c"
+      ],
+      "pool_draw": 0,
+      "status": "pool_deferred",
+      "ticks": {
+        "lane-c": 519
+      }
+    }
+  ]
+}

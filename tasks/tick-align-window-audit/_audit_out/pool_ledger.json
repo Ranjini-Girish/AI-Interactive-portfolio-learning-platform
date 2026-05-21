@@ -1,0 +1,12 @@
+{
+  "closing_tokens": 5,
+  "draws": [
+    {
+      "after": 5,
+      "amount": 20,
+      "before": 25,
+      "cluster_id": 1
+    }
+  ],
+  "opening_tokens": 25
+}

@@ -1,0 +1,10 @@
+{
+  "half_life_days": 10.0,
+  "issued_day": 5,
+  "issuer": "ivy",
+  "quote_id": "q00",
+  "raw_strength": 4.0,
+  "stance": 1,
+  "subject_id": "apple",
+  "tier": "gold"
+}

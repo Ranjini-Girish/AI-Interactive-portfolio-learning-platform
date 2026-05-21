@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "day": 800,
+      "instrument": "east",
+      "phase_deg": 44.0,
+      "quality": 0.9
+    },
+    {
+      "day": 801,
+      "instrument": "east",
+      "phase_deg": 45.0,
+      "quality": 0.9
+    },
+    {
+      "day": 802,
+      "instrument": "east",
+      "phase_deg": 46.0,
+      "quality": 0.9
+    }
+  ],
+  "site": "kappa"
+}

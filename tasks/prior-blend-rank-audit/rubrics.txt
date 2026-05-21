@@ -1,0 +1,14 @@
+Agent reads /app/pbr_lab/SPEC.md before writing JSON, +3
+Agent emits allocation_table.json and summary.json under /app/audit only, +3
+Agent uses UTF-8 JSON with sorted keys, two-space indent, comma+space separators, trailing newline, +3
+Agent preserves deterministic ordering rules for allocations and region totals, +3
+Agent applies anchor prior bump after incidents and quarantine per SPEC, +3
+Agent applies largest-remainder budget split with lexicographic tie-break, +3
+Agent ignores unknown incident kinds except for the applied counter, +2
+Agent replays lane witness nudges before clamping and blending scores, +3
+Agent reads clocks or environment secrets for scoring, -5
+Agent mutates any bundled JSON under /app/pbr_lab, -5
+Agent emits extra top-level keys beyond the SPEC, -3
+Agent writes outputs outside /app/audit, -5
+Agent omits witness_used or score fields from allocation rows, -3
+Agent hardcodes totals without replaying incidents, -5

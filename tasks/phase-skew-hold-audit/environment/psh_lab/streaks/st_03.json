@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "day": 108,
+      "instrument": "north",
+      "phase_deg": 5.0,
+      "quality": 0.9
+    },
+    {
+      "day": 112,
+      "instrument": "north",
+      "phase_deg": 7.0,
+      "quality": 0.92
+    },
+    {
+      "day": 116,
+      "instrument": "north",
+      "phase_deg": 9.0,
+      "quality": 0.92
+    }
+  ],
+  "site": "delta"
+}

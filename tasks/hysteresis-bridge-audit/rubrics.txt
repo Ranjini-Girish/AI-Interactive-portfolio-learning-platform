@@ -1,0 +1,13 @@
+Agent reads `/app/hba_lab/SPEC.md` and applies adjustment, window gating, debounced transitions, and blind-day resets in the stated order, +5
+Agent emits both JSON artifacts with canonical pretty JSON and trailing newline, +3
+Agent mirrors `ticks_seen` versus `ticks_evaluated` exactly as the glob and evaluation rules define, +2
+Agent leaves the entire `/app/hba_lab/` tree byte-identical to the shipped bundle, -3
+Agent sorts crossings differently than ascending `day` then ASCII `lane_id`, -5
+Agent applies blind-day suppression to lanes outside the incident `lanes` list, -5
+Agent evaluates ticks in filename-only order instead of the spec’s sort keys, -3
+Agent drops the bias term before scaling adjusted samples, -3
+Agent ignores `HBA_DATA_DIR` / `HBA_AUDIT_DIR` routing when those variables are set, -3
+Agent mutates witness JSON under `anchors/` or `ancillary/`, -3
+Agent emits minified JSON or omits the trailing newline on any output, -2
+Agent counts rejected incidents toward `incidents_applied`, -3
+Agent omits idle lanes from `final_state` in `crossing_log.json`, -2

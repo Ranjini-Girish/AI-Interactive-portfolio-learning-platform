@@ -1,0 +1,6 @@
+{
+  "base_drift": 20,
+  "channel_id": "ch-echo",
+  "parent": "ch-dew",
+  "tier": "silver"
+}

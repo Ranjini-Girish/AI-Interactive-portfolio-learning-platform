@@ -1,0 +1,15 @@
+Agent applies decay halves, incident rescale windows, frozen-anchor exclusion, and pool_cap shortlists exactly as `/app/qdq_lab/SPEC.md` orders them, +5
+Agent emits `subjects.json`, `quotes_eval.json`, and `summary.json` with canonical UTF-8 JSON and a trailing newline on each file, +5
+Agent honors non-empty `QDQ_DATA_DIR` and `QDQ_AUDIT_DIR` overrides without touching the default bundle bytes, +3
+Agent reads `/app/qdq_lab/SPEC.md` before emitting any audit file, +3
+Agent rounds every surviving float field to six decimal places using the SPEC rules, +2
+Agent emits only the verdict strings `pass`, `fail`, and `split` where subjects are summarized, +2
+Agent mutates any JSON under `/app/qdq_lab/`, -5
+Agent omits one of the three required audit filenames under `/app/audit/`, -5
+Agent includes frozen-anchor quotes when building the pool_cap shortlist, -5
+Agent counts neutral stance quotes toward `quorum_min_active`, -3
+Agent applies incident factors outside the inclusive day window, -3
+Agent uses tier weights not declared in `policy.json`, -3
+Agent writes outputs outside `/app/audit/` while the default roots are in force, -5
+Agent leaves trailing spaces or tabs at the ends of JSON lines, -3
+Agent folds frozen-anchor quotes into weighted totals, -5

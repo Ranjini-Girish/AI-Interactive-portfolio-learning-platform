@@ -1,0 +1,15 @@
+{
+  "events": [
+    {
+      "accepted": true, 
+      "delta": 2, 
+      "kind": "window_bump", 
+      "note": "burst"
+    }, 
+    {
+      "accepted": false, 
+      "delta": 9, 
+      "kind": "window_bump"
+    }
+  ]
+}

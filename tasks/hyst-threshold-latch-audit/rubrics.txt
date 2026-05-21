@@ -1,0 +1,13 @@
+Agent writes latch_trace.json and summary.json only into the audit directory, +2
+Agent matches canonical JSON layout from SPEC for every emitted file, +3
+Agent processes points in ascending time with recorded raw and adjusted values, +3
+Agent applies bias_signal additions before hysteresis evaluation each step, +5
+Agent uses separate rising high and falling low minus latch_clear_margin thresholds, +5
+Agent forces low state whenever an active force_low window applies at that time, +3
+Agent leaves anchors and ancillary JSON untouched under the bundle root, +2
+Agent emits latch transitions that contradict hysteresis ordering in SPEC, -5
+Agent mutates points or policy files under the frozen bundle root, -5
+Agent ignores incident ordering or double-counts flips in summary.json, -3
+Agent writes outputs outside the configured audit directory tree, -5
+Agent drops any required latch_trace fields on individual steps, -3
+Agent miscomputes high_steps relative to final latched states, -2

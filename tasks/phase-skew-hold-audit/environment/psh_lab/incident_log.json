@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "effective_day": 103,
+      "instrument": "north",
+      "kind": "instrument_quarantine"
+    },
+    {
+      "effective_day": 115,
+      "kind": "site_compromise",
+      "site": "delta"
+    }
+  ]
+}

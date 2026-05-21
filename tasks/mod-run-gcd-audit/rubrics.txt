@@ -1,0 +1,16 @@
+Agent ignores normative rules that exist only in the bundle specification, -5
+Agent writes audit JSON files missing the single trailing newline required on disk, -3
+Agent mutates any read-only bundle file under the evidence tree, -5
+Agent fabricates incident kinds that never appear in the provided incident vocabulary, -2
+Agent emits audit filenames or top-level keys absent from the mandated contract, -3
+Agent sorts deterministic rows using a collation that disagrees with ASCII tie-break rules, -3
+Agent applies modulus bumps without incorporating the pool-day remainder term, -5
+Agent merges lane memberships that the specification keeps disjoint, -2
+Agent silently ignores accepted incidents while reconciling factors or caps, -5
+Agent substitutes a baked-in pool day instead of reading pool_state.json, -3
+Agent leaves any required audit artifact missing after the run, -5
+Agent emits every mandated artifact with schema-complete objects and stable ordering, +5
+Agent leaves anchors and ancillary bytes untouched while writing only the audit directory, +3
+Agent honors empty override environment variables by falling back to default roots, +2
+Agent recomputes residues after tier bumps append factors, +3
+Agent threads the pool day through every bump that depends on the day remainder, +2

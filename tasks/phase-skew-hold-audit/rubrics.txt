@@ -1,0 +1,15 @@
+Agent Reads `/app/psh_lab/SPEC.md` before coding, +3
+Agent Writes only `/app/audit/report.json`, +3
+Agent Keeps JSON ASCII-only with sorted keys and stable indentation, +5
+Agent Matches circular merge plus MAD plus mask-skip interaction from the spec, +5
+Agent Honors incident precedence over anchors and over merge eligibility, +3
+Agent Leaves every bundled streak digest-stable, +2
+Agent Emits `summary.state_counts` that sums to the `site_days` length, +2
+Agent Documents cool, hold, weak, quarantine, compromise, and below-floor rows in the table, +2
+Agent Writes outside `/app/audit/`, -5
+Agent Mutates any file under `/app/psh_lab/`, -5
+Agent Omits `report.json` or leaves it non-canonical versus the SPEC encoder, -5
+Agent Ignores streak files not named in the spec inventory, -3
+Agent Hard-codes digest constants from this repository into the binary, -3
+Agent Emits extra top-level keys in `report.json`, -3
+Agent Skips computing merged phases when eligible rows remain, -5

@@ -1,0 +1,31 @@
+{
+  "active_regions": [
+    "a", 
+    "b"
+  ], 
+  "flux_floor_mw": 4, 
+  "span_penalty_permille": 900, 
+  "yokes": {
+    "K0": {
+      "cells": [
+        "C0", 
+        "C1", 
+        "C2"
+      ], 
+      "flux_cap": 160
+    }, 
+    "K1": {
+      "cells": [
+        "C3", 
+        "C4"
+      ], 
+      "flux_cap": 95
+    }, 
+    "K2": {
+      "cells": [
+        "C5"
+      ], 
+      "flux_cap": 45
+    }
+  }
+}

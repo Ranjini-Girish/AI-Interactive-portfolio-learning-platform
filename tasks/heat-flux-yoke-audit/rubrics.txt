@@ -1,0 +1,12 @@
+Agent reads /app/hfy_lab/SPEC.md before writing any audit file, +2
+Agent writes exactly yoke_table.json and summary.json under /app/audit, +3
+Agent preserves every byte under /app/hfy_lab, +2
+Agent replays incidents strictly in file order, +3
+Agent omits items tagged outside active_regions, +2
+Agent applies span penalty before comparing to yoke caps, +3
+Agent leaves unrelated paths outside /app/audit untouched, +2
+Agent fabricates extra top-level keys in either JSON file, -5
+Agent skips ambient subtraction on region totals, -5
+Agent uses floating-point milliwatts instead of integer totals, -5
+Agent reorders yoke_table rows away from ascending yoke_id, -3
+Agent mutates fixture JSON under /app/hfy_lab, -5

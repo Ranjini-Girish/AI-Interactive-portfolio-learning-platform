@@ -1,0 +1,13 @@
+Agent reads /app/fqt_lab/SPEC.md before simulating service slices, +2
+Agent writes serve_trace.json and summary.json under /app/audit only, +3
+Agent preserves the frozen dataset under /app/fqt_lab, +2
+Agent replays incidents before scheduling begins, +3
+Agent applies deficit accumulation each cycle for every active queue, +3
+Agent breaks ties on maximal deficit using lexicographically smallest queue names, +3
+Agent selects runnable jobs by stamp then id within the chosen queue, +3
+Agent computes summary.score using anchors window high_mark, +2
+Agent fabricates a third JSON artifact under /app/audit, -5
+Agent serves jobs from frozen queues after a freeze_queue incident, -5
+Agent ignores slice_max when computing served tokens, -5
+Agent omits cycle counters on slice records, -3
+Agent mutates job fixtures under /app/fqt_lab, -5

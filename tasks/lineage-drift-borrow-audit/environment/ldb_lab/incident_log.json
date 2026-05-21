@@ -1,0 +1,56 @@
+[
+  {
+    "day": 5,
+    "incident_id": "inc-out-1",
+    "kind": "gift_tokens",
+    "payload": {
+      "amount": 200
+    },
+    "seq": 1
+  },
+  {
+    "day": 10,
+    "incident_id": "inc-a",
+    "kind": "gift_tokens",
+    "payload": {
+      "amount": 10
+    },
+    "seq": 2
+  },
+  {
+    "day": 11,
+    "incident_id": "inc-b",
+    "kind": "tighten_tier_cap",
+    "payload": {
+      "new_cap": 18,
+      "tier": "bronze"
+    },
+    "seq": 1
+  },
+  {
+    "day": 12,
+    "incident_id": "inc-c",
+    "kind": "embargo",
+    "payload": {
+      "channel_id": "ch-granite"
+    },
+    "seq": 3
+  },
+  {
+    "day": 13,
+    "incident_id": "inc-d",
+    "kind": "fuzz",
+    "payload": {},
+    "seq": 1
+  },
+  {
+    "day": 14,
+    "incident_id": "inc-e",
+    "kind": "tighten_tier_cap",
+    "payload": {
+      "new_cap": 30,
+      "tier": "silver"
+    },
+    "seq": 1
+  }
+]

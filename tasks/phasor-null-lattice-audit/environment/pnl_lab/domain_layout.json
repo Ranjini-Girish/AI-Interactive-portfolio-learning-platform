@@ -1,0 +1,16 @@
+{
+  "regions": [
+    {
+      "id": "east",
+      "path_prefix": "/lab/east"
+    },
+    {
+      "id": "west",
+      "path_prefix": "/lab/west"
+    },
+    {
+      "id": "root",
+      "path_prefix": "/lab"
+    }
+  ]
+}

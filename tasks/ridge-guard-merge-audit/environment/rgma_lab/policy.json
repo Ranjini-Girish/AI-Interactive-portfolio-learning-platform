@@ -1,0 +1,12 @@
+{
+  "alias_guard": true,
+  "day_end": 120,
+  "day_start": 100,
+  "lambda_cap": 0.48,
+  "signal_cutoff": 0.25,
+  "tiers": {
+    "bronze": 1.25,
+    "gold": 1.0,
+    "silver": 1.1
+  }
+}

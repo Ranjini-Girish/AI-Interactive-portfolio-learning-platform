@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "day": 500,
+      "instrument": "east",
+      "phase_deg": 1.0,
+      "quality": 0.94
+    },
+    {
+      "day": 509,
+      "instrument": "east",
+      "phase_deg": 2.0,
+      "quality": 0.94
+    }
+  ],
+  "site": "gamma"
+}

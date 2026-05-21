@@ -1,0 +1,9 @@
+{
+  "ancillary_note": "rotate-lane bundle", 
+  "applied_events": 4, 
+  "current_day": 37, 
+  "regions": {
+    "a": 8, 
+    "b": 11
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "base_drift": 40,
+  "channel_id": "ch-granite",
+  "parent": "ch-aurora",
+  "tier": "bronze"
+}

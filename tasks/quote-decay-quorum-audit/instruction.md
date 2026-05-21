@@ -1,0 +1,3 @@
+Frozen market commentary bundles land under `/app/qdq_lab/` with per-quote cadence fields, tier weights, anchor ids, pool-sized shortlists, and incident windows that rescale issuer contributions on the evaluation day named in `policy.json`. Read that tree without rewriting it, then emit the three UTF-8 JSON artifacts listed in `/app/qdq_lab/SPEC.md` into the audit directory using the canonical pretty-printer and numeric rounding rules defined there. Verdict strings, exclusion reasons, and the order in which subjects and quotes are enumerated must match that specification exactly.
+
+Anchors and ancillary JSON under `/app/qdq_lab/anchors/` and `/app/qdq_lab/ancillary/` stay read-only witnesses for reviewers but must remain byte-stable for integrity gates.

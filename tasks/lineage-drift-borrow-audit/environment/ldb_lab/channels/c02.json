@@ -1,0 +1,6 @@
+{
+  "base_drift": 18,
+  "channel_id": "ch-cedar",
+  "parent": "ch-aurora",
+  "tier": "bronze"
+}

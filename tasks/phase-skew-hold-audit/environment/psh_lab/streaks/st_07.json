@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "day": 102,
+      "instrument": "east",
+      "phase_deg": 77.0,
+      "quality": 0.93
+    },
+    {
+      "day": 103,
+      "instrument": "east",
+      "phase_deg": 78.0,
+      "quality": 0.93
+    }
+  ],
+  "site": "helix"
+}

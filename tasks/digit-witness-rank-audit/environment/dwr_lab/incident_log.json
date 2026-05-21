@@ -1,0 +1,33 @@
+{
+  "events": [
+    {
+      "day": 1,
+      "event_id": "e1",
+      "kind": "bump_radix",
+      "new_base": 10
+    },
+    {
+      "day": 2,
+      "event_id": "e2",
+      "kind": "suppress_lane",
+      "lane_id": "l03"
+    },
+    {
+      "day": 3,
+      "event_id": "e3",
+      "kind": "bump_radix",
+      "new_base": 16
+    },
+    {
+      "day": 4,
+      "event_id": "e4",
+      "kind": "unknown"
+    },
+    {
+      "day": 100,
+      "event_id": "e5",
+      "kind": "suppress_lane",
+      "lane_id": "l01"
+    }
+  ]
+}

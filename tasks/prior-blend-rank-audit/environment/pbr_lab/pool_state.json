@@ -1,0 +1,8 @@
+{
+  "current_day": 40,
+  "budget": 47,
+  "flags": {
+    "experiment_compromised": false,
+    "holdout_breach": true
+  }
+}

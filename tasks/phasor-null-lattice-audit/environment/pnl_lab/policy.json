@@ -1,0 +1,9 @@
+{
+  "amp_floor": 0.02,
+  "audit_day": 30,
+  "bin_ring": 8,
+  "deep_null_lt": 0.25,
+  "default_region": "none",
+  "soft_null_lt": 2.0,
+  "wrap_delta": 0
+}

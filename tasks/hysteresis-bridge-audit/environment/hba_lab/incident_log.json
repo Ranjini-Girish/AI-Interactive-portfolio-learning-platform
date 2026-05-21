@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "from_day": 5,
+      "kind": "day_blind",
+      "lanes": ["alpha"],
+      "to_day": 5
+    },
+    {
+      "accepted": false,
+      "from_day": 1,
+      "kind": "day_blind",
+      "lanes": ["beta"],
+      "to_day": 3
+    }
+  ]
+}

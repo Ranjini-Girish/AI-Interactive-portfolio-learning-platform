@@ -1,0 +1,17 @@
+{
+  "active_volumes": [
+    "V0", 
+    "V1"
+  ], 
+  "cross_volume_guard": 2, 
+  "volumes": {
+    "V0": {
+      "byte_ceiling": 500, 
+      "gap_merge_max": 4
+    }, 
+    "V1": {
+      "byte_ceiling": 220, 
+      "gap_merge_max": 1
+    }
+  }
+}

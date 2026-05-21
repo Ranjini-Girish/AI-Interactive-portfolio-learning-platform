@@ -1,0 +1,8 @@
+{
+  "item_id": "item_00",
+  "lane_code": "l01",
+  "prior_a": 11,
+  "prior_b": 3,
+  "region": "east",
+  "weight": 2
+}

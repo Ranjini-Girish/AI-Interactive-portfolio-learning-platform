@@ -1,0 +1,18 @@
+{
+  "closing_tokens": 5,
+  "cluster_count": 3,
+  "effective_window": {
+    "end_day": 20,
+    "start_day": 12
+  },
+  "lane_count_in_window": 4,
+  "opening_tokens": 25,
+  "pool_deferred_clusters": 1,
+  "pool_satisfied_clusters": 1,
+  "quarantined_clusters": 1,
+  "stride_sign_fold_applied": true,
+  "tiers_touched": [
+    "core",
+    "edge"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "bin_index": 1,
+  "id": "item_02",
+  "lineage": "L1",
+  "magnitude": 2.5,
+  "phase_deg": 45,
+  "region_path": "/lab/east/out",
+  "tier": "gold"
+}

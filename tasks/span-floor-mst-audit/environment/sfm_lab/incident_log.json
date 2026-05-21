@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "day": 1,
+      "edge_id": "e99",
+      "event_id": "ev_pre_invalid_freeze",
+      "kind": "freeze_edge"
+    },
+    {
+      "day": 2,
+      "event_id": "ev_raise_floor",
+      "floor": 4,
+      "kind": "raise_weight_floor"
+    },
+    {
+      "day": 3,
+      "edge_id": "e04",
+      "event_id": "ev_freeze_bridge",
+      "kind": "freeze_edge"
+    },
+    {
+      "day": 200,
+      "edge_id": "e01",
+      "event_id": "ev_late_day",
+      "kind": "freeze_edge"
+    },
+    {
+      "day": 50,
+      "event_id": "ev_compromise_mid",
+      "kind": "compromise_node",
+      "node_id": "n05"
+    },
+    {
+      "day": 51,
+      "event_id": "ev_unknown",
+      "kind": "unknown_kind"
+    }
+  ]
+}

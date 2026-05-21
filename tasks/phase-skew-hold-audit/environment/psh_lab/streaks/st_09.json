@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "day": 700,
+      "instrument": "north",
+      "phase_deg": 300.0,
+      "quality": 0.94
+    },
+    {
+      "day": 700,
+      "instrument": "south",
+      "phase_deg": 305.0,
+      "quality": 0.94
+    }
+  ],
+  "site": "jade"
+}

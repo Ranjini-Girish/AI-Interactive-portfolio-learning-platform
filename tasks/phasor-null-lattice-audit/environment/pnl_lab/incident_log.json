@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "day": 5,
+      "kind": "tier_drain",
+      "payload": {
+        "tiers": {
+          "gold": 0.35
+        }
+      }
+    },
+    {
+      "day": 12,
+      "kind": "suppress_items",
+      "payload": {
+        "item_ids": [
+          "item_04"
+        ]
+      }
+    },
+    {
+      "day": 18,
+      "kind": "quarantine_lineage",
+      "payload": {
+        "lineage": "L7"
+      }
+    },
+    {
+      "day": 24,
+      "kind": "tier_drain",
+      "payload": {
+        "tiers": {
+          "silver": 0.25,
+          "bronze": 0.0
+        }
+      }
+    }
+  ]
+}

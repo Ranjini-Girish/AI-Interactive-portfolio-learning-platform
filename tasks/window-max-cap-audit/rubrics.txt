@@ -1,0 +1,11 @@
+Agent emits all four JSON artifacts under /app/wmc_audit with canonical formatting, +5
+Agent concatenates ordered part files before replaying incidents on the joint vector, +3
+Agent applies sliding maxima with the bundled window width then saturates with the final cap, +3
+Agent records per-window raw peaks alongside capped outputs, +2
+Agent separates ignored control attempts from applied mutations, +2
+Agent leaves bundled read-only fixtures under /app/wmc_lab unchanged, -3
+Agent writes outputs outside /app/wmc_audit or mutates unrelated paths, -5
+Agent applies incidents outside the day window or misorders the stream, -5
+Agent omits nested key sorting in emitted JSON objects, -5
+Agent shrinks or expands the output length away from the window geometry rules, -5
+Agent ignores the bump_cap interaction so saturation never tracks raised ceilings, -5

@@ -1,0 +1,15 @@
+{
+  "epsilon": 1e-09,
+  "eval_day": 15,
+  "frozen_anchors": [
+    "zebra-anchor"
+  ],
+  "min_floor": 0.15,
+  "pool_cap": 3,
+  "quorum_min_active": 2,
+  "tier_weights": {
+    "bronze": 0.75,
+    "gold": 1.6,
+    "silver": 1.0
+  }
+}

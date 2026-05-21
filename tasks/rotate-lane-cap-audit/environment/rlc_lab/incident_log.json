@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "add": -2, 
+      "id": "e0", 
+      "kind": "tier_period_bump", 
+      "tier": "gold"
+    }, 
+    {
+      "id": "e1", 
+      "kind": "lane_cap_rescale", 
+      "lane_id": "L1", 
+      "new_cap": 140
+    }, 
+    {
+      "id": "e2", 
+      "item_id": "s02", 
+      "kind": "item_excise"
+    }, 
+    {
+      "id": "e3", 
+      "kind": "noop_kind_for_count"
+    }
+  ]
+}

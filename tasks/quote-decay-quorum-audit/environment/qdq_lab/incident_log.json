@@ -1,0 +1,9 @@
+[
+  {
+    "factor": 0.5,
+    "from_day": 10,
+    "issuer": "ivy",
+    "subject_id": "lime",
+    "to_day": 20
+  }
+]

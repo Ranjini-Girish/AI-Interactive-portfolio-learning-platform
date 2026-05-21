@@ -367,26 +367,41 @@ def run_sor(root: Path) -> dict[str, Any]:
 
 
 def run_tpm(root: Path) -> dict[str, Any]:
+    from collections import defaultdict
+    from decimal import ROUND_HALF_EVEN, Decimal
+
+    q4 = Decimal("0.0001")
+
+    def dec(x: object) -> Decimal:
+        return Decimal(str(x))
+
+    def q4f(v: Decimal) -> float:
+        return float(v.quantize(q4, rounding=ROUND_HALF_EVEN))
+
+    for rel in ("anchors/a.json", "anchors/b.json", "ancillary/x.json"):
+        _load(root / rel)
+
     policy = _load(root / "policy.json")
     pool = _load(root / "pool_state.json")
     inc = _load(root / "incident_log.json")
-    cap_mul = float(policy.get("burst_cap_multiplier", 1.0))
-    day = int(pool["current_day"])
-    bonus: dict[str, float] = {}
+    cap_mul = dec(policy.get("burst_cap_multiplier", 1.0))
+    day = dec(int(pool["current_day"]))
+    bonus: dict[str, Decimal] = defaultdict(lambda: Decimal(0))
     for ev in inc.get("events", []):
         if ev.get("accepted") and ev.get("kind") == "refill_host":
-            bonus[str(ev["host_id"])] = float(ev.get("tokens", 0.0))
+            bonus[str(ev["host_id"])] += dec(ev.get("tokens", 0.0))
     rows: list[dict[str, Any]] = []
     for it in _items(root):
         hid = str(it["host_id"])
-        rate = float(it["tokens_per_day"])
-        cap = float(it["bucket_cap"]) * cap_mul
-        fill = min(cap, float(it["starting_tokens"]) + rate * day + bonus.get(hid, 0.0))
-        rows.append({"host_id": hid, "effective_tokens": round(fill, 4), "capped_at": cap})
+        rate = dec(it["tokens_per_day"])
+        cap = dec(it["bucket_cap"]) * cap_mul
+        raw = dec(it["starting_tokens"]) + rate * day + bonus.get(hid, Decimal(0))
+        fill = min(cap, raw)
+        rows.append({"host_id": hid, "effective_tokens": q4f(fill), "capped_at": q4f(cap)})
     rows.sort(key=lambda r: r["host_id"])
     return {
         "pail_levels.json": {"hosts": rows},
-        "summary.json": {"hosts": len(rows), "current_day": day},
+        "summary.json": {"hosts": len(rows), "current_day": int(day)},
     }
 
 

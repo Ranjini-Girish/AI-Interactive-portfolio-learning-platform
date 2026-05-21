@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "day": 300,
+      "instrument": "east",
+      "phase_deg": 190.0,
+      "quality": 0.95
+    },
+    {
+      "day": 300,
+      "instrument": "north",
+      "phase_deg": 8.0,
+      "quality": 0.95
+    },
+    {
+      "day": 300,
+      "instrument": "south",
+      "phase_deg": 12.0,
+      "quality": 0.95
+    }
+  ],
+  "site": "crux"
+}

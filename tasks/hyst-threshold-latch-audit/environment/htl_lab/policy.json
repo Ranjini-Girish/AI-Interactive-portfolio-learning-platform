@@ -1,0 +1,6 @@
+{
+  "high": 10.0, 
+  "initial": "low", 
+  "latch_clear_margin": 0.5, 
+  "low": 4.0
+}

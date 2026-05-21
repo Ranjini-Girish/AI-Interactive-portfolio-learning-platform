@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "day": 150,
+      "instrument": "east",
+      "phase_deg": 55.0,
+      "quality": 0.5
+    },
+    {
+      "day": 150,
+      "instrument": "west",
+      "phase_deg": 57.0,
+      "quality": 0.92
+    }
+  ],
+  "site": "echo"
+}

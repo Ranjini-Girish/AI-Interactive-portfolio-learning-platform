@@ -1,0 +1,5 @@
+{
+  "base_or": 16, 
+  "fuse_mask": 255, 
+  "tier_factor": 1.25
+}

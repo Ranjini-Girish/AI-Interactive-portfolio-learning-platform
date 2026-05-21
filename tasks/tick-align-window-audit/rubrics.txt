@@ -1,0 +1,13 @@
+Agent reads `/app/taw_lab/SPEC.md` and all referenced JSON fixtures before emitting anything, +2
+Agent writes exactly `clusters.json`, `pool_ledger.json`, and `summary.json` under `/app/audit/` using the spec's canonical JSON layout, +3
+Agent intersects policy and anchor windows before tick math and clustering, +2
+Agent honors quarantine incidents, slack-based merges, stride sign folding, and whole-cluster pool draws in `cluster_id` order, +3
+Agent exits non-zero with no audit files on empty window intersections or other malformed inputs, +2
+Agent leaves every path under `/app/taw_lab/` byte-identical to the shipped fixtures, +2
+Agent ships Go sources next to any compiled helper under `/app/` and rebuilds from them, +2
+Agent documents or encodes the three-argument directory override contract matching the spec, +1
+Agent writes outside `/app/audit/` (or outside the second directory in argv mode), -3
+Agent mutates any fixture file under `/app/taw_lab/`, -5
+Agent emits extra top-level keys or files beyond the three named outputs, -3
+Agent skips pool ledger draws or misstates opening or closing token counts relative to draws, -2
+Agent ignores anchor window intersection or uses only the policy window alone, -5

@@ -1,0 +1,6 @@
+{
+  "arm_id": "arm_d",
+  "prior_alpha": 3,
+  "prior_beta": 6,
+  "pull_cost": 4
+}

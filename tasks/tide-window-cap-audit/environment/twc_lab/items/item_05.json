@@ -1,0 +1,9 @@
+{
+  "amplitude": 16, 
+  "anchor_day": 10, 
+  "base_lift": 0, 
+  "item_id": "p05", 
+  "period_days": 11, 
+  "region": "a", 
+  "tier": "bronze"
+}

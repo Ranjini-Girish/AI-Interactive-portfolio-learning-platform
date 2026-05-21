@@ -1,0 +1,8 @@
+{
+  "events": [
+    {"kind": "lane_witness_nudge", "lane_code": "l04", "delta": 120},
+    {"kind": "prior_boost", "item_id": "item_07", "delta_a": -2, "delta_b": 4},
+    {"kind": "drop_item", "item_id": "item_02"},
+    {"kind": "noop_unknown", "foo": 1}
+  ]
+}

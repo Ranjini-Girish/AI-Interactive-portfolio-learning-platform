@@ -1,0 +1,7 @@
+Instrumentation wants a reproducible audit of the hysteresis bridge bundle under `/app/hba_lab/` after the adjustment pipeline, inclusive day window, debounced threshold transitions, and accepted blind-day suppressions are applied together. Keep the bundle read-only and write only the UTF-8 JSON artifacts named in `/app/hba_lab/SPEC.md` into the audit directory using the canonical serializer described there.
+
+The specification also defines tick ordering after the per-file glob, how adjusted samples round, when streak counters reset, and how the summary counts ticks versus evaluated steps. When `HBA_DATA_DIR` is non-empty, read inputs from that directory instead of `/app/hba_lab/`. When `HBA_AUDIT_DIR` is non-empty, write outputs there instead of `/app/audit/`. If a variable is unset or empty, use `/app/hba_lab/` for reads and `/app/audit/` for writes. Create the audit directory when missing.
+
+Anchors and ancillary JSON under `/app/hba_lab/anchors/` and `/app/hba_lab/ancillary/` stay untouched but must remain present for integrity checks bundled with the dataset.
+
+`domain_layout.json` is a witness file for this bundle revision alongside the pool snapshot. It must remain byte-identical to the shipped copy and still parse as JSON if your tooling reads it. The debounce depth, blind-day handling, window edges, and per-lane threshold comparisons are fully defined in `/app/hba_lab/SPEC.md`.

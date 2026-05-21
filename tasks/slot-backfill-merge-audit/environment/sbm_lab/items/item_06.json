@@ -1,0 +1,9 @@
+{
+  "anchor_day": 9, 
+  "band": 0, 
+  "lane": "B", 
+  "priority": 6, 
+  "slot_id": "b1", 
+  "span": 2, 
+  "tag": "b1"
+}

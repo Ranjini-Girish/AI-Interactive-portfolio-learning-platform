@@ -1,0 +1,8 @@
+{
+  "day_end": 30,
+  "day_start": 1,
+  "lane_id": "lane-a",
+  "tick_base": 100,
+  "tick_stride": -3,
+  "tier": "core"
+}

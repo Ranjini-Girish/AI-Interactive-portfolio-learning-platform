@@ -1,0 +1,13 @@
+Agent reads `/app/tgr_lat/SPEC.md` and applies ramp, additive incidents, and the ceiling in the stated order, +5
+Agent emits both JSON artifacts with canonical pretty JSON and trailing newline, +3
+Agent mirrors `current_day` from `pool_state.json` into the summary without drift, +2
+Agent leaves the entire `/app/tgr_lat/` tree byte-identical to the shipped bundle, -3
+Agent writes temperatures with the wrong rounding width for `effective_temp`, -5
+Agent applies the ceiling before adding the incident delta, -5
+Agent sorts zones differently than ASCII ascending on `zone`, -3
+Agent drops `guard` contributions from the raw sum, -3
+Agent ignores `TGR_DATA_DIR` / `TGR_AUDIT_DIR` routing when those variables are set, -3
+Agent mutates witness JSON under `anchors/` or `ancillary/`, -3
+Agent emits minified JSON or omits the trailing newline on any output, -2
+Agent counts rejected `delta_k` rows toward `global_add`, -3
+Agent reports a `zones` count that disagrees with emitted ledger rows, -2

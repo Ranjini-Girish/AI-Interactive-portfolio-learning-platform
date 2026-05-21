@@ -1,0 +1,20 @@
+{
+  "audit_schema_version": "pqb-1",
+  "budget_tokens": 60,
+  "global_alpha": 2,
+  "global_beta": 2,
+  "master_seed_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+  "quorum_distinct": 2,
+  "rater_weights": {
+    "u1": 3,
+    "u2": 2,
+    "u3": 1
+  },
+  "shrink_den": 4,
+  "shrink_num": 1,
+  "supported_incident_kinds": [
+    "arm_freeze",
+    "prior_bump",
+    "quorum_relief"
+  ]
+}

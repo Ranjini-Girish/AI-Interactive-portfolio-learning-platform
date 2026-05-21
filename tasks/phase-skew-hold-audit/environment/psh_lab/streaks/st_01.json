@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "day": 200,
+      "instrument": "east",
+      "phase_deg": 33.0,
+      "quality": 0.9
+    },
+    {
+      "day": 201,
+      "instrument": "east",
+      "phase_deg": 34.0,
+      "quality": 0.9
+    }
+  ],
+  "site": "boreal"
+}

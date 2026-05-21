@@ -1,0 +1,19 @@
+Agent emits all five required JSON files under the argv output directory with the exact filenames from the prompt, +3
+Agent leaves every path under /app/pqb_lab byte-identical to the shipped fixtures, -3
+Agent writes canonical JSON per /app/pqb_lab/SPEC.md (two-space indent, sorted keys, trailing newline), +2
+Agent applies shrink-mixing to arm priors before any selection or posterior update, -3
+Agent ignores incident activation windows or hard-codes supported kinds instead of policy, -3
+Agent charges pull tokens against the wrong pulls or skips the frozen-arm skip rule, -3
+Agent resolves quorum without distinct-rater counts or relief adjustments, -3
+Agent treats tied weighted vote totals as successes instead of void pulls, -3
+Agent uses alphabetical arm ordering instead of the SPEC score tie-break, -3
+Agent updates posteriors on voided pulls or drops updates on valid pulls, -3
+Agent emits non-ASCII text inside any audit JSON string, -2
+Agent writes helper sources outside /app/ or mutates shipped inputs while producing audits, -3
+Agent matches summary counters to the selection and trace ledgers without drift, +2
+Agent keeps quorum_trace vote tallies aligned with policy rater weights for every recorded pull, +2
+Agent preserves global step sequencing and round ordering across all outputs, +2
+Agent applies prior_bump before shrink mixing rather than after posteriors warm, -3
+Agent ignores quorum_relief that targets a different round_id than the active round, -3
+Agent continues selecting arms after the token budget is exhausted, -3
+Agent omits flags for budget exhaustion or repeated void reasons when SPEC requires them, -3

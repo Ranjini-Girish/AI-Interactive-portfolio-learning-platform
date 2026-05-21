@@ -1,0 +1,32 @@
+{
+  "lanes": [
+    {
+      "lane_id": "L0", 
+      "mingled": false, 
+      "post_cap_sum": 20, 
+      "pre_cap_sum": 20, 
+      "scaled": false
+    }, 
+    {
+      "lane_id": "L1", 
+      "mingled": true, 
+      "post_cap_sum": 0, 
+      "pre_cap_sum": 0, 
+      "scaled": false
+    }, 
+    {
+      "lane_id": "L2", 
+      "mingled": true, 
+      "post_cap_sum": 7, 
+      "pre_cap_sum": 7, 
+      "scaled": false
+    }, 
+    {
+      "lane_id": "L3", 
+      "mingled": true, 
+      "post_cap_sum": 0, 
+      "pre_cap_sum": 0, 
+      "scaled": false
+    }
+  ]
+}

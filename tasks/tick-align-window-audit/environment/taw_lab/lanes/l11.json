@@ -1,0 +1,8 @@
+{
+  "day_end": 120,
+  "day_start": 105,
+  "lane_id": "lane-x11",
+  "tick_base": 6,
+  "tick_stride": 1,
+  "tier": "zeta"
+}

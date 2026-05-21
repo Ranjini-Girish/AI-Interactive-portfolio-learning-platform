@@ -1,0 +1,41 @@
+{
+  "active_regions": [
+    "a", 
+    "b"
+  ], 
+  "lane_floor": 2, 
+  "lanes": {
+    "L0": {
+      "cap": 210, 
+      "members": [
+        "s00", 
+        "s01", 
+        "s02"
+      ]
+    }, 
+    "L1": {
+      "cap": 155, 
+      "members": [
+        "s03", 
+        "s04"
+      ]
+    }, 
+    "L2": {
+      "cap": 120, 
+      "members": [
+        "s05", 
+        "s06", 
+        "s07"
+      ]
+    }, 
+    "L3": {
+      "cap": 95, 
+      "members": [
+        "s09", 
+        "s10", 
+        "s11"
+      ]
+    }
+  }, 
+  "mingle_penalty": 15
+}

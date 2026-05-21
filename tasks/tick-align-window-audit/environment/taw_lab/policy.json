@@ -1,0 +1,13 @@
+{
+  "align_slack": 5,
+  "anchors_path": "anchors/window.json",
+  "incident_log_path": "incident_log.json",
+  "lanes_glob": "lanes/*.json",
+  "per_lane_cost": 10,
+  "pool_state_path": "pool_state.json",
+  "stride_sign_fold": true,
+  "window": {
+    "end_day": 22,
+    "start_day": 10
+  }
+}

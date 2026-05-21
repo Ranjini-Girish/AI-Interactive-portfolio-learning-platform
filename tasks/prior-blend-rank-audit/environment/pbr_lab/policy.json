@@ -1,0 +1,7 @@
+{
+  "active_regions": ["east", "west"],
+  "blend_gamma": 600,
+  "lane_floor": 12,
+  "witness_cap": 300,
+  "quarantine_region": "east"
+}

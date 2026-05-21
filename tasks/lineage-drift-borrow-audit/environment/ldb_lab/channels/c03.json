@@ -1,0 +1,6 @@
+{
+  "base_drift": 9,
+  "channel_id": "ch-dew",
+  "parent": "ch-cedar",
+  "tier": "gold"
+}

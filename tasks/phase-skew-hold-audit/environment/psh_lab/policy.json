@@ -1,0 +1,9 @@
+{
+  "grace_gap_days": 4,
+  "instrument_mask_policy": {
+    "north": 1,
+    "south": 2
+  },
+  "mad_multiplier": 2.5,
+  "min_quality": 0.75
+}

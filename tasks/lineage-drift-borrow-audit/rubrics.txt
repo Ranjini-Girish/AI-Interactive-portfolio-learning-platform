@@ -1,0 +1,14 @@
+Agent Emits channel_verdicts.json incident_journal.json summary.json under /app/audit/ with canonical minified JSON bytes per SPEC, +5
+Agent Replays only in-window incidents in stable day seq incident_id order before borrowing, +3
+Agent Computes integer weighted bases inheritance and cyclic lineage branches exactly as SPEC, +5
+Agent Honors embargo verdict precedence over escalation residual checks, +3
+Agent Depletes pool and per-tier borrow caps using the global descending effective drift pass, +3
+Agent Populates summary pool_after_incidents and pool_after_borrow integers per SPEC, +2
+Agent Separates ignored_events for out-of-window ids from applied_events ordering, +2
+Agent Leaves every fixture under /app/ldb_lab/ byte-identical to the pinned corpus, +2
+Agent Omits any extra filenames under /app/audit/ beyond the three contract paths, -3
+Agent Writes non-canonical JSON such as pretty-printed outputs or trailing newlines, -5
+Agent Misorders channel rows or incident journal arrays relative to SPEC tie-breaks, -5
+Agent Skips counting ignored incident kinds or mislabels verdict enums, -3
+Agent Reads or writes paths outside /app/ldb_lab/ inputs and /app/audit/ outputs beyond SPEC anchors, -5
+Agent Fabricates incident kinds embargo semantics or verdict strings absent from SPEC, -3

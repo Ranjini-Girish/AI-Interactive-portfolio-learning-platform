@@ -1,0 +1,6 @@
+{
+  "base_drift": 12,
+  "channel_id": "ch-fjord",
+  "parent": "ch-frost",
+  "tier": "bronze"
+}
