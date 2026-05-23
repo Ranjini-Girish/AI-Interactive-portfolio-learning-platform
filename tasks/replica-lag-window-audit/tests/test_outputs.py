@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for the replica lag window audit task."""
 
 from __future__ import annotations

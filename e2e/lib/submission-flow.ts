@@ -30,7 +30,7 @@ export type SubmissionFlowOptions = {
   confirmPromptCheck?: boolean;
   /** Check "Click here to generate rubric(s)" when present (recommended for cycle-1 CI). */
   regenerateRubric?: boolean;
-  /** Check "Send to reviewer?" when present (default true). */
+  /** Ignored — Send to reviewer is always checked. */
   sendToReviewer?: boolean;
   /** Click Check feedback / fast static checks before final submit. */
   runStaticChecks?: boolean;
@@ -62,8 +62,16 @@ export async function assertNewSubmissionForm(page: Page): Promise<void> {
 }
 
 async function dismissRemoveConfirmIfPresent(page: Page): Promise<void> {
+  const dialog = page.getByRole('alertdialog', { name: /remove file/i });
+  if (await dialog.isVisible().catch(() => false)) {
+    await dialog.getByRole('button', { name: /^Remove File$/i }).click();
+    await expect(dialog).toBeHidden({ timeout: 15_000 });
+    return;
+  }
+
   const confirm = page
-    .getByRole('button', { name: /^Remove$/i })
+    .getByRole('button', { name: /^Remove File$/i })
+    .or(page.getByRole('button', { name: /^Remove$/i }))
     .or(page.getByRole('button', { name: /^(Delete|Confirm|Yes)/i }))
     .first();
   if (await confirm.isVisible().catch(() => false)) {
@@ -166,10 +174,9 @@ export async function setSendToReviewer(page: Page, enabled: boolean): Promise<v
   await setCheckboxIfPresent(page, 'Send to reviewer?', enabled);
 }
 
-/** Default true; set SNORKEL_SEND_TO_REVIEWER=0 to force unchecked. */
-export function resolveSendToReviewer(override?: boolean): boolean {
-  if (override !== undefined) return override;
-  return process.env.SNORKEL_SEND_TO_REVIEWER !== '0';
+/** Always checked for submission and revision (platform requirement). */
+export function resolveSendToReviewer(_override?: boolean): boolean {
+  return true;
 }
 
 /** Default false; set SNORKEL_REGENERATE_RUBRIC=1 to check Generate rubric(s). */
@@ -197,7 +204,8 @@ export async function runFastStaticChecks(page: Page): Promise<void> {
       const text = document.body?.innerText ?? '';
       return (
         /static check|check complete|passed|failed|error|feedback/i.test(text) &&
-        !text.includes('Complete required fields first')
+        !text.includes('Complete required fields first') &&
+        !text.includes('Analyzing...')
       );
     },
     null,
@@ -205,14 +213,78 @@ export async function runFastStaticChecks(page: Page): Promise<void> {
   );
 }
 
-export async function submitToPlatform(page: Page): Promise<void> {
+/** Post-click only — never match bare "Saving..." (autosave before Submit). */
+export async function waitForPlatformSubmitAck(page: Page): Promise<string> {
   const submit = page.getByRole('button', { name: 'Submit' });
   await submit.scrollIntoViewIfNeeded();
   await expect(submit).toBeEnabled({ timeout: 60_000 });
+  const reviewUrl = page.url();
   await submit.click();
-  await expect(
-    page.getByText(/submitted|saving|running|check feedback|evaluation/i).first(),
-  ).toBeVisible({ timeout: 180_000 });
+
+  await expect
+    .poll(
+      async () => {
+        const url = page.url();
+        const text = await page.locator('body').innerText();
+
+        // Revision submit often redirects to home/dashboard when CI is queued.
+        if (url !== reviewUrl && /\/(home|dashboard)(?:\?|$|\/)/.test(url)) {
+          return 'ack';
+        }
+
+        if (/submitted successfully|successfully submitted|submission submitted/i.test(text)) {
+          return 'ack';
+        }
+        if (/evaluation pending|running evaluation|running checks|codebuild|build queued/i.test(text)) {
+          return 'ack';
+        }
+        if (/\bSubmitted!\b|\bTask submitted\b/i.test(text)) {
+          return 'ack';
+        }
+        return '';
+      },
+      {
+        timeout: 180_000,
+        message:
+          'Platform Submit was not acknowledged (do not treat autosave "Saving..." as success)',
+      },
+    )
+    .toBe('ack');
+
+  const body = await page.locator('body').innerText();
+  return body.slice(0, 2000);
+}
+
+/** Reload workspace and assert the expected zip attachment persisted. */
+export async function verifyWorkspaceZipPersisted(
+  page: Page,
+  expectedZipBasename: string,
+  submissionUrl: string,
+): Promise<void> {
+  await page.goto(submissionUrl, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+  await page.waitForFunction(
+    () => {
+      const text = document.body?.innerText ?? '';
+      return (
+        text.includes('Terminal bench 2.0 task submission') ||
+        text.includes('.zip') ||
+        text.includes('Reviewer Feedback')
+      );
+    },
+    null,
+    { timeout: 90_000 },
+  );
+  const body = await page.locator('body').innerText();
+  if (!body.includes(expectedZipBasename)) {
+    const found = body.match(/[\w.-]+\.zip[^\n]*/)?.[0] ?? 'none';
+    throw new Error(
+      `Post-submit verification failed: expected ${expectedZipBasename} on workspace, found: ${found}`,
+    );
+  }
+}
+
+export async function submitToPlatform(page: Page): Promise<void> {
+  await waitForPlatformSubmitAck(page);
 }
 
 /**

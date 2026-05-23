@@ -52,6 +52,12 @@ export function parseSubmissionUrl(submissionUrl: string): {
 }
 
 export function resolveTaskNameFromEnv(zipPath?: string): string | undefined {
+  const uploadDir = process.env.SNORKEL_UPLOAD_TASK_DIR;
+  if (uploadDir) {
+    const base = path.basename(path.resolve(repoRoot(), uploadDir));
+    if (base) return base;
+  }
+
   const fromDir = process.env.SNORKEL_TASK_DIR;
   if (fromDir) {
     const base = path.basename(path.resolve(repoRoot(), fromDir));

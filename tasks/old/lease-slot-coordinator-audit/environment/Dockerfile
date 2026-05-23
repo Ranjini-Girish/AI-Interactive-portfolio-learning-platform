@@ -10,7 +10,11 @@ ENV GOFLAGS="-mod=mod"
 ENV GOTOOLCHAIN=local
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends ca-certificates curl \
+  && apt-get install -y --no-install-recommends \
+        asciinema \
+        ca-certificates \
+        curl \
+        tmux \
   && curl -LsSf https://astral.sh/uv/0.9.5/install.sh | sh \
   && /root/.local/bin/uv venv /opt/test-venv --python 3.13 \
   && /root/.local/bin/uv pip install --python /opt/test-venv/bin/python \

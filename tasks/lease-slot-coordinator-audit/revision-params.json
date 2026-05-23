@@ -1,0 +1,34 @@
+{
+  "revisionTaskId": "470f83f7-2cab-47c4-97b8-2897a83a8aed",
+  "platformTaskSlug": "lease-slot-coordinator-audit",
+  "assignmentId": "f9a0869d-190a-420d-8ee8-8850d8d2aeb9",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=f9a0869d-190a-420d-8ee8-8850d8d2aeb9",
+  "capturedAt": "2026-05-23T12:48:50.208Z",
+  "revisionReasons": [
+    "autoeval_build_failed",
+    "behavior_not_in_task_description"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:800da738-8996-4a58-9ce0-2b27a44ecbed",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:800da738-8996-4a58-9ce0-2b27a44ecbed."
+  },
+  "difficulty": {
+    "failed": false,
+    "summary": null
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive output files under /app/audit/, \nthe LSCA_DATA_DIR/LSCA_AUDIT_DIR \nenvironment variables, and defers all \nschema and algorithmic details to /\nAgent review (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nAgent review\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                         REVIEW \n                         REPORT: \n                         tbench-task\n======================================\n======================================\nTest Quality Report (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nTest Quality Report\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                      TEST QUALITY \n                      REVIEW: \n                      tbench-task\n======================================\n======================================\nComments for Reviewer (optional)\n\nUse this field to provide any context or justification for your task that you would like the reviewer to see\n\nCheck to send to reviewer if difficulty and quality checks are passing. Otherwise, it will always result in revision.\n\nSend to reviewer?"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "lease-slot-coordinator-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\lease-slot-coordinator-audit.zip",
+    "excludedPlatformZip": "lease-slot-coordinator-audit.zip"
+  }
+}

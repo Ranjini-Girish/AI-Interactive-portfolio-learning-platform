@@ -5,22 +5,41 @@ import { resolveTaskNameFromEnv } from './submission-metadata';
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 
-/** Resolve rubrics.txt from SNORKEL_RUBRIC_FILE or tasks/<name>/rubrics.txt beside the zip. */
+/** Resolve rubrics.txt beside the uploaded zip; SNORKEL_RUBRIC_FILE is fallback only. */
 export function resolveRubricPath(zipPath?: string): string | undefined {
+  const candidates: string[] = [];
+
+  const uploadDir = process.env.SNORKEL_UPLOAD_TASK_DIR;
+  if (uploadDir) {
+    candidates.push(path.join(REPO_ROOT, uploadDir, 'rubrics.txt'));
+  }
+
+  const taskNameFromZip = zipPath ? path.basename(zipPath, '.zip') : undefined;
+  const taskName = taskNameFromZip ?? resolveTaskNameFromEnv(zipPath);
+
+  if (zipPath) {
+    const resolvedZip = path.isAbsolute(zipPath) ? zipPath : path.join(REPO_ROOT, zipPath);
+    candidates.push(path.join(path.dirname(resolvedZip), taskNameFromZip ?? '', 'rubrics.txt'));
+  }
+
+  if (taskName) {
+    candidates.push(path.join(REPO_ROOT, 'tasks', taskName, 'rubrics.txt'));
+    candidates.push(path.join(REPO_ROOT, 'tasks', 'old', taskName, 'rubrics.txt'));
+  }
+
+  for (const candidate of candidates) {
+    if (candidate && fs.existsSync(candidate)) return candidate;
+  }
+
   const explicit = process.env.SNORKEL_RUBRIC_FILE;
   if (explicit) {
-    const resolved = path.resolve(explicit);
+    const resolved = path.isAbsolute(explicit) ? explicit : path.join(REPO_ROOT, explicit);
     if (!fs.existsSync(resolved)) {
       throw new Error(`SNORKEL_RUBRIC_FILE not found: ${resolved}`);
     }
     return resolved;
   }
 
-  const taskName = resolveTaskNameFromEnv(zipPath);
-  if (!taskName) return undefined;
-
-  const candidate = path.join(REPO_ROOT, 'tasks', taskName, 'rubrics.txt');
-  if (fs.existsSync(candidate)) return candidate;
   return undefined;
 }
 
@@ -50,12 +69,15 @@ export async function fillAgentRubric(page: Page, rubricPath: string): Promise<v
 
   await expect(editor).toBeVisible({ timeout: 30_000 });
   await editor.scrollIntoViewIfNeeded();
-  await editor.click();
-  await editor.fill(text);
+  await editor.click({ force: true });
+  const selectAll = process.platform === 'darwin' ? 'Meta+A' : 'Control+A';
+  await page.keyboard.press(selectAll);
 
-  const marker = text.split('\n').find((line) => line.trim().length > 0) ?? '';
-  if (marker.length > 0) {
-    await expect(page.getByText(marker.slice(0, Math.min(marker.length, 48)), { exact: false }).first())
-      .toBeVisible({ timeout: 30_000 });
-  }
+  // Monaco hides text from fill(); clipboard paste is reliable on revision pages.
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.evaluate(async (body) => {
+    await navigator.clipboard.writeText(body);
+  }, text);
+  await page.keyboard.press(process.platform === 'darwin' ? 'Meta+V' : 'Control+V');
+  await page.waitForTimeout(300);
 }

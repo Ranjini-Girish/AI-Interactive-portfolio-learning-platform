@@ -1,34 +1,39 @@
 import { expect, type Page } from '@playwright/test';
-import path from 'node:path';
-import { openRevisionTask, waitForSubmissionWorkspace } from './snorkel-home';
+import type { FlowAuditLog } from './flow-audit-log';
+import { captureDemoStep } from './demo-capture';
+import { delayAfterStaticChecks, delayAfterSubmit } from './interaction-delay';
+import { openRevisionTask, waitForSubmissionWorkspace, goToHome } from './snorkel-home';
 import { fillAgentRubric, resolveRubricPath } from './rubric';
+import {
+  extractRevisionContext,
+  saveRevisionContext,
+  type RevisionContext,
+} from './revision-feedback';
 import {
   resolveRegenerateRubric,
   resolveSendToReviewer,
   resolveStaticChecks,
-  resolveTaskZipPath,
   runFastStaticChecks,
   setSendToReviewer,
   uploadSubmissionZip,
+  verifyWorkspaceZipPersisted,
+  waitForPlatformSubmitAck,
 } from './submission-flow';
+import { resolveRevisionUploadZip } from './task-zip';
 
 export type RevisionFlowOptions = {
   taskId?: string;
-  /** When true, caller already opened the revision workspace (e.g. after page.pause()). */
   skipOpen?: boolean;
   zipPath?: string;
-  /** Re-upload a revised task zip before other actions. */
   uploadZip?: boolean;
-  /** Path to rubrics.txt; defaults from SNORKEL_RUBRIC_FILE or tasks/<name>/rubrics.txt. */
   rubricPath?: string;
-  /** Paste rubric into Agent-generated rubric editor (default true when rubricPath resolves). */
   fillRubric?: boolean;
-  /** Toggle "Send to reviewer?" (default true). */
   sendToReviewer?: boolean;
-  /** Toggle "Click here to generate rubric(s)". */
   regenerateRubric?: boolean;
   runStaticChecks?: boolean;
   submitToPlatform?: boolean;
+  audit?: FlowAuditLog;
+  revisionContext?: RevisionContext;
 };
 
 export type RevisionFlowResult = {
@@ -37,6 +42,8 @@ export type RevisionFlowResult = {
   zipPath?: string;
   rubricPath?: string;
   submitted: boolean;
+  revisionContext?: RevisionContext;
+  revisionContextPath?: string;
 };
 
 export async function assertRevisionWorkspace(page: Page, taskId?: string): Promise<void> {
@@ -48,8 +55,9 @@ export async function assertRevisionWorkspace(page: Page, taskId?: string): Prom
     page.getByRole('checkbox', { name: /generate rubric/i }),
   ).toBeVisible();
   if (taskId) {
-    await expect(page.getByText(taskId)).toBeVisible();
+    await expect(page.getByText(taskId, { exact: true }).first()).toBeVisible();
   }
+  await captureDemoStep(page, 'revision-workspace');
 }
 
 export { setSendToReviewer } from './submission-flow';
@@ -66,54 +74,185 @@ export async function setRegenerateRubric(page: Page, enabled: boolean): Promise
   }
 }
 
+/** Default true; set SNORKEL_DRY_RUN=1 or SNORKEL_SKIP_SUBMIT=1 to stop before Submit. */
+export function resolveRevisionSubmit(override?: boolean): boolean {
+  if (override !== undefined) return override;
+  if (process.env.SNORKEL_DRY_RUN === '1') return false;
+  if (process.env.SNORKEL_SKIP_SUBMIT === '1') return false;
+  return true;
+}
+
+function revisionSwapEnabled(): boolean {
+  return process.env.SNORKEL_REVISION_SWAP !== '0';
+}
+
 export async function runRevisionFlow(
   page: Page,
   options: RevisionFlowOptions = {},
 ): Promise<RevisionFlowResult> {
+  const audit = options.audit;
   let taskId = options.taskId ?? '';
-  if (!options.skipOpen) {
-    taskId = await openRevisionTask(page, options.taskId);
-    await assertRevisionWorkspace(page, taskId);
-  }
+  let revisionContext = options.revisionContext;
+  let revisionContextPath: string | undefined;
 
-  const zipPath = options.zipPath ?? resolveTaskZipPath();
-  if (options.uploadZip && zipPath) {
-    await uploadSubmissionZip(page, zipPath);
-  }
+  try {
+    if (!options.skipOpen) {
+      audit?.step('open_revision', 'Opening revision card from home', {
+        revisionTaskId: options.taskId,
+      });
+      taskId = await openRevisionTask(page, options.taskId);
+      audit?.step('assert_workspace', 'Revision workspace loaded', { taskId, url: page.url() });
+      await assertRevisionWorkspace(page, taskId);
+      await captureDemoStep(page, 'after-open-revision');
+    }
 
-  const regenerateRubric = resolveRegenerateRubric(options.regenerateRubric);
-  await setRegenerateRubric(page, regenerateRubric);
+    if (!revisionContext) {
+      audit?.step('extract_revision_context', 'Reading reviewer/autoeval feedback from page');
+      revisionContext = await extractRevisionContext(page, taskId);
+      await captureDemoStep(page, 'revision-context-extracted');
+    }
 
-  const rubricPath = options.rubricPath ?? resolveRubricPath(zipPath);
-  const shouldFillRubric =
-    options.fillRubric ?? process.env.SNORKEL_SKIP_RUBRIC_FILL !== '1';
-  if (shouldFillRubric && rubricPath) {
-    await fillAgentRubric(page, rubricPath);
-  }
+    let zipPath = options.zipPath;
+    if (!zipPath && options.uploadZip !== false) {
+      if (revisionSwapEnabled()) {
+        audit?.step('resolve_swap_zip', 'Selecting different local task zip for revision slot', {
+          exclude: revisionContext?.platformAttachedZip,
+          uploadTaskDir: process.env.SNORKEL_UPLOAD_TASK_DIR,
+        });
+        zipPath = resolveRevisionUploadZip(revisionContext?.platformAttachedZip, true);
+      } else {
+        const { resolveTaskZipPath } = await import('./task-zip');
+        zipPath = resolveTaskZipPath(true);
+      }
+      audit?.step('swap_zip_selected', 'Replacement zip resolved', { zipPath });
+    }
 
-  const sendToReviewer = resolveSendToReviewer(options.sendToReviewer);
-  await setSendToReviewer(page, sendToReviewer);
+    if (revisionContext && !revisionContextPath) {
+      const uploadSlug = zipPath
+        ? pathBasename(zipPath).replace(/\.zip$/i, '')
+        : process.env.SNORKEL_UPLOAD_TASK_DIR
+          ? pathBasename(process.env.SNORKEL_UPLOAD_TASK_DIR)
+          : undefined;
+      revisionContextPath = saveRevisionContext(revisionContext, uploadSlug, zipPath);
+      audit?.step('revision_context_saved', 'Wrote revision-context.json', {
+        path: revisionContextPath,
+        reasons: revisionContext.revisionReasons,
+        platformAttachedZip: revisionContext.platformAttachedZip,
+        swapZip: zipPath,
+      });
+    }
 
-  const staticChecks = resolveStaticChecks(options.runStaticChecks);
-  if (staticChecks) {
-    await runFastStaticChecks(page);
-  }
+    if (options.uploadZip !== false && zipPath) {
+      audit?.step('upload_zip', 'Uploading replacement task zip (not platform original)', {
+        zipPath,
+        excludedPlatformZip: revisionContext?.platformAttachedZip,
+      });
+      await uploadSubmissionZip(page, zipPath);
+      audit?.step('upload_zip_done', 'Replacement zip confirmed on form');
+      await captureDemoStep(page, 'after-zip-upload');
+    }
 
-  const submit = options.submitToPlatform ?? false;
-  if (submit) {
-    await page.getByRole('button', { name: 'Submit' }).click();
-    await expect(page.getByText(/submitted|saving/i).first()).toBeVisible({
-      timeout: 120_000,
+    const regenerateRubric = resolveRegenerateRubric(options.regenerateRubric);
+    audit?.step('set_regenerate_rubric', regenerateRubric ? 'Checking' : 'Unchecking', {
+      regenerateRubric,
     });
-  }
+    await setRegenerateRubric(page, regenerateRubric);
 
-  return {
-    revisionTaskId: taskId,
-    submissionUrl: page.url(),
-    zipPath: zipPath ?? undefined,
-    rubricPath: rubricPath ?? undefined,
-    submitted: submit,
-  };
+    const rubricPath = options.rubricPath ?? resolveRubricPath(zipPath);
+    const shouldFillRubric =
+      options.fillRubric ?? process.env.SNORKEL_SKIP_RUBRIC_FILL !== '1';
+    if (shouldFillRubric && rubricPath) {
+      audit?.step('fill_rubric', 'Pasting rubrics.txt from upload task', { rubricPath });
+      await fillAgentRubric(page, rubricPath);
+      audit?.step('fill_rubric_done', 'Rubric paste complete');
+      await captureDemoStep(page, 'after-rubric-paste');
+    } else {
+      audit?.step('fill_rubric_skipped', 'Rubric fill skipped', {
+        shouldFillRubric,
+        rubricPath,
+      });
+    }
+
+    const sendToReviewer = resolveSendToReviewer(options.sendToReviewer);
+    audit?.step('set_send_to_reviewer', sendToReviewer ? 'Checked' : 'Unchecked', {
+      sendToReviewer,
+    });
+    await setSendToReviewer(page, sendToReviewer);
+
+    const staticChecks = resolveStaticChecks(options.runStaticChecks);
+    if (staticChecks) {
+      audit?.step('static_checks', 'Running fast static checks');
+      await runFastStaticChecks(page);
+      const feedbackSnippet = await page
+        .locator('body')
+        .innerText()
+        .then((t) => t.slice(0, 2000))
+        .catch(() => '');
+      audit?.step('static_checks_done', 'Static checks finished', {
+        pageSnippet: feedbackSnippet,
+      });
+      await captureDemoStep(page, 'after-static-checks');
+      await delayAfterStaticChecks();
+    } else {
+      audit?.step('static_checks_skipped', 'Static checks disabled');
+    }
+
+    const submit = resolveRevisionSubmit(options.submitToPlatform);
+    const submissionUrlBeforeSubmit = page.url();
+    if (submit) {
+      audit?.step('submit', 'Clicking platform Submit');
+      const submitSnippet = await waitForPlatformSubmitAck(page);
+      audit?.step('submit_ack', 'Platform Submit acknowledged', { pageSnippet: submitSnippet });
+      await captureDemoStep(page, 'after-submit');
+      await delayAfterSubmit();
+
+      if (zipPath) {
+        const expectedZip = pathBasename(zipPath);
+        audit?.step('verify_persist', 'Reloading workspace to verify zip persisted', {
+          expectedZip,
+        });
+        await verifyWorkspaceZipPersisted(page, expectedZip, submissionUrlBeforeSubmit);
+        audit?.step('verify_persist_done', 'Zip attachment verified on workspace', {
+          expectedZip,
+        });
+      }
+
+      audit?.step('verify_queue', 'Checking revision card left home queue', { taskId });
+      await goToHome(page);
+      const homeBody = await page.locator('body').innerText();
+      const stillInQueue = homeBody.includes(taskId);
+      audit?.step('verify_queue_done', stillInQueue ? 'UID still in revision queue' : 'UID gone from revision queue', {
+        taskId,
+        stillInQueue,
+      });
+      if (stillInQueue) {
+        throw new Error(
+          `Post-submit verification failed: ${taskId} still appears under Tasks to be revised`,
+        );
+      }
+    }
+
+    const result: RevisionFlowResult = {
+      revisionTaskId: taskId,
+      submissionUrl: page.url(),
+      zipPath: zipPath ?? undefined,
+      rubricPath: rubricPath ?? undefined,
+      submitted: submit,
+      revisionContext,
+      revisionContextPath,
+    };
+    audit?.done({ ...result, revisionReasons: revisionContext?.revisionReasons });
+    return result;
+  } catch (err) {
+    audit?.error('flow_failed', err, { taskId, url: page.url() });
+    await captureDemoStep(page, 'flow-failed').catch(() => undefined);
+    throw err;
+  }
+}
+
+function pathBasename(p: string): string {
+  const norm = p.replace(/\\/g, '/').replace(/\/$/, '');
+  return norm.split('/').pop() ?? p;
 }
 
 export function resolveRevisionTaskId(): string | undefined {

@@ -106,14 +106,14 @@ These are `NEEDS_REVISION` on the platform **and** attributed to **Girish** in C
 | `b0907c07-03af-45c7-8136-028704d18838` | wal-index-trim-audit | `wal-index-trim-audit` | tracker-p1 |
 | `e0705c3d-623e-4701-823f-4fd683c8a48a` | rle-bursts-merge-audit | — | tracker-p1 |
 | `8d198124-d872-4df6-9ef7-3d03eac93ddd` | ledger-epoch-skew-audit | — | tracker-p1 |
-| `faf82617-f62d-4b79-acfb-4f4e0aa3bce0` | pawn-endgame-table-audit | `pawn-endgame-table-audit` | tracker-p1 |
-| `d13b444b-40f6-46d9-8632-b89bf88ae7ee` | trap-grid-chain-audit | `trap-grid-chain-audit` | tracker-p1 + csv |
-| `6d4acddc-3202-4b70-9e61-0b6c32e0bfd8` | slo-burn-window-audit | `slo-burn-window-audit` | tracker-p1 + csv |
+| `faf82617-f62d-4b79-acfb-4f4e0aa3bce0` | pawn-endgame-table-audit | `pawn-endgame-table-audit` | tracker-p1 — **resubmitted 2026-05-23** |
+| `d13b444b-40f6-46d9-8632-b89bf88ae7ee` | trap-grid-chain-audit | `trap-grid-chain-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** |
+| `6d4acddc-3202-4b70-9e61-0b6c32e0bfd8` | slo-burn-window-audit | `slo-burn-window-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** |
 | `2fd03871-d392-44a6-b133-00c9bb542cd5` | cdc-lag-compactor-audit | — | tracker-p1 + csv |
 | `5b3b84d0-fea4-48ae-ae03-3e670f3cabec` | sensor-calib-lattice-audit | — | tracker-p1 + csv |
 | `49f2e499-d969-4241-986b-074919b78452` | stokes-diffusion-audit | — | tracker-p1 + csv |
 | `f4bf1aec-a79d-4681-a053-971e215eea2d` | webhook-retry-ledger-audit | — | tracker-p1 + csv |
-| `a711d7b8-a9a9-4e40-88e9-95d3272ac3e1` | replica-lag-window-audit | `replica-lag-window-audit` | tracker-p1 + csv |
+| `a711d7b8-a9a9-4e40-88e9-95d3272ac3e1` | replica-lag-window-audit | `replica-lag-window-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** |
 | `943ca427-4fb0-4f13-8a48-6379ac6097ff` | replica-lag-window-audit | `replica-lag-window-audit` | csv |
 | `880ff0fc-751e-4495-aeb8-77827cee6ce5` | train-slot-lattice-audit | — | tracker-p1 + csv |
 | `de430a3a-c0e4-45a5-a9e8-f072d9816e52` | infer-blend-quota-audit | — | tracker-p1 + csv |
@@ -127,7 +127,7 @@ These are `NEEDS_REVISION` on the platform **and** attributed to **Girish** in C
 | `fb9cc5df-5d5d-4fe2-bf89-175a4666085c` | attest-bundle-lattice | — | tracker-p1 + csv |
 | `6040892f-37a1-47b8-8d7a-3ee68455888c` | breaker-ledger-audit | — | tracker-p1 + csv |
 | `23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6` | modreplace-lattice-audit | — | tracker-p1 + csv |
-| `2cb6ab3c-8725-4c19-b2da-7d3054c02627` | tls-cert-chain-auditor | `tls-cert-chain-auditor` | tracker-p1 + csv |
+| `2cb6ab3c-8725-4c19-b2da-7d3054c02627` | tls-cert-chain-auditor | `tls-cert-chain-auditor` | tracker-p1 + csv — **resubmitted 2026-05-23** |
 | `c6ae9d08-406c-4607-b6dc-0ebc4d6ea170` | go-incident-cascade-auditor | — | tracker-p1 + csv |
 | `6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f` | stream-shard-rebalancer | — | tracker-p1 + csv |
 | `02b7c62d-f1f4-4b8e-903e-a0c065b0a57b` | csp-merge-policy-audit | — | csv |
@@ -202,9 +202,8 @@ May still need Snorkel resubmit or platform status lag:
 ## 5. Resubmit checklist (per task)
 
 1. `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<slug>`
-2. `build` → upload flat zip (not `rubrics.txt`)
-3. Cycle 1: `regenerate_rubric` ON, `Send to Reviewer` OFF — paste `rubrics.txt`
-4. Cycle 2: `regenerate_rubric` OFF, `Send to Reviewer` ON
+2. E2E: `SNORKEL_TASK_DIR=tasks/<slug>` + `SNORKEL_REVISION_TASK_ID=<uuid>` → `npm run flow:revision:submit:headed` (always Submit unless `SNORKEL_DRY_RUN=1`)
+3. Cycle 2: `regenerate_rubric` OFF, `Send to reviewer` ON (E2E defaults)
 
 ---
 
@@ -217,3 +216,64 @@ May still need Snorkel resubmit or platform status lag:
 | `tools/_girish_union.py` | Platform 66 ∩ (tracker p1 ∪ CSV) Girish |
 | `tools/_tracker_page1.json` | Snapshot of Cognyzer API page 1 |
 | `e2e/.env.example` | `SNORKEL_TRAINER_NAME=Girish` for metadata rows |
+| [`JAVA_PORT_SUBMISSION_READY.md`](JAVA_PORT_SUBMISSION_READY.md) | Java-port batch: 19 zips + rubrics (2026-05-23) |
+| `tools/verify_java_batch_submission.py` | Re-run preflight on all 19 Java-port zips |
+| `tools/docker_verify_java_batch.py` | Docker build + oracle + pytest on all 19 |
+
+---
+
+## 7. Java port batch — submission ready (2026-05-23)
+
+**19** accepted-task Java ports: local `terminus_zip.py preflight` ✅, flat zips at `tasks/<slug>.zip`, Docker oracle **19/19** green (1,095 pytest total).
+
+**Rubric template:** [`antireplay-window-audit/rubrics.txt`](antireplay-window-audit/rubrics.txt) — each line `Agent …, +/-N` (N ∈ {1,2,3,5}), ≥3 negatives, positive sum 10–40. **Do not include `rubrics.txt` in the zip**; paste on platform cycle 1.
+
+### Rubric reference (antireplay)
+
+```
+Agent writes every required JSON deliverable under `/app/output/` using canonical UTF-8 JSON from the task spec, +5
+Agent implements the anti-replay window replay logic in TypeScript on Node 22 sources (.ts) under `/app/src/`, +3
+Agent reads bundled inputs from `/app/data/` without altering fixture files, +2
+…
+Agent hardcodes expected outputs instead of computing them from the bundled inputs, -5
+```
+
+Java-port tasks use the same shape in each `tasks/<slug>/rubrics.txt` (Java instead of TypeScript where applicable).
+
+### Upload table
+
+| # | Local folder | Docker tests | Zip size | Zip | Rubrics (cycle 1 paste) |
+|---|--------------|-------------:|---------:|-----|-------------------------|
+| 1 | `systemd-unit-dep-audit` | 44 | 25,757 | [systemd-unit-dep-audit.zip](systemd-unit-dep-audit.zip) | [rubrics.txt](systemd-unit-dep-audit/rubrics.txt) |
+| 2 | `git-hook-gate-audit` | 97 | 29,740 | [git-hook-gate-audit.zip](git-hook-gate-audit.zip) | [rubrics.txt](git-hook-gate-audit/rubrics.txt) |
+| 3 | `schema-drift-impact-audit` | 56 | 45,901 | [schema-drift-impact-audit.zip](schema-drift-impact-audit.zip) | [rubrics.txt](schema-drift-impact-audit/rubrics.txt) |
+| 4 | `k8s-rollout-impact-audit` | 45 | 42,591 | [k8s-rollout-impact-audit.zip](k8s-rollout-impact-audit.zip) | [rubrics.txt](k8s-rollout-impact-audit/rubrics.txt) |
+| 5 | `npm-mono-bump-audit` | 99 | 31,094 | [npm-mono-bump-audit.zip](npm-mono-bump-audit.zip) | [rubrics.txt](npm-mono-bump-audit/rubrics.txt) |
+| 6 | `cargo-ws-bump-audit` | 109 | 34,748 | [cargo-ws-bump-audit.zip](cargo-ws-bump-audit.zip) | [rubrics.txt](cargo-ws-bump-audit/rubrics.txt) |
+| 7 | `pay-ledger-recon-audit` | 22 | 42,581 | [pay-ledger-recon-audit.zip](pay-ledger-recon-audit.zip) | [rubrics.txt](pay-ledger-recon-audit/rubrics.txt) |
+| 8 | `crash-sig-triage-audit` | 96 | 31,899 | [crash-sig-triage-audit.zip](crash-sig-triage-audit.zip) | [rubrics.txt](crash-sig-triage-audit/rubrics.txt) |
+| 9 | `hitl-queue-consensus-audit` | 53 | 21,223 | [hitl-queue-consensus-audit.zip](hitl-queue-consensus-audit.zip) | [rubrics.txt](hitl-queue-consensus-audit/rubrics.txt) |
+| 10 | `ssh-compliance-audit` | 35 | 51,595 | [ssh-compliance-audit.zip](ssh-compliance-audit.zip) | [rubrics.txt](ssh-compliance-audit/rubrics.txt) |
+| 11 | `cryostat-lattice-audit` | 69 | 28,083 | [cryostat-lattice-audit.zip](cryostat-lattice-audit.zip) | [rubrics.txt](cryostat-lattice-audit/rubrics.txt) |
+| 12 | `stokes-diffusion-audit` | 27 | 1,988,813 | [stokes-diffusion-audit.zip](stokes-diffusion-audit.zip) | [rubrics.txt](stokes-diffusion-audit/rubrics.txt) |
+| 13 | `ledger-event-recon-audit` | 30 | 35,745 | [ledger-event-recon-audit.zip](ledger-event-recon-audit.zip) | [rubrics.txt](ledger-event-recon-audit/rubrics.txt) |
+| 14 | `keytab-rotation-audit` | 112 | 38,305 | [keytab-rotation-audit.zip](keytab-rotation-audit.zip) | [rubrics.txt](keytab-rotation-audit/rubrics.txt) |
+| 15 | `proc-tree-reaper-audit` | 48 | 49,000 | [proc-tree-reaper-audit.zip](proc-tree-reaper-audit.zip) | [rubrics.txt](proc-tree-reaper-audit/rubrics.txt) |
+| 16 | `detector-telem-cal-audit` | 35 | 38,022 | [detector-telem-cal-audit.zip](detector-telem-cal-audit.zip) | [rubrics.txt](detector-telem-cal-audit/rubrics.txt) |
+| 17 | `seismic-loc-qc-audit` | 23 | 43,910 | [seismic-loc-qc-audit.zip](seismic-loc-qc-audit.zip) | [rubrics.txt](seismic-loc-qc-audit/rubrics.txt) |
+| 18 | `spectral-cal-audit` | 27 | 35,339 | [spectral-cal-audit.zip](spectral-cal-audit.zip) | [rubrics.txt](spectral-cal-audit/rubrics.txt) |
+| 19 | `sim-checkpoint-plan-audit` | 100 | 47,629 | [sim-checkpoint-plan-audit.zip](sim-checkpoint-plan-audit.zip) | [rubrics.txt](sim-checkpoint-plan-audit/rubrics.txt) |
+
+**Girish queue overlap:** §2 lists `stokes-diffusion-audit` (`49f2e499…`) and `sim-checkpoint-rollback-planner` → local `sim-checkpoint-plan-audit` (`91c375bf…`) as `NEEDS_REVISION`; rows 12 and 19 above are resubmit candidates.
+
+**Excluded:** `go-race-deadlock-audit` (Go debug task, not Gson audit).
+
+**Re-verify before upload:**
+
+```powershell
+python tools/verify_java_batch_submission.py
+python tools/docker_verify_java_batch.py
+python tools/terminus-task-tools/terminus_zip.py preflight tasks/<slug>
+```
+
+**Source mapping:** [`tools/accepted_java_conversion_plan.md`](../tools/accepted_java_conversion_plan.md), scaffold queue [`_JAVA_SCAFFOLD_QUEUE.md`](_JAVA_SCAFFOLD_QUEUE.md).

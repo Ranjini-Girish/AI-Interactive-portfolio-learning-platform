@@ -7,6 +7,7 @@ import { CHROME_USER_AGENT } from './lib/snorkel-auth';
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const baseURL = process.env.SNORKEL_BASE_URL ?? 'https://experts.snorkel-ai.com';
+const isDemo = process.env.SNORKEL_DEMO === '1';
 const storageStatePath = path.join(__dirname, '.auth', 'snorkel-user.json');
 const hasStorageState = fs.existsSync(storageStatePath);
 /** Set SNORKEL_AUTH_SETUP=1 to force Cognito login before tests (refreshes .auth/snorkel-user.json). */
@@ -39,13 +40,13 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: 1,
   reporter: [['list'], ['html', { open: 'never' }]],
-  timeout: 120_000,
-  expect: { timeout: 30_000 },
+  timeout: isDemo ? 900_000 : 120_000,
+  expect: { timeout: isDemo ? 60_000 : 30_000 },
   use: {
     baseURL,
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    trace: isDemo ? 'on' : 'on-first-retry',
+    screenshot: isDemo ? 'on' : 'only-on-failure',
+    video: isDemo ? 'on' : 'retain-on-failure',
     actionTimeout: 30_000,
     navigationTimeout: 90_000,
     userAgent: CHROME_USER_AGENT,

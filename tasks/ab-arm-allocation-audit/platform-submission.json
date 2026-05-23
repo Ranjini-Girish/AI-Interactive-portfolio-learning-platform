@@ -1,0 +1,61 @@
+{
+  "taskName": "ab-arm-allocation-audit",
+  "updatedAt": "2026-05-23T12:59:05.381Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "7f690c0e-fa7d-467e-a15a-b51b93a8bbef",
+    "taskStatus": "Evaluation pending",
+    "taskName": "ab-arm-allocation-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "ab-arm-allocation-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T12:59:05.381Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "7f690c0e-fa7d-467e-a15a-b51b93a8bbef",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ab-arm-allocation-audit.zip",
+    "zipBytes": 19977,
+    "zipSha256": "8c4aa6c4287e7b097866041d019189610bcc50d5d1bded01a55b7c0a6e3ec1b3",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T12:59:05.381Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "7f690c0e-fa7d-467e-a15a-b51b93a8bbef",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ab-arm-allocation-audit.zip",
+      "zipBytes": 19977,
+      "zipSha256": "8c4aa6c4287e7b097866041d019189610bcc50d5d1bded01a55b7c0a6e3ec1b3",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

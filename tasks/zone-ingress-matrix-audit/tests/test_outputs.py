@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for the zone-ingress-matrix-audit task.
 
 These tests assert the agent's outputs against the documented contract in

@@ -2,10 +2,12 @@ FROM golang:1.23-bookworm@sha256:167053a2bb901972bf2c1611f8f52c44d5fe7e762e5cab2
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+        asciinema \
+        ca-certificates \
+        python-is-python3 \
         python3 \
         python3-pip \
-        python-is-python3 \
-        ca-certificates \
+        tmux \
  && rm -rf /var/lib/apt/lists/*
 
 RUN python -m pip install --no-cache-dir --break-system-packages \

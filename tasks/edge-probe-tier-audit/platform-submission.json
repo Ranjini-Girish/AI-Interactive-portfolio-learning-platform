@@ -1,0 +1,61 @@
+{
+  "taskName": "edge-probe-tier-audit",
+  "updatedAt": "2026-05-23T12:30:53.445Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "dadcce4e-ec29-4fca-a588-fd472a4e4f48",
+    "taskStatus": "Evaluation pending",
+    "taskName": "edge-probe-tier-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "edge-probe-tier-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T12:30:53.445Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=dadcce4e-ec29-4fca-a588-fd472a4e4f48",
+    "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+    "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "assignmentId": "dadcce4e-ec29-4fca-a588-fd472a4e4f48",
+    "revisionTaskId": "ceffedbb-4379-4d57-ab73-fb70c74f68aa",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\edge-probe-tier-audit.zip",
+    "zipBytes": 17528,
+    "zipSha256": "d562eaf7f24c96ace0a6e6a49020daa34ca6d0d70f0fa5bbb471d203b5d0048b",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T12:30:53.445Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=dadcce4e-ec29-4fca-a588-fd472a4e4f48",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "dadcce4e-ec29-4fca-a588-fd472a4e4f48",
+      "revisionTaskId": "ceffedbb-4379-4d57-ab73-fb70c74f68aa",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\edge-probe-tier-audit.zip",
+      "zipBytes": 17528,
+      "zipSha256": "d562eaf7f24c96ace0a6e6a49020daa34ca6d0d70f0fa5bbb471d203b5d0048b",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

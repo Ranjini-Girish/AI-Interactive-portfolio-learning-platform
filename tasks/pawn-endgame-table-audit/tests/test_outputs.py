@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Verifier suite for pawn-endgame-table-audit.
 
 SHA-256 pins fixture bytes, enforces canonical JSON layout, Go-only /app/src,

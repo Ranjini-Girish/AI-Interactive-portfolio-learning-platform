@@ -1,0 +1,61 @@
+{
+  "taskName": "lease-slot-coordinator-audit",
+  "updatedAt": "2026-05-23T12:50:05.069Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "470f83f7-2cab-47c4-97b8-2897a83a8aed",
+    "taskStatus": "Evaluation pending",
+    "taskName": "lease-slot-coordinator-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "lease-slot-coordinator-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T12:50:05.069Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "470f83f7-2cab-47c4-97b8-2897a83a8aed",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\lease-slot-coordinator-audit.zip",
+    "zipBytes": 26224,
+    "zipSha256": "54aa55d1bc9a02f7ccc468b4a4b43a47f6f1fa565a5d010926c923492d22580b",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T12:50:05.069Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "470f83f7-2cab-47c4-97b8-2897a83a8aed",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\lease-slot-coordinator-audit.zip",
+      "zipBytes": 26224,
+      "zipSha256": "54aa55d1bc9a02f7ccc468b4a4b43a47f6f1fa565a5d010926c923492d22580b",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

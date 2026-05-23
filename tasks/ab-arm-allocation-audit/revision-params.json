@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "7f690c0e-fa7d-467e-a15a-b51b93a8bbef",
+  "platformTaskSlug": "ab-arm-allocation-audit",
+  "assignmentId": "3b641f63-9c9a-40fe-83fc-824fa30900e3",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=3b641f63-9c9a-40fe-83fc-824fa30900e3",
+  "capturedAt": "2026-05-23T12:57:44.208Z",
+  "revisionReasons": [
+    "reviewer_feedback_present"
+  ],
+  "autoEval": {
+    "buildFailed": false,
+    "buildId": null,
+    "summary": null
+  },
+  "difficulty": {
+    "failed": false,
+    "summary": null
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive output files \n(experiment_profiles.json, \ntier_rollups.json, arm_eligibility.\njson, compromise_report.json, summary.\nAgent review (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nAgent review\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                          REVIEW \n                          REPORT: \n                          tbench-task\n======================================\n======================================\nTest Quality Report (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nTest Quality Report\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                      TEST QUALITY \n                      REVIEW: \n                      tbench-task\n======================================\n======================================\nComments for Reviewer (optional)\n\nUse this field to provide any context or justification for your task that you would like the reviewer to see\n\nCheck to send to reviewer if difficulty and quality checks are passing. Otherwise, it will always result in revision.\n\nSend to reviewer?"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "ab-arm-allocation-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ab-arm-allocation-audit.zip",
+    "excludedPlatformZip": "ab-arm-allocation-audit.zip"
+  }
+}

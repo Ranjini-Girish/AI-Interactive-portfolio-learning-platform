@@ -7,3 +7,4 @@ node_modules/
 .env
 discover-login.png
 page.html
+audit/

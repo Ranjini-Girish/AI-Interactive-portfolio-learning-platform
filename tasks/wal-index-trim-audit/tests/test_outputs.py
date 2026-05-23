@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Verifier suite for wal-index-trim-audit."""
 
 from __future__ import annotations

@@ -1,5 +1,4 @@
 import { expect, type Page } from '@playwright/test';
-
 export const SNORKEL_HOME_PATH = '/home';
 export const TERMINUS_PROJECT_LABEL = 'Terminus-2nd-Edition';
 
@@ -26,6 +25,25 @@ export async function openTerminusSubmissionStart(page: Page): Promise<void> {
 function revisionCardReviseButtonByAssignmentId(page: Page, assignmentId: string) {
   return page
     .getByTestId(`${assignmentId}-Terminus-2nd-Edition`)
+    .getByRole('button', { name: 'Revise' });
+}
+
+async function clickReviseAndWait(page: Page, revise: ReturnType<Page['getByRole']>): Promise<void> {
+  await expect(revise).toBeVisible({ timeout: 30_000 });
+  await revise.scrollIntoViewIfNeeded();
+  await Promise.all([
+    page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
+    revise.click(),
+  ]);
+}
+
+/** Match revision cards by platform UID text when assignment test id differs. */
+function revisionCardReviseButtonByUid(page: Page, uid: string) {
+  return page
+    .locator('div, article, li, section')
+    .filter({ hasText: uid })
+    .filter({ has: page.getByRole('button', { name: 'Revise' }) })
+    .first()
     .getByRole('button', { name: 'Revise' });
 }
 
@@ -64,12 +82,13 @@ export async function openRevisionTask(page: Page, taskId?: string): Promise<str
   await goToHome(page);
 
   if (id) {
-    const revise = revisionCardReviseButtonByAssignmentId(page, id);
-    await expect(revise).toBeVisible({ timeout: 30_000 });
-    await Promise.all([
-      page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
-      revise.click(),
-    ]);
+    const byAssignment = revisionCardReviseButtonByAssignmentId(page, id);
+    const byUid = revisionCardReviseButtonByUid(page, id);
+  if (await byAssignment.count()) {
+      await clickReviseAndWait(page, byAssignment);
+      return id;
+    }
+    await clickReviseAndWait(page, byUid);
     return id;
   }
 
@@ -77,20 +96,14 @@ export async function openRevisionTask(page: Page, taskId?: string): Promise<str
     const revise = revisionCardReviseButtonByLabel(page, name);
     await expect(revise).toBeVisible({ timeout: 30_000 });
     const resolvedId = await extractAssignmentIdFromReviseButton(revise);
-    await Promise.all([
-      page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
-      revise.click(),
-    ]);
+    await clickReviseAndWait(page, revise);
     return resolvedId;
   }
 
   const firstRevise = page.getByRole('button', { name: 'Revise' }).first();
   await expect(firstRevise).toBeVisible();
   const resolvedId = await extractAssignmentIdFromReviseButton(firstRevise);
-  await Promise.all([
-    page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
-    firstRevise.click(),
-  ]);
+  await clickReviseAndWait(page, firstRevise);
   return resolvedId;
 }
 
