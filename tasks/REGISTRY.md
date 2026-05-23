@@ -95,21 +95,21 @@ Track all tasks to maintain diversity requirements across submissions.
 | 78 | sim-checkpoint-plan-audit | scientific-computing | hard | small | java, bash | 0 | 100/100 Docker | 2026-05-22 |
 | — | go-race-deadlock-audit | debugging | hard | small | go, bash | 0 | Scaffold only; Go CLI fix | 2026-05-22 |
 | 80 | aead-nonce-reuse-audit | security | hard | small | java, bash | 0 | Ayesha import; strict native Java `Replay.java` (Gson); preflight pass | 2026-05-22 |
-| 81 | antireplay-window-audit | security | medium | small | typescript, bash | 0 | Ayesha import; TS stack; oracle_impl wired | 2026-05-22 |
+| 81 | antireplay-window-audit | security | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 82 | arc-cache-replay-audit | data-processing | medium | small | java, bash | 0 | Ayesha import | 2026-05-22 |
-| 83 | cgroup-quota-replay-audit | system-administration | medium | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
+| 83 | cgroup-quota-replay-audit | system-administration | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 84 | circuit-breaker-replay | software-engineering | medium | small | java, bash | 0 | Ayesha import | 2026-05-22 |
-| 85 | counting-bloom-replay | data-processing | medium | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
+| 85 | counting-bloom-replay | data-processing | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 86 | event-ledger-reconcile | software-engineering | hard | small | java, bash | 0 | Ayesha import | 2026-05-22 |
-| 87 | igmp-snooping-replay | system-administration | medium | small | typescript, bash | 0 | Ayesha import; oracle_impl fixed; preflight pass | 2026-05-22 |
+| 87 | igmp-snooping-replay | system-administration | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 88 | leaky-bucket-shaper-audit | software-engineering | medium | small | java, bash | 0 | Ayesha import; Java `Shaper.java` oracle + oracle_impl; ruff/oracle pass local | 2026-05-22 |
-| 89 | lock-order-deadlock-audit | debugging | hard | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
+| 89 | lock-order-deadlock-audit | debugging | hard | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 90 | lsm-compaction-replay | data-processing | medium | small | java, bash | 0 | Ayesha import | 2026-05-22 |
-| 91 | mqtt-router-replay-audit | system-administration | medium | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
+| 91 | mqtt-router-replay-audit | system-administration | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 92 | proc-tree-harvest-audit | system-administration | hard | small | java, bash | 0 | Ayesha import | 2026-05-22 |
-| 93 | proc-tree-reaper-audit | system-administration | medium | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
+| 93 | proc-tree-reaper-audit | system-administration | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 94 | quota-hierarchy-replay | system-administration | medium | small | java, bash | 0 | Ayesha import | 2026-05-22 |
-| 95 | region-coalescer-replay | software-engineering | medium | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
+| 95 | region-coalescer-replay | software-engineering | medium | small | typescript, bash | 0 | **uploaded** (2026-05-22; zip + rubrics; CodeBuild pending) | 2026-05-22 |
 | 96 | shard-rebalance-replay | data-processing | medium | small | java, bash | 0 | Ayesha import; oracle_impl + docs path fix; preflight pass | 2026-05-22 |
 | 97 | snapshot-retention-replay | system-administration | medium | small | typescript, bash | 0 | Ayesha import | 2026-05-22 |
 | 98 | tail-sampling-trace-audit | debugging | medium | small | java, bash | 0 | Ayesha import; write_canonical fix; preflight pass | 2026-05-22 |
