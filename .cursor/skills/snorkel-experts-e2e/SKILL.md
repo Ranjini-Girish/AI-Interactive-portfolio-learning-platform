@@ -50,13 +50,37 @@ Do **not** skip local gates before browser submit.
 
 ```
 1. Task passes local authoring gates (terminus-project.mdc / terminus-task-creator)
-2. python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>
-3. python tools/terminus-task-tools/terminus_zip.py clean tasks/<name>
-4. python tools/terminus-task-tools/terminus_zip.py build tasks/<name>
+2. Playwright E2E with SNORKEL_TASK_DIR set — runs preflight → clean → build
+   automatically via e2e/lib/task-zip.ts (set SNORKEL_SKIP_PREFLIGHT=1 only to debug)
    → tasks/<name>.zip (flat root, no rubrics.txt)
-5. Playwright E2E (this skill) — dry run first, then live submit
-6. Two-cycle rubric workflow on platform UI (human edits; see terminus-project.mdc)
+3. Dry run first (SNORKEL_DRY_RUN=1), then live submit (SNORKEL_SUBMIT=1)
+4. Two-cycle rubric workflow on platform UI (human edits; see terminus-project.mdc)
 ```
+
+Manual zip only (no browser):
+
+```powershell
+python tools/terminus-task-tools/terminus_zip.py preflight tasks/<name>
+python tools/terminus-task-tools/terminus_zip.py clean tasks/<name>
+python tools/terminus-task-tools/terminus_zip.py build tasks/<name>
+```
+
+---
+
+## May 2026 offline-verifier gates (blocking CI)
+
+Every task submitted through E2E must pass **preflight** before upload. CodeBuild
+rejects tasks that violate any of these:
+
+| Gate | Requirement |
+|------|-------------|
+| `task.toml` | `[environment] allow_internet = false` (literal `false`) |
+| `tests/test.sh` | No `apt-get`, `pip install`, `curl`, `uvx`, or other runtime downloads |
+| `tests/test.sh` | Ends with byte-exact reward block using `if [ $? -eq 0 ]; then` (no `RC=$?`, no trailing `exit`) |
+| `environment/Dockerfile` | Pre-install pytest, pytest-json-ctrf, and any verifier imports; include `tmux` + `asciinema` |
+| Difficulty | Evaluate Hard → Medium → Easy (stop at first match); Python tasks must qualify as Hard |
+
+Preflight enforces the first four locally; difficulty is verified by platform agent trials.
 
 ---
 
@@ -65,7 +89,8 @@ Do **not** skip local gates before browser submit.
 | Variable | Purpose |
 |----------|---------|
 | `SNORKEL_EMAIL` / `SNORKEL_PASSWORD` | Cognito login (required for auth setup) |
-| `SNORKEL_TASK_DIR` | Task folder; E2E runs `terminus_zip.py clean` + `build` |
+| `SNORKEL_TASK_DIR` | Task folder; E2E runs `terminus_zip.py preflight` + `clean` + `build` |
+| `SNORKEL_SKIP_PREFLIGHT=1` | Skip local preflight (debug only; uploads may fail CodeBuild) |
 | `SNORKEL_TASK_ZIP` | Existing flat zip (skip build if already built) |
 | `SNORKEL_DRY_RUN=1` | Upload + form only; **no** platform **Submit** |
 | `SNORKEL_SUBMIT=1` | Click **Submit** (triggers CI / agent runs) |
@@ -132,24 +157,22 @@ After email / task appears under **Tasks to be revised**:
 |------|----------|-----|
 | 1 | Home → **Revise** on task UUID | `SNORKEL_REVISION_TASK_ID` or first card |
 | 2 | Review CI feedback | read-only in workspace |
-| 3 | Re-upload zip if task changed | `SNORKEL_TASK_ZIP` — removes old `.zip`, uploads new |
+| 3 | Re-upload zip if task changed | **`SNORKEL_TASK_DIR`** → always `clean` + `build` fresh zip; portal removes old attachment and uploads new bytes (not a stale/platform re-download) |
 | 4 | Paste `tasks/<name>/rubrics.txt` | auto from zip name or `SNORKEL_RUBRIC_FILE` |
 | 5 | **Send to reviewer?** | **on** (default) |
 | 6 | **Generate rubric(s)** | **off** (default; `SNORKEL_REGENERATE_RUBRIC=1` to check) |
 | 7 | Fast static checks | **on** (default) |
-| 8 | **Submit** | `SNORKEL_SUBMIT=1` on dedicated revision test |
+| 8 | **Submit** | **always on** by default (`resolveRevisionSubmit`); use `SNORKEL_DRY_RUN=1` to rehearse without Submit |
 
 ```powershell
-$env:SNORKEL_REVISION_TASK_ID = '8d198124-d872-4df6-9ef7-3d03eac93ddd'
-$env:SNORKEL_TASK_ZIP = '..\tasks\snapshot-retention-replay.zip'
+$env:SNORKEL_REVISION_TASK_ID = '7870689e-5c8a-4452-bac4-a76c025b44f8'
+$env:SNORKEL_TASK_DIR = 'tasks/zone-ingress-matrix-audit'
 $env:SNORKEL_REGENERATE_RUBRIC = '0'
-$env:SNORKEL_SUBMIT = '1'
 npm run flow:revision:submit:headed
 ```
 
-Fully automated: removes any attached zip, uploads `SNORKEL_TASK_ZIP`, pastes
-`tasks/<zip-basename>/rubrics.txt` (or `SNORKEL_RUBRIC_FILE`), runs static checks,
-then Submit.
+Fully automated: `clean` + `build` from `SNORKEL_TASK_DIR`, removes old portal zip,
+uploads fresh local zip, pastes `tasks/<slug>/rubrics.txt`, runs static checks, **Submit**.
 
 **Cycle 2 platform rubric rule:** E2E leaves **Generate rubric(s)** unchecked by
 default. Set `SNORKEL_REGENERATE_RUBRIC=1` only when you intentionally want a
@@ -211,7 +234,7 @@ Extend flows in `lib/*.ts`; add specs under `tests/`; wire npm scripts in
 When the user asks to submit a task:
 
 - [ ] Confirm task name under `tasks/<name>/`
-- [ ] Run `terminus_zip.py preflight` + `build` (or set `SNORKEL_TASK_DIR`)
+- [ ] Set `SNORKEL_TASK_DIR` (preflight + build run automatically) or run `terminus_zip.py preflight` manually
 - [ ] Ensure `e2e/.env` credentials exist; run `auth:setup` if session stale
 - [ ] Run **dry** submit first (`SNORKEL_DRY_RUN=1` + headed if debugging)
 - [ ] Only set `SNORKEL_SUBMIT=1` after user confirms
