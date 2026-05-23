@@ -72,6 +72,8 @@ Do **not** skip local gates before browser submit.
 | `SNORKEL_STATIC_CHECKS=0` | Skip **Check feedback** / fast static checks (default **on**) |
 | `SNORKEL_REGENERATE_RUBRIC=1` | Check **Generate rubric(s)** (default **off**) |
 | `SNORKEL_REVISION_TASK_ID` | UUID on revision card (else first **Revise**) |
+| `SNORKEL_RUBRIC_FILE` | Override path to `rubrics.txt` (default: `tasks/<name>/rubrics.txt`) |
+| `SNORKEL_SKIP_RUBRIC_FILL` | Set `1` to skip pasting rubric into platform editor |
 | `SNORKEL_SEND_TO_REVIEWER=0` | Optional: uncheck **Send to reviewer?** (default **checked**) |
 | `SNORKEL_SAVE_METADATA=1` | Default in `.env.example` — save `tasks/<name>/platform-submission.json` on live and dry runs |
 | `SNORKEL_SAVE_METADATA=0` | Disable metadata recording |
@@ -129,22 +131,25 @@ After email / task appears under **Tasks to be revised**:
 | Step | Platform | E2E |
 |------|----------|-----|
 | 1 | Home → **Revise** on task UUID | `SNORKEL_REVISION_TASK_ID` or first card |
-| 2 | Review CI / edit rubric in UI | manual or prior CI |
-| 3 | Re-upload zip if task changed | `SNORKEL_TASK_ZIP` + revision flow `uploadZip` |
-| 4 | **Send to reviewer?** | **on** (default) |
-| 5 | **Generate rubric(s)** | **off** (default; `SNORKEL_REGENERATE_RUBRIC=1` to check) |
-| 6 | Fast static checks | **on** (default) |
-| 7 | **Submit** | `SNORKEL_SUBMIT=1` on dedicated revision test |
+| 2 | Review CI feedback | read-only in workspace |
+| 3 | Re-upload zip if task changed | `SNORKEL_TASK_ZIP` — removes old `.zip`, uploads new |
+| 4 | Paste `tasks/<name>/rubrics.txt` | auto from zip name or `SNORKEL_RUBRIC_FILE` |
+| 5 | **Send to reviewer?** | **on** (default) |
+| 6 | **Generate rubric(s)** | **off** (default; `SNORKEL_REGENERATE_RUBRIC=1` to check) |
+| 7 | Fast static checks | **on** (default) |
+| 8 | **Submit** | `SNORKEL_SUBMIT=1` on dedicated revision test |
 
 ```powershell
-$env:SNORKEL_REVISION_TASK_ID = '<assignment-uuid-from-home-card>'
-$env:SNORKEL_TASK_ZIP = '..\tasks\my-task.zip'
-npm run flow:revision:iterate:headed
-
-# Full revise + submit (gated)
+$env:SNORKEL_REVISION_TASK_ID = '8d198124-d872-4df6-9ef7-3d03eac93ddd'
+$env:SNORKEL_TASK_ZIP = '..\tasks\snapshot-retention-replay.zip'
+$env:SNORKEL_REGENERATE_RUBRIC = '0'
 $env:SNORKEL_SUBMIT = '1'
-npx playwright test tests/revision-flow.spec.ts -g "full revise submit" --headed
+npm run flow:revision:submit:headed
 ```
+
+Fully automated: removes any attached zip, uploads `SNORKEL_TASK_ZIP`, pastes
+`tasks/<zip-basename>/rubrics.txt` (or `SNORKEL_RUBRIC_FILE`), runs static checks,
+then Submit.
 
 **Cycle 2 platform rubric rule:** E2E leaves **Generate rubric(s)** unchecked by
 default. Set `SNORKEL_REGENERATE_RUBRIC=1` only when you intentionally want a
@@ -190,6 +195,7 @@ npm run auth:setup
 | `lib/submission-metadata.ts` | `tasks/<name>/platform-submission.json` after submit |
 | `lib/submission-flow.ts` | `runNewTaskSubmission()` |
 | `lib/revision-flow.ts` | `runRevisionFlow()` |
+| `lib/rubric.ts` | `fillAgentRubric()`, `resolveRubricPath()` |
 | `tests/submit-new-task.spec.ts` | **Primary E2E** for new submit |
 | `tests/revision-flow.spec.ts` | Revision E2E |
 | `scripts/submit-new-task.mjs` | CLI → Playwright |

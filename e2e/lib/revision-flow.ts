@@ -1,6 +1,7 @@
 import { expect, type Page } from '@playwright/test';
 import path from 'node:path';
 import { openRevisionTask, waitForSubmissionWorkspace } from './snorkel-home';
+import { fillAgentRubric, resolveRubricPath } from './rubric';
 import {
   resolveRegenerateRubric,
   resolveSendToReviewer,
@@ -18,6 +19,10 @@ export type RevisionFlowOptions = {
   zipPath?: string;
   /** Re-upload a revised task zip before other actions. */
   uploadZip?: boolean;
+  /** Path to rubrics.txt; defaults from SNORKEL_RUBRIC_FILE or tasks/<name>/rubrics.txt. */
+  rubricPath?: string;
+  /** Paste rubric into Agent-generated rubric editor (default true when rubricPath resolves). */
+  fillRubric?: boolean;
   /** Toggle "Send to reviewer?" (default true). */
   sendToReviewer?: boolean;
   /** Toggle "Click here to generate rubric(s)". */
@@ -30,6 +35,7 @@ export type RevisionFlowResult = {
   revisionTaskId: string;
   submissionUrl: string;
   zipPath?: string;
+  rubricPath?: string;
   submitted: boolean;
 };
 
@@ -78,6 +84,13 @@ export async function runRevisionFlow(
   const regenerateRubric = resolveRegenerateRubric(options.regenerateRubric);
   await setRegenerateRubric(page, regenerateRubric);
 
+  const rubricPath = options.rubricPath ?? resolveRubricPath(zipPath);
+  const shouldFillRubric =
+    options.fillRubric ?? process.env.SNORKEL_SKIP_RUBRIC_FILL !== '1';
+  if (shouldFillRubric && rubricPath) {
+    await fillAgentRubric(page, rubricPath);
+  }
+
   const sendToReviewer = resolveSendToReviewer(options.sendToReviewer);
   await setSendToReviewer(page, sendToReviewer);
 
@@ -98,6 +111,7 @@ export async function runRevisionFlow(
     revisionTaskId: taskId,
     submissionUrl: page.url(),
     zipPath: zipPath ?? undefined,
+    rubricPath: rubricPath ?? undefined,
     submitted: submit,
   };
 }

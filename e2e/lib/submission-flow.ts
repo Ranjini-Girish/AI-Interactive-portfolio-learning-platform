@@ -1,7 +1,27 @@
-import { expect, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 import path from 'node:path';
 import { openTerminusSubmissionStart, waitForSubmissionWorkspace } from './snorkel-home';
 import { resolveTaskZipPath } from './task-zip';
+
+async function terminalBenchSubmissionSection(page: Page): Promise<Locator> {
+  const byRegion = page
+    .getByRole('region')
+    .filter({ has: page.getByRole('heading', { name: 'Terminal bench 2.0 task submission' }) });
+  if ((await byRegion.count()) > 0) {
+    return byRegion.first();
+  }
+  return page
+    .locator('div')
+    .filter({ has: page.getByRole('heading', { name: 'Terminal bench 2.0 task submission' }) })
+    .first();
+}
+
+async function ensureSubmissionFormVisible(page: Page): Promise<void> {
+  const formOnly = page.getByRole('button', { name: 'Form only' });
+  if (await formOnly.isVisible().catch(() => false)) {
+    await formOnly.click();
+  }
+}
 
 export type SubmissionFlowOptions = {
   /** Absolute path to a .zip task bundle. */
@@ -41,25 +61,44 @@ export async function assertNewSubmissionForm(page: Page): Promise<void> {
   }
 }
 
-async function removeWrongZipAttachment(page: Page, keepBasename: string): Promise<void> {
-  const attached = page.locator('.text-color-success').filter({ hasText: /\.zip$/i }).first();
-  if (!(await attached.isVisible().catch(() => false))) {
-    return;
+async function dismissRemoveConfirmIfPresent(page: Page): Promise<void> {
+  const confirm = page
+    .getByRole('button', { name: /^Remove$/i })
+    .or(page.getByRole('button', { name: /^(Delete|Confirm|Yes)/i }))
+    .first();
+  if (await confirm.isVisible().catch(() => false)) {
+    await confirm.click();
   }
-  const attachedName = (await attached.innerText()).trim();
-  if (attachedName.includes(keepBasename)) {
-    return;
-  }
+}
 
-  const namedRemove = page.getByRole('button', { name: 'Remove file' });
-  if ((await namedRemove.count()) > 0) {
-    await namedRemove.click();
-  } else {
-    const actionButtons = attached.locator('..').locator('..').getByRole('button');
-    const count = await actionButtons.count();
-    if (count > 0) {
+/** Remove every attached zip in the Terminal bench submission section. */
+async function clearAllAttachedZips(section: Locator, page: Page): Promise<void> {
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const attached = section.locator('.text-color-success').filter({ hasText: /\.zip/i });
+    if ((await attached.count()) === 0) {
+      return;
+    }
+
+    const zipLabel = attached.first();
+    const namedRemove = section.getByRole('button', { name: 'Remove file' });
+    if ((await namedRemove.count()) > 0) {
+      await namedRemove.first().click();
+    } else {
+      const actionButtons = zipLabel.locator('..').locator('..').getByRole('button');
+      const count = await actionButtons.count();
+      if (count === 0) {
+        throw new Error('Attached zip found but no remove/download buttons in upload row');
+      }
       await actionButtons.nth(count - 1).click();
     }
+
+    await dismissRemoveConfirmIfPresent(page);
+    await expect(zipLabel).toBeHidden({ timeout: 30_000 });
+  }
+
+  const remaining = section.locator('.text-color-success').filter({ hasText: /\.zip/i });
+  if ((await remaining.count()) > 0) {
+    throw new Error('Failed to remove existing zip attachment before re-upload');
   }
 }
 
@@ -69,30 +108,23 @@ export async function uploadSubmissionZip(page: Page, zipPath: string): Promise<
   }
 
   const base = path.basename(zipPath);
-  const uploadLabel = page
-    .getByText(/Upload terminal bench 2\.0 submission here \(zip file\)/i)
-    .first();
-  await uploadLabel.scrollIntoViewIfNeeded();
+  await ensureSubmissionFormVisible(page);
 
-  const attachedOk = page.locator('.text-color-success').filter({ hasText: base });
-  if (await attachedOk.first().isVisible().catch(() => false)) {
+  const section = await terminalBenchSubmissionSection(page);
+  await section.scrollIntoViewIfNeeded();
+
+  const alreadyUploaded = section.locator('.text-color-success').filter({ hasText: base });
+  if (await alreadyUploaded.first().isVisible().catch(() => false)) {
     return;
   }
 
-  await removeWrongZipAttachment(page, base);
+  await clearAllAttachedZips(section, page);
 
-  const fileInput = page.locator('input[type="file"]');
-  if ((await fileInput.count()) > 0) {
-    await fileInput.first().setInputFiles(zipPath, { force: true });
-  } else {
-    const [fileChooser] = await Promise.all([
-      page.waitForEvent('filechooser', { timeout: 60_000 }),
-      uploadLabel.click({ force: true }),
-    ]);
-    await fileChooser.setFiles(zipPath);
-  }
+  const fileInput = section.locator('input[type="file"]').first();
+  await expect(fileInput).toBeAttached({ timeout: 30_000 });
+  await fileInput.setInputFiles(zipPath, { force: true });
 
-  await expect(page.locator('.text-color-success').filter({ hasText: base }).first()).toBeVisible({
+  await expect(section.locator('.text-color-success').filter({ hasText: base }).first()).toBeVisible({
     timeout: 120_000,
   });
 }

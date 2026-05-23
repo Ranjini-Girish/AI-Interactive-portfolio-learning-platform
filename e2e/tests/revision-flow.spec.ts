@@ -1,5 +1,12 @@
 import { test } from '@playwright/test';
 import {
+  assertRevisionWorkspace,
+  resolveRevisionTaskId,
+  runRevisionFlow,
+  setRegenerateRubric,
+  setSendToReviewer,
+} from '../lib/revision-flow';
+import {
   resolveRegenerateRubric,
   resolveSendToReviewer,
   resolveStaticChecks,
@@ -9,15 +16,8 @@ import {
   saveSubmissionMetadata,
   shouldSaveSubmissionMetadata,
 } from '../lib/submission-metadata';
-import { resolveTaskZipPath } from '../lib/task-zip';
-import {
-  assertRevisionWorkspace,
-  resolveRevisionTaskId,
-  runRevisionFlow,
-  setRegenerateRubric,
-  setSendToReviewer,
-} from '../lib/revision-flow';
 import { openRevisionTask } from '../lib/snorkel-home';
+import { resolveTaskZipPath } from '../lib/task-zip';
 
 test.describe('Snorkel Experts — Revision flow', () => {
   test('opens a revision task from home', async ({ page }) => {
@@ -49,21 +49,12 @@ test.describe('Snorkel Experts — Revision flow', () => {
     const zipPath = resolveTaskZipPath();
     const regenerateRubric = resolveRegenerateRubric();
     const staticChecks = resolveStaticChecks();
-    const headed = process.argv.includes('--headed');
-    const taskId = await openRevisionTask(page, resolveRevisionTaskId());
-    await assertRevisionWorkspace(page, taskId);
-
-    if (headed) {
-      // Headed: replace zip (Remove → pick snapshot-retention-replay.zip), paste rubrics.txt, then Resume.
-      await page.pause();
-    }
-
     const result = await runRevisionFlow(page, {
-      taskId,
-      skipOpen: true,
+      taskId: resolveRevisionTaskId(),
       zipPath,
-      uploadZip: !!zipPath && !headed && process.env.SNORKEL_SKIP_ZIP_UPLOAD !== '1',
+      uploadZip: !!zipPath,
       regenerateRubric,
+      fillRubric: true,
       runStaticChecks: staticChecks,
       submitToPlatform: true,
     });
