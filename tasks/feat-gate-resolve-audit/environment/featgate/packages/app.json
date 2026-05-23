@@ -1,0 +1,43 @@
+{
+  "default_features": [
+    "core"
+  ],
+  "deps": [
+    {
+      "epoch": 1,
+      "features": [
+        "secure"
+      ],
+      "name": "net"
+    },
+    {
+      "epoch": 2,
+      "features": [
+        "fast-io"
+      ],
+      "name": "cache"
+    },
+    {
+      "epoch": 0,
+      "features": [
+        "base"
+      ],
+      "name": "legacy",
+      "optional": true
+    },
+    {
+      "epoch": 2,
+      "features": [
+        "phantom"
+      ],
+      "name": "ghost"
+    }
+  ],
+  "features": {
+    "core": [],
+    "metrics": [
+      "cache/metrics"
+    ]
+  },
+  "name": "app"
+}

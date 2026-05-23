@@ -1,0 +1,11 @@
+{
+  "bias_floor": 2,
+  "cap": 80,
+  "cutoff": 35,
+  "fold_mod": 1022,
+  "label": "yarrow-skew-bind-audit",
+  "mask": 88,
+  "poly_base": 152,
+  "seed_offset": 109,
+  "square_mod": 1000008
+}

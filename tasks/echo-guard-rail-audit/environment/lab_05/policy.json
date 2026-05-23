@@ -1,0 +1,11 @@
+{
+  "bias_floor": 1,
+  "cap": 60,
+  "cutoff": 40,
+  "fold_mod": 1002,
+  "label": "echo-guard-rail-audit",
+  "mask": 68,
+  "poly_base": 132,
+  "seed_offset": 115,
+  "square_mod": 999988
+}

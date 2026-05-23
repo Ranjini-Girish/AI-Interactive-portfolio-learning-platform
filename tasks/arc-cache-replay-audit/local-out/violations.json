@@ -1,0 +1,32 @@
+{
+  "violations": [
+    {
+      "accepted": false,
+      "event_id": "e_014",
+      "payload": {
+        "key": "no_such"
+      },
+      "reason_ignored": "unknown_resident",
+      "ts_unix_ms": 1130,
+      "type": "evict"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_015",
+      "payload": {
+        "key": "k5"
+      },
+      "reason_ignored": "unknown_resident",
+      "ts_unix_ms": 1140,
+      "type": "evict"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_019",
+      "payload": {},
+      "reason_ignored": "cache_empty",
+      "ts_unix_ms": 1180,
+      "type": "clear"
+    }
+  ]
+}

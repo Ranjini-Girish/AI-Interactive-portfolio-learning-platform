@@ -1,0 +1,27 @@
+{
+  "forwards": [
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth1"
+      ],
+      "group": "239.1.1.1",
+      "ingress_port": "Eth3",
+      "reason": null,
+      "seq": 1,
+      "vlan": 10
+    },
+    {
+      "decision": "flooded",
+      "egress_ports": [
+        "Eth1",
+        "Eth2"
+      ],
+      "group": "239.1.1.1",
+      "ingress_port": "Eth3",
+      "reason": null,
+      "seq": 5,
+      "vlan": 10
+    }
+  ]
+}

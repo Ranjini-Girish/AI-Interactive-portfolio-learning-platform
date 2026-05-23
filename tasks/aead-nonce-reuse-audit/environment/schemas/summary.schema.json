@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "summary",
+  "type": "object",
+  "required": ["totals"],
+  "properties": {
+    "totals": {
+      "type": "object",
+      "required": [
+        "encryptions_accepted", "encryptions_rejected", "encryptions_total",
+        "errors", "events_total", "keys_total", "notices", "warnings"
+      ],
+      "properties": {
+        "encryptions_accepted": {"type": "integer"},
+        "encryptions_rejected": {"type": "integer"},
+        "encryptions_total":    {"type": "integer"},
+        "errors":               {"type": "integer"},
+        "events_total":         {"type": "integer"},
+        "keys_total":           {"type": "integer"},
+        "notices":              {"type": "integer"},
+        "warnings":             {"type": "integer"}
+      }
+    }
+  }
+}

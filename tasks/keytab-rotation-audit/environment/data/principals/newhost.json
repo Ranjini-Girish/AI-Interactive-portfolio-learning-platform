@@ -1,0 +1,7 @@
+{
+  "principal": "host/newhost.example.com@EXAMPLE.COM",
+  "tier": "gold",
+  "exempt": false,
+  "override_rotation_days": null,
+  "comment": "host enrolled into directory but never received a key"
+}

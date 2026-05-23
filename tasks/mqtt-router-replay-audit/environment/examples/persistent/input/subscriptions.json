@@ -1,0 +1,6 @@
+{
+  "subscriptions": [
+    {"client_id": "alpha", "filter": "events/#", "qos": 2},
+    {"client_id": "bravo", "filter": "down/#",   "qos": 1}
+  ]
+}

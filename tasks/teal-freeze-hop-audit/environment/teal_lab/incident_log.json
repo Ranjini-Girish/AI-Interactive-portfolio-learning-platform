@@ -1,0 +1,13 @@
+{
+  "events": [
+    {"accepted": true, "kind": "add", "value": 11},
+    {"accepted": false, "kind": "add", "value": 99},
+    {"accepted": true, "kind": "xor_lane", "value": 7},
+    {"accepted": true, "kind": "mul_wrap", "value": 3},
+    {"accepted": true, "kind": "add", "value": -5},
+    {"accepted": true, "kind": "noop_extra", "value": 1},
+    {"accepted": true, "kind": "mul_wrap", "value": 97},
+    {"accepted": true, "kind": "xor_lane", "value": 255},
+    {"accepted": true, "kind": "add", "value": 19}
+  ]
+}

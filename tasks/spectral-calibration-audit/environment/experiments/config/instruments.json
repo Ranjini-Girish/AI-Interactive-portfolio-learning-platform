@@ -1,0 +1,26 @@
+{
+  "spec_a": {
+    "operator": "Mira",
+    "temperature_c": 21.5,
+    "quality_flag": "ok",
+    "wavelength_offset_nm": 0.05
+  },
+  "spec_b": {
+    "operator": "Noor",
+    "temperature_c": 23.0,
+    "quality_flag": "ok",
+    "wavelength_offset_nm": -0.075
+  },
+  "spec_c": {
+    "operator": "Ilya",
+    "temperature_c": 19.8,
+    "quality_flag": "ok",
+    "wavelength_offset_nm": 0.12
+  },
+  "spec_hold": {
+    "operator": "Rhea",
+    "temperature_c": 22.0,
+    "quality_flag": "service",
+    "wavelength_offset_nm": 0.0
+  }
+}

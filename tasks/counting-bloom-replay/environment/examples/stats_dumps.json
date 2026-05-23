@@ -1,0 +1,23 @@
+{
+  "dumps": [
+    {
+      "counter_bits": 4,
+      "k": 4,
+      "m": 16,
+      "non_zero_slots": 2,
+      "saturated_slots": 0,
+      "seq": 4,
+      "stats": {
+        "clamped_remove": 0,
+        "clears": 0,
+        "rejected_negative": 0,
+        "rejected_saturate": 0,
+        "resizes": 0,
+        "successful_adds": 1,
+        "successful_queries": 2,
+        "successful_removes": 0
+      },
+      "total_count": 4
+    }
+  ]
+}

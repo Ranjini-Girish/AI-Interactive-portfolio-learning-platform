@@ -1,0 +1,67 @@
+{
+  "entries": [
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 105,
+      "sa_id": "alpha",
+      "seq": 2
+    },
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 102,
+      "sa_id": "alpha",
+      "seq": 3
+    },
+    {
+      "decision": "too_old_logged",
+      "diagnostic": "W_TOO_OLD",
+      "esp_seq": 70,
+      "sa_id": "alpha",
+      "seq": 4
+    },
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 1,
+      "sa_id": "bravo",
+      "seq": 8
+    },
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 5,
+      "sa_id": "charlie",
+      "seq": 10
+    },
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 5,
+      "sa_id": "alpha",
+      "seq": 17
+    },
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 1,
+      "sa_id": "passive_x",
+      "seq": 26
+    },
+    {
+      "decision": "too_old_logged",
+      "diagnostic": "W_TOO_OLD",
+      "esp_seq": 5,
+      "sa_id": "bravo",
+      "seq": 27
+    },
+    {
+      "decision": "too_old_logged",
+      "diagnostic": "W_TOO_OLD",
+      "esp_seq": 36,
+      "sa_id": "alpha",
+      "seq": 29
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "bias_floor": 1,
+  "cap": 57,
+  "cutoff": 37,
+  "fold_mod": 999,
+  "label": "amber-journal-merge-audit",
+  "mask": 65,
+  "poly_base": 129,
+  "seed_offset": 85,
+  "square_mod": 999985
+}

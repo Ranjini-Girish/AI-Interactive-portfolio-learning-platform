@@ -22,32 +22,26 @@ export async function openTerminusSubmissionStart(page: Page): Promise<void> {
   await waitForSubmissionWorkspace(page);
 }
 
-/**
- * Open a task in the revision queue. Uses SNORKEL_REVISION_TASK_ID when set;
- * otherwise clicks the first "Revise" card on home.
- */
-export async function openRevisionTask(page: Page, taskId?: string): Promise<string> {
-  const id = taskId ?? process.env.SNORKEL_REVISION_TASK_ID;
-  await goToHome(page);
+/** Home revision cards use data-testid="{assignmentId}-Terminus-2nd-Edition". */
+function revisionCardReviseButtonByAssignmentId(page: Page, assignmentId: string) {
+  return page
+    .getByTestId(`${assignmentId}-Terminus-2nd-Edition`)
+    .getByRole('button', { name: 'Revise' });
+}
 
-  if (id) {
-    const revise = page
-      .locator('motion-div, article, li, div')
-      .filter({ hasText: id })
-      .filter({ has: page.getByRole('button', { name: 'Revise' }) })
-      .first()
-      .getByRole('button', { name: 'Revise' });
-    await expect(revise).toBeVisible({ timeout: 30_000 });
-    await Promise.all([
-      page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
-      revise.click(),
-    ]);
-    return id;
-  }
+function revisionCardReviseButtonByLabel(page: Page, label: string | RegExp) {
+  return page
+    .locator('motion-div, article, li, div')
+    .filter({ hasText: label })
+    .filter({ has: page.getByRole('button', { name: 'Revise' }) })
+    .first()
+    .getByRole('button', { name: 'Revise' });
+}
 
-  const firstRevise = page.getByRole('button', { name: 'Revise' }).first();
-  await expect(firstRevise).toBeVisible();
-  const resolvedId = await firstRevise.evaluate((el) => {
+async function extractAssignmentIdFromReviseButton(
+  reviseButton: ReturnType<Page['getByRole']>,
+): Promise<string> {
+  return reviseButton.evaluate((el) => {
     let node: HTMLElement | null = el.parentElement;
     for (let depth = 0; depth < 12 && node; depth++, node = node.parentElement) {
       const match = (node.innerText || '').match(
@@ -57,6 +51,42 @@ export async function openRevisionTask(page: Page, taskId?: string): Promise<str
     }
     return '';
   });
+}
+
+/**
+ * Open a task in the revision queue.
+ * Priority: explicit taskId arg → SNORKEL_REVISION_TASK_ID → SNORKEL_REVISION_TASK_NAME
+ * → first "Revise" card on home.
+ */
+export async function openRevisionTask(page: Page, taskId?: string): Promise<string> {
+  const id = taskId ?? process.env.SNORKEL_REVISION_TASK_ID;
+  const name = process.env.SNORKEL_REVISION_TASK_NAME;
+  await goToHome(page);
+
+  if (id) {
+    const revise = revisionCardReviseButtonByAssignmentId(page, id);
+    await expect(revise).toBeVisible({ timeout: 30_000 });
+    await Promise.all([
+      page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
+      revise.click(),
+    ]);
+    return id;
+  }
+
+  if (name) {
+    const revise = revisionCardReviseButtonByLabel(page, name);
+    await expect(revise).toBeVisible({ timeout: 30_000 });
+    const resolvedId = await extractAssignmentIdFromReviseButton(revise);
+    await Promise.all([
+      page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
+      revise.click(),
+    ]);
+    return resolvedId;
+  }
+
+  const firstRevise = page.getByRole('button', { name: 'Revise' }).first();
+  await expect(firstRevise).toBeVisible();
+  const resolvedId = await extractAssignmentIdFromReviseButton(firstRevise);
   await Promise.all([
     page.waitForURL(/\/projects\/[^/]+\/submission-[^/]+\//, { timeout: 60_000 }),
     firstRevise.click(),

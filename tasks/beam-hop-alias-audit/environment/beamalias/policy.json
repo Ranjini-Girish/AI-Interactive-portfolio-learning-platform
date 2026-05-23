@@ -1,0 +1,6 @@
+{
+  "hop_span": 2,
+  "nyquist_hz": 50.0,
+  "vote_ratio": 0.55,
+  "window_bins": 3
+}

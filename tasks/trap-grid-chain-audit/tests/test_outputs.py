@@ -1,3 +1,4 @@
+# scaffold-status: oracle-pending
 """Verifier suite for trap-grid-chain-audit.
 
 Locks input fixtures with SHA-256, checks emitted JSON logic via parsed

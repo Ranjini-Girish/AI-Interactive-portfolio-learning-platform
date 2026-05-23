@@ -1,0 +1,16 @@
+{
+  "keys": [
+    {
+      "algorithm": "aes-gcm-128",
+      "compromised_seq": 2,
+      "exhausted_seq": null,
+      "installed_seq": 0,
+      "key_id": "k0",
+      "last_use_tick": 1,
+      "max_uses": 5,
+      "retired_seq": null,
+      "state": "COMPROMISED",
+      "uses_count": 1
+    }
+  ]
+}

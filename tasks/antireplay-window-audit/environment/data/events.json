@@ -1,0 +1,274 @@
+{
+  "events": [
+    {
+      "esp_seq": 105,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 0,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 102,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 1,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 105,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 2,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 102,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 3,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 70,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 4,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 90,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 5,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 60,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "bravo",
+      "seq": 6,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 1,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "bravo",
+      "seq": 7,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 1,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "bravo",
+      "seq": 8,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 5,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "charlie",
+      "seq": 9,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 5,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "charlie",
+      "seq": 10,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": null,
+      "op": "add_sa",
+      "owner": "dan",
+      "sa_id": "delta",
+      "seq": 11,
+      "top": 200,
+      "window_size": 32
+    },
+    {
+      "esp_seq": 250,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "delta",
+      "seq": 12,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 240,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "delta",
+      "seq": 13,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": null,
+      "op": "rekey",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 14,
+      "top": null,
+      "window_size": 64
+    },
+    {
+      "esp_seq": 1,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 15,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 5,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 16,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 5,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 17,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": null,
+      "op": "delete_sa",
+      "owner": null,
+      "sa_id": "bravo",
+      "seq": 18,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 100,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "bravo",
+      "seq": 19,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": null,
+      "op": "add_sa",
+      "owner": "bob2",
+      "sa_id": "bravo",
+      "seq": 20,
+      "top": 0,
+      "window_size": 32
+    },
+    {
+      "esp_seq": null,
+      "op": "add_sa",
+      "owner": "eve",
+      "sa_id": "echo",
+      "seq": 21,
+      "top": 0,
+      "window_size": 99
+    },
+    {
+      "esp_seq": null,
+      "op": "add_sa",
+      "owner": "fay",
+      "sa_id": "foxtrot",
+      "seq": 22,
+      "top": -1,
+      "window_size": 32
+    },
+    {
+      "esp_seq": null,
+      "op": "rekey",
+      "owner": null,
+      "sa_id": "delta",
+      "seq": 23,
+      "top": null,
+      "window_size": 99
+    },
+    {
+      "esp_seq": null,
+      "op": "rekey",
+      "owner": null,
+      "sa_id": "ghost",
+      "seq": 24,
+      "top": null,
+      "window_size": 32
+    },
+    {
+      "esp_seq": 1,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "passive_x",
+      "seq": 25,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 1,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "passive_x",
+      "seq": 26,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 5,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "bravo",
+      "seq": 27,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 100,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 28,
+      "top": null,
+      "window_size": null
+    },
+    {
+      "esp_seq": 36,
+      "op": "recv",
+      "owner": null,
+      "sa_id": "alpha",
+      "seq": 29,
+      "top": null,
+      "window_size": null
+    }
+  ]
+}

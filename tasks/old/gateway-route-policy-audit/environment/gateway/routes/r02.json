@@ -1,0 +1,1 @@
+{"pack_id":"beta","rules":[{"id":"api-v1","host":"api.example.com","host_type":"exact","path_prefix":"/api/v1","methods":["GET"],"decision":"allow"},{"id":"api-v1-billing","host":"api.example.com","host_type":"exact","path_prefix":"/api/v1/billing","methods":["GET"],"decision":"allow"}]}

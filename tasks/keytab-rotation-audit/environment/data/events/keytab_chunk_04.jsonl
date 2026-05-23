@@ -1,0 +1,4 @@
+{"event_id":"ev_e001","kind":"add","principal":"host/web01.example.com@EXAMPLE.COM","kvno":4,"day":21,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_e002","kind":"add","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":4,"day":21,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_e003","kind":"retire","principal":"host/web01.example.com@EXAMPLE.COM","kvno":3,"day":22,"hour":0}
+{"event_id":"ev_e004","kind":"retire","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":3,"day":22,"hour":0}

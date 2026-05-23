@@ -1,0 +1,47 @@
+{
+  "policies": [
+    {
+      "action": "keep",
+      "name": "keep-payments-errors",
+      "services": [
+        "payments"
+      ],
+      "statuses": [
+        "error",
+        "timeout"
+      ],
+      "type": "status_match"
+    },
+    {
+      "action": "drop",
+      "key": "endpoint_kind",
+      "name": "drop-cdn-healthchecks",
+      "type": "attribute",
+      "values": [
+        "healthcheck"
+      ]
+    },
+    {
+      "action": "keep",
+      "mode": "trace_total",
+      "name": "keep-slow-traces",
+      "threshold_ms": 5000,
+      "type": "latency"
+    },
+    {
+      "action": "drop",
+      "name": "drop-cdn-service",
+      "services": [
+        "cdn"
+      ],
+      "type": "service"
+    },
+    {
+      "action": "keep",
+      "hash_seed": "snorkel-tail-2026",
+      "name": "default-1-percent-sample",
+      "sampling_rate_per_mille": 100,
+      "type": "probabilistic"
+    }
+  ]
+}

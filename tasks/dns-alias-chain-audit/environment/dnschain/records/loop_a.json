@@ -1,0 +1,7 @@
+{
+  "alias_target": "loop.b",
+  "deny": false,
+  "epoch": 4,
+  "name": "loop.a",
+  "ttl_step": 10
+}

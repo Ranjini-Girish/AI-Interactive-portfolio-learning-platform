@@ -1,0 +1,11 @@
+{
+  "endpoints": [
+    {
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "id": "svc_a",
+      "recovery_ticks": null,
+      "window_size": null
+    }
+  ]
+}

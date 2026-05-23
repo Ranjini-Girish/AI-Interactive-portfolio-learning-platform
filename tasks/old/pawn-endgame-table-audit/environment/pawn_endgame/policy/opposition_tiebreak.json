@@ -1,0 +1,14 @@
+{
+  "tiebreak_table": {
+    "f0_m0": {"w": "draw", "b": "black_wins"},
+    "f0_m1": {"w": "white_wins", "b": "draw"},
+    "f1_m0": {"w": "black_wins", "b": "white_wins"},
+    "f1_m1": {"w": "draw", "b": "draw"},
+    "f2_m0": {"w": "white_wins", "b": "white_wins"},
+    "f2_m1": {"w": "black_wins", "b": "black_wins"},
+    "f3_m0": {"w": "draw", "b": "white_wins"},
+    "f3_m1": {"w": "black_wins", "b": "draw"},
+    "f4_m0": {"w": "white_wins", "b": "black_wins"},
+    "f4_m1": {"w": "draw", "b": "white_wins"}
+  }
+}

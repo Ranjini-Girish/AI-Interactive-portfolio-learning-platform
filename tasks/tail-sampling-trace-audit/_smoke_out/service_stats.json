@@ -1,0 +1,64 @@
+{
+  "services": [
+    {
+      "dropped_traces": 8,
+      "error_spans": 0,
+      "kept_traces": 1,
+      "max_trace_duration_ms": 667,
+      "service": "auth",
+      "span_count": 13,
+      "timeout_spans": 0,
+      "trace_count": 9
+    },
+    {
+      "dropped_traces": 6,
+      "error_spans": 2,
+      "kept_traces": 0,
+      "max_trace_duration_ms": 1017,
+      "service": "cdn",
+      "span_count": 13,
+      "timeout_spans": 0,
+      "trace_count": 6
+    },
+    {
+      "dropped_traces": 7,
+      "error_spans": 9,
+      "kept_traces": 3,
+      "max_trace_duration_ms": 734,
+      "service": "checkout",
+      "span_count": 15,
+      "timeout_spans": 2,
+      "trace_count": 10
+    },
+    {
+      "dropped_traces": 18,
+      "error_spans": 8,
+      "kept_traces": 13,
+      "max_trace_duration_ms": 7953,
+      "service": "frontend",
+      "span_count": 46,
+      "timeout_spans": 1,
+      "trace_count": 31
+    },
+    {
+      "dropped_traces": 2,
+      "error_spans": 0,
+      "kept_traces": 8,
+      "max_trace_duration_ms": 7953,
+      "service": "inventory",
+      "span_count": 12,
+      "timeout_spans": 0,
+      "trace_count": 10
+    },
+    {
+      "dropped_traces": 9,
+      "error_spans": 2,
+      "kept_traces": 3,
+      "max_trace_duration_ms": 666,
+      "service": "payments",
+      "span_count": 12,
+      "timeout_spans": 0,
+      "trace_count": 12
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "flows_input.schema.json",
+  "title": "Firewall test flows input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["flows"],
+  "properties": {
+    "flows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "direction", "src_ip", "dst_ip", "protocol", "src_port", "dst_port"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "direction": {"type": "string", "enum": ["ingress", "egress"]},
+          "src_ip": {"type": "string", "minLength": 1},
+          "dst_ip": {"type": "string", "minLength": 1},
+          "protocol": {"type": "string", "enum": ["tcp", "udp", "icmp"]},
+          "src_port": {"type": "integer", "minimum": 0, "maximum": 65535},
+          "dst_port": {"type": "integer", "minimum": 0, "maximum": 65535}
+        }
+      }
+    }
+  }
+}

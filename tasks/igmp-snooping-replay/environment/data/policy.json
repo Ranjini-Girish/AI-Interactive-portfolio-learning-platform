@@ -1,0 +1,6 @@
+{
+  "drop_unknown_groups": true,
+  "fast_leave": true,
+  "track_forwarding": true,
+  "ttl_sec": 300
+}

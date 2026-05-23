@@ -1,0 +1,23 @@
+{
+  "violations": [
+    {
+      "attempted_resources": {
+        "cpu": 99,
+        "memory": 0,
+        "storage": 0
+      },
+      "blocking_namespace": "team_x",
+      "decision": "rejected",
+      "event_id": "e_0002",
+      "namespace": "team_x",
+      "op": "allocate",
+      "reason": "limit_exceeded",
+      "resources_granted": {
+        "cpu": 0,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 200
+    }
+  ]
+}

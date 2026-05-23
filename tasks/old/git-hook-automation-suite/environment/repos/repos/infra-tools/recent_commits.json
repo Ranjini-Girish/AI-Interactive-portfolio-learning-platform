@@ -1,0 +1,9 @@
+{
+  "repo": "infra-tools",
+  "commits": [
+    {"sha": "it000001", "branch": "main",         "msg_type": "feat", "msg_subject": "ansible role for k8s nodes", "issue_ref": "INFRA-12", "day": 109},
+    {"sha": "it000002", "branch": "feature/k8s", "msg_type": "fix",  "msg_subject": "drain timeout 5m default",    "issue_ref": "INFRA-13", "day": 113},
+    {"sha": "it000003", "branch": "main",         "msg_type": "feat", "msg_subject": "rolling restart playbook",   "issue_ref": "INFRA-14", "day": 116},
+    {"sha": "it000004", "branch": "release",     "msg_type": "fix",  "msg_subject": "tag bump",                    "issue_ref": "INFRA-15", "day": 119}
+  ]
+}

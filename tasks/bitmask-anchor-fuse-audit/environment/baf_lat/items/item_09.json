@@ -1,5 +1,6 @@
 {
-  "id": "n09", 
-  "mask": 156, 
-  "scale": 0.375
+  "id": "n09",
+  "mask": 156,
+  "scale": 0.375,
+  "segment": "burst"
 }

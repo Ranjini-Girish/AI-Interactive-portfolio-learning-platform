@@ -1,0 +1,19 @@
+{
+  "auto_coalesces": 3,
+  "events_with_diagnostics": 12,
+  "explicit_merges": 2,
+  "final_region_count": 8,
+  "maps_rejected": 4,
+  "maps_succeeded": 3,
+  "owners": [
+    "alice",
+    "bob",
+    "dave",
+    "eve",
+    "frank",
+    "heidi"
+  ],
+  "splits": 3,
+  "total_events": 20,
+  "unmaps_succeeded": 1
+}

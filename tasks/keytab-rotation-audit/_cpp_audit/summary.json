@@ -1,0 +1,29 @@
+{
+  "anomalies_per_severity": {
+    "critical": 4,
+    "high": 10,
+    "low": 4,
+    "medium": 13
+  },
+  "compromised_principals": [
+    "host/db-master.example.com@EXAMPLE.COM"
+  ],
+  "current_day": 30,
+  "current_hour": 0,
+  "exempt_principals": 1,
+  "invalid_keytab_events": 3,
+  "invalid_principals": 0,
+  "invalid_tgs_requests": 3,
+  "tickets_per_verdict": {
+    "downgrade_attempt": 2,
+    "invalid_kvno_retired": 2,
+    "invalid_kvno_revoked": 2,
+    "invalid_kvno_unknown": 3,
+    "valid": 5,
+    "valid_cross_fade": 1,
+    "weak_enctype": 2
+  },
+  "total_keytab_events": 45,
+  "total_principals": 9,
+  "total_tgs_requests": 20
+}

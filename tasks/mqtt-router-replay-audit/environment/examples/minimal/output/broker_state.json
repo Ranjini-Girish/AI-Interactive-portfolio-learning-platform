@@ -1,0 +1,36 @@
+{
+  "clients": [
+    {
+      "id": "pub",
+      "keep_alive_sec": 30,
+      "persistent": false,
+      "subscriptions": [
+        {
+          "filter": "demo/y",
+          "qos": 0
+        }
+      ]
+    },
+    {
+      "id": "sub",
+      "keep_alive_sec": 30,
+      "persistent": false,
+      "subscriptions": [
+        {
+          "filter": "demo/+",
+          "qos": 1
+        }
+      ]
+    }
+  ],
+  "now_sec": 10,
+  "persistent_sessions": [],
+  "retained": [
+    {
+      "payload_id": 2,
+      "qos": 0,
+      "retained_at_sec": 0,
+      "topic": "demo/y"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "diagnostics": [
+    {
+      "code": "W_REPORT_REFRESH",
+      "name": "Eth1",
+      "seq": 3,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth1",
+      "seq": 4,
+      "severity": "note"
+    }
+  ]
+}

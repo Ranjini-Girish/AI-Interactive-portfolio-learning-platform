@@ -1,0 +1,104 @@
+- namespace: payments-prod
+  manifests:
+    - kind: Deployment
+      name: gateway-api
+      image: registry.example.com/gateway:1.4.0
+      replicas: 3
+      ports:
+        - 8080
+        - 8443
+      env:
+        LOG_LEVEL: info
+        FEATURE_RETRY: "true"
+      probes:
+        liveness: /healthz
+        readiness: /ready
+      resources:
+        cpu: "500m"
+        memory: "512Mi"
+    - kind: Deployment
+      name: ledger-writer
+      image: registry.example.com/ledger:2.1.0
+      replicas: 4
+      env:
+        DB_POOL: "16"
+        LOG_LEVEL: info
+      probes:
+        liveness: /alive
+      resources:
+        cpu: "1"
+        memory: "1Gi"
+    - kind: StatefulSet
+      name: ledger-store
+      image: registry.example.com/ledger-store:1.0.5
+      replicas: 3
+      volumeClaim:
+        storage: "20Gi"
+        storageClass: ssd-gp3
+      env:
+        REPLICATION_FACTOR: "3"
+    - kind: CronJob
+      name: nightly-reconcile
+      image: registry.example.com/reconcile:0.9.4
+      schedule: "0 2 * * *"
+      env:
+        BATCH_SIZE: "5000"
+    - kind: Deployment
+      name: gateway-api
+      image: registry.example.com/gateway-shadow:0.0.1
+      replicas: 0
+      env:
+        SHADOW: "true"
+- namespace: telemetry
+  manifests:
+    - kind: Deployment
+      name: collector
+      image: registry.example.com/collector:1.1.0
+      replicas: 2
+      env:
+        SAMPLE_RATE: "0.1"
+    - kind: DaemonSet
+      name: node-shipper
+      image: registry.example.com/shipper:0.7.0
+      env:
+        BUFFER_MB: "64"
+    - kind: Deployment
+      name: "   "
+      image: registry.example.com/legacy-noop:0.0.1
+      replicas: 1
+- namespace:
+  manifests:
+    - kind: Job
+      name: bootstrap-keys
+      image: registry.example.com/keytool:1.2.3
+      env:
+        ROTATE: "false"
+- namespace: edge
+  manifests:
+    - kind: Deployment
+      name: probe-runner
+      image: registry.example.com/probe:0.4.2
+      replicas: 1
+    - kind: Deployment
+      name: cache-warmer
+      image: registry.example.com/warmer:0.3.0
+      replicas: 1
+      env:
+        WARM_KEYS:
+          - alpha
+          - beta
+          - gamma
+- namespace: identity
+  manifests:
+    - kind: Deployment
+      name: jwt-signer
+      image: registry.example.com/jwt-signer:1.0.0
+      replicas: 2
+      env:
+        KEY_ID: "k1"
+    - kind: Deployment
+      name: oidc-bridge
+      image: registry.example.com/oidc:0.5.0
+      replicas: 1
+      env:
+        ISSUER: "https://idp.example.com"

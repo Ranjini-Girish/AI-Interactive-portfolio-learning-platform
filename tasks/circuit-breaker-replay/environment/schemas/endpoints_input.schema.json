@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "endpoints.json",
+  "description": "Initial endpoint table. All endpoints start in CLOSED.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["endpoints"],
+  "properties": {
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "failure_threshold_pct",
+          "window_size",
+          "half_open_max_probes",
+          "recovery_ticks"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "failure_threshold_pct": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "maximum": 100
+          },
+          "window_size": {
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "half_open_max_probes": {
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "recovery_ticks": {
+            "type": ["integer", "null"],
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

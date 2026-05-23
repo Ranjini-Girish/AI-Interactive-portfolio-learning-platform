@@ -1,0 +1,157 @@
+{
+  "requests": [
+    {
+      "day": 1,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_001",
+      "verdict": "valid"
+    },
+    {
+      "day": 4,
+      "hour": 0,
+      "kvno": 4,
+      "policy_version": "v1",
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "request_id": "tgs_014",
+      "verdict": "invalid_kvno_unknown"
+    },
+    {
+      "day": 5,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_007",
+      "verdict": "valid"
+    },
+    {
+      "day": 7,
+      "hour": 12,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_002",
+      "verdict": "valid_cross_fade"
+    },
+    {
+      "day": 8,
+      "hour": 12,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_003",
+      "verdict": "invalid_kvno_retired"
+    },
+    {
+      "day": 9,
+      "hour": 10,
+      "kvno": 2,
+      "policy_version": "v1",
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "request_id": "tgs_005",
+      "verdict": "invalid_kvno_revoked"
+    },
+    {
+      "day": 10,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/legacy.example.com@EXAMPLE.COM",
+      "request_id": "tgs_010",
+      "verdict": "weak_enctype"
+    },
+    {
+      "day": 10,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/newhost.example.com@EXAMPLE.COM",
+      "request_id": "tgs_011",
+      "verdict": "invalid_kvno_unknown"
+    },
+    {
+      "day": 10,
+      "hour": 0,
+      "kvno": 99,
+      "policy_version": "v1",
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_012",
+      "verdict": "invalid_kvno_unknown"
+    },
+    {
+      "day": 11,
+      "hour": 12,
+      "kvno": 2,
+      "policy_version": "v1",
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "request_id": "tgs_015",
+      "verdict": "invalid_kvno_retired"
+    },
+    {
+      "day": 16,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v1",
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_008",
+      "verdict": "downgrade_attempt"
+    },
+    {
+      "day": 22,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v2",
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_009",
+      "verdict": "weak_enctype"
+    },
+    {
+      "day": 29,
+      "hour": 0,
+      "kvno": 5,
+      "policy_version": "v2",
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "request_id": "tgs_006",
+      "verdict": "valid"
+    },
+    {
+      "day": 29,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v2",
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "request_id": "tgs_013",
+      "verdict": "invalid_kvno_revoked"
+    },
+    {
+      "day": 29,
+      "hour": 0,
+      "kvno": 4,
+      "policy_version": "v2",
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "request_id": "tgs_016",
+      "verdict": "valid"
+    },
+    {
+      "day": 29,
+      "hour": 0,
+      "kvno": 1,
+      "policy_version": "v2",
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "request_id": "tgs_017",
+      "verdict": "downgrade_attempt"
+    },
+    {
+      "day": 29,
+      "hour": 12,
+      "kvno": 5,
+      "policy_version": "v2",
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "request_id": "tgs_004",
+      "verdict": "valid"
+    }
+  ]
+}

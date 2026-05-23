@@ -1,3 +1,4 @@
+# scaffold-status: oracle-pending
 """Behavioral tests for thermal-guard-ramp-audit."""
 
 from __future__ import annotations
@@ -16,13 +17,13 @@ OUTPUT_FILES = ["summary.json", "thermal_ledger.json"]
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "ca4e9144b24ff46d0ebb63b8c20ce5bc91ce04f19c1d3e453ca60df97c41e3f9",
+    "SPEC.md": "f45b968c00660ce200ce8a96b91ad0fd14166f4adcf4a1df2dce5b9203396a95",
     "anchors/a.json": "e435b2b7d8c7681105ea75b92f4283573c9b1fc7aee73d05a68d6cbef22300f7",
     "anchors/b.json": "818b9eb11968d1bb3b50b186f1909a468c5f4d24d4063685ee859a57f566b9e4",
     "ancillary/meta.json": "47855aeee741568ebb252dc1bdb459a5f32b1eabddb9cb68aeb42878e1055740",
     "ancillary/notes.json": "4a1af0e3d20fbd407b603e7f6ed98b6725d0a16c5c9cb8c8f4a15d4e4ce908c6",
     "domain_layout.json": "309a2b0702ccf3cc34828f0b3e03c3950cd3d1b2f4cbed434ef8d1b555ad0921",
-    "incident_log.json": "a81039875b8962e9eda8a9382eaad65538620b0a5ee89c9b7f4b96f425d5a50e",
+    "incident_log.json": "d09a7afed7d59306ae8946837f38883e74184cd778274741f75cc15da45f0170",
     "items/item_00.json": "92a52deba1e9ed138739420a68041499c17e7e039737a713abb39d07dc4da390",
     "items/item_01.json": "c9ef0e9c967951a0927e19151238a04abda6ec3fddc074aac845ce45d39d852b",
     "items/item_02.json": "b51e9d416b298590142c1f863e8bcea1ed9269c0da8c0602691db11ea8f77c5c",
@@ -47,17 +48,21 @@ EXPECTED_INPUT_HASHES = {
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "summary.json": "8f3e65cd64c557dd3c1aa43fb204718fedb9d93ee2d4aca5c4d464190f732d1f",
-    "thermal_ledger.json": "efd2eb677ee6f29b477b08ddf5f2aa29702f08d143a939e9101cba09f7172b20",
+    "summary.json": "adecfd794306e1546836227bd2609437ec261e8a72ceaa3ca125f92393df5c0a",
+    "thermal_ledger.json": "b107df777d98686cc908479c5e84097303f2e33a78781408409cdd5a26b57172",
 }
 
 
 EXPECTED_FIELD_HASHES = {
     "summary.json.ceiling": "b725d20650649a5221675144bab5946e013616d1ba7a25afc394f43e05e82052",
     "summary.json.day": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
-    "summary.json.global_add": "f3e360d89952f40d3b79d0b07dd0b94f1cbf9017cba5d2a5f8128e4146d6e3c1",
+    "summary.json.global_add": "d2cbad71ff333de67d07ec676e352ab7f38248eb69c942950157220607c55e84",
+    "summary.json.guard_suppress_events": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    "summary.json.ramp_effective": "3135d2d71bff77be4838a7102bbac5b87af7fd0b9aef3d416f963a5afbb19061",
+    "summary.json.ramp_shave_total": "4942870d7312d707982f792e63180e31f72925b998dec46f7ce23db6f16e2d3b",
+    "summary.json.zone_bias_events": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
     "summary.json.zones": "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a",
-    "thermal_ledger.json.entries": "985af0dad109d9407cba0a1f4c74031ad400b0145dc36bcd2a66db683dd6cba1",
+    "thermal_ledger.json.entries": "68ee3457689e619d87ea97b4285f644fe5f7251fb72956e70195312f73e536e7",
 }
 
 

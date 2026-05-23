@@ -1,0 +1,51 @@
+{
+  "freeze_tag": "prod-east",
+  "host_id": "h05",
+  "samples": [
+    {
+      "err": 0,
+      "ok": 10,
+      "slot": 3
+    },
+    {
+      "err": 0,
+      "ok": 9,
+      "slot": 4
+    },
+    {
+      "err": 0,
+      "ok": 8,
+      "slot": 5
+    },
+    {
+      "err": 0,
+      "ok": 7,
+      "slot": 6
+    },
+    {
+      "err": 0,
+      "ok": 6,
+      "slot": 7
+    },
+    {
+      "err": 0,
+      "ok": 5,
+      "slot": 8
+    },
+    {
+      "err": 0,
+      "ok": 4,
+      "slot": 9
+    },
+    {
+      "err": 0,
+      "ok": 3,
+      "slot": 10
+    },
+    {
+      "err": 0,
+      "ok": 2,
+      "slot": 11
+    }
+  ]
+}

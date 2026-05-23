@@ -1,0 +1,17 @@
+{
+  "masks": [
+    {
+      "sample_id": "ket_04",
+      "zero_slots": [
+        0
+      ]
+    },
+    {
+      "sample_id": "ket_09",
+      "zero_slots": [
+        1,
+        3
+      ]
+    }
+  ]
+}

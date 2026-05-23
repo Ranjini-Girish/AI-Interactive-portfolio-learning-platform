@@ -1,0 +1,30 @@
+{
+  "active_clients": 3,
+  "deliveries_total": 7,
+  "diagnostics_by_code": {
+    "E_DUPLICATE_CONNECT": 1,
+    "E_INVALID_TOPIC": 1,
+    "E_INVALID_TOPIC_FILTER": 1,
+    "E_NOT_CONNECTED": 3,
+    "E_SUBSCRIPTION_LIMIT": 1,
+    "N_SESSION_FRESH": 2,
+    "N_SESSION_RESUMED": 1,
+    "N_WILL_DELIVERED": 1,
+    "W_NO_SUBSCRIBERS": 8,
+    "W_RETAINED_LIMIT": 1
+  },
+  "events_total": 36,
+  "persistent_sessions": 2,
+  "publishes_delivered": 6,
+  "retained_count": 6,
+  "topics_published": [
+    "control/cmd",
+    "retain/a",
+    "retain/b",
+    "retain/c",
+    "retain/d",
+    "sensors/A/temp",
+    "sensors/B/temp",
+    "status/alpha"
+  ]
+}

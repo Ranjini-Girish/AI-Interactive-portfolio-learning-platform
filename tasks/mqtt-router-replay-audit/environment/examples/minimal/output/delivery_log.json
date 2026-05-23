@@ -1,0 +1,40 @@
+{
+  "deliveries": [
+    {
+      "payload_id": 1,
+      "publish_qos": 1,
+      "recipients": [
+        {
+          "client_id": "sub",
+          "delivered_qos": 1
+        }
+      ],
+      "seq": 0,
+      "topic": "demo/x"
+    },
+    {
+      "payload_id": 2,
+      "publish_qos": 0,
+      "recipients": [
+        {
+          "client_id": "sub",
+          "delivered_qos": 0
+        }
+      ],
+      "seq": 1,
+      "topic": "demo/y"
+    },
+    {
+      "payload_id": 2,
+      "publish_qos": 0,
+      "recipients": [
+        {
+          "client_id": "pub",
+          "delivered_qos": 0
+        }
+      ],
+      "seq": 2,
+      "topic": "demo/y"
+    }
+  ]
+}

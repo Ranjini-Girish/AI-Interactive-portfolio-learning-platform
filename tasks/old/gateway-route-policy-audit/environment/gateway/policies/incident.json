@@ -1,0 +1,8 @@
+{
+  "active": true,
+  "locked_hosts": [
+    "payments.example.com",
+    "ledger.example.com"
+  ],
+  "break_glass_token": "GG-ORG-09"
+}

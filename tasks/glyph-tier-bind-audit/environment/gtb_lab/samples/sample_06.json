@@ -1,0 +1,14 @@
+{
+  "bind_tag": "trace_06",
+  "epoch": 5,
+  "glyphs": [
+    4,
+    8,
+    15,
+    16,
+    23,
+    42
+  ],
+  "sample_id": "gtb_06",
+  "tier_shift": -3
+}

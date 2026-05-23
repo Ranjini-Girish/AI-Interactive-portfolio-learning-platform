@@ -1,0 +1,35 @@
+{
+  "coarse_step_km": 4.0,
+  "depth_radius_km": 10.0,
+  "finding_severity": {
+    "depth_at_boundary": "medium",
+    "high_residual_rms": "high",
+    "insufficient_picks": "high",
+    "large_azimuth_gap": "medium",
+    "magnitude_outlier": "medium",
+    "rejected_pick": "info",
+    "shallow_depth": "low",
+    "station_distance_warning": "low"
+  },
+  "fine_radius_km": 2.0,
+  "fine_step_km": 0.5,
+  "grid_radius_km": 16.0,
+  "high_rms_threshold_s": 0.25,
+  "magnitude_outlier_z": 2.0,
+  "max_azimuth_gap_deg": 200.0,
+  "max_depth_km": 25.0,
+  "min_depth_km": 0.0,
+  "min_magnitude_observations": 3,
+  "min_usable_picks": 4,
+  "near_station_threshold_km": 5.0,
+  "residual_reject_s": 0.5,
+  "severity_ranks": {
+    "critical": 5,
+    "high": 4,
+    "info": 1,
+    "low": 2,
+    "medium": 3
+  },
+  "shallow_depth_km": 1.0,
+  "station_amplitude_decay_power": 1.5
+}

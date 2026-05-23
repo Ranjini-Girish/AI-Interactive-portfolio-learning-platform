@@ -1,0 +1,8 @@
+{
+  "rules": [
+    {"rule_id": "R001", "priority": 10, "pattern": "amazon", "mcc": "5942", "fee_bps": 200},
+    {"rule_id": "R002", "priority": 20, "pattern": "uber", "mcc": "5812", "fee_bps": 300},
+    {"rule_id": "R003", "priority": 5, "pattern": "netflix", "mcc": "4899", "fee_bps": 150},
+    {"rule_id": "R010", "priority": 10, "pattern": "weird", "mcc": "5942", "fee_bps": 400}
+  ]
+}

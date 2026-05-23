@@ -1,0 +1,34 @@
+{
+  "services": [
+    {
+      "dropped_traces": 2,
+      "error_spans": 0,
+      "kept_traces": 1,
+      "max_trace_duration_ms": 100,
+      "service": "frontend",
+      "span_count": 4,
+      "timeout_spans": 0,
+      "trace_count": 3
+    },
+    {
+      "dropped_traces": 1,
+      "error_spans": 0,
+      "kept_traces": 0,
+      "max_trace_duration_ms": 100,
+      "service": "inventory",
+      "span_count": 1,
+      "timeout_spans": 0,
+      "trace_count": 1
+    },
+    {
+      "dropped_traces": 0,
+      "error_spans": 1,
+      "kept_traces": 1,
+      "max_trace_duration_ms": 50,
+      "service": "payments",
+      "span_count": 1,
+      "timeout_spans": 0,
+      "trace_count": 1
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "ports": [
+    {
+      "port_id": "Eth1",
+      "role": "host",
+      "vlan": 20
+    },
+    {
+      "port_id": "Eth2",
+      "role": "host",
+      "vlan": 10
+    },
+    {
+      "port_id": "Eth3",
+      "role": "host",
+      "vlan": 20
+    },
+    {
+      "port_id": "Eth4",
+      "role": "host",
+      "vlan": 20
+    },
+    {
+      "port_id": "Eth5",
+      "role": "host",
+      "vlan": 20
+    },
+    {
+      "port_id": "Eth6",
+      "role": "host",
+      "vlan": 10
+    },
+    {
+      "port_id": "Eth7",
+      "role": "router",
+      "vlan": 10
+    },
+    {
+      "port_id": "Eth8",
+      "role": "router",
+      "vlan": 20
+    }
+  ]
+}

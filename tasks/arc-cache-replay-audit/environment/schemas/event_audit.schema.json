@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "event_audit.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["accepted", "event_id", "payload", "reason_ignored", "ts_unix_ms", "type"],
+        "properties": {
+          "accepted": {"type": "boolean"},
+          "event_id": {"type": "string", "minLength": 1},
+          "payload": {"type": "object"},
+          "reason_ignored": {
+            "type": ["string", "null"],
+            "enum": [null, "unknown_resident", "cache_empty"]
+          },
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "type": {"type": "string", "enum": ["access", "evict", "clear"]}
+        }
+      }
+    }
+  }
+}

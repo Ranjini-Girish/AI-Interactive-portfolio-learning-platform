@@ -1,0 +1,10 @@
+{
+  "blend_mod": 11,
+  "cap_spill": true,
+  "floor_window": 3,
+  "fold_div": 2,
+  "mix_coeff": 5,
+  "pace_echo": true,
+  "pace_mod": 3,
+  "slew_stride": 5
+}

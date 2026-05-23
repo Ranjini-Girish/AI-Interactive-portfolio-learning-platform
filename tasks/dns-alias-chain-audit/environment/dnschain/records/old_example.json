@@ -1,0 +1,7 @@
+{
+  "alias_target": "api.example",
+  "deny": false,
+  "epoch": 2,
+  "name": "old.example",
+  "ttl_step": 5
+}

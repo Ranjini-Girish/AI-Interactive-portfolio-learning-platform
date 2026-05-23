@@ -1,0 +1,28 @@
+{
+  "clients": [
+    {
+      "id": "c-alpha",
+      "connected": true,
+      "persistent": true,
+      "keep_alive_sec": 60,
+      "will": {
+        "topic": "status/alpha",
+        "payload_id": 9001,
+        "qos": 1,
+        "retain": true
+      }
+    },
+    {
+      "id": "c-bravo",
+      "connected": true,
+      "persistent": false,
+      "keep_alive_sec": 30
+    },
+    {
+      "id": "c-charlie",
+      "connected": false,
+      "persistent": true,
+      "keep_alive_sec": 120
+    }
+  ]
+}

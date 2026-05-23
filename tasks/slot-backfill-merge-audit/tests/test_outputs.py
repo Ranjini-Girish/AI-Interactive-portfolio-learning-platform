@@ -1,3 +1,4 @@
+# scaffold-status: oracle-pending
 """Verifier suite for slot-backfill-merge-audit."""
 
 from __future__ import annotations

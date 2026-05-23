@@ -1,0 +1,15 @@
+simulation,total_runs,total_rollbacks,last_rollback_day,avg_rollback_walltime_hours,avg_rollback_cost_node_hours
+sim_alpha,18,1,100,2.0,30
+sim_beta,24,2,180,6.5,80
+sim_gamma,12,0,,5.0,50
+sim_delta,4,0,,5.0,50
+sim_epsilon,9,0,,5.0,50
+sim_zeta,21,4,215,12.5,220
+sim_eta,33,5,220,10.0,180
+sim_theta,11,1,150,4.0,95
+sim_iota,16,2,170,3.5,60
+sim_kappa,8,0,,2.5,40
+sim_lambda,28,6,100,6.0,70
+sim_mu,7,0,,5.0,100
+sim_nu,5,1,200,3.0,50
+sim_xi,6,0,,3.5,60

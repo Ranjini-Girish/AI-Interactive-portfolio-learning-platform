@@ -1,0 +1,116 @@
+{
+  "transitions": [
+    {
+      "endpoint_id": "auth",
+      "from_state": "CLOSED",
+      "reason": "threshold_breach",
+      "seq": 3,
+      "tick": 0,
+      "to_state": "OPEN"
+    },
+    {
+      "endpoint_id": "auth",
+      "from_state": "OPEN",
+      "reason": "recovery_timeout",
+      "seq": 8,
+      "tick": 3,
+      "to_state": "HALF_OPEN"
+    },
+    {
+      "endpoint_id": "auth",
+      "from_state": "HALF_OPEN",
+      "reason": "probe_success_quota",
+      "seq": 10,
+      "tick": 3,
+      "to_state": "CLOSED"
+    },
+    {
+      "endpoint_id": "catalog",
+      "from_state": "CLOSED",
+      "reason": "threshold_breach",
+      "seq": 14,
+      "tick": 3,
+      "to_state": "OPEN"
+    },
+    {
+      "endpoint_id": "catalog",
+      "from_state": "OPEN",
+      "reason": "recovery_timeout",
+      "seq": 17,
+      "tick": 5,
+      "to_state": "HALF_OPEN"
+    },
+    {
+      "endpoint_id": "catalog",
+      "from_state": "HALF_OPEN",
+      "reason": "probe_failure",
+      "seq": 18,
+      "tick": 5,
+      "to_state": "OPEN"
+    },
+    {
+      "endpoint_id": "discovery",
+      "from_state": "CLOSED",
+      "reason": "manual_open",
+      "seq": 20,
+      "tick": 5,
+      "to_state": "OPEN"
+    },
+    {
+      "endpoint_id": "discovery",
+      "from_state": "OPEN",
+      "reason": "manual_close",
+      "seq": 23,
+      "tick": 5,
+      "to_state": "CLOSED"
+    },
+    {
+      "endpoint_id": "metrics",
+      "from_state": "CLOSED",
+      "reason": "threshold_breach",
+      "seq": 30,
+      "tick": 5,
+      "to_state": "OPEN"
+    },
+    {
+      "endpoint_id": "metrics",
+      "from_state": "OPEN",
+      "reason": "recovery_timeout",
+      "seq": 31,
+      "tick": 6,
+      "to_state": "HALF_OPEN"
+    },
+    {
+      "endpoint_id": "catalog",
+      "from_state": "OPEN",
+      "reason": "recovery_timeout",
+      "seq": 32,
+      "tick": 7,
+      "to_state": "HALF_OPEN"
+    },
+    {
+      "endpoint_id": "metrics",
+      "from_state": "HALF_OPEN",
+      "reason": "probe_success_quota",
+      "seq": 33,
+      "tick": 7,
+      "to_state": "CLOSED"
+    },
+    {
+      "endpoint_id": "billing",
+      "from_state": "CLOSED",
+      "reason": "threshold_breach",
+      "seq": 40,
+      "tick": 7,
+      "to_state": "OPEN"
+    },
+    {
+      "endpoint_id": "billing",
+      "from_state": "OPEN",
+      "reason": "manual_close",
+      "seq": 42,
+      "tick": 7,
+      "to_state": "CLOSED"
+    }
+  ]
+}

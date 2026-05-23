@@ -1,0 +1,49 @@
+{
+  "dist_tags": {
+    "latest": "2.0.0",
+    "next": "2.1.0"
+  },
+  "name": "glint-core",
+  "versions": [
+    {
+      "advisory_ids": ["GH-1001"],
+      "engines_node": ">=18.0.0 <22.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {"glint-dom": "^1.0.0"},
+      "version": "1.2.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": ["GH-1001"],
+      "engines_node": ">=18.0.0 <22.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {"glint-dom": "^1.0.0"},
+      "version": "1.3.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=18.0.0 <22.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {"glint-dom": "^1.0.0"},
+      "version": "1.5.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": ["GH-1007"],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "node", "require", "types"],
+      "peer_constraints": {"glint-dom": "^2.0.0"},
+      "version": "2.0.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": ["GH-1007"],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "node", "require", "types"],
+      "peer_constraints": {"glint-dom": "^2.0.0"},
+      "version": "2.1.0",
+      "yanked": true
+    }
+  ]
+}

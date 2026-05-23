@@ -1,0 +1,18 @@
+{
+  "creates_rejected": 0,
+  "creates_succeeded": 0,
+  "deletes_succeeded": 1,
+  "final_cgroup_count": 1,
+  "final_task_count": 1,
+  "hot_cgroups": [
+    {
+      "id": "leaf",
+      "violation_count": 1
+    }
+  ],
+  "moves_succeeded": 0,
+  "rejected_consumes": 1,
+  "throttled_consumes": 0,
+  "total_events": 5,
+  "total_violations": 1
+}

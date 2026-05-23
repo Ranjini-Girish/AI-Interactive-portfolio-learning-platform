@@ -1,0 +1,288 @@
+{
+  "checkpoints": [
+    {
+      "as_of_day": 20260316,
+      "total_findings": 44,
+      "by_severity": {
+        "critical": 4,
+        "high": 10,
+        "medium": 30,
+        "low": 0
+      },
+      "new_findings": [],
+      "resolved_findings": []
+    },
+    {
+      "as_of_day": 20260401,
+      "total_findings": 39,
+      "by_severity": {
+        "critical": 6,
+        "high": 15,
+        "medium": 18,
+        "low": 0
+      },
+      "new_findings": [
+        {
+          "username": "dan",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "ivan",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "nora",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "carol",
+          "finding_code": "delegation_cycle"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "delegation_cycle"
+        },
+        {
+          "username": "mike",
+          "finding_code": "delegation_cycle"
+        },
+        {
+          "username": "bob",
+          "finding_code": "escalation_chain_risk"
+        },
+        {
+          "username": "erin",
+          "finding_code": "escalation_chain_risk"
+        },
+        {
+          "username": "greg",
+          "finding_code": "escalation_chain_risk"
+        },
+        {
+          "username": "dan",
+          "finding_code": "mfa_disabled"
+        },
+        {
+          "username": "greg",
+          "finding_code": "stale_password"
+        },
+        {
+          "username": "jen",
+          "finding_code": "stale_password"
+        },
+        {
+          "username": "erin",
+          "finding_code": "stale_ssh_key"
+        }
+      ],
+      "resolved_findings": [
+        {
+          "username": "alice",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "alice",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "dan",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "jen",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "alice",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "dan",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "erin",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "greg",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "jen",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "alice",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "greg",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "jen",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "alice",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "dan",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "erin",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "greg",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "jen",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "dan",
+          "finding_code": "stale_password"
+        }
+      ]
+    },
+    {
+      "as_of_day": 20260415,
+      "total_findings": 31,
+      "by_severity": {
+        "critical": 10,
+        "high": 15,
+        "medium": 6,
+        "low": 0
+      },
+      "new_findings": [
+        {
+          "username": "carol",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "mike",
+          "finding_code": "delegated_admin_exposure"
+        },
+        {
+          "username": "bob",
+          "finding_code": "mfa_disabled"
+        },
+        {
+          "username": "nora",
+          "finding_code": "mfa_disabled"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "frank",
+          "finding_code": "stale_password"
+        },
+        {
+          "username": "bob",
+          "finding_code": "stale_ssh_key"
+        },
+        {
+          "username": "frank",
+          "finding_code": "stale_ssh_key"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "stale_ssh_key"
+        },
+        {
+          "username": "bob",
+          "finding_code": "unrotated_compromised_key"
+        }
+      ],
+      "resolved_findings": [
+        {
+          "username": "bob",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "mike",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "nora",
+          "finding_code": "missing_login_history"
+        },
+        {
+          "username": "bob",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "frank",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "mike",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "nora",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "svc_ci",
+          "finding_code": "missing_mfa_state"
+        },
+        {
+          "username": "frank",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "mike",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "svc_ci",
+          "finding_code": "missing_password_state"
+        },
+        {
+          "username": "bob",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "frank",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "heidi",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "mike",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "nora",
+          "finding_code": "missing_ssh_inventory"
+        },
+        {
+          "username": "nora",
+          "finding_code": "stale_password"
+        }
+      ]
+    }
+  ]
+}

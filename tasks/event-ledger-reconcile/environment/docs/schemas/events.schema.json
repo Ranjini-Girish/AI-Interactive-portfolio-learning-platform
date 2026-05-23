@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "seq",
+          "day",
+          "op",
+          "account",
+          "target_account",
+          "amount_cents",
+          "currency",
+          "reverses_seq"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0},
+          "day": {"type": "integer", "minimum": 0},
+          "op": {
+            "type": "string",
+            "enum": ["deposit", "withdraw", "transfer", "hold", "release", "reverse"]
+          },
+          "account": {"type": "string"},
+          "target_account": {"type": ["string", "null"]},
+          "amount_cents": {"type": ["integer", "null"]},
+          "currency": {"type": ["string", "null"]},
+          "reverses_seq": {"type": ["integer", "null"]}
+        }
+      }
+    }
+  }
+}

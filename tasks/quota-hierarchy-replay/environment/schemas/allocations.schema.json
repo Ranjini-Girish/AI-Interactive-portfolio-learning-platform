@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "allocations.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "ts_unix_ms", "namespace", "op", "resources"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "namespace": {"type": "string", "minLength": 1},
+          "op": {"type": "string", "enum": ["allocate", "release"]},
+          "resources": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["cpu", "memory", "storage"],
+            "properties": {
+              "cpu": {"type": "integer", "minimum": 0},
+              "memory": {"type": "integer", "minimum": 0},
+              "storage": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}

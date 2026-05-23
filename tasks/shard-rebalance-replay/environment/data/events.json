@@ -1,0 +1,32 @@
+{
+  "events": [
+    {"seq": 0, "op": "rebalance_round", "node_id": null, "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 1, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "s01", "from_node": "n04", "to_node": "n01", "role": "primary", "size_bytes": null},
+    {"seq": 2, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "s99", "from_node": "n01", "to_node": "n02", "role": "primary", "size_bytes": null},
+    {"seq": 3, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "s05", "from_node": "n99", "to_node": "n02", "role": "replica", "size_bytes": null},
+    {"seq": 4, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "s05", "from_node": "n01", "to_node": "n01", "role": "primary", "size_bytes": null},
+    {"seq": 5, "op": "node_join", "node_id": "n02", "weight": 100, "rack": "r1", "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 6, "op": "node_join", "node_id": "n05", "weight": 100, "rack": "r3", "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 7, "op": "node_drain", "node_id": "n01", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 8, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "s06", "from_node": "n02", "to_node": "n01", "role": "primary", "size_bytes": null},
+    {"seq": 9, "op": "node_resume", "node_id": "n01", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 10, "op": "node_drain", "node_id": "n01", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 11, "op": "node_drain", "node_id": "n01", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 12, "op": "node_drain", "node_id": "n99", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 13, "op": "node_resume", "node_id": "n01", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 14, "op": "shard_resize", "node_id": null, "weight": null, "rack": null, "shard_id": "s06", "from_node": null, "to_node": null, "role": null, "size_bytes": 8192},
+    {"seq": 15, "op": "shard_resize", "node_id": null, "weight": null, "rack": null, "shard_id": "s99", "from_node": null, "to_node": null, "role": null, "size_bytes": 1000},
+    {"seq": 16, "op": "rebalance_round", "node_id": null, "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 17, "op": "rebalance_round", "node_id": null, "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 18, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "s03", "from_node": "n03", "to_node": "n04", "role": "primary", "size_bytes": null},
+    {"seq": 19, "op": "rebalance_round", "node_id": null, "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 20, "op": "rebalance_round", "node_id": null, "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 21, "op": "node_drain", "node_id": "n04", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 22, "op": "node_leave", "node_id": "n01", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 23, "op": "rebalance_round", "node_id": null, "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 24, "op": "node_join", "node_id": "n06", "weight": 200, "rack": "r4", "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 25, "op": "node_leave", "node_id": "n02", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 26, "op": "node_drain", "node_id": "n05", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null},
+    {"seq": 27, "op": "node_leave", "node_id": "n06", "weight": null, "rack": null, "shard_id": null, "from_node": null, "to_node": null, "role": null, "size_bytes": null}
+  ]
+}

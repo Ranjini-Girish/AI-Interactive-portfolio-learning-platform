@@ -1,0 +1,17 @@
+{
+  "solvent_id": "water",
+  "viscosity_points": [
+    {
+      "temp_K": 273.0,
+      "viscosity_cP": 17.9
+    },
+    {
+      "temp_K": 298.0,
+      "viscosity_cP": 8.904
+    },
+    {
+      "temp_K": 310.0,
+      "viscosity_cP": 6.92
+    }
+  ]
+}

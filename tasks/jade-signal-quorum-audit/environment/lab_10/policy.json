@@ -1,0 +1,11 @@
+{
+  "bias_floor": 2,
+  "cap": 65,
+  "cutoff": 45,
+  "fold_mod": 1007,
+  "label": "jade-signal-quorum-audit",
+  "mask": 73,
+  "poly_base": 137,
+  "seed_offset": 39,
+  "square_mod": 999993
+}

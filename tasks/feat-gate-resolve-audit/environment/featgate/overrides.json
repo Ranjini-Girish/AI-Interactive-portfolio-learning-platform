@@ -1,0 +1,19 @@
+{
+  "patches": [
+    {
+      "feature": "net-tls",
+      "force_on": true,
+      "package": "net"
+    },
+    {
+      "feature": "cache-mem",
+      "force_off": true,
+      "package": "cache"
+    },
+    {
+      "feature": "phantom",
+      "force_off": true,
+      "package": "ghost"
+    }
+  ]
+}

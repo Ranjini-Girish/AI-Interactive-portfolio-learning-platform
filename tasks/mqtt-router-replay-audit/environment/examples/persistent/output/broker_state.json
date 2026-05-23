@@ -1,0 +1,41 @@
+{
+  "clients": [
+    {
+      "id": "bravo",
+      "keep_alive_sec": 60,
+      "persistent": true,
+      "subscriptions": [
+        {
+          "filter": "down/#",
+          "qos": 1
+        }
+      ]
+    }
+  ],
+  "now_sec": 105,
+  "persistent_sessions": [
+    {
+      "client_id": "alpha",
+      "subscriptions": [
+        {
+          "filter": "events/#",
+          "qos": 2
+        }
+      ]
+    }
+  ],
+  "retained": [
+    {
+      "payload_id": 99,
+      "qos": 1,
+      "retained_at_sec": 100,
+      "topic": "down/alpha"
+    },
+    {
+      "payload_id": 1,
+      "qos": 1,
+      "retained_at_sec": 0,
+      "topic": "events/start"
+    }
+  ]
+}

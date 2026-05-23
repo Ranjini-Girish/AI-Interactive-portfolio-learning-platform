@@ -1,0 +1,86 @@
+{
+  "cycles": [
+    [
+      "db",
+      "web"
+    ]
+  ],
+  "edges": [
+    {
+      "from": "<root>",
+      "to": "db"
+    },
+    {
+      "from": "containers",
+      "to": "db"
+    },
+    {
+      "from": "containers",
+      "to": "web"
+    },
+    {
+      "from": "db",
+      "to": "web"
+    },
+    {
+      "from": "system",
+      "to": "db"
+    },
+    {
+      "from": "web",
+      "to": "db"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "<root>",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "alice",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "bob",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "containers",
+      "in_degree": 0,
+      "out_degree": 2
+    },
+    {
+      "id": "db",
+      "in_degree": 4,
+      "out_degree": 1
+    },
+    {
+      "id": "kworker",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "root",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "system",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "users",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "web",
+      "in_degree": 2,
+      "out_degree": 1
+    }
+  ]
+}

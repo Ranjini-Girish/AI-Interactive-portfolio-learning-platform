@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "processes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "cmdline": {
+            "type": "string"
+          },
+          "exit_code": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "exit_signal": {
+            "anyOf": [
+              {
+                "enum": [
+                  "SIGTERM",
+                  "SIGKILL",
+                  "SIGINT"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "exit_tick": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pid": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "ppid": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "start_tick": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "state": {
+            "enum": [
+              "RUNNING",
+              "ZOMBIE",
+              "EXITED"
+            ]
+          },
+          "uid": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cmdline",
+          "exit_code",
+          "exit_signal",
+          "exit_tick",
+          "pid",
+          "ppid",
+          "start_tick",
+          "state",
+          "uid"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "processes"
+  ],
+  "title": "process_state.json",
+  "type": "object"
+}

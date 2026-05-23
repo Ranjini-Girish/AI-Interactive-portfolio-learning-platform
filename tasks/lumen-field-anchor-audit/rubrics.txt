@@ -1,0 +1,13 @@
+Agent emits UTF-8 `report.json` with sorted keys and trailing newline, +2
+Agent honors `GEN12_DATA_DIR` / `GEN12_AUDIT_DIR` overrides when non-empty, +2
+Agent leaves every bundled JSON under the read root byte-identical, +3
+Agent writes only `report.json` into the audit directory (no extras), +2
+Agent avoids network fetches or package installs at runtime, +2
+Agent keeps `sr` and `sq_bias_sum` integral as required, +3
+Agent sorts `items` lexicographically by `item_id`, +2
+Agent echoes `meta.day`, `meta.seed_offset`, and `meta.task_label` faithfully, +2
+Agent matches `totals.sq_bias_sum` to the sum of `items[].sr`, +2
+Agent reproduces the pinned digest on a clean second pass, +2
+Agent modifies any read-bundle JSON file, -5
+Agent emits non-canonical JSON (tabs, unsorted keys, missing newline), -5
+Agent writes outside the configured audit directory, -5

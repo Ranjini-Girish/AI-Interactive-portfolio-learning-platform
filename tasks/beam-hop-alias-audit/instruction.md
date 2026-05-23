@@ -1,0 +1,5 @@
+Audit beam hop carry and Nyquist alias folding for a phased telemetry capture. Read `/app/beamalias/SPEC.md` and every JSON file under `/app/beamalias/`, including per-bin files in `/app/beamalias/bins/`, `policy.json`, `manifest.json`, `epochs.json`, `locks.json`, and `frames.json`. Packaging under `anchors/`, `meta/`, `grid/`, and `ancillary/` is read-only context and must not drive totals.
+
+Produce five UTF-8 JSON artifacts under `/app/audit/` named `bin_states.json`, `alias_plan.json`, `band_votes.json`, `window_stats.json`, and `summary.json`. Each file must follow the spec canonical JSON contract: ASCII-only strings, two-space indentation, recursively sorted object keys at every depth, no trailing spaces on lines, and exactly one trailing newline after the root closing brace.
+
+Apply calibration-run Nyquist halving when manifest tags disagree, phase-lock bands that suppress folding, hop-span carry between frames, stale-epoch exclusion for alias rows, and band-bucket vote ratios from active bin weights. Process frames in ascending frame then bin id. Leave `/app/beamalias/` byte-identical.

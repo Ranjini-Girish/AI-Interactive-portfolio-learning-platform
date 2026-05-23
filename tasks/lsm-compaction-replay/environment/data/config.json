@@ -1,0 +1,5 @@
+{
+  "compaction_min_segments": 3,
+  "max_level": 3,
+  "now_unix_ms": 1700000020000
+}

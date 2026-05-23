@@ -1,0 +1,11 @@
+{
+  "bias_floor": 1,
+  "cap": 77,
+  "cutoff": 57,
+  "fold_mod": 1019,
+  "label": "vite-cache-gate-audit",
+  "mask": 85,
+  "poly_base": 149,
+  "seed_offset": 57,
+  "square_mod": 1000005
+}

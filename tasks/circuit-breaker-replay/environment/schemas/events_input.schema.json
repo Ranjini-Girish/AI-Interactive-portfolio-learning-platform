@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "events.json",
+  "description": "Sequenced event trace driving the simulator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seq",
+          "op",
+          "endpoint_id",
+          "outcome",
+          "failure_threshold_pct",
+          "window_size",
+          "half_open_max_probes",
+          "recovery_ticks"
+        ],
+        "properties": {
+          "seq": { "type": "integer", "minimum": 0 },
+          "op": {
+            "type": "string",
+            "enum": [
+              "request",
+              "tick",
+              "add_endpoint",
+              "remove_endpoint",
+              "config_update",
+              "force_open",
+              "force_close"
+            ]
+          },
+          "endpoint_id": { "type": ["string", "null"] },
+          "outcome": {
+            "type": ["string", "null"],
+            "enum": [null, "success", "failure", "timeout"]
+          },
+          "failure_threshold_pct": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "maximum": 100
+          },
+          "window_size": {
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "half_open_max_probes": {
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "recovery_ticks": {
+            "type": ["integer", "null"],
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "violations.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["violations"],
+  "properties": {
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "ts_unix_ms", "namespace", "op", "decision", "reason", "blocking_namespace", "resources_granted", "attempted_resources"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "namespace": {"type": "string", "minLength": 1},
+          "op": {"type": "string", "enum": ["allocate", "release"]},
+          "decision": {"type": "string", "enum": ["rejected"]},
+          "reason": {"type": "string"},
+          "blocking_namespace": {"type": ["string", "null"]},
+          "resources_granted": {"type": "object"},
+          "attempted_resources": {"type": "object"}
+        }
+      }
+    }
+  }
+}

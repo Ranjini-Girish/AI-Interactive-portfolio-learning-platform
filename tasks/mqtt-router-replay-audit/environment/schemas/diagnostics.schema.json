@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "diagnostics.json",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["diagnostics", "seq"],
+        "additionalProperties": false,
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0},
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["code", "severity"],
+              "additionalProperties": false,
+              "properties": {
+                "client_id": {"type": "string"},
+                "code":      {"type": "string", "enum": [
+                  "E_DUPLICATE_CONNECT",
+                  "E_NOT_CONNECTED",
+                  "E_INVALID_TOPIC",
+                  "E_INVALID_TOPIC_FILTER",
+                  "E_SUBSCRIPTION_LIMIT",
+                  "W_NO_SUBSCRIBERS",
+                  "W_RETAINED_LIMIT",
+                  "N_SESSION_FRESH",
+                  "N_SESSION_RESUMED",
+                  "N_WILL_DELIVERED"
+                ]},
+                "filter":    {"type": "string"},
+                "severity":  {"type": "string", "enum": ["error", "warning", "note"]},
+                "topic":     {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

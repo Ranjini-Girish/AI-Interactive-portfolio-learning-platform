@@ -1,0 +1,1 @@
+{"pack_id":"delta","rules":[{"id":"partners-list","host":"partners.example.com","host_type":"exact","path_prefix":"/partners","methods":["GET"],"group":"partner","decision":"allow"}]}

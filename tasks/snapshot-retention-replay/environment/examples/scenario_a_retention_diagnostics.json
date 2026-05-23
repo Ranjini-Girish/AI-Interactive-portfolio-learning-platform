@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "W_BREAK_HOLDS",
+          "severity": "warning",
+          "snapshot_id": "v1"
+        }
+      ],
+      "seq": 0
+    }
+  ]
+}

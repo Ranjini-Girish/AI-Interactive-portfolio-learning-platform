@@ -1,0 +1,76 @@
+{
+  "frames": [
+    {
+      "amplitude": 1.0,
+      "bin_id": "bn01",
+      "frame": 1,
+      "freq_hz": 12.0
+    },
+    {
+      "amplitude": 2.0,
+      "bin_id": "bn02",
+      "frame": 1,
+      "freq_hz": 46.5
+    },
+    {
+      "amplitude": 1.5,
+      "bin_id": "bn03",
+      "frame": 1,
+      "freq_hz": 8.0
+    },
+    {
+      "amplitude": 1.2,
+      "bin_id": "bn04",
+      "frame": 2,
+      "freq_hz": 55.0
+    },
+    {
+      "amplitude": 3.0,
+      "bin_id": "bn05",
+      "frame": 2,
+      "freq_hz": 60.0
+    },
+    {
+      "amplitude": 2.5,
+      "bin_id": "bn06",
+      "frame": 3,
+      "freq_hz": 92.0
+    },
+    {
+      "amplitude": 1.8,
+      "bin_id": "bn07",
+      "frame": 3,
+      "freq_hz": 40.0
+    },
+    {
+      "amplitude": 2.2,
+      "bin_id": "bn08",
+      "frame": 3,
+      "freq_hz": 70.0
+    },
+    {
+      "amplitude": 1.0,
+      "bin_id": "bn09",
+      "frame": 4,
+      "freq_hz": 25.0
+    },
+    {
+      "amplitude": 4.0,
+      "bin_id": "bn10",
+      "frame": 4,
+      "freq_hz": 25.5
+    },
+    {
+      "amplitude": 0.9,
+      "bin_id": "bn11",
+      "frame": 4,
+      "freq_hz": 80.0
+    },
+    {
+      "amplitude": 2.0,
+      "bin_id": "bn12",
+      "frame": 5,
+      "freq_hz": 30.0
+    }
+  ]
+}

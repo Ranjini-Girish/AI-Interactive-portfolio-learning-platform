@@ -1,0 +1,10 @@
+{
+  "admits_total": 111,
+  "buckets_total": 6,
+  "current_bytes_total": 14700,
+  "dropped_bytes_total": 96700,
+  "events_total": 220,
+  "max_seq": 219,
+  "now_ticks_final": 55,
+  "overflow_drops_total": 38
+}

@@ -1,0 +1,7 @@
+{
+  "principal": "host/burner.example.com@EXAMPLE.COM",
+  "tier": "silver",
+  "exempt": false,
+  "override_rotation_days": 3,
+  "comment": "short-lived test host, aggressive override rotation"
+}

@@ -1,0 +1,18 @@
+{
+  "rules": [
+    {
+      "coverage_percent": "50.00",
+      "id": "x01",
+      "matched_flows": ["g01"],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "100.00",
+      "id": "x02",
+      "matched_flows": ["g01", "g02"],
+      "shadowed_by": [],
+      "status": "redundant"
+    }
+  ]
+}

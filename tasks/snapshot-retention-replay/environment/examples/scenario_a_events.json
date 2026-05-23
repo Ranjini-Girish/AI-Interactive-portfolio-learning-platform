@@ -1,0 +1,6 @@
+{
+  "events": [
+    {"force": true, "id": "v1", "kind": "snapshot_delete", "seq": 0},
+    {"dataset": "vol", "kind": "retention_run", "seq": 1}
+  ]
+}

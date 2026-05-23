@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ports_input.schema.json",
+  "title": "ports.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ports"],
+  "properties": {
+    "ports": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["port_id", "role", "vlan"],
+        "properties": {
+          "port_id": { "type": "string", "pattern": "^[A-Za-z0-9._/:-]+$", "minLength": 1, "maxLength": 64 },
+          "role": { "type": "string", "enum": ["host", "router"] },
+          "vlan": { "type": "integer", "minimum": 1, "maximum": 4094 }
+        }
+      }
+    }
+  }
+}

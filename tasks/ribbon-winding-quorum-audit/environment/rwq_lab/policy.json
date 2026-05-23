@@ -1,7 +1,8 @@
 {
-  "anchor_weight": 5,
-  "evaluation_day": 50,
-  "quorum": 15,
-  "schema_version": 1,
-  "winding_modulus": 5
+  "quorum_base": 3,
+  "winding_modulus": 5,
+  "anchor_blend": "xor",
+  "crisis_mode": true,
+  "crisis_severity_floor": 5,
+  "crisis_quorum": 8
 }

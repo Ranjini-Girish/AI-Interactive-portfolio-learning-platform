@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "auto_join_moves",
+    "auto_leave_moves",
+    "drain_swaps",
+    "events_with_diagnostics",
+    "final_node_count",
+    "final_shard_count",
+    "manual_moves",
+    "nodes_drained",
+    "nodes_joined",
+    "nodes_left",
+    "racks",
+    "rebalance_moves",
+    "rebalances",
+    "shard_resizes",
+    "total_events"
+  ],
+  "properties": {
+    "auto_join_moves":         {"type": "integer", "minimum": 0},
+    "auto_leave_moves":        {"type": "integer", "minimum": 0},
+    "drain_swaps":             {"type": "integer", "minimum": 0},
+    "events_with_diagnostics": {"type": "integer", "minimum": 0},
+    "final_node_count":        {"type": "integer", "minimum": 0},
+    "final_shard_count":       {"type": "integer", "minimum": 0},
+    "manual_moves":            {"type": "integer", "minimum": 0},
+    "nodes_drained":           {"type": "integer", "minimum": 0},
+    "nodes_joined":            {"type": "integer", "minimum": 0},
+    "nodes_left":              {"type": "integer", "minimum": 0},
+    "racks":                   {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "rebalance_moves":         {"type": "integer", "minimum": 0},
+    "rebalances":              {"type": "integer", "minimum": 0},
+    "shard_resizes":           {"type": "integer", "minimum": 0},
+    "total_events":            {"type": "integer", "minimum": 0}
+  }
+}

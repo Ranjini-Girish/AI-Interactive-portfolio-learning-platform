@@ -1,0 +1,5 @@
+booking,window_start_local,window_end_local,timezone,capacity,carrier_cutoff_min
+BK-101,2026-07-14 08:00,2026-07-14 10:00,America/Los_Angeles,2,90
+BK-202,2026-07-14 09:00,2026-07-14 11:00,America/Los_Angeles,1,120
+BK-303,2026-07-14 12:00,2026-07-14 14:00,America/Los_Angeles,1,60
+BK-404,2026-07-14 15:00,2026-07-14 17:00,America/Los_Angeles,2,30

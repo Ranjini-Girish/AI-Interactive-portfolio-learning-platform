@@ -1,16 +1,13 @@
-Agent reflects every normative rule in SPEC.md across burns, incidents, tier budgets, dependency taint, and output shapes in the five JSON files, +3
-Agent writes all five required JSON files under the configured audit directory, +3
-Agent applies tier_budget_delta adjustments and max_error_budget_minutes_by_tier caps to per-tier error budgets, +2
-Agent computes fast and slow window burn rates and uses max for effective burn before inherited inflation, +3
-Agent zeroes bad minutes on burn_freeze-covered days only when summing the slow window, +3
-Agent multiplies effective burn by inherited_burn_milli_factor for inherited_compromise consumers, +3
-Agent forces breached status and zero remaining budget on service_compromise, +3
-Agent honors slo_review_override target_status with compromise ok-floor and reason on affected services, +2
-Agent marks consumers with inherited_compromise when a compromised producer is reachable along producer-to-consumer edges, +2
-Agent sorts every array output by the spec primary keys, +2
-Agent uses canonical JSON encoding with sorted keys and trailing newline, +2
-Agent leaves the read-root directory tree unchanged from the shipped snapshot, -5
-Agent applies compromise and slo_review_override semantics when computing final slo_status and reasons on every burn report row, -3
-Agent excludes bad minutes on burn_freeze-covered days only from slow-window totals for each service, -3
-Agent applies inherited-consumer burn inflation after dependency taint and before numeric slo_status, -3
-Agent derives dependency taint from producer-to-consumer reachability starting at compromised services, -3
+Agent reads `/app/sloburn/SPEC.md` and emits only the three mandated JSON files with canonical formatting, +3
+Agent applies ops-tag warmup tightening and blackout error zeroing when building burn windows, +5
+Agent preserves every bundled fixture byte under the sloburn read root, +2
+Agent honors `SBW_DATA_DIR` and `SBW_AUDIT_DIR` override semantics when set, +2
+Agent classifies critical hosts as breach even when freeze tags differ from the incident tag, +5
+Agent sums fleet burn only from active and breach hosts per the spec, +3
+Agent creates the audit directory before writing outputs, +2
+Agent keeps host and window rows sorted by `host_id` ascending, +2
+Agent matches the specification canonical JSON trailing newline contract, +2
+Agent mishandles rolling window selection or burn_ppm integer floor division, -5
+Agent ignores blackout zeroing or freeze-tag precedence before critical override, -5
+Agent mutates sloburn inputs or writes outside the resolved audit directory, -5
+Agent drops required output files or adds extra top-level keys, -3

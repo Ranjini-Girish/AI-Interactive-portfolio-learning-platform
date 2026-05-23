@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "harvests": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "parent_pid": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "pid": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "seq": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "tick": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "trigger": {
+            "enum": [
+              "wait",
+              "init_harvest"
+            ]
+          }
+        },
+        "required": [
+          "parent_pid",
+          "pid",
+          "seq",
+          "tick",
+          "trigger"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "harvests"
+  ],
+  "title": "harvest_log.json",
+  "type": "object"
+}

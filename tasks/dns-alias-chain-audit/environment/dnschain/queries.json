@@ -1,0 +1,59 @@
+{
+  "queries": [
+    {
+      "name": "www.example",
+      "qtype": "A",
+      "step": 1
+    },
+    {
+      "name": "api.example",
+      "qtype": "A",
+      "step": 1
+    },
+    {
+      "name": "mail.example",
+      "qtype": "MX",
+      "step": 1
+    },
+    {
+      "name": "cdn.example",
+      "qtype": "A",
+      "step": 2
+    },
+    {
+      "name": "app.example",
+      "qtype": "A",
+      "step": 2
+    },
+    {
+      "name": "loop.a",
+      "qtype": "CNAME",
+      "step": 3
+    },
+    {
+      "name": "deny.example",
+      "qtype": "A",
+      "step": 3
+    },
+    {
+      "name": "old.example",
+      "qtype": "A",
+      "step": 4
+    },
+    {
+      "name": "ftp.example",
+      "qtype": "A",
+      "step": 4
+    },
+    {
+      "name": "svc.example",
+      "qtype": "A",
+      "step": 5
+    },
+    {
+      "name": "edge.example",
+      "qtype": "A",
+      "step": 5
+    }
+  ]
+}

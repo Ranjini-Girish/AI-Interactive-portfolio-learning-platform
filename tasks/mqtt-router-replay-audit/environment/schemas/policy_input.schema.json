@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "policy.json",
+  "type": "object",
+  "required": [
+    "now_sec",
+    "max_subscriptions_per_client",
+    "max_retained"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "now_sec":                      {"type": "integer", "minimum": 0},
+    "max_subscriptions_per_client": {"type": "integer", "minimum": 0},
+    "max_retained":                 {"type": "integer", "minimum": 0},
+    "wildcard_plus_allowed":        {"type": "boolean"},
+    "wildcard_hash_allowed":        {"type": "boolean"},
+    "deliver_to_self":              {"type": "boolean"}
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "policy.json",
+  "description": "Defaults and global policy knobs for the replay.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "default_failure_threshold_pct",
+    "default_window_size",
+    "default_half_open_max_probes",
+    "default_recovery_ticks",
+    "sliding_strategy",
+    "min_window_observations",
+    "track_state_transitions"
+  ],
+  "properties": {
+    "default_failure_threshold_pct": {
+      "type": "integer", "minimum": 1, "maximum": 100
+    },
+    "default_window_size": { "type": "integer", "minimum": 1 },
+    "default_half_open_max_probes": { "type": "integer", "minimum": 1 },
+    "default_recovery_ticks": { "type": "integer", "minimum": 0 },
+    "sliding_strategy": {
+      "type": "string",
+      "enum": ["count_based", "time_based"]
+    },
+    "min_window_observations": { "type": "integer", "minimum": 1 },
+    "track_state_transitions": { "type": "boolean" }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "release/demo",
+  "version": "1.0.0",
+  "require": [
+    {"name": "chart/api", "version": "1.0.0"}
+  ],
+  "replace": [],
+  "exclude": []
+}

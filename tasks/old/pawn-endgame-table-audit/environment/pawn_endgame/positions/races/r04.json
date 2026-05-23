@@ -1,0 +1,10 @@
+{
+  "position_id": "race-r04",
+  "white_rank": 4,
+  "black_rank": 4,
+  "white_file": 1,
+  "black_file": 6,
+  "side_to_move": "b",
+  "tempo_moves": 1,
+  "underpromotion_risk": 0
+}

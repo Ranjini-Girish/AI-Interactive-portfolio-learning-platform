@@ -1,0 +1,7 @@
+{
+  "nodes": [
+    {"id": "node-a", "rack": "r1", "weight": 100},
+    {"id": "node-b", "rack": "r2", "weight": 100},
+    {"id": "node-c", "rack": "r3", "weight": 100}
+  ]
+}

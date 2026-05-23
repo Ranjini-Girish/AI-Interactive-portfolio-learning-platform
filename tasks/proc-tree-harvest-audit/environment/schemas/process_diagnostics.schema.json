@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "diagnostics": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "enum": [
+                    "E_INVALID_PARENT",
+                    "E_PID_REUSED",
+                    "E_INVALID_TARGET",
+                    "E_DOUBLE_EXIT",
+                    "E_NOT_CHILD",
+                    "E_NOT_ZOMBIE",
+                    "W_KILLED_BY_SIGNAL",
+                    "W_ORPHANED",
+                    "W_ZOMBIE_LEAK",
+                    "N_AUTO_HARVESTED",
+                    "N_HARVESTED"
+                  ]
+                },
+                "pid": {
+                  "anyOf": [
+                    {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "severity": {
+                  "enum": [
+                    "error",
+                    "warning",
+                    "note"
+                  ]
+                }
+              },
+              "required": [
+                "code",
+                "pid",
+                "severity"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "seq": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "diagnostics",
+          "seq"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "events"
+  ],
+  "title": "process_diagnostics.json",
+  "type": "object"
+}

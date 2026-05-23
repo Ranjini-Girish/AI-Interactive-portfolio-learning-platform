@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "action": "resumed",
+      "client_id": "bravo",
+      "kind": "connect",
+      "seq": 0
+    },
+    {
+      "abrupt": true,
+      "client_id": "alpha",
+      "kind": "expire_keepalive",
+      "seq": 2,
+      "session_kept": true
+    }
+  ]
+}

@@ -1,14 +1,73 @@
 {
   "events": [
     {
-      "accepted": true, 
-      "kind": "delta_k", 
+      "accepted": true,
+      "kind": "delta_k",
       "value": 0.4
-    }, 
+    },
     {
-      "accepted": false, 
-      "kind": "delta_k", 
+      "accepted": true,
+      "kind": "ramp_shave",
+      "amount": 0.15
+    },
+    {
+      "accepted": true,
+      "kind": "zone_bias",
+      "zone": "z03",
+      "bias": 0.12
+    },
+    {
+      "accepted": true,
+      "kind": "guard_suppress",
+      "zone": "z07"
+    },
+    {
+      "accepted": true,
+      "kind": "zone_bias",
+      "zone": "z03",
+      "bias": -0.05
+    },
+    {
+      "accepted": true,
+      "kind": "guard_suppress",
+      "zone": "z07"
+    },
+    {
+      "accepted": false,
+      "kind": "delta_k",
       "value": 9.0
+    },
+    {
+      "accepted": true,
+      "kind": "ramp_shave",
+      "amount": 0.5
+    },
+    {
+      "accepted": true,
+      "kind": "delta_k",
+      "value": 0.1
+    },
+    {
+      "accepted": true,
+      "kind": "zone_bias",
+      "zone": "z12",
+      "bias": 0.25
+    },
+    {
+      "accepted": true,
+      "kind": "guard_suppress",
+      "zone": "z15"
+    },
+    {
+      "accepted": true,
+      "kind": "zone_bias",
+      "zone": "",
+      "bias": 1.0
+    },
+    {
+      "accepted": true,
+      "kind": "unknown_future",
+      "payload": 123
     }
   ]
 }

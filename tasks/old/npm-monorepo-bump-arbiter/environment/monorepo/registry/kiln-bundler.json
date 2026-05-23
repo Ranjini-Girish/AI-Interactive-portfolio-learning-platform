@@ -1,0 +1,33 @@
+{
+  "dist_tags": {
+    "latest": "2.1.0",
+    "next": "3.0.0"
+  },
+  "name": "kiln-bundler",
+  "versions": [
+    {
+      "advisory_ids": ["GH-1005"],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["require"],
+      "peer_constraints": {"glint-dom": "^1.0.0"},
+      "version": "2.0.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": ["GH-1005"],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "require"],
+      "peer_constraints": {"forge-runtime": "^1.5.0", "glint-dom": "^1.0.0"},
+      "version": "2.1.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {"forge-runtime": "^2.0.0", "glint-dom": "^2.0.0"},
+      "version": "3.0.0",
+      "yanked": false
+    }
+  ]
+}

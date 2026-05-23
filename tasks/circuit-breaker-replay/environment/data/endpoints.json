@@ -1,0 +1,32 @@
+{
+  "endpoints": [
+    {
+      "failure_threshold_pct": 50,
+      "half_open_max_probes": 2,
+      "id": "auth",
+      "recovery_ticks": 3,
+      "window_size": 6
+    },
+    {
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "id": "billing",
+      "recovery_ticks": null,
+      "window_size": null
+    },
+    {
+      "failure_threshold_pct": 60,
+      "half_open_max_probes": 1,
+      "id": "catalog",
+      "recovery_ticks": 2,
+      "window_size": 5
+    },
+    {
+      "failure_threshold_pct": null,
+      "half_open_max_probes": 2,
+      "id": "discovery",
+      "recovery_ticks": null,
+      "window_size": 4
+    }
+  ]
+}

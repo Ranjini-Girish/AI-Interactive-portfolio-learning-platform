@@ -1,0 +1,77 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "advisory_id": "GH-1005",
+      "day": 40,
+      "event_id": "evt_001",
+      "kind": "advisory_override"
+    },
+    {
+      "accepted": true,
+      "day": 42,
+      "dep": "glint-dom",
+      "event_id": "evt_002",
+      "kind": "force_freeze"
+    },
+    {
+      "accepted": true,
+      "day": 44,
+      "dep": "pebble-lint",
+      "dist_tag": "next",
+      "event_id": "evt_003",
+      "kind": "dist_tag_pin"
+    },
+    {
+      "accepted": true,
+      "day": 38,
+      "dep": "glint-dom",
+      "event_id": "evt_004",
+      "kind": "force_freeze"
+    },
+    {
+      "accepted": true,
+      "day": 10,
+      "dep": "tessera-utils",
+      "event_id": "evt_005",
+      "kind": "deprecation_warning"
+    },
+    {
+      "accepted": false,
+      "day": 50,
+      "dep": "kiln-bundler",
+      "event_id": "evt_006",
+      "kind": "force_freeze"
+    },
+    {
+      "accepted": true,
+      "day": 100,
+      "dep": "flax-http",
+      "dist_tag": "canary",
+      "event_id": "evt_007",
+      "kind": "dist_tag_pin"
+    },
+    {
+      "accepted": true,
+      "day": 20,
+      "dep": "glint-core",
+      "event_id": "evt_008",
+      "kind": "security_advisory"
+    },
+    {
+      "accepted": true,
+      "day": 46,
+      "dep": "quartz-ts",
+      "dist_tag": "latest",
+      "event_id": "evt_009",
+      "kind": "dist_tag_pin"
+    },
+    {
+      "accepted": true,
+      "day": 48,
+      "dep": "glint-core",
+      "event_id": "evt_010",
+      "kind": "force_freeze"
+    }
+  ]
+}

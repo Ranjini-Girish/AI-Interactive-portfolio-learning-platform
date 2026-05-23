@@ -1,0 +1,6 @@
+{
+  "probe_id": "p2",
+  "label": "bench-beta",
+  "chain_id": "C-mobile",
+  "chain_role": "primary"
+}

@@ -1,0 +1,22 @@
+{
+  "runs": [
+    {"run_id": "r001", "instrument": "spec_a", "batch": "batch_alpha", "spectrum": "spectra/r001.csv"},
+    {"run_id": "r002", "instrument": "spec_a", "batch": "batch_alpha", "operator": "Jules", "temperature_c": 21.9, "spectrum": "spectra/r002.csv"},
+    {"run_id": "r003", "instrument": "spec_b", "batch": "batch_beta", "spectrum": "spectra/r003.csv"},
+    {"run_id": "r004", "instrument": "spec_b", "batch": "batch_beta", "calibrant": "argon", "temperature_c": 24.7, "spectrum": "spectra/r004.csv"},
+    {"run_id": "r005", "instrument": "spec_hold", "batch": "batch_quarantine", "spectrum": "spectra/r005.csv"},
+    {"run_id": "r006", "instrument": "spec_a", "batch": "batch_delta", "spectrum": "spectra/r006.csv"},
+    {"run_id": "r007", "instrument": "spec_a", "batch": "batch_alpha", "spectrum": "spectra/r007.csv"},
+    {"run_id": "r008", "instrument": "spec_a", "batch": "batch_alpha", "spectrum": "spectra/r008.csv"},
+    {"run_id": "r009", "instrument": "spec_b", "batch": "batch_beta", "spectrum": "spectra/r009.csv"},
+    {"run_id": "r010", "instrument": "spec_c", "batch": "batch_gamma", "operator": "Anika", "spectrum": "spectra/r010.csv"},
+    {"run_id": "r011", "instrument": "spec_c", "batch": "batch_alpha", "spectrum": "spectra/r011.csv"},
+    {"run_id": "r012", "instrument": "spec_b", "batch": "batch_beta", "quality_flag": "ok", "spectrum": "spectra/r012.csv"},
+    {"run_id": "r013", "instrument": "spec_a", "batch": "batch_alpha", "operator": "Jules", "temperature_c": 21.9, "spectrum": "spectra/r013.csv"},
+    {"run_id": "r014", "instrument": "spec_c", "batch": "batch_gamma", "spectrum": "spectra/r014.csv"},
+    {"run_id": "r015", "instrument": "spec_b", "batch": "batch_quarantine", "quality_flag": "ok", "spectrum": "spectra/r015.csv"},
+    {"run_id": "r016", "instrument": "spec_a", "batch": "batch_alpha", "quality_flag": "bad", "spectrum": "spectra/r016.csv"},
+    {"run_id": "r017", "instrument": "spec_c", "batch": "batch_gamma", "spectrum": "spectra/r017.csv"},
+    {"run_id": "r018", "instrument": "spec_b", "batch": "batch_beta", "spectrum": "spectra/r018.csv"}
+  ]
+}

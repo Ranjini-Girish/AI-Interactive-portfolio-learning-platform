@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "events.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "ts_unix_ms", "type", "payload"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "type": {"type": "string", "enum": ["access", "evict", "clear"]},
+          "payload": {"type": "object"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"type": {"const": "access"}}, "required": ["type"]},
+            "then": {
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["key", "weight"],
+                  "properties": {
+                    "key": {"type": "string", "minLength": 1},
+                    "weight": {"type": "integer", "minimum": 1, "maximum": 16}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {"properties": {"type": {"const": "evict"}}, "required": ["type"]},
+            "then": {
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["key"],
+                  "properties": {
+                    "key": {"type": "string", "minLength": 1}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {"properties": {"type": {"const": "clear"}}, "required": ["type"]},
+            "then": {
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {}
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

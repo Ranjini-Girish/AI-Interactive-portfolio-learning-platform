@@ -1,0 +1,12 @@
+{
+  "outcomes_by_day": {
+    "100": "fail",
+    "101": "fail",
+    "102": "fail",
+    "103": "fail",
+    "104": "fail"
+  },
+  "service_id": "svc-epsilon",
+  "tier": "silver",
+  "upstream_id": "up-west"
+}

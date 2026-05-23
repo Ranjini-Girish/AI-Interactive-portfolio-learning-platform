@@ -1,0 +1,12 @@
+{
+  "datasets_with_snapshots": [
+    "vol"
+  ],
+  "events_with_diagnostics": 1,
+  "final_snapshot_count": 2,
+  "retention_runs_executed": 1,
+  "snapshots_created": 0,
+  "snapshots_deleted_explicitly": 1,
+  "snapshots_pruned_by_retention": 1,
+  "total_events": 2
+}

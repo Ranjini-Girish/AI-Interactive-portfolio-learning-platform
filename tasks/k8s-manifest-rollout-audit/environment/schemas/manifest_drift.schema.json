@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "manifest_drift.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "baseline_sha256",
+    "current_sha256",
+    "summary",
+    "added_workloads",
+    "removed_workloads",
+    "modified_workloads"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "baseline_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "current_sha256":  {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "summary": {
+      "type": "object",
+      "required": ["added_workloads_count", "removed_workloads_count", "modified_workloads_count"],
+      "additionalProperties": false,
+      "properties": {
+        "added_workloads_count":    {"type": "integer", "minimum": 0},
+        "removed_workloads_count":  {"type": "integer", "minimum": 0},
+        "modified_workloads_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "added_workloads": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/workloadEntry"}
+    },
+    "removed_workloads": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/workloadEntry"}
+    },
+    "modified_workloads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["workload_name", "namespace", "changed_fields"],
+        "additionalProperties": false,
+        "properties": {
+          "workload_name": {"type": "string"},
+          "namespace":     {"type": "string"},
+          "changed_fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["old_value", "new_value"],
+              "additionalProperties": false,
+              "properties": {
+                "old_value": {},
+                "new_value": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "workloadEntry": {
+      "type": "object",
+      "required": ["workload_name", "namespace", "spec"],
+      "additionalProperties": false,
+      "properties": {
+        "workload_name": {"type": "string"},
+        "namespace":     {"type": "string"},
+        "spec":          {"type": "object"}
+      }
+    }
+  }
+}

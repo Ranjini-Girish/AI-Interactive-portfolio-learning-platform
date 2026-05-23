@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "policy_input",
+  "type": "object",
+  "required": [
+    "quota_inheritance", "over_quota_action", "delete_action",
+    "min_quota_kb", "track_lineage"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "quota_inheritance": {
+      "type": "string",
+      "enum": ["strict", "sum_children_capped", "independent"]
+    },
+    "over_quota_action": {
+      "type": "string",
+      "enum": ["reject", "throttle"]
+    },
+    "delete_action": {
+      "type": "string",
+      "enum": ["reject_if_tasks", "reparent_to_parent"]
+    },
+    "min_quota_kb": { "type": "integer", "minimum": 1 },
+    "track_lineage": { "type": "boolean" }
+  }
+}

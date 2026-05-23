@@ -1,0 +1,224 @@
+{
+  "build_order": [
+    [
+      "analytics.event_raw"
+    ],
+    [
+      "analytics.cohort_a"
+    ],
+    [
+      "analytics.daily_active"
+    ],
+    [
+      "public.customer"
+    ],
+    [
+      "auth.session"
+    ],
+    [
+      "public.orders"
+    ],
+    [
+      "billing.invoice"
+    ],
+    [
+      "billing.payment"
+    ],
+    [
+      "billing.revenue_by_month"
+    ],
+    [
+      "public.compute_lifetime_value"
+    ],
+    [
+      "public.order_summary"
+    ]
+  ],
+  "cycles": [
+    [
+      "public.compute_lifetime_value"
+    ]
+  ],
+  "impacted_objects": [
+    {
+      "kind": "view",
+      "lock_class": "ACCESS_SHARE",
+      "name": "cohort_a",
+      "schema": "analytics",
+      "triggered_by_queries": [
+        "q_analytics_morning"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "kind": "view",
+      "lock_class": "ACCESS_SHARE",
+      "name": "daily_active",
+      "schema": "analytics",
+      "triggered_by_queries": [
+        "q_analytics_morning"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "kind": "table",
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "name": "event_raw",
+      "schema": "analytics",
+      "triggered_by_queries": [
+        "q_analytics_morning"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "kind": "table",
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "name": "session",
+      "schema": "auth",
+      "triggered_by_queries": [
+        "q_audit_session_join"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "kind": "table",
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "name": "invoice",
+      "schema": "billing",
+      "triggered_by_queries": [
+        "q_billing_export"
+      ],
+      "version": "1.4.0"
+    },
+    {
+      "kind": "table",
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "name": "payment",
+      "schema": "billing",
+      "triggered_by_queries": [
+        "q_billing_export"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "kind": "function",
+      "lock_class": "ACCESS_SHARE",
+      "name": "compute_lifetime_value",
+      "schema": "public",
+      "triggered_by_queries": [
+        "q_lifetime_value"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "kind": "table",
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "name": "customer",
+      "schema": "public",
+      "triggered_by_queries": [
+        "q_archive_search",
+        "q_audit_session_join",
+        "q_billing_export",
+        "q_checkout_v3",
+        "q_customer_dashboard",
+        "q_lifetime_value"
+      ],
+      "version": "1.5.0"
+    },
+    {
+      "kind": "view",
+      "lock_class": "ACCESS_SHARE",
+      "name": "order_summary",
+      "schema": "public",
+      "triggered_by_queries": [
+        "q_customer_dashboard"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "kind": "table",
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "name": "orders",
+      "schema": "public",
+      "triggered_by_queries": [
+        "q_billing_export",
+        "q_checkout_v3",
+        "q_customer_dashboard",
+        "q_lifetime_value"
+      ],
+      "version": "2.2.0"
+    }
+  ],
+  "resolver_summary": {
+    "conflicts": [
+      "analytics.cohort_b"
+    ],
+    "cycle_group_count": 1,
+    "missing": [
+      "ops.heartbeat"
+    ],
+    "selected_total": 11
+  },
+  "seed_objects": [
+    {
+      "object": "analytics.cohort_a",
+      "query_id": "q_analytics_morning",
+      "version": "1.0.0"
+    },
+    {
+      "object": "analytics.daily_active",
+      "query_id": "q_analytics_morning",
+      "version": "1.0.0"
+    },
+    {
+      "object": "public.customer",
+      "query_id": "q_archive_search",
+      "version": "1.5.0"
+    },
+    {
+      "object": "auth.session",
+      "query_id": "q_audit_session_join",
+      "version": "1.0.0"
+    },
+    {
+      "object": "billing.invoice",
+      "query_id": "q_billing_export",
+      "version": "1.4.0"
+    },
+    {
+      "object": "billing.payment",
+      "query_id": "q_billing_export",
+      "version": "1.1.0"
+    },
+    {
+      "object": "public.customer",
+      "query_id": "q_checkout_v3",
+      "version": "1.5.0"
+    },
+    {
+      "object": "public.orders",
+      "query_id": "q_checkout_v3",
+      "version": "2.2.0"
+    },
+    {
+      "object": "public.customer",
+      "query_id": "q_customer_dashboard",
+      "version": "1.5.0"
+    },
+    {
+      "object": "public.order_summary",
+      "query_id": "q_customer_dashboard",
+      "version": "1.2.0"
+    },
+    {
+      "object": "public.compute_lifetime_value",
+      "query_id": "q_lifetime_value",
+      "version": "1.1.0"
+    },
+    {
+      "object": "public.customer",
+      "query_id": "q_lifetime_value",
+      "version": "1.5.0"
+    }
+  ]
+}

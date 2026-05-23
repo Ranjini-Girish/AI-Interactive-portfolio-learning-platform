@@ -1,0 +1,10 @@
+{
+  "quota": 4,
+  "readings": [
+    1,
+    0,
+    1
+  ],
+  "sample_id": "vqb_11",
+  "trace_tag": "plain"
+}

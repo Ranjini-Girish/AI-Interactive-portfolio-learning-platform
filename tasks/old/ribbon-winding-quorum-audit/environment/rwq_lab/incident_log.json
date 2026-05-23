@@ -1,0 +1,18 @@
+{
+  "windows": [
+    {
+      "relax": 4,
+      "tiers": [
+        "alpha"
+      ],
+      "until_day": 90
+    },
+    {
+      "relax": 2,
+      "tiers": [
+        "beta"
+      ],
+      "until_day": 80
+    }
+  ]
+}

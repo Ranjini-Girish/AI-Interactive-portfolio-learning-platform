@@ -1,0 +1,7 @@
+{
+  "principal": "host/web02.example.com@EXAMPLE.COM",
+  "tier": "gold",
+  "exempt": false,
+  "override_rotation_days": null,
+  "comment": "frontend web tier, secondary"
+}

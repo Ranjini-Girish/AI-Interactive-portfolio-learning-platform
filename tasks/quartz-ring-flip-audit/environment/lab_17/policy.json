@@ -1,0 +1,11 @@
+{
+  "bias_floor": 4,
+  "cap": 72,
+  "cutoff": 52,
+  "fold_mod": 1014,
+  "label": "quartz-ring-flip-audit",
+  "mask": 80,
+  "poly_base": 144,
+  "seed_offset": 127,
+  "square_mod": 1000000
+}

@@ -1,0 +1,11 @@
+{
+  "bias_floor": 4,
+  "cap": 64,
+  "cutoff": 44,
+  "fold_mod": 1006,
+  "label": "index-lag-bridge-audit",
+  "mask": 72,
+  "poly_base": 136,
+  "seed_offset": 13,
+  "square_mod": 999992
+}

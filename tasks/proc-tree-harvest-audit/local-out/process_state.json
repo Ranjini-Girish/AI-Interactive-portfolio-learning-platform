@@ -1,0 +1,114 @@
+{
+  "processes": [
+    {
+      "cmdline": "/sbin/init",
+      "exit_code": null,
+      "exit_signal": null,
+      "exit_tick": null,
+      "pid": 1,
+      "ppid": 0,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 0
+    },
+    {
+      "cmdline": "/usr/sbin/sshd",
+      "exit_code": null,
+      "exit_signal": null,
+      "exit_tick": null,
+      "pid": 100,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/zsh",
+      "exit_code": 0,
+      "exit_signal": null,
+      "exit_tick": 31,
+      "pid": 200,
+      "ppid": 100,
+      "start_tick": 0,
+      "state": "ZOMBIE",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/sbin/cron",
+      "exit_code": 0,
+      "exit_signal": null,
+      "exit_tick": 14,
+      "pid": 300,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "EXITED",
+      "uid": 0
+    },
+    {
+      "cmdline": "/usr/sbin/nginx",
+      "exit_code": null,
+      "exit_signal": "SIGINT",
+      "exit_tick": 20,
+      "pid": 400,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "EXITED",
+      "uid": 33
+    },
+    {
+      "cmdline": "/usr/bin/grep",
+      "exit_code": 0,
+      "exit_signal": null,
+      "exit_tick": 9,
+      "pid": 500,
+      "ppid": 200,
+      "start_tick": 5,
+      "state": "EXITED",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/bash",
+      "exit_code": null,
+      "exit_signal": "SIGTERM",
+      "exit_tick": 12,
+      "pid": 600,
+      "ppid": 1,
+      "start_tick": 6,
+      "state": "EXITED",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/awk",
+      "exit_code": 7,
+      "exit_signal": null,
+      "exit_tick": 32,
+      "pid": 700,
+      "ppid": 1,
+      "start_tick": 11,
+      "state": "EXITED",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/python3",
+      "exit_code": null,
+      "exit_signal": "SIGKILL",
+      "exit_tick": 27,
+      "pid": 900,
+      "ppid": 100,
+      "start_tick": 25,
+      "state": "EXITED",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/python3",
+      "exit_code": 42,
+      "exit_signal": null,
+      "exit_tick": 29,
+      "pid": 901,
+      "ppid": 1,
+      "start_tick": 26,
+      "state": "EXITED",
+      "uid": 1000
+    }
+  ]
+}

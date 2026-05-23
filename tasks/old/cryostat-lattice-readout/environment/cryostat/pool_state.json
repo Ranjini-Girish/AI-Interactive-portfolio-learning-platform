@@ -1,0 +1,13 @@
+{
+  "as_of_day": 60,
+  "tol_millic_primary": 40,
+  "tol_millic_secondary": 120,
+  "drift_grace_days": 20,
+  "drift_per_day": 3,
+  "recent_window_k": 3,
+  "overlay": {
+    "active": true,
+    "add_millic": 25,
+    "sensor_ids": ["s03", "s11"]
+  }
+}

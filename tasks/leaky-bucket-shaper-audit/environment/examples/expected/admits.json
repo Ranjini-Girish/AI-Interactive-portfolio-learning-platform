@@ -1,0 +1,16 @@
+{
+  "admits": [
+    {
+      "bucket_id": "edge-a",
+      "level_after": 600,
+      "seq": 0,
+      "size_bytes": 600
+    },
+    {
+      "bucket_id": "edge-b",
+      "level_after": 200,
+      "seq": 3,
+      "size_bytes": 200
+    }
+  ]
+}

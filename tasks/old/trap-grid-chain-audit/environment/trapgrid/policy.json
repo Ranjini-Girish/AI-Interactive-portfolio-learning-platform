@@ -1,0 +1,12 @@
+{
+  "chain_max_hops": 3,
+  "current_day": 10,
+  "hot_cooloff_days": 2,
+  "party_tier": "silver",
+  "rearm_cooldown_days": 3,
+  "tier_disarm_cap": {
+    "bronze": 2,
+    "gold": 5,
+    "silver": 3
+  }
+}

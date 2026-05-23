@@ -1,0 +1,7 @@
+{
+  "implicit_init_harvest": true,
+  "init_pid": 1,
+  "orphan_handling": "reparent_to_init",
+  "track_lineage": true,
+  "wait_on_living_child": "diagnostic"
+}

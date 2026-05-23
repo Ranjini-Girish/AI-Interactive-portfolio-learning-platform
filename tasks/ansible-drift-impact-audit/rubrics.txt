@@ -1,0 +1,10 @@
+Agent reconciles playbook drift identities, parameter capture, and list ordering with `/app/docs/drift_semantics.md` and `/app/docs/sorting_rules.md`, +5
+Agent writes `playbook_drift.json`, `dependency_impact.json`, and `remediation_plan.json` under `/app/output/` as canonical UTF-8 JSON with two-space indent, sorted object keys where required, and a trailing newline on each file, +5
+Agent applies replace, exclude bumping, registry expansion, SCC cycle grouping, and build-order tie-breaks per `/app/docs/resolver_semantics.md` and `/app/docs/impact_semantics.md`, +5
+Agent mutates, adds, or deletes any file under `/app/data/`, -5
+Agent emits minified JSON, omits trailing newlines, or uses key order that disagrees with the documented sort keys, -3
+Agent copies SHA-256 fields in `playbook_drift.json` from a static template instead of hashing the live playbook bytes on disk, -5
+Agent treats `root.replace` as transitive chaining when the spec defines single-step replacement only, -5
+Agent counts cycle groups without including singleton self-edges that qualify as cycle groups, -3
+Agent builds `remediation_plan.json` steps without re-indexing after dropping empty steps, -3
+Agent lists `impacted_modules` or `triggered_by` with ordering that disagrees with the ASCII rules in `/app/docs/output_format.md`, -3

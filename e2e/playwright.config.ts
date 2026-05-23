@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
+import fs from 'node:fs';
 import path from 'node:path';
 import { CHROME_USER_AGENT } from './lib/snorkel-auth';
 
@@ -7,6 +8,29 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 
 const baseURL = process.env.SNORKEL_BASE_URL ?? 'https://experts.snorkel-ai.com';
 const storageStatePath = path.join(__dirname, '.auth', 'snorkel-user.json');
+const hasStorageState = fs.existsSync(storageStatePath);
+/** Set SNORKEL_AUTH_SETUP=1 to force Cognito login before tests (refreshes .auth/snorkel-user.json). */
+const forceAuthSetup = process.env.SNORKEL_AUTH_SETUP === '1';
+const runAuthSetup = forceAuthSetup || !hasStorageState;
+
+const projects: ReturnType<typeof defineConfig>['projects'] = [];
+
+if (runAuthSetup) {
+  projects.push({
+    name: 'setup',
+    testMatch: /auth\.setup\.ts/,
+  });
+}
+
+projects.push({
+  name: 'chromium',
+  use: {
+    ...devices['Desktop Chrome'],
+    storageState: storageStatePath,
+  },
+  ...(runAuthSetup ? { dependencies: ['setup' as const] } : {}),
+  testIgnore: /auth\.setup\.ts/,
+});
 
 export default defineConfig({
   testDir: './tests',
@@ -26,19 +50,5 @@ export default defineConfig({
     navigationTimeout: 90_000,
     userAgent: CHROME_USER_AGENT,
   },
-  projects: [
-    {
-      name: 'setup',
-      testMatch: /auth\.setup\.ts/,
-    },
-    {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: storageStatePath,
-      },
-      dependencies: ['setup'],
-      testIgnore: /auth\.setup\.ts/,
-    },
-  ],
+  projects,
 });

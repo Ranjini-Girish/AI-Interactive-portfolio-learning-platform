@@ -1,0 +1,9 @@
+{
+  "bundle_id": "a01",
+  "delivery_mode": "enforce",
+  "directives": {
+    "script-src": ["'self'", "'unsafe-inline'"]
+  },
+  "nonces": [],
+  "origin_id": "o-delta"
+}

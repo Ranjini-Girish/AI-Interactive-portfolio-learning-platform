@@ -1,0 +1,84 @@
+{
+  "hot_locks": [
+    {
+      "acquire_count": 5,
+      "blocked_count": 2,
+      "id": "L_b",
+      "peak_holders": 3
+    },
+    {
+      "acquire_count": 3,
+      "blocked_count": 2,
+      "id": "L_d",
+      "peak_holders": 1
+    },
+    {
+      "acquire_count": 2,
+      "blocked_count": 1,
+      "id": "L_a",
+      "peak_holders": 1
+    },
+    {
+      "acquire_count": 2,
+      "blocked_count": 1,
+      "id": "L_c",
+      "peak_holders": 1
+    },
+    {
+      "acquire_count": 2,
+      "blocked_count": 1,
+      "id": "L_h",
+      "peak_holders": 1
+    },
+    {
+      "acquire_count": 1,
+      "blocked_count": 0,
+      "id": "L_e",
+      "peak_holders": 1
+    },
+    {
+      "acquire_count": 1,
+      "blocked_count": 0,
+      "id": "L_f",
+      "peak_holders": 1
+    },
+    {
+      "acquire_count": 1,
+      "blocked_count": 0,
+      "id": "L_g",
+      "peak_holders": 1
+    }
+  ],
+  "longest_holds": [
+    {
+      "acquire_seq": 26,
+      "duration": 30,
+      "lock": "L_e",
+      "release_seq": 27,
+      "thread": "Ta"
+    },
+    {
+      "acquire_seq": 17,
+      "duration": 7,
+      "lock": "L_g",
+      "release_seq": 25,
+      "thread": "T7"
+    },
+    {
+      "acquire_seq": 20,
+      "duration": 2,
+      "lock": "L_b",
+      "release_seq": 22,
+      "thread": "T8"
+    }
+  ],
+  "summary": {
+    "deadlocked_threads": 4,
+    "locks_total": 8,
+    "threads_total": 12,
+    "total_acquires": 21,
+    "total_blocked_acquires": 7,
+    "total_releases": 4,
+    "total_unmatched_releases": 1
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "nodes": [
+    {
+      "id": "n03",
+      "owned_bytes": 15360,
+      "rack": "r2",
+      "shard_count": 6,
+      "status": "active",
+      "weight": 100
+    },
+    {
+      "id": "n04",
+      "owned_bytes": 4608,
+      "rack": "r2",
+      "shard_count": 2,
+      "status": "draining",
+      "weight": 100
+    },
+    {
+      "id": "n05",
+      "owned_bytes": 6144,
+      "rack": "r3",
+      "shard_count": 2,
+      "status": "draining",
+      "weight": 100
+    },
+    {
+      "id": "n06",
+      "owned_bytes": 14848,
+      "rack": "r4",
+      "shard_count": 5,
+      "status": "active",
+      "weight": 200
+    }
+  ],
+  "shards": [
+    {
+      "id": "s01",
+      "primary": "n06",
+      "replicas": [
+        "n03"
+      ],
+      "size_bytes": 1024
+    },
+    {
+      "id": "s02",
+      "primary": "n06",
+      "replicas": [
+        "n03"
+      ],
+      "size_bytes": 2048
+    },
+    {
+      "id": "s03",
+      "primary": "n03",
+      "replicas": [
+        "n04"
+      ],
+      "size_bytes": 512
+    },
+    {
+      "id": "s04",
+      "primary": "n05",
+      "replicas": [
+        "n04"
+      ],
+      "size_bytes": 4096
+    },
+    {
+      "id": "s05",
+      "primary": "n03",
+      "replicas": [
+        "n06"
+      ],
+      "size_bytes": 1536
+    },
+    {
+      "id": "s06",
+      "primary": "n03",
+      "replicas": [
+        "n06"
+      ],
+      "size_bytes": 8192
+    },
+    {
+      "id": "s07",
+      "primary": "n06",
+      "replicas": [
+        "n03",
+        "n05"
+      ],
+      "size_bytes": 2048
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "namespaces": [
+    {
+      "descendant_count": 1,
+      "headroom": {
+        "cpu": 95,
+        "memory": 992,
+        "storage": 9950
+      },
+      "limits": {
+        "cpu": 100,
+        "memory": 1024,
+        "storage": 10000
+      },
+      "name": "root",
+      "used_own": {
+        "cpu": 0,
+        "memory": 0,
+        "storage": 0
+      },
+      "used_subtree": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      }
+    },
+    {
+      "descendant_count": 0,
+      "headroom": {
+        "cpu": 45,
+        "memory": 480,
+        "storage": 4950
+      },
+      "limits": {
+        "cpu": 50,
+        "memory": 512,
+        "storage": 5000
+      },
+      "name": "team_x",
+      "used_own": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      },
+      "used_subtree": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      }
+    }
+  ]
+}

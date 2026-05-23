@@ -1,0 +1,8 @@
+{
+  "links": [
+    {
+      "from_segment": "sg03",
+      "to_segment": "sg07"
+    }
+  ]
+}

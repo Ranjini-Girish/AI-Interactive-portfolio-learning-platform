@@ -1,0 +1,228 @@
+{
+  "excluded_runs": [
+    {
+      "reason": "quality_flag",
+      "run_id": "r005",
+      "status": "excluded"
+    },
+    {
+      "reason": "missing_metadata",
+      "run_id": "r006",
+      "status": "excluded"
+    },
+    {
+      "reason": "insufficient_rows",
+      "run_id": "r007",
+      "status": "excluded"
+    },
+    {
+      "reason": "missing_peak",
+      "run_id": "r008",
+      "status": "excluded"
+    },
+    {
+      "reason": "no_baseline",
+      "run_id": "r009",
+      "status": "excluded"
+    },
+    {
+      "reason": "quality_flag",
+      "run_id": "r016",
+      "status": "excluded"
+    }
+  ],
+  "included_runs": [
+    {
+      "baseline": 10.0,
+      "batch": "batch_alpha",
+      "calibrant": "neon",
+      "instrument": "spec_a",
+      "intensity_var": 1896.916667,
+      "noise_floor_qn": 2.21914,
+      "operator": "Elena",
+      "rms_error_nm": 0.021311,
+      "run_id": "r001",
+      "status": "included",
+      "temperature_c": 22.2,
+      "wavelength_offset_nm": 0.05
+    },
+    {
+      "baseline": 12.166667,
+      "batch": "batch_alpha",
+      "calibrant": "neon",
+      "instrument": "spec_a",
+      "intensity_var": 1899.970588,
+      "noise_floor_qn": 2.21914,
+      "operator": "Jules",
+      "rms_error_nm": 0.044897,
+      "run_id": "r002",
+      "status": "included",
+      "temperature_c": 21.9,
+      "wavelength_offset_nm": 0.05
+    },
+    {
+      "baseline": 7.0,
+      "batch": "batch_beta",
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "intensity_var": 2848.2625,
+      "noise_floor_qn": 2.21914,
+      "operator": "Soren",
+      "rms_error_nm": 0.014557,
+      "run_id": "r003",
+      "status": "included",
+      "temperature_c": 24.4,
+      "wavelength_offset_nm": -0.075
+    },
+    {
+      "baseline": 9.666667,
+      "batch": "batch_beta",
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "intensity_var": 2498.838095,
+      "noise_floor_qn": 2.21914,
+      "operator": "Soren",
+      "rms_error_nm": 0.014915,
+      "run_id": "r004",
+      "status": "included",
+      "temperature_c": 24.7,
+      "wavelength_offset_nm": -0.075
+    },
+    {
+      "baseline": 14.0,
+      "batch": "batch_gamma",
+      "calibrant": "neon",
+      "instrument": "spec_c",
+      "intensity_var": 1659.889706,
+      "noise_floor_qn": 2.21914,
+      "operator": "Anika",
+      "rms_error_nm": 0.150555,
+      "run_id": "r010",
+      "status": "included",
+      "temperature_c": 20.6,
+      "wavelength_offset_nm": 0.12
+    },
+    {
+      "baseline": 9.666667,
+      "batch": "batch_alpha",
+      "calibrant": "neon",
+      "instrument": "spec_c",
+      "intensity_var": 1874.542857,
+      "noise_floor_qn": 2.21914,
+      "operator": "Elena",
+      "rms_error_nm": 0.155381,
+      "run_id": "r011",
+      "status": "included",
+      "temperature_c": 22.2,
+      "wavelength_offset_nm": 0.12
+    },
+    {
+      "baseline": 6.833333,
+      "batch": "batch_beta",
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "intensity_var": 2786.495238,
+      "noise_floor_qn": 2.21914,
+      "operator": "Soren",
+      "rms_error_nm": 0.144792,
+      "run_id": "r012",
+      "status": "included",
+      "temperature_c": 24.4,
+      "wavelength_offset_nm": -0.075
+    },
+    {
+      "baseline": 10.0,
+      "batch": "batch_alpha",
+      "calibrant": "neon",
+      "instrument": "spec_a",
+      "intensity_var": 1966.666667,
+      "noise_floor_qn": 2.21914,
+      "operator": "Jules",
+      "rms_error_nm": 0.021311,
+      "run_id": "r013",
+      "status": "included",
+      "temperature_c": 21.9,
+      "wavelength_offset_nm": 0.05
+    },
+    {
+      "baseline": 12.0,
+      "batch": "batch_gamma",
+      "calibrant": "neon",
+      "instrument": "spec_c",
+      "intensity_var": 1928.3625,
+      "noise_floor_qn": 0.0,
+      "operator": "Lina",
+      "rms_error_nm": 0.018921,
+      "run_id": "r014",
+      "status": "included",
+      "temperature_c": 20.6,
+      "wavelength_offset_nm": 0.12
+    },
+    {
+      "baseline": 11.0,
+      "batch": "batch_quarantine",
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "intensity_var": 2850.809524,
+      "noise_floor_qn": 2.21914,
+      "operator": "Hale",
+      "rms_error_nm": 0.030111,
+      "run_id": "r015",
+      "status": "included",
+      "temperature_c": 25.0,
+      "wavelength_offset_nm": -0.075
+    },
+    {
+      "baseline": 13.5,
+      "batch": "batch_gamma",
+      "calibrant": "neon",
+      "instrument": "spec_c",
+      "intensity_var": 1765.92381,
+      "noise_floor_qn": 0.0,
+      "operator": "Lina",
+      "rms_error_nm": 0.184453,
+      "run_id": "r017",
+      "status": "included",
+      "temperature_c": 20.6,
+      "wavelength_offset_nm": 0.12
+    },
+    {
+      "baseline": 8.5,
+      "batch": "batch_beta",
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "intensity_var": 2752.12381,
+      "noise_floor_qn": 0.0,
+      "operator": "Soren",
+      "rms_error_nm": 0.271177,
+      "run_id": "r018",
+      "status": "included",
+      "temperature_c": 24.4,
+      "wavelength_offset_nm": -0.075
+    }
+  ],
+  "source_files": [
+    "\\app\\experiments\\config\\batches.json",
+    "\\app\\experiments\\config\\calibrants.json",
+    "\\app\\experiments\\config\\instruments.json",
+    "\\app\\experiments\\manifest.json",
+    "\\app\\experiments\\spectra\\r001.csv",
+    "\\app\\experiments\\spectra\\r002.csv",
+    "\\app\\experiments\\spectra\\r003.csv",
+    "\\app\\experiments\\spectra\\r004.csv",
+    "\\app\\experiments\\spectra\\r005.csv",
+    "\\app\\experiments\\spectra\\r006.csv",
+    "\\app\\experiments\\spectra\\r007.csv",
+    "\\app\\experiments\\spectra\\r008.csv",
+    "\\app\\experiments\\spectra\\r009.csv",
+    "\\app\\experiments\\spectra\\r010.csv",
+    "\\app\\experiments\\spectra\\r011.csv",
+    "\\app\\experiments\\spectra\\r012.csv",
+    "\\app\\experiments\\spectra\\r013.csv",
+    "\\app\\experiments\\spectra\\r014.csv",
+    "\\app\\experiments\\spectra\\r015.csv",
+    "\\app\\experiments\\spectra\\r016.csv",
+    "\\app\\experiments\\spectra\\r017.csv",
+    "\\app\\experiments\\spectra\\r018.csv"
+  ]
+}

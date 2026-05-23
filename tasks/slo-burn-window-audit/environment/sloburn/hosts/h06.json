@@ -1,0 +1,26 @@
+{
+  "freeze_tag": "prod-east",
+  "host_id": "h06",
+  "samples": [
+    {
+      "err": 9,
+      "ok": 1,
+      "slot": 2
+    },
+    {
+      "err": 8,
+      "ok": 2,
+      "slot": 3
+    },
+    {
+      "err": 7,
+      "ok": 3,
+      "slot": 4
+    },
+    {
+      "err": 6,
+      "ok": 4,
+      "slot": 5
+    }
+  ]
+}

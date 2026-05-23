@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "flow_verdicts.schema.json",
+  "title": "Flow verdicts output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["flows"],
+  "properties": {
+    "flows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evaluated_rule_ids", "id", "matched_rule_id", "verdict"],
+        "properties": {
+          "evaluated_rule_ids": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "id": {"type": "string", "minLength": 1},
+          "matched_rule_id": {
+            "oneOf": [
+              {"type": "string", "minLength": 1},
+              {"type": "null"}
+            ]
+          },
+          "verdict": {"type": "string", "enum": ["allow", "deny", "default"]}
+        }
+      }
+    }
+  }
+}

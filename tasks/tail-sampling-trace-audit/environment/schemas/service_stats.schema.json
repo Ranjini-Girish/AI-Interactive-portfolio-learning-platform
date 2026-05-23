@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "service_stats.json",
+  "type": "object",
+  "required": ["services"],
+  "additionalProperties": false,
+  "properties": {
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "dropped_traces", "error_spans", "kept_traces",
+          "max_trace_duration_ms", "service",
+          "span_count", "timeout_spans", "trace_count"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "dropped_traces":        { "type": "integer", "minimum": 0 },
+          "error_spans":           { "type": "integer", "minimum": 0 },
+          "kept_traces":           { "type": "integer", "minimum": 0 },
+          "max_trace_duration_ms": { "type": "integer", "minimum": 0 },
+          "service":               { "type": "string" },
+          "span_count":            { "type": "integer", "minimum": 0 },
+          "timeout_spans":         { "type": "integer", "minimum": 0 },
+          "trace_count":           { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

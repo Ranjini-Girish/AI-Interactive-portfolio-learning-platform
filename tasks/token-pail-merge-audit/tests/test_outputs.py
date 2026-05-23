@@ -1,3 +1,4 @@
+# scaffold-status: oracle-pending
 
 """Behavioral tests for token-pail-merge-audit."""
 
@@ -17,7 +18,7 @@ OUTPUT_FILES = ["pail_levels.json", "summary.json"]
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "2d71a9cef7157df46d2a96d94cb8fe5198e1c2ae06b62f1e3c7f0f6ace6ef31c",
+    "SPEC.md": "8ba71a948b72a90d4ccb212c40eeda673fb393ef580eba50de06212a4876e52e",
     "anchors/a.json": "fe5dbcea246e15393778e452050f1682c6ef09ea907200c0a2b5a34d7db5efdc",
     "anchors/b.json": "b472e700f52ea3f43e4c8688464f7024032646332b2f7a42565b29a9aefcde1f",
     "ancillary/x.json": "b3d504b25c94af91ff5ef0ba4fd681d4ad36d645dd18d89ddcc1ebf0a7c99220",
@@ -70,6 +71,11 @@ def _load_json(path: Path) -> object:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _is_json_number(value: object) -> bool:
+    """True for JSON numbers, excluding bool (a common mis-typing for capped_at)."""
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
 @pytest.fixture(scope="session")
 def outputs() -> dict[str, object]:
     payload: dict[str, object] = {}
@@ -94,6 +100,44 @@ class TestInputIntegrity:
 
 class TestReportStructure:
     """Hash-locked outputs."""
+
+    def test_pail_levels_structural_shape(self, outputs: dict[str, object]) -> None:
+        """Hosts list shape, numeric capped_at ceilings, and host_id sort order."""
+        pail = outputs["pail_levels.json"]
+        assert isinstance(pail, dict)
+        hosts = pail.get("hosts")
+        assert isinstance(hosts, list)
+        item_count = len(list((DATA_DIR / "items").glob("*.json")))
+        assert len(hosts) == item_count
+        host_ids: list[str] = []
+        for row in hosts:
+            assert isinstance(row, dict)
+            for key in ("host_id", "effective_tokens", "capped_at"):
+                assert key in row, f"missing {key} on host row"
+            assert isinstance(row["host_id"], str)
+            assert _is_json_number(row["effective_tokens"]), (
+                "effective_tokens must be a JSON number, not bool"
+            )
+            assert _is_json_number(row["capped_at"]), (
+                "capped_at must be a numeric float ceiling, not bool"
+            )
+            assert row["effective_tokens"] <= row["capped_at"] + 1e-9
+            host_ids.append(row["host_id"])
+        assert host_ids == sorted(host_ids)
+
+    def test_summary_structural_shape(self, outputs: dict[str, object]) -> None:
+        """summary.json carries integer hosts count and pool current_day."""
+        summary = outputs["summary.json"]
+        assert isinstance(summary, dict)
+        for key in ("hosts", "current_day"):
+            assert key in summary
+        assert isinstance(summary["hosts"], int) and not isinstance(summary["hosts"], bool)
+        assert isinstance(summary["current_day"], int) and not isinstance(
+            summary["current_day"], bool
+        )
+        pool = _load_json(DATA_DIR / "pool_state.json")
+        assert isinstance(pool, dict)
+        assert summary["current_day"] == pool["current_day"]
 
     def test_output_canonical_hashes(self, outputs: dict[str, object]) -> None:
         """Each audit file matches the canonical minified JSON digest."""

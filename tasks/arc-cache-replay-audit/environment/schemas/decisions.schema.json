@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "decisions.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decisions"],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "b1_size", "b2_size",
+          "cum_weight_after",
+          "dropped_from", "dropped_key", "dropped_weight",
+          "event_id", "key", "outcome", "p_after",
+          "replaced_from", "replaced_key", "replaced_weight",
+          "t1_size", "t2_size", "type"
+        ],
+        "properties": {
+          "b1_size": {"type": "integer", "minimum": 0},
+          "b2_size": {"type": "integer", "minimum": 0},
+          "cum_weight_after": {"type": ["integer", "null"], "minimum": 1},
+          "dropped_from": {"type": ["string", "null"], "enum": [null, "t1", "b1", "b2"]},
+          "dropped_key": {"type": ["string", "null"]},
+          "dropped_weight": {"type": ["integer", "null"], "minimum": 1},
+          "event_id": {"type": "string", "minLength": 1},
+          "key": {"type": ["string", "null"]},
+          "outcome": {"type": "string",
+            "enum": ["hit_t1", "hit_t2", "ghost_hit_b1", "ghost_hit_b2",
+                     "miss", "evicted", "cleared"]},
+          "p_after": {"type": "integer", "minimum": 0},
+          "replaced_from": {"type": ["string", "null"], "enum": [null, "t1", "t2"]},
+          "replaced_key": {"type": ["string", "null"]},
+          "replaced_weight": {"type": ["integer", "null"], "minimum": 1},
+          "t1_size": {"type": "integer", "minimum": 0},
+          "t2_size": {"type": "integer", "minimum": 0},
+          "type": {"type": "string", "enum": ["access", "evict", "clear"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "sim_eta": [
+    "sim_iota"
+  ],
+  "sim_iota": [
+    "sim_kappa",
+    "sim_xi"
+  ],
+  "sim_theta": [
+    "sim_iota"
+  ]
+}

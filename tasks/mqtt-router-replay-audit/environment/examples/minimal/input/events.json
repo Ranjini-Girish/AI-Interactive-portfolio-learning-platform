@@ -1,0 +1,8 @@
+{
+  "events": [
+    {"seq": 0, "kind": "publish",   "topic": "demo/x", "payload_id": 1, "qos": 1, "retain": false, "client_id": "pub"},
+    {"seq": 1, "kind": "publish",   "topic": "demo/y", "payload_id": 2, "qos": 0, "retain": true,  "client_id": "pub"},
+    {"seq": 2, "kind": "subscribe", "client_id": "pub", "filter": "demo/y", "qos": 0},
+    {"seq": 3, "kind": "tick",      "delta_sec": 10}
+  ]
+}

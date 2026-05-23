@@ -1,0 +1,15 @@
+{
+  "severity_ranks": {
+    "error": 0,
+    "warning": 1,
+    "note": 2
+  },
+  "default_daily_withdraw_limit_cents": 100000,
+  "overdraft_allowed_account_types": ["credit"],
+  "credit_account_credit_limit_cents": 200000,
+  "reversal_window_days": 5,
+  "hold_max_age_days": 7,
+  "transfer_self_action": "error",
+  "frozen_account_action": "allow_credits_only",
+  "closed_account_action": "block_all"
+}

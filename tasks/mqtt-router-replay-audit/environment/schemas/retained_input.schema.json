@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "retained.json",
+  "type": "object",
+  "required": ["retained"],
+  "additionalProperties": false,
+  "properties": {
+    "retained": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["topic", "payload_id", "qos", "retained_at_sec"],
+        "additionalProperties": false,
+        "properties": {
+          "topic":           {"type": "string", "minLength": 1},
+          "payload_id":      {"type": "integer", "minimum": 0},
+          "qos":             {"type": "integer", "minimum": 0, "maximum": 2},
+          "retained_at_sec": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

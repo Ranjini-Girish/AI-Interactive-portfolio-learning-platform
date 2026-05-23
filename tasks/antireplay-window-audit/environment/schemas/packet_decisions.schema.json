@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "packet_decisions.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decisions"],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "decision", "diagnostic", "esp_seq",
+          "passive_created", "sa_id", "seq"
+        ],
+        "properties": {
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "accept_passive",
+              "replay_logged",
+              "replay_dropped",
+              "too_old_logged",
+              "too_old_dropped",
+              "unknown_drop"
+            ]
+          },
+          "diagnostic": {
+            "type": ["string", "null"],
+            "enum": [
+              null,
+              "W_REPLAY",
+              "W_TOO_OLD",
+              "E_UNKNOWN_SA",
+              "N_PASSIVE_CREATED"
+            ]
+          },
+          "esp_seq":         { "type": "integer", "minimum": 1 },
+          "passive_created": { "type": "boolean" },
+          "sa_id":           { "type": "string" },
+          "seq":             { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "retained": [
+    {"topic": "events/start", "payload_id": 1, "qos": 1, "retained_at_sec": 0}
+  ]
+}

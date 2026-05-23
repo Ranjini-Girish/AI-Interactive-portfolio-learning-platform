@@ -1,0 +1,179 @@
+{
+  "requests": [
+    {
+      "admission": "admitted",
+      "endpoint_id": "auth",
+      "outcome": "success",
+      "seq": 0,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "auth",
+      "outcome": "failure",
+      "seq": 1,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "auth",
+      "outcome": "timeout",
+      "seq": 2,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "auth",
+      "outcome": "failure",
+      "seq": 3,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "short_circuited",
+      "endpoint_id": "auth",
+      "outcome": "failure",
+      "seq": 4,
+      "state_at_admission": "OPEN"
+    },
+    {
+      "admission": "short_circuited",
+      "endpoint_id": "auth",
+      "outcome": "failure",
+      "seq": 5,
+      "state_at_admission": "OPEN"
+    },
+    {
+      "admission": "probe_admitted",
+      "endpoint_id": "auth",
+      "outcome": "success",
+      "seq": 9,
+      "state_at_admission": "HALF_OPEN"
+    },
+    {
+      "admission": "probe_admitted",
+      "endpoint_id": "auth",
+      "outcome": "success",
+      "seq": 10,
+      "state_at_admission": "HALF_OPEN"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "catalog",
+      "outcome": "failure",
+      "seq": 11,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "catalog",
+      "outcome": "failure",
+      "seq": 12,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "catalog",
+      "outcome": "failure",
+      "seq": 13,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "catalog",
+      "outcome": "failure",
+      "seq": 14,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "short_circuited",
+      "endpoint_id": "catalog",
+      "outcome": "failure",
+      "seq": 15,
+      "state_at_admission": "OPEN"
+    },
+    {
+      "admission": "probe_admitted",
+      "endpoint_id": "catalog",
+      "outcome": "failure",
+      "seq": 18,
+      "state_at_admission": "HALF_OPEN"
+    },
+    {
+      "admission": "short_circuited",
+      "endpoint_id": "discovery",
+      "outcome": "failure",
+      "seq": 21,
+      "state_at_admission": "OPEN"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "metrics",
+      "outcome": "failure",
+      "seq": 27,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "metrics",
+      "outcome": "failure",
+      "seq": 28,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "metrics",
+      "outcome": "failure",
+      "seq": 29,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "metrics",
+      "outcome": "failure",
+      "seq": 30,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "probe_admitted",
+      "endpoint_id": "metrics",
+      "outcome": "success",
+      "seq": 33,
+      "state_at_admission": "HALF_OPEN"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "billing",
+      "outcome": "failure",
+      "seq": 37,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "billing",
+      "outcome": "success",
+      "seq": 38,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "billing",
+      "outcome": "failure",
+      "seq": 39,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "billing",
+      "outcome": "success",
+      "seq": 40,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "short_circuited",
+      "endpoint_id": "billing",
+      "outcome": "failure",
+      "seq": 41,
+      "state_at_admission": "OPEN"
+    }
+  ]
+}

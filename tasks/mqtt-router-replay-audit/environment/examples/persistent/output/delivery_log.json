@@ -1,0 +1,23 @@
+{
+  "deliveries": [
+    {
+      "payload_id": 11,
+      "publish_qos": 1,
+      "recipients": [],
+      "seq": 1,
+      "topic": "events/temp"
+    },
+    {
+      "payload_id": 99,
+      "publish_qos": 1,
+      "recipients": [
+        {
+          "client_id": "bravo",
+          "delivered_qos": 1
+        }
+      ],
+      "seq": 2,
+      "topic": "down/alpha"
+    }
+  ]
+}

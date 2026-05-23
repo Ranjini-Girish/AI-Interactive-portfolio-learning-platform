@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "segment_states.json",
+  "type": "object",
+  "required": ["segments"],
+  "additionalProperties": false,
+  "properties": {
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seg_id", "level", "size_bytes", "created_at_unix_ms", "status", "merged_at_unix_ms", "merged_into_event_id"],
+        "additionalProperties": false,
+        "properties": {
+          "seg_id": {"type": "string"},
+          "level": {"type": "integer", "minimum": 0},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "created_at_unix_ms": {"type": "integer", "minimum": 0},
+          "status": {"enum": ["live", "merged"]},
+          "merged_at_unix_ms": {"type": ["integer", "null"]},
+          "merged_into_event_id": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

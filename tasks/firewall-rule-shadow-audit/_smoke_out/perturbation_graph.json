@@ -1,0 +1,286 @@
+{
+  "cycles": [
+    [
+      "r03",
+      "r04"
+    ]
+  ],
+  "edges": [
+    {
+      "from": "r01",
+      "to": "r09"
+    },
+    {
+      "from": "r01",
+      "to": "r29"
+    },
+    {
+      "from": "r01",
+      "to": "r31"
+    },
+    {
+      "from": "r03",
+      "to": "r04"
+    },
+    {
+      "from": "r04",
+      "to": "r03"
+    },
+    {
+      "from": "r10",
+      "to": "r37"
+    },
+    {
+      "from": "r20",
+      "to": "r12"
+    },
+    {
+      "from": "r20",
+      "to": "r32"
+    },
+    {
+      "from": "r20",
+      "to": "r38"
+    },
+    {
+      "from": "r27",
+      "to": "r28"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "r01",
+      "in_degree": 0,
+      "out_degree": 3
+    },
+    {
+      "id": "r02",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r03",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "r04",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "r05",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r06",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r07",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r08",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r09",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r10",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "r11",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r12",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r13",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r14",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r15",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r16",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r17",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r18",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r19",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r20",
+      "in_degree": 0,
+      "out_degree": 3
+    },
+    {
+      "id": "r21",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r22",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r23",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r24",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r25",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r26",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r27",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "r28",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r29",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r30",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r31",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r32",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r33",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r34",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r35",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r36",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r37",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r38",
+      "in_degree": 1,
+      "out_degree": 0
+    }
+  ],
+  "topological_layers": [
+    [
+      "r01",
+      "r02",
+      "r03",
+      "r04",
+      "r05",
+      "r06",
+      "r07",
+      "r08",
+      "r10",
+      "r11",
+      "r13",
+      "r14",
+      "r15",
+      "r16",
+      "r17",
+      "r18",
+      "r19",
+      "r20",
+      "r21",
+      "r22",
+      "r23",
+      "r24",
+      "r25",
+      "r26",
+      "r27",
+      "r30",
+      "r33",
+      "r34",
+      "r35",
+      "r36"
+    ],
+    [
+      "r09",
+      "r12",
+      "r28",
+      "r29",
+      "r31",
+      "r32",
+      "r37",
+      "r38"
+    ]
+  ]
+}

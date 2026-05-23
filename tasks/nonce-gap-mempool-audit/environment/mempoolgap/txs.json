@@ -1,0 +1,74 @@
+{
+  "txs": [
+    {
+      "account_id": "acct_a",
+      "fee": 1.0,
+      "kind": "submit",
+      "nonce": 10,
+      "step": 1
+    },
+    {
+      "account_id": "acct_a",
+      "fee": 1.0,
+      "kind": "submit",
+      "nonce": 12,
+      "step": 2
+    },
+    {
+      "account_id": "acct_a",
+      "fee": 1.5,
+      "kind": "replace",
+      "nonce": 13,
+      "step": 3
+    },
+    {
+      "account_id": "acct_b",
+      "fee": 2.0,
+      "kind": "submit",
+      "nonce": 5,
+      "step": 4
+    },
+    {
+      "account_id": "acct_a",
+      "fee": 3.0,
+      "kind": "submit",
+      "nonce": 20,
+      "step": 5
+    },
+    {
+      "account_id": "acct_c",
+      "fee": 1.0,
+      "kind": "submit",
+      "nonce": 20,
+      "step": 6
+    },
+    {
+      "account_id": "acct_b",
+      "fee": 1.0,
+      "kind": "replace",
+      "nonce": 6,
+      "step": 7
+    },
+    {
+      "account_id": "acct_old",
+      "fee": 1.0,
+      "kind": "submit",
+      "nonce": 1,
+      "step": 8
+    },
+    {
+      "account_id": "acct_ghost",
+      "fee": 1.0,
+      "kind": "submit",
+      "nonce": 0,
+      "step": 9
+    },
+    {
+      "account_id": "acct_a",
+      "fee": 0.5,
+      "kind": "cancel",
+      "nonce": 21,
+      "step": 10
+    }
+  ]
+}

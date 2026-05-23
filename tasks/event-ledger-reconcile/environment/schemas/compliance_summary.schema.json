@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "by_severity",
+    "totals"
+  ],
+  "properties": {
+    "by_severity": {
+      "type": "object"
+    },
+    "totals": {
+      "type": "object"
+    }
+  }
+}

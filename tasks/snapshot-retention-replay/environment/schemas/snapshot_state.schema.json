@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "snapshot_state.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["datasets"],
+  "properties": {
+    "datasets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "snapshots"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "snapshots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["created_at_sec", "holders", "id", "name"],
+              "properties": {
+                "created_at_sec": {"type": "integer", "minimum": 0},
+                "holders": {
+                  "type": "array",
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "id": {"type": "string", "minLength": 1},
+                "name": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

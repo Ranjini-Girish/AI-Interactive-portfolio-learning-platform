@@ -1,0 +1,22 @@
+{
+  "namespaces": [
+    {
+      "limits": {
+        "cpu": 100,
+        "memory": 1024,
+        "storage": 10000
+      },
+      "name": "root",
+      "parent": null
+    },
+    {
+      "limits": {
+        "cpu": 50,
+        "memory": 512,
+        "storage": 5000
+      },
+      "name": "team_x",
+      "parent": "root"
+    }
+  ]
+}

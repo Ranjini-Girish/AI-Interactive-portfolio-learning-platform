@@ -1,0 +1,7 @@
+{
+  "delete_action": "reparent_to_parent",
+  "min_quota_kb": 64,
+  "over_quota_action": "reject",
+  "quota_inheritance": "independent",
+  "track_lineage": true
+}

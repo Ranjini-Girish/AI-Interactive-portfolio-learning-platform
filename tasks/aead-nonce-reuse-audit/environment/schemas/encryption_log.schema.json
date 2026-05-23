@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "encryption_log",
+  "type": "object",
+  "required": ["encryptions"],
+  "properties": {
+    "encryptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key_id", "nonce", "outcome", "reason", "seq", "tick"],
+        "properties": {
+          "key_id":  {"type": "string"},
+          "nonce":   {"type": "integer"},
+          "outcome": {"type": "string", "enum": ["accepted", "rejected"]},
+          "reason":  {"type": ["string", "null"], "enum": [null, "UNKNOWN_KEY", "RETIRED", "EXHAUSTED", "COMPROMISED", "NONCE_REUSE"]},
+          "seq":     {"type": "integer"},
+          "tick":    {"type": "integer"}
+        }
+      }
+    }
+  }
+}

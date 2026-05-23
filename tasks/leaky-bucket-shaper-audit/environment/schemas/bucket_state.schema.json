@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "bucket_state.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["buckets"],
+  "properties": {
+    "buckets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bucket_id", "capacity_bytes", "current_bytes", "leak_bytes_per_tick"],
+        "properties": {
+          "bucket_id": { "type": "string" },
+          "capacity_bytes": { "type": "integer", "minimum": 1 },
+          "current_bytes": { "type": "integer", "minimum": 0 },
+          "leak_bytes_per_tick": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

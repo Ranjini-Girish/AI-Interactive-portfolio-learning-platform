@@ -1,0 +1,39 @@
+{
+  "accounts": [
+    {
+      "account": "A1",
+      "actual_balance_cents": -3000,
+      "delta_cents": 0,
+      "expected_balance_cents": -3000,
+      "status": "matched"
+    },
+    {
+      "account": "A2",
+      "actual_balance_cents": 80000,
+      "delta_cents": 0,
+      "expected_balance_cents": 80000,
+      "status": "matched"
+    },
+    {
+      "account": "A3",
+      "actual_balance_cents": -100000,
+      "delta_cents": 0,
+      "expected_balance_cents": -100000,
+      "status": "matched"
+    },
+    {
+      "account": "A4",
+      "actual_balance_cents": 38000,
+      "delta_cents": 8000,
+      "expected_balance_cents": 30000,
+      "status": "mismatched"
+    },
+    {
+      "account": "A5",
+      "actual_balance_cents": 25000,
+      "delta_cents": null,
+      "expected_balance_cents": null,
+      "status": "unsnapshotted"
+    }
+  ]
+}

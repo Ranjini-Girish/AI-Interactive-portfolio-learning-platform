@@ -1,5 +1,10 @@
 {
-  "band": 0, 
-  "probe": "p2", 
-  "value": 30.0
+  "phase": 0,
+  "readings": [
+    5,
+    9,
+    2
+  ],
+  "sample_id": "sbr_04",
+  "spectrum": "plain"
 }

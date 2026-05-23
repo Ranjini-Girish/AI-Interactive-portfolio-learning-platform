@@ -1,0 +1,8 @@
+{
+  "counter_bits": 4,
+  "hash_family": "fnv1a_double_hashing",
+  "k": 4,
+  "m": 64,
+  "remove_below_zero_action": "clamp",
+  "saturation_action": "reject"
+}

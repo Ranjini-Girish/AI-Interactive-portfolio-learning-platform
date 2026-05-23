@@ -1,0 +1,38 @@
+{
+  "nodes": [
+    {
+      "id": "node-a",
+      "owned_bytes": 0,
+      "rack": "r1",
+      "shard_count": 0,
+      "status": "active",
+      "weight": 100
+    },
+    {
+      "id": "node-b",
+      "owned_bytes": 1024,
+      "rack": "r2",
+      "shard_count": 1,
+      "status": "active",
+      "weight": 100
+    },
+    {
+      "id": "node-c",
+      "owned_bytes": 1024,
+      "rack": "r3",
+      "shard_count": 1,
+      "status": "active",
+      "weight": 100
+    }
+  ],
+  "shards": [
+    {
+      "id": "shard-1",
+      "primary": "node-c",
+      "replicas": [
+        "node-b"
+      ],
+      "size_bytes": 1024
+    }
+  ]
+}

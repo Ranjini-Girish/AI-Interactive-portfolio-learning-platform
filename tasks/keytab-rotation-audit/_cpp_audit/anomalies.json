@@ -1,0 +1,314 @@
+{
+  "anomalies": [
+    {
+      "day": 9,
+      "details": "compromised_principal_referenced on host/db-master.example.com@EXAMPLE.COM kvno=2",
+      "hour": 10,
+      "id": "d049454d203ac4a081af256075389bc9422871c64de35ee8ae3306a8793e5204",
+      "kind": "compromised_principal_referenced",
+      "kvno": 2,
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "severity": "critical"
+    },
+    {
+      "day": 9,
+      "details": "ticket_against_revoked on host/db-master.example.com@EXAMPLE.COM kvno=2",
+      "hour": 10,
+      "id": "7da89873fdf996ef102fd99a15b08bea5a23bda68c858131ba7f6511196b2485",
+      "kind": "ticket_against_revoked",
+      "kvno": 2,
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "severity": "critical"
+    },
+    {
+      "day": 29,
+      "details": "compromised_principal_referenced on host/db-master.example.com@EXAMPLE.COM kvno=5",
+      "hour": 0,
+      "id": "d582d333d8c2589a7e1f8f156828e40ed21e26c0bebff8d925f9d10a724edd3a",
+      "kind": "compromised_principal_referenced",
+      "kvno": 5,
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "severity": "critical"
+    },
+    {
+      "day": 29,
+      "details": "ticket_against_revoked on host/mail.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "9670d961501a286b41263731fe062e38fa16675983bc78f2a9f168facdd58c42",
+      "kind": "ticket_against_revoked",
+      "kvno": 1,
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "severity": "critical"
+    },
+    {
+      "day": 4,
+      "details": "ticket_unknown_kvno on host/burner.example.com@EXAMPLE.COM kvno=4",
+      "hour": 0,
+      "id": "d0c208ada0ac216ba51699482d31cbcd6a6d313491a5f2729d60edacd06496d5",
+      "kind": "ticket_unknown_kvno",
+      "kvno": 4,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 10,
+      "details": "ticket_unknown_kvno on host/newhost.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "d82535a094c655095de468344b9d24864b8a2bd93bfeb354ae4894c86ef1cbab",
+      "kind": "ticket_unknown_kvno",
+      "kvno": 1,
+      "principal": "host/newhost.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 10,
+      "details": "ticket_unknown_kvno on host/web01.example.com@EXAMPLE.COM kvno=99",
+      "hour": 0,
+      "id": "0edf5b0b36b0d31fd4040c005db431fb44831caf96135a1c52e61ee24dbb54ca",
+      "kind": "ticket_unknown_kvno",
+      "kvno": 99,
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 10,
+      "details": "weak_enctype_in_use on host/legacy.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "1e72ac81505e66c82db040c632ef2638071f4b5c9caace873f460e537c7ce951",
+      "kind": "weak_enctype_in_use",
+      "kvno": 1,
+      "principal": "host/legacy.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 15,
+      "details": "kvno_non_monotonic on host/cache02.example.com@EXAMPLE.COM kvno=2",
+      "hour": 0,
+      "id": "ea8a7264ba7a0ef1d47cceca0955459ea1bc38729ede3d356ad56118369f1888",
+      "kind": "kvno_non_monotonic",
+      "kvno": 2,
+      "principal": "host/cache02.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 16,
+      "details": "downgrade_attempt on host/cache01.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "4c7fde5b797eade19d1b0ab6ff07e0056913bf653c59cff13e36b3456fdfa9dc",
+      "kind": "downgrade_attempt",
+      "kvno": 1,
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 16,
+      "details": "kvno_non_monotonic on host/cache02.example.com@EXAMPLE.COM kvno=3",
+      "hour": 0,
+      "id": "3f6e672f739f8d795f5688998436c90a06ffd7f1a6b0d415b8ec3b05b3ca8f67",
+      "kind": "kvno_non_monotonic",
+      "kvno": 3,
+      "principal": "host/cache02.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 22,
+      "details": "weak_enctype_in_use on host/cache01.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "607581ddadb2561174ef6e773d50206794fe806b8023c7d41e6834251172b035",
+      "kind": "weak_enctype_in_use",
+      "kvno": 1,
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 29,
+      "details": "downgrade_attempt on host/burner.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "421640c247919ca26d1d4e9e867816a506c9164ce4dbcb347de5ad59dca3ca15",
+      "kind": "downgrade_attempt",
+      "kvno": 1,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 30,
+      "details": "never_rotated on host/newhost.example.com@EXAMPLE.COM",
+      "hour": 0,
+      "id": "58cc759c2125373430ebe575401dbb585a2bc3c0f935d71ae3153141efe995dc",
+      "kind": "never_rotated",
+      "kvno": null,
+      "principal": "host/newhost.example.com@EXAMPLE.COM",
+      "severity": "high"
+    },
+    {
+      "day": 1,
+      "details": "revoke_unknown_kvno on host/mail.example.com@EXAMPLE.COM kvno=2",
+      "hour": 0,
+      "id": "f742bf60e13869b5ab1ec893712dfc1b7ff5d3598f5ae86e6174119fdcf927d1",
+      "kind": "revoke_unknown_kvno",
+      "kvno": 2,
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 2,
+      "details": "retire_unknown_kvno on host/mail.example.com@EXAMPLE.COM kvno=5",
+      "hour": 0,
+      "id": "b166bbdb08eaefda83c172f54dd2e8d26a49cc188f9a5a93ded6b4da7cbca7c9",
+      "kind": "retire_unknown_kvno",
+      "kvno": 5,
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 8,
+      "details": "ticket_against_retired on host/web01.example.com@EXAMPLE.COM kvno=1",
+      "hour": 12,
+      "id": "7f22b5860a35fb2b0257e14ffd8d041aef61437ed5b2be5ff0413104a27f76b2",
+      "kind": "ticket_against_retired",
+      "kvno": 1,
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 11,
+      "details": "ticket_against_retired on host/burner.example.com@EXAMPLE.COM kvno=2",
+      "hour": 12,
+      "id": "6bb1be763c696d19a635ff68f7d41c653500358ada83c9b1d8a7710128e15b1b",
+      "kind": "ticket_against_retired",
+      "kvno": 2,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "forbidden_enctype_active on host/cache01.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "94cd3225f09a5400b528bea65a3a23549f250d48d462b0cdd3916a6dfbfd688e",
+      "kind": "forbidden_enctype_active",
+      "kvno": 1,
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "forbidden_enctype_active on host/legacy.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "89762e4145686ef98cc7fd704657e658b0f6404d30975f2213aa9b14fa83baaf",
+      "kind": "forbidden_enctype_active",
+      "kvno": 1,
+      "principal": "host/legacy.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_retirement on host/burner.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "c636685686a911877f82b2e4548bb2ade1bfc9a20d0823939e60cd1aac8ad6f7",
+      "kind": "missed_retirement",
+      "kvno": 1,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_retirement on host/burner.example.com@EXAMPLE.COM kvno=3",
+      "hour": 0,
+      "id": "be35e7eb20bcbda1727d88f857b4d2fd0f476996745279f522f9f4bc4ba8b64f",
+      "kind": "missed_retirement",
+      "kvno": 3,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_retirement on host/cache01.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "b74952b61dc98491067d56cf67d77f73f428d0ef4ddc0cfe6d66e1622eab0675",
+      "kind": "missed_retirement",
+      "kvno": 1,
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_retirement on host/cache01.example.com@EXAMPLE.COM kvno=2",
+      "hour": 0,
+      "id": "2c30a6bd4aa3bbe54743d0747a5a981deabc55db9d4d4babaf580a63d3e448a2",
+      "kind": "missed_retirement",
+      "kvno": 2,
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_retirement on host/cache02.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "467de5b9d386e5c4b4c5c060acfa71d6bd1dd7a8b199b57beab1776dbfce5072",
+      "kind": "missed_retirement",
+      "kvno": 1,
+      "principal": "host/cache02.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_rotation on host/burner.example.com@EXAMPLE.COM",
+      "hour": 0,
+      "id": "4c33f313ab1699dfec4f5bf7c394d0ec94615328a3b9e2c40a9c6bfdc6abfe08",
+      "kind": "missed_rotation",
+      "kvno": null,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 30,
+      "details": "missed_rotation on host/web02.example.com@EXAMPLE.COM",
+      "hour": 0,
+      "id": "a514361881061c71c7ff996b004ae298a36cebaa1de22e2bc62988b6400cba70",
+      "kind": "missed_rotation",
+      "kvno": null,
+      "principal": "host/web02.example.com@EXAMPLE.COM",
+      "severity": "medium"
+    },
+    {
+      "day": 4,
+      "details": "excessive_rotation on host/burner.example.com@EXAMPLE.COM kvno=3",
+      "hour": 0,
+      "id": "b2ebd4d94f677158e706df04b71be2281903aa163f123b2e968424e3d3ed891b",
+      "kind": "excessive_rotation",
+      "kvno": 3,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "severity": "low"
+    },
+    {
+      "day": 4,
+      "details": "revoke_already_terminal on host/mail.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "498bfc5547f5d65885b575110f563439b30c91f42c7372fbcad532b453d09a4e",
+      "kind": "revoke_already_terminal",
+      "kvno": 1,
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "severity": "low"
+    },
+    {
+      "day": 5,
+      "details": "retire_already_terminal on host/mail.example.com@EXAMPLE.COM kvno=1",
+      "hour": 0,
+      "id": "1e219b49e544a8a73400ac42882e42aef7a157c06e29d95a9bff94cd16e8b01c",
+      "kind": "retire_already_terminal",
+      "kvno": 1,
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "severity": "low"
+    },
+    {
+      "day": 9,
+      "details": "excessive_rotation on host/db-master.example.com@EXAMPLE.COM kvno=3",
+      "hour": 12,
+      "id": "e18a40f3879ba80b4edd682630961d953b04eafd11b31191b8b2d742ee3a736e",
+      "kind": "excessive_rotation",
+      "kvno": 3,
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "severity": "low"
+    }
+  ]
+}

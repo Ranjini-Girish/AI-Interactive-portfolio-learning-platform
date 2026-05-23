@@ -1,0 +1,5 @@
+Audit write-ahead log index trimming and role quorum for a storage batch. Read `/app/waltrim/SPEC.md` and every JSON file under `/app/waltrim/`, including per-segment files in `/app/waltrim/segments/`, `policy.json`, `manifest.json`, `epochs.json`, `indexes.json`, and `links.json`. Packaging under `anchors/`, `meta/`, `grid/`, and `ancillary/` is read-only context and must not drive totals.
+
+Produce five UTF-8 JSON artifacts under `/app/audit/` named `segment_states.json`, `trim_plan.json`, `role_votes.json`, `index_stats.json`, and `summary.json`. Each file must follow the spec canonical JSON contract: ASCII-only strings, two-space indentation, recursively sorted object keys at every depth, no trailing spaces on lines, and exactly one trailing newline after the root closing brace.
+
+Apply snapshot-live tag halving when manifest tags disagree, warmup bypass on early indexes, sliding byte windows per segment, stale-epoch exclusion for trim rows, transitive pin protection from links, and role-ratio acceptance computed from active segment weights on each index. Process indexes in ascending index then segment id. Leave `/app/waltrim/` byte-identical.

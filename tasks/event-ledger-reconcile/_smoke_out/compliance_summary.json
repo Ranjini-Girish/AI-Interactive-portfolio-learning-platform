@@ -1,0 +1,15 @@
+{
+  "by_severity": {
+    "error": 13,
+    "note": 1,
+    "warning": 1
+  },
+  "totals": {
+    "accounts_total": 5,
+    "events_total": 28,
+    "mismatched_accounts": 1,
+    "n_active_holds_total": 2,
+    "total_diagnostics": 15,
+    "total_reversed_events": 2
+  }
+}

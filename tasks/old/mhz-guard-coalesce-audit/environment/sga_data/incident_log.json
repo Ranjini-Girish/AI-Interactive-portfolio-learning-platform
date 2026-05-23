@@ -1,0 +1,8 @@
+[
+  {"day": 1, "event_id": "e01", "floor_delta": 2, "kind": "relax_heat"},
+  {"day": 2, "bin_id": "p2", "event_id": "e02", "kind": "strip_bin"},
+  {"day": 12, "event_id": "e06", "kind": "noop_kind"},
+  {"day": 15, "delta": 1, "event_id": "e03", "kind": "tighten_gap"},
+  {"bin_id": "px", "day": 35, "event_id": "e04", "kind": "strip_bin"},
+  {"bin_id": "p1", "day": 50, "event_id": "e05", "kind": "strip_bin"}
+]

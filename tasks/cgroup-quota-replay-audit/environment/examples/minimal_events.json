@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "amount": null,
+      "cpu_quota_ms": null,
+      "id": "leaf",
+      "io_quota_iops": null,
+      "mem_quota_kb": null,
+      "op": "attach_task",
+      "parent_id": null,
+      "seq": 0,
+      "target_parent_id": null,
+      "task_id": "t1"
+    },
+    {
+      "amount": 400,
+      "cpu_quota_ms": null,
+      "id": "leaf",
+      "io_quota_iops": null,
+      "mem_quota_kb": null,
+      "op": "consume_cpu",
+      "parent_id": null,
+      "seq": 1,
+      "target_parent_id": null,
+      "task_id": null
+    },
+    {
+      "amount": 200,
+      "cpu_quota_ms": null,
+      "id": "leaf",
+      "io_quota_iops": null,
+      "mem_quota_kb": null,
+      "op": "consume_cpu",
+      "parent_id": null,
+      "seq": 2,
+      "target_parent_id": null,
+      "task_id": null
+    },
+    {
+      "amount": 100,
+      "cpu_quota_ms": null,
+      "id": "leaf",
+      "io_quota_iops": null,
+      "mem_quota_kb": null,
+      "op": "release_cpu",
+      "parent_id": null,
+      "seq": 3,
+      "target_parent_id": null,
+      "task_id": null
+    },
+    {
+      "amount": null,
+      "cpu_quota_ms": null,
+      "id": "leaf",
+      "io_quota_iops": null,
+      "mem_quota_kb": null,
+      "op": "delete",
+      "parent_id": null,
+      "seq": 4,
+      "target_parent_id": null,
+      "task_id": null
+    }
+  ]
+}

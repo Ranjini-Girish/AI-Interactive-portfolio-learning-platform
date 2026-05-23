@@ -1,0 +1,6 @@
+{"request_id":"tgs_001","principal":"host/web01.example.com@EXAMPLE.COM","kvno":1,"day":1,"hour":0}
+{"request_id":"tgs_014","principal":"host/burner.example.com@EXAMPLE.COM","kvno":4,"day":4,"hour":0}
+{"request_id":"tgs_007","principal":"host/cache01.example.com@EXAMPLE.COM","kvno":1,"day":5,"hour":0}
+{"request_id":"tgs_bad001","principal":"host/web01.example.com@EXAMPLE.COM","kvno":0,"day":5,"hour":0}
+{"request_id":"tgs_bad002","principal":"host/ghost.example.com@EXAMPLE.COM","kvno":1,"day":5,"hour":0}
+{"request_id":"tgs_bad003","principal":"host/web01.example.com@EXAMPLE.COM","kvno":1,"day":5,"hour":25}

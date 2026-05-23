@@ -1,0 +1,8 @@
+{
+  "cross_fade_hours": 24,
+  "tier_windows": {
+    "gold": 7,
+    "silver": 14,
+    "bronze": 30
+  }
+}

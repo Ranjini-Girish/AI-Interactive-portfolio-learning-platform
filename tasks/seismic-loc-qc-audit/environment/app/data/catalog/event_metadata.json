@@ -1,0 +1,77 @@
+{
+  "EVT_A": {
+    "analyst": "analyst_1",
+    "region": "zone_A",
+    "review_priority": "high"
+  },
+  "EVT_B": {
+    "analyst": "analyst_2",
+    "region": "zone_B",
+    "review_priority": "normal"
+  },
+  "EVT_C": {
+    "analyst": "analyst_3",
+    "region": "zone_A",
+    "review_priority": "normal"
+  },
+  "EVT_D": {
+    "analyst": "analyst_1",
+    "region": "zone_A",
+    "review_priority": "high"
+  },
+  "EVT_E": {
+    "analyst": "analyst_2",
+    "region": "zone_A",
+    "review_priority": "normal"
+  },
+  "EVT_F": {
+    "analyst": "analyst_3",
+    "region": "zone_A",
+    "review_priority": "high"
+  },
+  "EVT_G": {
+    "analyst": "analyst_1",
+    "region": "zone_B",
+    "review_priority": "normal"
+  },
+  "EVT_H": {
+    "analyst": "analyst_2",
+    "region": "zone_A",
+    "review_priority": "high"
+  },
+  "EVT_I": {
+    "analyst": "analyst_3",
+    "region": "zone_A",
+    "review_priority": "normal"
+  },
+  "EVT_J": {
+    "analyst": "analyst_1",
+    "region": "zone_B",
+    "review_priority": "high"
+  },
+  "EVT_K": {
+    "analyst": "analyst_2",
+    "region": "zone_A",
+    "review_priority": "normal"
+  },
+  "EVT_L": {
+    "analyst": "analyst_3",
+    "region": "zone_A",
+    "review_priority": "high"
+  },
+  "EVT_M": {
+    "analyst": "analyst_1",
+    "region": "zone_B",
+    "review_priority": "normal"
+  },
+  "EVT_N": {
+    "analyst": "analyst_2",
+    "region": "zone_A",
+    "review_priority": "high"
+  },
+  "EVT_O": {
+    "analyst": "analyst_3",
+    "region": "zone_A",
+    "review_priority": "normal"
+  }
+}

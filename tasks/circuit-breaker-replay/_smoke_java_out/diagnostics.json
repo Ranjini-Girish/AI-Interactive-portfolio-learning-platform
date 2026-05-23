@@ -1,0 +1,284 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_OPEN",
+          "endpoint_id": "auth",
+          "severity": "note"
+        }
+      ],
+      "seq": 3
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_REQUEST_SHORT_CIRCUITED",
+          "endpoint_id": "auth",
+          "severity": "note"
+        }
+      ],
+      "seq": 4
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_REQUEST_SHORT_CIRCUITED",
+          "endpoint_id": "auth",
+          "severity": "note"
+        }
+      ],
+      "seq": 5
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_HALF_OPEN",
+          "endpoint_id": "auth",
+          "severity": "note"
+        }
+      ],
+      "seq": 8
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_PROBE_ADMITTED",
+          "endpoint_id": "auth",
+          "severity": "note"
+        }
+      ],
+      "seq": 9
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_PROBE_ADMITTED",
+          "endpoint_id": "auth",
+          "severity": "note"
+        },
+        {
+          "code": "N_TRANSITION_TO_CLOSED",
+          "endpoint_id": "auth",
+          "severity": "note"
+        }
+      ],
+      "seq": 10
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_OPEN",
+          "endpoint_id": "catalog",
+          "severity": "note"
+        }
+      ],
+      "seq": 14
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_REQUEST_SHORT_CIRCUITED",
+          "endpoint_id": "catalog",
+          "severity": "note"
+        }
+      ],
+      "seq": 15
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_HALF_OPEN",
+          "endpoint_id": "catalog",
+          "severity": "note"
+        }
+      ],
+      "seq": 17
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_PROBE_ADMITTED",
+          "endpoint_id": "catalog",
+          "severity": "note"
+        },
+        {
+          "code": "N_TRANSITION_TO_OPEN",
+          "endpoint_id": "catalog",
+          "severity": "note"
+        }
+      ],
+      "seq": 18
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_FORCED_CLOSE_NOOP",
+          "endpoint_id": "billing",
+          "severity": "warning"
+        }
+      ],
+      "seq": 19
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_FORCED_OPEN",
+          "endpoint_id": "discovery",
+          "severity": "warning"
+        },
+        {
+          "code": "N_TRANSITION_TO_OPEN",
+          "endpoint_id": "discovery",
+          "severity": "note"
+        }
+      ],
+      "seq": 20
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_REQUEST_SHORT_CIRCUITED",
+          "endpoint_id": "discovery",
+          "severity": "note"
+        }
+      ],
+      "seq": 21
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_FORCED_OPEN_NOOP",
+          "endpoint_id": "discovery",
+          "severity": "warning"
+        }
+      ],
+      "seq": 22
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_FORCED_CLOSE",
+          "endpoint_id": "discovery",
+          "severity": "warning"
+        },
+        {
+          "code": "N_TRANSITION_TO_CLOSED",
+          "endpoint_id": "discovery",
+          "severity": "note"
+        }
+      ],
+      "seq": 23
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_ENDPOINT_NOT_FOUND",
+          "endpoint_id": "ghost",
+          "severity": "error"
+        }
+      ],
+      "seq": 24
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DUPLICATE_ENDPOINT",
+          "endpoint_id": "auth",
+          "severity": "error"
+        }
+      ],
+      "seq": 25
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_OPEN",
+          "endpoint_id": "metrics",
+          "severity": "note"
+        }
+      ],
+      "seq": 30
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_HALF_OPEN",
+          "endpoint_id": "metrics",
+          "severity": "note"
+        }
+      ],
+      "seq": 31
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_HALF_OPEN",
+          "endpoint_id": "catalog",
+          "severity": "note"
+        }
+      ],
+      "seq": 32
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_PROBE_ADMITTED",
+          "endpoint_id": "metrics",
+          "severity": "note"
+        },
+        {
+          "code": "N_TRANSITION_TO_CLOSED",
+          "endpoint_id": "metrics",
+          "severity": "note"
+        }
+      ],
+      "seq": 33
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_ENDPOINT_NOT_FOUND",
+          "endpoint_id": "ghost_again",
+          "severity": "error"
+        }
+      ],
+      "seq": 35
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_TRANSITION_TO_OPEN",
+          "endpoint_id": "billing",
+          "severity": "note"
+        }
+      ],
+      "seq": 40
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_REQUEST_SHORT_CIRCUITED",
+          "endpoint_id": "billing",
+          "severity": "note"
+        }
+      ],
+      "seq": 41
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_FORCED_CLOSE",
+          "endpoint_id": "billing",
+          "severity": "warning"
+        },
+        {
+          "code": "N_TRANSITION_TO_CLOSED",
+          "endpoint_id": "billing",
+          "severity": "note"
+        }
+      ],
+      "seq": 42
+    }
+  ]
+}

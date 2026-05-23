@@ -1,0 +1,11 @@
+{
+  "bias_floor": 4,
+  "cap": 76,
+  "cutoff": 56,
+  "fold_mod": 1018,
+  "label": "ulva-claim-band-audit",
+  "mask": 84,
+  "poly_base": 148,
+  "seed_offset": 23,
+  "square_mod": 1000004
+}

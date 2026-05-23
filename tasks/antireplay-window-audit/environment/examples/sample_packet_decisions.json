@@ -1,0 +1,28 @@
+{
+  "decisions": [
+    {
+      "decision": "accept",
+      "diagnostic": null,
+      "esp_seq": 3,
+      "passive_created": false,
+      "sa_id": "x",
+      "seq": 0
+    },
+    {
+      "decision": "accept",
+      "diagnostic": null,
+      "esp_seq": 1,
+      "passive_created": false,
+      "sa_id": "x",
+      "seq": 1
+    },
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 3,
+      "passive_created": false,
+      "sa_id": "x",
+      "seq": 2
+    }
+  ]
+}

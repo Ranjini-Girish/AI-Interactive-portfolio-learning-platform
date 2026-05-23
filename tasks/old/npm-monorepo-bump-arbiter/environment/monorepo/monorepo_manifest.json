@@ -1,0 +1,13 @@
+{
+  "allow_yanked_pinned": true,
+  "packages": [
+    "@aurum/admin-console",
+    "@aurum/api-gateway",
+    "@aurum/cli-tools",
+    "@aurum/shared-types",
+    "@aurum/shared-ui",
+    "@aurum/web-app",
+    "@aurum/worker-fleet"
+  ],
+  "severity_block_threshold": "high"
+}

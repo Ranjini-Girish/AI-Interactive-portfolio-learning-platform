@@ -1,0 +1,11 @@
+Agent reads `/app/gtb_lab/SPEC.md` and emits the three mandated JSON files with canonical formatting, +3
+Agent applies manifest halving for fold stride while keeping lane bias on full tier_stride, +3
+Agent skips tier_spill on stale samples yet still doubles chain_span for stale folding, +3
+Agent runs bind-walk in sorted edge order and records each increment in bind_events.json, +5
+Agent preserves bundled fixture bytes under the lab read root, +2
+Agent honors GTB_DATA_DIR and GTB_AUDIT_DIR override semantics, +2
+Agent keeps histogram rows sorted by ascending bin and omits non-positive tallies, +2
+Agent mishandles XOR-prefix folding, stale span doubling, or bind propagation direction, -5
+Agent applies tier_spill on stale samples, uses wrong fold stride, or mutates lab fixtures, -5
+Agent mutates lab inputs or writes outside the resolved audit directory, -5
+Agent drops bind_events.json or adds undeclared summary keys, -3

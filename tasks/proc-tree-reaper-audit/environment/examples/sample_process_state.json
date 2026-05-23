@@ -1,0 +1,37 @@
+{
+  "processes": [
+    {
+      "cmdline": "/sbin/init",
+      "exit_code": null,
+      "exit_signal": null,
+      "exit_tick": null,
+      "pid": 1,
+      "ppid": 0,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 0
+    },
+    {
+      "cmdline": "/usr/bin/bash",
+      "exit_code": null,
+      "exit_signal": null,
+      "exit_tick": null,
+      "pid": 100,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/grep",
+      "exit_code": 0,
+      "exit_signal": null,
+      "exit_tick": 7,
+      "pid": 200,
+      "ppid": 100,
+      "start_tick": 5,
+      "state": "EXITED",
+      "uid": 1000
+    }
+  ]
+}

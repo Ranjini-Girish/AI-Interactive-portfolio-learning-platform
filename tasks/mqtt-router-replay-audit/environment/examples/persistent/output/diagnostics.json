@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "client_id": "bravo",
+          "code": "N_SESSION_RESUMED",
+          "severity": "note"
+        }
+      ],
+      "seq": 0
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "events/temp"
+        }
+      ],
+      "seq": 1
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "alpha",
+          "code": "N_WILL_DELIVERED",
+          "severity": "note"
+        }
+      ],
+      "seq": 2
+    }
+  ]
+}

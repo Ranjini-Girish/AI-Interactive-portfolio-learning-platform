@@ -1,0 +1,37 @@
+{
+  "accepted_total": 16,
+  "active_sa_count": 5,
+  "add_sa_failures": 3,
+  "drop_unknown_sa": 0,
+  "hot_sas": [
+    {
+      "id": "alpha",
+      "replays": 3,
+      "too_old": 2
+    },
+    {
+      "id": "bravo",
+      "replays": 1,
+      "too_old": 1
+    },
+    {
+      "id": "charlie",
+      "replays": 1,
+      "too_old": 0
+    },
+    {
+      "id": "passive_x",
+      "replays": 1,
+      "too_old": 0
+    }
+  ],
+  "passive_created_count": 2,
+  "policy_on_replay": "drop",
+  "policy_on_too_old": "log_only",
+  "policy_on_unknown_sa": "create_passive",
+  "rekey_failures": 2,
+  "rekey_successes": 1,
+  "replays_total": 6,
+  "too_old_total": 3,
+  "total_events": 30
+}

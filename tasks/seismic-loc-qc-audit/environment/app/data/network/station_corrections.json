@@ -1,0 +1,50 @@
+{
+  "STA01": {
+    "P_correction_s": 0.0117,
+    "S_correction_s": -0.0235
+  },
+  "STA02": {
+    "P_correction_s": 0.0062,
+    "S_correction_s": -0.0113
+  },
+  "STA03": {
+    "P_correction_s": -0.0065,
+    "S_correction_s": 0.0218
+  },
+  "STA04": {
+    "P_correction_s": 0.0012,
+    "S_correction_s": -0.0304
+  },
+  "STA05": {
+    "P_correction_s": 0.0037,
+    "S_correction_s": 0.0013
+  },
+  "STA06": {
+    "P_correction_s": -0.0153,
+    "S_correction_s": -0.0248
+  },
+  "STA07": {
+    "P_correction_s": 0.0166,
+    "S_correction_s": -0.0004
+  },
+  "STA08": {
+    "P_correction_s": -0.0042,
+    "S_correction_s": 0.0028
+  },
+  "STA09": {
+    "P_correction_s": -0.0135,
+    "S_correction_s": -0.0227
+  },
+  "STA10": {
+    "P_correction_s": -0.0144,
+    "S_correction_s": 0.008
+  },
+  "STA11": {
+    "P_correction_s": 0.0025,
+    "S_correction_s": -0.0026
+  },
+  "STA12": {
+    "P_correction_s": 0.0024,
+    "S_correction_s": -0.012
+  }
+}

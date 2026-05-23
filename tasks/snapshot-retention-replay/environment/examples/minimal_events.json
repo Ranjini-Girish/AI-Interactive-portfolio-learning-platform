@@ -1,0 +1,5 @@
+{
+  "events": [
+    {"dataset": "demo", "kind": "retention_run", "seq": 0}
+  ]
+}

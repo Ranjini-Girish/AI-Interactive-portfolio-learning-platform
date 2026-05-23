@@ -1,0 +1,4 @@
+# stale renewal log
+
+w04 4920000
+w13 4940000

@@ -1,0 +1,1343 @@
+{
+  "spans": [
+    {
+      "attributes": {},
+      "duration_ms": 114,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "9b58c4a8",
+      "start_unix_ms": 1699997423345,
+      "status": "ok",
+      "trace_id": "614d7db18b5d9596"
+    },
+    {
+      "attributes": {
+        "region": "us-east",
+        "tenant": "initech"
+      },
+      "duration_ms": 258,
+      "operation": "validate_cart",
+      "parent_span_id": "664465ba",
+      "service": "checkout",
+      "span_id": "5cd489b4",
+      "start_unix_ms": 1699998347464,
+      "status": "error",
+      "trace_id": "cb82fed2724c03a2"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 657,
+      "operation": "GET /product",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "4bd7659f",
+      "start_unix_ms": 1699996566785,
+      "status": "error",
+      "trace_id": "0821d076651d290e"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 268,
+      "operation": "validate_token",
+      "parent_span_id": "a3c4bba9",
+      "service": "auth",
+      "span_id": "9d197edf",
+      "start_unix_ms": 1699998567534,
+      "status": "ok",
+      "trace_id": "255489219bae0acb"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 124,
+      "operation": "fetch_asset",
+      "parent_span_id": null,
+      "service": "cdn",
+      "span_id": "0c56a3a8",
+      "start_unix_ms": 1699997431616,
+      "status": "error",
+      "trace_id": "6d3caafd4ddd1eb3"
+    },
+    {
+      "attributes": {
+        "region": "us-west"
+      },
+      "duration_ms": 128,
+      "operation": "apply_promo",
+      "parent_span_id": "69ed347d",
+      "service": "checkout",
+      "span_id": "dffa962e",
+      "start_unix_ms": 1699997970237,
+      "status": "ok",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "capture",
+      "parent_span_id": "deadbeef",
+      "service": "payments",
+      "span_id": "40e6bc3b",
+      "start_unix_ms": 1699998400335,
+      "status": "ok",
+      "trace_id": "ab7a36a3fa51b866"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 78,
+      "operation": "healthcheck",
+      "parent_span_id": null,
+      "service": "cdn",
+      "span_id": "03c26b3c",
+      "start_unix_ms": 1699998804387,
+      "status": "error",
+      "trace_id": "e09c3190537d2280"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 60,
+      "operation": "validate_cart",
+      "parent_span_id": "4f1fa2da",
+      "service": "checkout",
+      "span_id": "46674a78",
+      "start_unix_ms": 1699998554730,
+      "status": "error",
+      "trace_id": "f32a3604cec4af42"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 204,
+      "operation": "issue_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "b6043378",
+      "start_unix_ms": 1699998633751,
+      "status": "ok",
+      "trace_id": "57e46d43d750a94f"
+    },
+    {
+      "attributes": {
+        "region": "eu-central",
+        "tenant": "initech"
+      },
+      "duration_ms": 350,
+      "operation": "healthcheck",
+      "parent_span_id": "03c26b3c",
+      "service": "cdn",
+      "span_id": "19fa6002",
+      "start_unix_ms": 1699998804419,
+      "status": "ok",
+      "trace_id": "e09c3190537d2280"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 30,
+      "operation": "authorize",
+      "parent_span_id": "da712a72",
+      "service": "payments",
+      "span_id": "73cbb55f",
+      "start_unix_ms": 1699998645865,
+      "status": "ok",
+      "trace_id": "d17cce971372b7c4"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 30,
+      "operation": "authorize",
+      "parent_span_id": "46674a78",
+      "service": "payments",
+      "span_id": "65965c6f",
+      "start_unix_ms": 1699998554735,
+      "status": "ok",
+      "trace_id": "f32a3604cec4af42"
+    },
+    {
+      "attributes": {
+        "region": "us-west",
+        "tenant": "acme"
+      },
+      "duration_ms": 18,
+      "operation": "apply_promo",
+      "parent_span_id": "bf608148",
+      "service": "checkout",
+      "span_id": "664465ba",
+      "start_unix_ms": 1699998347431,
+      "status": "ok",
+      "trace_id": "cb82fed2724c03a2"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "check_stock",
+      "parent_span_id": "025cb5f8",
+      "service": "inventory",
+      "span_id": "ab659f7a",
+      "start_unix_ms": 1700090000005,
+      "status": "ok",
+      "trace_id": "8f4185c140ed702c"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 190,
+      "operation": "GET /product",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "bf608148",
+      "start_unix_ms": 1699998347351,
+      "status": "timeout",
+      "trace_id": "cb82fed2724c03a2"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 28,
+      "operation": "GET /product",
+      "parent_span_id": "65025f67",
+      "service": "frontend",
+      "span_id": "d4aeb838",
+      "start_unix_ms": 1699997461900,
+      "status": "ok",
+      "trace_id": "86ade423a0847600"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 60,
+      "operation": "validate_cart",
+      "parent_span_id": "3a47d246",
+      "service": "checkout",
+      "span_id": "cfd55902",
+      "start_unix_ms": 1699998467962,
+      "status": "error",
+      "trace_id": "503d69fdda5dd93b"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "f6bc725d",
+      "start_unix_ms": 1700090000000,
+      "status": "ok",
+      "trace_id": "7e400e7f2d07dec2"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 150,
+      "operation": "POST /checkout",
+      "parent_span_id": "11854911",
+      "service": "frontend",
+      "span_id": "2a07ee44",
+      "start_unix_ms": 1699996899601,
+      "status": "error",
+      "trace_id": "9173bced57e23a71"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 79,
+      "operation": "GET /product",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "d649fe47",
+      "start_unix_ms": 1699997579337,
+      "status": "ok",
+      "trace_id": "afecc933ccf8520d"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 7027,
+      "operation": "POST /checkout",
+      "parent_span_id": "9b58c4a8",
+      "service": "frontend",
+      "span_id": "143d9c30",
+      "start_unix_ms": 1699997423345,
+      "status": "ok",
+      "trace_id": "614d7db18b5d9596"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 58,
+      "operation": "GET /product",
+      "parent_span_id": "866dbfde",
+      "service": "frontend",
+      "span_id": "ee055334",
+      "start_unix_ms": 1699997970086,
+      "status": "ok",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 30,
+      "operation": "authorize",
+      "parent_span_id": "453e9e7d",
+      "service": "payments",
+      "span_id": "97a35372",
+      "start_unix_ms": 1699998677835,
+      "status": "ok",
+      "trace_id": "703c4124c902dd3e"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 244,
+      "operation": "POST /checkout",
+      "parent_span_id": "b6043378",
+      "service": "frontend",
+      "span_id": "aef5430d",
+      "start_unix_ms": 1699998633907,
+      "status": "ok",
+      "trace_id": "57e46d43d750a94f"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 70,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "2f6a2937",
+      "start_unix_ms": 1699998269159,
+      "status": "ok",
+      "trace_id": "07d787f26a2e715f"
+    },
+    {
+      "attributes": {
+        "region": "us-east",
+        "tenant": "acme"
+      },
+      "duration_ms": 7470,
+      "operation": "reserve",
+      "parent_span_id": "60d52955",
+      "service": "inventory",
+      "span_id": "30450783",
+      "start_unix_ms": 1699998741525,
+      "status": "ok",
+      "trace_id": "d3137211f804aaf0"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "GET /home",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "be415966",
+      "start_unix_ms": 1699998269160,
+      "status": "ok",
+      "trace_id": "07d787f26a2e715f"
+    },
+    {
+      "attributes": {
+        "region": "eu-central",
+        "tenant": "globex"
+      },
+      "duration_ms": 46,
+      "operation": "GET /home",
+      "parent_span_id": "2b0ed3ac",
+      "service": "frontend",
+      "span_id": "4702d711",
+      "start_unix_ms": 1699997579406,
+      "status": "ok",
+      "trace_id": "afecc933ccf8520d"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 60,
+      "operation": "validate_cart",
+      "parent_span_id": "aa315ac5",
+      "service": "checkout",
+      "span_id": "453e9e7d",
+      "start_unix_ms": 1699998677830,
+      "status": "error",
+      "trace_id": "703c4124c902dd3e"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 319,
+      "operation": "validate_token",
+      "parent_span_id": "19bb9a81",
+      "service": "auth",
+      "span_id": "a3c4bba9",
+      "start_unix_ms": 1699998567587,
+      "status": "ok",
+      "trace_id": "255489219bae0acb"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 20,
+      "operation": "check_stock",
+      "parent_span_id": "07c02410",
+      "service": "inventory",
+      "span_id": "cf92197b",
+      "start_unix_ms": 1699998244793,
+      "status": "ok",
+      "trace_id": "64a64977901c1427"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 434,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "3e688a7a",
+      "start_unix_ms": 1699996656271,
+      "status": "ok",
+      "trace_id": "80dea6125b5d4a7c"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 12,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "999e1c1c",
+      "start_unix_ms": 1699998553783,
+      "status": "ok",
+      "trace_id": "c0185b890d8e7819"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 61,
+      "operation": "apply_promo",
+      "parent_span_id": "ee055334",
+      "service": "checkout",
+      "span_id": "f8759906",
+      "start_unix_ms": 1699997970164,
+      "status": "timeout",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "c6f0bed0",
+      "start_unix_ms": 1700090000000,
+      "status": "ok",
+      "trace_id": "5c18b2c09601a6ab"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "capture",
+      "parent_span_id": "deadbeef",
+      "service": "payments",
+      "span_id": "8a4c8677",
+      "start_unix_ms": 1699998471561,
+      "status": "ok",
+      "trace_id": "cf873be9f13057c4"
+    },
+    {
+      "attributes": {
+        "region": "eu-central",
+        "tenant": "initech"
+      },
+      "duration_ms": 160,
+      "operation": "fetch_asset",
+      "parent_span_id": "0c56a3a8",
+      "service": "cdn",
+      "span_id": "8b9e544d",
+      "start_unix_ms": 1699997431701,
+      "status": "ok",
+      "trace_id": "6d3caafd4ddd1eb3"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 290,
+      "operation": "GET /product",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "be83754f",
+      "start_unix_ms": 1699996899543,
+      "status": "ok",
+      "trace_id": "9173bced57e23a71"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /home",
+      "parent_span_id": "65965c6f",
+      "service": "frontend",
+      "span_id": "4f1fa2da",
+      "start_unix_ms": 1699998554725,
+      "status": "ok",
+      "trace_id": "f32a3604cec4af42"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 75,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "60d52955",
+      "start_unix_ms": 1699998741525,
+      "status": "ok",
+      "trace_id": "d3137211f804aaf0"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 667,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "a9233f1f",
+      "start_unix_ms": 1699997245035,
+      "status": "ok",
+      "trace_id": "77f72b7a1b5cce6c"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 379,
+      "operation": "GET /home",
+      "parent_span_id": "3e688a7a",
+      "service": "frontend",
+      "span_id": "48af1c51",
+      "start_unix_ms": 1699996656288,
+      "status": "ok",
+      "trace_id": "80dea6125b5d4a7c"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 12,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "264ddb77",
+      "start_unix_ms": 1699998221457,
+      "status": "ok",
+      "trace_id": "48d44529b386afae"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 169,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "467c7c85",
+      "start_unix_ms": 1699997379157,
+      "status": "ok",
+      "trace_id": "c7eeb7afa4dd1c7d"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 30,
+      "operation": "authorize",
+      "parent_span_id": "cfd55902",
+      "service": "payments",
+      "span_id": "87c638a0",
+      "start_unix_ms": 1699998467967,
+      "status": "ok",
+      "trace_id": "503d69fdda5dd93b"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 602,
+      "operation": "GET /home",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "f09f57c9",
+      "start_unix_ms": 1699998314526,
+      "status": "error",
+      "trace_id": "b46e68f2d7b7f808"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "28c498d8",
+      "start_unix_ms": 1699998969768,
+      "status": "ok",
+      "trace_id": "6ad0ae05d1b99c95"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 294,
+      "operation": "refund",
+      "parent_span_id": "f8759906",
+      "service": "payments",
+      "span_id": "69ed347d",
+      "start_unix_ms": 1699997970093,
+      "status": "ok",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "check_stock",
+      "parent_span_id": "c6f0bed0",
+      "service": "inventory",
+      "span_id": "fc9e91f1",
+      "start_unix_ms": 1700090000005,
+      "status": "ok",
+      "trace_id": "5c18b2c09601a6ab"
+    },
+    {
+      "attributes": {
+        "region": "us-west"
+      },
+      "duration_ms": 247,
+      "operation": "GET /product",
+      "parent_span_id": "db6ac5d8",
+      "service": "frontend",
+      "span_id": "878d4008",
+      "start_unix_ms": 1699997916298,
+      "status": "ok",
+      "trace_id": "63f433ae9e00c434"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "capture",
+      "parent_span_id": "deadbeef",
+      "service": "payments",
+      "span_id": "351d6ad2",
+      "start_unix_ms": 1699998639017,
+      "status": "ok",
+      "trace_id": "7f8d7d55a83504b2"
+    },
+    {
+      "attributes": {
+        "endpoint_kind": "healthcheck"
+      },
+      "duration_ms": 204,
+      "operation": "healthcheck",
+      "parent_span_id": null,
+      "service": "cdn",
+      "span_id": "1f12be90",
+      "start_unix_ms": 1699997293003,
+      "status": "ok",
+      "trace_id": "3b502c775579d0b1"
+    },
+    {
+      "attributes": {
+        "endpoint_kind": "healthcheck",
+        "region": "eu-central",
+        "tenant": "initech"
+      },
+      "duration_ms": 344,
+      "operation": "healthcheck",
+      "parent_span_id": "65025f67",
+      "service": "cdn",
+      "span_id": "b828b679",
+      "start_unix_ms": 1699997462201,
+      "status": "ok",
+      "trace_id": "86ade423a0847600"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "025cb5f8",
+      "start_unix_ms": 1700090000000,
+      "status": "ok",
+      "trace_id": "8f4185c140ed702c"
+    },
+    {
+      "attributes": {
+        "region": "us-east",
+        "tenant": "acme"
+      },
+      "duration_ms": 255,
+      "operation": "issue_token",
+      "parent_span_id": "0315fa58",
+      "service": "auth",
+      "span_id": "2fb0bf70",
+      "start_unix_ms": 1699997948540,
+      "status": "ok",
+      "trace_id": "38c9310f5f68e8fc"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 336,
+      "operation": "authorize",
+      "parent_span_id": "db6ac5d8",
+      "service": "payments",
+      "span_id": "8ae2562b",
+      "start_unix_ms": 1699997916393,
+      "status": "error",
+      "trace_id": "63f433ae9e00c434"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 168,
+      "operation": "apply_promo",
+      "parent_span_id": "4bd7659f",
+      "service": "checkout",
+      "span_id": "bba62b0e",
+      "start_unix_ms": 1699996567111,
+      "status": "error",
+      "trace_id": "0821d076651d290e"
+    },
+    {
+      "attributes": {
+        "region": "us-west",
+        "tenant": "initech"
+      },
+      "duration_ms": 7953,
+      "operation": "release",
+      "parent_span_id": "467c7c85",
+      "service": "inventory",
+      "span_id": "27654e4c",
+      "start_unix_ms": 1699997379157,
+      "status": "ok",
+      "trace_id": "c7eeb7afa4dd1c7d"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "d355cb76",
+      "start_unix_ms": 1699998639007,
+      "status": "ok",
+      "trace_id": "7f8d7d55a83504b2"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 457,
+      "operation": "fetch_asset",
+      "parent_span_id": null,
+      "service": "cdn",
+      "span_id": "4d76e1ee",
+      "start_unix_ms": 1699997582284,
+      "status": "ok",
+      "trace_id": "178c9d9c8f3fa9cc"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 328,
+      "operation": "GET /home",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "866dbfde",
+      "start_unix_ms": 1699997970078,
+      "status": "ok",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 399,
+      "operation": "apply_promo",
+      "parent_span_id": "11854911",
+      "service": "checkout",
+      "span_id": "ef6c57ac",
+      "start_unix_ms": 1699996899642,
+      "status": "error",
+      "trace_id": "9173bced57e23a71"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "GET /home",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "5e74656d",
+      "start_unix_ms": 1699998368735,
+      "status": "ok",
+      "trace_id": "57942121c5cb413b"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 183,
+      "operation": "GET /cart",
+      "parent_span_id": "11854911",
+      "service": "frontend",
+      "span_id": "189497b6",
+      "start_unix_ms": 1699996899741,
+      "status": "error",
+      "trace_id": "9173bced57e23a71"
+    },
+    {
+      "attributes": {
+        "region": "us-west"
+      },
+      "duration_ms": 7862,
+      "operation": "reserve",
+      "parent_span_id": "d649fe47",
+      "service": "inventory",
+      "span_id": "2b0ed3ac",
+      "start_unix_ms": 1699997579337,
+      "status": "ok",
+      "trace_id": "afecc933ccf8520d"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 46,
+      "operation": "healthcheck",
+      "parent_span_id": "65025f67",
+      "service": "cdn",
+      "span_id": "6de73f41",
+      "start_unix_ms": 1699997462096,
+      "status": "ok",
+      "trace_id": "86ade423a0847600"
+    },
+    {
+      "attributes": {
+        "endpoint_kind": "healthcheck"
+      },
+      "duration_ms": 721,
+      "operation": "fetch_asset",
+      "parent_span_id": null,
+      "service": "cdn",
+      "span_id": "65025f67",
+      "start_unix_ms": 1699997461758,
+      "status": "ok",
+      "trace_id": "86ade423a0847600"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /home",
+      "parent_span_id": "73cbb55f",
+      "service": "frontend",
+      "span_id": "ccf36bd0",
+      "start_unix_ms": 1699998645855,
+      "status": "ok",
+      "trace_id": "d17cce971372b7c4"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 328,
+      "operation": "GET /home",
+      "parent_span_id": "f8759906",
+      "service": "frontend",
+      "span_id": "ca730ba7",
+      "start_unix_ms": 1699997970319,
+      "status": "ok",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "attributes": {
+        "region": "us-west"
+      },
+      "duration_ms": 115,
+      "operation": "GET /cart",
+      "parent_span_id": "f09f57c9",
+      "service": "frontend",
+      "span_id": "6082ad2a",
+      "start_unix_ms": 1699998314642,
+      "status": "error",
+      "trace_id": "b46e68f2d7b7f808"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "issue_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "0315fa58",
+      "start_unix_ms": 1699997948514,
+      "status": "ok",
+      "trace_id": "38c9310f5f68e8fc"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "capture",
+      "parent_span_id": "deadbeef",
+      "service": "payments",
+      "span_id": "a7eb3da0",
+      "start_unix_ms": 1699998969778,
+      "status": "ok",
+      "trace_id": "6ad0ae05d1b99c95"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 46,
+      "operation": "create_order",
+      "parent_span_id": "bf608148",
+      "service": "checkout",
+      "span_id": "f11abe1a",
+      "start_unix_ms": 1699998347362,
+      "status": "ok",
+      "trace_id": "cb82fed2724c03a2"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 279,
+      "operation": "check_stock",
+      "parent_span_id": "30450783",
+      "service": "inventory",
+      "span_id": "406a7433",
+      "start_unix_ms": 1699998741573,
+      "status": "ok",
+      "trace_id": "d3137211f804aaf0"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 118,
+      "operation": "check_stock",
+      "parent_span_id": "27654e4c",
+      "service": "inventory",
+      "span_id": "2a21395d",
+      "start_unix_ms": 1699997379171,
+      "status": "ok",
+      "trace_id": "c7eeb7afa4dd1c7d"
+    },
+    {
+      "attributes": {
+        "region": "eu-central",
+        "tenant": "globex"
+      },
+      "duration_ms": 286,
+      "operation": "validate_cart",
+      "parent_span_id": "4bd7659f",
+      "service": "checkout",
+      "span_id": "07b6c3d5",
+      "start_unix_ms": 1699996567154,
+      "status": "timeout",
+      "trace_id": "0821d076651d290e"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 20,
+      "operation": "check_stock",
+      "parent_span_id": "2f6a2937",
+      "service": "inventory",
+      "span_id": "a8340ff3",
+      "start_unix_ms": 1699998269164,
+      "status": "ok",
+      "trace_id": "07d787f26a2e715f"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "528c839c",
+      "start_unix_ms": 1699998471551,
+      "status": "ok",
+      "trace_id": "cf873be9f13057c4"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 60,
+      "operation": "validate_cart",
+      "parent_span_id": "e0aece95",
+      "service": "checkout",
+      "span_id": "8aff316d",
+      "start_unix_ms": 1699998824981,
+      "status": "error",
+      "trace_id": "1237a634a383863c"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 293,
+      "operation": "authorize",
+      "parent_span_id": "be83754f",
+      "service": "payments",
+      "span_id": "11854911",
+      "start_unix_ms": 1699996899657,
+      "status": "error",
+      "trace_id": "9173bced57e23a71"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 70,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "9776607c",
+      "start_unix_ms": 1699998368734,
+      "status": "ok",
+      "trace_id": "57942121c5cb413b"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 20,
+      "operation": "check_stock",
+      "parent_span_id": "9776607c",
+      "service": "inventory",
+      "span_id": "e924c064",
+      "start_unix_ms": 1699998368739,
+      "status": "ok",
+      "trace_id": "57942121c5cb413b"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 298,
+      "operation": "GET /home",
+      "parent_span_id": "040cd1c3",
+      "service": "frontend",
+      "span_id": "2306868f",
+      "start_unix_ms": 1699996839408,
+      "status": "ok",
+      "trace_id": "9d654d6021bd7cca"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /home",
+      "parent_span_id": "de3a714d",
+      "service": "frontend",
+      "span_id": "e0aece95",
+      "start_unix_ms": 1699998824976,
+      "status": "ok",
+      "trace_id": "1237a634a383863c"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "GET /home",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "6c729cf0",
+      "start_unix_ms": 1699998244789,
+      "status": "ok",
+      "trace_id": "64a64977901c1427"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 60,
+      "operation": "validate_cart",
+      "parent_span_id": "ccf36bd0",
+      "service": "checkout",
+      "span_id": "da712a72",
+      "start_unix_ms": 1699998645860,
+      "status": "error",
+      "trace_id": "d17cce971372b7c4"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 129,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "19bb9a81",
+      "start_unix_ms": 1699998567462,
+      "status": "ok",
+      "trace_id": "255489219bae0acb"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 139,
+      "operation": "GET /cart",
+      "parent_span_id": "b6043378",
+      "service": "frontend",
+      "span_id": "0ac40bd9",
+      "start_unix_ms": 1699998633770,
+      "status": "ok",
+      "trace_id": "57e46d43d750a94f"
+    },
+    {
+      "attributes": {
+        "region": "eu-central",
+        "tenant": "globex"
+      },
+      "duration_ms": 221,
+      "operation": "create_order",
+      "parent_span_id": "f09f57c9",
+      "service": "checkout",
+      "span_id": "07d49c87",
+      "start_unix_ms": 1699998314983,
+      "status": "error",
+      "trace_id": "b46e68f2d7b7f808"
+    },
+    {
+      "attributes": {
+        "endpoint_kind": "healthcheck"
+      },
+      "duration_ms": 648,
+      "operation": "healthcheck",
+      "parent_span_id": null,
+      "service": "cdn",
+      "span_id": "040cd1c3",
+      "start_unix_ms": 1699996838829,
+      "status": "ok",
+      "trace_id": "9d654d6021bd7cca"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 294,
+      "operation": "GET /home",
+      "parent_span_id": "664465ba",
+      "service": "frontend",
+      "span_id": "0bb35c8b",
+      "start_unix_ms": 1699998347357,
+      "status": "error",
+      "trace_id": "cb82fed2724c03a2"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 70,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "07c02410",
+      "start_unix_ms": 1699998244788,
+      "status": "ok",
+      "trace_id": "64a64977901c1427"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 12,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "2eca8e75",
+      "start_unix_ms": 1699998185760,
+      "status": "ok",
+      "trace_id": "890a845f6450b0c4"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 26,
+      "operation": "fetch_asset",
+      "parent_span_id": "4d76e1ee",
+      "service": "cdn",
+      "span_id": "06ecdb80",
+      "start_unix_ms": 1699997582439,
+      "status": "ok",
+      "trace_id": "178c9d9c8f3fa9cc"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /home",
+      "parent_span_id": "87c638a0",
+      "service": "frontend",
+      "span_id": "3a47d246",
+      "start_unix_ms": 1699998467957,
+      "status": "ok",
+      "trace_id": "503d69fdda5dd93b"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 390,
+      "operation": "GET /cart",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "db6ac5d8",
+      "start_unix_ms": 1699997916063,
+      "status": "error",
+      "trace_id": "63f433ae9e00c434"
+    },
+    {
+      "attributes": {
+        "region": "us-west"
+      },
+      "duration_ms": 139,
+      "operation": "create_order",
+      "parent_span_id": "4bd7659f",
+      "service": "checkout",
+      "span_id": "f86ddcb2",
+      "start_unix_ms": 1699996567346,
+      "status": "ok",
+      "trace_id": "0821d076651d290e"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 395,
+      "operation": "GET /home",
+      "parent_span_id": "a9233f1f",
+      "service": "frontend",
+      "span_id": "725dcb31",
+      "start_unix_ms": 1699997245243,
+      "status": "ok",
+      "trace_id": "77f72b7a1b5cce6c"
+    },
+    {
+      "attributes": {
+        "region": "eu-central",
+        "tenant": "initech"
+      },
+      "duration_ms": 275,
+      "operation": "GET /cart",
+      "parent_span_id": "07b6c3d5",
+      "service": "frontend",
+      "span_id": "5a7eab5a",
+      "start_unix_ms": 1699996567244,
+      "status": "error",
+      "trace_id": "0821d076651d290e"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "GET /home",
+      "parent_span_id": "97a35372",
+      "service": "frontend",
+      "span_id": "aa315ac5",
+      "start_unix_ms": 1699998677825,
+      "status": "ok",
+      "trace_id": "703c4124c902dd3e"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 12,
+      "operation": "validate_token",
+      "parent_span_id": null,
+      "service": "auth",
+      "span_id": "abc31518",
+      "start_unix_ms": 1699998600658,
+      "status": "ok",
+      "trace_id": "4868c7492e2fc2a0"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "check_stock",
+      "parent_span_id": "f6bc725d",
+      "service": "inventory",
+      "span_id": "0336a99f",
+      "start_unix_ms": 1700090000005,
+      "status": "ok",
+      "trace_id": "7e400e7f2d07dec2"
+    },
+    {
+      "attributes": {
+        "endpoint_kind": "healthcheck",
+        "region": "eu-central"
+      },
+      "duration_ms": 372,
+      "operation": "healthcheck",
+      "parent_span_id": "040cd1c3",
+      "service": "cdn",
+      "span_id": "a162c1c9",
+      "start_unix_ms": 1699996839474,
+      "status": "ok",
+      "trace_id": "9d654d6021bd7cca"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 30,
+      "operation": "authorize",
+      "parent_span_id": "8aff316d",
+      "service": "payments",
+      "span_id": "de3a714d",
+      "start_unix_ms": 1699998824986,
+      "status": "ok",
+      "trace_id": "1237a634a383863c"
+    },
+    {
+      "attributes": {
+        "endpoint_kind": "healthcheck",
+        "region": "eu-central"
+      },
+      "duration_ms": 174,
+      "operation": "healthcheck",
+      "parent_span_id": "1f12be90",
+      "service": "cdn",
+      "span_id": "684ac28a",
+      "start_unix_ms": 1699997293066,
+      "status": "ok",
+      "trace_id": "3b502c775579d0b1"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 87,
+      "operation": "validate_token",
+      "parent_span_id": "1f339d64",
+      "service": "auth",
+      "span_id": "6ea6fbe1",
+      "start_unix_ms": 1699997948516,
+      "status": "ok",
+      "trace_id": "38c9310f5f68e8fc"
+    },
+    {
+      "attributes": {
+        "region": "eu-central"
+      },
+      "duration_ms": 103,
+      "operation": "GET /cart",
+      "parent_span_id": "2fb0bf70",
+      "service": "frontend",
+      "span_id": "1f339d64",
+      "start_unix_ms": 1699997948597,
+      "status": "ok",
+      "trace_id": "38c9310f5f68e8fc"
+    },
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 207,
+      "operation": "GET /product",
+      "parent_span_id": "406a7433",
+      "service": "frontend",
+      "span_id": "25556dd8",
+      "start_unix_ms": 1699998741573,
+      "status": "ok",
+      "trace_id": "d3137211f804aaf0"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 100,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "f8ac8680",
+      "start_unix_ms": 1699998400325,
+      "status": "ok",
+      "trace_id": "ab7a36a3fa51b866"
+    },
+    {
+      "attributes": {
+        "region": "us-east",
+        "tenant": "initech"
+      },
+      "duration_ms": 149,
+      "operation": "release",
+      "parent_span_id": "143d9c30",
+      "service": "inventory",
+      "span_id": "7488163d",
+      "start_unix_ms": 1699997423373,
+      "status": "ok",
+      "trace_id": "614d7db18b5d9596"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "anomaly_counts": {
+    "D_CYCLE_DETECTED": 5,
+    "D_FUTURE_TIMESTAMP": 6,
+    "D_INCOMPLETE_TRACE": 4,
+    "D_MULTI_ROOT": 3,
+    "D_ORPHAN_SPAN": 4
+  },
+  "hottest_service": "frontend",
+  "kept_traces": 13,
+  "spans_total": 111,
+  "traces_dropped": 27,
+  "traces_total": 40
+}

@@ -17,14 +17,17 @@ junior_time_estimate_min = 480
 timeout_sec = 600.0
 
 [agent]
-timeout_sec = 1800.0
+timeout_sec = 1500.0
 
 [environment]
 build_timeout_sec = 600.0
+docker_flags = []
 cpus = 2
 memory_mb = 3072
 storage_mb = 10240
+gpus = 0
+gpu_types = []
 gpu_required = false
 network_required = false
-allow_internet = false
 workdir = "/app"
+allow_internet = false

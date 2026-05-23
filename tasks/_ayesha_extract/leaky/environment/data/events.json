@@ -1,0 +1,1230 @@
+{
+  "events": [
+    {
+      "seq": 0,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 1,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 2,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 3,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 4,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "seq": 5,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-04",
+      "new_capacity_bytes": 1000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 6,
+      "type": "reconfigure"
+    },
+    {
+      "seq": 7,
+      "type": "tick"
+    },
+    {
+      "seq": 8,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 9,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 10,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 11,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 12,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "new_capacity_bytes": 10000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 13,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 14,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 15,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 16,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "new_capacity_bytes": 1000,
+      "new_leak_bytes_per_tick": 100,
+      "seq": 17,
+      "type": "reconfigure"
+    },
+    {
+      "seq": 18,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 19,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 20,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 21,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 22,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 23,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "new_capacity_bytes": 10000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 24,
+      "type": "reconfigure"
+    },
+    {
+      "seq": 25,
+      "type": "tick"
+    },
+    {
+      "seq": 26,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-04",
+      "new_capacity_bytes": 1000,
+      "new_leak_bytes_per_tick": 200,
+      "seq": 27,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 28,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 29,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 30,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 31,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 32,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 33,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 34,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 35,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "new_capacity_bytes": 3000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 36,
+      "type": "reconfigure"
+    },
+    {
+      "seq": 37,
+      "type": "tick"
+    },
+    {
+      "seq": 38,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 39,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "seq": 40,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 41,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 42,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 43,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 44,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 45,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 46,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 47,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "seq": 48,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 49,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 50,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 51,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 52,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 53,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 54,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 55,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 56,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "new_capacity_bytes": 1000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 57,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 58,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 59,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 60,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "seq": 61,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-01",
+      "new_capacity_bytes": 10000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 62,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 63,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "seq": 64,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 65,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 66,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 67,
+      "type": "tick"
+    },
+    {
+      "seq": 68,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 69,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 70,
+      "type": "tick"
+    },
+    {
+      "seq": 71,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 72,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 73,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "seq": 74,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 75,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "new_capacity_bytes": 6000,
+      "new_leak_bytes_per_tick": 100,
+      "seq": 76,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-00",
+      "new_capacity_bytes": 1000,
+      "new_leak_bytes_per_tick": 100,
+      "seq": 77,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 78,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 79,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 80,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 81,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 82,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 83,
+      "type": "tick"
+    },
+    {
+      "seq": 84,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 85,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 86,
+      "type": "tick"
+    },
+    {
+      "seq": 87,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 88,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 89,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 90,
+      "type": "tick"
+    },
+    {
+      "seq": 91,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 92,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 93,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 94,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 95,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 96,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 97,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 98,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 99,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 100,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 101,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 102,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 103,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 104,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 105,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 106,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 107,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 108,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 109,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 110,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 111,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 112,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 113,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 114,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 115,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 116,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 117,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 118,
+      "type": "tick"
+    },
+    {
+      "seq": 119,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 120,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 121,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 122,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "seq": 123,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 124,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 125,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 126,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 127,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 128,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 129,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 130,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 131,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "new_capacity_bytes": 6000,
+      "new_leak_bytes_per_tick": 200,
+      "seq": 132,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 133,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 134,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 135,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 136,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "seq": 137,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 138,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "new_capacity_bytes": 6000,
+      "new_leak_bytes_per_tick": 200,
+      "seq": 139,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 140,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 141,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 142,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 143,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "seq": 144,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 145,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 146,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 147,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 148,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 149,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 150,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "seq": 151,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "new_capacity_bytes": 6000,
+      "new_leak_bytes_per_tick": 500,
+      "seq": 152,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 153,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "seq": 154,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 155,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "seq": 156,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 157,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "seq": 158,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 159,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "seq": 160,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 161,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "new_capacity_bytes": 10000,
+      "new_leak_bytes_per_tick": 1000,
+      "seq": 162,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-01",
+      "new_capacity_bytes": 3000,
+      "new_leak_bytes_per_tick": 500,
+      "seq": 163,
+      "type": "reconfigure"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 164,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 165,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 166,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 167,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "seq": 168,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 169,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 170,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 171,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 172,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 173,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "seq": 174,
+      "type": "tick"
+    },
+    {
+      "seq": 175,
+      "type": "tick"
+    },
+    {
+      "seq": 176,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 177,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 178,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 179,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "seq": 180,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 181,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 182,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 183,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 184,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 185,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "seq": 186,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 187,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 188,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "seq": 189,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 190,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 191,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "seq": 192,
+      "type": "tick"
+    },
+    {
+      "seq": 193,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 194,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "seq": 195,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 196,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 197,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 198,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "seq": 199,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "new_capacity_bytes": 3000,
+      "new_leak_bytes_per_tick": 100,
+      "seq": 200,
+      "type": "reconfigure"
+    },
+    {
+      "seq": 201,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 202,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 203,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 204,
+      "size_bytes": 4000,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 205,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-01",
+      "seq": 206,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 207,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-00",
+      "seq": 208,
+      "size_bytes": 100,
+      "type": "submit"
+    },
+    {
+      "seq": 209,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 210,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-03",
+      "seq": 211,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-02",
+      "seq": 212,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-04",
+      "seq": 213,
+      "size_bytes": 2500,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 214,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 215,
+      "size_bytes": 800,
+      "type": "submit"
+    },
+    {
+      "seq": 216,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 217,
+      "size_bytes": 1200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 218,
+      "size_bytes": 250,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "q-05",
+      "seq": 219,
+      "size_bytes": 4000,
+      "type": "submit"
+    }
+  ]
+}

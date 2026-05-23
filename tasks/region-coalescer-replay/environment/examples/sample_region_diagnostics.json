@@ -1,0 +1,19 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "N_AUTO_COALESCED",
+          "region_id": "alpha",
+          "severity": "note"
+        },
+        {
+          "code": "N_AUTO_COALESCED",
+          "region_id": "alpha",
+          "severity": "note"
+        }
+      ],
+      "seq": 0
+    }
+  ]
+}

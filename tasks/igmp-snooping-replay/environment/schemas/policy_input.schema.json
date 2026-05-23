@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "policy_input.schema.json",
+  "title": "policy.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["drop_unknown_groups", "fast_leave", "track_forwarding", "ttl_sec"],
+  "properties": {
+    "ttl_sec": { "type": "integer", "minimum": 1 },
+    "track_forwarding": { "type": "boolean" },
+    "fast_leave": { "type": "boolean" },
+    "drop_unknown_groups": { "type": "boolean" }
+  }
+}

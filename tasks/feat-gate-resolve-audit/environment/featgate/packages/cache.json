@@ -1,0 +1,24 @@
+{
+  "default_features": [
+    "cache-mem"
+  ],
+  "deps": [
+    {
+      "epoch": 3,
+      "features": [
+        "base"
+      ],
+      "name": "util",
+      "optional": true
+    }
+  ],
+  "features": {
+    "cache-disk": [],
+    "cache-mem": [],
+    "fast-io": [
+      "cache-disk"
+    ],
+    "metrics": []
+  },
+  "name": "cache"
+}

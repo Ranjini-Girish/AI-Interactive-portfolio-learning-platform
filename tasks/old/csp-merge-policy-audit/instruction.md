@@ -1,0 +1,5 @@
+Security engineering needs a frozen snapshot of how Content-Security-Policy bundles combine per origin after delivery-mode precedence, source normalization, report budgets, and security incidents are applied. The evaluation day is fixed in `pool_state.json` so two runs produce comparable JSON without replaying raw policy text.
+
+Write five UTF-8 JSON documents under `/app/audit/` named `directive_matrix.json`, `nonce_collisions.json`, `enforce_verdicts.json`, `incident_overrides.json`, and `summary.json`. Each file must expose exactly the top-level keys defined in `/app/cspmerge/SPEC.md`, with list rows sorted as that document specifies. Every object must follow the canonical JSON rules there, including two-space indentation, ASCII-only content, sorted keys, and the trailing newline requirement.
+
+Evidence inputs live under `/app/cspmerge/`; a non-empty `CMP_DATA_DIR` overrides the read root and a non-empty `CMP_AUDIT_DIR` overrides the write root, otherwise those defaults apply. Create the audit directory when it is missing and leave the bundled tree read-only.

@@ -1,0 +1,9 @@
+{
+  "auto_rebalance_after_join": true,
+  "auto_rebalance_after_leave": true,
+  "max_moves_per_round": 1,
+  "rack_awareness": true,
+  "rebalance_strategy": "greedy_weight",
+  "replication_factor": 2,
+  "track_history": true
+}

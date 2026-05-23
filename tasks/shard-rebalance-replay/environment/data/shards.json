@@ -1,0 +1,11 @@
+{
+  "shards": [
+    {"id": "s01", "primary": "n01", "replicas": ["n02"], "size_bytes": 1024},
+    {"id": "s02", "primary": "n02", "replicas": ["n03"], "size_bytes": 2048},
+    {"id": "s03", "primary": "n03", "replicas": ["n04"], "size_bytes": 512},
+    {"id": "s04", "primary": "n04", "replicas": ["n01"], "size_bytes": 4096},
+    {"id": "s05", "primary": "n01", "replicas": ["n03"], "size_bytes": 1536},
+    {"id": "s06", "primary": "n02", "replicas": ["n04"], "size_bytes": 768},
+    {"id": "s07", "primary": "n01", "replicas": ["n02", "n03"], "size_bytes": 2048}
+  ]
+}

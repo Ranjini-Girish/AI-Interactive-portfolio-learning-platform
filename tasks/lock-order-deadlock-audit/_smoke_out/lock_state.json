@@ -1,0 +1,127 @@
+{
+  "locks": [
+    {
+      "exclusive_holders": [
+        "T1"
+      ],
+      "holders_count": 1,
+      "id": "L_a",
+      "recursive_holds": [
+        {
+          "count": 2,
+          "thread": "T1"
+        }
+      ],
+      "shared_holders": [],
+      "wait_queue": [
+        {
+          "mode": "exclusive",
+          "requested_priority": 10,
+          "seq": 5,
+          "thread": "T2"
+        }
+      ]
+    },
+    {
+      "exclusive_holders": [],
+      "holders_count": 2,
+      "id": "L_b",
+      "recursive_holds": [],
+      "shared_holders": [
+        "T2",
+        "T3"
+      ],
+      "wait_queue": [
+        {
+          "mode": "exclusive",
+          "requested_priority": 5,
+          "seq": 4,
+          "thread": "T1"
+        }
+      ]
+    },
+    {
+      "exclusive_holders": [
+        "T3"
+      ],
+      "holders_count": 1,
+      "id": "L_c",
+      "recursive_holds": [],
+      "shared_holders": [],
+      "wait_queue": [
+        {
+          "mode": "exclusive",
+          "requested_priority": 8,
+          "seq": 9,
+          "thread": "T4"
+        }
+      ]
+    },
+    {
+      "exclusive_holders": [
+        "T4"
+      ],
+      "holders_count": 1,
+      "id": "L_d",
+      "recursive_holds": [],
+      "shared_holders": [],
+      "wait_queue": [
+        {
+          "mode": "exclusive",
+          "requested_priority": 0,
+          "seq": 8,
+          "thread": "T3"
+        },
+        {
+          "mode": "shared",
+          "requested_priority": 0,
+          "seq": 16,
+          "thread": "T6"
+        }
+      ]
+    },
+    {
+      "exclusive_holders": [],
+      "holders_count": 0,
+      "id": "L_e",
+      "recursive_holds": [],
+      "shared_holders": [],
+      "wait_queue": []
+    },
+    {
+      "exclusive_holders": [
+        "T5"
+      ],
+      "holders_count": 1,
+      "id": "L_f",
+      "recursive_holds": [],
+      "shared_holders": [],
+      "wait_queue": []
+    },
+    {
+      "exclusive_holders": [],
+      "holders_count": 0,
+      "id": "L_g",
+      "recursive_holds": [],
+      "shared_holders": [],
+      "wait_queue": []
+    },
+    {
+      "exclusive_holders": [
+        "T6"
+      ],
+      "holders_count": 1,
+      "id": "L_h",
+      "recursive_holds": [],
+      "shared_holders": [],
+      "wait_queue": [
+        {
+          "mode": "exclusive",
+          "requested_priority": 3,
+          "seq": 28,
+          "thread": "Tb"
+        }
+      ]
+    }
+  ]
+}

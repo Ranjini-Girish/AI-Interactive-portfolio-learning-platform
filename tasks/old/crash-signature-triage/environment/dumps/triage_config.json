@@ -1,0 +1,5 @@
+{
+  "cluster_size_escalation_threshold": 5,
+  "default_owner_team": "ops-team",
+  "severity_order": ["low", "medium", "high", "critical"]
+}

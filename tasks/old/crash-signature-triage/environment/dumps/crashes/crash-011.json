@@ -1,0 +1,9 @@
+{
+  "id": "crash-011",
+  "reported_day": 110,
+  "reporter": "kelly@example.com",
+  "frame_stack": ["audio::buffer::write", "audio::mixer::mix", "audio::driver::flush"],
+  "env_hash": "0a1b2c3d4e5f667788991a2b3c4d5e6f0a1b2c3d4e5f667788991a2b3c4d5e6f",
+  "reproducibility": "once",
+  "severity_observed": "low"
+}

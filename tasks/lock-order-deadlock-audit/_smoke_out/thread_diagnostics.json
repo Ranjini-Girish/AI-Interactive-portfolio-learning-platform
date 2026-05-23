@@ -1,0 +1,181 @@
+{
+  "threads": [
+    {
+      "diagnostics": [
+        {
+          "code": "E_DEADLOCKED_AT_END",
+          "lock": null,
+          "seq": 4,
+          "severity": "error"
+        },
+        {
+          "code": "W_LOCK_ORDER_INVERSION",
+          "lock": "L_b",
+          "seq": 4,
+          "severity": "warning"
+        },
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_b",
+          "seq": 4,
+          "severity": "note"
+        }
+      ],
+      "id": "T1"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DEADLOCKED_AT_END",
+          "lock": null,
+          "seq": 5,
+          "severity": "error"
+        },
+        {
+          "code": "E_UNMATCHED_RELEASE",
+          "lock": "L_e",
+          "seq": 12,
+          "severity": "error"
+        },
+        {
+          "code": "W_LOCK_ORDER_INVERSION",
+          "lock": "L_a",
+          "seq": 5,
+          "severity": "warning"
+        },
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_a",
+          "seq": 5,
+          "severity": "note"
+        }
+      ],
+      "id": "T2"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DEADLOCKED_AT_END",
+          "lock": null,
+          "seq": 8,
+          "severity": "error"
+        },
+        {
+          "code": "W_LOCK_ORDER_INVERSION",
+          "lock": "L_d",
+          "seq": 8,
+          "severity": "warning"
+        },
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_d",
+          "seq": 8,
+          "severity": "note"
+        }
+      ],
+      "id": "T3"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DEADLOCKED_AT_END",
+          "lock": null,
+          "seq": 9,
+          "severity": "error"
+        },
+        {
+          "code": "E_NON_REENTRANT_REACQUIRE",
+          "lock": "L_d",
+          "seq": 13,
+          "severity": "error"
+        },
+        {
+          "code": "E_UNSUPPORTED_MODE",
+          "lock": "L_e",
+          "seq": 14,
+          "severity": "error"
+        },
+        {
+          "code": "W_LOCK_ORDER_INVERSION",
+          "lock": "L_c",
+          "seq": 9,
+          "severity": "warning"
+        },
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_c",
+          "seq": 9,
+          "severity": "note"
+        }
+      ],
+      "id": "T4"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_HELD_AT_EXIT",
+          "lock": "L_f",
+          "seq": 11,
+          "severity": "warning"
+        }
+      ],
+      "id": "T5"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_d",
+          "seq": 16,
+          "severity": "note"
+        }
+      ],
+      "id": "T6"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_WAIT_WHILE_HOLDING",
+          "lock": "L_g",
+          "seq": 19,
+          "severity": "error"
+        }
+      ],
+      "id": "T7"
+    },
+    {
+      "diagnostics": [],
+      "id": "T8"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_b",
+          "seq": 21,
+          "severity": "note"
+        }
+      ],
+      "id": "T9"
+    },
+    {
+      "diagnostics": [],
+      "id": "Ta"
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_BLOCKED_ON_ACQUIRE",
+          "lock": "L_h",
+          "seq": 28,
+          "severity": "note"
+        }
+      ],
+      "id": "Tb"
+    },
+    {
+      "diagnostics": [],
+      "id": "Tk"
+    }
+  ]
+}

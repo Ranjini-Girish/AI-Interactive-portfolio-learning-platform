@@ -1,0 +1,22 @@
+{
+  "sas": [
+    {
+      "id": "alpha",
+      "owner": "alice",
+      "top": 100,
+      "window_size": 32
+    },
+    {
+      "id": "bravo",
+      "owner": "bob",
+      "top": 50,
+      "window_size": 64
+    },
+    {
+      "id": "charlie",
+      "owner": "carol",
+      "top": 0,
+      "window_size": 16
+    }
+  ]
+}

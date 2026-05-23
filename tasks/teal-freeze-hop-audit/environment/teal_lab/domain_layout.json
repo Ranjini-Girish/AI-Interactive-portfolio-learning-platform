@@ -1,0 +1,7 @@
+{
+  "lanes": {
+    "east": {"weight": 1},
+    "west": {"weight": 2}
+  },
+  "witness_tag": "teal-layout-v1"
+}

@@ -1,0 +1,13 @@
+{
+  "outcomes_by_day": {
+    "100": "fail",
+    "101": "fail",
+    "102": "ok",
+    "103": "ok",
+    "104": "ok",
+    "105": "ok"
+  },
+  "service_id": "svc-eta",
+  "tier": "silver",
+  "upstream_id": "up-north"
+}

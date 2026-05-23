@@ -1,0 +1,23 @@
+{
+  "endpoints": [
+    {
+      "current_failure_threshold_pct": 50,
+      "current_half_open_max_probes": 2,
+      "current_recovery_ticks": 3,
+      "current_window_size": 5,
+      "id": "svc_a",
+      "last_state_change_seq": null,
+      "probe_failures": 0,
+      "probe_successes": 0,
+      "probes_used": 0,
+      "state": "CLOSED",
+      "state_transition_count": 0,
+      "tick_entered_open": null,
+      "total_admitted": 2,
+      "total_failures": 0,
+      "total_short_circuited": 0,
+      "total_successes": 2,
+      "total_timeouts": 0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "admits.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["admits"],
+  "properties": {
+    "admits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bucket_id", "level_after", "seq", "size_bytes"],
+        "properties": {
+          "bucket_id": { "type": "string" },
+          "level_after": { "type": "integer", "minimum": 0 },
+          "seq": { "type": "integer", "minimum": 0 },
+          "size_bytes": { "type": "integer", "minimum": 1 }
+        }
+      }
+    }
+  }
+}

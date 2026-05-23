@@ -1,0 +1,55 @@
+{
+  "violations": [
+    {
+      "accepted": false,
+      "event_id": "e_0007",
+      "payload": {
+        "seg_id": "s_0001",
+        "size_bytes": 9999
+      },
+      "reason_ignored": "duplicate_seg_id",
+      "ts_unix_ms": 1700000007500,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0009",
+      "payload": {
+        "level": 1
+      },
+      "reason_ignored": "level_below_threshold",
+      "ts_unix_ms": 1700000008500,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0014",
+      "payload": {
+        "level": 1
+      },
+      "reason_ignored": "level_below_threshold",
+      "ts_unix_ms": 1700000009700,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0020",
+      "payload": {
+        "level": 3
+      },
+      "reason_ignored": "top_level_compaction",
+      "ts_unix_ms": 1700000011200,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0021",
+      "payload": {
+        "level": 9
+      },
+      "reason_ignored": "level_out_of_range",
+      "ts_unix_ms": 1700000011300,
+      "type": "compact"
+    }
+  ]
+}

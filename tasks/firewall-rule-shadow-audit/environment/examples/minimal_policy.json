@@ -1,0 +1,5 @@
+{
+  "default_action": "deny",
+  "enable_directionality": true,
+  "tie_breaker": "priority_then_id"
+}

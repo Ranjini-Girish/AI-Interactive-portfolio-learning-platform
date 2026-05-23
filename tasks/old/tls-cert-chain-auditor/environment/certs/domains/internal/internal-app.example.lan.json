@@ -1,0 +1,6 @@
+{
+  "domain": "internal-app.example.lan",
+  "expected_san": ["internal-app.example.lan"],
+  "leaf_serial": "leaf-internal-v1",
+  "tier": "internal"
+}

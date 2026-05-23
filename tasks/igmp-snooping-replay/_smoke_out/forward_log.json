@@ -1,0 +1,156 @@
+{
+  "forwards": [
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth8"
+      ],
+      "group": "239.4.2.186",
+      "ingress_port": "Eth1",
+      "reason": null,
+      "seq": 0,
+      "vlan": 20
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth7"
+      ],
+      "group": "239.255.255.250",
+      "ingress_port": "Eth2",
+      "reason": null,
+      "seq": 3,
+      "vlan": 10
+    },
+    {
+      "decision": "dropped",
+      "egress_ports": [],
+      "group": "239.4.2.187",
+      "ingress_port": "Eth8",
+      "reason": "no_members",
+      "seq": 14,
+      "vlan": 20
+    },
+    {
+      "decision": "flooded",
+      "egress_ports": [
+        "Eth1",
+        "Eth3",
+        "Eth5"
+      ],
+      "group": "224.0.0.1",
+      "ingress_port": "Eth8",
+      "reason": null,
+      "seq": 19,
+      "vlan": 20
+    },
+    {
+      "decision": "dropped",
+      "egress_ports": [],
+      "group": "239.4.2.186",
+      "ingress_port": "Eth8",
+      "reason": "no_members",
+      "seq": 26,
+      "vlan": 20
+    },
+    {
+      "decision": "flooded",
+      "egress_ports": [
+        "Eth2",
+        "Eth6"
+      ],
+      "group": "224.0.0.5",
+      "ingress_port": "Eth7",
+      "reason": null,
+      "seq": 34,
+      "vlan": 10
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth7"
+      ],
+      "group": "239.4.2.186",
+      "ingress_port": "Eth6",
+      "reason": null,
+      "seq": 36,
+      "vlan": 10
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth8"
+      ],
+      "group": "239.2.1.43",
+      "ingress_port": "Eth5",
+      "reason": null,
+      "seq": 37,
+      "vlan": 20
+    },
+    {
+      "decision": "dropped",
+      "egress_ports": [],
+      "group": "239.2.5.177",
+      "ingress_port": "Eth7",
+      "reason": "no_members",
+      "seq": 38,
+      "vlan": 10
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth7"
+      ],
+      "group": "239.4.2.187",
+      "ingress_port": "Eth2",
+      "reason": null,
+      "seq": 48,
+      "vlan": 10
+    },
+    {
+      "decision": "flooded",
+      "egress_ports": [
+        "Eth3",
+        "Eth8"
+      ],
+      "group": "239.4.2.187",
+      "ingress_port": "Eth5",
+      "reason": null,
+      "seq": 54,
+      "vlan": 20
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth7"
+      ],
+      "group": "239.1.5.230",
+      "ingress_port": "Eth6",
+      "reason": null,
+      "seq": 55,
+      "vlan": 10
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth7"
+      ],
+      "group": "239.2.5.177",
+      "ingress_port": "Eth2",
+      "reason": null,
+      "seq": 56,
+      "vlan": 10
+    },
+    {
+      "decision": "forwarded",
+      "egress_ports": [
+        "Eth8"
+      ],
+      "group": "239.255.255.250",
+      "ingress_port": "Eth3",
+      "reason": null,
+      "seq": 58,
+      "vlan": 20
+    }
+  ]
+}

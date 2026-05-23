@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "policies.json",
+  "type": "object",
+  "required": ["policies"],
+  "additionalProperties": false,
+  "properties": {
+    "policies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "action"],
+        "properties": {
+          "name":   { "type": "string" },
+          "type":   { "type": "string", "enum": ["status_match", "latency", "attribute", "service", "probabilistic"] },
+          "action": { "type": "string", "enum": ["keep", "drop"] },
+          "statuses": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["ok", "error", "timeout"] }
+          },
+          "services": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "threshold_ms": { "type": "integer", "minimum": 0 },
+          "mode":         { "type": "string", "enum": ["any_span", "root_span", "trace_total"] },
+          "key":          { "type": "string" },
+          "values": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "hash_seed":               { "type": "string" },
+          "sampling_rate_per_mille": { "type": "integer", "minimum": 0, "maximum": 1000 }
+        }
+      }
+    }
+  }
+}

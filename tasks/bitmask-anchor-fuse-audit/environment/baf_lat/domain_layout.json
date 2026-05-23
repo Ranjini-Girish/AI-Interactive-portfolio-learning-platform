@@ -1,3 +1,14 @@
 {
-  "bits": 8
+  "bits": 8,
+  "segments": {
+    "burst": {
+      "lane_xor": 15
+    },
+    "core": {
+      "lane_xor": 0
+    },
+    "edge": {
+      "lane_xor": 170
+    }
+  }
 }

@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@aurum/shared-types": {
+      "exports_used": [],
+      "range": "workspace:*",
+      "scope": "prod"
+    },
+    "flax-http": {
+      "exports_used": ["import", "node", "require"],
+      "range": "^3.0.0",
+      "scope": "prod"
+    },
+    "tessera-utils": {
+      "exports_used": ["import"],
+      "range": ">=0.8.0 <2.0.0",
+      "scope": "prod"
+    }
+  },
+  "dev_dependencies": {},
+  "engines_node": ">=20.0.0 <24.0.0",
+  "name": "@aurum/api-gateway",
+  "version": "1.2.0"
+}

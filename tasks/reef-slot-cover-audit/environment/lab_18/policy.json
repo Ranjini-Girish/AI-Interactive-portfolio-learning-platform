@@ -1,0 +1,11 @@
+{
+  "bias_floor": 3,
+  "cap": 73,
+  "cutoff": 53,
+  "fold_mod": 1015,
+  "label": "reef-slot-cover-audit",
+  "mask": 81,
+  "poly_base": 145,
+  "seed_offset": 175,
+  "square_mod": 1000001
+}

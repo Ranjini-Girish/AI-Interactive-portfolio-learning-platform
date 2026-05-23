@@ -1,0 +1,16 @@
+{
+  "flows": [
+    {
+      "evaluated_rule_ids": ["x01"],
+      "id": "g01",
+      "matched_rule_id": "x01",
+      "verdict": "allow"
+    },
+    {
+      "evaluated_rule_ids": ["x01", "x02"],
+      "id": "g02",
+      "matched_rule_id": "x02",
+      "verdict": "deny"
+    }
+  ]
+}

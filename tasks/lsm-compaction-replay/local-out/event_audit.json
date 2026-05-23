@@ -1,0 +1,238 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "event_id": "e_0001",
+      "payload": {
+        "seg_id": "s_0001",
+        "size_bytes": 1024
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000001000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0002",
+      "payload": {
+        "seg_id": "s_0002",
+        "size_bytes": 2048
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000002000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0003",
+      "payload": {
+        "seg_id": "s_0003",
+        "size_bytes": 1536
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000003000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0004",
+      "payload": {
+        "seg_id": "s_0004",
+        "size_bytes": 4096
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000004000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0005",
+      "payload": {
+        "seg_id": "s_0005",
+        "size_bytes": 512
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000005000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0006",
+      "payload": {
+        "seg_id": "s_0006",
+        "size_bytes": 3072
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000006000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0007",
+      "payload": {
+        "seg_id": "s_0001",
+        "size_bytes": 9999
+      },
+      "reason_ignored": "duplicate_seg_id",
+      "ts_unix_ms": 1700000007500,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0008",
+      "payload": {
+        "level": 0
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000008000,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0009",
+      "payload": {
+        "level": 1
+      },
+      "reason_ignored": "level_below_threshold",
+      "ts_unix_ms": 1700000008500,
+      "type": "compact"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0010",
+      "payload": {
+        "seg_id": "s_0010",
+        "size_bytes": 800
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000001000,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0011",
+      "payload": {
+        "seg_id": "s_0011",
+        "size_bytes": 900
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000001100,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0012",
+      "payload": {
+        "seg_id": "s_0012",
+        "size_bytes": 1100
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000001200,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0013",
+      "payload": {
+        "level": 0
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000009500,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0014",
+      "payload": {
+        "level": 1
+      },
+      "reason_ignored": "level_below_threshold",
+      "ts_unix_ms": 1700000009700,
+      "type": "compact"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0015",
+      "payload": {
+        "seg_id": "s_0015",
+        "size_bytes": 700
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000010015,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0016",
+      "payload": {
+        "seg_id": "s_0016",
+        "size_bytes": 600
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000010016,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0017",
+      "payload": {
+        "seg_id": "s_0017",
+        "size_bytes": 500
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000010017,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0018",
+      "payload": {
+        "level": 0
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000010500,
+      "type": "compact"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0019",
+      "payload": {
+        "level": 1
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000011000,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0020",
+      "payload": {
+        "level": 3
+      },
+      "reason_ignored": "top_level_compaction",
+      "ts_unix_ms": 1700000011200,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_0021",
+      "payload": {
+        "level": 9
+      },
+      "reason_ignored": "level_out_of_range",
+      "ts_unix_ms": 1700000011300,
+      "type": "compact"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_0022",
+      "payload": {
+        "seg_id": "s_0022",
+        "size_bytes": 256
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000011400,
+      "type": "flush_memtable"
+    }
+  ]
+}

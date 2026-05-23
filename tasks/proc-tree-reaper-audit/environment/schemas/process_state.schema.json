@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "process_state.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["processes"],
+  "properties": {
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cmdline", "exit_code", "exit_signal", "exit_tick",
+          "pid", "ppid", "start_tick", "state", "uid"
+        ],
+        "properties": {
+          "cmdline": {"type": "string"},
+          "exit_code": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
+          "exit_signal": {
+            "anyOf": [
+              {"enum": ["SIGTERM", "SIGKILL", "SIGINT"]},
+              {"type": "null"}
+            ]
+          },
+          "exit_tick": {
+            "anyOf": [{"type": "integer", "minimum": 0}, {"type": "null"}]
+          },
+          "pid": {"type": "integer", "minimum": 1},
+          "ppid": {"type": "integer", "minimum": 0},
+          "start_tick": {"type": "integer", "minimum": 0},
+          "state": {"enum": ["RUNNING", "ZOMBIE", "EXITED"]},
+          "uid": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

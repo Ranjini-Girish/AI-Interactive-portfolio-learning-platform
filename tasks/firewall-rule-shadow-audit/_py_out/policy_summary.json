@@ -1,0 +1,185 @@
+{
+  "default_action_uses": 0,
+  "effective": 12,
+  "escalation_warnings": [
+    {
+      "earlier_rule_id": "r02",
+      "rule_id": "r06",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r02",
+      "rule_id": "r08",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r01",
+      "rule_id": "r09",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r29",
+      "rule_id": "r09",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r31",
+      "rule_id": "r09",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r13",
+      "rule_id": "r14",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r01",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r02",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r03",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r04",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r05",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r07",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r10",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r11",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r19",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r22",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r26",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r27",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r29",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r30",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r31",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r36",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r37",
+      "rule_id": "r20",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r01",
+      "rule_id": "r23",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r02",
+      "rule_id": "r23",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r26",
+      "rule_id": "r23",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r29",
+      "rule_id": "r23",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r01",
+      "rule_id": "r24",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r02",
+      "rule_id": "r24",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r26",
+      "rule_id": "r24",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r29",
+      "rule_id": "r24",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r01",
+      "rule_id": "r25",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r29",
+      "rule_id": "r25",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r27",
+      "rule_id": "r28",
+      "type": "deny_after_allow"
+    },
+    {
+      "earlier_rule_id": "r01",
+      "rule_id": "r33",
+      "type": "deny_after_allow"
+    }
+  ],
+  "redundant": 6,
+  "shadowed": 15,
+  "total_rules": 38,
+  "unreachable": 5
+}

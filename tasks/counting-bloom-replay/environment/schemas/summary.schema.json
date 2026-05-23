@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "clamped_remove",
+    "clears",
+    "dumps_total",
+    "events_total",
+    "fn_count",
+    "fp_count",
+    "hot_keys",
+    "queries_total",
+    "rejected_negative",
+    "rejected_saturate",
+    "resizes",
+    "successful_adds",
+    "successful_queries",
+    "successful_removes",
+    "tn_count",
+    "tp_count"
+  ],
+  "properties": {
+    "clamped_remove": { "type": "integer" },
+    "clears": { "type": "integer" },
+    "dumps_total": { "type": "integer" },
+    "events_total": { "type": "integer" },
+    "fn_count": { "type": "integer" },
+    "fp_count": { "type": "integer" },
+    "hot_keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "queries"],
+        "properties": {
+          "key": { "type": "string" },
+          "queries": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "queries_total": { "type": "integer" },
+    "rejected_negative": { "type": "integer" },
+    "rejected_saturate": { "type": "integer" },
+    "resizes": { "type": "integer" },
+    "successful_adds": { "type": "integer" },
+    "successful_queries": { "type": "integer" },
+    "successful_removes": { "type": "integer" },
+    "tn_count": { "type": "integer" },
+    "tp_count": { "type": "integer" }
+  }
+}

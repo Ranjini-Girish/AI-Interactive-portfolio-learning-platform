@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "key_id": "k0",
+      "kind": "encrypt",
+      "nonce": 1,
+      "seq": 1,
+      "tick": 1
+    },
+    {
+      "key_id": "k0",
+      "kind": "encrypt",
+      "nonce": 1,
+      "seq": 2,
+      "tick": 2
+    }
+  ]
+}

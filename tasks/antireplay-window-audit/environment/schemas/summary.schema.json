@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "accepted_total",
+    "active_sa_count",
+    "add_sa_failures",
+    "drop_unknown_sa",
+    "hot_sas",
+    "passive_created_count",
+    "policy_on_replay",
+    "policy_on_too_old",
+    "policy_on_unknown_sa",
+    "rekey_failures",
+    "rekey_successes",
+    "replays_total",
+    "too_old_total",
+    "total_events"
+  ],
+  "properties": {
+    "accepted_total":        { "type": "integer", "minimum": 0 },
+    "active_sa_count":       { "type": "integer", "minimum": 0 },
+    "add_sa_failures":       { "type": "integer", "minimum": 0 },
+    "drop_unknown_sa":       { "type": "integer", "minimum": 0 },
+    "hot_sas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "replays", "too_old"],
+        "properties": {
+          "id":      { "type": "string" },
+          "replays": { "type": "integer", "minimum": 0 },
+          "too_old": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "passive_created_count": { "type": "integer", "minimum": 0 },
+    "policy_on_replay":      { "type": "string", "enum": ["drop", "log_only"] },
+    "policy_on_too_old":     { "type": "string", "enum": ["drop", "log_only"] },
+    "policy_on_unknown_sa":  { "type": "string", "enum": ["drop", "create_passive"] },
+    "rekey_failures":        { "type": "integer", "minimum": 0 },
+    "rekey_successes":       { "type": "integer", "minimum": 0 },
+    "replays_total":         { "type": "integer", "minimum": 0 },
+    "too_old_total":         { "type": "integer", "minimum": 0 },
+    "total_events":          { "type": "integer", "minimum": 0 }
+  }
+}

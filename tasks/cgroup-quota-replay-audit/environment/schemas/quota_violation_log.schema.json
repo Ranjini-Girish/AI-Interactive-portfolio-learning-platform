@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "quota_violation_log",
+  "type": "object",
+  "required": ["violations"],
+  "additionalProperties": false,
+  "properties": {
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["amount", "amount_dropped", "cgroup_id", "code", "resource", "seq"],
+        "additionalProperties": false,
+        "properties": {
+          "amount": { "type": "integer", "minimum": 0 },
+          "amount_dropped": { "type": "integer", "minimum": 0 },
+          "cgroup_id": { "type": "string" },
+          "code": { "type": "string", "enum": ["E_OVER_QUOTA", "W_THROTTLED"] },
+          "resource": { "type": "string", "enum": ["cpu", "mem", "io"] },
+          "seq": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "summary.schema.json",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["active_groups", "totals"],
+  "properties": {
+    "active_groups": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^(2(2[4-9]|3[0-9])\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$" }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "diagnostic_count",
+        "frames_dropped",
+        "frames_flooded",
+        "frames_forwarded",
+        "leave_events",
+        "mcast_frame_events",
+        "member_count",
+        "report_events",
+        "tick_events",
+        "total_ticks_advanced_sec"
+      ],
+      "properties": {
+        "diagnostic_count": { "type": "integer", "minimum": 0 },
+        "frames_dropped": { "type": "integer", "minimum": 0 },
+        "frames_flooded": { "type": "integer", "minimum": 0 },
+        "frames_forwarded": { "type": "integer", "minimum": 0 },
+        "leave_events": { "type": "integer", "minimum": 0 },
+        "mcast_frame_events": { "type": "integer", "minimum": 0 },
+        "member_count": { "type": "integer", "minimum": 0 },
+        "report_events": { "type": "integer", "minimum": 0 },
+        "tick_events": { "type": "integer", "minimum": 0 },
+        "total_ticks_advanced_sec": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

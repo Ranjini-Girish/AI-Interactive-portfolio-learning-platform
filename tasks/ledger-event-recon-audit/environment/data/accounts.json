@@ -1,0 +1,49 @@
+{
+  "accounts": [
+    {
+      "id": "A1",
+      "currency": "USD",
+      "opening_balance_cents": 50000,
+      "tier": "basic",
+      "account_type": "checking",
+      "status": "active",
+      "daily_withdraw_limit_cents": null
+    },
+    {
+      "id": "A2",
+      "currency": "USD",
+      "opening_balance_cents": 100000,
+      "tier": "premium",
+      "account_type": "savings",
+      "status": "active",
+      "daily_withdraw_limit_cents": 200000
+    },
+    {
+      "id": "A3",
+      "currency": "USD",
+      "opening_balance_cents": 0,
+      "tier": "basic",
+      "account_type": "credit",
+      "status": "active",
+      "daily_withdraw_limit_cents": null
+    },
+    {
+      "id": "A4",
+      "currency": "USD",
+      "opening_balance_cents": 30000,
+      "tier": "basic",
+      "account_type": "checking",
+      "status": "frozen",
+      "daily_withdraw_limit_cents": null
+    },
+    {
+      "id": "A5",
+      "currency": "USD",
+      "opening_balance_cents": 25000,
+      "tier": "basic",
+      "account_type": "checking",
+      "status": "closed",
+      "daily_withdraw_limit_cents": null
+    }
+  ]
+}

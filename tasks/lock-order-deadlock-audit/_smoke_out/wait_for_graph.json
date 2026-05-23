@@ -1,0 +1,125 @@
+{
+  "cycles": [
+    [
+      "T1",
+      "T2"
+    ],
+    [
+      "T3",
+      "T4"
+    ]
+  ],
+  "edges": [
+    {
+      "from": "T1",
+      "holder_mode": "shared",
+      "lock": "L_b",
+      "requested_mode": "exclusive",
+      "to": "T2"
+    },
+    {
+      "from": "T1",
+      "holder_mode": "shared",
+      "lock": "L_b",
+      "requested_mode": "exclusive",
+      "to": "T3"
+    },
+    {
+      "from": "T2",
+      "holder_mode": "exclusive",
+      "lock": "L_a",
+      "requested_mode": "exclusive",
+      "to": "T1"
+    },
+    {
+      "from": "T3",
+      "holder_mode": "exclusive",
+      "lock": "L_d",
+      "requested_mode": "exclusive",
+      "to": "T4"
+    },
+    {
+      "from": "T4",
+      "holder_mode": "exclusive",
+      "lock": "L_c",
+      "requested_mode": "exclusive",
+      "to": "T3"
+    },
+    {
+      "from": "T6",
+      "holder_mode": "exclusive",
+      "lock": "L_d",
+      "requested_mode": "shared",
+      "to": "T4"
+    },
+    {
+      "from": "Tb",
+      "holder_mode": "exclusive",
+      "lock": "L_h",
+      "requested_mode": "exclusive",
+      "to": "T6"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "T1",
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "T2",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "T3",
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "T4",
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "T5",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "T6",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "T7",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "T8",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "T9",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "Ta",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "Tb",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "Tk",
+      "in_degree": 0,
+      "out_degree": 0
+    }
+  ]
+}

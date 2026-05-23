@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "processes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "cmdline": {
+            "type": "string"
+          },
+          "pid": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "ppid": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "start_tick": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "state": {
+            "const": "RUNNING"
+          },
+          "uid": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "pid",
+          "ppid",
+          "uid",
+          "state",
+          "start_tick",
+          "cmdline"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "processes"
+  ],
+  "title": "processes.json",
+  "type": "object"
+}

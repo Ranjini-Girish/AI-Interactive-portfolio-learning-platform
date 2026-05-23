@@ -1,0 +1,102 @@
+{
+  "cycles": [
+    [
+      "r_a",
+      "r_j"
+    ]
+  ],
+  "edges": [
+    {
+      "from": "r_a",
+      "to": "r_j"
+    },
+    {
+      "from": "r_c",
+      "to": "r_t"
+    },
+    {
+      "from": "r_e",
+      "to": "r_k"
+    },
+    {
+      "from": "r_g",
+      "to": "r_f"
+    },
+    {
+      "from": "r_j",
+      "to": "r_a"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "r_a",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "r_b",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r_c",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "r_d",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r_e",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "r_f",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r_g",
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "r_h",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r_i",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r_j",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "r_k",
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "r_r",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r_s",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "r_t",
+      "in_degree": 1,
+      "out_degree": 0
+    }
+  ]
+}

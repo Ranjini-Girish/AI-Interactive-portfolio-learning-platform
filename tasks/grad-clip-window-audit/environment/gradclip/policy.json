@@ -1,0 +1,6 @@
+{
+  "clip_cap": 10.0,
+  "quorum_ratio": 0.6,
+  "warmup_steps": 2,
+  "window_size": 3
+}

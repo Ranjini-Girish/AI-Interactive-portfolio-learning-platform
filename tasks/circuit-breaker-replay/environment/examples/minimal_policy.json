@@ -1,0 +1,9 @@
+{
+  "default_failure_threshold_pct": 50,
+  "default_half_open_max_probes": 2,
+  "default_recovery_ticks": 3,
+  "default_window_size": 5,
+  "min_window_observations": 4,
+  "sliding_strategy": "count_based",
+  "track_state_transitions": true
+}

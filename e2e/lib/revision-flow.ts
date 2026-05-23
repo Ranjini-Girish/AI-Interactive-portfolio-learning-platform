@@ -13,6 +13,8 @@ import {
 
 export type RevisionFlowOptions = {
   taskId?: string;
+  /** When true, caller already opened the revision workspace (e.g. after page.pause()). */
+  skipOpen?: boolean;
   zipPath?: string;
   /** Re-upload a revised task zip before other actions. */
   uploadZip?: boolean;
@@ -62,8 +64,11 @@ export async function runRevisionFlow(
   page: Page,
   options: RevisionFlowOptions = {},
 ): Promise<RevisionFlowResult> {
-  const taskId = await openRevisionTask(page, options.taskId);
-  await assertRevisionWorkspace(page, taskId);
+  let taskId = options.taskId ?? '';
+  if (!options.skipOpen) {
+    taskId = await openRevisionTask(page, options.taskId);
+    await assertRevisionWorkspace(page, taskId);
+  }
 
   const zipPath = options.zipPath ?? resolveTaskZipPath();
   if (options.uploadZip && zipPath) {
@@ -99,4 +104,8 @@ export async function runRevisionFlow(
 
 export function resolveRevisionTaskId(): string | undefined {
   return process.env.SNORKEL_REVISION_TASK_ID;
+}
+
+export function resolveRevisionTaskName(): string | undefined {
+  return process.env.SNORKEL_REVISION_TASK_NAME;
 }

@@ -1,0 +1,493 @@
+{
+  "rules": [
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f01",
+        "f28",
+        "f29",
+        "f31",
+        "f32",
+        "f33",
+        "f40"
+      ],
+      "id": "r01",
+      "promoted_rules": [
+        "r09",
+        "r29",
+        "r31"
+      ],
+      "verdict_changes": [
+        {
+          "flow_id": "f01",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f28",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f29",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f32",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f33",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f40",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f02",
+        "f06",
+        "f37"
+      ],
+      "id": "r02",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f02",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f06",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f37",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "important",
+      "flows_changed": [
+        "f03",
+        "f04",
+        "f19",
+        "f20",
+        "f24",
+        "f36",
+        "f42"
+      ],
+      "id": "r03",
+      "promoted_rules": [
+        "r04"
+      ],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "minor",
+      "flows_changed": [],
+      "id": "r04",
+      "promoted_rules": [
+        "r03"
+      ],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f05"
+      ],
+      "id": "r05",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f05",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f07",
+        "f22",
+        "f27",
+        "f30"
+      ],
+      "id": "r06",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f27",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        },
+        {
+          "flow_id": "f30",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        }
+      ]
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f08",
+        "f09"
+      ],
+      "id": "r07",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f08",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f09",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r08",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r09",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f11"
+      ],
+      "id": "r10",
+      "promoted_rules": [
+        "r37"
+      ],
+      "verdict_changes": [
+        {
+          "flow_id": "f11",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r11",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "important",
+      "flows_changed": [
+        "f12"
+      ],
+      "id": "r12",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f13"
+      ],
+      "id": "r13",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f13",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f14",
+        "f15",
+        "f21"
+      ],
+      "id": "r14",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f14",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        },
+        {
+          "flow_id": "f15",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        },
+        {
+          "flow_id": "f21",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        }
+      ]
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r15",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r16",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r17",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r18",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r19",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f17",
+        "f18",
+        "f23",
+        "f26"
+      ],
+      "id": "r20",
+      "promoted_rules": [
+        "r12",
+        "r32",
+        "r38"
+      ],
+      "verdict_changes": [
+        {
+          "flow_id": "f17",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        },
+        {
+          "flow_id": "f18",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        },
+        {
+          "flow_id": "f23",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        },
+        {
+          "flow_id": "f26",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        }
+      ]
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r21",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r22",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r23",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r24",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r25",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f34"
+      ],
+      "id": "r26",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f34",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f10",
+        "f35"
+      ],
+      "id": "r27",
+      "promoted_rules": [
+        "r28"
+      ],
+      "verdict_changes": [
+        {
+          "flow_id": "f10",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        },
+        {
+          "flow_id": "f35",
+          "from_verdict": "allow",
+          "to_verdict": "deny"
+        }
+      ]
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r28",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r29",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r30",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "important",
+      "flows_changed": [
+        "f38"
+      ],
+      "id": "r31",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "important",
+      "flows_changed": [
+        "f39"
+      ],
+      "id": "r32",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r33",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "critical",
+      "flows_changed": [
+        "f41"
+      ],
+      "id": "r34",
+      "promoted_rules": [],
+      "verdict_changes": [
+        {
+          "flow_id": "f41",
+          "from_verdict": "deny",
+          "to_verdict": "allow"
+        }
+      ]
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r35",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "none",
+      "flows_changed": [],
+      "id": "r36",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "important",
+      "flows_changed": [
+        "f25"
+      ],
+      "id": "r37",
+      "promoted_rules": [],
+      "verdict_changes": []
+    },
+    {
+      "criticality": "important",
+      "flows_changed": [
+        "f16"
+      ],
+      "id": "r38",
+      "promoted_rules": [],
+      "verdict_changes": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "bundle_id": "m30",
+  "delivery_mode": "report-only",
+  "directives": {
+    "connect-src": ["wss://legacy.example"]
+  },
+  "nonces": [],
+  "origin_id": "o-theta"
+}

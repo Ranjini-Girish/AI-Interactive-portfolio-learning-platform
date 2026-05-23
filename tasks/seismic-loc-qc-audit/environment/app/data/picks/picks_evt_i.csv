@@ -1,0 +1,11 @@
+pick_id,station_id,phase,arrival_time_s,weight,status,amplitude
+E01,STA01,P,904.465696,0.6,use,515.15
+E02,STA02,P,903.207358,0.5,use,312.39
+E03,STA03,P,908.557873,1.3,use,252.27
+E04,STA04,P,908.234038,1.2,use,152.76
+E05,STA05,P,902.183954,1.1,use,149.13
+I50,STA06,P,904.0,1.0,use,
+I51,GHOST,P,905.0,1.0,use,
+I52,STA02,X,903.0,1.0,use,287.58
+I53,STA02,P,903.0,0.0,use,363.98
+I54,STA03,P,903.0,1.0,manual,

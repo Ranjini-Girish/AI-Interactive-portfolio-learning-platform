@@ -1,0 +1,31 @@
+{
+  "freeze_tag": "maint-42",
+  "host_id": "h03",
+  "samples": [
+    {
+      "err": 0,
+      "ok": 4,
+      "slot": 0
+    },
+    {
+      "err": 1,
+      "ok": 3,
+      "slot": 1
+    },
+    {
+      "err": 2,
+      "ok": 2,
+      "slot": 2
+    },
+    {
+      "err": 3,
+      "ok": 1,
+      "slot": 3
+    },
+    {
+      "err": 4,
+      "ok": 0,
+      "slot": 4
+    }
+  ]
+}

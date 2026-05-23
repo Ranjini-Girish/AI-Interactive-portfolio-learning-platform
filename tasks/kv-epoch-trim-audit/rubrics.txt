@@ -1,0 +1,11 @@
+Agent reads `/app/ket_lab/SPEC.md` and emits the three mandated JSON files with canonical formatting, +3
+Agent applies manifest halving for fold stride while lane adds use full epoch_stride, +3
+Agent folds stale samples with sliding minima and running maximum echo pairing, +3
+Agent runs link-walk in sorted edge order and records spill propagation in spill_events.json, +5
+Agent preserves bundled fixture bytes under the lab read root, +2
+Agent honors KET_DATA_DIR and KET_AUDIT_DIR override semantics, +2
+Agent keeps histogram rows sorted by ascending bin and omits non-positive tallies, +2
+Agent mishandles stale min-window folding, trim-echo stacking, or link-walk direction, -5
+Agent applies epoch_spill on stale samples, uses max window on stale rows, or mutates fixtures, -5
+Agent mutates lab inputs or writes outside the resolved audit directory, -5
+Agent drops spill_events.json or adds undeclared summary keys, -3

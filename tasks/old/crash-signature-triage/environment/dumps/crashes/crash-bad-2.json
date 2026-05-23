@@ -1,0 +1,9 @@
+{
+  "id": "crash-bad-2",
+  "reported_day": 50,
+  "reporter": "una@example.com",
+  "frame_stack": ["other::a", "other::b", "other::c"],
+  "env_hash": "9a0b1c2d3e4f55667788990011cd34e59a0b1c2d3e4f55667788990011cd34e5",
+  "reproducibility": "rarely",
+  "severity_observed": "low"
+}

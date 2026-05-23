@@ -1,0 +1,10 @@
+{
+  "current_checkpoint_step": 9600,
+  "engine": "openfoam",
+  "inputs_dataset": "ds_xenon",
+  "kind": "production",
+  "last_known_good_step": 9400,
+  "sim_id": "sim_theta",
+  "stabilization_steps": 2000,
+  "started_at_day": 160
+}

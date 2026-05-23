@@ -1,0 +1,22 @@
+{
+  "accepted_total": 2,
+  "active_sa_count": 1,
+  "add_sa_failures": 0,
+  "drop_unknown_sa": 0,
+  "hot_sas": [
+    {
+      "id": "x",
+      "replays": 1,
+      "too_old": 0
+    }
+  ],
+  "passive_created_count": 0,
+  "policy_on_replay": "drop",
+  "policy_on_too_old": "drop",
+  "policy_on_unknown_sa": "drop",
+  "rekey_failures": 0,
+  "rekey_successes": 0,
+  "replays_total": 1,
+  "too_old_total": 0,
+  "total_events": 3
+}

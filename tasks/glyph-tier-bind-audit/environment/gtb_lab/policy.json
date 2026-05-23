@@ -1,0 +1,10 @@
+{
+  "bind_walk": true,
+  "blend_mod": 11,
+  "chain_span": 2,
+  "cooldown_echo": true,
+  "cooldown_mod": 3,
+  "mix_coeff": 4,
+  "tier_spill": true,
+  "tier_stride": 6
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "config.json",
+  "type": "object",
+  "required": ["now_unix_ms", "max_level", "compaction_min_segments"],
+  "additionalProperties": false,
+  "properties": {
+    "now_unix_ms": {"type": "integer", "minimum": 0},
+    "max_level": {"type": "integer", "minimum": 0},
+    "compaction_min_segments": {"type": "integer", "minimum": 1}
+  }
+}

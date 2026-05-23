@@ -1,0 +1,22 @@
+{
+  "windows": [
+    {
+      "end_min": 335,
+      "host_id": "h3",
+      "severity": "soft",
+      "start_min": 305
+    },
+    {
+      "end_min": 515,
+      "host_id": "h5",
+      "severity": "hard",
+      "start_min": 502
+    },
+    {
+      "end_min": 95,
+      "host_id": "h1",
+      "severity": "hard",
+      "start_min": 85
+    }
+  ]
+}

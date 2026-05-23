@@ -1,0 +1,14 @@
+{
+  "default_features": [
+    "net-plain"
+  ],
+  "deps": [],
+  "features": {
+    "net-plain": [],
+    "net-tls": [],
+    "secure": [
+      "net-tls"
+    ]
+  },
+  "name": "net"
+}

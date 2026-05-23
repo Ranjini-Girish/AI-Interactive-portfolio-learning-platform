@@ -1,0 +1,7 @@
+{
+  "roots": [
+    "hosts",
+    "anchors"
+  ],
+  "version": 1
+}

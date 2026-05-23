@@ -1,0 +1,9 @@
+{
+  "id": "crash-009",
+  "reported_day": 35,
+  "reporter": "ivan@example.com",
+  "frame_stack": ["db::query::parse", "db::query::optimize", "db::transaction::commit", "db::transaction::rollback"],
+  "env_hash": "8a9b0c1d2e3f4455667a8b9c0d1e2f068a9b0c1d2e3f4455667a8b9c0d1e2f06",
+  "reproducibility": "intermittent",
+  "severity_observed": "medium"
+}

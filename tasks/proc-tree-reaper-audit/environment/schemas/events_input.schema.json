@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seq", "tick", "op", "pid", "parent_pid", "target_pid",
+          "exit_code", "signal", "cmdline"
+        ],
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0},
+          "tick": {"type": "integer", "minimum": 0},
+          "op": {"enum": ["fork", "exit", "wait", "kill", "exec"]},
+          "pid": {"type": "integer", "minimum": 1},
+          "parent_pid": {
+            "anyOf": [
+              {"type": "integer", "minimum": 1},
+              {"type": "null"}
+            ]
+          },
+          "target_pid": {
+            "anyOf": [
+              {"type": "integer", "minimum": 1},
+              {"type": "null"}
+            ]
+          },
+          "exit_code": {
+            "anyOf": [
+              {"type": "integer"},
+              {"type": "null"}
+            ]
+          },
+          "signal": {
+            "anyOf": [
+              {"enum": ["SIGTERM", "SIGKILL", "SIGINT", "SIGCHLD"]},
+              {"type": "null"}
+            ]
+          },
+          "cmdline": {
+            "anyOf": [
+              {"type": "string"},
+              {"type": "null"}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

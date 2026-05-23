@@ -1,0 +1,4 @@
+SOURCE: cmd/main.go
+USE: example.com/alpha v1.0.0
+USE: example.com/delta v1.0.0
+USE: example.com/delta v9.9.9

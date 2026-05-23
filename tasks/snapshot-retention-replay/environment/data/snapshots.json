@@ -1,0 +1,14 @@
+{
+  "snapshots": [
+    {"created_at_sec": 100, "dataset": "logs", "holders": [], "id": "snap-001", "name": "boot"},
+    {"created_at_sec": 3700, "dataset": "logs", "holders": ["alice"], "id": "snap-002", "name": "before-deploy"},
+    {"created_at_sec": 7300, "dataset": "logs", "holders": [], "id": "snap-003", "name": "post-deploy"},
+    {"created_at_sec": 90000, "dataset": "logs", "holders": [], "id": "snap-004", "name": "next-day"},
+    {"created_at_sec": 176400, "dataset": "logs", "holders": [], "id": "snap-005", "name": "day-three"},
+    {"created_at_sec": 605000, "dataset": "logs", "holders": [], "id": "snap-006", "name": "week-two"},
+    {"created_at_sec": 1210000, "dataset": "logs", "holders": ["audit"], "id": "snap-007", "name": "week-three"},
+    {"created_at_sec": 2592100, "dataset": "logs", "holders": [], "id": "snap-008", "name": "month-old"},
+    {"created_at_sec": 5184200, "dataset": "logs", "holders": [], "id": "snap-009", "name": "two-months"},
+    {"created_at_sec": 0, "dataset": "media", "holders": [], "id": "snap-100", "name": "initial"}
+  ]
+}

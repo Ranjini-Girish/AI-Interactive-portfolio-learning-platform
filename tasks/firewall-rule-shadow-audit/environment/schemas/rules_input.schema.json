@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rules_input.schema.json",
+  "title": "Firewall rules input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rules"],
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "priority",
+          "action",
+          "direction",
+          "source",
+          "destination",
+          "protocol",
+          "src_ports",
+          "dst_ports",
+          "description"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "priority": {"type": "integer"},
+          "action": {"type": "string", "enum": ["allow", "deny"]},
+          "direction": {"type": "string", "enum": ["ingress", "egress"]},
+          "source": {"type": "string", "minLength": 1},
+          "destination": {"type": "string", "minLength": 1},
+          "protocol": {"type": "string", "enum": ["tcp", "udp", "icmp", "any"]},
+          "src_ports": {"$ref": "#/$defs/port_spec"},
+          "dst_ports": {"$ref": "#/$defs/port_spec"},
+          "description": {"type": "string"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "port_spec": {
+      "oneOf": [
+        {"type": "string", "enum": ["any"]},
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["start", "end"],
+            "properties": {
+              "start": {"type": "integer", "minimum": 0, "maximum": 65535},
+              "end": {"type": "integer", "minimum": 0, "maximum": 65535}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

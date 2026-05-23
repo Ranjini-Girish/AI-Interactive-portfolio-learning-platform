@@ -1,0 +1,22 @@
+Agent emits all five JSON artifacts under /app/audit/ with canonical formatting per SPEC, +2
+Agent applies anchor renewals gated by per-wrapper bound_channels before computing effective lease, +3
+Agent enforces the distinct-channel renewal_quorum and surfaces under-quorum wrappers in summary.under_quorum_renewals, +3
+Agent propagates cascade reclaim to every descendant of a leaked wrapper attributed to the closest leak ancestor, +2
+Agent demotes cascade descendants whose hop-distance exceeds cascade_depth_cap to the cascade_orphaned verdict and counts them in pool_counters.cascade_orphans, +3
+Agent keeps cascade_orphaned wrappers live for the eviction-walk live counts and segment floors, +2
+Agent enforces both global min_size and per-segment floors when deciding idle eviction, +2
+Agent emits reclaim events in leak-rank, cascade depth, then idle walk order with stable tie breaks, +2
+Agent records ignored_renewals as a sorted unique list covering unknown, idle-target, and off-channel records, +2
+Agent leaves /app/connhelix/ read-only and honors CLA_DATA_DIR/CLA_AUDIT_DIR overrides, +2
+Agent omits any required output file or writes non-canonical JSON, -5
+Agent treats anchors/ as noise and computes lease from raw checkout only, -3
+Agent ignores per-wrapper bound_channels and treats every renewal as applicable, -3
+Agent rescues a leased wrapper without checking the distinct-channel renewal_quorum, -3
+Agent emits cascade_reclaim for descendants whose hop-distance exceeds cascade_depth_cap, -3
+Agent excludes cascade_orphaned wrappers from the live counts that feed the idle-eviction guards, -2
+Agent skips cascade propagation and leaves descendants healthy, -3
+Agent ignores per-segment floors and evicts whenever global min_size still holds, -3
+Agent mis-orders cascade or idle events relative to SPEC sequencing, -2
+Agent mutates bundled inputs under /app/connhelix/, -3
+Agent ignores wrapper-scope freezes or conflates them with segment-scope freezes, -2
+Agent drops trailing newline or uses non-ASCII bytes in outputs, -2

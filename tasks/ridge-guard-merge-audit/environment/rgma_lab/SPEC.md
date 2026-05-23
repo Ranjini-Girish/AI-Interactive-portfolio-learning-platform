@@ -15,6 +15,7 @@ Under the data directory (default `/app/rgma_lab/`):
 - `domain_layout.json`
 - `pool_state.json`
 - `incident_log.json`
+- `anchors/day_floor.json`
 - `anchors/window.json`
 - `ancillary/meta.json`
 - `ancillary/notes.json`
@@ -41,9 +42,11 @@ Each `hosts/*.json` object must contain:
 
 ## 5. Anchor factor
 
+Read `anchors/day_floor.json` with integer `floor_day`. Let `D0 = max(policy.day_start, floor_day)` and `D1 = policy.day_end`. If `D1 < D0`, malformed input.
+
 Let `A = anchors/window.json` with integer `start` and `end` inclusive.
 
-Overlap days `O` is the count of integers `d` such that `d >= max(day_start, A.start)` and `d <= min(day_end, A.end)`. If that range is empty, `O = 0`.
+Overlap days `O` is the count of integers `d` such that `d >= max(D0, A.start)` and `d <= min(D1, A.end)`. If that range is empty, `O = 0`.
 
 Let `K = min(O, 5)`. Anchor factor `F = 1 + 0.01 * K` (floating-point; use IEEE-754 binary double throughout).
 
@@ -85,11 +88,9 @@ Each entry object keys exactly: `host_id`, `microlambda`, `bias_class`, `tier`.
 
 ### Alias merge (only if `alias_guard` is true)
 
-After computing each unfrozen host's `M` independently, for each alias group in `ancillary/meta.json` key `alias_groups` (array of arrays of host ids):
+After computing each unfrozen host's preliminary `M` independently, build an undirected graph on host ids that exist, are not frozen, and appear in at least one alias row. For each alias group in `ancillary/meta.json` key `alias_groups` (array of arrays of host ids), take the filtered set of members that exist and are not frozen; if that set has fewer than two ids, skip the row. Otherwise add an undirected edge between every unordered pair of distinct ids in the filtered set (a clique on that row).
 
-- Consider only hosts that exist and are not frozen; ignore unknown ids in groups
-- If the filtered group has at least two members, replace every member's `M` with the maximum `M` among filtered members before cap
-- Groups of size 0 or 1 do nothing
+Let each connected component in that graph inherit `M_comp = max(M)` over every host id in the component using each host's preliminary `M` before this subsection runs. For every host id that lies in a component with at least two vertices, replace its `M` with `M_comp`. Host ids that are isolated in this graph (degree zero after all rows are applied) keep their preliminary `M`.
 
 If `alias_guard` is false, skip this entire subsection.
 

@@ -1,0 +1,14 @@
+{
+  "violations": [
+    {
+      "accepted": false,
+      "event_id": "e_005",
+      "payload": {
+        "level": 2
+      },
+      "reason_ignored": "top_level_compaction",
+      "ts_unix_ms": 1700000000500,
+      "type": "compact"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ subcategories = []
 languages = [ "go", "bash" ]
 codebase_size = "small"
 number_of_milestones = 0
-tags = [ "chess", "endgame", "tablebase", "json", "go", "audit", "determinism", "games" ]
+tags = [ "chess", "endgame", "tablebase", "go", "audit", "determinism" ]
 expert_time_estimate_min = 150.0
 junior_time_estimate_min = 420.0
 

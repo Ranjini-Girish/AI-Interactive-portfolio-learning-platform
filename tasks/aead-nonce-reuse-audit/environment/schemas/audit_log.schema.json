@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "audit_log",
+  "type": "object",
+  "required": ["transitions"],
+  "properties": {
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence", "key_id", "kind", "seq", "tick"],
+        "properties": {
+          "evidence": {"type": "object"},
+          "key_id":   {"type": "string"},
+          "kind":     {"type": "string", "enum": ["installed", "retired", "idle_retired", "exhausted", "compromised"]},
+          "seq":      {"type": "integer"},
+          "tick":     {"type": "integer"}
+        }
+      }
+    }
+  }
+}

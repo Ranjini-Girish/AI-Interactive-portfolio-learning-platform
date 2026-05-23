@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "events_input",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "seq", "op", "id", "parent_id",
+          "cpu_quota_ms", "mem_quota_kb", "io_quota_iops",
+          "task_id", "amount", "target_parent_id"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "seq": { "type": "integer", "minimum": 0 },
+          "op": {
+            "type": "string",
+            "enum": [
+              "create", "delete", "attach_task", "detach_task",
+              "consume_cpu", "consume_mem", "consume_io",
+              "release_cpu", "release_mem",
+              "update_quota", "move_subtree"
+            ]
+          },
+          "id": { "type": ["string", "null"] },
+          "parent_id": { "type": ["string", "null"] },
+          "cpu_quota_ms": { "type": ["integer", "null"], "minimum": 0 },
+          "mem_quota_kb": { "type": ["integer", "null"], "minimum": 0 },
+          "io_quota_iops": { "type": ["integer", "null"], "minimum": 0 },
+          "task_id": { "type": ["string", "null"] },
+          "amount": { "type": ["integer", "null"], "minimum": 0 },
+          "target_parent_id": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

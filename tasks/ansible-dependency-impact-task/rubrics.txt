@@ -1,0 +1,12 @@
+Agent parses plays, normalizes task identities, parameterizes special keywords, and handles duplicates exactly per `/app/docs/drift_semantics.md`, +5
+Agent parses registries, handles duplicate entries, resolves replace and excluded constraints with bumping, and resolves dependency chains per `/app/docs/resolver_semantics.md`, +5
+Agent groups build modules into cycle groups and calculates topological build order using ASCII-based min-name tie-breaking rules per `/app/docs/impact_semantics.md`, +5
+Agent writes `playbook_drift.json`, `dependency_impact.json`, and `remediation_plan.json` inside `/app/output/` as canonical two-space indented JSON with trailing newlines, +5
+Agent alters or deletes any input configuration file inside the `/app/data/` directory, -5
+Agent writes minified JSON files, ignores two-space indentation, or omits trailing newlines, -3
+Agent fails to compute playbooks SHA-256 hashes dynamically and outputs static hashes instead, -5
+Agent chains replace rules transitively instead of applying single-step replacements, -5
+Agent excludes root package name from `resolver_summary.selected_total` or the build set, -5
+Agent ignores self-loop modules when counting or listing cycle groups, -3
+Agent fails to re-index surviving steps in the remediation plan starting from one, -3
+Agent writes lists or keys that disagree with the documented ASCII sorting rules under `/app/docs/sorting_rules.md`, -3

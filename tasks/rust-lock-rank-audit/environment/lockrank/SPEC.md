@@ -1,0 +1,15 @@
+Normative contract for the lock rank graph audit. Inputs are UTF-8 JSON with ASCII-only strings. Outputs are UTF-8 JSON, ASCII-only, two-space indentation, recursively sorted object keys at every depth, no trailing spaces at line ends, and exactly one trailing newline after each root closing brace.
+
+Read `policy.json` for float `rank_base` (positive), integer `fence_boost` (non-negative), integer `warmup_steps` (non-negative), and array `conflict_groups` of string pairs. Read `manifest.json` for `profile_tag` and `run_tag`. When they differ, multiply `rank_base` by `0.5` for inversion comparisons; round `effective_rank_base` in summary to six decimals. Read `epochs.json` for integer `current_epoch`. Read `trace.json` for array `events` with integer `step`, string `thread_id`, string `lock_id`, and `op` in `acquire`, `release`, `fence_enter`, or `fence_exit`.
+
+Enumerate every `*.json` under `locks/` and `threads/`. Each lock has string `lock_id`, integer `epoch`, and integer `base_rank`. Each thread has string `thread_id` and integer `epoch`. A lock is stale when `epoch` is strictly less than `current_epoch - 1`. A thread is stale under the same rule. Packaging under `anchors/`, `ancillary/`, `meta/`, and `grid/` is ignored.
+
+Process events in ascending `step`, then `thread_id`, then `lock_id`. Track per-thread `held` lock stacks and a boolean `fenced` set by `fence_enter` and cleared by `fence_exit`. Effective rank for a lock is `base_rank` plus `fence_boost` when the acting thread is fenced.
+
+For `acquire` on a known lock: during warmup (`step` <= `warmup_steps`) record `warmup_skipped`, still update held stacks and fence flags, but emit no violations. When stale, record `stale_skipped` without state changes. Otherwise when any held lock has effective rank strictly greater than the acquired lock, emit `rank_inversion`. When the acquired lock shares a `conflict_groups` entry with a held lock, emit `conflict_hold`. On success append a directed edge from each held lock to the acquired lock. Unknown lock ids yield `unknown_lock`.
+
+For `release`: unknown lock id yields `unknown_lock`. When the lock is not held, emit `orphan_release`. Otherwise remove it from the held stack (pop when it is the top lock, else remove the matching entry).
+
+Emit `trace_outcomes.json` with `events` in processing order (fenced, held_count, lock_id, op, outcome, stale, step, thread_id). Outcomes are `ok`, `violation`, `orphan_release`, `unknown_lock`, `stale_skipped`, or `warmup_skipped`. Emit `violations.json` with `violations` sorted by step, thread_id, lock_id for every non-ok violation row including fields documented above. Emit `lock_states.json` with `locks` sorted by lock_id. Emit `thread_holds.json` with final `held_locks` per thread sorted by thread_id. Emit `hold_graph.json` with `edges` sorted by from_lock then to_lock. Emit `summary.json` with totals and effective_rank_base.
+
+Read `RLR_DATA_DIR` defaulting to `/app/lockrank` and `RLR_AUDIT_DIR` defaulting to `/app/audit`. Create the audit directory when missing and never mutate inputs.

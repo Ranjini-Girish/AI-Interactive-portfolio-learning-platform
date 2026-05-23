@@ -1,0 +1,10 @@
+{
+  "compromised": [
+    {
+      "username": "bob",
+      "day": 20260410,
+      "key_fingerprint": "SHA256:bob-key-aaaa",
+      "key_count": 1
+    }
+  ]
+}

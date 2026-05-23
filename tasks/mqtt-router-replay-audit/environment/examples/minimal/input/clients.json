@@ -1,0 +1,6 @@
+{
+  "clients": [
+    {"id": "pub", "persistent": false, "keep_alive_sec": 30},
+    {"id": "sub", "persistent": false, "keep_alive_sec": 30}
+  ]
+}

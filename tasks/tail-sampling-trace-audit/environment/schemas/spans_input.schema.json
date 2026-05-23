@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "spans.json",
+  "type": "object",
+  "required": ["spans"],
+  "additionalProperties": false,
+  "properties": {
+    "spans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "trace_id", "span_id", "parent_span_id",
+          "service", "operation",
+          "start_unix_ms", "duration_ms",
+          "status", "attributes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "trace_id":       { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+          "span_id":        { "type": "string", "pattern": "^[0-9a-f]{8}$" },
+          "parent_span_id": { "type": ["string", "null"], "pattern": "^[0-9a-f]{8}$" },
+          "service":        { "type": "string" },
+          "operation":      { "type": "string" },
+          "start_unix_ms":  { "type": "integer" },
+          "duration_ms":    { "type": "integer", "minimum": 0 },
+          "status":         { "type": "string", "enum": ["ok", "error", "timeout"] },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

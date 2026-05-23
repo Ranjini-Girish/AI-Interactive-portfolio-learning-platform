@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rule_analysis.schema.json",
+  "title": "Rule analysis output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rules"],
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["coverage_percent", "id", "matched_flows", "shadowed_by", "status"],
+        "properties": {
+          "coverage_percent": {"type": "string", "pattern": "^\\d+\\.\\d{2}$"},
+          "id": {"type": "string", "minLength": 1},
+          "matched_flows": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "shadowed_by": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "status": {"type": "string", "enum": ["effective", "shadowed", "redundant", "unreachable"]}
+        }
+      }
+    }
+  }
+}

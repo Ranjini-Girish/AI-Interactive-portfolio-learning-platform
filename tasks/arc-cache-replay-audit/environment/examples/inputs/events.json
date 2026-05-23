@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "event_id": "e_001",
+      "payload": {
+        "key": "ka",
+        "weight": 1
+      },
+      "ts_unix_ms": 1,
+      "type": "access"
+    },
+    {
+      "event_id": "e_002",
+      "payload": {
+        "key": "kb",
+        "weight": 2
+      },
+      "ts_unix_ms": 2,
+      "type": "access"
+    },
+    {
+      "event_id": "e_003",
+      "payload": {
+        "key": "ka",
+        "weight": 3
+      },
+      "ts_unix_ms": 3,
+      "type": "access"
+    },
+    {
+      "event_id": "e_004",
+      "payload": {
+        "key": "kc",
+        "weight": 1
+      },
+      "ts_unix_ms": 4,
+      "type": "access"
+    },
+    {
+      "event_id": "e_005",
+      "payload": {
+        "key": "kb"
+      },
+      "ts_unix_ms": 5,
+      "type": "evict"
+    },
+    {
+      "event_id": "e_006",
+      "payload": {},
+      "ts_unix_ms": 6,
+      "type": "clear"
+    }
+  ]
+}

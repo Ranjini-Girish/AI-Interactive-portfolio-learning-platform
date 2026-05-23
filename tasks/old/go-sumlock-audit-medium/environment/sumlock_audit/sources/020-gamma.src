@@ -1,0 +1,2 @@
+SOURCE: internal/gamma.go
+USE: example.com/gamma v2.0.0

@@ -1,0 +1,5 @@
+Audit DNS alias chain collapse and query-type quorum for a resolver telemetry batch. Read `/app/dnschain/SPEC.md` and every JSON file under `/app/dnschain/`, including per-record files in `/app/dnschain/records/`, `policy.json`, `manifest.json`, `epochs.json`, and `queries.json`. Packaging under `anchors/`, `meta/`, `grid/`, and `ancillary/` is read-only context and must not drive totals.
+
+Produce five UTF-8 JSON artifacts under `/app/audit/` named `record_states.json`, `chain_plan.json`, `type_votes.json`, `query_stats.json`, and `summary.json`. Each file must follow the spec canonical JSON contract: ASCII-only strings, two-space indentation, recursively sorted object keys at every depth, no trailing spaces on lines, and exactly one trailing newline after the root closing brace.
+
+Apply zone-run tag halving of max chain length when manifest tags disagree, warmup bypass on early query steps, TTL expiry during walks, CNAME loop detection, deny-label blocking of collapse, and per-step type-ratio votes among active names. Process queries in ascending step then name. Leave `/app/dnschain/` byte-identical.

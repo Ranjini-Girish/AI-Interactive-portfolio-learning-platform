@@ -1,0 +1,5 @@
+{
+  "anchor_us": 1000000,
+  "deduct_child_latency": true,
+  "max_depth": 3
+}

@@ -1,0 +1,13 @@
+{
+  "events": [
+    {
+      "kind": "depth_relax",
+      "seq": 1
+    },
+    {
+      "kind": "force_orphan",
+      "seq": 2,
+      "span_id": "s08"
+    }
+  ]
+}

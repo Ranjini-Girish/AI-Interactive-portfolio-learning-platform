@@ -1,0 +1,36 @@
+{
+  "masks": [
+    {
+      "sample_id": "spa_01",
+      "zero_slots": [
+        1
+      ]
+    },
+    {
+      "sample_id": "spa_04",
+      "zero_slots": [
+        2,
+        4
+      ]
+    },
+    {
+      "sample_id": "spa_07",
+      "zero_slots": [
+        0
+      ]
+    },
+    {
+      "sample_id": "spa_09",
+      "zero_slots": [
+        3
+      ]
+    },
+    {
+      "sample_id": "spa_11",
+      "zero_slots": [
+        1,
+        3
+      ]
+    }
+  ]
+}

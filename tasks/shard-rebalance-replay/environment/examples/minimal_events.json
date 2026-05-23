@@ -1,0 +1,5 @@
+{
+  "events": [
+    {"seq": 0, "op": "manual_move", "node_id": null, "weight": null, "rack": null, "shard_id": "shard-1", "from_node": "node-a", "to_node": "node-c", "role": "primary", "size_bytes": null}
+  ]
+}

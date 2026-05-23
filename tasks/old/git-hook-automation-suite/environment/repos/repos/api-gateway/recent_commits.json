@@ -1,0 +1,10 @@
+{
+  "repo": "api-gateway",
+  "commits": [
+    {"sha": "a1b2c3d4", "branch": "main",          "msg_type": "feat", "msg_subject": "add JWT verification",                       "issue_ref": "API-1023", "day": 110},
+    {"sha": "b2c3d4e5", "branch": "feature/auth",  "msg_type": "fix",  "msg_subject": "patch token expiry edge case",               "issue_ref": "API-1024", "day": 112},
+    {"sha": "c3d4e5f6", "branch": "main",          "msg_type": "feat", "msg_subject": "this commit subject is over fifty characters in length now", "issue_ref": "API-1025", "day": 115},
+    {"sha": "d4e5f6a7", "branch": "release",       "msg_type": "wip",  "msg_subject": "do not merge",                               "issue_ref": null,       "day": 116},
+    {"sha": "e5f6a7b8", "branch": "main",          "msg_type": "docs", "msg_subject": "tweak readme",                               "issue_ref": "API-1026", "day": 118}
+  ]
+}

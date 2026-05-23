@@ -1,0 +1,6 @@
+{
+  "coordinate_system": "local_cartesian_km",
+  "datum": "mean_sea_level",
+  "model_name": "regional_1d_v3",
+  "reference": "Smith et al. 2019"
+}

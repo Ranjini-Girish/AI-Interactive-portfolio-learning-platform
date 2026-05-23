@@ -1,0 +1,26 @@
+{
+  "freeze_tag": "wrong-tag",
+  "host_id": "h09",
+  "samples": [
+    {
+      "err": 8,
+      "ok": 2,
+      "slot": 0
+    },
+    {
+      "err": 9,
+      "ok": 1,
+      "slot": 1
+    },
+    {
+      "err": 10,
+      "ok": 0,
+      "slot": 2
+    },
+    {
+      "err": 8,
+      "ok": 2,
+      "slot": 3
+    }
+  ]
+}

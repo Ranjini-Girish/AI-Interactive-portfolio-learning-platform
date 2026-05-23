@@ -1,0 +1,60 @@
+{
+  "decisions": [
+    {
+      "blocking_namespace": null,
+      "decision": "admitted",
+      "event_id": "e_0001",
+      "namespace": "team_x",
+      "op": "allocate",
+      "reason": "under_limits",
+      "resources_granted": {
+        "cpu": 10,
+        "memory": 64,
+        "storage": 100
+      },
+      "ts_unix_ms": 100
+    },
+    {
+      "blocking_namespace": "team_x",
+      "decision": "rejected",
+      "event_id": "e_0002",
+      "namespace": "team_x",
+      "op": "allocate",
+      "reason": "limit_exceeded",
+      "resources_granted": {
+        "cpu": 0,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 200
+    },
+    {
+      "blocking_namespace": null,
+      "decision": "admitted",
+      "event_id": "e_0003",
+      "namespace": "team_x",
+      "op": "release",
+      "reason": "under_limits",
+      "resources_granted": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      },
+      "ts_unix_ms": 300
+    },
+    {
+      "blocking_namespace": null,
+      "decision": "ignored",
+      "event_id": "e_0004",
+      "namespace": "unknown",
+      "op": "release",
+      "reason": "release_unknown_ignored",
+      "resources_granted": {
+        "cpu": 0,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 400
+    }
+  ]
+}

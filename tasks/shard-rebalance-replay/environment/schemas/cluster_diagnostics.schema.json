@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "cluster_diagnostics.json output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["diagnostics", "seq"],
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0},
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["code", "ref_id", "severity"],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "enum": [
+                    "E_DUPLICATE_NODE",
+                    "E_NODE_NOT_FOUND",
+                    "E_SHARD_NOT_FOUND",
+                    "E_REBALANCE_INFEASIBLE",
+                    "E_NODE_BUSY",
+                    "W_RACK_FALLBACK",
+                    "W_REPLICA_DEMOTED",
+                    "N_SHARD_MOVED"
+                  ]
+                },
+                "ref_id":   {"type": ["string", "null"]},
+                "severity": {"type": "string", "enum": ["error", "warning", "note"]}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

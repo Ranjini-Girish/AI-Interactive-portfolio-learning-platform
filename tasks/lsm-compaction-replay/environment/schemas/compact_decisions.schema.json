@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "compact_decisions.json",
+  "type": "object",
+  "required": ["decisions"],
+  "additionalProperties": false,
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "ts_unix_ms", "level", "input_seg_ids", "output_seg_id", "output_level", "total_bytes"],
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {"type": "string"},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "level": {"type": "integer", "minimum": 0},
+          "input_seg_ids": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "output_seg_id": {"type": "string"},
+          "output_level": {"type": "integer", "minimum": 1},
+          "total_bytes": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

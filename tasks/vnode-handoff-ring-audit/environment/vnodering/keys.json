@@ -1,0 +1,20 @@
+{
+  "keys": [
+    {
+      "hash_slot": 10,
+      "key_id": "k_alpha"
+    },
+    {
+      "hash_slot": 90,
+      "key_id": "k_beta"
+    },
+    {
+      "hash_slot": 200,
+      "key_id": "k_gamma"
+    },
+    {
+      "hash_slot": 300,
+      "key_id": "k_delta"
+    }
+  ]
+}

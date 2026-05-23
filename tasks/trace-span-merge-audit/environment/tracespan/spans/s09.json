@@ -1,0 +1,8 @@
+{
+  "end_us": 110,
+  "parent_id": "s05",
+  "service": "worker",
+  "span_id": "s09",
+  "start_us": 50,
+  "status": "ok"
+}

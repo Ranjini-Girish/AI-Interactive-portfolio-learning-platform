@@ -1,0 +1,265 @@
+{
+  "events": [
+    {
+      "lock": "L_a",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 0,
+      "target_thread": null,
+      "thread": "T1",
+      "tick": 0
+    },
+    {
+      "lock": "L_a",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 1,
+      "target_thread": null,
+      "thread": "T1",
+      "tick": 0
+    },
+    {
+      "lock": "L_b",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 2,
+      "target_thread": null,
+      "thread": "T2",
+      "tick": 1
+    },
+    {
+      "lock": "L_b",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 3,
+      "target_thread": null,
+      "thread": "T3",
+      "tick": 1
+    },
+    {
+      "lock": "L_b",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 4,
+      "target_thread": null,
+      "thread": "T1",
+      "tick": 2
+    },
+    {
+      "lock": "L_a",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 5,
+      "target_thread": null,
+      "thread": "T2",
+      "tick": 2
+    },
+    {
+      "lock": "L_c",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 6,
+      "target_thread": null,
+      "thread": "T3",
+      "tick": 3
+    },
+    {
+      "lock": "L_d",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 7,
+      "target_thread": null,
+      "thread": "T4",
+      "tick": 3
+    },
+    {
+      "lock": "L_d",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 8,
+      "target_thread": null,
+      "thread": "T3",
+      "tick": 4
+    },
+    {
+      "lock": "L_c",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 9,
+      "target_thread": null,
+      "thread": "T4",
+      "tick": 4
+    },
+    {
+      "lock": "L_f",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 10,
+      "target_thread": null,
+      "thread": "T5",
+      "tick": 5
+    },
+    {
+      "lock": null,
+      "mode": "none",
+      "op": "exit",
+      "seq": 11,
+      "target_thread": null,
+      "thread": "T5",
+      "tick": 6
+    },
+    {
+      "lock": "L_e",
+      "mode": "exclusive",
+      "op": "release",
+      "seq": 12,
+      "target_thread": null,
+      "thread": "T2",
+      "tick": 7
+    },
+    {
+      "lock": "L_d",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 13,
+      "target_thread": null,
+      "thread": "T4",
+      "tick": 8
+    },
+    {
+      "lock": "L_e",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 14,
+      "target_thread": null,
+      "thread": "T4",
+      "tick": 9
+    },
+    {
+      "lock": "L_h",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 15,
+      "target_thread": null,
+      "thread": "T6",
+      "tick": 10
+    },
+    {
+      "lock": "L_d",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 16,
+      "target_thread": null,
+      "thread": "T6",
+      "tick": 10
+    },
+    {
+      "lock": "L_g",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 17,
+      "target_thread": null,
+      "thread": "T7",
+      "tick": 11
+    },
+    {
+      "lock": "L_g",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 18,
+      "target_thread": null,
+      "thread": "T7",
+      "tick": 11
+    },
+    {
+      "lock": "L_g",
+      "mode": "shared",
+      "op": "wait",
+      "seq": 19,
+      "target_thread": null,
+      "thread": "T7",
+      "tick": 12
+    },
+    {
+      "lock": "L_b",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 20,
+      "target_thread": null,
+      "thread": "T8",
+      "tick": 13
+    },
+    {
+      "lock": "L_b",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 21,
+      "target_thread": null,
+      "thread": "T9",
+      "tick": 14
+    },
+    {
+      "lock": "L_b",
+      "mode": "shared",
+      "op": "release",
+      "seq": 22,
+      "target_thread": null,
+      "thread": "T8",
+      "tick": 15
+    },
+    {
+      "lock": null,
+      "mode": "none",
+      "op": "wake",
+      "seq": 23,
+      "target_thread": "T9",
+      "thread": "Tk",
+      "tick": 16
+    },
+    {
+      "lock": "L_g",
+      "mode": "shared",
+      "op": "release",
+      "seq": 24,
+      "target_thread": null,
+      "thread": "T7",
+      "tick": 17
+    },
+    {
+      "lock": "L_g",
+      "mode": "shared",
+      "op": "release",
+      "seq": 25,
+      "target_thread": null,
+      "thread": "T7",
+      "tick": 18
+    },
+    {
+      "lock": "L_e",
+      "mode": "shared",
+      "op": "acquire",
+      "seq": 26,
+      "target_thread": null,
+      "thread": "Ta",
+      "tick": 20
+    },
+    {
+      "lock": "L_e",
+      "mode": "shared",
+      "op": "release",
+      "seq": 27,
+      "target_thread": null,
+      "thread": "Ta",
+      "tick": 50
+    },
+    {
+      "lock": "L_h",
+      "mode": "exclusive",
+      "op": "acquire",
+      "seq": 28,
+      "target_thread": null,
+      "thread": "Tb",
+      "tick": 51
+    }
+  ]
+}

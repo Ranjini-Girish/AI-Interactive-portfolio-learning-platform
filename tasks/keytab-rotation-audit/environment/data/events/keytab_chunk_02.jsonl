@@ -1,0 +1,10 @@
+{"event_id":"ev_c001","kind":"add","principal":"host/web01.example.com@EXAMPLE.COM","kvno":2,"day":7,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_c002","kind":"add","principal":"host/web02.example.com@EXAMPLE.COM","kvno":2,"day":7,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_c003","kind":"add","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":2,"day":7,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_c004","kind":"retire","principal":"host/web01.example.com@EXAMPLE.COM","kvno":1,"day":8,"hour":0}
+{"event_id":"ev_c005","kind":"retire","principal":"host/web02.example.com@EXAMPLE.COM","kvno":1,"day":8,"hour":0}
+{"event_id":"ev_c006","kind":"retire","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":1,"day":8,"hour":0}
+{"event_id":"ev_c007","kind":"revoke","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":2,"day":9,"hour":6,"reason":"compromise"}
+{"event_id":"ev_c008","kind":"add","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":3,"day":9,"hour":12,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_c009","kind":"add","principal":"host/burner.example.com@EXAMPLE.COM","kvno":4,"day":10,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_c010","kind":"retire","principal":"host/burner.example.com@EXAMPLE.COM","kvno":2,"day":11,"hour":0}

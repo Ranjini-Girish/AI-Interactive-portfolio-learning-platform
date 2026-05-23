@@ -1,0 +1,11 @@
+{
+  "bias_floor": 2,
+  "cap": 56,
+  "cutoff": 36,
+  "fold_mod": 998,
+  "label": "frost-gate-buffer-audit",
+  "mask": 64,
+  "poly_base": 128,
+  "seed_offset": 45,
+  "square_mod": 999984
+}

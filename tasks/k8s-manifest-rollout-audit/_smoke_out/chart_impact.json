@@ -1,0 +1,355 @@
+{
+  "resolver_summary": {
+    "selected_total": 28,
+    "missing": [
+      "lib/ghost@1.0.0"
+    ],
+    "conflicts": [
+      "lib/crypto@2.1.0",
+      "lib/missing-hop@0.1.0"
+    ],
+    "cycle_group_count": 4
+  },
+  "seed_modules": [
+    {
+      "workload_ref": "analytics::fraud-scorer",
+      "chart": "chart/fraud-scorer",
+      "version": "0.2.0"
+    },
+    {
+      "workload_ref": "edge::cache-warmer",
+      "chart": "chart/cache-warmer",
+      "version": "0.3.0"
+    },
+    {
+      "workload_ref": "edge::probe-runner",
+      "chart": "chart/probe",
+      "version": "0.4.2"
+    },
+    {
+      "workload_ref": "identity::heartbeat-probe",
+      "chart": "chart/heartbeat",
+      "version": "0.1.0"
+    },
+    {
+      "workload_ref": "identity::jwt-signer",
+      "chart": "chart/jwt-signer",
+      "version": "1.0.0"
+    },
+    {
+      "workload_ref": "payments-prod::gateway-api",
+      "chart": "chart/gateway",
+      "version": "1.5.2"
+    },
+    {
+      "workload_ref": "payments-prod::gateway-api",
+      "chart": "lib/circuit-breaker",
+      "version": "0.4.0"
+    },
+    {
+      "workload_ref": "payments-prod::ledger-writer",
+      "chart": "chart/ledger",
+      "version": "2.1.0"
+    },
+    {
+      "workload_ref": "payments-prod::ledger-writer",
+      "chart": "svc/collector",
+      "version": "1.2.0"
+    },
+    {
+      "workload_ref": "payments-prod::nightly-reconcile",
+      "chart": "chart/reconcile",
+      "version": "0.9.4"
+    },
+    {
+      "workload_ref": "telemetry::collector",
+      "chart": "chart/collector",
+      "version": "1.1.0"
+    },
+    {
+      "workload_ref": "telemetry::node-shipper",
+      "chart": "chart/shipper",
+      "version": "0.7.0"
+    }
+  ],
+  "impacted_charts": [
+    {
+      "name": "chart/cache-warmer",
+      "version": "0.3.0",
+      "triggered_by": [
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "name": "chart/collector",
+      "version": "1.1.0",
+      "triggered_by": [
+        "telemetry::collector"
+      ]
+    },
+    {
+      "name": "chart/fraud-scorer",
+      "version": "0.2.0",
+      "triggered_by": [
+        "analytics::fraud-scorer"
+      ]
+    },
+    {
+      "name": "chart/gateway",
+      "version": "1.5.2",
+      "triggered_by": [
+        "payments-prod::gateway-api"
+      ]
+    },
+    {
+      "name": "chart/heartbeat",
+      "version": "0.1.0",
+      "triggered_by": [
+        "identity::heartbeat-probe"
+      ]
+    },
+    {
+      "name": "chart/jwt-signer",
+      "version": "1.0.0",
+      "triggered_by": [
+        "identity::jwt-signer"
+      ]
+    },
+    {
+      "name": "chart/ledger",
+      "version": "2.1.0",
+      "triggered_by": [
+        "payments-prod::ledger-writer"
+      ]
+    },
+    {
+      "name": "chart/probe",
+      "version": "0.4.2",
+      "triggered_by": [
+        "edge::probe-runner"
+      ]
+    },
+    {
+      "name": "chart/reconcile",
+      "version": "0.9.4",
+      "triggered_by": [
+        "payments-prod::nightly-reconcile"
+      ]
+    },
+    {
+      "name": "chart/shipper",
+      "version": "0.7.0",
+      "triggered_by": [
+        "telemetry::node-shipper"
+      ]
+    },
+    {
+      "name": "lib/circuit-breaker",
+      "version": "0.4.0",
+      "triggered_by": [
+        "payments-prod::gateway-api"
+      ]
+    },
+    {
+      "name": "lib/jwt-keys",
+      "version": "1.0.0",
+      "triggered_by": [
+        "identity::jwt-signer"
+      ]
+    },
+    {
+      "name": "lib/keyring",
+      "version": "1.0.0",
+      "triggered_by": [
+        "identity::jwt-signer"
+      ]
+    },
+    {
+      "name": "lib/network",
+      "version": "1.4.0",
+      "triggered_by": [
+        "edge::probe-runner",
+        "payments-prod::gateway-api",
+        "telemetry::node-shipper"
+      ]
+    },
+    {
+      "name": "lib/notify-bus",
+      "version": "1.0.0",
+      "triggered_by": [
+        "identity::heartbeat-probe",
+        "payments-prod::ledger-writer"
+      ]
+    },
+    {
+      "name": "lib/notify-bus-impl",
+      "version": "1.0.0",
+      "triggered_by": [
+        "identity::heartbeat-probe",
+        "payments-prod::ledger-writer"
+      ]
+    },
+    {
+      "name": "lib/queue-core",
+      "version": "1.0.0",
+      "triggered_by": [
+        "payments-prod::ledger-writer",
+        "payments-prod::nightly-reconcile"
+      ]
+    },
+    {
+      "name": "lib/queue-driver",
+      "version": "1.0.0",
+      "triggered_by": [
+        "payments-prod::ledger-writer",
+        "payments-prod::nightly-reconcile"
+      ]
+    },
+    {
+      "name": "lib/queue-shim",
+      "version": "1.0.0",
+      "triggered_by": [
+        "payments-prod::ledger-writer",
+        "payments-prod::nightly-reconcile"
+      ]
+    },
+    {
+      "name": "lib/storage",
+      "version": "0.6.0",
+      "triggered_by": [
+        "analytics::fraud-scorer",
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "name": "lib/stream-core",
+      "version": "1.0.0",
+      "triggered_by": [
+        "analytics::fraud-scorer",
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "name": "lib/stream-utils",
+      "version": "1.0.0",
+      "triggered_by": [
+        "analytics::fraud-scorer",
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "name": "lib/yaml-render",
+      "version": "2.1.0",
+      "triggered_by": [
+        "edge::probe-runner",
+        "payments-prod::gateway-api",
+        "payments-prod::ledger-writer",
+        "telemetry::collector",
+        "telemetry::node-shipper"
+      ]
+    },
+    {
+      "name": "svc/collector",
+      "version": "1.2.0",
+      "triggered_by": [
+        "identity::heartbeat-probe",
+        "payments-prod::ledger-writer"
+      ]
+    }
+  ],
+  "cycles": [
+    [
+      "lib/jwt-keys",
+      "lib/keyring"
+    ],
+    [
+      "lib/notify-bus",
+      "lib/notify-bus-impl"
+    ],
+    [
+      "lib/queue-core",
+      "lib/queue-driver",
+      "lib/queue-shim"
+    ],
+    [
+      "lib/stream-core",
+      "lib/stream-utils"
+    ]
+  ],
+  "build_order": [
+    [
+      "chart/keytool"
+    ],
+    [
+      "chart/legacy-noop"
+    ],
+    [
+      "lib/jwt-keys",
+      "lib/keyring"
+    ],
+    [
+      "chart/jwt-signer"
+    ],
+    [
+      "chart/oidc-bridge"
+    ],
+    [
+      "lib/notify-bus",
+      "lib/notify-bus-impl"
+    ],
+    [
+      "lib/queue-core",
+      "lib/queue-driver",
+      "lib/queue-shim"
+    ],
+    [
+      "chart/reconcile"
+    ],
+    [
+      "lib/stream-core",
+      "lib/stream-utils"
+    ],
+    [
+      "lib/storage"
+    ],
+    [
+      "chart/cache-warmer"
+    ],
+    [
+      "chart/fraud-scorer"
+    ],
+    [
+      "chart/ledger-store"
+    ],
+    [
+      "lib/yaml-render"
+    ],
+    [
+      "chart/collector"
+    ],
+    [
+      "chart/ledger"
+    ],
+    [
+      "lib/network"
+    ],
+    [
+      "chart/probe"
+    ],
+    [
+      "chart/shipper"
+    ],
+    [
+      "lib/circuit-breaker"
+    ],
+    [
+      "chart/gateway"
+    ],
+    [
+      "svc/collector"
+    ],
+    [
+      "chart/heartbeat"
+    ]
+  ]
+}

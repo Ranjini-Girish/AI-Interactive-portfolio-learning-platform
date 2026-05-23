@@ -1,0 +1,60 @@
+{
+  "regions": [
+    {
+      "base": 4096,
+      "id": "r_a",
+      "owner": "alice",
+      "prot": "rw",
+      "size": 12288
+    },
+    {
+      "base": 16384,
+      "id": "r_t",
+      "owner": "bob",
+      "prot": "rwx",
+      "size": 4096
+    },
+    {
+      "base": 20480,
+      "id": "r_c",
+      "owner": "bob",
+      "prot": "rwx",
+      "size": 4096
+    },
+    {
+      "base": 65536,
+      "id": "r_k",
+      "owner": "dave",
+      "prot": "rw",
+      "size": 8192
+    },
+    {
+      "base": 73728,
+      "id": "r_e",
+      "owner": "dave",
+      "prot": "rw",
+      "size": 8192
+    },
+    {
+      "base": 131072,
+      "id": "r_f",
+      "owner": "eve",
+      "prot": "r",
+      "size": 8192
+    },
+    {
+      "base": 196608,
+      "id": "r_h",
+      "owner": "frank",
+      "prot": "rwx",
+      "size": 12288
+    },
+    {
+      "base": 524288,
+      "id": "r_s",
+      "owner": "heidi",
+      "prot": "r",
+      "size": 4096
+    }
+  ]
+}

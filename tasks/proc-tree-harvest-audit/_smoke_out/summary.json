@@ -1,0 +1,17 @@
+{
+  "auto_harvested": 5,
+  "events_with_diagnostics": 17,
+  "explicit_harvested": 2,
+  "final_alive_count": 2,
+  "forks_rejected": 2,
+  "forks_succeeded": 5,
+  "killed_by_signal": 3,
+  "max_concurrent_processes": 7,
+  "orphans_reparented": 3,
+  "total_events": 26,
+  "users_at_end": [
+    0,
+    1000
+  ],
+  "zombies_at_end": 1
+}

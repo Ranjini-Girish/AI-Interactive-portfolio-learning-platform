@@ -1,0 +1,7 @@
+{
+  "end_us": 120,
+  "service": "api",
+  "span_id": "s01",
+  "start_us": 0,
+  "status": "ok"
+}

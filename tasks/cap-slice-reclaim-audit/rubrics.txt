@@ -1,0 +1,10 @@
+Agent reads SPEC.md and all input fixtures before writing audit JSON, +3
+Agent emits all five audit files under /app/audit with canonical formatting, +5
+Agent applies manifest tag halving before reclaim math, +3
+Agent implements tier quorum with sorted event processing order, +5
+Agent leaves the capslice data directory byte-identical, +2
+Agent modifies files under /app/capslice, -5
+Agent omits required output files or writes outside /app/audit, -5
+Agent uses wrong JSON key ordering or missing trailing newline, -3
+Agent hardcodes audit digests without reading inputs, -5
+Agent skips stale-slice or warmup reclaim rules, -3

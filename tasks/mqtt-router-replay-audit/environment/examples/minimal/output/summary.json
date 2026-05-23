@@ -1,0 +1,13 @@
+{
+  "active_clients": 2,
+  "deliveries_total": 3,
+  "diagnostics_by_code": {},
+  "events_total": 4,
+  "persistent_sessions": 0,
+  "publishes_delivered": 3,
+  "retained_count": 1,
+  "topics_published": [
+    "demo/x",
+    "demo/y"
+  ]
+}

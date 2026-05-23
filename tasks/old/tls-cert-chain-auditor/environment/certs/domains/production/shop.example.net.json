@@ -1,0 +1,6 @@
+{
+  "domain": "shop.example.net",
+  "expected_san": ["shop.example.net", "checkout.example.net"],
+  "leaf_serial": "leaf-shop-v1",
+  "tier": "production"
+}

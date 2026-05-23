@@ -1,0 +1,156 @@
+{
+  "encryptions": [
+    {
+      "key_id": "key-alpha",
+      "nonce": 1,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 5,
+      "tick": 2
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 2,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 6,
+      "tick": 2
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 3,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 7,
+      "tick": 2
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 4,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 8,
+      "tick": 3
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 5,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 9,
+      "tick": 3
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 6,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 10,
+      "tick": 3
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 7,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 11,
+      "tick": 4
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 8,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 12,
+      "tick": 4
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 9,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 13,
+      "tick": 5
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 10,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 14,
+      "tick": 5
+    },
+    {
+      "key_id": "key-alpha",
+      "nonce": 11,
+      "outcome": "rejected",
+      "reason": "EXHAUSTED",
+      "seq": 15,
+      "tick": 6
+    },
+    {
+      "key_id": "key-gamma",
+      "nonce": 42,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 17,
+      "tick": 7
+    },
+    {
+      "key_id": "key-gamma",
+      "nonce": 43,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 18,
+      "tick": 7
+    },
+    {
+      "key_id": "key-gamma",
+      "nonce": 42,
+      "outcome": "rejected",
+      "reason": "NONCE_REUSE",
+      "seq": 19,
+      "tick": 8
+    },
+    {
+      "key_id": "key-gamma",
+      "nonce": 44,
+      "outcome": "rejected",
+      "reason": "COMPROMISED",
+      "seq": 20,
+      "tick": 8
+    },
+    {
+      "key_id": "key-phantom",
+      "nonce": 1,
+      "outcome": "rejected",
+      "reason": "UNKNOWN_KEY",
+      "seq": 25,
+      "tick": 10
+    },
+    {
+      "key_id": "key-delta",
+      "nonce": 1,
+      "outcome": "rejected",
+      "reason": "RETIRED",
+      "seq": 28,
+      "tick": 11
+    },
+    {
+      "key_id": "key-zeta",
+      "nonce": 1,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 30,
+      "tick": 50
+    },
+    {
+      "key_id": "key-zeta",
+      "nonce": 2,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 31,
+      "tick": 50
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Agent reads `/app/featgate/SPEC.md` and emits only the three mandated JSON files with canonical formatting, +3
+Agent activates default features when a package is first reached during propagation, +5
+Agent applies patch force-off after propagation and conflict demotion on the lexicographically larger feature, +5
+Agent preserves every bundled fixture byte under the featgate read root, +2
+Agent honors `FGR_DATA_DIR` and `FGR_AUDIT_DIR` override semantics when set, +2
+Agent records optional dependency epoch failures as optional_blocked drops, +3
+Agent creates the audit directory before writing outputs, +2
+Agent keeps package and drop rows sorted per the spec key order, +2
+Agent matches the specification canonical JSON trailing newline contract, +2
+Agent enables conflicting feature pairs without demoting the larger name, -5
+Agent skips default-feature activation on dependency packages or ignores force-off patches, -5
+Agent mutates featgate inputs or writes outside the resolved audit directory, -5
+Agent drops required output files or adds extra top-level keys, -3

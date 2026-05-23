@@ -1,0 +1,27 @@
+{
+  "datasets": {
+    "logs": {
+      "keep_daily": 3,
+      "keep_hourly": 2,
+      "keep_last_n": 1,
+      "keep_monthly": 2,
+      "keep_weekly": 2
+    },
+    "media": {
+      "keep_daily": 0,
+      "keep_hourly": 0,
+      "keep_last_n": 2,
+      "keep_monthly": 0,
+      "keep_weekly": 0
+    }
+  },
+  "default_rules": {
+    "keep_daily": 0,
+    "keep_hourly": 0,
+    "keep_last_n": 0,
+    "keep_monthly": 0,
+    "keep_weekly": 0
+  },
+  "held_delete_action": "reject",
+  "now_sec": 5184200
+}

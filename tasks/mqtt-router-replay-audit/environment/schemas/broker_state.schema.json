@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "broker_state.json",
+  "type": "object",
+  "required": ["clients", "now_sec", "persistent_sessions", "retained"],
+  "additionalProperties": false,
+  "properties": {
+    "clients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "keep_alive_sec", "persistent", "subscriptions"],
+        "additionalProperties": false,
+        "properties": {
+          "id":             {"type": "string"},
+          "keep_alive_sec": {"type": "integer", "minimum": 0},
+          "persistent":     {"type": "boolean"},
+          "subscriptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["filter", "qos"],
+              "additionalProperties": false,
+              "properties": {
+                "filter": {"type": "string"},
+                "qos":    {"type": "integer", "minimum": 0, "maximum": 2}
+              }
+            }
+          }
+        }
+      }
+    },
+    "now_sec": {"type": "integer", "minimum": 0},
+    "persistent_sessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["client_id", "subscriptions"],
+        "additionalProperties": false,
+        "properties": {
+          "client_id": {"type": "string"},
+          "subscriptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["filter", "qos"],
+              "additionalProperties": false,
+              "properties": {
+                "filter": {"type": "string"},
+                "qos":    {"type": "integer", "minimum": 0, "maximum": 2}
+              }
+            }
+          }
+        }
+      }
+    },
+    "retained": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["payload_id", "qos", "retained_at_sec", "topic"],
+        "additionalProperties": false,
+        "properties": {
+          "payload_id":      {"type": "integer", "minimum": 0},
+          "qos":             {"type": "integer", "minimum": 0, "maximum": 2},
+          "retained_at_sec": {"type": "integer", "minimum": 0},
+          "topic":           {"type": "string"}
+        }
+      }
+    }
+  }
+}

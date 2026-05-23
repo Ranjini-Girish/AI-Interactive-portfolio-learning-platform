@@ -1,0 +1,105 @@
+{
+  "cycles": [
+    [
+      "L_a",
+      "L_b"
+    ],
+    [
+      "L_c",
+      "L_d"
+    ]
+  ],
+  "edges": [
+    {
+      "first_witness_seq": 4,
+      "from": "L_a",
+      "to": "L_b"
+    },
+    {
+      "first_witness_seq": 5,
+      "from": "L_b",
+      "to": "L_a"
+    },
+    {
+      "first_witness_seq": 6,
+      "from": "L_b",
+      "to": "L_c"
+    },
+    {
+      "first_witness_seq": 8,
+      "from": "L_b",
+      "to": "L_d"
+    },
+    {
+      "first_witness_seq": 8,
+      "from": "L_c",
+      "to": "L_d"
+    },
+    {
+      "first_witness_seq": 9,
+      "from": "L_d",
+      "to": "L_c"
+    },
+    {
+      "first_witness_seq": 16,
+      "from": "L_h",
+      "to": "L_d"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "L_a",
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L_b",
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "L_c",
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "L_d",
+      "in_degree": 3,
+      "out_degree": 1
+    },
+    {
+      "id": "L_e",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "L_f",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "L_g",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "L_h",
+      "in_degree": 0,
+      "out_degree": 1
+    }
+  ],
+  "topological_layers": [
+    [
+      "L_a",
+      "L_b",
+      "L_e",
+      "L_f",
+      "L_g",
+      "L_h"
+    ],
+    [
+      "L_c",
+      "L_d"
+    ]
+  ]
+}

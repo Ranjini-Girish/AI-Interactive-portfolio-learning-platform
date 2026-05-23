@@ -1,0 +1,10 @@
+{
+  "current_checkpoint_step": 4400,
+  "engine": "transformer-train",
+  "inputs_dataset": "ds_neon",
+  "kind": "exploratory",
+  "last_known_good_step": 4200,
+  "sim_id": "sim_kappa",
+  "stabilization_steps": 1000,
+  "started_at_day": 205
+}

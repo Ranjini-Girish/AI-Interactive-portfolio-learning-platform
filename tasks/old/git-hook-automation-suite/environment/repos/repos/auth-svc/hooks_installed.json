@@ -1,0 +1,15 @@
+{
+  "repo": "auth-svc",
+  "installed": [
+    {
+      "name": "quality-gate",
+      "kind": "pre-commit",
+      "checks_present": ["lint", "conflict_markers", "debug_statements", "file_size"]
+    },
+    {
+      "name": "msg-format",
+      "kind": "commit-msg",
+      "checks_present": ["conventional_format"]
+    }
+  ]
+}

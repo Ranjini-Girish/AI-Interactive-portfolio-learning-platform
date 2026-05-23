@@ -1,0 +1,4 @@
+MODULE: example.com/beta
+TAGS: legacy
+PRIORITY: 5
+ENTRY: v1.0.0

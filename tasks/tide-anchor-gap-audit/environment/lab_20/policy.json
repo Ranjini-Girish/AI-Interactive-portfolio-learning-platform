@@ -1,0 +1,11 @@
+{
+  "bias_floor": 0,
+  "cap": 75,
+  "cutoff": 55,
+  "fold_mod": 1017,
+  "label": "tide-anchor-gap-audit",
+  "mask": 83,
+  "poly_base": 147,
+  "seed_offset": 188,
+  "square_mod": 1000003
+}

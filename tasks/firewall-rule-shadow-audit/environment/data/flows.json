@@ -1,0 +1,382 @@
+{
+  "flows": [
+    {
+      "id": "f01",
+      "direction": "ingress",
+      "src_ip": "203.0.113.10",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 51234,
+      "dst_port": 443
+    },
+    {
+      "id": "f02",
+      "direction": "ingress",
+      "src_ip": "198.51.100.7",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49001,
+      "dst_port": 80
+    },
+    {
+      "id": "f03",
+      "direction": "ingress",
+      "src_ip": "10.0.20.15",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 51000,
+      "dst_port": 22
+    },
+    {
+      "id": "f04",
+      "direction": "ingress",
+      "src_ip": "10.0.20.15",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 50100,
+      "dst_port": 8443
+    },
+    {
+      "id": "f05",
+      "direction": "ingress",
+      "src_ip": "10.0.50.10",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49500,
+      "dst_port": 22
+    },
+    {
+      "id": "f06",
+      "direction": "ingress",
+      "src_ip": "10.0.99.10",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49500,
+      "dst_port": 80
+    },
+    {
+      "id": "f07",
+      "direction": "ingress",
+      "src_ip": "10.0.99.10",
+      "dst_ip": "10.0.30.10",
+      "protocol": "tcp",
+      "src_port": 49500,
+      "dst_port": 5432
+    },
+    {
+      "id": "f08",
+      "direction": "ingress",
+      "src_ip": "203.0.113.50",
+      "dst_ip": "10.0.10.20",
+      "protocol": "icmp",
+      "src_port": 0,
+      "dst_port": 0
+    },
+    {
+      "id": "f09",
+      "direction": "ingress",
+      "src_ip": "203.0.113.50",
+      "dst_ip": "10.0.10.20",
+      "protocol": "icmp",
+      "src_port": 0,
+      "dst_port": 80
+    },
+    {
+      "id": "f10",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.30.10",
+      "protocol": "tcp",
+      "src_port": 49600,
+      "dst_port": 6379
+    },
+    {
+      "id": "f11",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.30.20",
+      "protocol": "tcp",
+      "src_port": 49600,
+      "dst_port": 5432
+    },
+    {
+      "id": "f12",
+      "direction": "ingress",
+      "src_ip": "203.0.113.99",
+      "dst_ip": "10.0.30.20",
+      "protocol": "tcp",
+      "src_port": 49700,
+      "dst_port": 5432
+    },
+    {
+      "id": "f13",
+      "direction": "egress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "8.8.8.8",
+      "protocol": "tcp",
+      "src_port": 49800,
+      "dst_port": 443
+    },
+    {
+      "id": "f14",
+      "direction": "egress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "8.8.8.8",
+      "protocol": "tcp",
+      "src_port": 1023,
+      "dst_port": 443
+    },
+    {
+      "id": "f15",
+      "direction": "egress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "8.8.8.8",
+      "protocol": "udp",
+      "src_port": 53000,
+      "dst_port": 53
+    },
+    {
+      "id": "f16",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49900,
+      "dst_port": 9090
+    },
+    {
+      "id": "f17",
+      "direction": "ingress",
+      "src_ip": "192.168.5.10",
+      "dst_ip": "10.0.10.20",
+      "protocol": "udp",
+      "src_port": 49000,
+      "dst_port": 53
+    },
+    {
+      "id": "f18",
+      "direction": "ingress",
+      "src_ip": "10.0.50.10",
+      "dst_ip": "10.0.50.20",
+      "protocol": "tcp",
+      "src_port": 49000,
+      "dst_port": 22
+    },
+    {
+      "id": "f19",
+      "direction": "ingress",
+      "src_ip": "10.0.20.5",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 50050,
+      "dst_port": 8443
+    },
+    {
+      "id": "f20",
+      "direction": "ingress",
+      "src_ip": "10.0.20.99",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 50051,
+      "dst_port": 8443
+    },
+    {
+      "id": "f21",
+      "direction": "egress",
+      "src_ip": "10.0.10.20",
+      "dst_ip": "8.8.8.8",
+      "protocol": "icmp",
+      "src_port": 0,
+      "dst_port": 0
+    },
+    {
+      "id": "f22",
+      "direction": "ingress",
+      "src_ip": "10.0.99.10",
+      "dst_ip": "10.0.30.10",
+      "protocol": "tcp",
+      "src_port": 49500,
+      "dst_port": 6379
+    },
+    {
+      "id": "f23",
+      "direction": "ingress",
+      "src_ip": "203.0.113.10",
+      "dst_ip": "10.0.30.10",
+      "protocol": "tcp",
+      "src_port": 49501,
+      "dst_port": 6379
+    },
+    {
+      "id": "f24",
+      "direction": "ingress",
+      "src_ip": "10.0.20.7",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 50200,
+      "dst_port": 8443
+    },
+    {
+      "id": "f25",
+      "direction": "ingress",
+      "src_ip": "10.0.20.7",
+      "dst_ip": "10.0.30.10",
+      "protocol": "tcp",
+      "src_port": 50201,
+      "dst_port": 3306
+    },
+    {
+      "id": "f26",
+      "direction": "ingress",
+      "src_ip": "10.0.20.7",
+      "dst_ip": "10.0.30.20",
+      "protocol": "udp",
+      "src_port": 50202,
+      "dst_port": 9999
+    },
+    {
+      "id": "f27",
+      "direction": "ingress",
+      "src_ip": "10.0.99.50",
+      "dst_ip": "10.0.10.5",
+      "protocol": "icmp",
+      "src_port": 0,
+      "dst_port": 0
+    },
+    {
+      "id": "f28",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 1023,
+      "dst_port": 443
+    },
+    {
+      "id": "f29",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 1024,
+      "dst_port": 443
+    },
+    {
+      "id": "f30",
+      "direction": "ingress",
+      "src_ip": "10.0.99.10",
+      "dst_ip": "10.0.10.20",
+      "protocol": "icmp",
+      "src_port": 0,
+      "dst_port": 0
+    },
+    {
+      "id": "f31",
+      "direction": "ingress",
+      "src_ip": "10.0.40.10",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 51500,
+      "dst_port": 443
+    },
+    {
+      "id": "f32",
+      "direction": "ingress",
+      "src_ip": "10.0.40.65",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 51501,
+      "dst_port": 443
+    },
+    {
+      "id": "f33",
+      "direction": "ingress",
+      "src_ip": "10.0.40.130",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 51502,
+      "dst_port": 443
+    },
+    {
+      "id": "f34",
+      "direction": "ingress",
+      "src_ip": "10.0.40.10",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 51503,
+      "dst_port": 9090
+    },
+    {
+      "id": "f35",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.30.10",
+      "protocol": "tcp",
+      "src_port": 51504,
+      "dst_port": 6379
+    },
+    {
+      "id": "f36",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 51505,
+      "dst_port": 8443
+    },
+    {
+      "id": "f37",
+      "direction": "ingress",
+      "src_ip": "10.0.40.5",
+      "dst_ip": "10.0.10.5",
+      "protocol": "tcp",
+      "src_port": 51506,
+      "dst_port": 80
+    },
+    {
+      "id": "f38",
+      "direction": "ingress",
+      "src_ip": "10.0.60.5",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49000,
+      "dst_port": 443
+    },
+    {
+      "id": "f39",
+      "direction": "ingress",
+      "src_ip": "10.0.70.10",
+      "dst_ip": "10.0.10.20",
+      "protocol": "udp",
+      "src_port": 5353,
+      "dst_port": 5353
+    },
+    {
+      "id": "f40",
+      "direction": "ingress",
+      "src_ip": "10.0.80.20",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49100,
+      "dst_port": 443
+    },
+    {
+      "id": "f41",
+      "direction": "ingress",
+      "src_ip": "10.0.81.5",
+      "dst_ip": "10.0.10.20",
+      "protocol": "tcp",
+      "src_port": 49200,
+      "dst_port": 22
+    },
+    {
+      "id": "f42",
+      "direction": "ingress",
+      "src_ip": "10.0.20.30",
+      "dst_ip": "10.0.10.30",
+      "protocol": "tcp",
+      "src_port": 49300,
+      "dst_port": 22
+    }
+  ]
+}

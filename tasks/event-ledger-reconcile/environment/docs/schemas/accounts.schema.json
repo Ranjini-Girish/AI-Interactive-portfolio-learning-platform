@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "accounts.json",
+  "type": "object",
+  "required": ["accounts"],
+  "additionalProperties": false,
+  "properties": {
+    "accounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "currency",
+          "opening_balance_cents",
+          "tier",
+          "account_type",
+          "status",
+          "daily_withdraw_limit_cents"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "currency": {"type": "string"},
+          "opening_balance_cents": {"type": "integer"},
+          "tier": {"type": "string", "enum": ["basic", "premium"]},
+          "account_type": {
+            "type": "string",
+            "enum": ["checking", "savings", "credit"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "frozen", "closed"]
+          },
+          "daily_withdraw_limit_cents": {
+            "type": ["integer", "null"]
+          }
+        }
+      }
+    }
+  }
+}

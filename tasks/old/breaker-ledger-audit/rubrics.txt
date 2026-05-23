@@ -1,0 +1,15 @@
+Agent emits all five audit JSON files using the active output directory with the canonical formatting contract from `/app/breakers/SPEC.md`, +5
+Agent keeps `raw_failures` as the pre-suppression window tally while moving suppressed days and penalties into `effective_failures`, +3
+Agent processes only accepted incidents whose `day` is on or before `pool_state.current_day` and skips malformed or unknown kinds without journal entries, +3
+Agent records `force_open_incident` in `reasons` whenever that directive applies to a service, +2
+Agent lists `service_verdicts.services` sorted by ascending `service_id`, +2
+Agent lists every `referencing_services` array sorted by ascending `service_id`, +2
+Agent mirrors upstream `degraded` flags under `upstream_touchpoints.json` without inventing hosts, +2
+Agent mutates, replaces, or rewrites any file under `/app/breakers/`, -5
+Agent omits a required audit file or writes non-UTF-8 JSON, -5
+Agent emits non-empty `reasons` for a `closed` service row, -3
+Agent drops `gold_upstream_degraded_penalty` when the gold penalty rule fires, -3
+Agent applies `silver_spike` penalties while marking `silver_spike_active` false in `summary.json`, -5
+Agent miscomputes `ignored_incident_events` relative to the original incident log length, -3
+Agent writes audit JSON with unsorted object keys or missing trailing newline, -2
+Agent writes required audit filenames outside the active audit output directory while claiming completion, -5

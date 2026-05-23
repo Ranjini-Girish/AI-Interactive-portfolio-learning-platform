@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "coalesce_log.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["coalesces"],
+  "properties": {
+    "coalesces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dropped_id", "kept_id", "seq", "trigger"],
+        "properties": {
+          "dropped_id": { "type": "string" },
+          "kept_id":    { "type": "string" },
+          "seq":        { "type": "integer", "minimum": 0 },
+          "trigger":    { "type": "string", "enum": ["map", "unmap"] }
+        }
+      }
+    }
+  }
+}

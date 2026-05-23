@@ -1,3 +1,4 @@
+# scaffold-status: oracle-pending
 """Behavioral tests for the zone-ingress-matrix-audit task.
 
 These tests assert the agent's outputs against the documented contract in
@@ -27,7 +28,7 @@ REQUIRED_OUTPUT_FILES = [
 ]
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "ef3988de24c193444ff992519a70ce6cca135d1496d86b5aecb5f1f6f7d2ab34",
+    "SPEC.md": "de039521404f9ffee99ad32a14ffa9cf6eeaf2474c6ba77b6766901e81554fbf",
     "incident_log.json": "4e9ff211eab0ad81fc364f3ca2b9122bfcb634c4b9e2791b07c015e6172ff2d7",
     "policy/implicit_matrix.json": "62ed8843dd6acb8af144b10a30d84ed1c27c832e3ac073eda049438131a80897",
     "policy/tier_weights.json": "c604159266ac08fb27d44088459666be9dbb86181e9244c389b305f4620264d8",
@@ -72,21 +73,25 @@ EXPECTED_FIELD_HASHES = {
 
 
 def _sha256_bytes(b: bytes) -> str:
+    """Return the lowercase hex SHA-256 digest of the given bytes."""
     return hashlib.sha256(b).hexdigest()
 
 
 def _canonical_bytes(obj) -> bytes:
+    """Serialize JSON for hashing: sorted keys, compact separators, UTF-8, trailing newline."""
     return (
         json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n"
     ).encode("utf-8")
 
 
 def _canonical_sha256(obj) -> str:
+    """SHA-256 of the verifier's compact JSON-with-newline canonicalization of obj."""
     return _sha256_bytes(_canonical_bytes(obj))
 
 
 @pytest.fixture(scope="module")
 def loaded_outputs():
+    """Load every required output under AUDIT_DIR into text, parsed object, and raw bytes."""
     out = {}
     for name in REQUIRED_OUTPUT_FILES:
         p = AUDIT_DIR / name
@@ -180,6 +185,7 @@ class TestMatrixSemantics:
     """Spot-check compound incident and precedence behaviour."""
 
     def _cell(self, loaded_outputs, src: str, dst: str) -> dict:
+        """Return the matrix_cells row for the ordered pair (src, dst) or raise if missing."""
         for row in loaded_outputs["matrix_cells.json"]["obj"]["cells"]:
             if row["src_zone"] == src and row["dst_zone"] == dst:
                 return row

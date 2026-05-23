@@ -1,0 +1,85 @@
+{
+  "principals": [
+    {
+      "exempt": false,
+      "last_rotation_day": 10,
+      "next_due_day": 13,
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "rotation_window_days": 3,
+      "status": "overdue",
+      "tier": "silver"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": 28,
+      "next_due_day": 42,
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "rotation_window_days": 14,
+      "status": "compliant",
+      "tier": "silver"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": 28,
+      "next_due_day": 42,
+      "principal": "host/cache02.example.com@EXAMPLE.COM",
+      "rotation_window_days": 14,
+      "status": "compliant",
+      "tier": "silver"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": 24,
+      "next_due_day": 31,
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "rotation_window_days": 7,
+      "status": "compliant",
+      "tier": "gold"
+    },
+    {
+      "exempt": true,
+      "last_rotation_day": null,
+      "next_due_day": null,
+      "principal": "host/legacy.example.com@EXAMPLE.COM",
+      "rotation_window_days": null,
+      "status": "exempt",
+      "tier": "bronze"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": 0,
+      "next_due_day": 30,
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "rotation_window_days": 30,
+      "status": "compliant",
+      "tier": "bronze"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": null,
+      "next_due_day": null,
+      "principal": "host/newhost.example.com@EXAMPLE.COM",
+      "rotation_window_days": 7,
+      "status": "never_rotated",
+      "tier": "gold"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": 28,
+      "next_due_day": 35,
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "rotation_window_days": 7,
+      "status": "compliant",
+      "tier": "gold"
+    },
+    {
+      "exempt": false,
+      "last_rotation_day": 7,
+      "next_due_day": 14,
+      "principal": "host/web02.example.com@EXAMPLE.COM",
+      "rotation_window_days": 7,
+      "status": "overdue",
+      "tier": "gold"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "crash-016",
+  "reported_day": 5,
+  "reporter": "peg@example.com",
+  "frame_stack": ["render::shader::compile", "render::shader::link", "render::vertex::upload", "render::vertex::commit"],
+  "env_hash": "5a6b7c8d9e0f1122334455667789f01a5a6b7c8d9e0f1122334455667789f01a",
+  "reproducibility": "once",
+  "severity_observed": "medium"
+}

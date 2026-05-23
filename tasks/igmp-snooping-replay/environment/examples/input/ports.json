@@ -1,0 +1,19 @@
+{
+  "ports": [
+    {
+      "port_id": "Eth1",
+      "role": "host",
+      "vlan": 10
+    },
+    {
+      "port_id": "Eth2",
+      "role": "host",
+      "vlan": 10
+    },
+    {
+      "port_id": "Eth3",
+      "role": "router",
+      "vlan": 10
+    }
+  ]
+}

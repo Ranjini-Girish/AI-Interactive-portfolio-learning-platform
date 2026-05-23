@@ -1,0 +1,6 @@
+{
+  "repo": "auth-svc",
+  "tier": "gold",
+  "language": "python",
+  "override_rules": []
+}

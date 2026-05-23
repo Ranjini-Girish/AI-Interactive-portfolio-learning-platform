@@ -1,0 +1,76 @@
+{
+  "events": [
+    {
+      "bytes_used": 40.0,
+      "slice_id": "sl01",
+      "step": 1,
+      "tier": "high"
+    },
+    {
+      "bytes_used": 60.0,
+      "slice_id": "sl02",
+      "step": 1,
+      "tier": "high"
+    },
+    {
+      "bytes_used": 30.0,
+      "slice_id": "sl03",
+      "step": 1,
+      "tier": "low"
+    },
+    {
+      "bytes_used": 50.0,
+      "slice_id": "sl04",
+      "step": 2,
+      "tier": "med"
+    },
+    {
+      "bytes_used": 120.0,
+      "slice_id": "sl05",
+      "step": 2,
+      "tier": "high"
+    },
+    {
+      "bytes_used": 80.0,
+      "slice_id": "sl06",
+      "step": 3,
+      "tier": "med"
+    },
+    {
+      "bytes_used": 150.0,
+      "slice_id": "sl07",
+      "step": 3,
+      "tier": "high"
+    },
+    {
+      "bytes_used": 90.0,
+      "slice_id": "sl08",
+      "step": 3,
+      "tier": "low"
+    },
+    {
+      "bytes_used": 110.0,
+      "slice_id": "sl09",
+      "step": 4,
+      "tier": "high"
+    },
+    {
+      "bytes_used": 200.0,
+      "slice_id": "sl10",
+      "step": 4,
+      "tier": "high"
+    },
+    {
+      "bytes_used": 70.0,
+      "slice_id": "sl11",
+      "step": 4,
+      "tier": "low"
+    },
+    {
+      "bytes_used": 130.0,
+      "slice_id": "sl12",
+      "step": 5,
+      "tier": "med"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "windows": [
+    {
+      "end_slot": 6,
+      "host_id": "h02",
+      "start_slot": 5
+    },
+    {
+      "end_slot": 11,
+      "host_id": "*",
+      "start_slot": 10
+    }
+  ]
+}

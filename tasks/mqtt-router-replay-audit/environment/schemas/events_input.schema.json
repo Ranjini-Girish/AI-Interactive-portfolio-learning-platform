@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "events.json",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seq", "kind"],
+        "additionalProperties": true,
+        "properties": {
+          "seq":            {"type": "integer", "minimum": 0},
+          "kind":           {"type": "string", "enum": [
+            "tick", "connect", "disconnect", "expire_keepalive",
+            "subscribe", "unsubscribe", "publish"
+          ]},
+          "delta_sec":      {"type": "integer", "minimum": 0},
+          "id":             {"type": "string", "minLength": 1},
+          "client_id":      {"type": "string", "minLength": 1},
+          "filter":         {"type": "string"},
+          "topic":          {"type": "string"},
+          "qos":            {"type": "integer", "minimum": 0, "maximum": 2},
+          "payload_id":     {"type": "integer", "minimum": 0},
+          "retain":         {"type": "boolean"},
+          "clean_start":    {"type": "boolean"},
+          "keep_alive_sec": {"type": "integer", "minimum": 0},
+          "abrupt":         {"type": "boolean"},
+          "will": {
+            "type": "object",
+            "required": ["topic", "payload_id", "qos"],
+            "additionalProperties": false,
+            "properties": {
+              "topic":      {"type": "string", "minLength": 1},
+              "payload_id": {"type": "integer", "minimum": 0},
+              "qos":        {"type": "integer", "minimum": 0, "maximum": 2},
+              "retain":     {"type": "boolean"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

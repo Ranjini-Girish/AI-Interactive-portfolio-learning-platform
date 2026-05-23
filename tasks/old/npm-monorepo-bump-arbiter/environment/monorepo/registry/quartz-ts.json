@@ -1,0 +1,33 @@
+{
+  "dist_tags": {
+    "latest": "4.6.0",
+    "next": "5.0.0"
+  },
+  "name": "quartz-ts",
+  "versions": [
+    {
+      "advisory_ids": [],
+      "engines_node": ">=20.0.0 <23.0.0",
+      "exports_conditions": ["types"],
+      "peer_constraints": {},
+      "version": "4.5.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=20.0.0 <23.0.0",
+      "exports_conditions": ["import", "types"],
+      "peer_constraints": {},
+      "version": "4.6.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=22.0.0 <26.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {},
+      "version": "5.0.0",
+      "yanked": false
+    }
+  ]
+}

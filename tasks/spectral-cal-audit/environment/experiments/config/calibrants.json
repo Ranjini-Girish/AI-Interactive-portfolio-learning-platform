@@ -1,0 +1,12 @@
+{
+  "argon": [
+    {"label": "Ar696", "expected_nm": 696.543, "window_nm": [695.8, 697.2]},
+    {"label": "Ar707", "expected_nm": 706.722, "window_nm": [706.0, 707.5]},
+    {"label": "Ar738", "expected_nm": 738.398, "window_nm": [737.6, 739.2]}
+  ],
+  "neon": [
+    {"label": "Ne585", "expected_nm": 585.248, "window_nm": [584.5, 586.0]},
+    {"label": "Ne640", "expected_nm": 640.225, "window_nm": [639.4, 641.1]},
+    {"label": "Ne703", "expected_nm": 703.241, "window_nm": [702.4, 704.0]}
+  ]
+}

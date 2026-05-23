@@ -1,0 +1,14 @@
+{
+  "conflict_sets": [
+    [
+      "net-tls",
+      "net-plain"
+    ],
+    [
+      "cache-disk",
+      "cache-mem"
+    ]
+  ],
+  "default_epoch": 2,
+  "root_package": "app"
+}

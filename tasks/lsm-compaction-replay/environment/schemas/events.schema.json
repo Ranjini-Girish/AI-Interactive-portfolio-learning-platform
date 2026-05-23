@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "ts_unix_ms", "type", "payload"],
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "type": {"enum": ["flush_memtable", "compact"]},
+          "payload": {"type": "object"}
+        }
+      }
+    }
+  }
+}

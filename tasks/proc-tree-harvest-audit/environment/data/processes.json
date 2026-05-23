@@ -1,0 +1,44 @@
+{
+  "processes": [
+    {
+      "cmdline": "/sbin/init",
+      "pid": 1,
+      "ppid": 0,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 0
+    },
+    {
+      "cmdline": "/usr/sbin/sshd",
+      "pid": 100,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/bin/bash",
+      "pid": 200,
+      "ppid": 100,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 1000
+    },
+    {
+      "cmdline": "/usr/sbin/cron",
+      "pid": 300,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 0
+    },
+    {
+      "cmdline": "/usr/sbin/nginx",
+      "pid": 400,
+      "ppid": 1,
+      "start_tick": 0,
+      "state": "RUNNING",
+      "uid": 33
+    }
+  ]
+}

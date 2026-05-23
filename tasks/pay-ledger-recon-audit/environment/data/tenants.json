@@ -1,0 +1,8 @@
+{
+  "expected_active_tenants": ["T_USD", "T_EUR", "T_GBP"],
+  "tenants": [
+    {"tenant_id": "T_USD", "jurisdiction": "US", "base_currency": "USD", "audit_day_offset_min": 0, "minimum_balance_minor": -100000},
+    {"tenant_id": "T_EUR", "jurisdiction": "EU", "base_currency": "EUR", "audit_day_offset_min": -120, "minimum_balance_minor": 0},
+    {"tenant_id": "T_GBP", "jurisdiction": "UK", "base_currency": "GBP", "audit_day_offset_min": 60, "minimum_balance_minor": 500000}
+  ]
+}

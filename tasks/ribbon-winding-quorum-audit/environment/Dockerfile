@@ -17,7 +17,7 @@ RUN python3 -m pip install --no-cache-dir --break-system-packages \
 
 COPY rwq_lab/ /app/rwq_lab/
 
-RUN mkdir -p /app/audit /app/bin
+RUN mkdir -p /app/rwq_audit
 
 ENV GOFLAGS="-mod=mod"
 ENV GOTOOLCHAIN=local

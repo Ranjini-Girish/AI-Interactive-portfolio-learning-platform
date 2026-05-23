@@ -1,0 +1,9 @@
+{
+  "keys": [
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "k0",
+      "max_uses": 5
+    }
+  ]
+}

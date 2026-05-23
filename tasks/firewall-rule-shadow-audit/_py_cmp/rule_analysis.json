@@ -1,0 +1,475 @@
+{
+  "rules": [
+    {
+      "coverage_percent": "19.05",
+      "id": "r01",
+      "matched_flows": [
+        "f01",
+        "f28",
+        "f29",
+        "f31",
+        "f32",
+        "f33",
+        "f38",
+        "f40"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "7.14",
+      "id": "r02",
+      "matched_flows": [
+        "f02",
+        "f06",
+        "f37"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "16.67",
+      "id": "r03",
+      "matched_flows": [
+        "f03",
+        "f04",
+        "f19",
+        "f20",
+        "f24",
+        "f36",
+        "f42"
+      ],
+      "shadowed_by": [],
+      "status": "redundant"
+    },
+    {
+      "coverage_percent": "16.67",
+      "id": "r04",
+      "matched_flows": [
+        "f03",
+        "f04",
+        "f19",
+        "f20",
+        "f24",
+        "f36",
+        "f42"
+      ],
+      "shadowed_by": [
+        "r03"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r05",
+      "matched_flows": [
+        "f03",
+        "f05",
+        "f41",
+        "f42"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "11.90",
+      "id": "r06",
+      "matched_flows": [
+        "f06",
+        "f07",
+        "f22",
+        "f27",
+        "f30"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r07",
+      "matched_flows": [
+        "f08",
+        "f09",
+        "f27",
+        "f30"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "7.14",
+      "id": "r08",
+      "matched_flows": [
+        "f02",
+        "f06",
+        "f37"
+      ],
+      "shadowed_by": [
+        "r02"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "19.05",
+      "id": "r09",
+      "matched_flows": [
+        "f01",
+        "f28",
+        "f29",
+        "f31",
+        "f32",
+        "f33",
+        "f38",
+        "f40"
+      ],
+      "shadowed_by": [
+        "r01"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r10",
+      "matched_flows": [
+        "f10",
+        "f11",
+        "f25",
+        "f35"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "4.76",
+      "id": "r11",
+      "matched_flows": [
+        "f10",
+        "f35"
+      ],
+      "shadowed_by": [
+        "r10"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "7.14",
+      "id": "r12",
+      "matched_flows": [
+        "f07",
+        "f11",
+        "f12"
+      ],
+      "shadowed_by": [],
+      "status": "redundant"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r13",
+      "matched_flows": [
+        "f13"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r14",
+      "matched_flows": [
+        "f13",
+        "f14",
+        "f15",
+        "f21"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "0.00",
+      "id": "r15",
+      "matched_flows": [],
+      "shadowed_by": [],
+      "status": "unreachable"
+    },
+    {
+      "coverage_percent": "0.00",
+      "id": "r16",
+      "matched_flows": [],
+      "shadowed_by": [],
+      "status": "unreachable"
+    },
+    {
+      "coverage_percent": "0.00",
+      "id": "r17",
+      "matched_flows": [],
+      "shadowed_by": [],
+      "status": "unreachable"
+    },
+    {
+      "coverage_percent": "0.00",
+      "id": "r18",
+      "matched_flows": [],
+      "shadowed_by": [],
+      "status": "unreachable"
+    },
+    {
+      "coverage_percent": "16.67",
+      "id": "r19",
+      "matched_flows": [
+        "f01",
+        "f29",
+        "f31",
+        "f32",
+        "f33",
+        "f38",
+        "f40"
+      ],
+      "shadowed_by": [
+        "r01"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "90.48",
+      "id": "r20",
+      "matched_flows": [
+        "f01",
+        "f02",
+        "f03",
+        "f04",
+        "f05",
+        "f06",
+        "f07",
+        "f08",
+        "f09",
+        "f10",
+        "f11",
+        "f12",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "f20",
+        "f22",
+        "f23",
+        "f24",
+        "f25",
+        "f26",
+        "f27",
+        "f28",
+        "f29",
+        "f30",
+        "f31",
+        "f32",
+        "f33",
+        "f34",
+        "f35",
+        "f36",
+        "f37",
+        "f38",
+        "f39",
+        "f40",
+        "f41",
+        "f42"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r21",
+      "matched_flows": [
+        "f07"
+      ],
+      "shadowed_by": [
+        "r06"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r22",
+      "matched_flows": [
+        "f04",
+        "f19",
+        "f20",
+        "f36"
+      ],
+      "shadowed_by": [
+        "r03"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "11.90",
+      "id": "r23",
+      "matched_flows": [
+        "f31",
+        "f32",
+        "f33",
+        "f34",
+        "f37"
+      ],
+      "shadowed_by": [
+        "r01",
+        "r02",
+        "r26"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r24",
+      "matched_flows": [
+        "f31",
+        "f32",
+        "f34",
+        "f37"
+      ],
+      "shadowed_by": [
+        "r23"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r25",
+      "matched_flows": [
+        "f31"
+      ],
+      "shadowed_by": [
+        "r01"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r26",
+      "matched_flows": [
+        "f34"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "4.76",
+      "id": "r27",
+      "matched_flows": [
+        "f10",
+        "f35"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "4.76",
+      "id": "r28",
+      "matched_flows": [
+        "f10",
+        "f35"
+      ],
+      "shadowed_by": [
+        "r27"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r29",
+      "matched_flows": [
+        "f31"
+      ],
+      "shadowed_by": [
+        "r01"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "9.52",
+      "id": "r30",
+      "matched_flows": [
+        "f04",
+        "f19",
+        "f20",
+        "f36"
+      ],
+      "shadowed_by": [
+        "r03"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r31",
+      "matched_flows": [
+        "f38"
+      ],
+      "shadowed_by": [],
+      "status": "redundant"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r32",
+      "matched_flows": [
+        "f39"
+      ],
+      "shadowed_by": [],
+      "status": "redundant"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r33",
+      "matched_flows": [
+        "f40"
+      ],
+      "shadowed_by": [
+        "r01"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r34",
+      "matched_flows": [
+        "f41"
+      ],
+      "shadowed_by": [],
+      "status": "effective"
+    },
+    {
+      "coverage_percent": "0.00",
+      "id": "r35",
+      "matched_flows": [],
+      "shadowed_by": [],
+      "status": "unreachable"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r36",
+      "matched_flows": [
+        "f42"
+      ],
+      "shadowed_by": [
+        "r03"
+      ],
+      "status": "shadowed"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r37",
+      "matched_flows": [
+        "f25"
+      ],
+      "shadowed_by": [],
+      "status": "redundant"
+    },
+    {
+      "coverage_percent": "2.38",
+      "id": "r38",
+      "matched_flows": [
+        "f16"
+      ],
+      "shadowed_by": [],
+      "status": "redundant"
+    }
+  ]
+}

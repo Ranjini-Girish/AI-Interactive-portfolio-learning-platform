@@ -1,0 +1,22 @@
+{
+  "coalesces": [
+    {
+      "dropped_id": "r_i",
+      "kept_id": "r_a",
+      "seq": 0,
+      "trigger": "map"
+    },
+    {
+      "dropped_id": "r_b",
+      "kept_id": "r_a",
+      "seq": 0,
+      "trigger": "map"
+    },
+    {
+      "dropped_id": "r_r",
+      "kept_id": "r_h",
+      "seq": 16,
+      "trigger": "map"
+    }
+  ]
+}

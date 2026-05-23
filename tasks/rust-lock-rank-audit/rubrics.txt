@@ -1,0 +1,11 @@
+Agent reads SPEC.md and all lockrank fixtures before writing audit JSON, +3
+Agent emits all six audit files under /app/audit with canonical formatting, +5
+Agent applies profile tag halving to rank inversion comparisons, +3
+Agent applies fence_boost to effective ranks during fenced acquires, +5
+Agent processes trace events in step then thread_id then lock_id order, +3
+Agent leaves the lockrank data directory byte-identical, +2
+Agent modifies files under /app/lockrank, -5
+Agent omits required output files or writes outside /app/audit, -5
+Agent uses wrong JSON key ordering or missing trailing newline, -3
+Agent hardcodes audit digests without reading inputs, -5
+Agent skips conflict-group or stale-skip rules, -3

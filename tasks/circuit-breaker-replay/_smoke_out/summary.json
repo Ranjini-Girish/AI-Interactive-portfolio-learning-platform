@@ -1,0 +1,17 @@
+{
+  "endpoints_at_end": 4,
+  "events_with_diagnostics": 25,
+  "global_tick_at_end": 8,
+  "peak_open_endpoints": 2,
+  "total_admitted": 20,
+  "total_events": 44,
+  "total_failures": 13,
+  "total_requests": 25,
+  "total_short_circuited": 5,
+  "total_state_transitions": 14,
+  "total_successes": 6,
+  "total_timeouts": 1,
+  "total_transitions_to_closed": 4,
+  "total_transitions_to_half_open": 4,
+  "total_transitions_to_open": 6
+}

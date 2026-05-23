@@ -1,0 +1,12 @@
+{
+  "latch": 1,
+  "readings": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "sample_id": "leb_07",
+  "trace_tag": "plain"
+}

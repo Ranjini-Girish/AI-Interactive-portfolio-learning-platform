@@ -1,0 +1,5 @@
+{
+  "max_chain": 6,
+  "vote_ratio": 0.6,
+  "warmup_queries": 2
+}

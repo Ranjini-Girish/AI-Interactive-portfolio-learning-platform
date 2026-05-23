@@ -1,0 +1,46 @@
+{
+  "events": [
+    {
+      "code": "D_OK_ADD",
+      "key": "alpha",
+      "op": "add",
+      "seq": 1
+    },
+    {
+      "code": "D_OK_QUERY",
+      "key": "alpha",
+      "op": "query",
+      "seq": 2
+    },
+    {
+      "code": "D_OK_QUERY",
+      "key": "bravo",
+      "op": "query",
+      "seq": 3
+    },
+    {
+      "code": "D_OK_DUMP",
+      "key": null,
+      "op": "dump_stats",
+      "seq": 4
+    },
+    {
+      "code": "D_OK_REMOVE",
+      "key": "alpha",
+      "op": "remove",
+      "seq": 5
+    },
+    {
+      "code": "D_OK_QUERY",
+      "key": "alpha",
+      "op": "query",
+      "seq": 6
+    },
+    {
+      "code": "D_CLAMPED_REMOVE",
+      "key": "bravo",
+      "op": "remove",
+      "seq": 7
+    }
+  ]
+}

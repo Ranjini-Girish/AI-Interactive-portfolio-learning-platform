@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "policy.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["default_rules", "datasets", "held_delete_action", "now_sec"],
+  "properties": {
+    "now_sec": {"type": "integer", "minimum": 0},
+    "held_delete_action": {
+      "type": "string",
+      "enum": ["reject", "skip", "break_holds"]
+    },
+    "default_rules": {"$ref": "#/$defs/rules"},
+    "datasets": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/rules"}
+    }
+  },
+  "$defs": {
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "keep_last_n":  {"type": "integer", "minimum": 0},
+        "keep_hourly":  {"type": "integer", "minimum": 0},
+        "keep_daily":   {"type": "integer", "minimum": 0},
+        "keep_weekly":  {"type": "integer", "minimum": 0},
+        "keep_monthly": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

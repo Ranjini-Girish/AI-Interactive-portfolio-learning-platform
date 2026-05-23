@@ -1,0 +1,6 @@
+{
+  "retained": [
+    {"topic": "sensors/A/temp", "payload_id": 100, "qos": 1, "retained_at_sec": 0},
+    {"topic": "config/global",  "payload_id": 200, "qos": 0, "retained_at_sec": 0}
+  ]
+}

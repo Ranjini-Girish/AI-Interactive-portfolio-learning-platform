@@ -1,0 +1,7 @@
+{
+  "auto_coalesce_after_unmap": true,
+  "coalesce_mode": "prot_and_owner_match",
+  "min_region_size": 4096,
+  "overlap_action": "reject",
+  "track_history": true
+}

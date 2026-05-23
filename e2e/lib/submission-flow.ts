@@ -41,11 +41,60 @@ export async function assertNewSubmissionForm(page: Page): Promise<void> {
   }
 }
 
+async function removeWrongZipAttachment(page: Page, keepBasename: string): Promise<void> {
+  const attached = page.locator('.text-color-success').filter({ hasText: /\.zip$/i }).first();
+  if (!(await attached.isVisible().catch(() => false))) {
+    return;
+  }
+  const attachedName = (await attached.innerText()).trim();
+  if (attachedName.includes(keepBasename)) {
+    return;
+  }
+
+  const namedRemove = page.getByRole('button', { name: 'Remove file' });
+  if ((await namedRemove.count()) > 0) {
+    await namedRemove.click();
+  } else {
+    const actionButtons = attached.locator('..').locator('..').getByRole('button');
+    const count = await actionButtons.count();
+    if (count > 0) {
+      await actionButtons.nth(count - 1).click();
+    }
+  }
+}
+
 export async function uploadSubmissionZip(page: Page, zipPath: string): Promise<void> {
-  const fileInput = page.locator('input[type="file"]').first();
-  await expect(fileInput).toBeAttached();
-  await fileInput.setInputFiles(zipPath);
-  await expect(page.getByText(path.basename(zipPath))).toBeVisible({ timeout: 120_000 });
+  if (process.env.SNORKEL_SKIP_ZIP_UPLOAD === '1') {
+    return;
+  }
+
+  const base = path.basename(zipPath);
+  const uploadLabel = page
+    .getByText(/Upload terminal bench 2\.0 submission here \(zip file\)/i)
+    .first();
+  await uploadLabel.scrollIntoViewIfNeeded();
+
+  const attachedOk = page.locator('.text-color-success').filter({ hasText: base });
+  if (await attachedOk.first().isVisible().catch(() => false)) {
+    return;
+  }
+
+  await removeWrongZipAttachment(page, base);
+
+  const fileInput = page.locator('input[type="file"]');
+  if ((await fileInput.count()) > 0) {
+    await fileInput.first().setInputFiles(zipPath, { force: true });
+  } else {
+    const [fileChooser] = await Promise.all([
+      page.waitForEvent('filechooser', { timeout: 60_000 }),
+      uploadLabel.click({ force: true }),
+    ]);
+    await fileChooser.setFiles(zipPath);
+  }
+
+  await expect(page.locator('.text-color-success').filter({ hasText: base }).first()).toBeVisible({
+    timeout: 120_000,
+  });
 }
 
 export async function confirmPromptAttestation(page: Page): Promise<void> {

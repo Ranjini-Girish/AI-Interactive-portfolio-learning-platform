@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["seq", "type", "bucket_id", "size_bytes"],
+            "properties": {
+              "seq": { "type": "integer", "minimum": 0 },
+              "type": { "const": "submit" },
+              "bucket_id": {
+                "type": "string", "minLength": 1, "maxLength": 32,
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              "size_bytes": { "type": "integer", "minimum": 1, "maximum": 1000000000 }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["seq", "type"],
+            "properties": {
+              "seq": { "type": "integer", "minimum": 0 },
+              "type": { "const": "tick" }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["seq", "type", "bucket_id", "new_capacity_bytes", "new_leak_bytes_per_tick"],
+            "properties": {
+              "seq": { "type": "integer", "minimum": 0 },
+              "type": { "const": "reconfigure" },
+              "bucket_id": {
+                "type": "string", "minLength": 1, "maxLength": 32,
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              "new_capacity_bytes": { "type": "integer", "minimum": 1, "maximum": 1000000000 },
+              "new_leak_bytes_per_tick": { "type": "integer", "minimum": 0, "maximum": 1000000000 }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

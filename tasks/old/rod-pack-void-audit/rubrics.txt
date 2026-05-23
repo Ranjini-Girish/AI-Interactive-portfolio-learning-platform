@@ -1,0 +1,14 @@
+Agent writes all four required JSON artifacts under /app/rod_audit/, +2
+Agent matches canonical JSON layout from the spec on every output file, +3
+Agent replays ghost additions before incidents when ghost_mode is include, +2
+Agent filters incidents using incident_day_floor and current_day inclusively, +3
+Agent orders applied incidents by ascending day then event_id, +2
+Agent clips rods to each cluster span before union length and void_ppm math, +3
+Agent emits cell_snapshots with rods sorted by rod_id and cells sorted by cell_id, +2
+Agent computes weighted_void_ppm as the integer span-weighted mean of cluster rows, +2
+Agent modifies any file under /app/rod_lat/, -3
+Agent omits an output file or emits malformed JSON that fails parsing, -5
+Agent ignores the ancillary ghost file while ghost_mode is include, -3
+Agent applies incidents in log file order instead of sorted eligibility order, -3
+Agent uses a cluster span that is not the min lo and max hi of its member cells, -3
+Agent writes outputs outside /app/rod_audit/ or leaves the audit directory missing, -2

@@ -8,10 +8,10 @@ category = "scientific-computing"
 subcategories = []
 number_of_milestones = 0
 codebase_size = "small"
-languages = ["python", "bash"]
-tags = ["calibration", "deterministic-json", "incidents", "regularization", "replay-audit"]
-expert_time_estimate_min = 150
-junior_time_estimate_min = 360
+languages = ["java", "bash"]
+tags = ["json", "decimal-rounding", "graph-merge", "incident-log", "deterministic-replay"]
+expert_time_estimate_min = 300
+junior_time_estimate_min = 600
 
 [verifier]
 timeout_sec = 600.0
@@ -21,9 +21,12 @@ timeout_sec = 1800.0
 
 [environment]
 build_timeout_sec = 600.0
+docker_flags = []
 cpus = 2
 memory_mb = 3072
 storage_mb = 10240
+gpus = 0
+gpu_types = []
 gpu_required = false
 network_required = false
 workdir = "/app"

@@ -1,0 +1,11 @@
+{
+  "_comment": "Reference list of expected chain roots produced from the seeded migrations. Re-derived during the audit run; this file is informational and never read by the verifier.",
+  "roots": [
+    "TX_001_a", "TX_002_a", "TX_003_root", "TX_004_a",
+    "TX_005_a", "TX_005_b", "TX_005_c",
+    "TX_006_a", "TX_006_b", "TX_006_c", "TX_006_d", "TX_006_e", "TX_006_f",
+    "TX_007_a", "TX_008_root", "TX_009_a",
+    "TX_011_a", "TX_011_b", "TX_011_c", "TX_011_d", "TX_011_e",
+    "TX_012_a"
+  ]
+}

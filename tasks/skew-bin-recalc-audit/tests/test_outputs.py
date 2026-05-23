@@ -1,4 +1,5 @@
-"""Verifier suite for skew-bin-recalc-audit."""
+# scaffold-status: oracle-pending
+"""Behavioral tests for skew-bin-recalc-audit."""
 
 from __future__ import annotations
 
@@ -12,68 +13,66 @@ import pytest
 DATA_DIR = Path(os.environ.get("SBR_DATA_DIR", "/app/sbr_lab"))
 AUDIT_DIR = Path(os.environ.get("SBR_AUDIT_DIR", "/app/audit"))
 
-OUTPUT_FILES = ["histogram.json", "summary.json"]
+OUTPUT_FILES = ["skew_bins.json", "summary.json"]
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "5c5b7c7b9bfe88e1ba871e777c7db562e5eb6675df48d505eea1b92d18a1364d",
-    "policy.json": "3393a1890dfbea8eba011ee87bf18d91f7f95fa4f36cd537bafe1a803672d672",
-    "pool_state.json": "a1b98fc7c506cb1825afd3026b3a5f883b7ab0a9296a85cf3a395fef4deac302",
-    "incident_log.json": "fe02f4e957155ed03947300fa0dff335eec68ebec4d81740cedc2284a0d9d276",
-    "domain_layout.json": "1b1a532416f8ad5300a818209ee8bdb28f4f71cd0f842e82e1694fff826136bb",
-    "anchors/east.json": "818b9eb11968d1bb3b50b186f1909a468c5f4d24d4063685ee859a57f566b9e4",
-    "anchors/west.json": "853ea7c58bdb7572b6bdfef3904812f02e61176d9263928588b9d2624aa657cf",
-    "ancillary/extra.json": "454f99cb3ded6631b91c98c523e6b9ab849b4490f004ac01bcb90557b3c94d32",
-    "ancillary/meta.json": "9971f656b7189b031c22fcc5ce5e1bb1c1af792570acf46005d283d154219653",
-    "ancillary/stub.json": "45ad609ff3677f4e926efdf23b2aa684c97acf7b14e66232fb283e78063b1045",
-    "samples/sample_00.json": "16c9659f8edd6c8273c839a86313f9b32a4995a83926d30f71b7d7f88a65374d",
-    "samples/sample_01.json": "7d17026f0801437dbe10fd7e5774427ed08c69b3399f578099eddeacfd5b988b",
-    "samples/sample_02.json": "9e941c4ff2d8d1c3720d923188ba287bea45746b39af063047200031829e70f8",
-    "samples/sample_03.json": "fea92c9dbec9dc479c2d652b2676b71a8c5c1ee7ff9de218588cc6602f80177c",
-    "samples/sample_04.json": "5f64361a5e1b69041275bf1582069c6a08bde6e9a4e4301ce87dbac0e3299a0f",
-    "samples/sample_05.json": "dfc7bd2c85fee242e20a4d20ac88a58ae1215d4dca9c0c45e3efada8bfa479f5",
-    "samples/sample_06.json": "3bbbf71dd291e8c481e1f0c4650eba07f2a5b32e853269bbda09ea2ee713f013",
-    "samples/sample_07.json": "6ee5717486b1e5224c43e3cfd1a7e0c7c8b1b9baca66d993348f4227f082e562",
-    "samples/sample_08.json": "6a134040e1be42d89d9386f37281a32ccaa73a452c3e93e1fd6c10695d466c02",
-    "samples/sample_09.json": "7d920c08dc97a85435eb825d39aa9727cf21f39f935b02b33cf479a1e00d3c8f",
-    "samples/sample_10.json": "f66e64b6cc46574681621194893d100cd807e2badeff30005a5ec31db5818670",
-    "samples/sample_11.json": "8779ecd7dbaaf57ae6b1f22e5878a0d28317507edcf5aba6a264711dc25a4ddb",
+    "SPEC.md": "ee0411e849ba1df53bcb0f56b718f782a374363e0e86fc8198bbfcb7c98269b9",
+    "anchors/east.json": "95a9cb71c8647837804a96549a71bcd5859d24182396cbefcdc9b2a93c97ba97",
+    "anchors/west.json": "a4f6d3014b11f77ca64a1c89d914caf3335510f49fb36f6c85c6b23db62108d9",
+    "ancillary/extra.json": "66e0b05e1b6ab764bae179cd10b2453c3ca980eb095f89401c38ff4f021f5dbc",
+    "ancillary/meta.json": "8c183cc752b30a37abd323114a0ec6775a191c5b2d886e5aad85589a6d31ea81",
+    "ancillary/notes.json": "35939c1e11de41c34c3ca02d0b877737dd0dd3fec8b669fb719b9c84de2a61cb",
+    "domain_layout.json": "6c322304d0e092797682ec43070b1a8374ac38b05f01e4036a2b09dc966c7f39",
+    "incident_log.json": "d91cb68778fd4deac977670dde84b594e4ffeb0332fc9d0345767aad3831df3f",
+    "policy.json": "41f0d872bd382fb521d193d0d7311533fed7f915c6f35da30fb897e10e978b7f",
+    "pool_state.json": "9f22c46193ca7e2bec3bf0fdbe27e8f0fbd7b2a2f4e4fc6b74b151b668dc6f68",
+    "samples/sample_00.json": "807def418674e558e0c87970bfb2673ce03554c6525458938d1bff4e5bde4e0a",
+    "samples/sample_01.json": "73af7fda8af3af9d44bd79e24f39c2bab01fd75c692cf205a882a02c4dca137e",
+    "samples/sample_02.json": "4c9d855418b9f4cdd8b9b812da900174e10082d5271829bc02c1a9837fdfa0da",
+    "samples/sample_03.json": "01e4b2aff4a18161d7e5635418c3af847b536c2b6666530221863a38a2808cdb",
+    "samples/sample_04.json": "06fecb73062a4f051742df3a5fd31310121b5bc18079609f7cbeaece65749e57",
+    "samples/sample_05.json": "90400c1f11c08ba84b71ed571d1ef300b4352f750bd1ee17b2a903854de457a9",
+    "samples/sample_06.json": "ea4781842184567e8a260cdf57cfa253b07c3b376806bc6d220af36d76e7dee4",
+    "samples/sample_07.json": "ab11e3121cc13736f33369f30cb9d914d4b86badecdb6c522845887aec98bdd5",
+    "samples/sample_08.json": "9e194411fbab6a16e32e34a17576c53dbb86b1404d4a9057612334a4ded78975",
+    "samples/sample_09.json": "30b541004ea397e87900bcb272ccc17a9b383975237f1708a2f2c885d03544b8",
+    "samples/sample_10.json": "f97b1710381bdb95ed98cf8657972fc4ac27cdcc57fc036d0439ede475301a7f",
+    "samples/sample_11.json": "41d6bce97f8e800a2b93c2018e8c9a483c8fbbdbb521212dfda0547cbe83da51",
 }
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "histogram.json": "8222033506b3a73db26014781dc853d93d4235127797f24c51958133a38d4466",
-    "summary.json": "33091e5e8354fecb1a428c7d6f8ff03e5b1798131c988bfa0da38e404d42bc6d",
+    "skew_bins.json": "91e2eb36419fa2559e8694545f079a2ab90d3806171a11e605ce08122b1ca3e8",
+    "summary.json": "913199aae0777c56556fea1a973e3b15257607642e79a6c211aea33df23ea23b",
 }
 
 
 EXPECTED_FIELD_HASHES = {
-    "histogram.json.bins": "3bb915ebed105a31f9d01b0e3499b9cc21ff69fcd355f5cd700a040c35e9873a",
-    "summary.json.as_of": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
-    "summary.json.bins": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-    "summary.json.samples_in": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
-    "summary.json.samples_used": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+    "skew_bins.json.samples": "1b70b785a8bd54c23acd88019a02241edfdc1d227083715accd00361c7d7d634",
+    "summary.json.tail_ledger_sha": "83699e8cbbeb0cc036a2a6b03208b52eeedff1f43b9d65d56232ba3e480dbf0a",
+    "summary.json.total_assignments": "9f14025af0065b30e47e23ebb3b491d39ae8ed17d33739e5ff3827ffb3634953",
 }
 
 
 def _sha256_bytes(data: bytes) -> str:
-    """Return the lowercase hex SHA-256 digest for bytes."""
+    """Return the lowercase hexadecimal SHA-256 digest of ``data``."""
     return hashlib.sha256(data).hexdigest()
 
 
 def _canonical(value: object) -> str:
-    """Serialize using the verifier's canonical minified form."""
+    """Serialize ``value`` like the reference harness (sorted keys, compact separators)."""
     return json.dumps(value, sort_keys=True, separators=(",", ":"))
 
 
 def _load_json(path: Path) -> object:
-    """Load JSON from disk."""
+    """Parse UTF-8 JSON from ``path``."""
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 @pytest.fixture(scope="session")
 def outputs() -> dict[str, object]:
-    """Load emitted audit JSON objects."""
+    """Load every mandated audit JSON object from ``AUDIT_DIR``."""
     payload: dict[str, object] = {}
     for name in OUTPUT_FILES:
         path = AUDIT_DIR / name

@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "endpoint_id": "svc_a",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 0,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "svc_a",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 1,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 2,
+      "window_size": null
+    }
+  ]
+}

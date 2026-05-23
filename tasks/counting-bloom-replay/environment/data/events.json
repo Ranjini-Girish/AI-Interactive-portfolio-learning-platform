@@ -1,0 +1,444 @@
+{
+  "events": [
+    {
+      "key_idx": 0,
+      "op": "add",
+      "seq": 1
+    },
+    {
+      "key_idx": 1,
+      "op": "add",
+      "seq": 2
+    },
+    {
+      "key_idx": 2,
+      "op": "add",
+      "seq": 3
+    },
+    {
+      "key_idx": 3,
+      "op": "add",
+      "seq": 4
+    },
+    {
+      "key_idx": 4,
+      "op": "add",
+      "seq": 5
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 6
+    },
+    {
+      "key_idx": 6,
+      "op": "add",
+      "seq": 7
+    },
+    {
+      "key_idx": 7,
+      "op": "add",
+      "seq": 8
+    },
+    {
+      "key_idx": 8,
+      "op": "add",
+      "seq": 9
+    },
+    {
+      "key_idx": 9,
+      "op": "add",
+      "seq": 10
+    },
+    {
+      "key_idx": 10,
+      "op": "add",
+      "seq": 11
+    },
+    {
+      "key_idx": 11,
+      "op": "add",
+      "seq": 12
+    },
+    {
+      "key_idx": 0,
+      "op": "add",
+      "seq": 13
+    },
+    {
+      "key_idx": 0,
+      "op": "add",
+      "seq": 14
+    },
+    {
+      "key_idx": 1,
+      "op": "add",
+      "seq": 15
+    },
+    {
+      "key_idx": 1,
+      "op": "add",
+      "seq": 16
+    },
+    {
+      "key_idx": 2,
+      "op": "add",
+      "seq": 17
+    },
+    {
+      "key_idx": 2,
+      "op": "add",
+      "seq": 18
+    },
+    {
+      "key_idx": 3,
+      "op": "add",
+      "seq": 19
+    },
+    {
+      "key_idx": 3,
+      "op": "add",
+      "seq": 20
+    },
+    {
+      "op": "dump_stats",
+      "seq": 21
+    },
+    {
+      "key_idx": 0,
+      "op": "query",
+      "seq": 22
+    },
+    {
+      "key_idx": 1,
+      "op": "query",
+      "seq": 23
+    },
+    {
+      "key_idx": 2,
+      "op": "query",
+      "seq": 24
+    },
+    {
+      "key_idx": 8,
+      "op": "query",
+      "seq": 25
+    },
+    {
+      "key_idx": 11,
+      "op": "query",
+      "seq": 26
+    },
+    {
+      "key_idx": 14,
+      "op": "query",
+      "seq": 27
+    },
+    {
+      "key_idx": 19,
+      "op": "query",
+      "seq": 28
+    },
+    {
+      "key_idx": 25,
+      "op": "query",
+      "seq": 29
+    },
+    {
+      "key_idx": 14,
+      "op": "query",
+      "seq": 30
+    },
+    {
+      "key_idx": 14,
+      "op": "query",
+      "seq": 31
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 32
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 33
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 34
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 35
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 36
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 37
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 38
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 39
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 40
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 41
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 42
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 43
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 44
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 45
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 46
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 47
+    },
+    {
+      "op": "dump_stats",
+      "seq": 48
+    },
+    {
+      "key_idx": 5,
+      "op": "remove",
+      "seq": 49
+    },
+    {
+      "key_idx": 5,
+      "op": "remove",
+      "seq": 50
+    },
+    {
+      "key_idx": 5,
+      "op": "remove",
+      "seq": 51
+    },
+    {
+      "key_idx": 5,
+      "op": "remove",
+      "seq": 52
+    },
+    {
+      "key_idx": 22,
+      "op": "remove",
+      "seq": 53
+    },
+    {
+      "key_idx": 23,
+      "op": "remove",
+      "seq": 54
+    },
+    {
+      "op": "clear",
+      "seq": 55
+    },
+    {
+      "op": "dump_stats",
+      "seq": 56
+    },
+    {
+      "key_idx": 0,
+      "op": "add",
+      "seq": 57
+    },
+    {
+      "key_idx": 1,
+      "op": "add",
+      "seq": 58
+    },
+    {
+      "key_idx": 2,
+      "op": "add",
+      "seq": 59
+    },
+    {
+      "key_idx": 3,
+      "op": "add",
+      "seq": 60
+    },
+    {
+      "key_idx": 4,
+      "op": "add",
+      "seq": 61
+    },
+    {
+      "key_idx": 5,
+      "op": "add",
+      "seq": 62
+    },
+    {
+      "key_idx": 6,
+      "op": "add",
+      "seq": 63
+    },
+    {
+      "key_idx": 0,
+      "op": "add",
+      "seq": 64
+    },
+    {
+      "key_idx": 1,
+      "op": "add",
+      "seq": 65
+    },
+    {
+      "key_idx": 2,
+      "op": "add",
+      "seq": 66
+    },
+    {
+      "key_idx": 20,
+      "op": "query",
+      "seq": 67
+    },
+    {
+      "key_idx": 21,
+      "op": "query",
+      "seq": 68
+    },
+    {
+      "key_idx": 22,
+      "op": "query",
+      "seq": 69
+    },
+    {
+      "key_idx": 23,
+      "op": "query",
+      "seq": 70
+    },
+    {
+      "key_idx": 0,
+      "op": "query",
+      "seq": 71
+    },
+    {
+      "key_idx": 1,
+      "op": "query",
+      "seq": 72
+    },
+    {
+      "new_k": 5,
+      "new_m": 32,
+      "op": "resize",
+      "seq": 73
+    },
+    {
+      "op": "dump_stats",
+      "seq": 74
+    },
+    {
+      "key_idx": 0,
+      "op": "query",
+      "seq": 75
+    },
+    {
+      "key_idx": 1,
+      "op": "query",
+      "seq": 76
+    },
+    {
+      "key_idx": 2,
+      "op": "query",
+      "seq": 77
+    },
+    {
+      "key_idx": 3,
+      "op": "query",
+      "seq": 78
+    },
+    {
+      "key_idx": 4,
+      "op": "query",
+      "seq": 79
+    },
+    {
+      "key_idx": 5,
+      "op": "query",
+      "seq": 80
+    },
+    {
+      "key_idx": 6,
+      "op": "query",
+      "seq": 81
+    },
+    {
+      "key_idx": 10,
+      "op": "query",
+      "seq": 82
+    },
+    {
+      "key_idx": 11,
+      "op": "query",
+      "seq": 83
+    },
+    {
+      "key_idx": 12,
+      "op": "query",
+      "seq": 84
+    },
+    {
+      "key_idx": 13,
+      "op": "query",
+      "seq": 85
+    },
+    {
+      "key_idx": 15,
+      "op": "query",
+      "seq": 86
+    },
+    {
+      "key_idx": 15,
+      "op": "query",
+      "seq": 87
+    },
+    {
+      "key_idx": 15,
+      "op": "query",
+      "seq": 88
+    },
+    {
+      "op": "dump_stats",
+      "seq": 89
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+# scaffold-status: oracle-pending
 """Behavioral tests for the tls-cert-chain-auditor task.
 
 These tests assert the agent's outputs against the documented contract in

@@ -1,0 +1,29 @@
+FROM eclipse-temurin:21-jdk@sha256:be5aea962f8215d917d30c7d5a5ed32359580aef9c353b921487362b24650dde
+
+WORKDIR /app
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        asciinema \
+        ca-certificates \
+        curl \
+        python3 \
+        python3-pip \
+        tmux \
+    && curl -fsSL https://repo1.maven.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar -o /opt/gson.jar \
+    && echo "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b  /opt/gson.jar" | sha256sum -c - \
+    && curl -fsSL https://repo1.maven.org/maven2/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar -o /opt/snakeyaml.jar \
+    && echo "1467931448a0817696ae2805b7b8b20bfb082652bf9c4efaed528930dc49389b  /opt/snakeyaml.jar" | sha256sum -c - \
+    && python3 -m pip install --no-cache-dir --break-system-packages \
+        pytest==8.4.1 \
+        pytest-json-ctrf==0.3.5 \
+        PyYAML==6.0.1 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+
+COPY data/ /app/data/
+
+CMD ["/bin/bash"]

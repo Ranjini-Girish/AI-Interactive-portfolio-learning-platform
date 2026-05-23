@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "stats_dumps.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dumps"],
+  "properties": {
+    "dumps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "counter_bits",
+          "k",
+          "m",
+          "non_zero_slots",
+          "saturated_slots",
+          "seq",
+          "stats",
+          "total_count"
+        ],
+        "properties": {
+          "counter_bits": { "type": "integer" },
+          "k": { "type": "integer" },
+          "m": { "type": "integer" },
+          "non_zero_slots": { "type": "integer", "minimum": 0 },
+          "saturated_slots": { "type": "integer", "minimum": 0 },
+          "seq": { "type": "integer", "minimum": 1 },
+          "total_count": { "type": "integer", "minimum": 0 },
+          "stats": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "clamped_remove",
+              "clears",
+              "rejected_negative",
+              "rejected_saturate",
+              "resizes",
+              "successful_adds",
+              "successful_queries",
+              "successful_removes"
+            ],
+            "properties": {
+              "clamped_remove": { "type": "integer" },
+              "clears": { "type": "integer" },
+              "rejected_negative": { "type": "integer" },
+              "rejected_saturate": { "type": "integer" },
+              "resizes": { "type": "integer" },
+              "successful_adds": { "type": "integer" },
+              "successful_queries": { "type": "integer" },
+              "successful_removes": { "type": "integer" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

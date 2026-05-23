@@ -1,0 +1,4 @@
+{
+  "engines_node_workspace": ">=20.0.0 <23.0.0",
+  "peer_intersection_required": true
+}

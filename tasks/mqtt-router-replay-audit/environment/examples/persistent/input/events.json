@@ -1,0 +1,8 @@
+{
+  "events": [
+    {"seq": 0, "kind": "connect", "id": "bravo", "clean_start": false, "keep_alive_sec": 60},
+    {"seq": 1, "kind": "publish", "topic": "events/temp", "payload_id": 11, "qos": 1, "retain": false, "client_id": "alpha"},
+    {"seq": 2, "kind": "expire_keepalive", "id": "alpha"},
+    {"seq": 3, "kind": "tick", "delta_sec": 5}
+  ]
+}

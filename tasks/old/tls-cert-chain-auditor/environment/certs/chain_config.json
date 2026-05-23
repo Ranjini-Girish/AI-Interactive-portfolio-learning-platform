@@ -1,0 +1,18 @@
+{
+  "trusted_roots": ["root-globaltrust", "root-eutrust", "root-asiatrust"],
+  "expiry_warn_days": 60,
+  "ocsp_stale_days": 7,
+  "max_chain_depth": 4,
+  "key_size_min_per_tier": {
+    "production": 2048,
+    "staging": 2048,
+    "internal": 1024
+  },
+  "san_policy_per_tier": {
+    "production": "exact",
+    "staging": "wildcard_ok",
+    "internal": "cn_only"
+  },
+  "deprecated_signature_algos": ["sha1-rsa", "md5-rsa"],
+  "soft_fail_untrusted_tiers": ["production"]
+}

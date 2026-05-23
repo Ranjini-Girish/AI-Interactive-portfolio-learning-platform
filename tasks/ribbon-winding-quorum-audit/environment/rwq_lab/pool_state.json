@@ -1,6 +1,11 @@
 {
-  "tier_cap": {
-    "alpha": 50,
-    "beta": 40
-  }
+  "votes": {
+    "p_e0": 6,
+    "p_e1": 12,
+    "p_w0": 11,
+    "p_w1": 4,
+    "p_n0": 9,
+    "p_n1": 3
+  },
+  "current_day": 2
 }

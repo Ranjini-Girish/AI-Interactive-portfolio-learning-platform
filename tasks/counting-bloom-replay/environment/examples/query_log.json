@@ -1,0 +1,25 @@
+{
+  "queries": [
+    {
+      "actual": true,
+      "key": "alpha",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 2
+    },
+    {
+      "actual": false,
+      "key": "bravo",
+      "outcome": "fp",
+      "predicted": true,
+      "seq": 3
+    },
+    {
+      "actual": false,
+      "key": "alpha",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 6
+    }
+  ]
+}

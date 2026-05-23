@@ -1,0 +1,11 @@
+{
+  "harvests": [
+    {
+      "parent_pid": 100,
+      "pid": 200,
+      "seq": 2,
+      "tick": 8,
+      "trigger": "wait"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "crash-012",
+  "reported_day": 55,
+  "reporter": "leo@example.com",
+  "frame_stack": ["auth::session::validate", "auth::token::parse", "auth::cache::lookup", "auth::cache::evict"],
+  "env_hash": "1a2b3c4d5e6f77889900112a3b4c5d6e1a2b3c4d5e6f77889900112a3b4c5d6e",
+  "reproducibility": "intermittent",
+  "severity_observed": "medium"
+}

@@ -1,0 +1,6 @@
+{
+  "flows": [
+    {"id": "g01", "direction": "ingress", "src_ip": "198.51.100.5", "dst_ip": "192.0.2.10", "protocol": "tcp", "src_port": 51000, "dst_port": 80},
+    {"id": "g02", "direction": "ingress", "src_ip": "198.51.100.6", "dst_ip": "192.0.2.10", "protocol": "tcp", "src_port": 51001, "dst_port": 22}
+  ]
+}

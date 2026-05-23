@@ -1,0 +1,11 @@
+{
+  "entries": [
+    {
+      "decision": "replay_dropped",
+      "diagnostic": "W_REPLAY",
+      "esp_seq": 3,
+      "sa_id": "x",
+      "seq": 2
+    }
+  ]
+}

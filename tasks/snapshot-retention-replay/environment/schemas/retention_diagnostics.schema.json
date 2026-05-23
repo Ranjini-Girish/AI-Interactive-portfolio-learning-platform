@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "retention_diagnostics.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["diagnostics", "seq"],
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0},
+          "diagnostics": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["code", "severity", "snapshot_id"],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "enum": [
+                    "E_DUPLICATE_ID",
+                    "E_DUPLICATE_NAME",
+                    "E_HOLD_PREVENTS_DELETE",
+                    "E_SNAPSHOT_NOT_FOUND",
+                    "E_TICK_NEGATIVE",
+                    "W_BREAK_HOLDS",
+                    "W_DATASET_EMPTY",
+                    "W_HOLD_ALREADY_PRESENT",
+                    "W_HOLD_NOT_PRESENT",
+                    "W_NO_RULES_DEFINED",
+                    "W_SKIP_HELD",
+                    "W_TICK_ZERO"
+                  ]
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": ["error", "warning", "note"]
+                },
+                "snapshot_id": {
+                  "anyOf": [
+                    {"type": "string", "minLength": 1},
+                    {"type": "null"}
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "segments": [
+    {
+      "created_at_unix_ms": 1700000000400,
+      "level": 1,
+      "merged_at_unix_ms": null,
+      "merged_into_event_id": null,
+      "seg_id": "merged_e_004",
+      "size_bytes": 600,
+      "status": "live"
+    },
+    {
+      "created_at_unix_ms": 1700000000100,
+      "level": 0,
+      "merged_at_unix_ms": 1700000000400,
+      "merged_into_event_id": "e_004",
+      "seg_id": "s_001",
+      "size_bytes": 100,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000000200,
+      "level": 0,
+      "merged_at_unix_ms": 1700000000400,
+      "merged_into_event_id": "e_004",
+      "seg_id": "s_002",
+      "size_bytes": 200,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000000300,
+      "level": 0,
+      "merged_at_unix_ms": 1700000000400,
+      "merged_into_event_id": "e_004",
+      "seg_id": "s_003",
+      "size_bytes": 300,
+      "status": "merged"
+    }
+  ]
+}

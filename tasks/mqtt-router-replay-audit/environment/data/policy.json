@@ -1,0 +1,8 @@
+{
+  "now_sec": 1000,
+  "max_subscriptions_per_client": 8,
+  "max_retained": 6,
+  "wildcard_plus_allowed": true,
+  "wildcard_hash_allowed": true,
+  "deliver_to_self": false
+}

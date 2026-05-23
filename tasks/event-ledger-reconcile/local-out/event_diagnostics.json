@@ -1,0 +1,160 @@
+{
+  "diagnostics": [
+    {
+      "account": "A1",
+      "code": "E_DAILY_LIMIT_EXCEEDED",
+      "evidence": {
+        "attempted_amount_cents": 80000,
+        "daily_total_after_cents": 110000,
+        "limit_cents": 100000
+      },
+      "seq": 5,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A1",
+      "code": "E_INSUFFICIENT_FUNDS",
+      "evidence": {
+        "attempted_amount_cents": 50000,
+        "available_cents": -25000,
+        "floor_cents": 0
+      },
+      "seq": 6,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A3",
+      "code": "E_DAILY_LIMIT_EXCEEDED",
+      "evidence": {
+        "attempted_amount_cents": 150000,
+        "daily_total_after_cents": 250000,
+        "limit_cents": 100000
+      },
+      "seq": 10,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A3",
+      "code": "E_INSUFFICIENT_FUNDS",
+      "evidence": {
+        "attempted_amount_cents": 200000,
+        "available_cents": -350000,
+        "floor_cents": -200000
+      },
+      "seq": 11,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A1",
+      "code": "E_SELF_TRANSFER",
+      "evidence": {},
+      "seq": 13,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A4",
+      "code": "E_FROZEN_ACCOUNT",
+      "evidence": {},
+      "seq": 15,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A4",
+      "code": "E_FROZEN_ACCOUNT",
+      "evidence": {},
+      "seq": 17,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A5",
+      "code": "E_CLOSED_ACCOUNT",
+      "evidence": {},
+      "seq": 18,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A5",
+      "code": "E_CLOSED_ACCOUNT",
+      "evidence": {},
+      "seq": 19,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A2",
+      "code": "E_INVALID_REVERSAL",
+      "evidence": {
+        "reason": "target_not_reversible",
+        "reverses_seq": 21
+      },
+      "seq": 22,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A1",
+      "code": "E_INVALID_REVERSAL",
+      "evidence": {
+        "reason": "target_already_reversed",
+        "reverses_seq": 0
+      },
+      "seq": 23,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A1",
+      "code": "E_INVALID_REVERSAL",
+      "evidence": {
+        "reason": "outside_window",
+        "reverses_seq": 4
+      },
+      "seq": 24,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A1",
+      "code": "E_INVALID_REVERSAL",
+      "evidence": {
+        "reason": "target_not_found",
+        "reverses_seq": 999
+      },
+      "seq": 25,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "account": "A1",
+      "code": "W_HOLD_EXPIRED",
+      "evidence": {
+        "age_days": 10,
+        "amount_cents": 5000,
+        "hold_seq": 3
+      },
+      "seq": 27,
+      "severity": "warning",
+      "severity_rank": 1
+    },
+    {
+      "account": "A4",
+      "code": "N_RECONCILIATION_MISMATCH",
+      "evidence": {
+        "actual_balance_cents": 38000,
+        "delta_cents": 8000,
+        "expected_balance_cents": 30000
+      },
+      "seq": 27,
+      "severity": "note",
+      "severity_rank": 2
+    }
+  ]
+}

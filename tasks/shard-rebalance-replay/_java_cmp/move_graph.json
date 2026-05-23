@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "n01",
+      "in_degree": 1,
+      "out_degree": 4
+    },
+    {
+      "id": "n02",
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "n03",
+      "in_degree": 3,
+      "out_degree": 1
+    },
+    {
+      "id": "n04",
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "n05",
+      "in_degree": 3,
+      "out_degree": 1
+    },
+    {
+      "id": "n06",
+      "in_degree": 1,
+      "out_degree": 0
+    }
+  ],
+  "edges": [
+    {
+      "from": "n01",
+      "to": "n02"
+    },
+    {
+      "from": "n01",
+      "to": "n03"
+    },
+    {
+      "from": "n01",
+      "to": "n04"
+    },
+    {
+      "from": "n01",
+      "to": "n05"
+    },
+    {
+      "from": "n02",
+      "to": "n03"
+    },
+    {
+      "from": "n02",
+      "to": "n05"
+    },
+    {
+      "from": "n02",
+      "to": "n06"
+    },
+    {
+      "from": "n03",
+      "to": "n02"
+    },
+    {
+      "from": "n04",
+      "to": "n01"
+    },
+    {
+      "from": "n04",
+      "to": "n05"
+    },
+    {
+      "from": "n05",
+      "to": "n03"
+    }
+  ],
+  "cycles": [
+    [
+      "n01",
+      "n04"
+    ],
+    [
+      "n02",
+      "n03",
+      "n05"
+    ]
+  ]
+}

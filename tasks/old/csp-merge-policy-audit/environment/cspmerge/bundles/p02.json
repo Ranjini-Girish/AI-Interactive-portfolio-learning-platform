@@ -1,0 +1,9 @@
+{
+  "bundle_id": "p02",
+  "delivery_mode": "enforce",
+  "directives": {
+    "img-src": ["https://cdn.alpha.example"]
+  },
+  "nonces": [],
+  "origin_id": "o-beta"
+}

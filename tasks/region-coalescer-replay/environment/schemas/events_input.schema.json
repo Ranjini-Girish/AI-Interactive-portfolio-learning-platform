@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["base", "id", "op", "owner", "prot", "seq", "size", "target_id"],
+        "properties": {
+          "seq":    { "type": "integer", "minimum": 0 },
+          "op":     { "type": "string",  "enum": ["map", "unmap", "mprotect", "split", "merge"] },
+          "id":     { "type": ["string", "null"] },
+          "base":   { "type": ["integer", "null"], "minimum": 0 },
+          "size":   { "type": ["integer", "null"], "minimum": 1 },
+          "prot":   { "type": ["string", "null"],  "enum": ["r", "rw", "rx", "rwx", null] },
+          "owner":  { "type": ["string", "null"] },
+          "target_id": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "string" },
+              {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "string" }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

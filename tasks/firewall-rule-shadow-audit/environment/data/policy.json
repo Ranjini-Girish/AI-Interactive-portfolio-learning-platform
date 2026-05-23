@@ -1,0 +1,5 @@
+{
+  "default_action": "allow",
+  "enable_directionality": true,
+  "tie_breaker": "priority_lowest_wins"
+}

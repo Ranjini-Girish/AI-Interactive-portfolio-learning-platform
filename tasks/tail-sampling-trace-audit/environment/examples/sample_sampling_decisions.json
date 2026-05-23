@@ -1,0 +1,22 @@
+{
+  "decisions": [
+    {
+      "decision": "drop",
+      "matched_policy": "default-probabilistic",
+      "reason": "policy_match",
+      "trace_id": "00000000aaaaaaaa"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-payments-errors",
+      "reason": "policy_match",
+      "trace_id": "00000000bbbbbbbb"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "cycle_detected",
+      "trace_id": "00000000cccccccc"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "chronic_runs_recent_days": 30,
+  "chronic_runs_threshold": 4,
+  "consumer_pause_max_hops": 1,
+  "cost_approval_node_hours": 200.0,
+  "energy_drift_pct_max": 1.0,
+  "exploratory_cost_discount_pct": 12,
+  "gpu_saturation_max": 95.0,
+  "peak_quiesce_surcharge_pct": 40,
+  "peak_quiesce_window": {
+    "end_day": 245,
+    "start_day": 235
+  },
+  "residual_max": 0.005,
+  "samples_per_second_min": 100.0,
+  "severity_buckets": {
+    "critical": {
+      "max_violation_pct": null
+    },
+    "minor": {
+      "max_violation_pct": 30
+    },
+    "moderate": {
+      "max_violation_pct": 60
+    },
+    "severe": {
+      "max_violation_pct": 100
+    }
+  },
+  "trend_change_pct_threshold": 15.0,
+  "volatility_ratio_threshold": 0.20
+}

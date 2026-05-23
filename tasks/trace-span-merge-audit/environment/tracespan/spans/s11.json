@@ -1,0 +1,8 @@
+{
+  "end_us": 100,
+  "parent_id": "s10",
+  "service": "api",
+  "span_id": "s11",
+  "start_us": 70,
+  "status": "ok"
+}

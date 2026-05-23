@@ -1,0 +1,17 @@
+{
+  "incidents": [
+    {
+      "active_from": 0, 
+      "active_to": 9, 
+      "delta": 1, 
+      "kind": "shift_bins", 
+      "probe": "p2"
+    }, 
+    {
+      "active_from": 0, 
+      "active_to": 99, 
+      "kind": "suppress", 
+      "probe": "p5"
+    }
+  ]
+}

@@ -1,19 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
-SOL_DIR="$(cd "$(dirname "$0")" && pwd)"
+export CLASSPATH=/opt/gson.jar
 
-mkdir -p /app/src /app/bin /app/audit
+DATA_DIR="${SDA_DATA_DIR:-/app/stokes_lab}"
+AUDIT_DIR="${SDA_AUDIT_DIR:-/app/audit}"
 
-cp "$SOL_DIR/diffusion.go" /app/src/main.go
+mkdir -p "$AUDIT_DIR"
 
-cd /app/src
-if [ ! -f go.mod ]; then
-  go mod init stokesdiff >/dev/null 2>&1
-fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BUILD_DIR="$(mktemp -d)"
+trap 'rm -rf "$BUILD_DIR"' EXIT
 
-GOFLAGS="-mod=mod" GOTOOLCHAIN=local go build -o /app/bin/stokesdiff .
-
-SDA_DATA_DIR="${SDA_DATA_DIR:-/app/stokes_lab}" \
-SDA_AUDIT_DIR="${SDA_AUDIT_DIR:-/app/audit}" \
-/app/bin/stokesdiff
+javac -encoding UTF-8 -cp "$CLASSPATH" -d "$BUILD_DIR" "$SCRIPT_DIR/StokesDiffusionAudit.java"
+java -cp "$CLASSPATH:$BUILD_DIR" StokesDiffusionAudit "$DATA_DIR" "$AUDIT_DIR"

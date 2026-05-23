@@ -1,0 +1,7 @@
+{
+  "epoch": 6,
+  "record_id": "rec_b",
+  "rtype": "CNAME",
+  "target": "rec_a",
+  "ttl": 250
+}

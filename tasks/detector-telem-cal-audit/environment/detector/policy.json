@@ -1,0 +1,23 @@
+{
+  "min_calibration_points": 3,
+  "outlier_k_sigma": 2.0,
+  "outlier_max_iterations": 5,
+  "residual_warning_threshold": 0.1,
+  "signal_match_tolerance": 5.0,
+  "signal_deviation_warning_threshold": 1.0,
+  "drift_max_deviation_threshold": 100.0,
+  "drift_stddev_threshold": 50.0,
+  "event_anomaly_z_threshold": 1.5,
+  "anomaly_min_events": 3,
+  "anomaly_burst_threshold": 2,
+  "min_correlation_runs": 5,
+  "cross_channel_corr_threshold": 0.3,
+  "min_run_health": 0.97,
+  "severity_ranks": {
+    "critical": 4,
+    "high": 3,
+    "medium": 2,
+    "low": 1,
+    "info": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "tree": [
+    {
+      "children": [
+        "team_x"
+      ],
+      "depth": 0,
+      "name": "root",
+      "parent": null,
+      "used_subtree": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      }
+    },
+    {
+      "children": [],
+      "depth": 1,
+      "name": "team_x",
+      "parent": "root",
+      "used_subtree": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      }
+    }
+  ]
+}

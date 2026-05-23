@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "policy.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "init_pid",
+    "orphan_handling",
+    "implicit_init_reap",
+    "wait_on_living_child",
+    "track_lineage"
+  ],
+  "properties": {
+    "init_pid": {"type": "integer", "minimum": 1},
+    "orphan_handling": {"enum": ["reparent_to_init", "leave_orphaned"]},
+    "implicit_init_reap": {"type": "boolean"},
+    "wait_on_living_child": {"enum": ["diagnostic", "noop"]},
+    "track_lineage": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "cgroups": [
+    {
+      "cpu_quota_ms": 1000,
+      "id": "root",
+      "io_quota_iops": 100,
+      "mem_quota_kb": 1024,
+      "parent_id": null
+    },
+    {
+      "cpu_quota_ms": 500,
+      "id": "leaf",
+      "io_quota_iops": 50,
+      "mem_quota_kb": 512,
+      "parent_id": "root"
+    }
+  ]
+}

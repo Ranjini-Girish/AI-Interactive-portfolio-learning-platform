@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "policy_input",
+  "type": "object",
+  "required": [
+    "allowed_algorithms",
+    "idle_retire_ticks",
+    "near_exhaustion_ratio",
+    "severity_ranks"
+  ],
+  "properties": {
+    "allowed_algorithms": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "idle_retire_ticks": {"type": "integer"},
+    "near_exhaustion_ratio": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"type": "integer"}
+    },
+    "severity_ranks": {
+      "type": "object",
+      "required": ["error", "warning", "notice"],
+      "properties": {
+        "error":   {"type": "integer"},
+        "warning": {"type": "integer"},
+        "notice":  {"type": "integer"}
+      }
+    }
+  }
+}

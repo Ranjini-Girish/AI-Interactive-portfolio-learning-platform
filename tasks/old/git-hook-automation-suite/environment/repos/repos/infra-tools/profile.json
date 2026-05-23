@@ -1,0 +1,6 @@
+{
+  "repo": "infra-tools",
+  "tier": "gold",
+  "language": "python",
+  "override_rules": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "crash-019",
+  "reported_day": 20,
+  "reporter": "stan@example.com",
+  "frame_stack": ["sched::yield", "sched::wake", "sched::idle", "sched::yield"],
+  "env_hash": "8a9b0c1d2e3f44556677889900bc23d48a9b0c1d2e3f44556677889900bc23d4",
+  "reproducibility": "once",
+  "severity_observed": "medium"
+}

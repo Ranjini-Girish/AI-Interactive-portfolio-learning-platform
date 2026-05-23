@@ -1,0 +1,46 @@
+{
+  "cgroups": [
+    {
+      "cpu_quota_ms": 10000,
+      "id": "root",
+      "io_quota_iops": 1000,
+      "mem_quota_kb": 65536,
+      "parent_id": null
+    },
+    {
+      "cpu_quota_ms": 4000,
+      "id": "system",
+      "io_quota_iops": 400,
+      "mem_quota_kb": 16384,
+      "parent_id": "root"
+    },
+    {
+      "cpu_quota_ms": 4000,
+      "id": "users",
+      "io_quota_iops": 400,
+      "mem_quota_kb": 16384,
+      "parent_id": "root"
+    },
+    {
+      "cpu_quota_ms": 2000,
+      "id": "alice",
+      "io_quota_iops": 200,
+      "mem_quota_kb": 4096,
+      "parent_id": "users"
+    },
+    {
+      "cpu_quota_ms": 2000,
+      "id": "bob",
+      "io_quota_iops": 200,
+      "mem_quota_kb": 4096,
+      "parent_id": "users"
+    },
+    {
+      "cpu_quota_ms": 1500,
+      "id": "kworker",
+      "io_quota_iops": 200,
+      "mem_quota_kb": 1024,
+      "parent_id": "system"
+    }
+  ]
+}

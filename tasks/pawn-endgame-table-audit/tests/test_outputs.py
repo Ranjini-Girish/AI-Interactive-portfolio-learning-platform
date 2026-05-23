@@ -1,4 +1,10 @@
-"""Behavioral tests for pawn-endgame-table-audit."""
+# scaffold-status: oracle-pending
+"""Verifier suite for pawn-endgame-table-audit.
+
+SHA-256 pins fixture bytes, enforces canonical JSON layout, Go-only /app/src,
+an ELF pawnaudit binary, hash-locked outputs on rerun, and semantic anchors
+from the bundled dataset.
+"""
 
 from __future__ import annotations
 
@@ -69,16 +75,19 @@ EXPECTED_FIELD_HASHES = {
 
 
 def _sha256_bytes(data: bytes) -> str:
+    """Return the lowercase hex SHA-256 digest of the given bytes."""
     return hashlib.sha256(data).hexdigest()
 
 
 def _canonical_sha(obj) -> str:
+    """Hash compact JSON (sorted keys, comma separators, trailing LF) as UTF-8."""
     payload = (json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
     return _sha256_bytes(payload)
 
 
 @pytest.fixture(scope="module")
 def loaded_outputs():
+    """Load each required audit JSON under PET_AUDIT_DIR with parsed objects and raw bytes."""
     result = {}
     for name in REQUIRED_OUTPUT_FILES:
         p = PET_AUDIT_DIR / name
@@ -93,6 +102,7 @@ class TestInputIntegrity:
 
     @pytest.mark.parametrize("rel", sorted(EXPECTED_INPUT_HASHES.keys()))
     def test_input_hashes_match(self, rel):
+        """Each relative fixture path under PET_DATA_DIR matches its pinned SHA-256."""
         p = PET_DATA_DIR / rel
         assert p.is_file(), f"missing input fixture: {rel}"
         assert _sha256_bytes(p.read_bytes()) == EXPECTED_INPUT_HASHES[rel]
@@ -102,17 +112,20 @@ class TestOutputStructure:
     """Output files must be deterministic and canonical."""
 
     def test_audit_dir_contains_only_expected_files(self):
+        """PET_AUDIT_DIR lists exactly the five required filenames and no others."""
         actual = sorted(p.name for p in PET_AUDIT_DIR.iterdir() if p.is_file())
         assert actual == sorted(REQUIRED_OUTPUT_FILES)
 
     @pytest.mark.parametrize("name", REQUIRED_OUTPUT_FILES)
     def test_pretty_sorted_and_newline(self, loaded_outputs, name):
+        """Each output file matches two-space sorted-key JSON plus a single trailing newline."""
         obj = loaded_outputs[name]["obj"]
         expected = (json.dumps(obj, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8")
         assert loaded_outputs[name]["bytes"] == expected
 
     @pytest.mark.parametrize("name", REQUIRED_OUTPUT_FILES)
     def test_top_level_canonical_hash(self, loaded_outputs, name):
+        """Each parsed top-level object matches its compact canonical SHA-256 pin."""
         assert _canonical_sha(loaded_outputs[name]["obj"]) == EXPECTED_OUTPUT_CANONICAL_HASHES[name]
 
 
@@ -120,25 +133,30 @@ class TestSemanticBehavior:
     """Cross-checks implied by the published specification text."""
 
     def test_frozen_positions_suppress_race_distance(self, loaded_outputs):
+        """race-r05 is frozen with zero plies_to_decisive when illegal-freeze applies."""
         races = {r["position_id"]: r for r in loaded_outputs["passed_pawn_races.json"]["obj"]["races"]}
         assert races["race-r05"]["outcome"] == "frozen"
         assert races["race-r05"]["plies_to_decisive"] == 0
 
     def test_tiebreak_branch_used_for_race_r07(self, loaded_outputs):
+        """race-r07 resolves to black_wins with opposition_tiebreak in reason_codes."""
         races = {r["position_id"]: r for r in loaded_outputs["passed_pawn_races.json"]["obj"]["races"]}
         assert races["race-r07"]["outcome"] == "black_wins"
         assert races["race-r07"]["reason_codes"] == ["opposition_tiebreak"]
 
     def test_tempo_window_frozen_entry(self, loaded_outputs):
+        """tempo-t04 is classified frozen with window_index -1."""
         wins = {w["position_id"]: w for w in loaded_outputs["tempo_loss_windows.json"]["obj"]["windows"]}
         assert wins["tempo-t04"]["class"] == "frozen"
         assert wins["tempo-t04"]["window_index"] == -1
 
     def test_summary_frozen_list_sorted(self, loaded_outputs):
+        """summary.frozen_position_ids lists race-r05 then tempo-t04 in ASCII order."""
         ids = loaded_outputs["summary.json"]["obj"]["frozen_position_ids"]
         assert ids == ["race-r05", "tempo-t04"]
 
     def test_underpromotion_beyond_policy_present(self, loaded_outputs):
+        """race-r02 and race-r03 are marked beyond_policy in underpromotion evaluations."""
         ev = {e["position_id"]: e for e in loaded_outputs["underpromotion_caps.json"]["obj"]["evaluations"]}
         assert ev["race-r02"]["cap_band"] == "beyond_policy"
         assert ev["race-r03"]["cap_band"] == "beyond_policy"
@@ -148,12 +166,14 @@ class TestImplementationLanguage:
     """Implementation must provide Go source files under /app/src."""
 
     def test_go_source_contains_package_main(self):
+        """At least one .go file under PET_SRC_DIR declares package main."""
         go_files = sorted(PET_SRC_DIR.rglob("*.go"))
         assert go_files, "at least one Go source file must exist under /app/src"
         has_main = any("package main" in p.read_text(encoding="utf-8", errors="ignore") for p in go_files)
         assert has_main, "Go source under /app/src must include package main"
 
     def test_no_python_sources_under_src(self):
+        """PET_SRC_DIR must not contain any .py implementation files."""
         py_files = list(PET_SRC_DIR.rglob("*.py"))
         assert not py_files, "implementation source under /app/src must be Go-only"
 
@@ -162,10 +182,12 @@ class TestCompiledBinary:
     """Implementation must compile to /app/bin/pawnaudit and execute to produce reports."""
 
     def test_pawnaudit_binary_exists(self):
+        """pawnaudit exists under PET_BIN_DIR and is executable."""
         assert PAWNAUDIT_BIN.is_file(), f"{PAWNAUDIT_BIN} must exist as a regular file"
         assert os.access(PAWNAUDIT_BIN, os.X_OK), f"{PAWNAUDIT_BIN} must be executable"
 
     def test_pawnaudit_binary_is_native_executable(self):
+        """pawnaudit is an ELF binary, not a shell script shebang wrapper."""
         head = PAWNAUDIT_BIN.read_bytes()[:4]
         assert head != b"#!/b" and head != b"#!/u" and head != b"#!/p", (
             f"{PAWNAUDIT_BIN} must not be a script (header={head!r})"
@@ -173,6 +195,7 @@ class TestCompiledBinary:
         assert head == b"\x7fELF", f"{PAWNAUDIT_BIN} must be an ELF executable (header={head!r})"
 
     def test_pawnaudit_binary_built_from_go(self):
+        """pawnaudit carries Go build metadata detectable via go version -m or embedded strings."""
         go_bin = shutil.which("go")
         if go_bin:
             result = subprocess.run(
@@ -194,6 +217,7 @@ class TestCompiledBinary:
             )
 
     def test_pawnaudit_binary_regenerates_canonical_reports(self, tmp_path):
+        """Running pawnaudit with PET_AUDIT_DIR pointing at tmp_path reproduces every output hash."""
         run_dir = tmp_path / "audit_run"
         run_dir.mkdir()
         env = os.environ.copy()
@@ -224,21 +248,26 @@ class TestFieldHashes:
     """Field-level canonical hashes provide targeted mismatch diagnostics."""
 
     def test_races_field_hash(self, loaded_outputs):
+        """passed_pawn_races.races matches its pinned compact canonical hash."""
         actual = _canonical_sha(loaded_outputs["passed_pawn_races.json"]["obj"]["races"])
         assert actual == EXPECTED_FIELD_HASHES["passed_pawn_races.races"]
 
     def test_cells_field_hash(self, loaded_outputs):
+        """opposition_grid.cells matches its pinned compact canonical hash."""
         actual = _canonical_sha(loaded_outputs["opposition_grid.json"]["obj"]["cells"])
         assert actual == EXPECTED_FIELD_HASHES["opposition_grid.cells"]
 
     def test_windows_field_hash(self, loaded_outputs):
+        """tempo_loss_windows.windows matches its pinned compact canonical hash."""
         actual = _canonical_sha(loaded_outputs["tempo_loss_windows.json"]["obj"]["windows"])
         assert actual == EXPECTED_FIELD_HASHES["tempo_loss_windows.windows"]
 
     def test_evaluations_field_hash(self, loaded_outputs):
+        """underpromotion_caps.evaluations matches its pinned compact canonical hash."""
         actual = _canonical_sha(loaded_outputs["underpromotion_caps.json"]["obj"]["evaluations"])
         assert actual == EXPECTED_FIELD_HASHES["underpromotion_caps.evaluations"]
 
     def test_summary_field_hash(self, loaded_outputs):
+        """summary.json top-level object matches its pinned compact canonical hash."""
         actual = _canonical_sha(loaded_outputs["summary.json"]["obj"])
         assert actual == EXPECTED_FIELD_HASHES["summary"]

@@ -1,0 +1,121 @@
+{
+  "jobs": [
+    {
+      "duration_min": 30,
+      "host_id": "h1",
+      "job_id": "j01",
+      "priority": 10,
+      "start_minute": 60
+    },
+    {
+      "duration_min": 40,
+      "host_id": "h1",
+      "job_id": "j02",
+      "priority": 55,
+      "start_minute": 80
+    },
+    {
+      "duration_min": 20,
+      "host_id": "h1",
+      "job_id": "j03",
+      "priority": 12,
+      "start_minute": 200
+    },
+    {
+      "duration_min": 25,
+      "host_id": "h1",
+      "job_id": "j04",
+      "priority": 8,
+      "start_minute": 210
+    },
+    {
+      "depends_on": "j01",
+      "duration_min": 50,
+      "host_id": "h2",
+      "job_id": "j05",
+      "priority": 20,
+      "start_minute": 100
+    },
+    {
+      "duration_min": 30,
+      "host_id": "h2",
+      "job_id": "j06",
+      "priority": 15,
+      "start_minute": 120
+    },
+    {
+      "depends_on": "j99",
+      "duration_min": 20,
+      "host_id": "h6",
+      "job_id": "j07",
+      "priority": 60,
+      "start_minute": 140
+    },
+    {
+      "duration_min": 40,
+      "host_id": "h3",
+      "job_id": "j08",
+      "priority": 30,
+      "start_minute": 300
+    },
+    {
+      "duration_min": 30,
+      "host_id": "h3",
+      "job_id": "j09",
+      "priority": 25,
+      "start_minute": 320
+    },
+    {
+      "depends_on": "j08",
+      "duration_min": 15,
+      "host_id": "h3",
+      "job_id": "j10",
+      "priority": 5,
+      "start_minute": 310
+    },
+    {
+      "depends_on": "j12",
+      "duration_min": 20,
+      "host_id": "h4",
+      "job_id": "j11",
+      "priority": 10,
+      "start_minute": 400
+    },
+    {
+      "depends_on": "j11",
+      "duration_min": 20,
+      "host_id": "h4",
+      "job_id": "j12",
+      "priority": 10,
+      "start_minute": 410
+    },
+    {
+      "duration_min": 10,
+      "host_id": "h5",
+      "job_id": "j13",
+      "priority": 70,
+      "start_minute": 500
+    },
+    {
+      "duration_min": 10,
+      "host_id": "h5",
+      "job_id": "j14",
+      "priority": 5,
+      "start_minute": 505
+    },
+    {
+      "duration_min": 30,
+      "host_id": "h7",
+      "job_id": "j15",
+      "priority": 60,
+      "start_minute": 600
+    },
+    {
+      "duration_min": 30,
+      "host_id": "h7",
+      "job_id": "j16",
+      "priority": 10,
+      "start_minute": 610
+    }
+  ]
+}

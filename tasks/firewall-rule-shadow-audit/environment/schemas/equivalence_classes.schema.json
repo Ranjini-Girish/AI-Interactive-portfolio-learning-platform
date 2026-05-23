@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "equivalence_classes.schema.json",
+  "title": "Equivalence classes output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["minimal_rule_ids", "removed_rule_ids", "verdict_invariant"],
+  "properties": {
+    "minimal_rule_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "removed_rule_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "verdict_invariant": {"type": "boolean"}
+  }
+}

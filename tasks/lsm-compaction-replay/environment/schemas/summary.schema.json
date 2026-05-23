@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "required": [
+    "total_events",
+    "total_flushes_accepted",
+    "total_compactions_accepted",
+    "total_segments_ever",
+    "live_segment_count",
+    "merged_segment_count",
+    "events_accepted",
+    "events_rejected",
+    "per_level_live_counts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "total_events": {"type": "integer", "minimum": 0},
+    "total_flushes_accepted": {"type": "integer", "minimum": 0},
+    "total_compactions_accepted": {"type": "integer", "minimum": 0},
+    "total_segments_ever": {"type": "integer", "minimum": 0},
+    "live_segment_count": {"type": "integer", "minimum": 0},
+    "merged_segment_count": {"type": "integer", "minimum": 0},
+    "events_accepted": {"type": "integer", "minimum": 0},
+    "events_rejected": {"type": "integer", "minimum": 0},
+    "per_level_live_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    }
+  }
+}

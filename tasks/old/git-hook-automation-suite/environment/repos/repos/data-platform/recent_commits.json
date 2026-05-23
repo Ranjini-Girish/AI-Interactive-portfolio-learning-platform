@@ -1,0 +1,8 @@
+{
+  "repo": "data-platform",
+  "commits": [
+    {"sha": "dp00001a", "branch": "main",                 "msg_type": "feat", "msg_subject": "add Iceberg sink",       "issue_ref": "DATA-200", "day": 100},
+    {"sha": "dp00002a", "branch": "feature/iceberg",      "msg_type": "perf", "msg_subject": "speed up partition prune", "issue_ref": "DATA-201", "day": 105},
+    {"sha": "dp00003a", "branch": "main",                 "msg_type": "fix",  "msg_subject": "schema cache invalidation", "issue_ref": "DATA-202", "day": 113}
+  ]
+}

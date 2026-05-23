@@ -1,0 +1,6 @@
+{
+  "repo": "billing",
+  "tier": "silver",
+  "language": "javascript",
+  "override_rules": []
+}

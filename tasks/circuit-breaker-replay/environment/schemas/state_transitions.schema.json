@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "state_transitions.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["transitions"],
+  "properties": {
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "endpoint_id",
+          "from_state",
+          "reason",
+          "seq",
+          "tick",
+          "to_state"
+        ],
+        "properties": {
+          "endpoint_id": { "type": "string" },
+          "from_state": {
+            "type": "string",
+            "enum": ["CLOSED", "OPEN", "HALF_OPEN"]
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "threshold_breach",
+              "probe_failure",
+              "probe_success_quota",
+              "recovery_timeout",
+              "manual_open",
+              "manual_close"
+            ]
+          },
+          "seq":  { "type": "integer", "minimum": 0 },
+          "tick": { "type": "integer", "minimum": 0 },
+          "to_state": {
+            "type": "string",
+            "enum": ["CLOSED", "OPEN", "HALF_OPEN"]
+          }
+        }
+      }
+    }
+  }
+}

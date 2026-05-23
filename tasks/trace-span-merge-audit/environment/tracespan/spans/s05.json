@@ -1,0 +1,8 @@
+{
+  "end_us": 60,
+  "parent_id": "s04",
+  "service": "worker",
+  "span_id": "s05",
+  "start_us": 40,
+  "status": "timeout"
+}

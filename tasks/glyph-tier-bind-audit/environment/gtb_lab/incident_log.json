@@ -1,0 +1,17 @@
+{
+  "masks": [
+    {
+      "sample_id": "gtb_04",
+      "zero_slots": [
+        0
+      ]
+    },
+    {
+      "sample_id": "gtb_09",
+      "zero_slots": [
+        0,
+        2
+      ]
+    }
+  ]
+}

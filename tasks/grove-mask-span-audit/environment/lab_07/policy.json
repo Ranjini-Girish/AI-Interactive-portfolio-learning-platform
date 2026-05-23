@@ -1,0 +1,11 @@
+{
+  "bias_floor": 0,
+  "cap": 62,
+  "cutoff": 42,
+  "fold_mod": 1004,
+  "label": "grove-mask-span-audit",
+  "mask": 70,
+  "poly_base": 134,
+  "seed_offset": 167,
+  "square_mod": 999990
+}

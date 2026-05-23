@@ -1,0 +1,34 @@
+{
+  "buckets": [
+    {
+      "bucket_id": "q-00",
+      "capacity_bytes": 2000,
+      "leak_bytes_per_tick": 500
+    },
+    {
+      "bucket_id": "q-01",
+      "capacity_bytes": 10000,
+      "leak_bytes_per_tick": 100
+    },
+    {
+      "bucket_id": "q-02",
+      "capacity_bytes": 8000,
+      "leak_bytes_per_tick": 100
+    },
+    {
+      "bucket_id": "q-03",
+      "capacity_bytes": 2000,
+      "leak_bytes_per_tick": 500
+    },
+    {
+      "bucket_id": "q-04",
+      "capacity_bytes": 5000,
+      "leak_bytes_per_tick": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "capacity_bytes": 2000,
+      "leak_bytes_per_tick": 250
+    }
+  ]
+}

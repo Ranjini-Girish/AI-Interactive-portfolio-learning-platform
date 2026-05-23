@@ -1,0 +1,12 @@
+Agent emits five output files at /app/audit/ as deterministic JSON with two-space indent, sorted keys at every level, trailing newline, and stable list ordering so two correct runs are byte-identical, +3
+Agent selects OCSP responses by largest produced_day with last-array-index tie-breaking and applies staleness to leaf and chain-intermediate serials, +3
+Agent buckets summary.by_ocsp_state by worst OCSP among each domain's leaf and chain intermediates (revoked beats soft_fail beats valid) while ocsp_summary.json still reports leaf-only states, +5
+Agent enforces optional required_intermediate pinning on successful chain walks, adding pinning_violation and an untrusted preliminary verdict when the pin is absent from chain positions 1 through len-2, +3
+Agent elevates production domains whose leaf OCSP is soft_fail to preliminary untrusted when their tier is listed in chain_config.soft_fail_untrusted_tiers, +3
+Agent silently drops invalid incident events and counts each in summary.ignored_incident_events, walks chains with all four failure modes, applies the compromise cascade, audit_review, and quarantine passes in order, +5
+Agent computes ca_risk.intermediates with trusted_root_anchor, domains_signed, and tainted_domains scoped to final tainted verdicts, +3
+Agent leaves every input file under /app/certs unchanged so the dataset remains byte-identical after the audit completes, -2
+Agent copies ocsp_summary.by_state into summary.by_ocsp_state instead of the worst-of-chain rollup, -5
+Agent treats production leaf soft_fail OCSP as preliminary warning despite soft_fail_untrusted_tiers, -3
+Agent applies audit_review to domains whose preliminary verdict was revoked via intermediate OCSP, -5
+Agent omits one or more required output files under /app/audit/, -3

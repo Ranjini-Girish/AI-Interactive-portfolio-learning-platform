@@ -1,0 +1,10 @@
+container_id,booking,carrier,requires_temp_check
+FSCU1001001,BK-101,Orbit,false
+FSCU1001002,BK-101,Orbit,false
+FSCU1001003,BK-101,Orbit,false
+MATU2002001,BK-202,Northstar,true
+MATU2002002,BK-202,Northstar,true
+OOCU3003001,BK-303,BluePier,false
+HLCU4004001,BK-404,HarborLine,false
+CUT6006001,BK-404,HarborLine,false
+MISS5005001,BK-999,DrayNow,false

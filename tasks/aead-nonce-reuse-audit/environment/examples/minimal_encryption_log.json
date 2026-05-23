@@ -1,0 +1,20 @@
+{
+  "encryptions": [
+    {
+      "key_id": "k0",
+      "nonce": 1,
+      "outcome": "accepted",
+      "reason": null,
+      "seq": 1,
+      "tick": 1
+    },
+    {
+      "key_id": "k0",
+      "nonce": 1,
+      "outcome": "rejected",
+      "reason": "NONCE_REUSE",
+      "seq": 2,
+      "tick": 2
+    }
+  ]
+}

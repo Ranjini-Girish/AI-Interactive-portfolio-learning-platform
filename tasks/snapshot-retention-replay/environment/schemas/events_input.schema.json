@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "seq"],
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0},
+          "kind": {
+            "type": "string",
+            "enum": [
+              "snapshot_create",
+              "snapshot_delete",
+              "hold_add",
+              "hold_release",
+              "tick",
+              "retention_run"
+            ]
+          },
+          "id": {"type": "string"},
+          "dataset": {"type": "string"},
+          "name": {"type": "string"},
+          "holder": {"type": "string"},
+          "force": {"type": "boolean"},
+          "delta_sec": {"type": "integer"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"kind": {"const": "snapshot_create"}}},
+            "then": {"required": ["dataset", "id", "name"]}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "snapshot_delete"}}},
+            "then": {"required": ["force", "id"]}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "hold_add"}}},
+            "then": {"required": ["holder", "id"]}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "hold_release"}}},
+            "then": {"required": ["holder", "id"]}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "tick"}}},
+            "then": {"required": ["delta_sec"]}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "retention_run"}}},
+            "then": {"required": ["dataset"]}
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "enforce_strict_order": true,
+  "recursive_default": true,
+  "share_acquire_blocks_on": "exclusive_only",
+  "unmatched_release_action": "error",
+  "wait_resolution": "priority_then_id"
+}

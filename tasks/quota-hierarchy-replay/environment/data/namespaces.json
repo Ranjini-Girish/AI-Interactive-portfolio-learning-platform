@@ -1,0 +1,76 @@
+{
+  "namespaces": [
+    {
+      "limits": {
+        "cpu": 200,
+        "memory": 4096,
+        "storage": 40000
+      },
+      "name": "root",
+      "parent": null
+    },
+    {
+      "limits": {
+        "cpu": 100,
+        "memory": 1024,
+        "storage": 10000
+      },
+      "name": "team_a",
+      "parent": "root"
+    },
+    {
+      "limits": {
+        "cpu": 80,
+        "memory": 1024,
+        "storage": 8000
+      },
+      "name": "team_b",
+      "parent": "root"
+    },
+    {
+      "limits": {
+        "cpu": 20,
+        "memory": 256,
+        "storage": 2000
+      },
+      "name": "thin_parent",
+      "parent": "root"
+    },
+    {
+      "limits": {
+        "cpu": 60,
+        "memory": 512,
+        "storage": 5000
+      },
+      "name": "team_a_alpha",
+      "parent": "team_a"
+    },
+    {
+      "limits": {
+        "cpu": 50,
+        "memory": 512,
+        "storage": 4000
+      },
+      "name": "team_a_beta",
+      "parent": "team_a"
+    },
+    {
+      "limits": {
+        "cpu": 50,
+        "memory": 512,
+        "storage": 5000
+      },
+      "name": "team_b_alpha",
+      "parent": "team_b"
+    },
+    {
+      "limits": {
+        "cpu": 100,
+        "memory": 1024,
+        "storage": 10000
+      },
+      "name": "thin_child",
+      "parent": "thin_parent"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "cgroups": [
+    {
+      "cpu_quota_ms": 1000,
+      "cpu_used_ms": 0,
+      "id": "root",
+      "io_quota_iops": 100,
+      "io_used_iops": 0,
+      "mem_quota_kb": 1024,
+      "mem_used_kb": 0,
+      "parent_id": null,
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 0,
+      "tasks": [
+        "t1"
+      ]
+    }
+  ]
+}

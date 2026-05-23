@@ -1,0 +1,14 @@
+{
+  "cycle_action": "drop",
+  "future_timestamp_threshold_ms": 86400000,
+  "incomplete_action": "drop",
+  "min_spans_per_trace": 2,
+  "multi_root_action": "keep",
+  "now_unix_ms": 1700000000000,
+  "orphan_action": "drop",
+  "severity_ranks": {
+    "error": 0,
+    "info": 2,
+    "warn": 1
+  }
+}

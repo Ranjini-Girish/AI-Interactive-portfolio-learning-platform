@@ -1,6 +1,7 @@
 {
-  "flux": 0,
-  "segment_id": "s05",
-  "tier": "alpha",
-  "witness": 12
+  "id": "s05",
+  "lane": "west",
+  "winding": 3,
+  "weight": 1,
+  "slot": "p_w1"
 }

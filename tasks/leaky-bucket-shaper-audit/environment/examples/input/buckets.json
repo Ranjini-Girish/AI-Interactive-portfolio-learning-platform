@@ -1,0 +1,14 @@
+{
+  "buckets": [
+    {
+      "bucket_id": "edge-a",
+      "capacity_bytes": 1000,
+      "leak_bytes_per_tick": 200
+    },
+    {
+      "bucket_id": "edge-b",
+      "capacity_bytes": 500,
+      "leak_bytes_per_tick": 100
+    }
+  ]
+}

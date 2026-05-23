@@ -1,0 +1,25 @@
+[
+  {
+    "delta": 0.02,
+    "host_id": "h00",
+    "kind": "bump_lambda",
+    "seq": 5
+  },
+  {
+    "host_id": "h02",
+    "kind": "freeze_host",
+    "seq": 7
+  },
+  {
+    "delta": 0.2,
+    "host_id": "h03",
+    "kind": "bump_lambda",
+    "seq": 9
+  },
+  {
+    "delta": 0.05,
+    "host_id": "h01",
+    "kind": "bump_lambda",
+    "seq": 11
+  }
+]

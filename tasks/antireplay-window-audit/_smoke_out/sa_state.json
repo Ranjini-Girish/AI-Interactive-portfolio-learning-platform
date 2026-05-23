@@ -1,0 +1,64 @@
+{
+  "sas": [
+    {
+      "accepted": 8,
+      "bitmap": "0100000000000000",
+      "id": "alpha",
+      "owner": "alice",
+      "recv_total": 11,
+      "rekeys": 1,
+      "replays": 3,
+      "too_old": 2,
+      "top": 100,
+      "window_size": 64
+    },
+    {
+      "accepted": 4,
+      "bitmap": "0100",
+      "id": "bravo",
+      "owner": "passive",
+      "recv_total": 5,
+      "rekeys": 0,
+      "replays": 1,
+      "too_old": 1,
+      "top": 100,
+      "window_size": 16
+    },
+    {
+      "accepted": 1,
+      "bitmap": "0100",
+      "id": "charlie",
+      "owner": "carol",
+      "recv_total": 2,
+      "rekeys": 0,
+      "replays": 1,
+      "too_old": 0,
+      "top": 5,
+      "window_size": 16
+    },
+    {
+      "accepted": 2,
+      "bitmap": "01040000",
+      "id": "delta",
+      "owner": "dan",
+      "recv_total": 2,
+      "rekeys": 0,
+      "replays": 0,
+      "too_old": 0,
+      "top": 250,
+      "window_size": 32
+    },
+    {
+      "accepted": 1,
+      "bitmap": "0100",
+      "id": "passive_x",
+      "owner": "passive",
+      "recv_total": 2,
+      "rekeys": 0,
+      "replays": 1,
+      "too_old": 0,
+      "top": 1,
+      "window_size": 16
+    }
+  ]
+}

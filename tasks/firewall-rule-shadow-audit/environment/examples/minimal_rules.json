@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "id": "x01",
+      "priority": 100,
+      "action": "allow",
+      "direction": "ingress",
+      "source": "any",
+      "destination": "192.0.2.0/24",
+      "protocol": "tcp",
+      "src_ports": "any",
+      "dst_ports": [{"start": 80, "end": 80}],
+      "description": "Tiny example: allow HTTP"
+    },
+    {
+      "id": "x02",
+      "priority": 50,
+      "action": "deny",
+      "direction": "ingress",
+      "source": "any",
+      "destination": "any",
+      "protocol": "any",
+      "src_ports": "any",
+      "dst_ports": "any",
+      "description": "Tiny example: catch-all deny"
+    }
+  ]
+}

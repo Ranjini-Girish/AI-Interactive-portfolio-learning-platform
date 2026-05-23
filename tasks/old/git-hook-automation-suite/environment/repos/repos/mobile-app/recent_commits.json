@@ -1,0 +1,7 @@
+{
+  "repo": "mobile-app",
+  "commits": [
+    {"sha": "ma000001", "branch": "main",            "msg_type": "feat",   "msg_subject": "biometric unlock",           "issue_ref": null, "day": 105},
+    {"sha": "ma000002", "branch": "feature/bio",    "msg_type": "fix",    "msg_subject": "android 14 fingerprint flag", "issue_ref": null, "day": 111}
+  ]
+}

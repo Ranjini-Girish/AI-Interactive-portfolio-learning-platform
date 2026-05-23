@@ -1,0 +1,10 @@
+{
+  "samples": [
+    {"day": 90, "lag_bytes": 2400000, "witness_lag_bytes": 2450000},
+    {"day": 93, "lag_bytes": 2500000, "witness_lag_bytes": 2520000},
+    {"day": 95, "lag_bytes": 2550000, "witness_lag_bytes": 2580000},
+    {"day": 97, "lag_bytes": 2600000, "witness_lag_bytes": 2620000}
+  ],
+  "shard_id": "sh-gold-crit",
+  "tier": "gold"
+}

@@ -1,0 +1,14 @@
+{
+  "locks": [
+    {
+      "band_high": 48.0,
+      "band_low": 45.0,
+      "lock_hz": 46.0
+    },
+    {
+      "band_high": 95.0,
+      "band_low": 90.0,
+      "lock_hz": 92.0
+    }
+  ]
+}

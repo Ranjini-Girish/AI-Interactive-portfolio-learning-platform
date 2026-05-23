@@ -1,0 +1,15 @@
+{
+  "closed_account_action": "block_all",
+  "frozen_account_action": "allow_credits_only",
+  "reversal_window_days": 7,
+  "severity_ranks": {
+    "error": 0,
+    "note": 1,
+    "warning": 2
+  },
+  "default_daily_withdraw_limit_cents": 50000,
+  "overdraft_allowed_account_types": [
+    "credit"
+  ],
+  "credit_account_credit_limit_cents": 100000
+}

@@ -1,0 +1,44 @@
+{
+  "payments-prod::gateway-api": [
+    {"name": "chart/gateway", "version": "1.4.0"},
+    {"name": "lib/circuit-breaker", "version": "0.4.0"}
+  ],
+  "payments-prod::ledger-writer": [
+    {"name": "chart/ledger", "version": "2.1.0"},
+    {"name": "svc/collector", "version": "1.2.0"}
+  ],
+  "payments-prod::nightly-reconcile": [
+    {"name": "chart/reconcile", "version": "0.9.4"}
+  ],
+  "telemetry::node-shipper": [
+    {"name": "chart/shipper", "version": "0.7.0"}
+  ],
+  "telemetry::collector": [
+    {"name": "chart/collector", "version": "1.1.0"}
+  ],
+  "unnamed::collector": [
+    {"name": "chart/collector", "version": "1.2.0"}
+  ],
+  "edge::probe-runner": [
+    {"name": "chart/probe", "version": "0.4.2"}
+  ],
+  "edge::cache-warmer": [
+    {"name": "chart/cache-warmer", "version": "0.3.0"},
+    {"name": "lib/missing-hop", "version": "0.1.0"}
+  ],
+  "identity::jwt-signer": [
+    {"name": "chart/jwt-signer", "version": "1.0.0"}
+  ],
+  "identity::heartbeat-probe": [
+    {"name": "chart/heartbeat", "version": "0.1.0"}
+  ],
+  "analytics::fraud-scorer": [
+    {"name": "chart/fraud-scorer", "version": "0.2.0"}
+  ],
+  "telemetry::   ": [
+    {"name": "chart/legacy-noop", "version": "0.0.1"}
+  ],
+  "release": [
+    {"name": "release/platform", "version": "1.0.0"}
+  ]
+}

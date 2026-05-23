@@ -1,0 +1,1 @@
+{"pack_id":"kappa","rules":[{"id":"health","host":"*","host_type":"any","path_prefix":"/health","methods":["GET"],"decision":"allow"}]}

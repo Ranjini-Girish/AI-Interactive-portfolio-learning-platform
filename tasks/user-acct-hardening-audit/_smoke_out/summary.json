@@ -1,0 +1,77 @@
+{
+  "total_users": 13,
+  "violating_users": 12,
+  "total_findings": 31,
+  "waived_findings": 8,
+  "by_severity": {
+    "critical": 10,
+    "high": 15,
+    "medium": 6,
+    "low": 0
+  },
+  "by_finding_code": {
+    "delegated_admin_exposure": 6,
+    "delegation_cycle": 3,
+    "dormant_admin": 1,
+    "escalation_chain_risk": 3,
+    "inactive_human": 1,
+    "mfa_disabled": 3,
+    "missing_home": 1,
+    "missing_password_state": 1,
+    "missing_ssh_inventory": 1,
+    "stale_password": 3,
+    "stale_ssh_key": 4,
+    "unauthorized_sudo": 3,
+    "unrotated_compromised_key": 1
+  },
+  "risk_scores": [
+    {
+      "username": "bob",
+      "score": 69
+    },
+    {
+      "username": "frank",
+      "score": 41
+    },
+    {
+      "username": "jen",
+      "score": 37
+    },
+    {
+      "username": "dan",
+      "score": 35
+    },
+    {
+      "username": "heidi",
+      "score": 35
+    },
+    {
+      "username": "nora",
+      "score": 27
+    },
+    {
+      "username": "erin",
+      "score": 24
+    },
+    {
+      "username": "carol",
+      "score": 23
+    },
+    {
+      "username": "mike",
+      "score": 23
+    },
+    {
+      "username": "greg",
+      "score": 20
+    },
+    {
+      "username": "ivan",
+      "score": 19
+    },
+    {
+      "username": "svc_ci",
+      "score": 2
+    }
+  ]
+}

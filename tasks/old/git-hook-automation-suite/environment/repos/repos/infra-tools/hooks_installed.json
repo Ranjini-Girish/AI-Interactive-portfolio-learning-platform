@@ -1,0 +1,20 @@
+{
+  "repo": "infra-tools",
+  "installed": [
+    {
+      "name": "quality-gate",
+      "kind": "pre-commit",
+      "checks_present": ["lint", "conflict_markers", "debug_statements", "file_size"]
+    },
+    {
+      "name": "msg-format",
+      "kind": "commit-msg",
+      "checks_present": ["conventional_format"]
+    },
+    {
+      "name": "secrets-scan",
+      "kind": "pre-push",
+      "checks_present": ["credential_scan", "license_check"]
+    }
+  ]
+}

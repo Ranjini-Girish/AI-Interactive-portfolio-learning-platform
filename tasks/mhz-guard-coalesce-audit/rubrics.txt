@@ -1,12 +1,13 @@
-Agent reads `/app/sga_data/SPEC.md` and emits all four JSON artifacts under `/app/sga_audit/` with canonical UTF-8 JSON, +3
-Agent implements the MHz guard coalesce audit in Go 1.23 under `/app/sga_tool/` and ships a `sgaudit` binary built from that module, +5
-Agent honours `SGA_DATA_DIR` and `SGA_AUDIT_DIR` overrides when non-empty while keeping read-only inputs untouched, +2
-Agent applies incident ordering, snapshot-day gating, and working-field mutations before the coalescing sweep, +3
-Agent merges only same-tier spans that satisfy the tightened gap and optional heat gate after mutations, +3
-Agent writes `segments.json`, `incident_trail.json`, `tier_rollup.json`, and `summary.json` with sorted keys and stable bin id ordering, +2
-Agent leaves ancillary anchors and wave stubs under `/app/sga_data/` unmodified, -3
-Agent emits JSON with unsorted keys, non-ASCII text, or missing trailing newline at EOF, -3
-Agent skips emitting any of the four required audit files or writes outside `/app/sga_audit/`, -5
-Agent coalesces production spans across the gap left after a middle bin strip, -3
-Agent ignores snapshot-day rules and applies late incidents or unknown kinds as if eligible, -3
-Agent fabricates occupancy or tier totals that disagree with emitted `segments.json` and `tier_rollup.json`, -3
+Agent studies `/app/sga_data/SPEC.md` and treats non-recursive `bins/*.json` enumeration as the sole source of active bin records, +3
+Agent sorts the full incident list by `day` ascending then `event_id` before replaying mutations once in that order, +5
+Agent increments ignored counts for incidents after `snapshot_day`, missing bins on `strip_bin`, and unsupported kinds without disturbing chronological applied records, +3
+Agent runs the left-to-right coalesce sweep repeatedly until a full pass performs no merges while honoring tier equality, gap limits, and hot-only occupancy gates, +5
+Agent fuses spans with minimum `lo_mhz`, maximum `hi_mhz`, minimum `occupancy`, and sorted plus-joined bin identities after each merge, +3
+Agent sorts emitted segments by `lo_mhz`, `tier`, and joined `bin_ids`, and sorts tier rollup rows by tier name with matching width and bin totals, +3
+Agent writes exactly the four UTF-8 audit JSON artifacts with recursively sorted keys, compact comma separators, ASCII-only text, and exactly one trailing newline per file, +5
+Agent maintains `go.mod` and Go 1.23 sources under `/app/sga_tool` and builds a working `sgaudit` binary in that directory, +5
+Agent edits, deletes, or adds files under the mounted spectrum data root instead of keeping inputs read-only, -5
+Agent replays incidents out of sorted order, omits required `detail` keys on applied trail rows, or mutates gap or heat floor without clamping at zero, -5
+Agent performs only one merge pass while another sweep would still coalesce, or miscomputes half-open gaps between sorted neighbors, -5
+Agent emits indented JSON, interior blank padding, unsorted keys, or files that lack the single trailing newline contract, -3
+Agent ignores non-empty `SGA_DATA_DIR` or `SGA_AUDIT_DIR` overrides when opening inputs or creating the audit directory, -3

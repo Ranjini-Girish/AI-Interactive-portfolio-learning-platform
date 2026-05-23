@@ -1,0 +1,17 @@
+{
+  "diagnostics": [
+    {
+      "code": "D_CYCLE_DETECTED",
+      "evidence": {
+        "cycle_span_ids": [
+          "33333331",
+          "33333332"
+        ]
+      },
+      "severity": "error",
+      "severity_rank": 0,
+      "span_id": null,
+      "trace_id": "00000000cccccccc"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "signals": [
+    {
+      "signal_id": "S001",
+      "run_id": "run_001",
+      "channel_id": "ch01",
+      "expected_value": 100.0
+    },
+    {
+      "signal_id": "S002",
+      "run_id": "run_002",
+      "channel_id": "ch02",
+      "expected_value": 200.0
+    },
+    {
+      "signal_id": "S003",
+      "run_id": "run_003",
+      "channel_id": "ch03",
+      "expected_value": -5.0
+    },
+    {
+      "signal_id": "S004",
+      "run_id": "run_004",
+      "channel_id": "ch05",
+      "expected_value": 50.0
+    },
+    {
+      "signal_id": "S005",
+      "run_id": "run_005",
+      "channel_id": "ch07",
+      "expected_value": 77.0
+    },
+    {
+      "signal_id": "S006",
+      "run_id": "run_006",
+      "channel_id": "ch08",
+      "expected_value": 60.5
+    },
+    {
+      "signal_id": "S007",
+      "run_id": "run_007",
+      "channel_id": "ch01",
+      "expected_value": 300.5
+    },
+    {
+      "signal_id": "S008",
+      "run_id": "run_008",
+      "channel_id": "ch02",
+      "expected_value": 150.0
+    },
+    {
+      "signal_id": "S009",
+      "run_id": "run_009",
+      "channel_id": "ch03",
+      "expected_value": -7.5
+    },
+    {
+      "signal_id": "S010",
+      "run_id": "run_010",
+      "channel_id": "ch04",
+      "expected_value": 999.0
+    },
+    {
+      "signal_id": "S011",
+      "run_id": "run_011",
+      "channel_id": "ch01",
+      "expected_value": 42.0
+    },
+    {
+      "signal_id": "S012",
+      "run_id": "run_012",
+      "channel_id": "ch05",
+      "expected_value": 60.0
+    },
+    {
+      "signal_id": "S013",
+      "run_id": "run_001",
+      "channel_id": "ch06",
+      "expected_value": 20.0
+    },
+    {
+      "signal_id": "S014",
+      "run_id": "run_022",
+      "channel_id": "ch01",
+      "expected_value": 20.0
+    }
+  ]
+}

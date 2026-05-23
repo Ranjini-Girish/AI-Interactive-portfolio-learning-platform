@@ -1,0 +1,15 @@
+{
+  "conflict_groups": [
+    [
+      "lk_a",
+      "lk_b"
+    ],
+    [
+      "lk_g",
+      "lk_h"
+    ]
+  ],
+  "fence_boost": 40,
+  "rank_base": 100,
+  "warmup_steps": 2
+}

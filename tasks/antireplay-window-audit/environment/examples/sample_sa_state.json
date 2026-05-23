@@ -1,0 +1,16 @@
+{
+  "sas": [
+    {
+      "accepted": 2,
+      "bitmap": "05",
+      "id": "x",
+      "owner": "u",
+      "recv_total": 3,
+      "rekeys": 0,
+      "replays": 1,
+      "too_old": 0,
+      "top": 3,
+      "window_size": 8
+    }
+  ]
+}

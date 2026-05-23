@@ -1,11 +1,7 @@
 {
-  "bin_edges": [
-    0, 
-    10, 
-    25, 
-    40, 
-    60
-  ], 
-  "count_band_mask": 5, 
-  "outlier_z": 1.5
+  "anchor_cross": true,
+  "bin_stride": 5,
+  "blend_mod": 11,
+  "pair_span": 2,
+  "skew_mix": 3
 }

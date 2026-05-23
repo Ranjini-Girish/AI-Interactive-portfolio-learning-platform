@@ -1,0 +1,190 @@
+{
+  "findings": [
+    {
+      "username": "carol",
+      "finding_code": "delegated_admin_exposure",
+      "severity": "critical",
+      "evidence": "active delegation path from erin to carol: erin->dan->carol (weight=2)"
+    },
+    {
+      "username": "dan",
+      "finding_code": "delegated_admin_exposure",
+      "severity": "critical",
+      "evidence": "active delegation path from erin to dan: erin->dan (weight=1)"
+    },
+    {
+      "username": "heidi",
+      "finding_code": "delegated_admin_exposure",
+      "severity": "critical",
+      "evidence": "active delegation path from erin to heidi: erin->dan->carol->heidi (weight=3)"
+    },
+    {
+      "username": "ivan",
+      "finding_code": "delegated_admin_exposure",
+      "severity": "critical",
+      "evidence": "active delegation path from erin to ivan: erin->greg->ivan (weight=2)"
+    },
+    {
+      "username": "mike",
+      "finding_code": "delegated_admin_exposure",
+      "severity": "critical",
+      "evidence": "active delegation path from erin to mike: erin->dan->carol->heidi->mike (weight=4)"
+    },
+    {
+      "username": "nora",
+      "finding_code": "delegated_admin_exposure",
+      "severity": "critical",
+      "evidence": "active delegation path from erin to nora: erin->nora (weight=4)"
+    },
+    {
+      "username": "bob",
+      "finding_code": "unauthorized_sudo",
+      "severity": "critical",
+      "evidence": "user is in sudo group but not allowlisted"
+    },
+    {
+      "username": "frank",
+      "finding_code": "unauthorized_sudo",
+      "severity": "critical",
+      "evidence": "user is in sudo group but not allowlisted"
+    },
+    {
+      "username": "jen",
+      "finding_code": "unauthorized_sudo",
+      "severity": "critical",
+      "evidence": "user is in sudo group but not allowlisted"
+    },
+    {
+      "username": "bob",
+      "finding_code": "unrotated_compromised_key",
+      "severity": "critical",
+      "evidence": "revoked key event on day=20260410 but key_count=1 > 0"
+    },
+    {
+      "username": "carol",
+      "finding_code": "delegation_cycle",
+      "severity": "high",
+      "evidence": "user participates in delegation cycle"
+    },
+    {
+      "username": "heidi",
+      "finding_code": "delegation_cycle",
+      "severity": "high",
+      "evidence": "user participates in delegation cycle"
+    },
+    {
+      "username": "mike",
+      "finding_code": "delegation_cycle",
+      "severity": "high",
+      "evidence": "user participates in delegation cycle"
+    },
+    {
+      "username": "erin",
+      "finding_code": "dormant_admin",
+      "severity": "high",
+      "evidence": "seed last_login_days=70 exceeds max_days=30"
+    },
+    {
+      "username": "bob",
+      "finding_code": "escalation_chain_risk",
+      "severity": "high",
+      "evidence": "out_degree=2 reachable from seed; min_out_degree=2"
+    },
+    {
+      "username": "erin",
+      "finding_code": "escalation_chain_risk",
+      "severity": "high",
+      "evidence": "out_degree=4 reachable from seed; min_out_degree=2"
+    },
+    {
+      "username": "greg",
+      "finding_code": "escalation_chain_risk",
+      "severity": "high",
+      "evidence": "out_degree=2 reachable from seed; min_out_degree=2"
+    },
+    {
+      "username": "bob",
+      "finding_code": "mfa_disabled",
+      "severity": "high",
+      "evidence": "mfa_enabled=0 and password is missing or unlocked"
+    },
+    {
+      "username": "dan",
+      "finding_code": "mfa_disabled",
+      "severity": "high",
+      "evidence": "mfa_enabled=0 and password is missing or unlocked"
+    },
+    {
+      "username": "nora",
+      "finding_code": "mfa_disabled",
+      "severity": "high",
+      "evidence": "mfa_enabled=0 and password is missing or unlocked"
+    },
+    {
+      "username": "dan",
+      "finding_code": "missing_home",
+      "severity": "high",
+      "evidence": "home field is empty"
+    },
+    {
+      "username": "heidi",
+      "finding_code": "missing_password_state",
+      "severity": "high",
+      "evidence": "password_state snapshot is missing"
+    },
+    {
+      "username": "frank",
+      "finding_code": "stale_password",
+      "severity": "high",
+      "evidence": "password_age_days=300 exceeds max_days=120"
+    },
+    {
+      "username": "greg",
+      "finding_code": "stale_password",
+      "severity": "high",
+      "evidence": "password_age_days=121 exceeds max_days=120"
+    },
+    {
+      "username": "jen",
+      "finding_code": "stale_password",
+      "severity": "high",
+      "evidence": "password_age_days=240 exceeds max_days=120"
+    },
+    {
+      "username": "ivan",
+      "finding_code": "inactive_human",
+      "severity": "medium",
+      "evidence": "last_login_days=200 exceeds max_days=60"
+    },
+    {
+      "username": "svc_ci",
+      "finding_code": "missing_ssh_inventory",
+      "severity": "medium",
+      "evidence": "ssh_keys snapshot is missing"
+    },
+    {
+      "username": "bob",
+      "finding_code": "stale_ssh_key",
+      "severity": "medium",
+      "evidence": "key_age_days=400 exceeds max_age_days=180"
+    },
+    {
+      "username": "erin",
+      "finding_code": "stale_ssh_key",
+      "severity": "medium",
+      "evidence": "key_age_days=200 exceeds max_age_days=180"
+    },
+    {
+      "username": "frank",
+      "finding_code": "stale_ssh_key",
+      "severity": "medium",
+      "evidence": "key_age_days=500 exceeds max_age_days=180"
+    },
+    {
+      "username": "heidi",
+      "finding_code": "stale_ssh_key",
+      "severity": "medium",
+      "evidence": "key_age_days=181 exceeds max_age_days=180"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "snapshots": [
+    {"created_at_sec": 0, "dataset": "demo", "holders": [], "id": "s1", "name": "first"},
+    {"created_at_sec": 3600, "dataset": "demo", "holders": ["watch"], "id": "s2", "name": "second"},
+    {"created_at_sec": 90000, "dataset": "demo", "holders": [], "id": "s3", "name": "third"}
+  ]
+}

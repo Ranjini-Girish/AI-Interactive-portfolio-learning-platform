@@ -1,0 +1,26 @@
+{
+  "creates_rejected": 3,
+  "creates_succeeded": 3,
+  "deletes_succeeded": 2,
+  "final_cgroup_count": 7,
+  "final_task_count": 4,
+  "hot_cgroups": [
+    {
+      "id": "web",
+      "violation_count": 3
+    },
+    {
+      "id": "alice",
+      "violation_count": 1
+    },
+    {
+      "id": "bob",
+      "violation_count": 1
+    }
+  ],
+  "moves_succeeded": 7,
+  "rejected_consumes": 5,
+  "throttled_consumes": 0,
+  "total_events": 48,
+  "total_violations": 5
+}

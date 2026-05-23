@@ -1,0 +1,24 @@
+{
+  "future_snapshots": {
+    "password_state": 1,
+    "login_history": 1,
+    "ssh_keys": 1,
+    "mfa_state": 0
+  },
+  "missing_effective_rows": {
+    "password_state": [
+      "heidi"
+    ],
+    "login_history": [
+      "greg"
+    ],
+    "ssh_keys": [
+      "svc_ci"
+    ],
+    "mfa_state": []
+  },
+  "ignored_waiver_rows": 4,
+  "invalid_delegation_rows": 6,
+  "active_delegation_edges": 12,
+  "invalid_key_audit_rows": 2
+}

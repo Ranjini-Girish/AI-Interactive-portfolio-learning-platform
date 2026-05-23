@@ -1,0 +1,11 @@
+{
+  "bias_floor": 4,
+  "cap": 78,
+  "cutoff": 58,
+  "fold_mod": 1020,
+  "label": "wisp-sku-window-audit",
+  "mask": 86,
+  "poly_base": 150,
+  "seed_offset": 42,
+  "square_mod": 1000006
+}

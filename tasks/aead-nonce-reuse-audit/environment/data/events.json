@@ -1,0 +1,236 @@
+{
+  "events": [
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "key-zeta",
+      "kind": "key_install",
+      "max_uses": 4,
+      "seq": 1,
+      "tick": 1
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "key-alpha",
+      "kind": "key_install",
+      "max_uses": 10,
+      "seq": 2,
+      "tick": 1
+    },
+    {
+      "algorithm": "snake-oil",
+      "key_id": "key-bogus",
+      "kind": "key_install",
+      "max_uses": 4,
+      "seq": 3,
+      "tick": 1
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "key-bogus2",
+      "kind": "key_install",
+      "max_uses": 0,
+      "seq": 4,
+      "tick": 1
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 1,
+      "seq": 5,
+      "tick": 2
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 2,
+      "seq": 6,
+      "tick": 2
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 3,
+      "seq": 7,
+      "tick": 2
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 4,
+      "seq": 8,
+      "tick": 3
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 5,
+      "seq": 9,
+      "tick": 3
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 6,
+      "seq": 10,
+      "tick": 3
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 7,
+      "seq": 11,
+      "tick": 4
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 8,
+      "seq": 12,
+      "tick": 4
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 9,
+      "seq": 13,
+      "tick": 5
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 10,
+      "seq": 14,
+      "tick": 5
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "encrypt",
+      "nonce": 11,
+      "seq": 15,
+      "tick": 6
+    },
+    {
+      "key_id": "key-alpha",
+      "kind": "key_retire",
+      "seq": 16,
+      "tick": 6
+    },
+    {
+      "key_id": "key-gamma",
+      "kind": "encrypt",
+      "nonce": 42,
+      "seq": 17,
+      "tick": 7
+    },
+    {
+      "key_id": "key-gamma",
+      "kind": "encrypt",
+      "nonce": 43,
+      "seq": 18,
+      "tick": 7
+    },
+    {
+      "key_id": "key-gamma",
+      "kind": "encrypt",
+      "nonce": 42,
+      "seq": 19,
+      "tick": 8
+    },
+    {
+      "key_id": "key-gamma",
+      "kind": "encrypt",
+      "nonce": 44,
+      "seq": 20,
+      "tick": 8
+    },
+    {
+      "key_id": "key-gamma",
+      "kind": "key_retire",
+      "seq": 21,
+      "tick": 8
+    },
+    {
+      "key_id": "key-never-existed",
+      "kind": "key_compromise",
+      "reason": "audit_finding",
+      "seq": 22,
+      "tick": 9
+    },
+    {
+      "key_id": "key-beta",
+      "kind": "key_compromise",
+      "reason": "hsm_failure",
+      "seq": 23,
+      "tick": 9
+    },
+    {
+      "key_id": "key-beta",
+      "kind": "key_compromise",
+      "reason": "re-flag",
+      "seq": 24,
+      "tick": 9
+    },
+    {
+      "key_id": "key-phantom",
+      "kind": "encrypt",
+      "nonce": 1,
+      "seq": 25,
+      "tick": 10
+    },
+    {
+      "key_id": "key-delta",
+      "kind": "key_retire",
+      "seq": 26,
+      "tick": 10
+    },
+    {
+      "key_id": "key-delta",
+      "kind": "key_retire",
+      "seq": 27,
+      "tick": 11
+    },
+    {
+      "key_id": "key-delta",
+      "kind": "encrypt",
+      "nonce": 1,
+      "seq": 28,
+      "tick": 11
+    },
+    {
+      "key_id": "key-phantom2",
+      "kind": "key_retire",
+      "seq": 29,
+      "tick": 12
+    },
+    {
+      "key_id": "key-zeta",
+      "kind": "encrypt",
+      "nonce": 1,
+      "seq": 30,
+      "tick": 50
+    },
+    {
+      "key_id": "key-zeta",
+      "kind": "encrypt",
+      "nonce": 2,
+      "seq": 31,
+      "tick": 50
+    },
+    {
+      "kind": "tick",
+      "seq": 32,
+      "tick": 120
+    },
+    {
+      "kind": "bogus_kind",
+      "seq": 33,
+      "tick": 121
+    },
+    {
+      "key_id": "key-zeta",
+      "kind": "encrypt",
+      "seq": 34,
+      "tick": 122
+    }
+  ]
+}

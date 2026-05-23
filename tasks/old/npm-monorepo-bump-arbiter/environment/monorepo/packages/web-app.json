@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@aurum/shared-types": {
+      "exports_used": [],
+      "range": "workspace:*",
+      "scope": "prod"
+    },
+    "@aurum/shared-ui": {
+      "exports_used": [],
+      "range": "workspace:^",
+      "scope": "prod"
+    },
+    "glint-core": {
+      "exports_used": ["import", "require", "types"],
+      "range": "^2.0.0",
+      "scope": "prod"
+    }
+  },
+  "dev_dependencies": {},
+  "engines_node": ">=20.0.0 <23.0.0",
+  "name": "@aurum/web-app",
+  "version": "0.4.2"
+}

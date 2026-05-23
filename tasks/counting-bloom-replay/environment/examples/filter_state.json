@@ -1,0 +1,33 @@
+{
+  "counter_bits": 4,
+  "counters": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "k": 4,
+  "m": 16,
+  "stats": {
+    "clamped_remove": 1,
+    "clears": 0,
+    "rejected_negative": 0,
+    "rejected_saturate": 0,
+    "resizes": 0,
+    "successful_adds": 1,
+    "successful_queries": 3,
+    "successful_removes": 1
+  }
+}

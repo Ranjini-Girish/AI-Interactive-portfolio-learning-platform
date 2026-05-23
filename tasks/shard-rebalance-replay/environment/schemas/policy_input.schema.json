@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "shardsim policy.json input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "auto_rebalance_after_join",
+    "auto_rebalance_after_leave",
+    "max_moves_per_round",
+    "rack_awareness",
+    "rebalance_strategy",
+    "replication_factor",
+    "track_history"
+  ],
+  "properties": {
+    "auto_rebalance_after_join":  {"type": "boolean"},
+    "auto_rebalance_after_leave": {"type": "boolean"},
+    "max_moves_per_round":        {"type": "integer", "minimum": 1},
+    "rack_awareness":             {"type": "boolean"},
+    "rebalance_strategy":         {"type": "string", "enum": ["greedy_weight"]},
+    "replication_factor":         {"type": "integer", "minimum": 1},
+    "track_history":              {"type": "boolean"}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "responses": [
+    {"serial": "leaf-api-v1",      "status": "good",     "produced_day": 998},
+    {"serial": "leaf-cdn-v1",      "status": "good",     "produced_day": 999},
+    {"serial": "leaf-shop-v1",     "status": "revoked",  "produced_day": 985},
+    {"serial": "leaf-ops-v1",      "status": "good",     "produced_day": 990},
+    {"serial": "leaf-staging-v1",  "status": "good",     "produced_day": 990},
+    {"serial": "leaf-staging-v2",  "status": "unknown",  "produced_day": 999},
+    {"serial": "leaf-internal-v1", "status": "good",     "produced_day": 999},
+    {"serial": "leaf-internal-v2", "status": "good",     "produced_day": 988},
+    {"serial": "leaf-internal-v2", "status": "unknown",  "produced_day": 988},
+    {"serial": "int-asia-1",       "status": "revoked",  "produced_day": 999},
+    {"serial": "leaf-cdn-v1",      "status": "revoked",  "produced_day": 970},
+    {"serial": "leaf-revoked-v1",  "status": "revoked",  "produced_day": 999},
+    {"serial": "leaf-portal-v1",   "status": "good",     "produced_day": 990},
+    {"serial": "leaf-pin-v1",      "status": "good",     "produced_day": 999}
+  ]
+}

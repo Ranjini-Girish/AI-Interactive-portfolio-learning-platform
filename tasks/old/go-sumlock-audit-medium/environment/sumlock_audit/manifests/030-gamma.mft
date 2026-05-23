@@ -1,0 +1,4 @@
+MODULE: example.com/gamma
+PRIORITY: 8
+ENTRY: v2.0.0
+DEPENDS: example.com/alpha

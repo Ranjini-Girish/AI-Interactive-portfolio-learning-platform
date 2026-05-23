@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "shardsim shards.json input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["shards"],
+  "properties": {
+    "shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "primary", "replicas", "size_bytes"],
+        "properties": {
+          "id":         {"type": "string", "minLength": 1},
+          "primary":    {"type": "string", "minLength": 1},
+          "replicas": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "size_bytes": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

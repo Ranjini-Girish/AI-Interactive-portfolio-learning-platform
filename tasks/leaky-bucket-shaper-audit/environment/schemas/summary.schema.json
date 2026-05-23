@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "admits_total", "buckets_total", "current_bytes_total",
+    "dropped_bytes_total", "events_total", "max_seq",
+    "now_ticks_final", "overflow_drops_total"
+  ],
+  "properties": {
+    "admits_total": { "type": "integer", "minimum": 0 },
+    "buckets_total": { "type": "integer", "minimum": 0 },
+    "current_bytes_total": { "type": "integer", "minimum": 0 },
+    "dropped_bytes_total": { "type": "integer", "minimum": 0 },
+    "events_total": { "type": "integer", "minimum": 0 },
+    "max_seq": { "type": ["integer", "null"], "minimum": 0 },
+    "now_ticks_final": { "type": "integer", "minimum": 0 },
+    "overflow_drops_total": { "type": "integer", "minimum": 0 }
+  }
+}

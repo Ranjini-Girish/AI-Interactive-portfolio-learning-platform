@@ -1,0 +1,4 @@
+{
+  "demo::api": [{"name": "chart/api", "version": "1.1.0"}],
+  "demo::heartbeat": [{"name": "chart/heartbeat", "version": "0.1.0"}]
+}

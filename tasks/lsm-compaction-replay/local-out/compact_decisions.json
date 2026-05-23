@@ -1,0 +1,59 @@
+{
+  "decisions": [
+    {
+      "event_id": "e_0008",
+      "input_seg_ids": [
+        "s_0001",
+        "s_0002",
+        "s_0003",
+        "s_0004",
+        "s_0005",
+        "s_0006"
+      ],
+      "level": 0,
+      "output_level": 1,
+      "output_seg_id": "merged_e_0008",
+      "total_bytes": 12288,
+      "ts_unix_ms": 1700000008000
+    },
+    {
+      "event_id": "e_0013",
+      "input_seg_ids": [
+        "s_0010",
+        "s_0011",
+        "s_0012"
+      ],
+      "level": 0,
+      "output_level": 1,
+      "output_seg_id": "merged_e_0013",
+      "total_bytes": 2800,
+      "ts_unix_ms": 1700000009500
+    },
+    {
+      "event_id": "e_0018",
+      "input_seg_ids": [
+        "s_0015",
+        "s_0016",
+        "s_0017"
+      ],
+      "level": 0,
+      "output_level": 1,
+      "output_seg_id": "merged_e_0018",
+      "total_bytes": 1800,
+      "ts_unix_ms": 1700000010500
+    },
+    {
+      "event_id": "e_0019",
+      "input_seg_ids": [
+        "merged_e_0008",
+        "merged_e_0013",
+        "merged_e_0018"
+      ],
+      "level": 1,
+      "output_level": 2,
+      "output_seg_id": "merged_e_0019",
+      "total_bytes": 16888,
+      "ts_unix_ms": 1700000011000
+    }
+  ]
+}

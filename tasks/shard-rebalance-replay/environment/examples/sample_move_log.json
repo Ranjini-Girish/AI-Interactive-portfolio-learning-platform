@@ -1,0 +1,12 @@
+{
+  "moves": [
+    {
+      "from_node": "node-a",
+      "role": "primary",
+      "seq": 0,
+      "shard_id": "shard-1",
+      "to_node": "node-c",
+      "trigger": "manual"
+    }
+  ]
+}

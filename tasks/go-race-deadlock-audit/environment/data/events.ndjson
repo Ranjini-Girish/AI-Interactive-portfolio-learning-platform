@@ -1,0 +1,14 @@
+{"container_id":"FSCU1001001","type":"gate_in","timestamp":"2026-07-14T15:15:00Z"}
+{"container_id":"FSCU1001002","type":"gate_in","timestamp":"2026-07-14T15:45:00Z"}
+{"container_id":"FSCU1001002","type":"hold","timestamp":"2026-07-14T16:00:00Z"}
+{"container_id":"FSCU1001003","type":"gate_in","timestamp":"2026-07-14T16:10:00Z"}
+{"container_id":"FSCU1001002","type":"release","timestamp":"2026-07-14T16:30:00Z"}
+{"container_id":"MATU2002001","type":"temp_check","timestamp":"2026-07-14T16:05:00Z"}
+{"container_id":"MATU2002001","type":"gate_in","timestamp":"2026-07-14T16:10:00Z"}
+{"container_id":"MATU2002002","type":"temp_check","timestamp":"2026-07-14T16:15:00Z"}
+{"container_id":"MATU2002002","type":"gate_in","timestamp":"2026-07-14T16:20:00Z"}
+{"container_id":"MATU2002002","type":"hold","timestamp":"2026-07-14T16:30:00Z"}
+{"container_id":"OOCU3003001","type":"gate_in","timestamp":"2026-07-14T18:20:00Z"}
+{"container_id":"HLCU4004001","type":"inspected","timestamp":"2026-07-14T21:30:00Z"}
+{"container_id":"CUT6006001","type":"gate_in","timestamp":"2026-07-14T22:50:00Z"}
+{"container_id":"MISS5005001","type":"gate_in","timestamp":"2026-07-14T16:00:00Z"}

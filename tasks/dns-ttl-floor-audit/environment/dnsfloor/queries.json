@@ -1,0 +1,32 @@
+{
+  "queries": [
+    {
+      "record_id": "rec_a",
+      "step": 1
+    },
+    {
+      "record_id": "rec_low",
+      "step": 2
+    },
+    {
+      "record_id": "rec_b",
+      "step": 3
+    },
+    {
+      "record_id": "rec_c",
+      "step": 4
+    },
+    {
+      "record_id": "rec_old",
+      "step": 5
+    },
+    {
+      "record_id": "rec_missing",
+      "step": 6
+    },
+    {
+      "record_id": "rec_x",
+      "step": 7
+    }
+  ]
+}

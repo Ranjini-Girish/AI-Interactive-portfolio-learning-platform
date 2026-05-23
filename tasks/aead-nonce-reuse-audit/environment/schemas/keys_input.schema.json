@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "keys_input",
+  "type": "object",
+  "required": ["keys"],
+  "properties": {
+    "keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key_id", "algorithm", "max_uses"],
+        "properties": {
+          "key_id":    {"type": "string"},
+          "algorithm": {"type": "string"},
+          "max_uses":  {"type": "integer"}
+        }
+      }
+    }
+  }
+}

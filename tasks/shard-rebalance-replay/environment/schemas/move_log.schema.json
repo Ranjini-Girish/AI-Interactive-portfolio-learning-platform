@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "move_log.json output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["moves"],
+  "properties": {
+    "moves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from_node", "role", "seq", "shard_id", "to_node", "trigger"],
+        "properties": {
+          "from_node": {"type": "string"},
+          "role":      {"type": "string", "enum": ["primary", "replica"]},
+          "seq":       {"type": "integer", "minimum": 0},
+          "shard_id":  {"type": "string"},
+          "to_node":   {"type": "string"},
+          "trigger": {
+            "type": "string",
+            "enum": ["manual", "drain", "leave", "auto_join", "auto_leave", "rebalance"]
+          }
+        }
+      }
+    }
+  }
+}

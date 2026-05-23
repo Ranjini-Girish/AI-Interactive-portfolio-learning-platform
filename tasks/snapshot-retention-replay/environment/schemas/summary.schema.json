@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "datasets_with_snapshots",
+    "events_with_diagnostics",
+    "final_snapshot_count",
+    "retention_runs_executed",
+    "snapshots_created",
+    "snapshots_deleted_explicitly",
+    "snapshots_pruned_by_retention",
+    "total_events"
+  ],
+  "properties": {
+    "datasets_with_snapshots": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "events_with_diagnostics":      {"type": "integer", "minimum": 0},
+    "final_snapshot_count":         {"type": "integer", "minimum": 0},
+    "retention_runs_executed":      {"type": "integer", "minimum": 0},
+    "snapshots_created":            {"type": "integer", "minimum": 0},
+    "snapshots_deleted_explicitly": {"type": "integer", "minimum": 0},
+    "snapshots_pruned_by_retention":{"type": "integer", "minimum": 0},
+    "total_events":                 {"type": "integer", "minimum": 0}
+  }
+}

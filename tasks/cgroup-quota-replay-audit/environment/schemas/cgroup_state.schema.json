@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cgroup_state",
+  "type": "object",
+  "required": ["cgroups"],
+  "additionalProperties": false,
+  "properties": {
+    "cgroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "cpu_quota_ms", "cpu_used_ms", "id",
+          "io_quota_iops", "io_used_iops",
+          "mem_quota_kb", "mem_used_kb",
+          "parent_id", "peak_cpu_ms", "peak_mem_kb", "tasks"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "cpu_quota_ms": { "type": "integer" },
+          "cpu_used_ms": { "type": "integer" },
+          "id": { "type": "string" },
+          "io_quota_iops": { "type": "integer" },
+          "io_used_iops": { "type": "integer" },
+          "mem_quota_kb": { "type": "integer" },
+          "mem_used_kb": { "type": "integer" },
+          "parent_id": { "type": ["string", "null"] },
+          "peak_cpu_ms": { "type": "integer" },
+          "peak_mem_kb": { "type": "integer" },
+          "tasks": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

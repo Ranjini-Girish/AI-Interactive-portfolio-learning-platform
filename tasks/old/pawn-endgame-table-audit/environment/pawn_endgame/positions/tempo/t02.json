@@ -1,0 +1,10 @@
+{
+  "position_id": "tempo-t02",
+  "white_rank": 6,
+  "black_rank": 4,
+  "white_file": 2,
+  "black_file": 5,
+  "side_to_move": "b",
+  "tempo_moves": 5,
+  "underpromotion_risk": 1
+}

@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "base": 8192,
+      "id": "gamma",
+      "op": "map",
+      "owner": "demo",
+      "prot": "rw",
+      "seq": 0,
+      "size": 4096,
+      "target_id": null
+    }
+  ]
+}

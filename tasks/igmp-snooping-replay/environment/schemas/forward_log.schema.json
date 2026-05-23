@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "forward_log.schema.json",
+  "title": "forward_log.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["forwards"],
+  "properties": {
+    "forwards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["decision", "egress_ports", "group", "ingress_port", "reason", "seq", "vlan"],
+        "properties": {
+          "seq": { "type": "integer", "minimum": 0 },
+          "decision": { "type": "string", "enum": ["forwarded", "flooded", "dropped"] },
+          "ingress_port": { "type": "string", "minLength": 1 },
+          "group": { "type": "string", "pattern": "^(2(2[4-9]|3[0-9])\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$" },
+          "vlan": { "type": "integer", "minimum": 1, "maximum": 4094 },
+          "egress_ports": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "reason": {
+            "oneOf": [
+              { "type": "null" },
+              {
+                "type": "string",
+                "enum": ["ingress_port_down", "vlan_mismatch", "no_members"]
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

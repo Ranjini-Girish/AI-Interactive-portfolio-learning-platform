@@ -1,0 +1,670 @@
+{
+  "admits": [
+    {
+      "bucket_id": "q-04",
+      "level_after": 500,
+      "seq": 1,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 2500,
+      "seq": 2,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 500,
+      "seq": 4,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 1200,
+      "seq": 9,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 250,
+      "seq": 11,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 800,
+      "seq": 12,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1200,
+      "seq": 14,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 2300,
+      "seq": 15,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1050,
+      "seq": 19,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 6200,
+      "seq": 21,
+      "size_bytes": 4000
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1850,
+      "seq": 22,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 500,
+      "seq": 23,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 2500,
+      "seq": 29,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 100,
+      "seq": 30,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1450,
+      "seq": 31,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 100,
+      "seq": 33,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 250,
+      "seq": 39,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 500,
+      "seq": 41,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 2500,
+      "seq": 43,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 5700,
+      "seq": 45,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 100,
+      "seq": 46,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 4000,
+      "seq": 49,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 800,
+      "seq": 51,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 1600,
+      "seq": 52,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 6000,
+      "seq": 53,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 10000,
+      "seq": 55,
+      "size_bytes": 4000
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 500,
+      "seq": 56,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 800,
+      "seq": 63,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 2500,
+      "seq": 65,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 100,
+      "seq": 69,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 4000,
+      "seq": 72,
+      "size_bytes": 4000
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 300,
+      "seq": 75,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 250,
+      "seq": 78,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 3800,
+      "seq": 79,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 500,
+      "seq": 80,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 250,
+      "seq": 81,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 3900,
+      "seq": 82,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 2500,
+      "seq": 85,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 3000,
+      "seq": 88,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 100,
+      "seq": 89,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 100,
+      "seq": 92,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 500,
+      "seq": 94,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 750,
+      "seq": 97,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 100,
+      "seq": 98,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 800,
+      "seq": 99,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 1300,
+      "seq": 100,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 2100,
+      "seq": 101,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1100,
+      "seq": 103,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 3300,
+      "seq": 104,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 200,
+      "seq": 105,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 2300,
+      "seq": 106,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 2200,
+      "seq": 107,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 4000,
+      "seq": 110,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 3700,
+      "seq": 111,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 950,
+      "seq": 113,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 4250,
+      "seq": 114,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 4250,
+      "seq": 117,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 2500,
+      "seq": 120,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 4150,
+      "seq": 121,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 2500,
+      "seq": 126,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 250,
+      "seq": 127,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 4200,
+      "seq": 129,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 5400,
+      "seq": 130,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 750,
+      "seq": 131,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 700,
+      "seq": 133,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1300,
+      "seq": 135,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1100,
+      "seq": 138,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1600,
+      "seq": 140,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 1200,
+      "seq": 141,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 1350,
+      "seq": 142,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 5350,
+      "seq": 143,
+      "size_bytes": 4000
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1400,
+      "seq": 145,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 600,
+      "seq": 146,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 2000,
+      "seq": 148,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 100,
+      "seq": 149,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1200,
+      "seq": 150,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 3000,
+      "seq": 153,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 700,
+      "seq": 155,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1200,
+      "seq": 157,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 4000,
+      "seq": 159,
+      "size_bytes": 4000
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1000,
+      "seq": 161,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 5500,
+      "seq": 165,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 3400,
+      "seq": 166,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 5150,
+      "seq": 167,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 800,
+      "seq": 169,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 8500,
+      "seq": 171,
+      "size_bytes": 4000
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 8600,
+      "seq": 172,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 5200,
+      "seq": 173,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 1250,
+      "seq": 177,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 750,
+      "seq": 178,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 250,
+      "seq": 181,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 2900,
+      "seq": 182,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 5200,
+      "seq": 184,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 1000,
+      "seq": 185,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 2800,
+      "seq": 187,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 750,
+      "seq": 188,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 5600,
+      "seq": 190,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 950,
+      "seq": 191,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-04",
+      "level_after": 5250,
+      "seq": 196,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 2800,
+      "seq": 197,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 2650,
+      "seq": 202,
+      "size_bytes": 250
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 500,
+      "seq": 203,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-01",
+      "level_after": 3000,
+      "seq": 206,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 5150,
+      "seq": 207,
+      "size_bytes": 2500
+    },
+    {
+      "bucket_id": "q-00",
+      "level_after": 5250,
+      "seq": 208,
+      "size_bytes": 100
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 500,
+      "seq": 210,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-03",
+      "level_after": 800,
+      "seq": 211,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-02",
+      "level_after": 850,
+      "seq": 212,
+      "size_bytes": 500
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 1700,
+      "seq": 214,
+      "size_bytes": 1200
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 2500,
+      "seq": 215,
+      "size_bytes": 800
+    },
+    {
+      "bucket_id": "q-05",
+      "level_after": 2650,
+      "seq": 218,
+      "size_bytes": 250
+    }
+  ]
+}

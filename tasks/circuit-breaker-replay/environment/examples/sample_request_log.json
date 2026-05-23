@@ -1,0 +1,18 @@
+{
+  "requests": [
+    {
+      "admission": "admitted",
+      "endpoint_id": "svc_a",
+      "outcome": "success",
+      "seq": 0,
+      "state_at_admission": "CLOSED"
+    },
+    {
+      "admission": "admitted",
+      "endpoint_id": "svc_a",
+      "outcome": "success",
+      "seq": 1,
+      "state_at_admission": "CLOSED"
+    }
+  ]
+}

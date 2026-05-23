@@ -1,0 +1,214 @@
+{
+  "queries": [
+    {
+      "actual": true,
+      "key": "alpha",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 22
+    },
+    {
+      "actual": true,
+      "key": "bravo",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 23
+    },
+    {
+      "actual": true,
+      "key": "charlie",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 24
+    },
+    {
+      "actual": true,
+      "key": "india",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 25
+    },
+    {
+      "actual": true,
+      "key": "lima",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 26
+    },
+    {
+      "actual": false,
+      "key": "oscar",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 27
+    },
+    {
+      "actual": false,
+      "key": "tango",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 28
+    },
+    {
+      "actual": false,
+      "key": "zulu",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 29
+    },
+    {
+      "actual": false,
+      "key": "oscar",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 30
+    },
+    {
+      "actual": false,
+      "key": "oscar",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 31
+    },
+    {
+      "actual": false,
+      "key": "uniform",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 67
+    },
+    {
+      "actual": false,
+      "key": "victor",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 68
+    },
+    {
+      "actual": false,
+      "key": "whiskey",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 69
+    },
+    {
+      "actual": false,
+      "key": "xray",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 70
+    },
+    {
+      "actual": true,
+      "key": "alpha",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 71
+    },
+    {
+      "actual": true,
+      "key": "bravo",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 72
+    },
+    {
+      "actual": true,
+      "key": "alpha",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 75
+    },
+    {
+      "actual": true,
+      "key": "bravo",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 76
+    },
+    {
+      "actual": true,
+      "key": "charlie",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 77
+    },
+    {
+      "actual": true,
+      "key": "delta",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 78
+    },
+    {
+      "actual": true,
+      "key": "echo",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 79
+    },
+    {
+      "actual": true,
+      "key": "foxtrot",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 80
+    },
+    {
+      "actual": true,
+      "key": "golf",
+      "outcome": "tp",
+      "predicted": true,
+      "seq": 81
+    },
+    {
+      "actual": false,
+      "key": "kilo",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 82
+    },
+    {
+      "actual": false,
+      "key": "lima",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 83
+    },
+    {
+      "actual": false,
+      "key": "mike",
+      "outcome": "fp",
+      "predicted": true,
+      "seq": 84
+    },
+    {
+      "actual": false,
+      "key": "november",
+      "outcome": "fp",
+      "predicted": true,
+      "seq": 85
+    },
+    {
+      "actual": false,
+      "key": "papa",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 86
+    },
+    {
+      "actual": false,
+      "key": "papa",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 87
+    },
+    {
+      "actual": false,
+      "key": "papa",
+      "outcome": "tn",
+      "predicted": false,
+      "seq": 88
+    }
+  ]
+}

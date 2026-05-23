@@ -1,0 +1,2 @@
+ACTIVE_PROFILES: prod,linux
+AUDIT_MODE: strict

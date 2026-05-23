@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "regions.json (initial state)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["regions"],
+  "properties": {
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["base", "id", "owner", "prot", "size"],
+        "properties": {
+          "base":  { "type": "integer", "minimum": 0 },
+          "id":    { "type": "string",  "minLength": 1 },
+          "owner": { "type": "string",  "minLength": 1 },
+          "prot":  { "type": "string",  "enum": ["r", "rw", "rx", "rwx"] },
+          "size":  { "type": "integer", "minimum": 1 }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Zone ingress matrix audit
 
-This document is normative. All JSON emitted by the auditor must use UTF-8, two-space indentation, `sort_keys=True` at every object level, the separator tuple `(", ", ": ")`, a single trailing newline after the closing brace or bracket of the root value, and no byte-order mark.
+This document is normative. All JSON emitted by the auditor must use UTF-8, two-space indentation, `sort_keys=True` at every object level, a single trailing newline after the closing brace or bracket of the root value, and no byte-order mark.
 
 ## Inputs
 

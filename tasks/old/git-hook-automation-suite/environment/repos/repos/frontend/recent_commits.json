@@ -1,0 +1,9 @@
+{
+  "repo": "frontend",
+  "commits": [
+    {"sha": "fe000001", "branch": "main",          "msg_type": "feat",  "msg_subject": "lazy load route bundles",   "issue_ref": "WEB-401", "day": 108},
+    {"sha": "fe000002", "branch": "feature/lazy",  "msg_type": "perf",  "msg_subject": "memoize selectors",          "issue_ref": "WEB-402", "day": 111},
+    {"sha": "fe000003", "branch": "main",          "msg_type": "wip",   "msg_subject": "trying something",           "issue_ref": null,      "day": 115},
+    {"sha": "fe000004", "branch": "main",          "msg_type": "style", "msg_subject": "format with prettier",       "issue_ref": "WEB-403", "day": 117}
+  ]
+}

@@ -1,0 +1,14 @@
+username,action,reason,priority
+alice,none,compliant,
+bob,remove-sudo,sudo membership is not allowlisted,0
+carol,revoke-delegation,transitive admin delegation is not allowed,0
+dan,revoke-delegation,transitive admin delegation is not allowed,0
+erin,revoke-delegation,delegating user has high blast radius,1
+frank,remove-sudo,sudo membership is not allowlisted,0
+greg,revoke-delegation,delegating user has high blast radius,1
+heidi,revoke-delegation,transitive admin delegation is not allowed,0
+ivan,revoke-delegation,transitive admin delegation is not allowed,0
+jen,remove-sudo,sudo membership is not allowlisted,0
+mike,revoke-delegation,transitive admin delegation is not allowed,0
+nora,revoke-delegation,transitive admin delegation is not allowed,0
+svc_ci,rotate-key,ssh inventory data is missing,2

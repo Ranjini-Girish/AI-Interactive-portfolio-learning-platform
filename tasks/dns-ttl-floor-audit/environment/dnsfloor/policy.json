@@ -1,0 +1,6 @@
+{
+  "cname_depth_max": 1,
+  "spill_ratio": 2.0,
+  "ttl_floor": 120,
+  "warmup_queries": 1
+}

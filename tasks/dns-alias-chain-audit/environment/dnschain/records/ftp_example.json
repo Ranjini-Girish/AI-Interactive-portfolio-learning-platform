@@ -1,0 +1,7 @@
+{
+  "alias_target": "www.example",
+  "deny": false,
+  "epoch": 3,
+  "name": "ftp.example",
+  "ttl_step": 8
+}

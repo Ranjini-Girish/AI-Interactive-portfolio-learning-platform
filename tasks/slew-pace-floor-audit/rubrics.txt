@@ -1,0 +1,12 @@
+Agent reads `/app/pace_lab/SPEC.md` and emits only the two mandated JSON files with canonical formatting, +3
+Agent applies pace_echo on pace-mod steps and when window minimum equals running maximum, routing cap_spill to the largest bin only, +5
+Agent preserves every bundled fixture byte under the lab read root, +2
+Agent honors `SPA_DATA_DIR` and `SPA_AUDIT_DIR` override semantics when set, +2
+Agent discovers samples from sorted `samples/sample_*.json` paths and lists every id, +2
+Agent creates the audit directory before writing outputs, +2
+Agent keeps histogram rows sorted by ascending `bin` and omits non-positive tallies, +2
+Agent matches the specification canonical JSON trailing newline contract, +2
+Agent mishandles sliding-window minimum folding or modular remainder rules, -5
+Agent applies cap_spill to the smallest bin, skips pace_echo running-max increments, or mutates lab fixtures, -5
+Agent mutates lab inputs or writes outside the resolved audit directory, -5
+Agent drops required output files or adds extra top-level keys, -3

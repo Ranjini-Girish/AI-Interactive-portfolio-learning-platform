@@ -1,0 +1,10 @@
+Agent reads SPEC.md and all input fixtures before writing audit JSON, +3
+Agent emits all five audit files under /app/audit with canonical formatting, +5
+Agent applies zone-run tag halving of max chain length, +3
+Agent detects alias loops and deny-blocked walks, +5
+Agent leaves the dnschain data directory byte-identical, +2
+Agent modifies files under /app/dnschain, -5
+Agent omits required output files or writes outside /app/audit, -5
+Agent uses wrong JSON key ordering or missing trailing newline, -3
+Agent hardcodes audit digests without reading inputs, -5
+Agent skips TTL expiry, warmup, or stale-record rules, -3

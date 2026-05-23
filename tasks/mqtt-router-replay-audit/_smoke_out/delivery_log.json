@@ -1,0 +1,136 @@
+{
+  "deliveries": [
+    {
+      "payload_id": 11,
+      "publish_qos": 1,
+      "recipients": [
+        {
+          "client_id": "c-bravo",
+          "delivered_qos": 0
+        }
+      ],
+      "seq": 1,
+      "topic": "sensors/A/temp"
+    },
+    {
+      "payload_id": 12,
+      "publish_qos": 0,
+      "recipients": [],
+      "seq": 2,
+      "topic": "sensors/B/temp"
+    },
+    {
+      "payload_id": 100,
+      "publish_qos": 1,
+      "recipients": [
+        {
+          "client_id": "c-charlie",
+          "delivered_qos": 1
+        }
+      ],
+      "seq": 6,
+      "topic": "sensors/A/temp"
+    },
+    {
+      "payload_id": 12,
+      "publish_qos": 0,
+      "recipients": [
+        {
+          "client_id": "c-charlie",
+          "delivered_qos": 0
+        }
+      ],
+      "seq": 6,
+      "topic": "sensors/B/temp"
+    },
+    {
+      "payload_id": 21,
+      "publish_qos": 2,
+      "recipients": [
+        {
+          "client_id": "c-alpha",
+          "delivered_qos": 1
+        },
+        {
+          "client_id": "c-charlie",
+          "delivered_qos": 2
+        }
+      ],
+      "seq": 7,
+      "topic": "sensors/A/temp"
+    },
+    {
+      "payload_id": 30,
+      "publish_qos": 1,
+      "recipients": [],
+      "seq": 10,
+      "topic": "control/cmd"
+    },
+    {
+      "payload_id": 100,
+      "publish_qos": 1,
+      "recipients": [
+        {
+          "client_id": "c-bravo",
+          "delivered_qos": 1
+        }
+      ],
+      "seq": 14,
+      "topic": "sensors/A/temp"
+    },
+    {
+      "payload_id": 0,
+      "publish_qos": 0,
+      "recipients": [
+        {
+          "client_id": "c-charlie",
+          "delivered_qos": 0
+        }
+      ],
+      "seq": 15,
+      "topic": "sensors/B/temp"
+    },
+    {
+      "payload_id": 9001,
+      "publish_qos": 1,
+      "recipients": [],
+      "seq": 17,
+      "topic": "status/alpha"
+    },
+    {
+      "payload_id": 50,
+      "publish_qos": 0,
+      "recipients": [],
+      "seq": 18,
+      "topic": "status/alpha"
+    },
+    {
+      "payload_id": 71,
+      "publish_qos": 0,
+      "recipients": [],
+      "seq": 32,
+      "topic": "retain/a"
+    },
+    {
+      "payload_id": 72,
+      "publish_qos": 0,
+      "recipients": [],
+      "seq": 33,
+      "topic": "retain/b"
+    },
+    {
+      "payload_id": 73,
+      "publish_qos": 0,
+      "recipients": [],
+      "seq": 34,
+      "topic": "retain/c"
+    },
+    {
+      "payload_id": 74,
+      "publish_qos": 0,
+      "recipients": [],
+      "seq": 35,
+      "topic": "retain/d"
+    }
+  ]
+}

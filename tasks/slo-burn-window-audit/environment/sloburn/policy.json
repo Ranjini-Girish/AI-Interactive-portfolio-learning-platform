@@ -1,0 +1,11 @@
+{
+  "burn_den": 10,
+  "burn_num": 3,
+  "critical_hosts": [
+    "h03",
+    "h09"
+  ],
+  "fleet_tag": "prod-east",
+  "warmup_slots": 2,
+  "window_slots": 4
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "filter_state.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["counter_bits", "counters", "k", "m", "stats"],
+  "properties": {
+    "counter_bits": { "type": "integer", "enum": [2, 3, 4, 8] },
+    "counters": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0 }
+    },
+    "k": { "type": "integer", "minimum": 1 },
+    "m": { "type": "integer", "minimum": 1 },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clamped_remove",
+        "clears",
+        "rejected_negative",
+        "rejected_saturate",
+        "resizes",
+        "successful_adds",
+        "successful_queries",
+        "successful_removes"
+      ],
+      "properties": {
+        "clamped_remove": { "type": "integer", "minimum": 0 },
+        "clears": { "type": "integer", "minimum": 0 },
+        "rejected_negative": { "type": "integer", "minimum": 0 },
+        "rejected_saturate": { "type": "integer", "minimum": 0 },
+        "resizes": { "type": "integer", "minimum": 0 },
+        "successful_adds": { "type": "integer", "minimum": 0 },
+        "successful_queries": { "type": "integer", "minimum": 0 },
+        "successful_removes": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

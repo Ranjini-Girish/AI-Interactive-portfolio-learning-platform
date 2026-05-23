@@ -1,0 +1,9 @@
+{
+  "bin_stride": 5,
+  "blend_mod": 11,
+  "pair_span": 2,
+  "quota_mod": 7,
+  "skew_mix": 3,
+  "veil_cap": 9,
+  "veil_spill": true
+}

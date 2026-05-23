@@ -1,0 +1,71 @@
+{
+  "exposures": [
+    {
+      "username": "carol",
+      "source": "erin",
+      "path": [
+        "erin",
+        "dan",
+        "carol"
+      ],
+      "hops": 2,
+      "weight": 2
+    },
+    {
+      "username": "dan",
+      "source": "erin",
+      "path": [
+        "erin",
+        "dan"
+      ],
+      "hops": 1,
+      "weight": 1
+    },
+    {
+      "username": "heidi",
+      "source": "erin",
+      "path": [
+        "erin",
+        "dan",
+        "carol",
+        "heidi"
+      ],
+      "hops": 3,
+      "weight": 3
+    },
+    {
+      "username": "ivan",
+      "source": "erin",
+      "path": [
+        "erin",
+        "greg",
+        "ivan"
+      ],
+      "hops": 2,
+      "weight": 2
+    },
+    {
+      "username": "mike",
+      "source": "erin",
+      "path": [
+        "erin",
+        "dan",
+        "carol",
+        "heidi",
+        "mike"
+      ],
+      "hops": 4,
+      "weight": 4
+    },
+    {
+      "username": "nora",
+      "source": "erin",
+      "path": [
+        "erin",
+        "nora"
+      ],
+      "hops": 1,
+      "weight": 4
+    }
+  ]
+}

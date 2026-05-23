@@ -1,0 +1,8 @@
+{
+  "subscriptions": [
+    {"client_id": "c-alpha", "filter": "sensors/+/temp", "qos": 1},
+    {"client_id": "c-alpha", "filter": "status/#",       "qos": 2},
+    {"client_id": "c-bravo", "filter": "sensors/A/temp", "qos": 0},
+    {"client_id": "c-bravo", "filter": "control/cmd",    "qos": 1}
+  ]
+}

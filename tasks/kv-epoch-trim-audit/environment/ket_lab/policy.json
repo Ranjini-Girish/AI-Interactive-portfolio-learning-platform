@@ -1,0 +1,11 @@
+{
+  "blend_mod": 13,
+  "epoch_spill": true,
+  "epoch_stride": 7,
+  "fold_div": 2,
+  "halve_mod": 4,
+  "link_walk": true,
+  "mix_coeff": 3,
+  "trim_echo": true,
+  "trim_window": 3
+}

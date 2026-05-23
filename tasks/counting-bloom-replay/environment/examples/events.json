@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "key_idx": 0,
+      "op": "add",
+      "seq": 1
+    },
+    {
+      "key_idx": 0,
+      "op": "query",
+      "seq": 2
+    },
+    {
+      "key_idx": 1,
+      "op": "query",
+      "seq": 3
+    },
+    {
+      "op": "dump_stats",
+      "seq": 4
+    },
+    {
+      "key_idx": 0,
+      "op": "remove",
+      "seq": 5
+    },
+    {
+      "key_idx": 0,
+      "op": "query",
+      "seq": 6
+    },
+    {
+      "key_idx": 1,
+      "op": "remove",
+      "seq": 7
+    }
+  ]
+}

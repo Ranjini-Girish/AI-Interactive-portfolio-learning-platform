@@ -7,385 +7,383 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
+	"strings"
 )
 
+type policyDoc struct {
+	QuorumBase          int    `json:"quorum_base"`
+	WindingModulus      int    `json:"winding_modulus"`
+	AnchorBlend         string `json:"anchor_blend"`
+	CrisisMode          bool   `json:"crisis_mode"`
+	CrisisSeverityFloor int    `json:"crisis_severity_floor"`
+	CrisisQuorum        int    `json:"crisis_quorum"`
+}
+
 type domainLayout struct {
-	RingOrder []string `json:"ring_order"`
-}
-
-type indexFile struct {
-	SegmentFiles []string `json:"segment_files"`
-}
-
-type policy struct {
-	SchemaVersion  int `json:"schema_version"`
-	EvaluationDay  int `json:"evaluation_day"`
-	Quorum         int `json:"quorum"`
-	WindingModulus int `json:"winding_modulus"`
-	AnchorWeight   int `json:"anchor_weight"`
+	RibbonBias map[string]int `json:"ribbon_bias"`
 }
 
 type poolState struct {
-	TierCap map[string]int `json:"tier_cap"`
+	Votes      map[string]int `json:"votes"`
+	CurrentDay int            `json:"current_day"`
 }
 
-type incidentWindow struct {
-	UntilDay int      `json:"until_day"`
-	Tiers    []string `json:"tiers"`
-	Relax    int      `json:"relax"`
+type indexDoc struct {
+	Segments []string `json:"segments"`
+}
+
+type anchorMask struct {
+	MaskHex string `json:"mask_hex"`
+}
+
+type incidentEvent struct {
+	Day      int      `json:"day"`
+	EventID  string   `json:"event_id"`
+	Action   string   `json:"action"`
+	Lanes    []string `json:"lanes"`
+	Severity int      `json:"severity"`
+	Bias     int      `json:"bias"`
 }
 
 type incidentLog struct {
-	Windows []incidentWindow `json:"windows"`
+	Events []incidentEvent `json:"events"`
 }
 
-type anchor struct {
-	SegStart string `json:"seg_start"`
-	SegEnd   string `json:"seg_end"`
+type segmentFile struct {
+	ID      string `json:"id"`
+	Lane    string `json:"lane"`
+	Winding int    `json:"winding"`
+	Weight  int    `json:"weight"`
+	Slot    string `json:"slot"`
 }
 
-type segment struct {
-	SegmentID string `json:"segment_id"`
-	Tier      string `json:"tier"`
-	Witness   int    `json:"witness"`
-	Flux      int    `json:"flux"`
+type segOut struct {
+	EffectiveVotes   int    `json:"effective_votes"`
+	EffectiveWinding int    `json:"effective_winding"`
+	ID               string `json:"id"`
+	Lane             string `json:"lane"`
+	LaneBonus        int    `json:"lane_bonus"`
+	QuorumNeed       int    `json:"quorum_need"`
+	Satisfied        bool   `json:"satisfied"`
+	Status           string `json:"status"`
+	VotesRaw         int    `json:"votes_raw"`
+	Winding          int    `json:"winding"`
+}
+
+type laneAgg struct {
+	Frozen       int    `json:"frozen"`
+	Lane         string `json:"lane"`
+	MissingSlot  int    `json:"missing_slot"`
+	OK           int    `json:"ok"`
+	SegmentCount int    `json:"segment_count"`
+	Short        int    `json:"short"`
+}
+
+type appliedRow struct {
+	Action  string   `json:"action"`
+	Day     int      `json:"day"`
+	EventID string   `json:"event_id"`
+	Lanes   []string `json:"lanes"`
+	Note    string   `json:"note"`
+}
+
+// summaryOut: struct field order equals lexicographic JSON key order.
+type summaryOut struct {
+	ActiveQuorumFloor  int    `json:"active_quorum_floor"`
+	AnchorBlend        string `json:"anchor_blend"`
+	AppliedIncidents   int    `json:"applied_incidents"`
+	CrisisTriggerDay   *int   `json:"crisis_trigger_day"`
+	CrisisTriggered    bool   `json:"crisis_triggered"`
+	EligibleIncidents  int    `json:"eligible_incidents"`
+	LaneFrozenCount    int    `json:"lane_frozen_count"`
+	MissingSlotCount   int    `json:"missing_slot_count"`
+	QuorumBase         int    `json:"quorum_base"`
+	SatisfiedCount     int    `json:"satisfied_count"`
+	SegmentsTotal      int    `json:"segments_total"`
+	ShortCount         int    `json:"short_count"`
+	WindingModulus     int    `json:"winding_modulus"`
+}
+
+type segmentEnvelope struct {
+	Segments []segOut `json:"segments"`
+}
+
+type laneEnvelope struct {
+	Lanes []laneAgg `json:"lanes"`
+}
+
+type incidentEnvelope struct {
+	Applied []appliedRow `json:"applied"`
+}
+
+func must(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
+func readJSON(path string, out any) {
+	b, err := os.ReadFile(path)
+	must(err)
+	must(json.Unmarshal(b, out))
+}
+
+func canonicalJSON(v any) []byte {
+	var buf bytes.Buffer
+	enc := json.NewEncoder(&buf)
+	enc.SetEscapeHTML(false)
+	enc.SetIndent("", "  ")
+	must(enc.Encode(v))
+	return buf.Bytes()
+}
+
+func parseHexU64(s string) (uint64, error) {
+	s = strings.TrimSpace(s)
+	s = strings.TrimPrefix(strings.ToLower(s), "0x")
+	if len(s) == 0 {
+		return 0, fmt.Errorf("empty mask")
+	}
+	if len(s)%2 == 1 {
+		s = "0" + s
+	}
+	return strconv.ParseUint(s, 16, 64)
+}
+
+func effectiveWinding(blend string, hi, lo uint64, winding int, mod int) int {
+	w := uint64(winding)
+	var fused uint64
+	switch blend {
+	case "xor":
+		fused = hi ^ lo ^ w
+	case "or":
+		fused = hi | lo | w
+	default:
+		panic("bad anchor_blend")
+	}
+	if mod <= 0 {
+		panic("bad winding_modulus")
+	}
+	return int(fused % uint64(mod))
 }
 
 func main() {
-	dataDir := os.Getenv("RWQ_DATA_DIR")
-	if dataDir == "" {
-		dataDir = "/app/rwq_lab"
+	if len(os.Args) > 1 {
+		fmt.Fprintln(os.Stderr, "rwqaudit: unexpected arguments")
+		os.Exit(2)
 	}
-	auditDir := os.Getenv("RWQ_AUDIT_DIR")
-	if auditDir == "" {
-		auditDir = "/app/audit"
+	dataRoot := strings.TrimSpace(os.Getenv("RWQ_DATA_DIR"))
+	if dataRoot == "" {
+		dataRoot = "/app/rwq_lab"
 	}
-	if err := os.MkdirAll(auditDir, 0o755); err != nil {
-		panic(err)
+	auditRoot := strings.TrimSpace(os.Getenv("RWQ_AUDIT_DIR"))
+	if auditRoot == "" {
+		auditRoot = "/app/rwq_audit"
+	}
+	must(os.MkdirAll(auditRoot, 0o755))
+
+	var pol policyDoc
+	readJSON(filepath.Join(dataRoot, "policy.json"), &pol)
+	var layout domainLayout
+	readJSON(filepath.Join(dataRoot, "domain_layout.json"), &layout)
+	var pool poolState
+	readJSON(filepath.Join(dataRoot, "pool_state.json"), &pool)
+	var idx indexDoc
+	readJSON(filepath.Join(dataRoot, "index.json"), &idx)
+	var inc incidentLog
+	readJSON(filepath.Join(dataRoot, "incident_log.json"), &inc)
+
+	var hiA, loA anchorMask
+	readJSON(filepath.Join(dataRoot, "anchors", "hi.json"), &hiA)
+	readJSON(filepath.Join(dataRoot, "anchors", "lo.json"), &loA)
+	hi, err := parseHexU64(hiA.MaskHex)
+	must(err)
+	lo, err := parseHexU64(loA.MaskHex)
+	must(err)
+
+	if layout.RibbonBias == nil {
+		layout.RibbonBias = map[string]int{}
+	}
+	if pool.Votes == nil {
+		pool.Votes = map[string]int{}
 	}
 
-	layout := mustReadJSON[domainLayout](filepath.Join(dataDir, "domain_layout.json"))
-	idx := mustReadJSON[indexFile](filepath.Join(dataDir, "index.json"))
-	pol := mustReadJSON[policy](filepath.Join(dataDir, "policy.json"))
-	pool := mustReadJSON[poolState](filepath.Join(dataDir, "pool_state.json"))
-	inc := mustReadJSON[incidentLog](filepath.Join(dataDir, "incident_log.json"))
-	anLo := mustReadJSON[anchor](filepath.Join(dataDir, "anchors", "lo.json"))
-	anHi := mustReadJSON[anchor](filepath.Join(dataDir, "anchors", "hi.json"))
-
-	if pol.WindingModulus < 2 || pol.Quorum < 0 || pol.AnchorWeight < 0 {
-		panic("invalid policy")
-	}
-
-	pos := map[string]int{}
-	for i, id := range layout.RingOrder {
-		pos[id] = i
-	}
-	n := len(layout.RingOrder)
-
-	segments := map[string]segment{}
-	for _, rel := range idx.SegmentFiles {
-		s := mustReadJSON[segment](filepath.Join(dataDir, rel))
-		if s.SegmentID == "" {
-			panic("empty segment_id")
+	eligible := make([]incidentEvent, 0, len(inc.Events))
+	for _, ev := range inc.Events {
+		if ev.Day <= 0 {
+			fmt.Fprintln(os.Stderr, "incident day must be positive")
+			os.Exit(1)
 		}
-		segments[s.SegmentID] = s
-	}
-	for _, id := range layout.RingOrder {
-		if _, ok := segments[id]; !ok {
-			panic("missing segment for ring id " + id)
+		if ev.Day <= pool.CurrentDay {
+			eligible = append(eligible, ev)
 		}
 	}
-	if len(segments) != len(layout.RingOrder) {
-		panic("segment count mismatch")
-	}
-
-	sumFlux := 0
-	for _, id := range layout.RingOrder {
-		sumFlux += segments[id].Flux
-	}
-	mod := pol.WindingModulus
-	windingOk := ((sumFlux%mod)+mod)%mod == 0
-
-	anchorHits := map[string]int{}
-	for _, id := range layout.RingOrder {
-		anchorHits[id] = 0
-	}
-	for _, a := range []anchor{anLo, anHi} {
-		cover := cyclicCover(pos, n, a.SegStart, a.SegEnd)
-		for _, id := range cover {
-			anchorHits[id]++
+	sort.Slice(eligible, func(i, j int) bool {
+		if eligible[i].Day != eligible[j].Day {
+			return eligible[i].Day < eligible[j].Day
 		}
-	}
-
-	effectiveWitness := map[string]int{}
-	effectiveQuorum := map[string]int{}
-	for _, id := range layout.RingOrder {
-		s := segments[id]
-		effectiveWitness[id] = s.Witness + pol.AnchorWeight*anchorHits[id]
-		bestRelax := 0
-		for _, w := range inc.Windows {
-			if pol.EvaluationDay > w.UntilDay {
-				continue
-			}
-			for _, t := range w.Tiers {
-				if t == s.Tier && w.Relax > bestRelax {
-					bestRelax = w.Relax
-				}
-			}
-		}
-		eq := pol.Quorum - bestRelax
-		if eq < 0 {
-			eq = 0
-		}
-		effectiveQuorum[id] = eq
-	}
-
-	verdict := map[string]string{}
-	if !windingOk {
-		for _, id := range layout.RingOrder {
-			verdict[id] = "winding_violation"
-		}
-	} else {
-		for _, id := range layout.RingOrder {
-			if effectiveWitness[id] >= effectiveQuorum[id] {
-				verdict[id] = "quorum_ok"
-			} else {
-				verdict[id] = "quorum_starved"
-			}
-		}
-		tierNames := make([]string, 0, len(pool.TierCap))
-		for t := range pool.TierCap {
-			tierNames = append(tierNames, t)
-		}
-		sort.Strings(tierNames)
-		for _, tier := range tierNames {
-			capv, ok := pool.TierCap[tier]
-			if !ok {
-				continue
-			}
-			for {
-				sum := 0
-				cands := make([]string, 0)
-				for _, id := range layout.RingOrder {
-					if segments[id].Tier != tier {
-						continue
-					}
-					if verdict[id] != "quorum_ok" {
-						continue
-					}
-					sum += effectiveWitness[id]
-					cands = append(cands, id)
-				}
-				if sum <= capv || len(cands) == 0 {
-					break
-				}
-				victim := ""
-				bestPos := -1
-				for _, id := range cands {
-					if p := pos[id]; p > bestPos {
-						bestPos = p
-						victim = id
-					}
-				}
-				if victim == "" {
-					break
-				}
-				verdict[victim] = "tier_trimmed"
-			}
-		}
-		for _, id := range layout.RingOrder {
-			if verdict[id] == "quorum_ok" {
-				verdict[id] = "passed"
-			}
-		}
-	}
-
-	diagnostics := []map[string]any{}
-	for _, id := range layout.RingOrder {
-		v := verdict[id]
-		switch v {
-		case "winding_violation":
-			diagnostics = append(diagnostics, map[string]any{"code": "WINDING", "segment_id": id})
-		case "quorum_starved":
-			diagnostics = append(diagnostics, map[string]any{"code": "QUORUM", "segment_id": id})
-		case "tier_trimmed":
-			diagnostics = append(diagnostics, map[string]any{"code": "TRIM", "segment_id": id})
-		}
-	}
-	sort.Slice(diagnostics, func(i, j int) bool {
-		a, b := diagnostics[i], diagnostics[j]
-		sa := a["segment_id"].(string)
-		sb := b["segment_id"].(string)
-		if sa != sb {
-			return sa < sb
-		}
-		return a["code"].(string) < b["code"].(string)
+		return eligible[i].EventID < eligible[j].EventID
 	})
 
-	passed := 0
-	starved := 0
-	trimmed := 0
-	wv := 0
-	for _, id := range layout.RingOrder {
-		switch verdict[id] {
-		case "passed":
-			passed++
-		case "quorum_starved":
-			starved++
-		case "tier_trimmed":
-			trimmed++
-		case "winding_violation":
-			wv++
+	frozen := map[string]bool{}
+	laneCarry := map[string]int{}
+	applied := make([]appliedRow, 0, len(eligible))
+	crisisOn := false
+	var crisisDay *int
+
+	for _, ev := range eligible {
+		switch ev.Action {
+		case "freeze_lane":
+			for _, ln := range ev.Lanes {
+				frozen[ln] = true
+			}
+			applied = append(applied, appliedRow{
+				Day: ev.Day, EventID: ev.EventID, Action: ev.Action, Lanes: append([]string(nil), ev.Lanes...),
+				Note: "lanes marked frozen",
+			})
+		case "thaw_lane":
+			for _, ln := range ev.Lanes {
+				delete(frozen, ln)
+			}
+			applied = append(applied, appliedRow{
+				Day: ev.Day, EventID: ev.EventID, Action: ev.Action, Lanes: append([]string(nil), ev.Lanes...),
+				Note: "lanes removed from frozen set",
+			})
+		case "pulse_carry":
+			for _, ln := range ev.Lanes {
+				laneCarry[ln] += ev.Bias
+			}
+			applied = append(applied, appliedRow{
+				Day: ev.Day, EventID: ev.EventID, Action: ev.Action, Lanes: append([]string(nil), ev.Lanes...),
+				Note: "lane carry updated",
+			})
+		default:
+			fmt.Fprintf(os.Stderr, "unknown incident action %q\n", ev.Action)
+			os.Exit(1)
+		}
+		if pol.CrisisMode && ev.Severity >= pol.CrisisSeverityFloor && !crisisOn {
+			crisisOn = true
+			d := ev.Day
+			crisisDay = &d
 		}
 	}
 
-	summary := map[string]any{
-		"diagnostics_total":       len(diagnostics),
-		"passed_count":            passed,
-		"quorum_starved_count":    starved,
-		"schema_version":          pol.SchemaVersion,
-		"segments_total":          len(layout.RingOrder),
-		"tier_trimmed_count":      trimmed,
-		"winding_ok":              windingOk,
-		"winding_violation_count": wv,
+	segments := make([]segmentFile, 0, len(idx.Segments))
+	for _, rel := range idx.Segments {
+		var sf segmentFile
+		readJSON(filepath.Join(dataRoot, rel), &sf)
+		segments = append(segments, sf)
+	}
+	sort.Slice(segments, func(i, j int) bool { return segments[i].ID < segments[j].ID })
+
+	baseNeed := pol.QuorumBase
+	if crisisOn {
+		baseNeed = pol.CrisisQuorum
 	}
 
-	rows := make([]any, 0, len(layout.RingOrder))
-	for _, id := range layout.RingOrder {
-		s := segments[id]
-		rows = append(rows, map[string]any{
-			"effective_quorum":  effectiveQuorum[id],
-			"effective_witness": effectiveWitness[id],
-			"segment_id":        id,
-			"tier":              s.Tier,
-			"verdict":           verdict[id],
-		})
-	}
+	segOuts := make([]segOut, 0, len(segments))
+	laneStats := map[string]*laneAgg{}
 
-	diagAny := make([]any, len(diagnostics))
-	for i, d := range diagnostics {
-		diagAny[i] = d
-	}
-
-	segOut := map[string]any{
-		"diagnostics":    diagAny,
-		"schema_version": pol.SchemaVersion,
-		"segments":       rows,
-	}
-
-	mustWriteJSON(filepath.Join(auditDir, "summary.json"), summary)
-	mustWriteJSON(filepath.Join(auditDir, "segment_verdicts.json"), segOut)
-}
-
-func cyclicCover(pos map[string]int, n int, start, end string) []string {
-	a := pos[start]
-	b := pos[end]
-	out := make([]string, 0, n)
-	if a <= b {
-		for i := a; i <= b; i++ {
-			out = append(out, ringID(pos, n, i))
+	for _, sg := range segments {
+		effW := effectiveWinding(pol.AnchorBlend, hi, lo, sg.Winding, pol.WindingModulus)
+		need := baseNeed + effW
+		raw, ok := pool.Votes[sg.Slot]
+		if !ok {
+			raw = 0
 		}
-		return out
-	}
-	for i := a; i < n; i++ {
-		out = append(out, ringID(pos, n, i))
-	}
-	for i := 0; i <= b; i++ {
-		out = append(out, ringID(pos, n, i))
-	}
-	return out
-}
+		bias := layout.RibbonBias[sg.Lane]
+		carry := laneCarry[sg.Lane]
+		evVotes := raw + bias + carry
 
-func ringID(pos map[string]int, n int, idx int) string {
-	for id, p := range pos {
-		if p == idx {
-			return id
-		}
-	}
-	panic("bad idx")
-}
-
-func mustReadJSON[T any](path string) T {
-	b, err := os.ReadFile(path)
-	if err != nil {
-		panic(err)
-	}
-	var v T
-	if err := json.Unmarshal(b, &v); err != nil {
-		panic(err)
-	}
-	return v
-}
-
-func mustWriteJSON(path string, v any) {
-	b, err := marshalMinified(v)
-	if err != nil {
-		panic(err)
-	}
-	if err := os.WriteFile(path, append(b, '\n'), 0o644); err != nil {
-		panic(err)
-	}
-}
-
-func marshalMinified(v any) ([]byte, error) {
-	var buf bytes.Buffer
-	if err := writeMin(&buf, v); err != nil {
-		return nil, err
-	}
-	return buf.Bytes(), nil
-}
-
-func writeMin(buf *bytes.Buffer, v any) error {
-	switch t := v.(type) {
-	case nil:
-		buf.WriteString("null")
-	case bool:
-		if t {
-			buf.WriteString("true")
+		st := "ok"
+		sat := false
+		if frozen[sg.Lane] {
+			st = "lane_frozen"
+			sat = false
+		} else if !ok && sg.Slot != "" {
+			st = "slot_missing"
+			sat = false
+		} else if evVotes >= need {
+			st = "ok"
+			sat = true
 		} else {
-			buf.WriteString("false")
+			st = "short"
+			sat = false
 		}
-	case float64:
-		buf.WriteString(fmt.Sprintf("%.0f", t))
-	case int:
-		buf.WriteString(fmt.Sprintf("%d", t))
-	case int64:
-		buf.WriteString(fmt.Sprintf("%d", t))
-	case string:
-		enc, _ := json.Marshal(t)
-		buf.Write(enc)
-	case []any:
-		buf.WriteByte('[')
-		for i, e := range t {
-			if i > 0 {
-				buf.WriteByte(',')
-			}
-			if err := writeMin(buf, e); err != nil {
-				return err
-			}
+
+		segOuts = append(segOuts, segOut{
+			EffectiveVotes: evVotes, EffectiveWinding: effW, ID: sg.ID, Lane: sg.Lane,
+			LaneBonus: bias + carry, QuorumNeed: need, Satisfied: sat, Status: st,
+			VotesRaw: raw, Winding: sg.Winding,
+		})
+
+		if _, exists := laneStats[sg.Lane]; !exists {
+			laneStats[sg.Lane] = &laneAgg{Lane: sg.Lane}
 		}
-		buf.WriteByte(']')
-	case map[string]any:
-		keys := make([]string, 0, len(t))
-		for k := range t {
-			keys = append(keys, k)
+		ag := laneStats[sg.Lane]
+		ag.SegmentCount++
+		switch st {
+		case "short":
+			ag.Short++
+		case "lane_frozen":
+			ag.Frozen++
+		case "ok":
+			ag.OK++
+		case "slot_missing":
+			ag.MissingSlot++
 		}
-		sort.Strings(keys)
-		buf.WriteByte('{')
-		for i, k := range keys {
-			if i > 0 {
-				buf.WriteByte(',')
-			}
-			enc, _ := json.Marshal(k)
-			buf.Write(enc)
-			buf.WriteByte(':')
-			if err := writeMin(buf, t[k]); err != nil {
-				return err
-			}
-		}
-		buf.WriteByte('}')
-	default:
-		return fmt.Errorf("unsupported type %T", v)
 	}
-	return nil
+
+	laneNames := make([]string, 0, len(laneStats))
+	for ln := range laneStats {
+		laneNames = append(laneNames, ln)
+	}
+	sort.Strings(laneNames)
+	laneList := make([]laneAgg, 0, len(laneNames))
+	for _, ln := range laneNames {
+		laneList = append(laneList, *laneStats[ln])
+	}
+
+	satCount := 0
+	shortCount := 0
+	frozenCount := 0
+	missingCount := 0
+	for _, s := range segOuts {
+		if s.Satisfied {
+			satCount++
+		}
+		switch s.Status {
+		case "short":
+			shortCount++
+		case "lane_frozen":
+			frozenCount++
+		case "slot_missing":
+			missingCount++
+		}
+	}
+
+	summary := summaryOut{
+		SegmentsTotal:      len(segOuts),
+		SatisfiedCount:     satCount,
+		ShortCount:         shortCount,
+		LaneFrozenCount:    frozenCount,
+		MissingSlotCount:   missingCount,
+		CrisisTriggered:    crisisOn,
+		CrisisTriggerDay:   crisisDay,
+		EligibleIncidents:  len(eligible),
+		AppliedIncidents:   len(applied),
+		AnchorBlend:        pol.AnchorBlend,
+		WindingModulus:     pol.WindingModulus,
+		QuorumBase:         pol.QuorumBase,
+		ActiveQuorumFloor:  baseNeed,
+	}
+
+	outSeg := segmentEnvelope{Segments: segOuts}
+	outLane := laneEnvelope{Lanes: laneList}
+	outInc := incidentEnvelope{Applied: applied}
+
+	must(os.WriteFile(filepath.Join(auditRoot, "segment_quorum.json"), canonicalJSON(outSeg), 0o644))
+	must(os.WriteFile(filepath.Join(auditRoot, "lane_summary.json"), canonicalJSON(outLane), 0o644))
+	must(os.WriteFile(filepath.Join(auditRoot, "incident_effects.json"), canonicalJSON(outInc), 0o644))
+	must(os.WriteFile(filepath.Join(auditRoot, "summary.json"), canonicalJSON(summary), 0o644))
 }

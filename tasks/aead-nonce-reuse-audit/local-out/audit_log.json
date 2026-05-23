@@ -1,0 +1,113 @@
+{
+  "transitions": [
+    {
+      "evidence": {
+        "algorithm": "aes-gcm-128",
+        "max_uses": 10
+      },
+      "key_id": "key-alpha",
+      "kind": "installed",
+      "seq": 0,
+      "tick": 0
+    },
+    {
+      "evidence": {
+        "algorithm": "chacha20-poly1305",
+        "max_uses": 50
+      },
+      "key_id": "key-beta",
+      "kind": "installed",
+      "seq": 0,
+      "tick": 0
+    },
+    {
+      "evidence": {
+        "algorithm": "aes-gcm-128",
+        "max_uses": 5
+      },
+      "key_id": "key-delta",
+      "kind": "installed",
+      "seq": 0,
+      "tick": 0
+    },
+    {
+      "evidence": {
+        "algorithm": "chacha20-poly1305",
+        "max_uses": 5
+      },
+      "key_id": "key-epsilon",
+      "kind": "installed",
+      "seq": 0,
+      "tick": 0
+    },
+    {
+      "evidence": {
+        "algorithm": "aes-gcm-128",
+        "max_uses": 20
+      },
+      "key_id": "key-gamma",
+      "kind": "installed",
+      "seq": 0,
+      "tick": 0
+    },
+    {
+      "evidence": {
+        "algorithm": "aes-gcm-128",
+        "max_uses": 4
+      },
+      "key_id": "key-zeta",
+      "kind": "installed",
+      "seq": 1,
+      "tick": 1
+    },
+    {
+      "evidence": {
+        "max_uses": 10,
+        "uses_count": 10
+      },
+      "key_id": "key-alpha",
+      "kind": "exhausted",
+      "seq": 14,
+      "tick": 5
+    },
+    {
+      "evidence": {
+        "nonce": 42,
+        "trigger": "nonce_reuse"
+      },
+      "key_id": "key-gamma",
+      "kind": "compromised",
+      "seq": 19,
+      "tick": 8
+    },
+    {
+      "evidence": {
+        "reason": "hsm_failure",
+        "trigger": "key_compromise"
+      },
+      "key_id": "key-beta",
+      "kind": "compromised",
+      "seq": 23,
+      "tick": 9
+    },
+    {
+      "evidence": {
+        "trigger": "key_retire"
+      },
+      "key_id": "key-delta",
+      "kind": "retired",
+      "seq": 26,
+      "tick": 10
+    },
+    {
+      "evidence": {
+        "last_use_tick": 0,
+        "now": 120
+      },
+      "key_id": "key-epsilon",
+      "kind": "idle_retired",
+      "seq": 32,
+      "tick": 120
+    }
+  ]
+}

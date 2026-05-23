@@ -1,11 +1,16 @@
 #!/bin/bash
-# `allow_internet = false` is enforced at runtime. Verifier deps
-# (pytest, pytest-json-ctrf) are pre-installed in environment/Dockerfile.
+# Verifier deps are pre-installed in environment/Dockerfile.
 
 mkdir -p /logs/verifier
 
 echo 0 > /logs/verifier/reward.txt
 echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
+
+ensure_files() {
+    [ -f /logs/verifier/reward.txt ] || echo 0 > /logs/verifier/reward.txt
+    [ -f /logs/verifier/ctrf.json ] || echo '{"version":"1.0.0","results":{"tool":{"name":"pytest"},"summary":{"tests":0,"passed":0,"failed":0,"skipped":0},"tests":[]}}' > /logs/verifier/ctrf.json
+}
+trap ensure_files EXIT
 
 if [ "$PWD" = "/" ]; then
     echo "Error: No working directory set. Please set a WORKDIR in your Dockerfile before running this script."
@@ -20,4 +25,3 @@ if [ $? -eq 0 ]; then
 else
     echo 0 > /logs/verifier/reward.txt
 fi
-

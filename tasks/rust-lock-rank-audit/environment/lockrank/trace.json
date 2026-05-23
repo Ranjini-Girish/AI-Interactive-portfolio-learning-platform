@@ -1,0 +1,82 @@
+{
+  "events": [
+    {
+      "lock_id": "lk_a",
+      "op": "acquire",
+      "step": 1,
+      "thread_id": "t1"
+    },
+    {
+      "lock_id": "lk_c",
+      "op": "acquire",
+      "step": 1,
+      "thread_id": "t2"
+    },
+    {
+      "lock_id": "lk_d",
+      "op": "acquire",
+      "step": 2,
+      "thread_id": "t1"
+    },
+    {
+      "lock_id": "lk_b",
+      "op": "acquire",
+      "step": 3,
+      "thread_id": "t1"
+    },
+    {
+      "lock_id": "lk_e",
+      "op": "fence_enter",
+      "step": 4,
+      "thread_id": "t2"
+    },
+    {
+      "lock_id": "lk_f",
+      "op": "acquire",
+      "step": 5,
+      "thread_id": "t2"
+    },
+    {
+      "lock_id": "lk_g",
+      "op": "acquire",
+      "step": 6,
+      "thread_id": "t2"
+    },
+    {
+      "lock_id": "lk_h",
+      "op": "acquire",
+      "step": 7,
+      "thread_id": "t2"
+    },
+    {
+      "lock_id": "lk_old",
+      "op": "acquire",
+      "step": 8,
+      "thread_id": "t3"
+    },
+    {
+      "lock_id": "lk_z",
+      "op": "acquire",
+      "step": 9,
+      "thread_id": "t1"
+    },
+    {
+      "lock_id": "lk_c",
+      "op": "release",
+      "step": 10,
+      "thread_id": "t1"
+    },
+    {
+      "lock_id": "lk_x",
+      "op": "release",
+      "step": 11,
+      "thread_id": "t2"
+    },
+    {
+      "lock_id": "lk_e",
+      "op": "fence_exit",
+      "step": 12,
+      "thread_id": "t2"
+    }
+  ]
+}

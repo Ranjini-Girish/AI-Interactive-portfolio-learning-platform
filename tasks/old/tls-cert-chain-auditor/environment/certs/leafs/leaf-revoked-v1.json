@@ -1,0 +1,10 @@
+{
+  "issuer_serial": "int-us-1",
+  "key_size": 2048,
+  "not_after_day": 1500,
+  "not_before_day": 700,
+  "san": ["revoked-svc.example.com"],
+  "serial": "leaf-revoked-v1",
+  "signature_algo": "sha256-rsa",
+  "subject_cn": "revoked-svc.example.com"
+}

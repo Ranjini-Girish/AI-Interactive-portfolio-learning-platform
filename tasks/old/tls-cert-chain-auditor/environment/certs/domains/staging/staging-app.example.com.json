@@ -1,0 +1,7 @@
+{
+  "domain": "staging-app.example.com",
+  "expected_san": ["staging-app.example.com"],
+  "leaf_serial": "leaf-pin-v1",
+  "required_intermediate": "int-eu-1-sub",
+  "tier": "staging"
+}

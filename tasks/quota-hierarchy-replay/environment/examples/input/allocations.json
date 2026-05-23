@@ -1,0 +1,48 @@
+{
+  "events": [
+    {
+      "event_id": "e_0001",
+      "namespace": "team_x",
+      "op": "allocate",
+      "resources": {
+        "cpu": 10,
+        "memory": 64,
+        "storage": 100
+      },
+      "ts_unix_ms": 100
+    },
+    {
+      "event_id": "e_0002",
+      "namespace": "team_x",
+      "op": "allocate",
+      "resources": {
+        "cpu": 99,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 200
+    },
+    {
+      "event_id": "e_0003",
+      "namespace": "team_x",
+      "op": "release",
+      "resources": {
+        "cpu": 5,
+        "memory": 32,
+        "storage": 50
+      },
+      "ts_unix_ms": 300
+    },
+    {
+      "event_id": "e_0004",
+      "namespace": "unknown",
+      "op": "release",
+      "resources": {
+        "cpu": 1,
+        "memory": 1,
+        "storage": 1
+      },
+      "ts_unix_ms": 400
+    }
+  ]
+}

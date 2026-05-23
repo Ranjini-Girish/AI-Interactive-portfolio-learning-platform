@@ -1,0 +1,8 @@
+{
+  "tasks": [
+    {
+      "cgroup_id": "root",
+      "task_id": "t1"
+    }
+  ]
+}

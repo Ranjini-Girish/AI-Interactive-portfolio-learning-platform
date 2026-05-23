@@ -1,0 +1,416 @@
+{
+  "events": [
+    {
+      "group": "239.4.2.186",
+      "ingress_port": "Eth1",
+      "len": 128,
+      "op": "mcast_frame",
+      "seq": 0,
+      "vlan": 20
+    },
+    {
+      "delta_sec": 200,
+      "op": "tick",
+      "seq": 1
+    },
+    {
+      "group": "239.2.1.43",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 2,
+      "vlan": 20
+    },
+    {
+      "group": "239.255.255.250",
+      "ingress_port": "Eth2",
+      "len": 1024,
+      "op": "mcast_frame",
+      "seq": 3,
+      "vlan": 10
+    },
+    {
+      "group": "239.2.1.43",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 4,
+      "vlan": 20
+    },
+    {
+      "delta_sec": 5,
+      "op": "tick",
+      "seq": 5
+    },
+    {
+      "group": "239.1.5.230",
+      "op": "igmp_report",
+      "port": "Eth3",
+      "seq": 6,
+      "vlan": 20
+    },
+    {
+      "group": "239.2.5.4",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 7,
+      "vlan": 20
+    },
+    {
+      "group": "239.5.2.90",
+      "op": "igmp_leave",
+      "port": "Eth6",
+      "seq": 8,
+      "vlan": 10
+    },
+    {
+      "group": "239.2.5.4",
+      "op": "igmp_report",
+      "port": "Eth5",
+      "seq": 9,
+      "vlan": 20
+    },
+    {
+      "group": "239.4.2.186",
+      "op": "igmp_leave",
+      "port": "Eth2",
+      "seq": 10,
+      "vlan": 10
+    },
+    {
+      "delta_sec": 50,
+      "op": "tick",
+      "seq": 11
+    },
+    {
+      "delta_sec": 5,
+      "op": "tick",
+      "seq": 12
+    },
+    {
+      "group": "239.5.5.143",
+      "op": "igmp_report",
+      "port": "Eth3",
+      "seq": 13,
+      "vlan": 20
+    },
+    {
+      "group": "239.4.2.187",
+      "ingress_port": "Eth8",
+      "len": 128,
+      "op": "mcast_frame",
+      "seq": 14,
+      "vlan": 20
+    },
+    {
+      "group": "239.5.2.90",
+      "op": "igmp_report",
+      "port": "Eth1",
+      "seq": 15,
+      "vlan": 20
+    },
+    {
+      "op": "port_link_change",
+      "port": "Eth4",
+      "seq": 16,
+      "up": false
+    },
+    {
+      "group": "239.2.5.177",
+      "op": "igmp_leave",
+      "port": "Eth2",
+      "seq": 17,
+      "vlan": 10
+    },
+    {
+      "group": "239.5.5.143",
+      "op": "igmp_report",
+      "port": "Eth2",
+      "seq": 18,
+      "vlan": 10
+    },
+    {
+      "group": "224.0.0.1",
+      "ingress_port": "Eth8",
+      "len": 512,
+      "op": "mcast_frame",
+      "seq": 19,
+      "vlan": 20
+    },
+    {
+      "group": "239.2.1.43",
+      "op": "igmp_report",
+      "port": "Eth2",
+      "seq": 20,
+      "vlan": 10
+    },
+    {
+      "delta_sec": 1,
+      "op": "tick",
+      "seq": 21
+    },
+    {
+      "delta_sec": 1,
+      "op": "tick",
+      "seq": 22
+    },
+    {
+      "group": "239.2.5.177",
+      "op": "igmp_leave",
+      "port": "Eth1",
+      "seq": 23,
+      "vlan": 20
+    },
+    {
+      "group": "239.5.5.143",
+      "op": "igmp_report",
+      "port": "Eth6",
+      "seq": 24,
+      "vlan": 10
+    },
+    {
+      "group": "239.4.2.187",
+      "op": "igmp_report",
+      "port": "Eth5",
+      "seq": 25,
+      "vlan": 20
+    },
+    {
+      "group": "239.4.2.186",
+      "ingress_port": "Eth8",
+      "len": 64,
+      "op": "mcast_frame",
+      "seq": 26,
+      "vlan": 20
+    },
+    {
+      "group": "239.1.5.230",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 27,
+      "vlan": 20
+    },
+    {
+      "delta_sec": 5,
+      "op": "tick",
+      "seq": 28
+    },
+    {
+      "delta_sec": 200,
+      "op": "tick",
+      "seq": 29
+    },
+    {
+      "group": "239.4.2.187",
+      "op": "igmp_report",
+      "port": "Eth5",
+      "seq": 30,
+      "vlan": 20
+    },
+    {
+      "group": "239.2.5.4",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 31,
+      "vlan": 20
+    },
+    {
+      "group": "239.4.2.187",
+      "op": "igmp_report",
+      "port": "Eth3",
+      "seq": 32,
+      "vlan": 20
+    },
+    {
+      "group": "239.2.5.177",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 33,
+      "vlan": 20
+    },
+    {
+      "group": "224.0.0.5",
+      "ingress_port": "Eth7",
+      "len": 1024,
+      "op": "mcast_frame",
+      "seq": 34,
+      "vlan": 10
+    },
+    {
+      "group": "239.4.2.186",
+      "op": "igmp_report",
+      "port": "Eth3",
+      "seq": 35,
+      "vlan": 20
+    },
+    {
+      "group": "239.4.2.186",
+      "ingress_port": "Eth6",
+      "len": 256,
+      "op": "mcast_frame",
+      "seq": 36,
+      "vlan": 10
+    },
+    {
+      "group": "239.2.1.43",
+      "ingress_port": "Eth5",
+      "len": 512,
+      "op": "mcast_frame",
+      "seq": 37,
+      "vlan": 20
+    },
+    {
+      "group": "239.2.5.177",
+      "ingress_port": "Eth7",
+      "len": 256,
+      "op": "mcast_frame",
+      "seq": 38,
+      "vlan": 10
+    },
+    {
+      "group": "239.5.2.90",
+      "op": "igmp_report",
+      "port": "Eth2",
+      "seq": 39,
+      "vlan": 10
+    },
+    {
+      "delta_sec": 5,
+      "op": "tick",
+      "seq": 40
+    },
+    {
+      "delta_sec": 50,
+      "op": "tick",
+      "seq": 41
+    },
+    {
+      "group": "239.2.1.43",
+      "op": "igmp_report",
+      "port": "Eth3",
+      "seq": 42,
+      "vlan": 20
+    },
+    {
+      "group": "239.2.1.43",
+      "op": "igmp_report",
+      "port": "Eth5",
+      "seq": 43,
+      "vlan": 20
+    },
+    {
+      "delta_sec": 1,
+      "op": "tick",
+      "seq": 44
+    },
+    {
+      "group": "239.2.5.4",
+      "op": "igmp_report",
+      "port": "Eth2",
+      "seq": 45,
+      "vlan": 10
+    },
+    {
+      "group": "239.2.5.4",
+      "op": "igmp_report",
+      "port": "Eth6",
+      "seq": 46,
+      "vlan": 10
+    },
+    {
+      "group": "239.2.5.4",
+      "op": "igmp_report",
+      "port": "Eth6",
+      "seq": 47,
+      "vlan": 10
+    },
+    {
+      "group": "239.4.2.187",
+      "ingress_port": "Eth2",
+      "len": 128,
+      "op": "mcast_frame",
+      "seq": 48,
+      "vlan": 10
+    },
+    {
+      "delta_sec": 200,
+      "op": "tick",
+      "seq": 49
+    },
+    {
+      "group": "239.2.1.43",
+      "op": "igmp_leave",
+      "port": "Eth5",
+      "seq": 50,
+      "vlan": 20
+    },
+    {
+      "delta_sec": 1,
+      "op": "tick",
+      "seq": 51
+    },
+    {
+      "group": "239.5.2.90",
+      "op": "igmp_report",
+      "port": "Eth1",
+      "seq": 52,
+      "vlan": 20
+    },
+    {
+      "group": "239.5.2.90",
+      "op": "igmp_report",
+      "port": "Eth1",
+      "seq": 53,
+      "vlan": 20
+    },
+    {
+      "group": "239.4.2.187",
+      "ingress_port": "Eth5",
+      "len": 256,
+      "op": "mcast_frame",
+      "seq": 54,
+      "vlan": 20
+    },
+    {
+      "group": "239.1.5.230",
+      "ingress_port": "Eth6",
+      "len": 512,
+      "op": "mcast_frame",
+      "seq": 55,
+      "vlan": 10
+    },
+    {
+      "group": "239.2.5.177",
+      "ingress_port": "Eth2",
+      "len": 64,
+      "op": "mcast_frame",
+      "seq": 56,
+      "vlan": 10
+    },
+    {
+      "group": "239.4.2.187",
+      "op": "igmp_report",
+      "port": "Eth3",
+      "seq": 57,
+      "vlan": 20
+    },
+    {
+      "group": "239.255.255.250",
+      "ingress_port": "Eth3",
+      "len": 256,
+      "op": "mcast_frame",
+      "seq": 58,
+      "vlan": 20
+    },
+    {
+      "group": "239.5.5.143",
+      "op": "igmp_report",
+      "port": "Eth4",
+      "seq": 59,
+      "vlan": 20
+    },
+    {
+      "delta_sec": 5000,
+      "op": "tick",
+      "seq": 60
+    }
+  ]
+}

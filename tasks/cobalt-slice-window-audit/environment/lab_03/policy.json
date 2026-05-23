@@ -1,0 +1,11 @@
+{
+  "bias_floor": 4,
+  "cap": 58,
+  "cutoff": 38,
+  "fold_mod": 1000,
+  "label": "cobalt-slice-window-audit",
+  "mask": 66,
+  "poly_base": 130,
+  "seed_offset": 73,
+  "square_mod": 999986
+}

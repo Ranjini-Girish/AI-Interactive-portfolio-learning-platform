@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "clients.json",
+  "type": "object",
+  "required": ["clients"],
+  "additionalProperties": false,
+  "properties": {
+    "clients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "persistent", "keep_alive_sec"],
+        "additionalProperties": false,
+        "properties": {
+          "id":             {"type": "string", "minLength": 1},
+          "persistent":     {"type": "boolean"},
+          "connected":      {"type": "boolean"},
+          "keep_alive_sec": {"type": "integer", "minimum": 0},
+          "will": {
+            "type": "object",
+            "required": ["topic", "payload_id", "qos"],
+            "additionalProperties": false,
+            "properties": {
+              "topic":      {"type": "string", "minLength": 1},
+              "payload_id": {"type": "integer", "minimum": 0},
+              "qos":        {"type": "integer", "minimum": 0, "maximum": 2},
+              "retain":     {"type": "boolean"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "datasets": [
+    {
+      "name": "vol",
+      "snapshots": [
+        {
+          "created_at_sec": 172800,
+          "holders": [],
+          "id": "v2",
+          "name": "day2"
+        },
+        {
+          "created_at_sec": 259200,
+          "holders": [],
+          "id": "v3",
+          "name": "day3"
+        }
+      ]
+    }
+  ]
+}

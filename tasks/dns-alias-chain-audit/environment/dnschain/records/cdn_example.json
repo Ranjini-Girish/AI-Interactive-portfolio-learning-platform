@@ -1,0 +1,7 @@
+{
+  "alias_target": "edge.example",
+  "deny": false,
+  "epoch": 4,
+  "name": "cdn.example",
+  "ttl_step": 10
+}

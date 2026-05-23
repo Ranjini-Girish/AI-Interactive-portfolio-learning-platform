@@ -1,0 +1,99 @@
+{
+  "clamped_remove": 2,
+  "clears": 1,
+  "dumps_total": 5,
+  "events_total": 89,
+  "fn_count": 0,
+  "fp_count": 2,
+  "hot_keys": [
+    {
+      "key": "alpha",
+      "queries": 3
+    },
+    {
+      "key": "bravo",
+      "queries": 3
+    },
+    {
+      "key": "oscar",
+      "queries": 3
+    },
+    {
+      "key": "papa",
+      "queries": 3
+    },
+    {
+      "key": "charlie",
+      "queries": 2
+    },
+    {
+      "key": "lima",
+      "queries": 2
+    },
+    {
+      "key": "delta",
+      "queries": 1
+    },
+    {
+      "key": "echo",
+      "queries": 1
+    },
+    {
+      "key": "foxtrot",
+      "queries": 1
+    },
+    {
+      "key": "golf",
+      "queries": 1
+    },
+    {
+      "key": "india",
+      "queries": 1
+    },
+    {
+      "key": "kilo",
+      "queries": 1
+    },
+    {
+      "key": "mike",
+      "queries": 1
+    },
+    {
+      "key": "november",
+      "queries": 1
+    },
+    {
+      "key": "tango",
+      "queries": 1
+    },
+    {
+      "key": "uniform",
+      "queries": 1
+    },
+    {
+      "key": "victor",
+      "queries": 1
+    },
+    {
+      "key": "whiskey",
+      "queries": 1
+    },
+    {
+      "key": "xray",
+      "queries": 1
+    },
+    {
+      "key": "zulu",
+      "queries": 1
+    }
+  ],
+  "queries_total": 30,
+  "rejected_negative": 0,
+  "rejected_saturate": 7,
+  "resizes": 1,
+  "successful_adds": 49,
+  "successful_queries": 30,
+  "successful_removes": 4,
+  "tn_count": 14,
+  "tp_count": 14
+}

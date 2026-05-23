@@ -1,0 +1,10 @@
+{
+  "epoch": 3,
+  "epoch_tag": 3,
+  "key_hint": "shard_03",
+  "sample_id": "ket_03",
+  "values": [
+    10,
+    20
+  ]
+}

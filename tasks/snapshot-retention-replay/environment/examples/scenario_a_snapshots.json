@@ -1,0 +1,8 @@
+{
+  "snapshots": [
+    {"created_at_sec": 0, "dataset": "vol", "holders": [], "id": "v0", "name": "epoch"},
+    {"created_at_sec": 86400, "dataset": "vol", "holders": ["audit"], "id": "v1", "name": "day1"},
+    {"created_at_sec": 172800, "dataset": "vol", "holders": [], "id": "v2", "name": "day2"},
+    {"created_at_sec": 259200, "dataset": "vol", "holders": [], "id": "v3", "name": "day3"}
+  ]
+}

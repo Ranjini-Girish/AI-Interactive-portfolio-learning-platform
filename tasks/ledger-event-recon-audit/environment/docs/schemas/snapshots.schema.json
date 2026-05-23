@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "snapshots.json",
+  "type": "object",
+  "required": ["expected_balances"],
+  "additionalProperties": false,
+  "properties": {
+    "expected_balances": {
+      "type": "object",
+      "additionalProperties": {"type": "integer"}
+    }
+  }
+}

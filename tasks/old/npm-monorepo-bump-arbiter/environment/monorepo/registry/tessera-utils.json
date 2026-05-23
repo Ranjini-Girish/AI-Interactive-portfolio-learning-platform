@@ -1,0 +1,32 @@
+{
+  "dist_tags": {
+    "latest": "1.0.0"
+  },
+  "name": "tessera-utils",
+  "versions": [
+    {
+      "advisory_ids": ["GH-1003"],
+      "engines_node": ">=18.0.0 <22.0.0",
+      "exports_conditions": ["require"],
+      "peer_constraints": {},
+      "version": "0.8.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "require"],
+      "peer_constraints": {},
+      "version": "0.9.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {},
+      "version": "1.0.0",
+      "yanked": false
+    }
+  ]
+}

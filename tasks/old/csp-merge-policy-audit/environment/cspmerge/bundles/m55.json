@@ -1,0 +1,9 @@
+{
+  "bundle_id": "m55",
+  "delivery_mode": "enforce",
+  "directives": {
+    "default-src": ["https://blocked.after-freeze.example"]
+  },
+  "nonces": [],
+  "origin_id": "o-theta"
+}

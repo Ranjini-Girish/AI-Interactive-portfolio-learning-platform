@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "policy.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "auto_coalesce_after_unmap",
+    "coalesce_mode",
+    "min_region_size",
+    "overlap_action",
+    "track_history"
+  ],
+  "properties": {
+    "auto_coalesce_after_unmap": { "type": "boolean" },
+    "coalesce_mode":             { "type": "string", "enum": ["strict", "prot_match_only", "prot_and_owner_match"] },
+    "min_region_size":           { "type": "integer", "minimum": 1 },
+    "overlap_action":            { "type": "string", "enum": ["reject", "replace"] },
+    "track_history":             { "type": "boolean" }
+  }
+}

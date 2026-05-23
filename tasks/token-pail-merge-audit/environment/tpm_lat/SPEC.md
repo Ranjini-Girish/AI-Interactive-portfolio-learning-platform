@@ -19,4 +19,4 @@ Each item: `host_id`, `tokens_per_day` float, `bucket_cap` float, `starting_toke
 
 For each host compute `starting_tokens + tokens_per_day * current_day + sum(tokens)` from accepted `refill_host` incidents for that host. Cap at effective cap, round to four decimal places using ties-to-even rounding consistent with the reference harness.
 
-Emit `pail_levels.json` with `hosts` sorted by `host_id` with fields `host_id`, `effective_tokens`, `capped_at`. Emit `summary.json` with `hosts` count and `current_day`.
+Emit `pail_levels.json` with `hosts` sorted ascending by `host_id`. Each host row carries `host_id` (string), `effective_tokens` (JSON number, float), and `capped_at` (JSON number, float). `capped_at` is the per-host effective cap ceiling `bucket_cap * burst_cap_multiplier`, quantized to four decimal places with ties-to-even rounding; it is not a boolean flag. Example: `bucket_cap` 10.0 with `burst_cap_multiplier` 1.25 yields `"capped_at": 12.5`. `effective_tokens` is `min(capped_at, raw_balance)` with the same four-decimal quantization. Emit `summary.json` with integer `hosts` (row count) and integer `current_day` (from `pool_state.current_day`).

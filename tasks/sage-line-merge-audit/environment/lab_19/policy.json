@@ -1,0 +1,11 @@
+{
+  "bias_floor": 3,
+  "cap": 74,
+  "cutoff": 54,
+  "fold_mod": 1016,
+  "label": "sage-line-merge-audit",
+  "mask": 82,
+  "poly_base": 146,
+  "seed_offset": 171,
+  "square_mod": 1000002
+}

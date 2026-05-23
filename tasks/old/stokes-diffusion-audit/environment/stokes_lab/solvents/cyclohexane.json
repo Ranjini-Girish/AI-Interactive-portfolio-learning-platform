@@ -1,0 +1,17 @@
+{
+  "solvent_id": "cyclohexane",
+  "viscosity_points": [
+    {
+      "temp_K": 288.0,
+      "viscosity_cP": 0.9
+    },
+    {
+      "temp_K": 298.0,
+      "viscosity_cP": 0.826
+    },
+    {
+      "temp_K": 308.0,
+      "viscosity_cP": 0.76
+    }
+  ]
+}

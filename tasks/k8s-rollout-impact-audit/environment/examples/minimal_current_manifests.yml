@@ -1,0 +1,10 @@
+- namespace: demo
+  manifests:
+    - kind: Deployment
+      name: api
+      image: registry.example.com/api:1.1.0
+      replicas: 2
+    - kind: CronJob
+      name: heartbeat
+      image: registry.example.com/heartbeat:0.1.0
+      schedule: "*/5 * * * *"

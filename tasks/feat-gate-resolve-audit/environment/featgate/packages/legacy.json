@@ -1,0 +1,18 @@
+{
+  "default_features": [
+    "old"
+  ],
+  "deps": [
+    {
+      "epoch": 0,
+      "features": [
+        "base"
+      ],
+      "name": "util"
+    }
+  ],
+  "features": {
+    "old": []
+  },
+  "name": "legacy"
+}

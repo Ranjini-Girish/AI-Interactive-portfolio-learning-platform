@@ -1,0 +1,7 @@
+{
+  "principal": "host/legacy.example.com@EXAMPLE.COM",
+  "tier": "bronze",
+  "exempt": true,
+  "override_rotation_days": null,
+  "comment": "legacy appliance, kerberos client locked to old enctype, exempt from rotation policy"
+}

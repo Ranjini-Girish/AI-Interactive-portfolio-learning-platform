@@ -1,0 +1,15 @@
+{
+  "events_accepted": 4,
+  "events_rejected": 1,
+  "live_segment_count": 1,
+  "merged_segment_count": 3,
+  "per_level_live_counts": {
+    "0": 0,
+    "1": 1,
+    "2": 0
+  },
+  "total_compactions_accepted": 1,
+  "total_events": 5,
+  "total_flushes_accepted": 3,
+  "total_segments_ever": 4
+}

@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "cgroup_id": "users",
+      "task_id": "firefox"
+    },
+    {
+      "cgroup_id": "system",
+      "task_id": "kthread1"
+    },
+    {
+      "cgroup_id": "web",
+      "task_id": "nginx"
+    },
+    {
+      "cgroup_id": "bob",
+      "task_id": "ssh"
+    }
+  ]
+}

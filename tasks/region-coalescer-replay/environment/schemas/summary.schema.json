@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "auto_coalesces",
+    "events_with_diagnostics",
+    "explicit_merges",
+    "final_region_count",
+    "maps_rejected",
+    "maps_succeeded",
+    "owners",
+    "splits",
+    "total_events",
+    "unmaps_succeeded"
+  ],
+  "properties": {
+    "auto_coalesces":          { "type": "integer", "minimum": 0 },
+    "events_with_diagnostics": { "type": "integer", "minimum": 0 },
+    "explicit_merges":         { "type": "integer", "minimum": 0 },
+    "final_region_count":      { "type": "integer", "minimum": 0 },
+    "maps_rejected":           { "type": "integer", "minimum": 0 },
+    "maps_succeeded":          { "type": "integer", "minimum": 0 },
+    "owners":                  { "type": "array", "items": { "type": "string" } },
+    "splits":                  { "type": "integer", "minimum": 0 },
+    "total_events":            { "type": "integer", "minimum": 0 },
+    "unmaps_succeeded":        { "type": "integer", "minimum": 0 }
+  }
+}

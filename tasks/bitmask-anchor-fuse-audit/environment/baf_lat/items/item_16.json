@@ -1,5 +1,6 @@
 {
-  "id": "n16", 
-  "mask": 19, 
-  "scale": 0.25
+  "id": "n16",
+  "mask": 19,
+  "scale": 0.25,
+  "segment": "burst"
 }

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "rollup_tree.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["tree"],
+  "properties": {
+    "tree": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "parent", "depth", "children", "used_subtree"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "parent": {"type": ["string", "null"]},
+          "depth": {"type": "integer", "minimum": 0},
+          "children": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "used_subtree": {"type": "object"}
+        }
+      }
+    }
+  }
+}

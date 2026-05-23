@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "cmdline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "exit_code": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "op": {
+            "enum": [
+              "fork",
+              "exit",
+              "wait",
+              "kill",
+              "exec"
+            ]
+          },
+          "parent_pid": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pid": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "seq": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "signal": {
+            "anyOf": [
+              {
+                "enum": [
+                  "SIGTERM",
+                  "SIGKILL",
+                  "SIGINT",
+                  "SIGCHLD"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "target_pid": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tick": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "seq",
+          "tick",
+          "op",
+          "pid",
+          "parent_pid",
+          "target_pid",
+          "exit_code",
+          "signal",
+          "cmdline"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "events"
+  ],
+  "title": "events.json",
+  "type": "object"
+}

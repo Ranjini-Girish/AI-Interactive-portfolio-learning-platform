@@ -1,0 +1,157 @@
+{
+  "segments": [
+    {
+      "created_at_unix_ms": 1700000008000,
+      "level": 1,
+      "merged_at_unix_ms": 1700000011000,
+      "merged_into_event_id": "e_0019",
+      "seg_id": "merged_e_0008",
+      "size_bytes": 12288,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000009500,
+      "level": 1,
+      "merged_at_unix_ms": 1700000011000,
+      "merged_into_event_id": "e_0019",
+      "seg_id": "merged_e_0013",
+      "size_bytes": 2800,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000010500,
+      "level": 1,
+      "merged_at_unix_ms": 1700000011000,
+      "merged_into_event_id": "e_0019",
+      "seg_id": "merged_e_0018",
+      "size_bytes": 1800,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000011000,
+      "level": 2,
+      "merged_at_unix_ms": null,
+      "merged_into_event_id": null,
+      "seg_id": "merged_e_0019",
+      "size_bytes": 16888,
+      "status": "live"
+    },
+    {
+      "created_at_unix_ms": 1700000001000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000008000,
+      "merged_into_event_id": "e_0008",
+      "seg_id": "s_0001",
+      "size_bytes": 1024,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000002000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000008000,
+      "merged_into_event_id": "e_0008",
+      "seg_id": "s_0002",
+      "size_bytes": 2048,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000003000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000008000,
+      "merged_into_event_id": "e_0008",
+      "seg_id": "s_0003",
+      "size_bytes": 1536,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000004000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000008000,
+      "merged_into_event_id": "e_0008",
+      "seg_id": "s_0004",
+      "size_bytes": 4096,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000005000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000008000,
+      "merged_into_event_id": "e_0008",
+      "seg_id": "s_0005",
+      "size_bytes": 512,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000006000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000008000,
+      "merged_into_event_id": "e_0008",
+      "seg_id": "s_0006",
+      "size_bytes": 3072,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000001000,
+      "level": 0,
+      "merged_at_unix_ms": 1700000009500,
+      "merged_into_event_id": "e_0013",
+      "seg_id": "s_0010",
+      "size_bytes": 800,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000001100,
+      "level": 0,
+      "merged_at_unix_ms": 1700000009500,
+      "merged_into_event_id": "e_0013",
+      "seg_id": "s_0011",
+      "size_bytes": 900,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000001200,
+      "level": 0,
+      "merged_at_unix_ms": 1700000009500,
+      "merged_into_event_id": "e_0013",
+      "seg_id": "s_0012",
+      "size_bytes": 1100,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000010015,
+      "level": 0,
+      "merged_at_unix_ms": 1700000010500,
+      "merged_into_event_id": "e_0018",
+      "seg_id": "s_0015",
+      "size_bytes": 700,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000010016,
+      "level": 0,
+      "merged_at_unix_ms": 1700000010500,
+      "merged_into_event_id": "e_0018",
+      "seg_id": "s_0016",
+      "size_bytes": 600,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000010017,
+      "level": 0,
+      "merged_at_unix_ms": 1700000010500,
+      "merged_into_event_id": "e_0018",
+      "seg_id": "s_0017",
+      "size_bytes": 500,
+      "status": "merged"
+    },
+    {
+      "created_at_unix_ms": 1700000011400,
+      "level": 0,
+      "merged_at_unix_ms": null,
+      "merged_into_event_id": null,
+      "seg_id": "s_0022",
+      "size_bytes": 256,
+      "status": "live"
+    }
+  ]
+}

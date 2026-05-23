@@ -1,0 +1,51 @@
+{
+  "best_run_by_calibrant": [
+    {
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "rms_error_nm": 0.014557,
+      "run_id": "r003"
+    },
+    {
+      "calibrant": "neon",
+      "instrument": "spec_c",
+      "rms_error_nm": 0.018921,
+      "run_id": "r014"
+    }
+  ],
+  "calibrants": [
+    {
+      "calibrant": "argon",
+      "instrument": "spec_b",
+      "iterations_used": 2,
+      "mean_error_nm": 0.030864,
+      "n_outliers_removed": 1,
+      "peak_count": 15,
+      "residual_stddev_nm": 0.075261,
+      "rms_error_nm": 0.138451,
+      "run_count": 5
+    },
+    {
+      "calibrant": "neon",
+      "instrument": "spec_a",
+      "iterations_used": 1,
+      "mean_error_nm": -0.000238,
+      "n_outliers_removed": 0,
+      "peak_count": 9,
+      "residual_stddev_nm": 0.032302,
+      "rms_error_nm": 0.03122,
+      "run_count": 3
+    },
+    {
+      "calibrant": "neon",
+      "instrument": "spec_c",
+      "iterations_used": 1,
+      "mean_error_nm": -0.005381,
+      "n_outliers_removed": 0,
+      "peak_count": 12,
+      "residual_stddev_nm": 0.143682,
+      "rms_error_nm": 0.14247,
+      "run_count": 4
+    }
+  ]
+}

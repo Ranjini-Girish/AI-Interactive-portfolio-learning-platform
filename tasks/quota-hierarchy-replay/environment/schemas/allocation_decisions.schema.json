@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "allocation_decisions.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decisions"],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "ts_unix_ms", "namespace", "op", "decision", "reason", "blocking_namespace", "resources_granted"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "namespace": {"type": "string", "minLength": 1},
+          "op": {"type": "string", "enum": ["allocate", "release"]},
+          "decision": {"type": "string", "enum": ["admitted", "rejected", "ignored"]},
+          "reason": {"type": "string", "enum": ["under_limits", "unknown_namespace", "limit_exceeded", "release_underflow", "release_unknown_ignored", "release_unknown_rejected"]},
+          "blocking_namespace": {"type": ["string", "null"]},
+          "resources_granted": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["cpu", "memory", "storage"],
+            "properties": {
+              "cpu": {"type": "integer", "minimum": 0},
+              "memory": {"type": "integer", "minimum": 0},
+              "storage": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}

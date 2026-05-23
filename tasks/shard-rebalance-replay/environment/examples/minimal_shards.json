@@ -1,0 +1,5 @@
+{
+  "shards": [
+    {"id": "shard-1", "primary": "node-a", "replicas": ["node-b"], "size_bytes": 1024}
+  ]
+}

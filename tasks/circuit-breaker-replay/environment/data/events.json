@@ -1,0 +1,444 @@
+{
+  "events": [
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 0,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 1,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "timeout",
+      "recovery_ticks": null,
+      "seq": 2,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 3,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 4,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 5,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 6,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 7,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 8,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 9,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 10,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "catalog",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 11,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "catalog",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 12,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "catalog",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 13,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "catalog",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 14,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "catalog",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 15,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 16,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 17,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "catalog",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 18,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "force_close",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 19,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "discovery",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "force_open",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 20,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "discovery",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 21,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "discovery",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "force_open",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 22,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "discovery",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "force_close",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 23,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "ghost",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 24,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "auth",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "add_endpoint",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 25,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": 75,
+      "half_open_max_probes": 1,
+      "op": "add_endpoint",
+      "outcome": null,
+      "recovery_ticks": 1,
+      "seq": 26,
+      "window_size": 4
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 27,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 28,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 29,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 30,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 31,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 32,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 33,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "metrics",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "remove_endpoint",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 34,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "ghost_again",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "remove_endpoint",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 35,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": 40,
+      "half_open_max_probes": 2,
+      "op": "config_update",
+      "outcome": null,
+      "recovery_ticks": 2,
+      "seq": 36,
+      "window_size": 5
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 37,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 38,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 39,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "success",
+      "recovery_ticks": null,
+      "seq": 40,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "request",
+      "outcome": "failure",
+      "recovery_ticks": null,
+      "seq": 41,
+      "window_size": null
+    },
+    {
+      "endpoint_id": "billing",
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "force_close",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 42,
+      "window_size": null
+    },
+    {
+      "endpoint_id": null,
+      "failure_threshold_pct": null,
+      "half_open_max_probes": null,
+      "op": "tick",
+      "outcome": null,
+      "recovery_ticks": null,
+      "seq": 43,
+      "window_size": null
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Agent reads SPEC.md and all dnsfloor fixtures before writing audit JSON, +3
+Agent emits all five audit files under /app/audit with canonical formatting, +5
+Agent applies zone-tag spill to the effective ttl floor, +3
+Agent walks CNAME chains with per-hop floor clamp and depth cap, +5
+Agent processes queries in step then record_id order, +3
+Agent leaves the dnsfloor data directory byte-identical, +2
+Agent modifies files under /app/dnsfloor, -5
+Agent omits required output files or writes outside /app/audit, -5
+Agent uses wrong JSON key ordering or missing trailing newline, -3
+Agent hardcodes audit digests without reading inputs, -5
+Agent skips warmup, stale, or floor-breach rules, -3

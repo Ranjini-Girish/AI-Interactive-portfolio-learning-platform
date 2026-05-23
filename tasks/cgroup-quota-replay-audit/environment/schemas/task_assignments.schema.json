@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "task_assignments",
+  "type": "object",
+  "required": ["tasks"],
+  "additionalProperties": false,
+  "properties": {
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cgroup_id", "task_id"],
+        "additionalProperties": false,
+        "properties": {
+          "cgroup_id": { "type": "string" },
+          "task_id": { "type": "string" }
+        }
+      }
+    }
+  }
+}

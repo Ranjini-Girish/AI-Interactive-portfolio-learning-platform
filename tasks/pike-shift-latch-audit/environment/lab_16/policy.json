@@ -1,0 +1,11 @@
+{
+  "bias_floor": 0,
+  "cap": 71,
+  "cutoff": 51,
+  "fold_mod": 1013,
+  "label": "pike-shift-latch-audit",
+  "mask": 79,
+  "poly_base": 143,
+  "seed_offset": 129,
+  "square_mod": 999999
+}

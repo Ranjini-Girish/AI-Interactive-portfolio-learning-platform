@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "namespace_usage.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["namespaces"],
+  "properties": {
+    "namespaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "limits", "used_own", "used_subtree", "headroom", "descendant_count"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "limits": {"type": "object"},
+          "used_own": {"type": "object"},
+          "used_subtree": {"type": "object"},
+          "headroom": {"type": "object"},
+          "descendant_count": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "live_tag": "prod",
+  "snapshot_tag": "dr"
+}

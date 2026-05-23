@@ -1,0 +1,32 @@
+{
+  "versions": [
+    {
+      "version": "v1",
+      "effective_day": 0,
+      "allowed_enctypes": [
+        "aes256-cts-hmac-sha384-192",
+        "aes256-cts-hmac-sha1-96",
+        "aes128-cts-hmac-sha1-96"
+      ],
+      "forbidden_enctypes": [
+        "des-cbc-md5",
+        "des-cbc-crc",
+        "arcfour-hmac"
+      ]
+    },
+    {
+      "version": "v2",
+      "effective_day": 20,
+      "allowed_enctypes": [
+        "aes256-cts-hmac-sha384-192",
+        "aes256-cts-hmac-sha1-96"
+      ],
+      "forbidden_enctypes": [
+        "aes128-cts-hmac-sha1-96",
+        "des-cbc-md5",
+        "des-cbc-crc",
+        "arcfour-hmac"
+      ]
+    }
+  ]
+}

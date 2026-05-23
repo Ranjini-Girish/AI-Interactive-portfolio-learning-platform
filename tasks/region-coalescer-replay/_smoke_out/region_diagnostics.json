@@ -1,0 +1,129 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "N_AUTO_COALESCED",
+          "region_id": "r_a",
+          "severity": "note"
+        },
+        {
+          "code": "N_AUTO_COALESCED",
+          "region_id": "r_a",
+          "severity": "note"
+        }
+      ],
+      "seq": 0
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DUPLICATE_ID",
+          "region_id": "r_a",
+          "severity": "error"
+        }
+      ],
+      "seq": 6
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_OVERLAP_REJECTED",
+          "region_id": "r_l",
+          "severity": "error"
+        }
+      ],
+      "seq": 7
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_BELOW_MIN_SIZE",
+          "region_id": "r_m",
+          "severity": "error"
+        }
+      ],
+      "seq": 8
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_REGION_NOT_FOUND",
+          "region_id": "r_nope",
+          "severity": "error"
+        }
+      ],
+      "seq": 9
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_SPLIT_OUT_OF_RANGE",
+          "region_id": "r_c",
+          "severity": "error"
+        }
+      ],
+      "seq": 10
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_BELOW_MIN_SIZE",
+          "region_id": "r_c",
+          "severity": "error"
+        }
+      ],
+      "seq": 11
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_MERGE_NOT_ADJACENT",
+          "region_id": "r_a",
+          "severity": "error"
+        }
+      ],
+      "seq": 13
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_OVERLAP_REJECTED",
+          "region_id": "r_q",
+          "severity": "error"
+        }
+      ],
+      "seq": 14
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_REGION_NOT_FOUND",
+          "region_id": "r_d",
+          "severity": "error"
+        }
+      ],
+      "seq": 15
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_AUTO_COALESCED",
+          "region_id": "r_h",
+          "severity": "note"
+        }
+      ],
+      "seq": 16
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_REGION_NOT_FOUND",
+          "region_id": "r_g",
+          "severity": "error"
+        }
+      ],
+      "seq": 17
+    }
+  ]
+}

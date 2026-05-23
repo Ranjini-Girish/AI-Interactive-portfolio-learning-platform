@@ -1,0 +1,8 @@
+{
+  "rooms": [
+    {"room_id": "hall-a", "trap_ids": ["t01", "t02", "t03", "t04"]},
+    {"room_id": "hall-b", "trap_ids": ["t05", "t06"]},
+    {"room_id": "hall-c", "trap_ids": ["t07", "t08", "t11", "t12"]},
+    {"room_id": "hall-d", "trap_ids": ["t09", "t10"]}
+  ]
+}

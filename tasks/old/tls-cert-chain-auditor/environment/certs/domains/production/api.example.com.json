@@ -1,0 +1,6 @@
+{
+  "domain": "api.example.com",
+  "expected_san": ["api.example.com", "www.api.example.com"],
+  "leaf_serial": "leaf-api-v1",
+  "tier": "production"
+}

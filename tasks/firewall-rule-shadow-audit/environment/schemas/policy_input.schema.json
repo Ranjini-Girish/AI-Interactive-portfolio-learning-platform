@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "policy_input.schema.json",
+  "title": "Global firewall policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["default_action", "enable_directionality", "tie_breaker"],
+  "properties": {
+    "default_action": {"type": "string", "enum": ["allow", "deny"]},
+    "enable_directionality": {"type": "boolean"},
+    "tie_breaker": {"type": "string", "enum": ["priority_then_id", "priority_lowest_wins", "id_only"]}
+  }
+}

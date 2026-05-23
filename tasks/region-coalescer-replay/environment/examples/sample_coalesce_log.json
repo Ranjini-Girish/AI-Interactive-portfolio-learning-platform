@@ -1,0 +1,16 @@
+{
+  "coalesces": [
+    {
+      "dropped_id": "gamma",
+      "kept_id": "alpha",
+      "seq": 0,
+      "trigger": "map"
+    },
+    {
+      "dropped_id": "beta",
+      "kept_id": "alpha",
+      "seq": 0,
+      "trigger": "map"
+    }
+  ]
+}

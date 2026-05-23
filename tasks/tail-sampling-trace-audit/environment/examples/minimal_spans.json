@@ -1,0 +1,72 @@
+{
+  "spans": [
+    {
+      "attributes": {
+        "region": "us-east"
+      },
+      "duration_ms": 100,
+      "operation": "GET /home",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "11111111",
+      "start_unix_ms": 1700000000000,
+      "status": "ok",
+      "trace_id": "00000000aaaaaaaa"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 20,
+      "operation": "check_stock",
+      "parent_span_id": "11111111",
+      "service": "inventory",
+      "span_id": "11111112",
+      "start_unix_ms": 1700000000010,
+      "status": "ok",
+      "trace_id": "00000000aaaaaaaa"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 50,
+      "operation": "POST /checkout",
+      "parent_span_id": null,
+      "service": "frontend",
+      "span_id": "22222221",
+      "start_unix_ms": 1700000000000,
+      "status": "ok",
+      "trace_id": "00000000bbbbbbbb"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 30,
+      "operation": "authorize",
+      "parent_span_id": "22222221",
+      "service": "payments",
+      "span_id": "22222222",
+      "start_unix_ms": 1700000000010,
+      "status": "error",
+      "trace_id": "00000000bbbbbbbb"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 80,
+      "operation": "GET /home",
+      "parent_span_id": "33333332",
+      "service": "frontend",
+      "span_id": "33333331",
+      "start_unix_ms": 1700000000000,
+      "status": "ok",
+      "trace_id": "00000000cccccccc"
+    },
+    {
+      "attributes": {},
+      "duration_ms": 40,
+      "operation": "GET /home",
+      "parent_span_id": "33333331",
+      "service": "frontend",
+      "span_id": "33333332",
+      "start_unix_ms": 1700000000005,
+      "status": "ok",
+      "trace_id": "00000000cccccccc"
+    }
+  ]
+}

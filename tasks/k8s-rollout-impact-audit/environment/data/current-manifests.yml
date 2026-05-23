@@ -1,0 +1,112 @@
+- namespace: payments-prod
+  manifests:
+    - kind: Deployment
+      name: gateway-api
+      image: registry.example.com/gateway:1.5.2
+      replicas: 5
+      ports:
+        - 8080
+        - 8443
+        - 9090
+      env:
+        LOG_LEVEL: debug
+        FEATURE_RETRY: "true"
+        FEATURE_CIRCUIT_BREAK: "true"
+      probes:
+        liveness: /healthz
+        readiness: /ready
+        startup: /startup
+      resources:
+        cpu: "750m"
+        memory: "768Mi"
+    - kind: Deployment
+      name: ledger-writer
+      image: registry.example.com/ledger:2.1.0
+      replicas: 6
+      env:
+        DB_POOL: "32"
+        LOG_LEVEL: info
+      probes:
+        liveness: /alive
+      resources:
+        cpu: "1"
+        memory: "1Gi"
+    - kind: StatefulSet
+      name: ledger-store
+      image: registry.example.com/ledger-store:1.0.5
+      replicas: 3
+      volumeClaim:
+        storage: "20Gi"
+        storageClass: ssd-gp3
+      env:
+        REPLICATION_FACTOR: "3"
+    - kind: Deployment
+      name: gateway-api
+      image: registry.example.com/gateway-shadow:0.0.2
+      replicas: 0
+      env:
+        SHADOW: "true"
+- namespace:
+  manifests:
+    - kind: Deployment
+      name: collector
+      image: registry.example.com/collector:1.2.0
+      replicas: 3
+      env:
+        SAMPLE_RATE: "0.25"
+    - kind: Job
+      name: bootstrap-keys
+      image: registry.example.com/keytool:1.2.3
+      env:
+        ROTATE: "false"
+- namespace: edge
+  manifests:
+    - kind: Deployment
+      name: probe-runner
+      image: registry.example.com/probe:0.4.2
+      replicas: 1
+      condition: edge_probe_enabled
+    - kind: Deployment
+      name: cache-warmer
+      image: registry.example.com/warmer:0.3.0
+      replicas: 1
+      env:
+        WARM_KEYS:
+          - alpha
+          - beta
+          - gamma
+          - delta
+- namespace: identity
+  manifests:
+    - kind: Deployment
+      name: jwt-signer
+      image: registry.example.com/jwt-signer:1.0.0
+      replicas: 2
+      env:
+        KEY_ID: "k2"
+    - kind: Deployment
+      name: oidc-bridge
+      image: registry.example.com/oidc:0.5.0
+      replicas: 1
+      env:
+        ISSUER: "https://idp.example.com"
+    - kind: CronJob
+      name: heartbeat-probe
+      image: registry.example.com/heartbeat:0.1.0
+      schedule: "*/5 * * * *"
+      env:
+        TARGET: "jwt-signer"
+- namespace: analytics
+  manifests:
+    - kind: Deployment
+      name: fraud-scorer
+      image: registry.example.com/fraud:0.2.0
+      replicas: 2
+      env:
+        MODEL_VERSION: "2024-q3"
+- namespace: telemetry
+  manifests:
+    - kind: Deployment
+      name: "   "
+      image: registry.example.com/legacy-noop:0.0.1
+      replicas: 1

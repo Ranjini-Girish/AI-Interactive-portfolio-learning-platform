@@ -1,0 +1,44 @@
+{
+  "events": [
+    {
+      "group": "239.1.1.1",
+      "op": "igmp_report",
+      "port": "Eth1",
+      "seq": 0,
+      "vlan": 10
+    },
+    {
+      "group": "239.1.1.1",
+      "ingress_port": "Eth3",
+      "len": 256,
+      "op": "mcast_frame",
+      "seq": 1,
+      "vlan": 10
+    },
+    {
+      "delta_sec": 5,
+      "op": "tick",
+      "seq": 2
+    },
+    {
+      "group": "239.1.1.1",
+      "op": "igmp_report",
+      "port": "Eth1",
+      "seq": 3,
+      "vlan": 10
+    },
+    {
+      "delta_sec": 1000,
+      "op": "tick",
+      "seq": 4
+    },
+    {
+      "group": "239.1.1.1",
+      "ingress_port": "Eth3",
+      "len": 256,
+      "op": "mcast_frame",
+      "seq": 5,
+      "vlan": 10
+    }
+  ]
+}

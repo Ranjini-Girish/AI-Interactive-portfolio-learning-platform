@@ -1,0 +1,11 @@
+{
+  "accounts": [
+    {
+      "account_type": "checking",
+      "daily_withdraw_limit_cents": null,
+      "id": "acct_a",
+      "opening_balance_cents": 1000,
+      "status": "active"
+    }
+  ]
+}

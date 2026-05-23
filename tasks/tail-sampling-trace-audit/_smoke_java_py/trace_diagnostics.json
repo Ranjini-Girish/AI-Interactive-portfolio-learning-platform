@@ -1,0 +1,269 @@
+{
+  "diagnostics": [
+    {
+      "code": "D_CYCLE_DETECTED",
+      "evidence": {
+        "cycle_span_ids": [
+          "8aff316d",
+          "de3a714d",
+          "e0aece95"
+        ]
+      },
+      "severity": "error",
+      "severity_rank": 0,
+      "span_id": null,
+      "trace_id": "1237a634a383863c"
+    },
+    {
+      "code": "D_CYCLE_DETECTED",
+      "evidence": {
+        "cycle_span_ids": [
+          "3a47d246",
+          "87c638a0",
+          "cfd55902"
+        ]
+      },
+      "severity": "error",
+      "severity_rank": 0,
+      "span_id": null,
+      "trace_id": "503d69fdda5dd93b"
+    },
+    {
+      "code": "D_CYCLE_DETECTED",
+      "evidence": {
+        "cycle_span_ids": [
+          "453e9e7d",
+          "97a35372",
+          "aa315ac5"
+        ]
+      },
+      "severity": "error",
+      "severity_rank": 0,
+      "span_id": null,
+      "trace_id": "703c4124c902dd3e"
+    },
+    {
+      "code": "D_CYCLE_DETECTED",
+      "evidence": {
+        "cycle_span_ids": [
+          "73cbb55f",
+          "ccf36bd0",
+          "da712a72"
+        ]
+      },
+      "severity": "error",
+      "severity_rank": 0,
+      "span_id": null,
+      "trace_id": "d17cce971372b7c4"
+    },
+    {
+      "code": "D_CYCLE_DETECTED",
+      "evidence": {
+        "cycle_span_ids": [
+          "46674a78",
+          "4f1fa2da",
+          "65965c6f"
+        ]
+      },
+      "severity": "error",
+      "severity_rank": 0,
+      "span_id": null,
+      "trace_id": "f32a3604cec4af42"
+    },
+    {
+      "code": "D_MULTI_ROOT",
+      "evidence": {
+        "root_span_ids": [
+          "2f6a2937",
+          "be415966"
+        ]
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": null,
+      "trace_id": "07d787f26a2e715f"
+    },
+    {
+      "code": "D_MULTI_ROOT",
+      "evidence": {
+        "root_span_ids": [
+          "5e74656d",
+          "9776607c"
+        ]
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": null,
+      "trace_id": "57942121c5cb413b"
+    },
+    {
+      "code": "D_FUTURE_TIMESTAMP",
+      "evidence": {
+        "now_unix_ms": 1700000000000,
+        "skew_ms": 90000000,
+        "start_unix_ms": 1700090000000
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "c6f0bed0",
+      "trace_id": "5c18b2c09601a6ab"
+    },
+    {
+      "code": "D_FUTURE_TIMESTAMP",
+      "evidence": {
+        "now_unix_ms": 1700000000000,
+        "skew_ms": 90000005,
+        "start_unix_ms": 1700090000005
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "fc9e91f1",
+      "trace_id": "5c18b2c09601a6ab"
+    },
+    {
+      "code": "D_MULTI_ROOT",
+      "evidence": {
+        "root_span_ids": [
+          "07c02410",
+          "6c729cf0"
+        ]
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": null,
+      "trace_id": "64a64977901c1427"
+    },
+    {
+      "code": "D_ORPHAN_SPAN",
+      "evidence": {
+        "missing_parent_span_id": "deadbeef"
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "a7eb3da0",
+      "trace_id": "6ad0ae05d1b99c95"
+    },
+    {
+      "code": "D_FUTURE_TIMESTAMP",
+      "evidence": {
+        "now_unix_ms": 1700000000000,
+        "skew_ms": 90000005,
+        "start_unix_ms": 1700090000005
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "0336a99f",
+      "trace_id": "7e400e7f2d07dec2"
+    },
+    {
+      "code": "D_FUTURE_TIMESTAMP",
+      "evidence": {
+        "now_unix_ms": 1700000000000,
+        "skew_ms": 90000000,
+        "start_unix_ms": 1700090000000
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "f6bc725d",
+      "trace_id": "7e400e7f2d07dec2"
+    },
+    {
+      "code": "D_ORPHAN_SPAN",
+      "evidence": {
+        "missing_parent_span_id": "deadbeef"
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "351d6ad2",
+      "trace_id": "7f8d7d55a83504b2"
+    },
+    {
+      "code": "D_FUTURE_TIMESTAMP",
+      "evidence": {
+        "now_unix_ms": 1700000000000,
+        "skew_ms": 90000000,
+        "start_unix_ms": 1700090000000
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "025cb5f8",
+      "trace_id": "8f4185c140ed702c"
+    },
+    {
+      "code": "D_FUTURE_TIMESTAMP",
+      "evidence": {
+        "now_unix_ms": 1700000000000,
+        "skew_ms": 90000005,
+        "start_unix_ms": 1700090000005
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "ab659f7a",
+      "trace_id": "8f4185c140ed702c"
+    },
+    {
+      "code": "D_ORPHAN_SPAN",
+      "evidence": {
+        "missing_parent_span_id": "deadbeef"
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "40e6bc3b",
+      "trace_id": "ab7a36a3fa51b866"
+    },
+    {
+      "code": "D_ORPHAN_SPAN",
+      "evidence": {
+        "missing_parent_span_id": "deadbeef"
+      },
+      "severity": "warn",
+      "severity_rank": 1,
+      "span_id": "8a4c8677",
+      "trace_id": "cf873be9f13057c4"
+    },
+    {
+      "code": "D_INCOMPLETE_TRACE",
+      "evidence": {
+        "actual_spans": 1,
+        "min_required": 2
+      },
+      "severity": "info",
+      "severity_rank": 2,
+      "span_id": null,
+      "trace_id": "4868c7492e2fc2a0"
+    },
+    {
+      "code": "D_INCOMPLETE_TRACE",
+      "evidence": {
+        "actual_spans": 1,
+        "min_required": 2
+      },
+      "severity": "info",
+      "severity_rank": 2,
+      "span_id": null,
+      "trace_id": "48d44529b386afae"
+    },
+    {
+      "code": "D_INCOMPLETE_TRACE",
+      "evidence": {
+        "actual_spans": 1,
+        "min_required": 2
+      },
+      "severity": "info",
+      "severity_rank": 2,
+      "span_id": null,
+      "trace_id": "890a845f6450b0c4"
+    },
+    {
+      "code": "D_INCOMPLETE_TRACE",
+      "evidence": {
+        "actual_spans": 1,
+        "min_required": 2
+      },
+      "severity": "info",
+      "severity_rank": 2,
+      "span_id": null,
+      "trace_id": "c0185b890d8e7819"
+    }
+  ]
+}

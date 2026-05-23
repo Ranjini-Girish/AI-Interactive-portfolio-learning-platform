@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "cluster_state.json output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["nodes", "shards"],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "owned_bytes", "rack", "shard_count", "status", "weight"],
+        "properties": {
+          "id":          {"type": "string"},
+          "owned_bytes": {"type": "integer", "minimum": 0},
+          "rack":        {"type": "string"},
+          "shard_count": {"type": "integer", "minimum": 0},
+          "status":      {"type": "string", "enum": ["active", "draining"]},
+          "weight":      {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "primary", "replicas", "size_bytes"],
+        "properties": {
+          "id":         {"type": "string"},
+          "primary":    {"type": "string"},
+          "replicas":   {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "size_bytes": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

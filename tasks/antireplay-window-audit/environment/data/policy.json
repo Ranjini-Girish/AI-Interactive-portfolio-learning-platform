@@ -1,0 +1,11 @@
+{
+  "min_hot_threshold": 1,
+  "on_replay": "drop",
+  "on_too_old": "log_only",
+  "on_unknown_sa": "create_passive",
+  "window_sizes_allowed": [
+    16,
+    32,
+    64
+  ]
+}

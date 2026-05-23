@@ -1,0 +1,11 @@
+Agent reads SPEC.md and all vnodering fixtures before writing audit JSON, +3
+Agent emits all five audit files under /app/audit with canonical formatting, +5
+Agent applies shard-tag spill to the effective vote ratio, +3
+Agent resolves initial key ownership with wraparound ranges and weight ties, +5
+Agent processes moves in step then key_id order, +3
+Agent leaves the vnodering data directory byte-identical, +2
+Agent modifies files under /app/vnodering, -5
+Agent omits required output files or writes outside /app/audit, -5
+Agent uses wrong JSON key ordering or missing trailing newline, -3
+Agent hardcodes audit digests without reading inputs, -5
+Agent skips quorum or stale-target handoff rules, -3

@@ -1,0 +1,11 @@
+{
+  "bias_floor": 2,
+  "cap": 66,
+  "cutoff": 46,
+  "fold_mod": 1008,
+  "label": "knot-interval-fuse-audit",
+  "mask": 74,
+  "poly_base": 138,
+  "seed_offset": 36,
+  "square_mod": 999994
+}

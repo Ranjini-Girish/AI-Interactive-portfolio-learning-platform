@@ -1,0 +1,44 @@
+{
+  "channels": [
+    {
+      "channel_id": "ch01",
+      "type": "ADC",
+      "nominal_gain": 1.0
+    },
+    {
+      "channel_id": "ch02",
+      "type": "ADC",
+      "nominal_gain": 2.0
+    },
+    {
+      "channel_id": "ch03",
+      "type": "TDC",
+      "nominal_gain": 0.5
+    },
+    {
+      "channel_id": "ch04",
+      "type": "ADC",
+      "nominal_gain": 1.5
+    },
+    {
+      "channel_id": "ch05",
+      "type": "QDC",
+      "nominal_gain": 1.0
+    },
+    {
+      "channel_id": "ch06",
+      "type": "ADC",
+      "nominal_gain": 2.5
+    },
+    {
+      "channel_id": "ch07",
+      "type": "ADC",
+      "nominal_gain": 1.0
+    },
+    {
+      "channel_id": "ch08",
+      "type": "QDC",
+      "nominal_gain": 1.2
+    }
+  ]
+}

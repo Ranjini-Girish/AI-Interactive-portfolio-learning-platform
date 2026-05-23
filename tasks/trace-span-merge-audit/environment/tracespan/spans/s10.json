@@ -1,0 +1,8 @@
+{
+  "end_us": 130,
+  "parent_id": "s09",
+  "service": "db",
+  "span_id": "s10",
+  "start_us": 60,
+  "status": "error"
+}

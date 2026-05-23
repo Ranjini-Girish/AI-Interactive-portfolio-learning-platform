@@ -1,0 +1,11 @@
+{
+  "bias_floor": 1,
+  "cap": 63,
+  "cutoff": 43,
+  "fold_mod": 1005,
+  "label": "helm-offset-chain-audit",
+  "mask": 71,
+  "poly_base": 135,
+  "seed_offset": 164,
+  "square_mod": 999991
+}

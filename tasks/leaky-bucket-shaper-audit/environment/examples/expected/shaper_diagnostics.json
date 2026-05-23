@@ -1,0 +1,32 @@
+{
+  "diagnostics": [
+    {
+      "bucket_id": "edge-a",
+      "code": "N_ADMITTED",
+      "detail": "600",
+      "seq": 0,
+      "severity": "note"
+    },
+    {
+      "bucket_id": "edge-a",
+      "code": "W_DROPPED_OVERFLOW",
+      "detail": "500",
+      "seq": 1,
+      "severity": "warn"
+    },
+    {
+      "bucket_id": "edge-b",
+      "code": "N_ADMITTED",
+      "detail": "200",
+      "seq": 3,
+      "severity": "note"
+    },
+    {
+      "bucket_id": "edge-b",
+      "code": "W_CAPACITY_REDUCED",
+      "detail": "200->100",
+      "seq": 4,
+      "severity": "warn"
+    }
+  ]
+}

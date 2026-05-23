@@ -1,0 +1,20 @@
+{
+  "blast_radius": [
+    {
+      "username": "erin",
+      "downstream_count": 10,
+      "downstream": [
+        "bob",
+        "carol",
+        "dan",
+        "greg",
+        "heidi",
+        "ivan",
+        "jen",
+        "mike",
+        "nora",
+        "svc_ci"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "diagnostics",
+  "type": "object",
+  "required": ["diagnostics"],
+  "properties": {
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "evidence", "key_id", "seq", "severity", "severity_rank"],
+        "properties": {
+          "code":          {"type": "string"},
+          "evidence":      {"type": "object"},
+          "key_id":        {"type": ["string", "null"]},
+          "seq":           {"type": "integer"},
+          "severity":      {"type": "string", "enum": ["error", "warning", "notice"]},
+          "severity_rank": {"type": "integer"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "totals": {
+    "encryptions_accepted": 1,
+    "encryptions_rejected": 1,
+    "encryptions_total": 2,
+    "errors": 1,
+    "events_total": 2,
+    "keys_total": 1,
+    "notices": 1,
+    "warnings": 0
+  }
+}

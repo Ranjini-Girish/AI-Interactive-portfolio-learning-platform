@@ -1,0 +1,2 @@
+# sqlite3 ships with CPython; no external runtime DB drivers needed for the audit CLI.
+# Listed here so future contributors can pin specific verification helpers if needed.

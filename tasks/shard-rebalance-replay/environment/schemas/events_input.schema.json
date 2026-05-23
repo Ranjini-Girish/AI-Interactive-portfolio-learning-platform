@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "shardsim events.json input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seq", "op", "node_id", "weight", "rack",
+          "shard_id", "from_node", "to_node", "role", "size_bytes"
+        ],
+        "properties": {
+          "seq":        {"type": "integer", "minimum": 0},
+          "op": {
+            "type": "string",
+            "enum": ["node_join", "node_leave", "node_drain", "node_resume",
+                     "manual_move", "rebalance_round", "shard_resize"]
+          },
+          "node_id":    {"type": ["string", "null"]},
+          "weight":     {"type": ["integer", "null"], "minimum": 1},
+          "rack":       {"type": ["string", "null"]},
+          "shard_id":   {"type": ["string", "null"]},
+          "from_node":  {"type": ["string", "null"]},
+          "to_node":    {"type": ["string", "null"]},
+          "role":       {"type": ["string", "null"], "enum": ["primary", "replica", null]},
+          "size_bytes": {"type": ["integer", "null"], "minimum": 1}
+        }
+      }
+    }
+  }
+}

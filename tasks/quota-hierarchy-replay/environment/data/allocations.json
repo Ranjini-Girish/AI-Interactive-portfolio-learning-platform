@@ -1,0 +1,169 @@
+{
+  "events": [
+    {
+      "event_id": "e_0000",
+      "namespace": "team_a_alpha",
+      "op": "allocate",
+      "resources": {
+        "cpu": 20,
+        "memory": 64,
+        "storage": 500
+      },
+      "ts_unix_ms": 1700000000000
+    },
+    {
+      "event_id": "e_0001",
+      "namespace": "team_a_alpha",
+      "op": "allocate",
+      "resources": {
+        "cpu": 10,
+        "memory": 32,
+        "storage": 250
+      },
+      "ts_unix_ms": 1700000000100
+    },
+    {
+      "event_id": "e_0002",
+      "namespace": "team_a_beta",
+      "op": "allocate",
+      "resources": {
+        "cpu": 15,
+        "memory": 64,
+        "storage": 500
+      },
+      "ts_unix_ms": 1700000000200
+    },
+    {
+      "event_id": "e_0003",
+      "namespace": "team_b_alpha",
+      "op": "allocate",
+      "resources": {
+        "cpu": 25,
+        "memory": 128,
+        "storage": 1000
+      },
+      "ts_unix_ms": 1700000000300
+    },
+    {
+      "event_id": "e_0004",
+      "namespace": "team_a_alpha",
+      "op": "release",
+      "resources": {
+        "cpu": 5,
+        "memory": 16,
+        "storage": 100
+      },
+      "ts_unix_ms": 1700000000400
+    },
+    {
+      "event_id": "e_0005",
+      "namespace": "team_a_beta",
+      "op": "release",
+      "resources": {
+        "cpu": 9999,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 1700000000500
+    },
+    {
+      "event_id": "e_0006",
+      "namespace": "team_a_alpha",
+      "op": "allocate",
+      "resources": {
+        "cpu": 50,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 1700000000600
+    },
+    {
+      "event_id": "e_0007",
+      "namespace": "thin_child",
+      "op": "allocate",
+      "resources": {
+        "cpu": 50,
+        "memory": 0,
+        "storage": 0
+      },
+      "ts_unix_ms": 1700000000700
+    },
+    {
+      "event_id": "e_0008",
+      "namespace": "thin_child",
+      "op": "allocate",
+      "resources": {
+        "cpu": 0,
+        "memory": 300,
+        "storage": 0
+      },
+      "ts_unix_ms": 1700000000800
+    },
+    {
+      "event_id": "e_0009",
+      "namespace": "thin_child",
+      "op": "allocate",
+      "resources": {
+        "cpu": 10,
+        "memory": 100,
+        "storage": 500
+      },
+      "ts_unix_ms": 1700000000900
+    },
+    {
+      "event_id": "e_0010",
+      "namespace": "ghost_team",
+      "op": "allocate",
+      "resources": {
+        "cpu": 5,
+        "memory": 5,
+        "storage": 5
+      },
+      "ts_unix_ms": 1700000001000
+    },
+    {
+      "event_id": "e_0011",
+      "namespace": "ghost_team2",
+      "op": "release",
+      "resources": {
+        "cpu": 1,
+        "memory": 1,
+        "storage": 1
+      },
+      "ts_unix_ms": 1700000001100
+    },
+    {
+      "event_id": "e_0012",
+      "namespace": "team_b_alpha",
+      "op": "allocate",
+      "resources": {
+        "cpu": 10,
+        "memory": 50,
+        "storage": 500
+      },
+      "ts_unix_ms": 1700000001200
+    },
+    {
+      "event_id": "e_0013",
+      "namespace": "team_a_beta",
+      "op": "allocate",
+      "resources": {
+        "cpu": 5,
+        "memory": 16,
+        "storage": 250
+      },
+      "ts_unix_ms": 1700000001300
+    },
+    {
+      "event_id": "e_0014",
+      "namespace": "team_a_alpha",
+      "op": "release",
+      "resources": {
+        "cpu": 10,
+        "memory": 32,
+        "storage": 250
+      },
+      "ts_unix_ms": 1700000001400
+    }
+  ]
+}

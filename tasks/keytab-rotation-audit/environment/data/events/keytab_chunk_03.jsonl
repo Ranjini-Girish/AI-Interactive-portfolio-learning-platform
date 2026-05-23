@@ -1,0 +1,6 @@
+{"event_id":"ev_d001","kind":"add","principal":"host/web01.example.com@EXAMPLE.COM","kvno":3,"day":14,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_d002","kind":"add","principal":"host/cache01.example.com@EXAMPLE.COM","kvno":2,"day":14,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_d003","kind":"add","principal":"host/cache02.example.com@EXAMPLE.COM","kvno":3,"day":14,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_d004","kind":"retire","principal":"host/web01.example.com@EXAMPLE.COM","kvno":2,"day":15,"hour":0}
+{"event_id":"ev_d005","kind":"add","principal":"host/cache02.example.com@EXAMPLE.COM","kvno":2,"day":15,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}
+{"event_id":"ev_d006","kind":"add","principal":"host/cache02.example.com@EXAMPLE.COM","kvno":3,"day":16,"hour":0,"enctype":"aes256-cts-hmac-sha384-192"}

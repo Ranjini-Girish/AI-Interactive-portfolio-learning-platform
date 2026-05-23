@@ -1,0 +1,33 @@
+{
+  "events": [
+    {
+      "bucket_id": "edge-a",
+      "seq": 0,
+      "size_bytes": 600,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "edge-a",
+      "seq": 1,
+      "size_bytes": 500,
+      "type": "submit"
+    },
+    {
+      "seq": 2,
+      "type": "tick"
+    },
+    {
+      "bucket_id": "edge-b",
+      "seq": 3,
+      "size_bytes": 200,
+      "type": "submit"
+    },
+    {
+      "bucket_id": "edge-b",
+      "new_capacity_bytes": 100,
+      "new_leak_bytes_per_tick": 100,
+      "seq": 4,
+      "type": "reconfigure"
+    }
+  ]
+}

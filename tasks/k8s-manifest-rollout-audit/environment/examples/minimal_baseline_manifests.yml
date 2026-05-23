@@ -1,0 +1,6 @@
+- namespace: demo
+  manifests:
+    - kind: Deployment
+      name: api
+      image: registry.example.com/api:1.0.0
+      replicas: 1

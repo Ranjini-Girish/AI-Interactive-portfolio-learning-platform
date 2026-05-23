@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "auto_harvested": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "events_with_diagnostics": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "explicit_harvested": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "final_alive_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "forks_rejected": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "forks_succeeded": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "killed_by_signal": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "max_concurrent_processes": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "orphans_reparented": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "total_events": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "users_at_end": {
+      "items": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "zombies_at_end": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "auto_harvested",
+    "events_with_diagnostics",
+    "explicit_harvested",
+    "final_alive_count",
+    "forks_rejected",
+    "forks_succeeded",
+    "killed_by_signal",
+    "max_concurrent_processes",
+    "orphans_reparented",
+    "total_events",
+    "users_at_end",
+    "zombies_at_end"
+  ],
+  "title": "summary.json",
+  "type": "object"
+}

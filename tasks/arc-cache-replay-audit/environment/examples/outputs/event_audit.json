@@ -1,0 +1,66 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "event_id": "e_001",
+      "payload": {
+        "key": "ka",
+        "weight": 1
+      },
+      "reason_ignored": null,
+      "ts_unix_ms": 1,
+      "type": "access"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_002",
+      "payload": {
+        "key": "kb",
+        "weight": 2
+      },
+      "reason_ignored": null,
+      "ts_unix_ms": 2,
+      "type": "access"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_003",
+      "payload": {
+        "key": "ka",
+        "weight": 3
+      },
+      "reason_ignored": null,
+      "ts_unix_ms": 3,
+      "type": "access"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_004",
+      "payload": {
+        "key": "kc",
+        "weight": 1
+      },
+      "reason_ignored": null,
+      "ts_unix_ms": 4,
+      "type": "access"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_005",
+      "payload": {
+        "key": "kb"
+      },
+      "reason_ignored": "unknown_resident",
+      "ts_unix_ms": 5,
+      "type": "evict"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_006",
+      "payload": {},
+      "reason_ignored": null,
+      "ts_unix_ms": 6,
+      "type": "clear"
+    }
+  ]
+}

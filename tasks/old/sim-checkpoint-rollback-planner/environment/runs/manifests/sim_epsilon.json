@@ -1,0 +1,14 @@
+{
+  "current_checkpoint_step": 7400,
+  "engine": "openfoam",
+  "inputs_dataset": "ds_helium",
+  "kind": "production",
+  "last_known_good_step": 7200,
+  "scheduled_quiesce_window": {
+    "end_day": 248,
+    "start_day": 230
+  },
+  "sim_id": "sim_epsilon",
+  "stabilization_steps": 1500,
+  "started_at_day": 195
+}

@@ -1,0 +1,16 @@
+{
+  "allowed_algorithms": [
+    "aes-gcm-128",
+    "chacha20-poly1305"
+  ],
+  "idle_retire_ticks": 100,
+  "near_exhaustion_ratio": [
+    8,
+    10
+  ],
+  "severity_ranks": {
+    "error": 0,
+    "notice": 2,
+    "warning": 1
+  }
+}

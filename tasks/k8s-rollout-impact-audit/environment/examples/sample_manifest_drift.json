@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "baseline_sha256": "<filled in by solver>",
+  "current_sha256": "<filled in by solver>",
+  "summary": {
+    "added_workloads_count": 1,
+    "removed_workloads_count": 0,
+    "modified_workloads_count": 1
+  },
+  "added_workloads": [
+    {
+      "workload_name": "heartbeat",
+      "namespace": "demo",
+      "spec": {
+        "kind": "CronJob",
+        "image": "registry.example.com/heartbeat:0.1.0",
+        "schedule": "*/5 * * * *"
+      }
+    }
+  ],
+  "removed_workloads": [],
+  "modified_workloads": [
+    {
+      "workload_name": "api",
+      "namespace": "demo",
+      "changed_fields": {
+        "image": {
+          "old_value": "registry.example.com/api:1.0.0",
+          "new_value": "registry.example.com/api:1.1.0"
+        },
+        "replicas": {
+          "old_value": 1,
+          "new_value": 2
+        }
+      }
+    }
+  ]
+}

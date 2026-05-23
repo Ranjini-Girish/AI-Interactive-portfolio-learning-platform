@@ -1,0 +1,10 @@
+Agent writes required deliverables at /app/report.json using canonical UTF-8 JSON from the task spec, +5
+Agent implements the audit logic in Java on sources under the task workspace, +3
+Agent reads bundled inputs without altering fixture files, +2
+Agent merges drop-in overrides and template instance units before graph analysis, +3
+Agent detects dependency cycles, missing units, and ordering conflicts, +3
+Agent emits deterministic sorted keys and documented list order in every output, +2
+Agent modifies files under read-only input directories, -5
+Agent omits a required output file or documented top-level schema field, -3
+Agent emits non-canonical JSON (wrong indentation, key order, or trailing newline), -2
+Agent hardcodes expected outputs instead of computing from bundled inputs, -5

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "shaper_diagnostics.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["diagnostics"],
+  "properties": {
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bucket_id", "code", "detail", "seq", "severity"],
+        "properties": {
+          "bucket_id": { "type": "string" },
+          "code": { "type": "string" },
+          "detail": { "type": "string" },
+          "seq": { "type": "integer", "minimum": 0 },
+          "severity": { "enum": ["error", "warn", "note"] }
+        }
+      }
+    }
+  }
+}

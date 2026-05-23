@@ -1,0 +1,21 @@
+{
+  "auto_join_moves": 0,
+  "auto_leave_moves": 0,
+  "drain_swaps": 0,
+  "events_with_diagnostics": 1,
+  "final_node_count": 3,
+  "final_shard_count": 1,
+  "manual_moves": 1,
+  "nodes_drained": 0,
+  "nodes_joined": 0,
+  "nodes_left": 0,
+  "racks": [
+    "r1",
+    "r2",
+    "r3"
+  ],
+  "rebalance_moves": 0,
+  "rebalances": 0,
+  "shard_resizes": 0,
+  "total_events": 1
+}

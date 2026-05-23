@@ -1,0 +1,21 @@
+{
+  "cycles": [],
+  "edges": [],
+  "nodes": [
+    {
+      "id": "alpha",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "beta",
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "gamma",
+      "in_degree": 0,
+      "out_degree": 0
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "failure_thresholds_by_tier": {
+    "bronze": 6,
+    "gold": 2,
+    "silver": 4
+  },
+  "gold_upstream_degraded_extra_failures": 1,
+  "rolling_window_days": 7,
+  "silver_spike_extra_failures": 2
+}

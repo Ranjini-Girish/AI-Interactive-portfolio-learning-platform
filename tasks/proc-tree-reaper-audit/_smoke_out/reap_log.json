@@ -1,0 +1,53 @@
+{
+  "reaps": [
+    {
+      "parent_pid": 200,
+      "pid": 500,
+      "seq": 4,
+      "tick": 10,
+      "trigger": "wait"
+    },
+    {
+      "parent_pid": 1,
+      "pid": 300,
+      "seq": 7,
+      "tick": 14,
+      "trigger": "init_reap"
+    },
+    {
+      "parent_pid": 1,
+      "pid": 400,
+      "seq": 13,
+      "tick": 20,
+      "trigger": "init_reap"
+    },
+    {
+      "parent_pid": 100,
+      "pid": 900,
+      "seq": 21,
+      "tick": 28,
+      "trigger": "wait"
+    },
+    {
+      "parent_pid": 1,
+      "pid": 901,
+      "seq": 22,
+      "tick": 29,
+      "trigger": "init_reap"
+    },
+    {
+      "parent_pid": 1,
+      "pid": 600,
+      "seq": 24,
+      "tick": 31,
+      "trigger": "init_reap"
+    },
+    {
+      "parent_pid": 1,
+      "pid": 700,
+      "seq": 25,
+      "tick": 32,
+      "trigger": "init_reap"
+    }
+  ]
+}

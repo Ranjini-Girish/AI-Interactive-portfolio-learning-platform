@@ -17,6 +17,6 @@ Environment routing mirrors the harness: when `PREFIX_DATA_DIR` is non-empty, re
 
 Items contain `id` and `text`. Score each string by its character length. `best_id` is the id with maximal score; tie-break ASCII larger id wins.
 
-For every unordered pair of distinct items where one string ends with the first character of the other and the other string length exceeds 1, record `overlap_len` fixed to 1 with `pair` sorted lexicographically. Sort `edge_overlaps` by `pair`.
+For every unordered pair of distinct items with texts `u` and `v`, include an overlap record when (the text `u` ends with the first character of the text `v` and the character length of `v` exceeds 1) or (the text `v` ends with the first character of the text `u` and the character length of `u` exceeds 1). Each included record sets `overlap_len` to 1 and `pair` to the two ids sorted lexicographically. Sort `edge_overlaps` by `pair` ascending.
 
 Emit `suffix_rank.json` with `best_id`, `best_score`, `edge_overlaps`. Emit `summary.json` with `strings` count and `current_day`.

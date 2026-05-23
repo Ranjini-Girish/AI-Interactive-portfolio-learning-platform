@@ -1,0 +1,10 @@
+{
+  "bind_tag": "trace_03",
+  "epoch": 3,
+  "glyphs": [
+    10,
+    20
+  ],
+  "sample_id": "gtb_03",
+  "tier_shift": 3
+}

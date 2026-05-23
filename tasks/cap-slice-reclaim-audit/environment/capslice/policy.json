@@ -1,0 +1,6 @@
+{
+  "soft_cap": 100.0,
+  "tier_ratio": 0.6,
+  "warmup_steps": 2,
+  "window_size": 3
+}

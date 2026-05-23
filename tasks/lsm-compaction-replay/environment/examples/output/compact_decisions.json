@@ -1,0 +1,17 @@
+{
+  "decisions": [
+    {
+      "event_id": "e_004",
+      "input_seg_ids": [
+        "s_001",
+        "s_002",
+        "s_003"
+      ],
+      "level": 0,
+      "output_level": 1,
+      "output_seg_id": "merged_e_004",
+      "total_bytes": 600,
+      "ts_unix_ms": 1700000000400
+    }
+  ]
+}

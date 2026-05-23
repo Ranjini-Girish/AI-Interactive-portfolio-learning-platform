@@ -1,0 +1,1 @@
+{"pack_id":"dup_a","rules":[{"id":"dup-open","host":"dup.example.com","host_type":"exact","path_prefix":"/dup","methods":["GET"],"decision":"allow"}]}

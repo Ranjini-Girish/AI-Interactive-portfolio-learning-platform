@@ -1,0 +1,11 @@
+{
+  "bias_floor": 0,
+  "cap": 70,
+  "cutoff": 50,
+  "fold_mod": 1012,
+  "label": "onyx-path-culling-audit",
+  "mask": 78,
+  "poly_base": 142,
+  "seed_offset": 94,
+  "square_mod": 999998
+}

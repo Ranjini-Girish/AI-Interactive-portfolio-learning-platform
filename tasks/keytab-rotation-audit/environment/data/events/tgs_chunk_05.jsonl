@@ -1,0 +1,5 @@
+{"request_id":"tgs_004","principal":"host/web01.example.com@EXAMPLE.COM","kvno":5,"day":29,"hour":12}
+{"request_id":"tgs_006","principal":"host/db-master.example.com@EXAMPLE.COM","kvno":5,"day":29,"hour":0}
+{"request_id":"tgs_013","principal":"host/mail.example.com@EXAMPLE.COM","kvno":1,"day":29,"hour":0}
+{"request_id":"tgs_016","principal":"host/burner.example.com@EXAMPLE.COM","kvno":4,"day":29,"hour":0}
+{"request_id":"tgs_017","principal":"host/burner.example.com@EXAMPLE.COM","kvno":1,"day":29,"hour":0}

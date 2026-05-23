@@ -1,0 +1,354 @@
+{
+  "principals": [
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 1,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 3,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 2,
+          "retired_day": 11,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 4,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 3,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 10,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 4,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/burner.example.com@EXAMPLE.COM",
+      "tier": "silver"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes128-cts-hmac-sha1-96",
+          "final_state": "active",
+          "kvno": 1,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 14,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 2,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 28,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 3,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/cache01.example.com@EXAMPLE.COM",
+      "tier": "silver"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 1,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 14,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 3,
+          "retired_day": 29,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 28,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 4,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/cache02.example.com@EXAMPLE.COM",
+      "tier": "silver"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 1,
+          "retired_day": 8,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 7,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "revoked",
+          "kvno": 2,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": "compromise",
+          "revoked_day": 9,
+          "revoked_hour": 6
+        },
+        {
+          "added_day": 9,
+          "added_hour": 12,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 3,
+          "retired_day": 22,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 21,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 4,
+          "retired_day": 25,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 24,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 5,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/db-master.example.com@EXAMPLE.COM",
+      "tier": "gold"
+    },
+    {
+      "exempt": true,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "des-cbc-md5",
+          "final_state": "active",
+          "kvno": 1,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/legacy.example.com@EXAMPLE.COM",
+      "tier": "bronze"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "revoked",
+          "kvno": 1,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": "administrative",
+          "revoked_day": 3,
+          "revoked_hour": 0
+        }
+      ],
+      "principal": "host/mail.example.com@EXAMPLE.COM",
+      "tier": "bronze"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [],
+      "principal": "host/newhost.example.com@EXAMPLE.COM",
+      "tier": "gold"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 1,
+          "retired_day": 8,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 7,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 2,
+          "retired_day": 15,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 14,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 3,
+          "retired_day": 22,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 21,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 4,
+          "retired_day": 29,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 28,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 5,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/web01.example.com@EXAMPLE.COM",
+      "tier": "gold"
+    },
+    {
+      "exempt": false,
+      "kvno_events": [
+        {
+          "added_day": 0,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "retired",
+          "kvno": 1,
+          "retired_day": 8,
+          "retired_hour": 0,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        },
+        {
+          "added_day": 7,
+          "added_hour": 0,
+          "enctype": "aes256-cts-hmac-sha384-192",
+          "final_state": "active",
+          "kvno": 2,
+          "retired_day": null,
+          "retired_hour": null,
+          "revoke_reason": null,
+          "revoked_day": null,
+          "revoked_hour": null
+        }
+      ],
+      "principal": "host/web02.example.com@EXAMPLE.COM",
+      "tier": "gold"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "violations": [
+    {
+      "amount": 200,
+      "amount_dropped": 200,
+      "cgroup_id": "leaf",
+      "code": "E_OVER_QUOTA",
+      "resource": "cpu",
+      "seq": 2
+    }
+  ]
+}

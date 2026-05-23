@@ -1,8 +1,9 @@
+# scaffold-status: oracle-pending
 """Verifier suite for the MHz guard coalesce audit task.
 
-Hash locks pin the frozen fixture bytes and canonical JSON outputs, while a
-small set of semantic checks guards incident ordering and the staging merge
-that disappears if strip or gap tightening is skipped.
+Hash locks pin the frozen fixture bytes and exact on-disk JSON bytes for each
+audit artifact, while a small set of semantic checks guards incident ordering
+and the staging merge that disappears if strip or gap tightening is skipped.
 """
 
 from __future__ import annotations
@@ -53,11 +54,11 @@ EXPECTED_INPUT_HASHES = {
 }
 
 
-EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "incident_trail.json": "5bb4bc7278cd69401a6438a5a233188aeea590b91c6eb3609dc2bd0453df53d6",
-    "segments.json": "41b49d55a2c9d9f30d4b4af30aa2590b7b8bc3bc44a0a82bc65c73182173f662",
-    "summary.json": "7bb37e5ac34f689ac45c975795f52d61cf51a1b6542b6d5c797a8d5a4ab8a604",
-    "tier_rollup.json": "4123cce7066d81fc0ff20b3738104d20ce9e8546cd518a2dbebc102fd755cb45",
+EXPECTED_RAW_OUTPUT_HASHES = {
+    "incident_trail.json": "9adacfd1376f71248279b447f9076be7e7caaae5b3622efa25327d5429415a6f",
+    "segments.json": "bab82c615bfd3c24f6d705042cb9650484a870628da28f131fa0176782712b18",
+    "summary.json": "4a1eb02197604179f5111a3baeac29d63d390992b0bb1003da7e157d23b6f9e4",
+    "tier_rollup.json": "f2a1974bb31c4f5b4f2402e45b83e81625e7d9b6f239571de8cd8b94ea53631d",
 }
 
 
@@ -104,14 +105,15 @@ class TestInputIntegrity:
 
 
 class TestReportStructure:
-    """Verify emitted JSON files exist and hash-lock to the canonical contract."""
+    """Verify emitted JSON files exist and hash-lock to the on-disk byte contract."""
 
-    def test_output_canonical_hashes(self, outputs: dict[str, object]) -> None:
-        """Each audit file must match the canonical minified JSON digest."""
-        for name, expected in EXPECTED_OUTPUT_CANONICAL_HASHES.items():
-            canon = _canonical(outputs[name])
-            digest = _sha256_bytes(canon.encode("utf-8"))
-            assert digest == expected, f"output mismatch for {name}"
+    def test_output_raw_byte_hashes(self) -> None:
+        """Each audit file's raw bytes must match the pinned digest (canonical JSON + single newline)."""
+        for name, expected in EXPECTED_RAW_OUTPUT_HASHES.items():
+            path = AUDIT_DIR / name
+            assert path.is_file(), f"missing emitted artifact: {name}"
+            digest = _sha256_bytes(path.read_bytes())
+            assert digest == expected, f"raw output bytes mismatch for {name}"
 
     def test_nested_field_hashes(self, outputs: dict[str, object]) -> None:
         """Nested collections remain stable under canonical serialisation."""
@@ -196,10 +198,11 @@ class TestSummaryRollup:
         assert sm["total_active_bins"] == bins
 
 
-@pytest.mark.skipif(not BINARY_PATH.is_file(), reason="requires built Go binary under /app/sga_tool")
 class TestBinaryPresent:
     """Anti-cheat: the reference entrypoint exists in the agent image layout."""
 
     def test_release_binary_exists(self) -> None:
         """The compiled audit binary must be present for containerised runs."""
-        assert BINARY_PATH.is_file()
+        assert BINARY_PATH.is_file(), (
+            "sgaudit Go binary must exist at /app/sga_tool/sgaudit"
+        )

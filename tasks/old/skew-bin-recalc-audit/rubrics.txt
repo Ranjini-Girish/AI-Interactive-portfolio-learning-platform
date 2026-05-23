@@ -1,0 +1,13 @@
+Agent writes histogram.json and summary.json only into the audit directory, +2
+Agent matches canonical JSON layout from SPEC for every emitted file, +3
+Agent applies suppression incidents before winsorization per probe, +5
+Agent winsorizes each multi-sample probe using median, MAD, and outlier_z from policy, +3
+Agent counts only band-mask eligible samples toward histogram totals, +3
+Agent shifts final bin indices for probes with active shift_bins incidents, +3
+Agent leaves anchors and ancillary JSON untouched under the bundle root, +2
+Agent adds undeclared histogram bins or changes bin_count, -5
+Agent mutates samples or policy files under the frozen bundle root, -5
+Agent applies band mask before winsorization instead of after, -3
+Agent writes outputs outside the configured audit directory tree, -5
+Agent omits clamping bin indices after shifts, -3
+Agent miscounts samples_in relative to raw fixtures, -2

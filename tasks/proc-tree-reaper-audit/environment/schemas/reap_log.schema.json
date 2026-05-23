@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "reap_log.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reaps"],
+  "properties": {
+    "reaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["parent_pid", "pid", "seq", "tick", "trigger"],
+        "properties": {
+          "parent_pid": {"type": "integer", "minimum": 1},
+          "pid": {"type": "integer", "minimum": 1},
+          "seq": {"type": "integer", "minimum": 0},
+          "tick": {"type": "integer", "minimum": 0},
+          "trigger": {"enum": ["wait", "init_reap"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "deny": false,
+  "epoch": 4,
+  "name": "edge.example",
+  "ttl_step": 10
+}

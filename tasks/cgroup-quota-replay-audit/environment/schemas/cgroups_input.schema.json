@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cgroups_input",
+  "type": "object",
+  "required": ["cgroups"],
+  "additionalProperties": false,
+  "properties": {
+    "cgroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "parent_id", "cpu_quota_ms", "mem_quota_kb", "io_quota_iops"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "parent_id": { "type": ["string", "null"] },
+          "cpu_quota_ms": { "type": "integer", "minimum": 0 },
+          "mem_quota_kb": { "type": "integer", "minimum": 0 },
+          "io_quota_iops": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

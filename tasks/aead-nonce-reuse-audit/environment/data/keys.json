@@ -1,0 +1,29 @@
+{
+  "keys": [
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "key-alpha",
+      "max_uses": 10
+    },
+    {
+      "algorithm": "chacha20-poly1305",
+      "key_id": "key-beta",
+      "max_uses": 50
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "key-gamma",
+      "max_uses": 20
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "key_id": "key-delta",
+      "max_uses": 5
+    },
+    {
+      "algorithm": "chacha20-poly1305",
+      "key_id": "key-epsilon",
+      "max_uses": 5
+    }
+  ]
+}

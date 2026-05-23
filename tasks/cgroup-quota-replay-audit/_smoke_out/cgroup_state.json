@@ -1,0 +1,103 @@
+{
+  "cgroups": [
+    {
+      "cpu_quota_ms": 2000,
+      "cpu_used_ms": 200,
+      "id": "bob",
+      "io_quota_iops": 200,
+      "io_used_iops": 150,
+      "mem_quota_kb": 4096,
+      "mem_used_kb": 0,
+      "parent_id": "users",
+      "peak_cpu_ms": 300,
+      "peak_mem_kb": 0,
+      "tasks": [
+        "ssh"
+      ]
+    },
+    {
+      "cpu_quota_ms": 2000,
+      "cpu_used_ms": 0,
+      "id": "containers",
+      "io_quota_iops": 500,
+      "io_used_iops": 0,
+      "mem_quota_kb": 8192,
+      "mem_used_kb": 0,
+      "parent_id": "root",
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 0,
+      "tasks": []
+    },
+    {
+      "cpu_quota_ms": 500,
+      "cpu_used_ms": 0,
+      "id": "db",
+      "io_quota_iops": 200,
+      "io_used_iops": 0,
+      "mem_quota_kb": 2048,
+      "mem_used_kb": 0,
+      "parent_id": "containers",
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 0,
+      "tasks": []
+    },
+    {
+      "cpu_quota_ms": 10000,
+      "cpu_used_ms": 0,
+      "id": "root",
+      "io_quota_iops": 1000,
+      "io_used_iops": 0,
+      "mem_quota_kb": 65536,
+      "mem_used_kb": 0,
+      "parent_id": null,
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 0,
+      "tasks": []
+    },
+    {
+      "cpu_quota_ms": 4000,
+      "cpu_used_ms": 0,
+      "id": "system",
+      "io_quota_iops": 400,
+      "io_used_iops": 0,
+      "mem_quota_kb": 16384,
+      "mem_used_kb": 0,
+      "parent_id": "root",
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 0,
+      "tasks": [
+        "kthread1"
+      ]
+    },
+    {
+      "cpu_quota_ms": 4000,
+      "cpu_used_ms": 0,
+      "id": "users",
+      "io_quota_iops": 400,
+      "io_used_iops": 0,
+      "mem_quota_kb": 16384,
+      "mem_used_kb": 0,
+      "parent_id": "root",
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 0,
+      "tasks": [
+        "firefox"
+      ]
+    },
+    {
+      "cpu_quota_ms": 1000,
+      "cpu_used_ms": 0,
+      "id": "web",
+      "io_quota_iops": 200,
+      "io_used_iops": 0,
+      "mem_quota_kb": 4096,
+      "mem_used_kb": 4000,
+      "parent_id": "containers",
+      "peak_cpu_ms": 0,
+      "peak_mem_kb": 4000,
+      "tasks": [
+        "nginx"
+      ]
+    }
+  ]
+}

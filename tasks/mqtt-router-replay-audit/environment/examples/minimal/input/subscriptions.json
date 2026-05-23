@@ -1,0 +1,5 @@
+{
+  "subscriptions": [
+    {"client_id": "sub", "filter": "demo/+", "qos": 1}
+  ]
+}

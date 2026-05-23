@@ -1,0 +1,9 @@
+{
+  "id": "crash-007",
+  "reported_day": 25,
+  "reporter": "grace@example.com",
+  "frame_stack": ["net::tcp::send", "net::tcp::ack", "net::ssl::handshake", "net::extra::frame", "net::ssl::verify"],
+  "env_hash": "6a7b8c9d0e1f2233445a6b7c8d9e0f046a7b8c9d0e1f2233445a6b7c8d9e0f04",
+  "reproducibility": "always",
+  "severity_observed": "medium"
+}

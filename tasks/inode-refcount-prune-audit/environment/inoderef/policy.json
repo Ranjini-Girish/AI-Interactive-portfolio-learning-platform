@@ -1,0 +1,5 @@
+{
+  "epoch_floor": 0,
+  "hold_boost": 1.6,
+  "prune_threshold": 5
+}

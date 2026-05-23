@@ -1,7 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-SOL_DIR="$(cd "$(dirname "$0")" && pwd)"
-export SBR_DATA_DIR="${SBR_DATA_DIR:-/app/sbr_lab}"
-export SBR_AUDIT_DIR="${SBR_AUDIT_DIR:-/app/audit}"
-python "$SOL_DIR/audit.py"
+ROOT="${SBR_DATA_DIR:-/app/sbr_lab}"
+OUT="${SBR_AUDIT_DIR:-/app/audit}"
+mkdir -p "$OUT"
+
+SOLVE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export CLASSPATH="/opt/gson.jar"
+TMPD="$(mktemp -d)"
+trap 'rm -rf "${TMPD}"' EXIT
+
+javac -cp "${CLASSPATH}" -d "${TMPD}" "${SOLVE_DIR}/SkewBinRecalc.java"
+java -cp "${TMPD}:${CLASSPATH}" SkewBinRecalc "${ROOT}" "${OUT}"

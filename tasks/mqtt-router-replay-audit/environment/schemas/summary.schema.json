@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "summary.json",
+  "type": "object",
+  "required": [
+    "active_clients",
+    "deliveries_total",
+    "diagnostics_by_code",
+    "events_total",
+    "persistent_sessions",
+    "publishes_delivered",
+    "retained_count",
+    "topics_published"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "active_clients":      {"type": "integer", "minimum": 0},
+    "deliveries_total":    {"type": "integer", "minimum": 0},
+    "diagnostics_by_code": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "events_total":        {"type": "integer", "minimum": 0},
+    "persistent_sessions": {"type": "integer", "minimum": 0},
+    "publishes_delivered": {"type": "integer", "minimum": 0},
+    "retained_count":      {"type": "integer", "minimum": 0},
+    "topics_published": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

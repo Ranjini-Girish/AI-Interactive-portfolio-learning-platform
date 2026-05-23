@@ -1,0 +1,76 @@
+{
+  "keys": [
+    {
+      "algorithm": "aes-gcm-128",
+      "compromised_seq": null,
+      "exhausted_seq": 14,
+      "installed_seq": 0,
+      "key_id": "key-alpha",
+      "last_use_tick": 5,
+      "max_uses": 10,
+      "retired_seq": null,
+      "state": "EXHAUSTED",
+      "uses_count": 10
+    },
+    {
+      "algorithm": "chacha20-poly1305",
+      "compromised_seq": 23,
+      "exhausted_seq": null,
+      "installed_seq": 0,
+      "key_id": "key-beta",
+      "last_use_tick": 0,
+      "max_uses": 50,
+      "retired_seq": null,
+      "state": "COMPROMISED",
+      "uses_count": 0
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "compromised_seq": null,
+      "exhausted_seq": null,
+      "installed_seq": 0,
+      "key_id": "key-delta",
+      "last_use_tick": 0,
+      "max_uses": 5,
+      "retired_seq": 26,
+      "state": "RETIRED",
+      "uses_count": 0
+    },
+    {
+      "algorithm": "chacha20-poly1305",
+      "compromised_seq": null,
+      "exhausted_seq": null,
+      "installed_seq": 0,
+      "key_id": "key-epsilon",
+      "last_use_tick": 0,
+      "max_uses": 5,
+      "retired_seq": 32,
+      "state": "RETIRED",
+      "uses_count": 0
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "compromised_seq": 19,
+      "exhausted_seq": null,
+      "installed_seq": 0,
+      "key_id": "key-gamma",
+      "last_use_tick": 7,
+      "max_uses": 20,
+      "retired_seq": null,
+      "state": "COMPROMISED",
+      "uses_count": 2
+    },
+    {
+      "algorithm": "aes-gcm-128",
+      "compromised_seq": null,
+      "exhausted_seq": null,
+      "installed_seq": 1,
+      "key_id": "key-zeta",
+      "last_use_tick": 50,
+      "max_uses": 4,
+      "retired_seq": null,
+      "state": "ACTIVE",
+      "uses_count": 2
+    }
+  ]
+}

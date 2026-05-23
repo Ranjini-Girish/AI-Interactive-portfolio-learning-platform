@@ -1,0 +1,17 @@
+{
+  "incidents": [
+    {
+      "incident_id": "inc-trace-01",
+      "severity": 2,
+      "action": "freeze_illegal",
+      "position_ids": ["race-r05", "tempo-t04"]
+    },
+    {
+      "incident_id": "inc-trace-02",
+      "severity": 1,
+      "action": "annotate_only",
+      "position_ids": ["race-r01"]
+    }
+  ],
+  "freeze_severity_floor": 2
+}

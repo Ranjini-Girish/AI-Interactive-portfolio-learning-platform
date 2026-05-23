@@ -1,0 +1,199 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "N_REAPED",
+          "pid": 500,
+          "severity": "note"
+        }
+      ],
+      "seq": 4
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_KILLED_BY_SIGNAL",
+          "pid": 600,
+          "severity": "warning"
+        },
+        {
+          "code": "W_ORPHANED",
+          "pid": 700,
+          "severity": "warning"
+        }
+      ],
+      "seq": 6
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_AUTO_REAPED",
+          "pid": 300,
+          "severity": "note"
+        }
+      ],
+      "seq": 7
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_PID_REUSED",
+          "pid": 300,
+          "severity": "error"
+        }
+      ],
+      "seq": 8
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_INVALID_PARENT",
+          "pid": 99,
+          "severity": "error"
+        }
+      ],
+      "seq": 9
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_INVALID_TARGET",
+          "pid": 99,
+          "severity": "error"
+        }
+      ],
+      "seq": 10
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NOT_CHILD",
+          "pid": 700,
+          "severity": "error"
+        }
+      ],
+      "seq": 11
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NOT_ZOMBIE",
+          "pid": 200,
+          "severity": "error"
+        }
+      ],
+      "seq": 12
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_KILLED_BY_SIGNAL",
+          "pid": 400,
+          "severity": "warning"
+        },
+        {
+          "code": "N_AUTO_REAPED",
+          "pid": 400,
+          "severity": "note"
+        }
+      ],
+      "seq": 13
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_INVALID_TARGET",
+          "pid": 999,
+          "severity": "error"
+        }
+      ],
+      "seq": 14
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_INVALID_TARGET",
+          "pid": 999,
+          "severity": "error"
+        }
+      ],
+      "seq": 15
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DOUBLE_EXIT",
+          "pid": 600,
+          "severity": "error"
+        }
+      ],
+      "seq": 16
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_KILLED_BY_SIGNAL",
+          "pid": 900,
+          "severity": "warning"
+        },
+        {
+          "code": "W_ORPHANED",
+          "pid": 901,
+          "severity": "warning"
+        }
+      ],
+      "seq": 20
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_REAPED",
+          "pid": 900,
+          "severity": "note"
+        }
+      ],
+      "seq": 21
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_AUTO_REAPED",
+          "pid": 901,
+          "severity": "note"
+        }
+      ],
+      "seq": 22
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_ORPHANED",
+          "pid": 600,
+          "severity": "warning"
+        },
+        {
+          "code": "W_ZOMBIE_LEAK",
+          "pid": 200,
+          "severity": "warning"
+        },
+        {
+          "code": "N_AUTO_REAPED",
+          "pid": 600,
+          "severity": "note"
+        }
+      ],
+      "seq": 24
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_AUTO_REAPED",
+          "pid": 700,
+          "severity": "note"
+        }
+      ],
+      "seq": 25
+    }
+  ]
+}

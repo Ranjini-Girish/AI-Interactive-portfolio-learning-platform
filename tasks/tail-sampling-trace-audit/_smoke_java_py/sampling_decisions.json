@@ -1,0 +1,244 @@
+{
+  "decisions": [
+    {
+      "decision": "keep",
+      "matched_policy": null,
+      "reason": "multi_root",
+      "trace_id": "07d787f26a2e715f"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "0821d076651d290e"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "cycle_detected",
+      "trace_id": "1237a634a383863c"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "drop-cdn-service",
+      "reason": "policy_match",
+      "trace_id": "178c9d9c8f3fa9cc"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "255489219bae0acb"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "38c9310f5f68e8fc"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "drop-cdn-healthchecks",
+      "reason": "policy_match",
+      "trace_id": "3b502c775579d0b1"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "incomplete_trace",
+      "trace_id": "4868c7492e2fc2a0"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "incomplete_trace",
+      "trace_id": "48d44529b386afae"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "cycle_detected",
+      "trace_id": "503d69fdda5dd93b"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": null,
+      "reason": "multi_root",
+      "trace_id": "57942121c5cb413b"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "57e46d43d750a94f"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "5c18b2c09601a6ab"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-slow-traces",
+      "reason": "policy_match",
+      "trace_id": "614d7db18b5d9596"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-payments-errors",
+      "reason": "policy_match",
+      "trace_id": "63f433ae9e00c434"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": null,
+      "reason": "multi_root",
+      "trace_id": "64a64977901c1427"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "orphan_span",
+      "trace_id": "6ad0ae05d1b99c95"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "drop-cdn-service",
+      "reason": "policy_match",
+      "trace_id": "6d3caafd4ddd1eb3"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "cycle_detected",
+      "trace_id": "703c4124c902dd3e"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "77f72b7a1b5cce6c"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "7e400e7f2d07dec2"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "orphan_span",
+      "trace_id": "7f8d7d55a83504b2"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "80dea6125b5d4a7c"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "drop-cdn-healthchecks",
+      "reason": "policy_match",
+      "trace_id": "86ade423a0847600"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "incomplete_trace",
+      "trace_id": "890a845f6450b0c4"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "8f4185c140ed702c"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-payments-errors",
+      "reason": "policy_match",
+      "trace_id": "9173bced57e23a71"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "drop-cdn-healthchecks",
+      "reason": "policy_match",
+      "trace_id": "9d654d6021bd7cca"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "orphan_span",
+      "trace_id": "ab7a36a3fa51b866"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-slow-traces",
+      "reason": "policy_match",
+      "trace_id": "afecc933ccf8520d"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "b46e68f2d7b7f808"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-payments-errors",
+      "reason": "policy_match",
+      "trace_id": "bcb053dfdddc00f6"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "incomplete_trace",
+      "trace_id": "c0185b890d8e7819"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-slow-traces",
+      "reason": "policy_match",
+      "trace_id": "c7eeb7afa4dd1c7d"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "default-1-percent-sample",
+      "reason": "policy_match",
+      "trace_id": "cb82fed2724c03a2"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "orphan_span",
+      "trace_id": "cf873be9f13057c4"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "cycle_detected",
+      "trace_id": "d17cce971372b7c4"
+    },
+    {
+      "decision": "keep",
+      "matched_policy": "keep-slow-traces",
+      "reason": "policy_match",
+      "trace_id": "d3137211f804aaf0"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": "drop-cdn-service",
+      "reason": "policy_match",
+      "trace_id": "e09c3190537d2280"
+    },
+    {
+      "decision": "drop",
+      "matched_policy": null,
+      "reason": "cycle_detected",
+      "trace_id": "f32a3604cec4af42"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "excluded_events": [
+    "EVT_C",
+    "EVT_E"
+  ],
+  "excluded_stations": [
+    "STA06"
+  ]
+}

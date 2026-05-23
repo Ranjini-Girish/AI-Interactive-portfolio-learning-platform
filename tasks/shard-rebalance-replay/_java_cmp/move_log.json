@@ -1,0 +1,188 @@
+{
+  "moves": [
+    {
+      "from_node": "n01",
+      "role": "primary",
+      "seq": 0,
+      "shard_id": "s01",
+      "to_node": "n04",
+      "trigger": "rebalance"
+    },
+    {
+      "from_node": "n04",
+      "role": "primary",
+      "seq": 1,
+      "shard_id": "s01",
+      "to_node": "n01",
+      "trigger": "manual"
+    },
+    {
+      "from_node": "n01",
+      "role": "replica",
+      "seq": 6,
+      "shard_id": "s04",
+      "to_node": "n05",
+      "trigger": "auto_join"
+    },
+    {
+      "from_node": "n01",
+      "role": "primary",
+      "seq": 7,
+      "shard_id": "s01",
+      "to_node": "n02",
+      "trigger": "drain"
+    },
+    {
+      "from_node": "n01",
+      "role": "primary",
+      "seq": 7,
+      "shard_id": "s05",
+      "to_node": "n03",
+      "trigger": "drain"
+    },
+    {
+      "from_node": "n01",
+      "role": "primary",
+      "seq": 7,
+      "shard_id": "s07",
+      "to_node": "n02",
+      "trigger": "drain"
+    },
+    {
+      "from_node": "n02",
+      "role": "primary",
+      "seq": 16,
+      "shard_id": "s06",
+      "to_node": "n05",
+      "trigger": "rebalance"
+    },
+    {
+      "from_node": "n04",
+      "role": "replica",
+      "seq": 17,
+      "shard_id": "s06",
+      "to_node": "n01",
+      "trigger": "rebalance"
+    },
+    {
+      "from_node": "n01",
+      "role": "replica",
+      "seq": 19,
+      "shard_id": "s06",
+      "to_node": "n04",
+      "trigger": "rebalance"
+    },
+    {
+      "from_node": "n04",
+      "role": "replica",
+      "seq": 20,
+      "shard_id": "s06",
+      "to_node": "n01",
+      "trigger": "rebalance"
+    },
+    {
+      "from_node": "n04",
+      "role": "primary",
+      "seq": 21,
+      "shard_id": "s04",
+      "to_node": "n05",
+      "trigger": "drain"
+    },
+    {
+      "from_node": "n01",
+      "role": "replica",
+      "seq": 22,
+      "shard_id": "s01",
+      "to_node": "n03",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n01",
+      "role": "replica",
+      "seq": 22,
+      "shard_id": "s05",
+      "to_node": "n02",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n01",
+      "role": "replica",
+      "seq": 22,
+      "shard_id": "s06",
+      "to_node": "n02",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n01",
+      "role": "replica",
+      "seq": 22,
+      "shard_id": "s07",
+      "to_node": "n05",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n02",
+      "role": "replica",
+      "seq": 22,
+      "shard_id": "s06",
+      "to_node": "n03",
+      "trigger": "auto_leave"
+    },
+    {
+      "from_node": "n03",
+      "role": "replica",
+      "seq": 23,
+      "shard_id": "s06",
+      "to_node": "n02",
+      "trigger": "rebalance"
+    },
+    {
+      "from_node": "n02",
+      "role": "replica",
+      "seq": 24,
+      "shard_id": "s06",
+      "to_node": "n06",
+      "trigger": "auto_join"
+    },
+    {
+      "from_node": "n02",
+      "role": "primary",
+      "seq": 25,
+      "shard_id": "s01",
+      "to_node": "n06",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n02",
+      "role": "primary",
+      "seq": 25,
+      "shard_id": "s02",
+      "to_node": "n06",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n02",
+      "role": "replica",
+      "seq": 25,
+      "shard_id": "s05",
+      "to_node": "n06",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n02",
+      "role": "primary",
+      "seq": 25,
+      "shard_id": "s07",
+      "to_node": "n06",
+      "trigger": "leave"
+    },
+    {
+      "from_node": "n05",
+      "role": "primary",
+      "seq": 25,
+      "shard_id": "s06",
+      "to_node": "n03",
+      "trigger": "auto_leave"
+    }
+  ]
+}

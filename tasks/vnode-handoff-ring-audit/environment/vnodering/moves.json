@@ -1,0 +1,49 @@
+{
+  "moves": [
+    {
+      "key_id": "k_alpha",
+      "step": 1,
+      "target_vnode": "vn_b"
+    },
+    {
+      "key_id": "k_beta",
+      "step": 2,
+      "target_vnode": "vn_c"
+    },
+    {
+      "key_id": "k_gamma",
+      "step": 3,
+      "target_vnode": "vn_a"
+    },
+    {
+      "key_id": "k_beta",
+      "step": 3,
+      "target_vnode": "vn_c"
+    },
+    {
+      "key_id": "k_delta",
+      "step": 4,
+      "target_vnode": "vn_c"
+    },
+    {
+      "key_id": "k_gamma",
+      "step": 5,
+      "target_vnode": "vn_b"
+    },
+    {
+      "key_id": "k_beta",
+      "step": 6,
+      "target_vnode": "vn_a"
+    },
+    {
+      "key_id": "k_alpha",
+      "step": 7,
+      "target_vnode": "vn_old"
+    },
+    {
+      "key_id": "k_missing",
+      "step": 8,
+      "target_vnode": "vn_a"
+    }
+  ]
+}

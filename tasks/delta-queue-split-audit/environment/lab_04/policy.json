@@ -1,0 +1,11 @@
+{
+  "bias_floor": 1,
+  "cap": 59,
+  "cutoff": 39,
+  "fold_mod": 1001,
+  "label": "delta-queue-split-audit",
+  "mask": 67,
+  "poly_base": 131,
+  "seed_offset": 122,
+  "square_mod": 999987
+}

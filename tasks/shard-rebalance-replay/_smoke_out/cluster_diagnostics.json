@@ -1,0 +1,309 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s01",
+          "severity": "note"
+        }
+      ],
+      "seq": 0
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_RACK_FALLBACK",
+          "ref_id": "s01",
+          "severity": "warning"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s01",
+          "severity": "note"
+        }
+      ],
+      "seq": 1
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_SHARD_NOT_FOUND",
+          "ref_id": "s99",
+          "severity": "error"
+        }
+      ],
+      "seq": 2
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NODE_NOT_FOUND",
+          "ref_id": "n99",
+          "severity": "error"
+        }
+      ],
+      "seq": 3
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NODE_BUSY",
+          "ref_id": "s05",
+          "severity": "error"
+        }
+      ],
+      "seq": 4
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_DUPLICATE_NODE",
+          "ref_id": "n02",
+          "severity": "error"
+        }
+      ],
+      "seq": 5
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s04",
+          "severity": "note"
+        }
+      ],
+      "seq": 6
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_REPLICA_DEMOTED",
+          "ref_id": "n01",
+          "severity": "warning"
+        },
+        {
+          "code": "W_REPLICA_DEMOTED",
+          "ref_id": "n01",
+          "severity": "warning"
+        },
+        {
+          "code": "W_REPLICA_DEMOTED",
+          "ref_id": "n01",
+          "severity": "warning"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s01",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s05",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s07",
+          "severity": "note"
+        }
+      ],
+      "seq": 7
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NODE_BUSY",
+          "ref_id": "s06",
+          "severity": "error"
+        }
+      ],
+      "seq": 8
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NODE_BUSY",
+          "ref_id": "n01",
+          "severity": "error"
+        }
+      ],
+      "seq": 11
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NODE_NOT_FOUND",
+          "ref_id": "n99",
+          "severity": "error"
+        }
+      ],
+      "seq": 12
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_SHARD_NOT_FOUND",
+          "ref_id": "s99",
+          "severity": "error"
+        }
+      ],
+      "seq": 15
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        }
+      ],
+      "seq": 16
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        }
+      ],
+      "seq": 17
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_NODE_BUSY",
+          "ref_id": "s03",
+          "severity": "error"
+        }
+      ],
+      "seq": 18
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        }
+      ],
+      "seq": 19
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        }
+      ],
+      "seq": 20
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_REPLICA_DEMOTED",
+          "ref_id": "n04",
+          "severity": "warning"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s04",
+          "severity": "note"
+        }
+      ],
+      "seq": 21
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s01",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s05",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s07",
+          "severity": "note"
+        }
+      ],
+      "seq": 22
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        }
+      ],
+      "seq": 23
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        }
+      ],
+      "seq": 24
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s01",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s02",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s05",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s06",
+          "severity": "note"
+        },
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "s07",
+          "severity": "note"
+        }
+      ],
+      "seq": 25
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_REBALANCE_INFEASIBLE",
+          "ref_id": "s01",
+          "severity": "error"
+        }
+      ],
+      "seq": 27
+    }
+  ]
+}

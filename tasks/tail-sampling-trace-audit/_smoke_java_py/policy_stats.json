@@ -1,0 +1,39 @@
+{
+  "policies": [
+    {
+      "dropped_count": 8,
+      "kept_count": 3,
+      "matched_count": 11,
+      "name": "default-1-percent-sample",
+      "type": "probabilistic"
+    },
+    {
+      "dropped_count": 3,
+      "kept_count": 0,
+      "matched_count": 3,
+      "name": "drop-cdn-healthchecks",
+      "type": "attribute"
+    },
+    {
+      "dropped_count": 3,
+      "kept_count": 0,
+      "matched_count": 3,
+      "name": "drop-cdn-service",
+      "type": "service"
+    },
+    {
+      "dropped_count": 0,
+      "kept_count": 3,
+      "matched_count": 3,
+      "name": "keep-payments-errors",
+      "type": "status_match"
+    },
+    {
+      "dropped_count": 0,
+      "kept_count": 4,
+      "matched_count": 4,
+      "name": "keep-slow-traces",
+      "type": "latency"
+    }
+  ]
+}

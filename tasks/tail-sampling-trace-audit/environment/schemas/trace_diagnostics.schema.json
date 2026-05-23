@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "trace_diagnostics.json",
+  "type": "object",
+  "required": ["diagnostics"],
+  "additionalProperties": false,
+  "properties": {
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "evidence", "severity", "severity_rank", "span_id", "trace_id"],
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "D_CYCLE_DETECTED", "D_MULTI_ROOT", "D_INCOMPLETE_TRACE",
+              "D_ORPHAN_SPAN", "D_FUTURE_TIMESTAMP"
+            ]
+          },
+          "evidence":      { "type": "object" },
+          "severity":      { "type": "string", "enum": ["error", "warn", "info"] },
+          "severity_rank": { "type": "integer" },
+          "span_id":       { "type": ["string", "null"], "pattern": "^[0-9a-f]{8}$" },
+          "trace_id":      { "type": "string", "pattern": "^[0-9a-f]{16}$" }
+        }
+      }
+    }
+  }
+}

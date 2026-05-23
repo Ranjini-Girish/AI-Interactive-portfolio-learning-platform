@@ -1,0 +1,37 @@
+{
+  "events": [
+    {
+      "cmdline": "/usr/bin/grep",
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 100,
+      "pid": 200,
+      "seq": 0,
+      "signal": null,
+      "target_pid": null,
+      "tick": 5
+    },
+    {
+      "cmdline": null,
+      "exit_code": 0,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 1,
+      "signal": null,
+      "target_pid": null,
+      "tick": 7
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "wait",
+      "parent_pid": null,
+      "pid": 100,
+      "seq": 2,
+      "signal": null,
+      "target_pid": 200,
+      "tick": 8
+    }
+  ]
+}

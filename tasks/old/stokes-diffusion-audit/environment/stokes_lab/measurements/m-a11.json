@@ -1,0 +1,9 @@
+{
+  "measurement_id": "m-a11",
+  "probe_id": "p4",
+  "solvent_id": "dmso",
+  "solute_id": "s-resin",
+  "hydrodynamic_radius_nm": 0.9,
+  "temp_reported_K": 325.0,
+  "run_day": 4
+}

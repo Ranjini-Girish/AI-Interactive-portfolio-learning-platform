@@ -1,0 +1,55 @@
+{
+  "events": [
+    {
+      "dataset_id": "ds_xenon",
+      "day": 235,
+      "event_id": "evt_01",
+      "kind": "dataset_compromise",
+      "sim_id": null
+    },
+    {
+      "dataset_id": null,
+      "day": 238,
+      "event_id": "evt_02",
+      "kind": "force_pin",
+      "sim_id": "sim_omega"
+    },
+    {
+      "dataset_id": null,
+      "day": 238,
+      "event_id": "evt_03",
+      "kind": "force_pin",
+      "sim_id": "sim_lambda"
+    },
+    {
+      "dataset_id": null,
+      "day": 237,
+      "event_id": "evt_04",
+      "kind": "corruption_confirmed",
+      "safe_step": 2500,
+      "sim_id": "sim_mu"
+    },
+    {
+      "dataset_id": null,
+      "day": 220,
+      "event_id": "evt_mu_legacy",
+      "kind": "corruption_confirmed",
+      "safe_step": 100,
+      "sim_id": "sim_mu"
+    },
+    {
+      "dataset_id": "",
+      "day": 236,
+      "event_id": "evt_05",
+      "kind": "dataset_compromise",
+      "sim_id": null
+    },
+    {
+      "dataset_id": null,
+      "day": 220,
+      "event_id": "evt_06",
+      "kind": "node_drain",
+      "sim_id": "sim_beta"
+    }
+  ]
+}

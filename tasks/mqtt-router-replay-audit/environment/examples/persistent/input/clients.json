@@ -1,0 +1,7 @@
+{
+  "clients": [
+    {"id": "alpha", "persistent": true, "keep_alive_sec": 60,
+     "will": {"topic": "down/alpha", "payload_id": 99, "qos": 1, "retain": true}},
+    {"id": "bravo", "persistent": true, "connected": false, "keep_alive_sec": 60}
+  ]
+}

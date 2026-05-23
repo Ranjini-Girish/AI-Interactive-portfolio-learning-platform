@@ -1,0 +1,7 @@
+{
+  "alias_target": "app.example",
+  "deny": false,
+  "epoch": 4,
+  "name": "www.example",
+  "ttl_step": 10
+}

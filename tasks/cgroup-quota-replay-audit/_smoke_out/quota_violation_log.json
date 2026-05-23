@@ -1,0 +1,44 @@
+{
+  "violations": [
+    {
+      "amount": 100,
+      "amount_dropped": 100,
+      "cgroup_id": "bob",
+      "code": "E_OVER_QUOTA",
+      "resource": "io",
+      "seq": 10
+    },
+    {
+      "amount": 10,
+      "amount_dropped": 10,
+      "cgroup_id": "alice",
+      "code": "E_OVER_QUOTA",
+      "resource": "cpu",
+      "seq": 14
+    },
+    {
+      "amount": 1000,
+      "amount_dropped": 1000,
+      "cgroup_id": "web",
+      "code": "E_OVER_QUOTA",
+      "resource": "mem",
+      "seq": 29
+    },
+    {
+      "amount": 300,
+      "amount_dropped": 300,
+      "cgroup_id": "web",
+      "code": "E_OVER_QUOTA",
+      "resource": "mem",
+      "seq": 31
+    },
+    {
+      "amount": 300,
+      "amount_dropped": 300,
+      "cgroup_id": "web",
+      "code": "E_OVER_QUOTA",
+      "resource": "io",
+      "seq": 47
+    }
+  ]
+}

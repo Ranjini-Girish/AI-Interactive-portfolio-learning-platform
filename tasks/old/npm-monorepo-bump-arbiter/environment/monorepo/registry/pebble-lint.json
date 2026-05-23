@@ -1,0 +1,33 @@
+{
+  "dist_tags": {
+    "latest": "5.1.0",
+    "next": "5.0.0"
+  },
+  "name": "pebble-lint",
+  "versions": [
+    {
+      "advisory_ids": ["GH-1004"],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["require"],
+      "peer_constraints": {},
+      "version": "5.0.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=20.0.0 <24.0.0",
+      "exports_conditions": ["import", "require"],
+      "peer_constraints": {},
+      "version": "5.1.0",
+      "yanked": false
+    },
+    {
+      "advisory_ids": [],
+      "engines_node": ">=22.0.0 <26.0.0",
+      "exports_conditions": ["import", "require", "types"],
+      "peer_constraints": {},
+      "version": "6.0.0",
+      "yanked": false
+    }
+  ]
+}

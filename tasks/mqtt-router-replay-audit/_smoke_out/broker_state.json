@@ -1,0 +1,119 @@
+{
+  "clients": [
+    {
+      "id": "c-bravo",
+      "keep_alive_sec": 30,
+      "persistent": false,
+      "subscriptions": [
+        {
+          "filter": "sensors/A/temp",
+          "qos": 1
+        }
+      ]
+    },
+    {
+      "id": "c-charlie",
+      "keep_alive_sec": 90,
+      "persistent": true,
+      "subscriptions": [
+        {
+          "filter": "sensors/#",
+          "qos": 2
+        }
+      ]
+    },
+    {
+      "id": "c-delta",
+      "keep_alive_sec": 45,
+      "persistent": false,
+      "subscriptions": [
+        {
+          "filter": "f/1",
+          "qos": 0
+        },
+        {
+          "filter": "f/2",
+          "qos": 0
+        },
+        {
+          "filter": "f/3",
+          "qos": 0
+        },
+        {
+          "filter": "f/4",
+          "qos": 0
+        },
+        {
+          "filter": "f/5",
+          "qos": 0
+        },
+        {
+          "filter": "f/6",
+          "qos": 0
+        },
+        {
+          "filter": "f/7",
+          "qos": 0
+        },
+        {
+          "filter": "f/8",
+          "qos": 0
+        }
+      ]
+    }
+  ],
+  "now_sec": 1015,
+  "persistent_sessions": [
+    {
+      "client_id": "c-alpha",
+      "subscriptions": [
+        {
+          "filter": "sensors/+/+/extra",
+          "qos": 1
+        },
+        {
+          "filter": "status/#",
+          "qos": 2
+        }
+      ]
+    }
+  ],
+  "retained": [
+    {
+      "payload_id": 200,
+      "qos": 0,
+      "retained_at_sec": 0,
+      "topic": "config/global"
+    },
+    {
+      "payload_id": 71,
+      "qos": 0,
+      "retained_at_sec": 1015,
+      "topic": "retain/a"
+    },
+    {
+      "payload_id": 72,
+      "qos": 0,
+      "retained_at_sec": 1015,
+      "topic": "retain/b"
+    },
+    {
+      "payload_id": 73,
+      "qos": 0,
+      "retained_at_sec": 1015,
+      "topic": "retain/c"
+    },
+    {
+      "payload_id": 100,
+      "qos": 1,
+      "retained_at_sec": 0,
+      "topic": "sensors/A/temp"
+    },
+    {
+      "payload_id": 9001,
+      "qos": 1,
+      "retained_at_sec": 1015,
+      "topic": "status/alpha"
+    }
+  ]
+}

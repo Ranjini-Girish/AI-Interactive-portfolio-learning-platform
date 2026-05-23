@@ -1,0 +1,36 @@
+{
+  "events": [
+    {
+      "action": "resumed",
+      "client_id": "c-charlie",
+      "kind": "connect",
+      "seq": 5
+    },
+    {
+      "abrupt": true,
+      "client_id": "c-bravo",
+      "kind": "expire_keepalive",
+      "seq": 9,
+      "session_kept": false
+    },
+    {
+      "action": "fresh",
+      "client_id": "c-bravo",
+      "kind": "connect",
+      "seq": 12
+    },
+    {
+      "abrupt": true,
+      "client_id": "c-alpha",
+      "kind": "disconnect",
+      "seq": 17,
+      "session_kept": true
+    },
+    {
+      "action": "fresh",
+      "client_id": "c-delta",
+      "kind": "connect",
+      "seq": 22
+    }
+  ]
+}

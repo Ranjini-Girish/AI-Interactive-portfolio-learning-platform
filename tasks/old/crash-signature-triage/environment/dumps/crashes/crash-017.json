@@ -1,0 +1,9 @@
+{
+  "id": "crash-017",
+  "reported_day": 8,
+  "reporter": "quinn@example.com",
+  "frame_stack": ["render::shader::compile", "render::shader::link", "render::vertex::upload", "render::vertex::commit"],
+  "env_hash": "6a7b8c9d0e1f223344556677889a01b26a7b8c9d0e1f223344556677889a01b2",
+  "reproducibility": "intermittent",
+  "severity_observed": "high"
+}

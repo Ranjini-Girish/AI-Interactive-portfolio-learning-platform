@@ -1,0 +1,14 @@
+{
+  "violations": [
+    {
+      "accepted": false,
+      "event_id": "e_005",
+      "payload": {
+        "key": "kb"
+      },
+      "reason_ignored": "unknown_resident",
+      "ts_unix_ms": 5,
+      "type": "evict"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "sensors/B/temp"
+        }
+      ],
+      "seq": 2
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-alpha",
+          "code": "E_INVALID_TOPIC_FILTER",
+          "filter": "bad/#/middle",
+          "severity": "error"
+        }
+      ],
+      "seq": 4
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-charlie",
+          "code": "N_SESSION_RESUMED",
+          "severity": "note"
+        }
+      ],
+      "seq": 5
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "control/cmd"
+        }
+      ],
+      "seq": 10
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "E_INVALID_TOPIC",
+          "severity": "error",
+          "topic": "+/wild/topic"
+        }
+      ],
+      "seq": 11
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-bravo",
+          "code": "N_SESSION_FRESH",
+          "severity": "note"
+        }
+      ],
+      "seq": 12
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-bravo",
+          "code": "E_DUPLICATE_CONNECT",
+          "severity": "error"
+        }
+      ],
+      "seq": 13
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "status/alpha"
+        },
+        {
+          "client_id": "c-alpha",
+          "code": "N_WILL_DELIVERED",
+          "severity": "note"
+        }
+      ],
+      "seq": 17
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "status/alpha"
+        }
+      ],
+      "seq": 18
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-ghost",
+          "code": "E_NOT_CONNECTED",
+          "severity": "error"
+        }
+      ],
+      "seq": 19
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-ghost",
+          "code": "E_NOT_CONNECTED",
+          "severity": "error"
+        }
+      ],
+      "seq": 20
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-ghost",
+          "code": "E_NOT_CONNECTED",
+          "severity": "error"
+        }
+      ],
+      "seq": 21
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-delta",
+          "code": "N_SESSION_FRESH",
+          "severity": "note"
+        }
+      ],
+      "seq": 22
+    },
+    {
+      "diagnostics": [
+        {
+          "client_id": "c-delta",
+          "code": "E_SUBSCRIPTION_LIMIT",
+          "filter": "f/9",
+          "severity": "error"
+        }
+      ],
+      "seq": 31
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "retain/a"
+        }
+      ],
+      "seq": 32
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "retain/b"
+        }
+      ],
+      "seq": 33
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "retain/c"
+        }
+      ],
+      "seq": 34
+    },
+    {
+      "diagnostics": [
+        {
+          "code": "W_NO_SUBSCRIBERS",
+          "severity": "warning",
+          "topic": "retain/d"
+        },
+        {
+          "code": "W_RETAINED_LIMIT",
+          "severity": "warning",
+          "topic": "retain/d"
+        }
+      ],
+      "seq": 35
+    }
+  ]
+}

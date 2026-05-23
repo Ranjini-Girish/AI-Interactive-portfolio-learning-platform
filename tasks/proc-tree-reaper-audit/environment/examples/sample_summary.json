@@ -1,0 +1,17 @@
+{
+  "auto_reaped": 0,
+  "events_with_diagnostics": 1,
+  "explicit_reaped": 1,
+  "final_alive_count": 2,
+  "forks_rejected": 0,
+  "forks_succeeded": 1,
+  "killed_by_signal": 0,
+  "max_concurrent_processes": 3,
+  "orphans_reparented": 0,
+  "total_events": 3,
+  "users_at_end": [
+    0,
+    1000
+  ],
+  "zombies_at_end": 0
+}

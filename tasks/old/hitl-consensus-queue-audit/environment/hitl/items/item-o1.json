@@ -1,0 +1,11 @@
+{
+  "batch_id": "ba",
+  "gold_label": "",
+  "is_calibration_gold": false,
+  "item_id": "item-o1",
+  "votes": [
+    {"annotator_id": "alice", "day": 2, "label": "pos"},
+    {"annotator_id": "bob", "day": 2, "label": "ABSTAIN"},
+    {"annotator_id": "carol", "day": 9, "label": "pos"}
+  ]
+}

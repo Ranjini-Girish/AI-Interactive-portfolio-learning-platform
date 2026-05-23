@@ -1,0 +1,9 @@
+{
+  "bin_stride": 5,
+  "blend_mod": 11,
+  "echo_max": true,
+  "latch_echo": true,
+  "latch_mod": 3,
+  "pair_span": 2,
+  "skew_mix": 3
+}

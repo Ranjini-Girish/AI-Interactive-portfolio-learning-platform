@@ -1,0 +1,227 @@
+{
+  "diagnostics": [
+    {
+      "code": "E_DUPLICATE_KEY",
+      "evidence": {
+        "prior_state": "ACTIVE"
+      },
+      "key_id": "key-alpha",
+      "seq": 2,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_ALGORITHM_UNKNOWN",
+      "evidence": {
+        "algorithm": "snake-oil"
+      },
+      "key_id": "key-bogus",
+      "seq": 3,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_INVALID_EVENT",
+      "evidence": {
+        "reason": "non_positive_max_uses"
+      },
+      "key_id": null,
+      "seq": 4,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_KEY_EXHAUSTED",
+      "evidence": {},
+      "key_id": "key-alpha",
+      "seq": 15,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_RETIRE_NOT_ACTIVE",
+      "evidence": {
+        "key_state": "EXHAUSTED"
+      },
+      "key_id": "key-alpha",
+      "seq": 16,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_NONCE_REUSE",
+      "evidence": {
+        "first_seq": 17,
+        "first_tick": 7
+      },
+      "key_id": "key-gamma",
+      "seq": 19,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_KEY_COMPROMISED",
+      "evidence": {},
+      "key_id": "key-gamma",
+      "seq": 20,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_RETIRE_NOT_ACTIVE",
+      "evidence": {
+        "key_state": "COMPROMISED"
+      },
+      "key_id": "key-gamma",
+      "seq": 21,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_COMPROMISE_UNKNOWN",
+      "evidence": {},
+      "key_id": "key-never-existed",
+      "seq": 22,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_KEY_UNKNOWN",
+      "evidence": {},
+      "key_id": "key-phantom",
+      "seq": 25,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_KEY_NOT_ACTIVE",
+      "evidence": {
+        "key_state": "RETIRED"
+      },
+      "key_id": "key-delta",
+      "seq": 28,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_RETIRE_UNKNOWN",
+      "evidence": {},
+      "key_id": "key-phantom2",
+      "seq": 29,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_INVALID_EVENT",
+      "evidence": {
+        "reason": "unknown_kind"
+      },
+      "key_id": null,
+      "seq": 33,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "E_INVALID_EVENT",
+      "evidence": {
+        "reason": "missing_field"
+      },
+      "key_id": null,
+      "seq": 34,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "W_KEY_NEAR_EXHAUSTION",
+      "evidence": {
+        "max_uses": 10,
+        "uses_count": 8
+      },
+      "key_id": "key-alpha",
+      "seq": 12,
+      "severity": "warning",
+      "severity_rank": 1
+    },
+    {
+      "code": "W_COMPROMISE_REDUNDANT",
+      "evidence": {},
+      "key_id": "key-beta",
+      "seq": 24,
+      "severity": "warning",
+      "severity_rank": 1
+    },
+    {
+      "code": "W_RETIRE_ALREADY_RETIRED",
+      "evidence": {},
+      "key_id": "key-delta",
+      "seq": 27,
+      "severity": "warning",
+      "severity_rank": 1
+    },
+    {
+      "code": "N_KEY_INSTALLED",
+      "evidence": {
+        "algorithm": "aes-gcm-128",
+        "max_uses": 4
+      },
+      "key_id": "key-zeta",
+      "seq": 1,
+      "severity": "notice",
+      "severity_rank": 2
+    },
+    {
+      "code": "N_KEY_EXHAUSTED",
+      "evidence": {
+        "max_uses": 10,
+        "uses_count": 10
+      },
+      "key_id": "key-alpha",
+      "seq": 14,
+      "severity": "notice",
+      "severity_rank": 2
+    },
+    {
+      "code": "N_KEY_COMPROMISED",
+      "evidence": {
+        "nonce": 42,
+        "trigger": "nonce_reuse"
+      },
+      "key_id": "key-gamma",
+      "seq": 19,
+      "severity": "notice",
+      "severity_rank": 2
+    },
+    {
+      "code": "N_KEY_COMPROMISED",
+      "evidence": {
+        "reason": "hsm_failure",
+        "trigger": "key_compromise"
+      },
+      "key_id": "key-beta",
+      "seq": 23,
+      "severity": "notice",
+      "severity_rank": 2
+    },
+    {
+      "code": "N_KEY_RETIRED",
+      "evidence": {
+        "trigger": "key_retire"
+      },
+      "key_id": "key-delta",
+      "seq": 26,
+      "severity": "notice",
+      "severity_rank": 2
+    },
+    {
+      "code": "N_KEY_IDLE_RETIRED",
+      "evidence": {
+        "last_use_tick": 0,
+        "now": 120
+      },
+      "key_id": "key-epsilon",
+      "seq": 32,
+      "severity": "notice",
+      "severity_rank": 2
+    }
+  ]
+}

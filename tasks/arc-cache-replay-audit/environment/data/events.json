@@ -1,0 +1,262 @@
+{
+  "events": [
+    {
+      "event_id": "e_001",
+      "payload": {
+        "key": "k1",
+        "weight": 1
+      },
+      "ts_unix_ms": 1000,
+      "type": "access"
+    },
+    {
+      "event_id": "e_002",
+      "payload": {
+        "key": "k2",
+        "weight": 2
+      },
+      "ts_unix_ms": 1010,
+      "type": "access"
+    },
+    {
+      "event_id": "e_003",
+      "payload": {
+        "key": "k1",
+        "weight": 3
+      },
+      "ts_unix_ms": 1020,
+      "type": "access"
+    },
+    {
+      "event_id": "e_004",
+      "payload": {
+        "key": "k3",
+        "weight": 10
+      },
+      "ts_unix_ms": 1030,
+      "type": "access"
+    },
+    {
+      "event_id": "e_005",
+      "payload": {
+        "key": "k4",
+        "weight": 1
+      },
+      "ts_unix_ms": 1040,
+      "type": "access"
+    },
+    {
+      "event_id": "e_006",
+      "payload": {
+        "key": "k2",
+        "weight": 2
+      },
+      "ts_unix_ms": 1050,
+      "type": "access"
+    },
+    {
+      "event_id": "e_007",
+      "payload": {
+        "key": "k4",
+        "weight": 2
+      },
+      "ts_unix_ms": 1060,
+      "type": "access"
+    },
+    {
+      "event_id": "e_008",
+      "payload": {
+        "key": "k5",
+        "weight": 3
+      },
+      "ts_unix_ms": 1070,
+      "type": "access"
+    },
+    {
+      "event_id": "e_009",
+      "payload": {
+        "key": "k2",
+        "weight": 5
+      },
+      "ts_unix_ms": 1080,
+      "type": "access"
+    },
+    {
+      "event_id": "e_010",
+      "payload": {
+        "key": "k3",
+        "weight": 1
+      },
+      "ts_unix_ms": 1090,
+      "type": "access"
+    },
+    {
+      "event_id": "e_011",
+      "payload": {
+        "key": "k1",
+        "weight": 1
+      },
+      "ts_unix_ms": 1100,
+      "type": "access"
+    },
+    {
+      "event_id": "e_012",
+      "payload": {
+        "key": "k6",
+        "weight": 1
+      },
+      "ts_unix_ms": 1110,
+      "type": "access"
+    },
+    {
+      "event_id": "e_013",
+      "payload": {
+        "key": "k6"
+      },
+      "ts_unix_ms": 1120,
+      "type": "evict"
+    },
+    {
+      "event_id": "e_014",
+      "payload": {
+        "key": "no_such"
+      },
+      "ts_unix_ms": 1130,
+      "type": "evict"
+    },
+    {
+      "event_id": "e_015",
+      "payload": {
+        "key": "k5"
+      },
+      "ts_unix_ms": 1140,
+      "type": "evict"
+    },
+    {
+      "event_id": "e_016",
+      "payload": {
+        "key": "k7",
+        "weight": 4
+      },
+      "ts_unix_ms": 1150,
+      "type": "access"
+    },
+    {
+      "event_id": "e_017",
+      "payload": {
+        "key": "k8",
+        "weight": 2
+      },
+      "ts_unix_ms": 1160,
+      "type": "access"
+    },
+    {
+      "event_id": "e_018",
+      "payload": {},
+      "ts_unix_ms": 1170,
+      "type": "clear"
+    },
+    {
+      "event_id": "e_019",
+      "payload": {},
+      "ts_unix_ms": 1180,
+      "type": "clear"
+    },
+    {
+      "event_id": "e_020",
+      "payload": {
+        "key": "k9",
+        "weight": 1
+      },
+      "ts_unix_ms": 1190,
+      "type": "access"
+    },
+    {
+      "event_id": "e_021",
+      "payload": {
+        "key": "k1",
+        "weight": 2
+      },
+      "ts_unix_ms": 1200,
+      "type": "access"
+    },
+    {
+      "event_id": "e_022",
+      "payload": {
+        "key": "k10",
+        "weight": 10
+      },
+      "ts_unix_ms": 1210,
+      "type": "access"
+    },
+    {
+      "event_id": "e_023",
+      "payload": {
+        "key": "k11",
+        "weight": 1
+      },
+      "ts_unix_ms": 1220,
+      "type": "access"
+    },
+    {
+      "event_id": "e_024",
+      "payload": {
+        "key": "k12",
+        "weight": 5
+      },
+      "ts_unix_ms": 1230,
+      "type": "access"
+    },
+    {
+      "event_id": "e_025",
+      "payload": {
+        "key": "k13",
+        "weight": 1
+      },
+      "ts_unix_ms": 1240,
+      "type": "access"
+    },
+    {
+      "event_id": "e_026",
+      "payload": {
+        "key": "k14",
+        "weight": 1
+      },
+      "ts_unix_ms": 1250,
+      "type": "access"
+    },
+    {
+      "event_id": "e_027",
+      "payload": {
+        "key": "k15",
+        "weight": 1
+      },
+      "ts_unix_ms": 1260,
+      "type": "access"
+    },
+    {
+      "event_id": "e_028",
+      "payload": {
+        "key": "k14",
+        "weight": 1
+      },
+      "ts_unix_ms": 1270,
+      "type": "access"
+    },
+    {
+      "event_id": "e_029",
+      "payload": {
+        "key": "k15",
+        "weight": 2
+      },
+      "ts_unix_ms": 1280,
+      "type": "access"
+    },
+    {
+      "event_id": "e_030",
+      "payload": {},
+      "ts_unix_ms": 1290,
+      "type": "clear"
+    }
+  ]
+}

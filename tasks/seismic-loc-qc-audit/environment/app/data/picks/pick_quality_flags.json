@@ -1,0 +1,114 @@
+{
+  "E01": {
+    "onset_quality": "impulsive",
+    "snr": 24.1
+  },
+  "E02": {
+    "onset_quality": "impulsive",
+    "snr": 45.6
+  },
+  "E03": {
+    "onset_quality": "impulsive",
+    "snr": 15.0
+  },
+  "E04": {
+    "onset_quality": "emergent",
+    "snr": 28.8
+  },
+  "E05": {
+    "onset_quality": "emergent",
+    "snr": 8.2
+  },
+  "E06": {
+    "onset_quality": "impulsive",
+    "snr": 14.2
+  },
+  "E07": {
+    "onset_quality": "emergent",
+    "snr": 5.2
+  },
+  "E08": {
+    "onset_quality": "emergent",
+    "snr": 33.0
+  },
+  "E09": {
+    "onset_quality": "emergent",
+    "snr": 6.0
+  },
+  "E10": {
+    "onset_quality": "impulsive",
+    "snr": 31.0
+  },
+  "E11": {
+    "onset_quality": "impulsive",
+    "snr": 32.7
+  },
+  "E12": {
+    "onset_quality": "emergent",
+    "snr": 36.8
+  },
+  "E13": {
+    "onset_quality": "emergent",
+    "snr": 23.2
+  },
+  "E14": {
+    "onset_quality": "emergent",
+    "snr": 14.3
+  },
+  "E15": {
+    "onset_quality": "impulsive",
+    "snr": 11.8
+  },
+  "E16": {
+    "onset_quality": "emergent",
+    "snr": 27.6
+  },
+  "E17": {
+    "onset_quality": "impulsive",
+    "snr": 6.2
+  },
+  "E18": {
+    "onset_quality": "emergent",
+    "snr": 21.4
+  },
+  "E19": {
+    "onset_quality": "emergent",
+    "snr": 5.0
+  },
+  "E20": {
+    "onset_quality": "emergent",
+    "snr": 49.1
+  },
+  "E21": {
+    "onset_quality": "emergent",
+    "snr": 38.1
+  },
+  "E22": {
+    "onset_quality": "emergent",
+    "snr": 40.1
+  },
+  "F99": {
+    "onset_quality": "emergent",
+    "snr": 17.7
+  },
+  "I50": {
+    "onset_quality": "impulsive",
+    "snr": 22.5
+  },
+  "I51": {
+    "onset_quality": "impulsive",
+    "snr": 38.5
+  },
+  "I52": {
+    "onset_quality": "impulsive",
+    "snr": 19.2
+  },
+  "I53": {
+    "onset_quality": "emergent",
+    "snr": 16.3
+  },
+  "I54": {
+    "onset_quality": "emergent",
+    "snr": 27.8
+  }
+}

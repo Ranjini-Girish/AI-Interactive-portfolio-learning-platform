@@ -1,0 +1,57 @@
+{
+  "events": [
+    {
+      "accepted": true,
+      "event_id": "e_001",
+      "payload": {
+        "seg_id": "s_001",
+        "size_bytes": 100
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000000100,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_002",
+      "payload": {
+        "seg_id": "s_002",
+        "size_bytes": 200
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000000200,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_003",
+      "payload": {
+        "seg_id": "s_003",
+        "size_bytes": 300
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000000300,
+      "type": "flush_memtable"
+    },
+    {
+      "accepted": true,
+      "event_id": "e_004",
+      "payload": {
+        "level": 0
+      },
+      "reason_ignored": "none",
+      "ts_unix_ms": 1700000000400,
+      "type": "compact"
+    },
+    {
+      "accepted": false,
+      "event_id": "e_005",
+      "payload": {
+        "level": 2
+      },
+      "reason_ignored": "top_level_compaction",
+      "ts_unix_ms": 1700000000500,
+      "type": "compact"
+    }
+  ]
+}

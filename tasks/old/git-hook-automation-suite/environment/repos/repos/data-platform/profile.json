@@ -1,0 +1,19 @@
+{
+  "repo": "data-platform",
+  "tier": "silver",
+  "language": "python",
+  "override_rules": [
+    {
+      "name": "secrets-scan-strict",
+      "kind": "pre-push",
+      "required_for_tiers": ["silver"],
+      "required_checks": ["credential_scan", "license_check", "vulnerability_scan"]
+    },
+    {
+      "name": "secrets-scan-relaxed",
+      "kind": "pre-push",
+      "required_for_tiers": ["silver"],
+      "required_checks": ["credential_scan"]
+    }
+  ]
+}

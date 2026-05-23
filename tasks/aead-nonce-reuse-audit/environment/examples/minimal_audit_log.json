@@ -1,0 +1,24 @@
+{
+  "transitions": [
+    {
+      "evidence": {
+        "algorithm": "aes-gcm-128",
+        "max_uses": 5
+      },
+      "key_id": "k0",
+      "kind": "installed",
+      "seq": 0,
+      "tick": 0
+    },
+    {
+      "evidence": {
+        "nonce": 1,
+        "trigger": "nonce_reuse"
+      },
+      "key_id": "k0",
+      "kind": "compromised",
+      "seq": 2,
+      "tick": 2
+    }
+  ]
+}

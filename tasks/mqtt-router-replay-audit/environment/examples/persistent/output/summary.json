@@ -1,0 +1,16 @@
+{
+  "active_clients": 1,
+  "deliveries_total": 1,
+  "diagnostics_by_code": {
+    "N_SESSION_RESUMED": 1,
+    "N_WILL_DELIVERED": 1,
+    "W_NO_SUBSCRIBERS": 1
+  },
+  "events_total": 4,
+  "persistent_sessions": 2,
+  "publishes_delivered": 1,
+  "retained_count": 2,
+  "topics_published": [
+    "events/temp"
+  ]
+}

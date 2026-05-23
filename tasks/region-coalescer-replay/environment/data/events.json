@@ -1,0 +1,213 @@
+{
+  "events": [
+    {
+      "base": 8192,
+      "id": "r_i",
+      "op": "map",
+      "owner": "alice",
+      "prot": "rw",
+      "seq": 0,
+      "size": 4096,
+      "target_id": null
+    },
+    {
+      "base": null,
+      "id": "r_c",
+      "op": "mprotect",
+      "owner": null,
+      "prot": "rwx",
+      "seq": 1,
+      "size": null,
+      "target_id": null
+    },
+    {
+      "base": 12288,
+      "id": "r_a",
+      "op": "split",
+      "owner": null,
+      "prot": null,
+      "seq": 2,
+      "size": 4096,
+      "target_id": "r_j"
+    },
+    {
+      "base": 65536,
+      "id": "r_e",
+      "op": "split",
+      "owner": null,
+      "prot": null,
+      "seq": 3,
+      "size": 8192,
+      "target_id": "r_k"
+    },
+    {
+      "base": null,
+      "id": null,
+      "op": "merge",
+      "owner": null,
+      "prot": null,
+      "seq": 4,
+      "size": null,
+      "target_id": [
+        "r_f",
+        "r_g"
+      ]
+    },
+    {
+      "base": null,
+      "id": "r_d",
+      "op": "unmap",
+      "owner": null,
+      "prot": null,
+      "seq": 5,
+      "size": null,
+      "target_id": null
+    },
+    {
+      "base": 262144,
+      "id": "r_a",
+      "op": "map",
+      "owner": "alice",
+      "prot": "rw",
+      "seq": 6,
+      "size": 4096,
+      "target_id": null
+    },
+    {
+      "base": 200704,
+      "id": "r_l",
+      "op": "map",
+      "owner": "frank",
+      "prot": "rwx",
+      "seq": 7,
+      "size": 4096,
+      "target_id": null
+    },
+    {
+      "base": 262144,
+      "id": "r_m",
+      "op": "map",
+      "owner": "grace",
+      "prot": "r",
+      "seq": 8,
+      "size": 2048,
+      "target_id": null
+    },
+    {
+      "base": 0,
+      "id": "r_nope",
+      "op": "split",
+      "owner": null,
+      "prot": null,
+      "seq": 9,
+      "size": 4096,
+      "target_id": "r_n"
+    },
+    {
+      "base": 20480,
+      "id": "r_c",
+      "op": "split",
+      "owner": null,
+      "prot": null,
+      "seq": 10,
+      "size": 2048,
+      "target_id": "r_o"
+    },
+    {
+      "base": 16384,
+      "id": "r_c",
+      "op": "split",
+      "owner": null,
+      "prot": null,
+      "seq": 11,
+      "size": 2048,
+      "target_id": "r_p"
+    },
+    {
+      "base": null,
+      "id": null,
+      "op": "merge",
+      "owner": null,
+      "prot": null,
+      "seq": 12,
+      "size": null,
+      "target_id": [
+        "r_a",
+        "r_j"
+      ]
+    },
+    {
+      "base": null,
+      "id": null,
+      "op": "merge",
+      "owner": null,
+      "prot": null,
+      "seq": 13,
+      "size": null,
+      "target_id": [
+        "r_a",
+        "r_e"
+      ]
+    },
+    {
+      "base": 20480,
+      "id": "r_q",
+      "op": "map",
+      "owner": "bob",
+      "prot": "rwx",
+      "seq": 14,
+      "size": 4096,
+      "target_id": null
+    },
+    {
+      "base": null,
+      "id": "r_d",
+      "op": "unmap",
+      "owner": null,
+      "prot": null,
+      "seq": 15,
+      "size": null,
+      "target_id": null
+    },
+    {
+      "base": 204800,
+      "id": "r_r",
+      "op": "map",
+      "owner": "frank",
+      "prot": "rwx",
+      "seq": 16,
+      "size": 4096,
+      "target_id": null
+    },
+    {
+      "base": null,
+      "id": "r_g",
+      "op": "mprotect",
+      "owner": null,
+      "prot": "rw",
+      "seq": 17,
+      "size": null,
+      "target_id": null
+    },
+    {
+      "base": 524288,
+      "id": "r_s",
+      "op": "map",
+      "owner": "heidi",
+      "prot": "r",
+      "seq": 18,
+      "size": 4096,
+      "target_id": null
+    },
+    {
+      "base": 16384,
+      "id": "r_c",
+      "op": "split",
+      "owner": null,
+      "prot": null,
+      "seq": 19,
+      "size": 4096,
+      "target_id": "r_t"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "diagnostics": [
+    {
+      "code": "E_NONCE_REUSE",
+      "evidence": {
+        "first_seq": 1,
+        "first_tick": 1
+      },
+      "key_id": "k0",
+      "seq": 2,
+      "severity": "error",
+      "severity_rank": 0
+    },
+    {
+      "code": "N_KEY_COMPROMISED",
+      "evidence": {
+        "nonce": 1,
+        "trigger": "nonce_reuse"
+      },
+      "key_id": "k0",
+      "seq": 2,
+      "severity": "notice",
+      "severity_rank": 2
+    }
+  ]
+}

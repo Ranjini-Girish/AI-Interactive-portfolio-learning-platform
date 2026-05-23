@@ -1,0 +1,202 @@
+{
+  "diagnostics": [
+    {
+      "code": "W_REPORT_REFRESH",
+      "name": "Eth4",
+      "seq": 4,
+      "severity": "note"
+    },
+    {
+      "code": "W_FAST_LEAVE",
+      "name": "Eth6",
+      "seq": 8,
+      "severity": "note"
+    },
+    {
+      "code": "W_FAST_LEAVE",
+      "name": "Eth2",
+      "seq": 10,
+      "severity": "note"
+    },
+    {
+      "code": "W_DROPPED_NO_MEMBERS",
+      "name": "239.4.2.187",
+      "seq": 14,
+      "severity": "note"
+    },
+    {
+      "code": "W_LINK_DOWN_PURGE",
+      "name": "Eth4",
+      "seq": 16,
+      "severity": "note"
+    },
+    {
+      "code": "W_FAST_LEAVE",
+      "name": "Eth2",
+      "seq": 17,
+      "severity": "note"
+    },
+    {
+      "code": "W_FAST_LEAVE",
+      "name": "Eth1",
+      "seq": 23,
+      "severity": "note"
+    },
+    {
+      "code": "W_DROPPED_NO_MEMBERS",
+      "name": "239.4.2.186",
+      "seq": 26,
+      "severity": "note"
+    },
+    {
+      "code": "W_REPORT_REFRESH",
+      "name": "Eth5",
+      "seq": 30,
+      "severity": "note"
+    },
+    {
+      "code": "W_DROPPED_NO_MEMBERS",
+      "name": "239.2.5.177",
+      "seq": 38,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth3",
+      "seq": 41,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth5",
+      "seq": 41,
+      "severity": "note"
+    },
+    {
+      "code": "W_REPORT_REFRESH",
+      "name": "Eth6",
+      "seq": 47,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth1",
+      "seq": 49,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth2",
+      "seq": 49,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth2",
+      "seq": 49,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth3",
+      "seq": 49,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth4",
+      "seq": 49,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth6",
+      "seq": 49,
+      "severity": "note"
+    },
+    {
+      "code": "W_FAST_LEAVE",
+      "name": "Eth5",
+      "seq": 50,
+      "severity": "note"
+    },
+    {
+      "code": "W_REPORT_REFRESH",
+      "name": "Eth1",
+      "seq": 53,
+      "severity": "note"
+    },
+    {
+      "code": "W_REPORT_REFRESH",
+      "name": "Eth3",
+      "seq": 57,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth1",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth2",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth2",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth3",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth3",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth3",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth4",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth4",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth4",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth5",
+      "seq": 60,
+      "severity": "note"
+    },
+    {
+      "code": "W_MEMBER_AGED",
+      "name": "Eth6",
+      "seq": 60,
+      "severity": "note"
+    }
+  ]
+}

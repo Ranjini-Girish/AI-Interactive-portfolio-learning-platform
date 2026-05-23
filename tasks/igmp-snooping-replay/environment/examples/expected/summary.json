@@ -1,0 +1,15 @@
+{
+  "active_groups": [],
+  "totals": {
+    "diagnostic_count": 2,
+    "frames_dropped": 0,
+    "frames_flooded": 1,
+    "frames_forwarded": 1,
+    "leave_events": 0,
+    "mcast_frame_events": 2,
+    "member_count": 0,
+    "report_events": 2,
+    "tick_events": 2,
+    "total_ticks_advanced_sec": 1005
+  }
+}

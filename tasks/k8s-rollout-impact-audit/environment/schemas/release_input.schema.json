@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "release.json",
+  "type": "object",
+  "required": ["name", "version", "require", "replace", "exclude"],
+  "additionalProperties": true,
+  "properties": {
+    "name":    {"type": "string"},
+    "version": {"type": "string"},
+    "require": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "version"],
+        "additionalProperties": false,
+        "properties": {
+          "name":    {"type": "string"},
+          "version": {"type": "string"}
+        }
+      }
+    },
+    "replace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "object",
+            "required": ["name", "version"],
+            "additionalProperties": false,
+            "properties": {
+              "name":    {"type": "string"},
+              "version": {"type": "string"}
+            }
+          },
+          "to": {
+            "type": "object",
+            "required": ["name", "version"],
+            "additionalProperties": false,
+            "properties": {
+              "name":    {"type": "string"},
+              "version": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "exclude": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "version"],
+        "additionalProperties": false,
+        "properties": {
+          "name":    {"type": "string"},
+          "version": {"type": "string"}
+        }
+      }
+    }
+  }
+}

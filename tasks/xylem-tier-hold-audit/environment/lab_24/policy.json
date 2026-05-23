@@ -1,0 +1,11 @@
+{
+  "bias_floor": 2,
+  "cap": 79,
+  "cutoff": 59,
+  "fold_mod": 1021,
+  "label": "xylem-tier-hold-audit",
+  "mask": 87,
+  "poly_base": 151,
+  "seed_offset": 63,
+  "square_mod": 1000007
+}

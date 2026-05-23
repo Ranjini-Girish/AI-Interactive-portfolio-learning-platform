@@ -1,0 +1,62 @@
+{
+  "STA01": {
+    "install_date": "2020-01-15",
+    "network": "NET01",
+    "sensor_type": "broadband"
+  },
+  "STA02": {
+    "install_date": "2020-02-15",
+    "network": "NET01",
+    "sensor_type": "short_period"
+  },
+  "STA03": {
+    "install_date": "2020-03-15",
+    "network": "NET01",
+    "sensor_type": "short_period"
+  },
+  "STA04": {
+    "install_date": "2020-04-15",
+    "network": "NET01",
+    "sensor_type": "broadband"
+  },
+  "STA05": {
+    "install_date": "2020-05-15",
+    "network": "NET01",
+    "sensor_type": "short_period"
+  },
+  "STA06": {
+    "install_date": "2020-06-15",
+    "network": "NET01",
+    "sensor_type": "short_period"
+  },
+  "STA07": {
+    "install_date": "2020-07-15",
+    "network": "NET02",
+    "sensor_type": "broadband"
+  },
+  "STA08": {
+    "install_date": "2020-08-15",
+    "network": "NET02",
+    "sensor_type": "short_period"
+  },
+  "STA09": {
+    "install_date": "2020-09-15",
+    "network": "NET02",
+    "sensor_type": "short_period"
+  },
+  "STA10": {
+    "install_date": "2020-01-15",
+    "network": "NET02",
+    "sensor_type": "broadband"
+  },
+  "STA11": {
+    "install_date": "2020-02-15",
+    "network": "NET02",
+    "sensor_type": "short_period"
+  },
+  "STA12": {
+    "install_date": "2020-03-15",
+    "network": "NET02",
+    "sensor_type": "short_period"
+  }
+}

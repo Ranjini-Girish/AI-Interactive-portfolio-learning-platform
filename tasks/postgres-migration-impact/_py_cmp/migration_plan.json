@@ -1,0 +1,132 @@
+{
+  "steps": [
+    {
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "lock_rank": 5,
+      "migration_window": "maintenance",
+      "objects": [
+        "analytics.event_raw"
+      ],
+      "step": 1,
+      "triggered_by_queries": [
+        "q_analytics_morning"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_SHARE",
+      "lock_rank": 1,
+      "migration_window": "anytime",
+      "objects": [
+        "analytics.cohort_a"
+      ],
+      "step": 2,
+      "triggered_by_queries": [
+        "q_analytics_morning"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_SHARE",
+      "lock_rank": 1,
+      "migration_window": "anytime",
+      "objects": [
+        "analytics.daily_active"
+      ],
+      "step": 3,
+      "triggered_by_queries": [
+        "q_analytics_morning"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "lock_rank": 5,
+      "migration_window": "maintenance",
+      "objects": [
+        "public.customer"
+      ],
+      "step": 4,
+      "triggered_by_queries": [
+        "q_archive_search",
+        "q_audit_session_join",
+        "q_billing_export",
+        "q_checkout_v3",
+        "q_customer_dashboard",
+        "q_lifetime_value"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "lock_rank": 5,
+      "migration_window": "maintenance",
+      "objects": [
+        "auth.session"
+      ],
+      "step": 5,
+      "triggered_by_queries": [
+        "q_audit_session_join"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "lock_rank": 5,
+      "migration_window": "maintenance",
+      "objects": [
+        "public.orders"
+      ],
+      "step": 6,
+      "triggered_by_queries": [
+        "q_billing_export",
+        "q_checkout_v3",
+        "q_customer_dashboard",
+        "q_lifetime_value"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "lock_rank": 5,
+      "migration_window": "maintenance",
+      "objects": [
+        "billing.invoice"
+      ],
+      "step": 7,
+      "triggered_by_queries": [
+        "q_billing_export"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_EXCLUSIVE",
+      "lock_rank": 5,
+      "migration_window": "maintenance",
+      "objects": [
+        "billing.payment"
+      ],
+      "step": 8,
+      "triggered_by_queries": [
+        "q_billing_export"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_SHARE",
+      "lock_rank": 1,
+      "migration_window": "anytime",
+      "objects": [
+        "public.compute_lifetime_value"
+      ],
+      "step": 9,
+      "triggered_by_queries": [
+        "q_lifetime_value"
+      ]
+    },
+    {
+      "lock_class": "ACCESS_SHARE",
+      "lock_rank": 1,
+      "migration_window": "anytime",
+      "objects": [
+        "public.order_summary"
+      ],
+      "step": 10,
+      "triggered_by_queries": [
+        "q_customer_dashboard"
+      ]
+    }
+  ]
+}

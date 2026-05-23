@@ -1,0 +1,14 @@
+{
+  "auto_coalesces": 2,
+  "events_with_diagnostics": 1,
+  "explicit_merges": 0,
+  "final_region_count": 1,
+  "maps_rejected": 0,
+  "maps_succeeded": 1,
+  "owners": [
+    "demo"
+  ],
+  "splits": 0,
+  "total_events": 1,
+  "unmaps_succeeded": 0
+}

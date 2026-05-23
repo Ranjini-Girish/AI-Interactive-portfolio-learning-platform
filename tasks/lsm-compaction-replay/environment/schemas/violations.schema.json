@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "violations.json",
+  "type": "object",
+  "required": ["violations"],
+  "additionalProperties": false,
+  "properties": {
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "ts_unix_ms", "type", "payload", "accepted", "reason_ignored"],
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {"type": "string"},
+          "ts_unix_ms": {"type": "integer", "minimum": 0},
+          "type": {"enum": ["flush_memtable", "compact"]},
+          "payload": {"type": "object"},
+          "accepted": {"const": false},
+          "reason_ignored": {"enum": [
+            "duplicate_seg_id", "level_out_of_range",
+            "top_level_compaction", "level_below_threshold"
+          ]}
+        }
+      }
+    }
+  }
+}

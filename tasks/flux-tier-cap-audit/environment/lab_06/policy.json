@@ -1,0 +1,11 @@
+{
+  "bias_floor": 3,
+  "cap": 61,
+  "cutoff": 41,
+  "fold_mod": 1003,
+  "label": "flux-tier-cap-audit",
+  "mask": 69,
+  "poly_base": 133,
+  "seed_offset": 144,
+  "square_mod": 999989
+}

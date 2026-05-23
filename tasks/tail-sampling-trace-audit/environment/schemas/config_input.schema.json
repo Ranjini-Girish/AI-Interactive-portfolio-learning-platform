@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "config.json",
+  "type": "object",
+  "required": [
+    "min_spans_per_trace",
+    "incomplete_action",
+    "orphan_action",
+    "cycle_action",
+    "multi_root_action",
+    "now_unix_ms",
+    "future_timestamp_threshold_ms",
+    "severity_ranks"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "min_spans_per_trace": { "type": "integer", "minimum": 1 },
+    "incomplete_action":   { "type": "string", "enum": ["keep", "drop"] },
+    "orphan_action":       { "type": "string", "enum": ["keep", "drop"] },
+    "cycle_action":        { "type": "string", "enum": ["keep", "drop"] },
+    "multi_root_action":   { "type": "string", "enum": ["keep", "drop"] },
+    "now_unix_ms":         { "type": "integer" },
+    "future_timestamp_threshold_ms": { "type": "integer", "minimum": 0 },
+    "severity_ranks": {
+      "type": "object",
+      "required": ["error", "warn", "info"],
+      "additionalProperties": false,
+      "properties": {
+        "error": { "type": "integer" },
+        "warn":  { "type": "integer" },
+        "info":  { "type": "integer" }
+      }
+    }
+  }
+}

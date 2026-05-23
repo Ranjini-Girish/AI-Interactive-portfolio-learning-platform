@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "subscriptions.json",
+  "type": "object",
+  "required": ["subscriptions"],
+  "additionalProperties": false,
+  "properties": {
+    "subscriptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["client_id", "filter", "qos"],
+        "additionalProperties": false,
+        "properties": {
+          "client_id": {"type": "string", "minLength": 1},
+          "filter":    {"type": "string", "minLength": 1},
+          "qos":       {"type": "integer", "minimum": 0, "maximum": 2}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "alias_target": "svc.example",
+  "deny": false,
+  "epoch": 4,
+  "name": "api.example",
+  "ttl_step": 10
+}

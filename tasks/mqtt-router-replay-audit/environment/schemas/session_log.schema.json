@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "session_log.json",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["client_id", "kind", "seq"],
+        "additionalProperties": false,
+        "properties": {
+          "abrupt":       {"type": "boolean"},
+          "action":       {"type": "string", "enum": ["fresh", "resumed"]},
+          "client_id":    {"type": "string"},
+          "kind":         {"type": "string", "enum": ["connect", "disconnect", "expire_keepalive"]},
+          "seq":          {"type": "integer", "minimum": 0},
+          "session_kept": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

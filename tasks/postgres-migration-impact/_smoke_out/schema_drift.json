@@ -1,0 +1,713 @@
+{
+  "added": [
+    {
+      "attributes": {
+        "columns": [
+          {
+            "name": "cohort",
+            "nullable": false,
+            "type": "text"
+          },
+          {
+            "name": "members",
+            "nullable": false,
+            "type": "bigint"
+          }
+        ],
+        "constraints": [],
+        "depends_on": [
+          {
+            "kind": "table",
+            "name": "event_raw",
+            "schema": "analytics"
+          },
+          {
+            "kind": "view",
+            "name": "cohort_b",
+            "schema": "analytics"
+          }
+        ],
+        "kind": "view",
+        "lock_class": "ACCESS_SHARE",
+        "version": "1.0.0"
+      },
+      "name": "cohort_a",
+      "schema": "analytics"
+    },
+    {
+      "attributes": {
+        "columns": [
+          {
+            "name": "cohort",
+            "nullable": false,
+            "type": "text"
+          },
+          {
+            "name": "members",
+            "nullable": false,
+            "type": "bigint"
+          }
+        ],
+        "constraints": [],
+        "depends_on": [
+          {
+            "kind": "table",
+            "name": "event_raw",
+            "schema": "analytics"
+          },
+          {
+            "kind": "view",
+            "name": "cohort_a",
+            "schema": "analytics"
+          }
+        ],
+        "kind": "view",
+        "lock_class": "ACCESS_SHARE",
+        "version": "1.0.0"
+      },
+      "name": "cohort_b",
+      "schema": "analytics"
+    },
+    {
+      "attributes": {
+        "columns": [
+          {
+            "name": "code",
+            "nullable": false,
+            "type": "text"
+          },
+          {
+            "name": "discount_cents",
+            "nullable": false,
+            "type": "bigint"
+          },
+          {
+            "name": "expires_at",
+            "nullable": true,
+            "type": "timestamptz"
+          }
+        ],
+        "constraints": [
+          {
+            "columns": [
+              "code"
+            ],
+            "kind": "primary_key",
+            "name": "coupon_pk"
+          }
+        ],
+        "depends_on": [],
+        "kind": "table",
+        "lock_class": "ACCESS_EXCLUSIVE",
+        "version": "1.0.0"
+      },
+      "name": "coupon",
+      "schema": "public"
+    },
+    {
+      "attributes": {
+        "columns": [
+          {
+            "name": "id",
+            "nullable": false,
+            "type": "bigint"
+          },
+          {
+            "name": "order_id",
+            "nullable": false,
+            "type": "bigint"
+          },
+          {
+            "name": "sku",
+            "nullable": false,
+            "type": "text"
+          },
+          {
+            "name": "qty",
+            "nullable": false,
+            "type": "integer"
+          }
+        ],
+        "constraints": [
+          {
+            "columns": [
+              "id"
+            ],
+            "kind": "primary_key",
+            "name": "order_line_pk"
+          },
+          {
+            "columns": [
+              "order_id"
+            ],
+            "kind": "foreign_key",
+            "name": "order_line_order_fk",
+            "references": {
+              "columns": [
+                "id"
+              ],
+              "name": "orders",
+              "schema": "public"
+            }
+          }
+        ],
+        "depends_on": [
+          {
+            "kind": "table",
+            "name": "orders",
+            "schema": "public"
+          }
+        ],
+        "kind": "table",
+        "lock_class": "ACCESS_EXCLUSIVE",
+        "version": "1.0.0"
+      },
+      "name": "order_line",
+      "schema": "public"
+    }
+  ],
+  "baseline_sha256": "1a462dfdac118956a3538372bfb7ed47c097259a09456b119d8c63db8a4bee27",
+  "current_sha256": "99bc84f7dae450d7dc228664d924d8224d93d3a74660c76388d2746bdbf38679",
+  "modified": [
+    {
+      "changed_attributes": {
+        "depends_on": {
+          "new_value": [
+            {
+              "kind": "table",
+              "name": "event_raw",
+              "schema": "analytics"
+            },
+            {
+              "kind": "view",
+              "name": "cohort_a",
+              "schema": "analytics"
+            }
+          ],
+          "old_value": [
+            {
+              "kind": "table",
+              "name": "event_raw",
+              "schema": "analytics"
+            }
+          ]
+        }
+      },
+      "name": "daily_active",
+      "schema": "analytics"
+    },
+    {
+      "changed_attributes": {
+        "columns": {
+          "new_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "order_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "issued_at",
+              "nullable": false,
+              "type": "timestamptz"
+            },
+            {
+              "name": "amount_cents",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "discount_cents",
+              "nullable": false,
+              "type": "bigint"
+            }
+          ],
+          "old_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "order_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "issued_at",
+              "nullable": false,
+              "type": "timestamptz"
+            },
+            {
+              "name": "amount_cents",
+              "nullable": false,
+              "type": "bigint"
+            }
+          ]
+        },
+        "version": {
+          "new_value": "1.4.0",
+          "old_value": "1.3.0"
+        }
+      },
+      "name": "invoice",
+      "schema": "billing"
+    },
+    {
+      "changed_attributes": {
+        "columns": {
+          "new_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "invoice_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "customer_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "received_at",
+              "nullable": false,
+              "type": "timestamptz"
+            },
+            {
+              "name": "amount_cents",
+              "nullable": false,
+              "type": "bigint"
+            }
+          ],
+          "old_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "invoice_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "received_at",
+              "nullable": false,
+              "type": "timestamptz"
+            },
+            {
+              "name": "amount_cents",
+              "nullable": false,
+              "type": "bigint"
+            }
+          ]
+        },
+        "constraints": {
+          "new_value": [
+            {
+              "columns": [
+                "id"
+              ],
+              "kind": "primary_key",
+              "name": "payment_pk"
+            },
+            {
+              "columns": [
+                "invoice_id"
+              ],
+              "kind": "foreign_key",
+              "name": "payment_invoice_fk",
+              "references": {
+                "columns": [
+                  "id"
+                ],
+                "name": "invoice",
+                "schema": "billing"
+              }
+            },
+            {
+              "columns": [
+                "customer_id"
+              ],
+              "kind": "foreign_key",
+              "name": "payment_customer_fk",
+              "references": {
+                "columns": [
+                  "id"
+                ],
+                "name": "customer",
+                "schema": "public"
+              }
+            }
+          ],
+          "old_value": [
+            {
+              "columns": [
+                "id"
+              ],
+              "kind": "primary_key",
+              "name": "payment_pk"
+            },
+            {
+              "columns": [
+                "invoice_id"
+              ],
+              "kind": "foreign_key",
+              "name": "payment_invoice_fk",
+              "references": {
+                "columns": [
+                  "id"
+                ],
+                "name": "invoice",
+                "schema": "billing"
+              }
+            }
+          ]
+        },
+        "depends_on": {
+          "new_value": [
+            {
+              "kind": "table",
+              "name": "invoice",
+              "schema": "billing"
+            },
+            {
+              "kind": "table",
+              "name": "customer",
+              "schema": "public"
+            }
+          ],
+          "old_value": [
+            {
+              "kind": "table",
+              "name": "invoice",
+              "schema": "billing"
+            }
+          ]
+        },
+        "version": {
+          "new_value": "1.1.0",
+          "old_value": "1.0.0"
+        }
+      },
+      "name": "payment",
+      "schema": "billing"
+    },
+    {
+      "changed_attributes": {
+        "constraints": {
+          "new_value": [
+            {
+              "kind": "language",
+              "name": "lang",
+              "value": "plpgsql"
+            },
+            {
+              "kind": "volatility",
+              "name": "vol",
+              "value": "immutable"
+            }
+          ],
+          "old_value": [
+            {
+              "kind": "language",
+              "name": "lang",
+              "value": "plpgsql"
+            },
+            {
+              "kind": "volatility",
+              "name": "vol",
+              "value": "stable"
+            }
+          ]
+        },
+        "depends_on": {
+          "new_value": [
+            {
+              "kind": "table",
+              "name": "orders",
+              "schema": "public"
+            },
+            {
+              "kind": "function",
+              "name": "compute_lifetime_value",
+              "schema": "public"
+            }
+          ],
+          "old_value": [
+            {
+              "kind": "table",
+              "name": "orders",
+              "schema": "public"
+            }
+          ]
+        },
+        "version": {
+          "new_value": "1.1.0",
+          "old_value": "1.0.0"
+        }
+      },
+      "name": "compute_lifetime_value",
+      "schema": "public"
+    },
+    {
+      "changed_attributes": {
+        "columns": {
+          "new_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "email",
+              "nullable": true,
+              "type": "text"
+            },
+            {
+              "name": "created_at",
+              "nullable": false,
+              "type": "timestamptz"
+            },
+            {
+              "name": "phone",
+              "nullable": true,
+              "type": "text"
+            }
+          ],
+          "old_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "email",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "created_at",
+              "nullable": false,
+              "type": "timestamptz"
+            },
+            {
+              "name": "tier",
+              "nullable": true,
+              "type": "text"
+            }
+          ]
+        },
+        "constraints": {
+          "new_value": [
+            {
+              "columns": [
+                "id"
+              ],
+              "kind": "primary_key",
+              "name": "customer_pk"
+            },
+            {
+              "columns": [
+                "email"
+              ],
+              "kind": "unique",
+              "name": "customer_email_uq"
+            },
+            {
+              "kind": "check",
+              "name": "customer_email_format",
+              "value": "email IS NULL OR email LIKE '%@%'"
+            }
+          ],
+          "old_value": [
+            {
+              "columns": [
+                "id"
+              ],
+              "kind": "primary_key",
+              "name": "customer_pk"
+            },
+            {
+              "columns": [
+                "email"
+              ],
+              "kind": "unique",
+              "name": "customer_email_uq"
+            }
+          ]
+        },
+        "version": {
+          "new_value": "1.5.0",
+          "old_value": "1.4.0"
+        }
+      },
+      "name": "customer",
+      "schema": "public"
+    },
+    {
+      "changed_attributes": {
+        "constraints": {
+          "new_value": [
+            {
+              "kind": "predicate",
+              "name": "p",
+              "value": "id = current_setting('app.user_id')::bigint AND tier IS NOT DISTINCT FROM 'gold'"
+            }
+          ],
+          "old_value": [
+            {
+              "kind": "predicate",
+              "name": "p",
+              "value": "id = current_setting('app.user_id')::bigint"
+            }
+          ]
+        },
+        "version": {
+          "new_value": "1.0.1",
+          "old_value": "1.0.0"
+        }
+      },
+      "name": "customer_self_read",
+      "schema": "public"
+    },
+    {
+      "changed_attributes": {
+        "columns": {
+          "new_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "customer_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "amount_cents",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "currency",
+              "nullable": false,
+              "type": "text"
+            },
+            {
+              "name": "placed_at",
+              "nullable": false,
+              "type": "timestamptz"
+            }
+          ],
+          "old_value": [
+            {
+              "name": "id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "customer_id",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "amount_cents",
+              "nullable": false,
+              "type": "bigint"
+            },
+            {
+              "name": "placed_at",
+              "nullable": false,
+              "type": "timestamptz"
+            }
+          ]
+        },
+        "version": {
+          "new_value": "2.2.0",
+          "old_value": "2.1.0"
+        }
+      },
+      "name": "orders",
+      "schema": "public"
+    }
+  ],
+  "removed": [
+    {
+      "attributes": {
+        "columns": [
+          {
+            "name": "id",
+            "nullable": false,
+            "type": "bigint"
+          },
+          {
+            "name": "session_id",
+            "nullable": false,
+            "type": "uuid"
+          },
+          {
+            "name": "event",
+            "nullable": false,
+            "type": "text"
+          },
+          {
+            "name": "ts",
+            "nullable": false,
+            "type": "timestamptz"
+          }
+        ],
+        "constraints": [
+          {
+            "columns": [
+              "id"
+            ],
+            "kind": "primary_key",
+            "name": "audit_log_pk"
+          },
+          {
+            "columns": [
+              "session_id"
+            ],
+            "kind": "foreign_key",
+            "name": "audit_log_session_fk",
+            "references": {
+              "columns": [
+                "id"
+              ],
+              "name": "session",
+              "schema": "auth"
+            }
+          }
+        ],
+        "depends_on": [
+          {
+            "kind": "table",
+            "name": "session",
+            "schema": "auth"
+          }
+        ],
+        "kind": "table",
+        "lock_class": "ROW_EXCLUSIVE",
+        "version": "1.0.0"
+      },
+      "name": "audit_log",
+      "schema": "auth"
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "added_count": 4,
+    "modified_count": 7,
+    "removed_count": 1
+  }
+}

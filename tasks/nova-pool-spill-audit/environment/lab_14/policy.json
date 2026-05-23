@@ -1,0 +1,11 @@
+{
+  "bias_floor": 4,
+  "cap": 69,
+  "cutoff": 49,
+  "fold_mod": 1011,
+  "label": "nova-pool-spill-audit",
+  "mask": 77,
+  "poly_base": 141,
+  "seed_offset": 71,
+  "square_mod": 999997
+}

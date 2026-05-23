@@ -1,0 +1,5 @@
+Audit cgroup-style slice reclaim and tier quorum for a storage telemetry batch. Read `/app/capslice/SPEC.md` and every JSON file under `/app/capslice/`, including per-slice files in `/app/capslice/slices/`, `policy.json`, `manifest.json`, `epochs.json`, and `events.json`. Packaging under `anchors/`, `meta/`, `grid/`, and `ancillary/` is read-only context and must not drive totals.
+
+Produce five UTF-8 JSON artifacts under `/app/audit/` named `slice_states.json`, `reclaim_plan.json`, `tier_votes.json`, `window_stats.json`, and `summary.json`. Each file must follow the spec canonical JSON contract: ASCII-only strings, two-space indentation, recursively sorted object keys at every depth, no trailing spaces on lines, and exactly one trailing newline after the root closing brace.
+
+Apply monitor-run soft-cap halving when manifest tags disagree, warmup bypass on early steps, sliding byte windows per slice, stale-epoch exclusion for reclaim rows, and tier-ratio acceptance computed from active slice weights on each step. Process events in ascending step then slice id. Leave `/app/capslice/` byte-identical.

@@ -1,0 +1,15 @@
+Normative contract for the WAL index trim audit. Inputs are UTF-8 JSON with ASCII-only strings. Outputs are UTF-8 JSON, ASCII-only, two-space indentation, recursively sorted object keys at every depth, no trailing spaces at line ends, and exactly one trailing newline after each root closing brace.
+
+Read `policy.json` for integer `window_size` (positive), float `trim_threshold` (positive), integer `warmup_indexes`, and float `vote_ratio` between zero and one inclusive. Read `manifest.json` for `snapshot_tag` and `live_tag`. When they differ, multiply `trim_threshold` by `0.5` and use the halved value for all trim math; round `effective_trim_threshold` in summary to six decimals. Read `epochs.json` for integer `current_epoch`. Read `indexes.json` for array `indexes` with integer `index`, string `segment_id`, float `payload_bytes`, and string `role` in `primary` or `replica`. Read `links.json` for array `links` with `from_segment` and `to_segment`.
+
+Enumerate every `*.json` under `segments/`. Each segment has string `segment_id`, integer `epoch`, float `weight`, and boolean `pin`. A segment is stale when `epoch` is strictly less than `current_epoch - 1`. Active segments participate in role weight sums. A segment is transitively pinned when it has `pin` true or appears as `to_segment` of a link whose `from_segment` is already pinned. Packaging under `anchors/`, `meta/`, `grid/`, and `ancillary/` is ignored.
+
+Process indexes in ascending `index`, then ascending `segment_id`. Maintain per-segment FIFO history of `payload_bytes` capped at `window_size`. `window_mean_bytes` is the arithmetic mean after appending the current sample.
+
+For each index row, when `index` is less than or equal to `warmup_indexes`, or the segment is transitively pinned, `trim_factor` is `0.0` and `trimmed` is false. Otherwise when `window_mean_bytes` exceeds the effective trim threshold and `payload_bytes` is positive, `trim_factor` is `min(1.0, (window_mean_bytes - effective_trim_threshold) / payload_bytes)`; `trimmed` is true when `trim_factor` is strictly greater than zero. Stale segments still update window history but omit `trim_plan` rows.
+
+Role vote at an index: `agree_weight` sums `weight` of active segments whose row on the same `index` shares the same `role`. The vote is `accepted` when the segment is active and `agree_weight >= vote_ratio * total_active_weight`.
+
+Emit `segment_states.json` with `segments` sorted by `segment_id` (epoch, pin, segment_id, stale, weight). Emit `trim_plan.json` with `entries` sorted by index then segment_id for non-stale rows only (bytes_trimmed, index, segment_id, trim_factor, trimmed). Emit `role_votes.json` with `votes` in processing order (accepted, agree_weight, index, role, segment_id, stale). Emit `index_stats.json` with `stats` in processing order. Emit `summary.json` with current_epoch, effective_trim_threshold, index_total, stale_skipped_total, trim_total, vote_accepted_total.
+
+Read `WIT_DATA_DIR` defaulting to `/app/waltrim` and `WIT_AUDIT_DIR` defaulting to `/app/audit`. Create the audit directory when missing and never mutate inputs.

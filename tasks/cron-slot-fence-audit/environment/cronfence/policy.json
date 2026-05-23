@@ -1,0 +1,5 @@
+{
+  "blackout_boost": 1.5,
+  "dep_slack_min": 3,
+  "min_gap_min": 5
+}

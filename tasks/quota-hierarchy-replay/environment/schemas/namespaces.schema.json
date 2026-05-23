@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "namespaces.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["namespaces"],
+  "properties": {
+    "namespaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "parent", "limits"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "parent": {"type": ["string", "null"]},
+          "limits": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["cpu", "memory", "storage"],
+            "properties": {
+              "cpu": {"type": "integer", "minimum": 0},
+              "memory": {"type": "integer", "minimum": 0},
+              "storage": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}

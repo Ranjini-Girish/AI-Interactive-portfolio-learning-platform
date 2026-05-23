@@ -1,0 +1,11 @@
+{
+  "bias_floor": 0,
+  "cap": 68,
+  "cutoff": 48,
+  "fold_mod": 1010,
+  "label": "mint-scope-row-audit",
+  "mask": 76,
+  "poly_base": 140,
+  "seed_offset": 78,
+  "square_mod": 999996
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cache_state.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["b1", "b2", "p", "t1", "t2"],
+  "definitions": {
+    "resident_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cum_weight", "key"],
+      "properties": {
+        "cum_weight": {"type": "integer", "minimum": 1},
+        "key": {"type": "string", "minLength": 1}
+      }
+    },
+    "ghost_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entry_weight", "key"],
+      "properties": {
+        "entry_weight": {"type": "integer", "minimum": 1},
+        "key": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "properties": {
+    "b1": {"type": "array", "items": {"$ref": "#/definitions/ghost_entry"}},
+    "b2": {"type": "array", "items": {"$ref": "#/definitions/ghost_entry"}},
+    "p":  {"type": "integer", "minimum": 0, "maximum": 256},
+    "t1": {"type": "array", "items": {"$ref": "#/definitions/resident_entry"}},
+    "t2": {"type": "array", "items": {"$ref": "#/definitions/resident_entry"}}
+  }
+}

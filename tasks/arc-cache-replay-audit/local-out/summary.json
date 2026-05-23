@@ -1,0 +1,23 @@
+{
+  "accesses_accepted": 24,
+  "clears_accepted": 2,
+  "clears_rejected": 1,
+  "evicts_accepted": 1,
+  "evicts_rejected": 2,
+  "final_b1_weight_sum": 0,
+  "final_b2_weight_sum": 0,
+  "final_p": 0,
+  "final_t1_weight_sum": 0,
+  "final_t2_weight_sum": 0,
+  "ghost_hits_b1": 2,
+  "ghost_hits_b2": 1,
+  "hits_t1": 2,
+  "hits_t2": 1,
+  "misses": 18,
+  "total_accesses": 24,
+  "total_clears": 3,
+  "total_distinct_keys": 15,
+  "total_events": 30,
+  "total_evicts": 3,
+  "total_weight_admitted": 63
+}

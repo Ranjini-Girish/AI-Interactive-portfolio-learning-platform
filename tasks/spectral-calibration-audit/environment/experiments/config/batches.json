@@ -1,0 +1,26 @@
+{
+  "batch_alpha": {
+    "calibrant": "neon",
+    "operator": "Elena",
+    "temperature_c": 22.2,
+    "quality_flag": "ok"
+  },
+  "batch_beta": {
+    "calibrant": "argon",
+    "operator": "Soren",
+    "temperature_c": 24.4,
+    "quality_flag": "ok"
+  },
+  "batch_gamma": {
+    "calibrant": "neon",
+    "operator": "Lina",
+    "temperature_c": 20.6,
+    "quality_flag": "ok"
+  },
+  "batch_quarantine": {
+    "calibrant": "argon",
+    "operator": "Hale",
+    "temperature_c": 25.0,
+    "quality_flag": "hold"
+  }
+}

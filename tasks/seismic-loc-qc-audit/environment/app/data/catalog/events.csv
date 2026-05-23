@@ -1,0 +1,16 @@
+event_id,prior_x_km,prior_y_km,prior_depth_km,prior_origin_time_s,status
+EVT_A,10,8,6,100,review
+EVT_B,-8,-4,22,200,
+EVT_C,4,-10,5,300,exclude
+EVT_D,18,11,4,400,review
+EVT_E,0,0,10,500,void
+EVT_F,15,-5,8,600,review
+EVT_G,-35,20,3,700,
+EVT_H,5,5,1,800,review
+EVT_I,20,-15,10,900,
+EVT_J,-20,30,15,1000,review
+EVT_K,0,0,24,1100,
+EVT_L,30,10,7,1200,review
+EVT_M,-10,-20,11,1300,
+EVT_N,25,25,9,1400,review
+EVT_O,5,-5,0,1500,

@@ -38,8 +38,9 @@ copy .env.example .env
 npx playwright test tests/auth.setup.ts --project=setup
 ```
 
-Saved session: `e2e/.auth/snorkel-user.json` (gitignored). Re-run auth setup when
-login expires.
+Saved session: `e2e/.auth/snorkel-user.json` (gitignored). **Normal test runs reuse
+this file and skip Cognito login.** Re-run `npm run auth:setup` (or
+`SNORKEL_AUTH_SETUP=1`) only when the session expires.
 
 ---
 

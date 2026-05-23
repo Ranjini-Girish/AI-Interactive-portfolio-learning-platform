@@ -1,0 +1,20 @@
+{
+  "datasets": {
+    "demo": {
+      "keep_daily": 1,
+      "keep_hourly": 0,
+      "keep_last_n": 1,
+      "keep_monthly": 0,
+      "keep_weekly": 0
+    }
+  },
+  "default_rules": {
+    "keep_daily": 0,
+    "keep_hourly": 0,
+    "keep_last_n": 0,
+    "keep_monthly": 0,
+    "keep_weekly": 0
+  },
+  "held_delete_action": "reject",
+  "now_sec": 100000
+}

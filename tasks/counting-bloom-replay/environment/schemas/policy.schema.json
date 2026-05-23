@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "policy.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "m",
+    "k",
+    "counter_bits",
+    "hash_family",
+    "saturation_action",
+    "remove_below_zero_action"
+  ],
+  "properties": {
+    "m": { "type": "integer", "minimum": 1 },
+    "k": { "type": "integer", "minimum": 1 },
+    "counter_bits": { "enum": [2, 3, 4, 8] },
+    "hash_family": { "const": "fnv1a_double_hashing" },
+    "saturation_action": { "enum": ["reject", "saturate"] },
+    "remove_below_zero_action": { "enum": ["reject", "clamp"] }
+  }
+}

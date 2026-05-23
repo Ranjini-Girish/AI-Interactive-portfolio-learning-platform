@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "account": "acct_a",
+      "amount_cents": 100,
+      "day": 1,
+      "op": "deposit",
+      "seq": 1
+    }
+  ]
+}

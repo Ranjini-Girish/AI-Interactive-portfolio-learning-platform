@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "summary.json",
+  "type": "object",
+  "required": [
+    "anomaly_counts", "hottest_service",
+    "kept_traces", "spans_total",
+    "traces_dropped", "traces_total"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "anomaly_counts": {
+      "type": "object",
+      "required": [
+        "D_CYCLE_DETECTED", "D_FUTURE_TIMESTAMP",
+        "D_INCOMPLETE_TRACE", "D_MULTI_ROOT", "D_ORPHAN_SPAN"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "D_CYCLE_DETECTED":   { "type": "integer", "minimum": 0 },
+        "D_FUTURE_TIMESTAMP": { "type": "integer", "minimum": 0 },
+        "D_INCOMPLETE_TRACE": { "type": "integer", "minimum": 0 },
+        "D_MULTI_ROOT":       { "type": "integer", "minimum": 0 },
+        "D_ORPHAN_SPAN":      { "type": "integer", "minimum": 0 }
+      }
+    },
+    "hottest_service":  { "type": ["string", "null"] },
+    "kept_traces":      { "type": "integer", "minimum": 0 },
+    "spans_total":      { "type": "integer", "minimum": 0 },
+    "traces_dropped":   { "type": "integer", "minimum": 0 },
+    "traces_total":     { "type": "integer", "minimum": 0 }
+  }
+}

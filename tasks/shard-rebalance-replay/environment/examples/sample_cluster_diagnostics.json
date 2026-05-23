@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "diagnostics": [
+        {
+          "code": "N_SHARD_MOVED",
+          "ref_id": "shard-1",
+          "severity": "note"
+        }
+      ],
+      "seq": 0
+    }
+  ]
+}

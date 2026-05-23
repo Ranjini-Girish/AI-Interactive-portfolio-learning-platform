@@ -49,10 +49,20 @@ test.describe('Snorkel Experts — Revision flow', () => {
     const zipPath = resolveTaskZipPath();
     const regenerateRubric = resolveRegenerateRubric();
     const staticChecks = resolveStaticChecks();
+    const headed = process.argv.includes('--headed');
+    const taskId = await openRevisionTask(page, resolveRevisionTaskId());
+    await assertRevisionWorkspace(page, taskId);
+
+    if (headed) {
+      // Headed: replace zip (Remove → pick snapshot-retention-replay.zip), paste rubrics.txt, then Resume.
+      await page.pause();
+    }
+
     const result = await runRevisionFlow(page, {
-      taskId: resolveRevisionTaskId(),
+      taskId,
+      skipOpen: true,
       zipPath,
-      uploadZip: !!zipPath,
+      uploadZip: !!zipPath && !headed && process.env.SNORKEL_SKIP_ZIP_UPLOAD !== '1',
       regenerateRubric,
       runStaticChecks: staticChecks,
       submitToPlatform: true,

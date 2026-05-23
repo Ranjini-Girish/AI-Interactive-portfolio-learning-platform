@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sa_state.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["sas"],
+  "properties": {
+    "sas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "accepted", "bitmap", "id", "owner",
+          "recv_total", "rekeys", "replays", "too_old",
+          "top", "window_size"
+        ],
+        "properties": {
+          "accepted":    { "type": "integer", "minimum": 0 },
+          "bitmap":      { "type": "string", "pattern": "^[0-9a-f]*$" },
+          "id":          { "type": "string" },
+          "owner":       { "type": "string" },
+          "recv_total":  { "type": "integer", "minimum": 0 },
+          "rekeys":      { "type": "integer", "minimum": 0 },
+          "replays":     { "type": "integer", "minimum": 0 },
+          "too_old":     { "type": "integer", "minimum": 0 },
+          "top":         { "type": "integer", "minimum": 0 },
+          "window_size": { "type": "integer", "minimum": 1 }
+        }
+      }
+    }
+  }
+}

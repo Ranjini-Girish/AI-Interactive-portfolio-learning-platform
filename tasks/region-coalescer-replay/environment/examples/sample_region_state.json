@@ -1,0 +1,11 @@
+{
+  "regions": [
+    {
+      "base": 4096,
+      "id": "alpha",
+      "owner": "demo",
+      "prot": "rw",
+      "size": 12288
+    }
+  ]
+}

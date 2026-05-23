@@ -1,0 +1,116 @@
+{
+  "events": [
+    {
+      "dataset": "logs",
+      "id": "snap-010",
+      "kind": "snapshot_create",
+      "name": "fresh",
+      "seq": 0
+    },
+    {
+      "dataset": "logs",
+      "id": "snap-010",
+      "kind": "snapshot_create",
+      "name": "dup-id-attempt",
+      "seq": 1
+    },
+    {
+      "dataset": "logs",
+      "id": "snap-011",
+      "kind": "snapshot_create",
+      "name": "fresh",
+      "seq": 2
+    },
+    {
+      "holder": "audit",
+      "id": "snap-002",
+      "kind": "hold_add",
+      "seq": 3
+    },
+    {
+      "holder": "audit",
+      "id": "snap-002",
+      "kind": "hold_add",
+      "seq": 4
+    },
+    {
+      "force": false,
+      "id": "snap-002",
+      "kind": "snapshot_delete",
+      "seq": 5
+    },
+    {
+      "holder": "audit",
+      "id": "snap-002",
+      "kind": "hold_release",
+      "seq": 6
+    },
+    {
+      "force": true,
+      "id": "snap-002",
+      "kind": "snapshot_delete",
+      "seq": 7
+    },
+    {
+      "holder": "ghost",
+      "id": "snap-100",
+      "kind": "hold_release",
+      "seq": 8
+    },
+    {
+      "delta_sec": 0,
+      "kind": "tick",
+      "seq": 9
+    },
+    {
+      "delta_sec": -10,
+      "kind": "tick",
+      "seq": 10
+    },
+    {
+      "delta_sec": 86400,
+      "kind": "tick",
+      "seq": 11
+    },
+    {
+      "dataset": "logs",
+      "kind": "retention_run",
+      "seq": 12
+    },
+    {
+      "dataset": "media",
+      "kind": "retention_run",
+      "seq": 13
+    },
+    {
+      "dataset": "archive",
+      "kind": "retention_run",
+      "seq": 14
+    },
+    {
+      "force": false,
+      "id": "snap-404",
+      "kind": "snapshot_delete",
+      "seq": 15
+    },
+    {
+      "dataset": "logs",
+      "id": "snap-100",
+      "kind": "snapshot_create",
+      "name": "after-month",
+      "seq": 16
+    },
+    {
+      "dataset": "media",
+      "id": "snap-200",
+      "kind": "snapshot_create",
+      "name": "initial",
+      "seq": 17
+    },
+    {
+      "dataset": "logs",
+      "kind": "retention_run",
+      "seq": 18
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "summary.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "total_events",
+    "total_namespaces",
+    "admitted_events",
+    "rejected_events",
+    "ignored_events",
+    "unknown_namespace_rejects",
+    "limit_exceeded_rejects",
+    "release_underflow_rejects",
+    "hottest_namespace"
+  ],
+  "properties": {
+    "total_events": {"type": "integer", "minimum": 0},
+    "total_namespaces": {"type": "integer", "minimum": 0},
+    "admitted_events": {"type": "integer", "minimum": 0},
+    "rejected_events": {"type": "integer", "minimum": 0},
+    "ignored_events": {"type": "integer", "minimum": 0},
+    "unknown_namespace_rejects": {"type": "integer", "minimum": 0},
+    "limit_exceeded_rejects": {"type": "integer", "minimum": 0},
+    "release_underflow_rejects": {"type": "integer", "minimum": 0},
+    "hottest_namespace": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "config.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["now_unix_ms", "release_unknown_action"],
+  "properties": {
+    "now_unix_ms": {"type": "integer", "minimum": 0},
+    "release_unknown_action": {"type": "string", "enum": ["ignore", "reject"]}
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "policy.json",
+  "type": "object",
+  "required": [
+    "severity_ranks",
+    "default_daily_withdraw_limit_cents",
+    "overdraft_allowed_account_types",
+    "credit_account_credit_limit_cents",
+    "reversal_window_days",
+    "hold_max_age_days",
+    "transfer_self_action",
+    "frozen_account_action",
+    "closed_account_action"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "severity_ranks": {
+      "type": "object",
+      "required": ["error", "warning", "note"],
+      "additionalProperties": {"type": "integer"}
+    },
+    "default_daily_withdraw_limit_cents": {"type": "integer", "minimum": 0},
+    "overdraft_allowed_account_types": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "credit_account_credit_limit_cents": {"type": "integer", "minimum": 0},
+    "reversal_window_days": {"type": "integer", "minimum": 0},
+    "hold_max_age_days": {"type": "integer", "minimum": 0},
+    "transfer_self_action": {"type": "string", "enum": ["error", "ignore"]},
+    "frozen_account_action": {
+      "type": "string",
+      "enum": ["block_all", "allow_credits_only"]
+    },
+    "closed_account_action": {
+      "type": "string",
+      "enum": ["block_all", "allow_credits_only"]
+    }
+  }
+}

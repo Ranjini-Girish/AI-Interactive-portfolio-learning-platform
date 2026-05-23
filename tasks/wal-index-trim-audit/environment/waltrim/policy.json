@@ -1,0 +1,6 @@
+{
+  "trim_threshold": 100.0,
+  "vote_ratio": 0.6,
+  "warmup_indexes": 2,
+  "window_size": 3
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "events.json (operations on the SA table)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["events"],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["seq", "op", "sa_id", "top", "window_size", "owner", "esp_seq"],
+        "properties": {
+          "seq":         { "type": "integer", "minimum": 0 },
+          "op":          { "type": "string", "enum": ["recv", "add_sa", "delete_sa", "rekey"] },
+          "sa_id":       { "type": ["string", "null"] },
+          "top":         { "type": ["integer", "null"], "minimum": 0 },
+          "window_size": { "type": ["integer", "null"], "minimum": 1 },
+          "owner":       { "type": ["string", "null"] },
+          "esp_seq":     { "type": ["integer", "null"], "minimum": 1 }
+        }
+      }
+    }
+  }
+}

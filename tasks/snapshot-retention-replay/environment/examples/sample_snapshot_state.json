@@ -1,0 +1,23 @@
+{
+  "datasets": [
+    {
+      "name": "demo",
+      "snapshots": [
+        {
+          "created_at_sec": 3600,
+          "holders": [
+            "watch"
+          ],
+          "id": "s2",
+          "name": "second"
+        },
+        {
+          "created_at_sec": 90000,
+          "holders": [],
+          "id": "s3",
+          "name": "third"
+        }
+      ]
+    }
+  ]
+}

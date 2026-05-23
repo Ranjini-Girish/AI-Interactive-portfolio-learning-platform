@@ -1,0 +1,290 @@
+{
+  "events": [
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 200,
+      "pid": 500,
+      "seq": 0,
+      "signal": null,
+      "target_pid": null,
+      "tick": 5
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 200,
+      "pid": 600,
+      "seq": 1,
+      "signal": null,
+      "target_pid": null,
+      "tick": 6
+    },
+    {
+      "cmdline": "/usr/bin/grep",
+      "exit_code": null,
+      "op": "exec",
+      "parent_pid": null,
+      "pid": 500,
+      "seq": 2,
+      "signal": null,
+      "target_pid": null,
+      "tick": 7
+    },
+    {
+      "cmdline": null,
+      "exit_code": 0,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 500,
+      "seq": 3,
+      "signal": null,
+      "target_pid": null,
+      "tick": 9
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "wait",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 4,
+      "signal": null,
+      "target_pid": 500,
+      "tick": 10
+    },
+    {
+      "cmdline": "/usr/bin/awk",
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 600,
+      "pid": 700,
+      "seq": 5,
+      "signal": null,
+      "target_pid": null,
+      "tick": 11
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "kill",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 6,
+      "signal": "SIGTERM",
+      "target_pid": 600,
+      "tick": 12
+    },
+    {
+      "cmdline": null,
+      "exit_code": 0,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 300,
+      "seq": 7,
+      "signal": null,
+      "target_pid": null,
+      "tick": 14
+    },
+    {
+      "cmdline": "/usr/sbin/cron2",
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 1,
+      "pid": 300,
+      "seq": 8,
+      "signal": null,
+      "target_pid": null,
+      "tick": 15
+    },
+    {
+      "cmdline": "/foo",
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 99,
+      "pid": 800,
+      "seq": 9,
+      "signal": null,
+      "target_pid": null,
+      "tick": 16
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "wait",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 10,
+      "signal": null,
+      "target_pid": 99,
+      "tick": 17
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "wait",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 11,
+      "signal": null,
+      "target_pid": 700,
+      "tick": 18
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "wait",
+      "parent_pid": null,
+      "pid": 100,
+      "seq": 12,
+      "signal": null,
+      "target_pid": 200,
+      "tick": 19
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "kill",
+      "parent_pid": null,
+      "pid": 1,
+      "seq": 13,
+      "signal": "SIGINT",
+      "target_pid": 400,
+      "tick": 20
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "kill",
+      "parent_pid": null,
+      "pid": 1,
+      "seq": 14,
+      "signal": "SIGTERM",
+      "target_pid": 999,
+      "tick": 21
+    },
+    {
+      "cmdline": "/foo",
+      "exit_code": null,
+      "op": "exec",
+      "parent_pid": null,
+      "pid": 999,
+      "seq": 15,
+      "signal": null,
+      "target_pid": null,
+      "tick": 22
+    },
+    {
+      "cmdline": null,
+      "exit_code": 99,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 600,
+      "seq": 16,
+      "signal": null,
+      "target_pid": null,
+      "tick": 23
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "kill",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 17,
+      "signal": "SIGCHLD",
+      "target_pid": 200,
+      "tick": 24
+    },
+    {
+      "cmdline": "/usr/bin/python3",
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 100,
+      "pid": 900,
+      "seq": 18,
+      "signal": null,
+      "target_pid": null,
+      "tick": 25
+    },
+    {
+      "cmdline": "/usr/bin/python3",
+      "exit_code": null,
+      "op": "fork",
+      "parent_pid": 900,
+      "pid": 901,
+      "seq": 19,
+      "signal": null,
+      "target_pid": null,
+      "tick": 26
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "kill",
+      "parent_pid": null,
+      "pid": 1,
+      "seq": 20,
+      "signal": "SIGKILL",
+      "target_pid": 900,
+      "tick": 27
+    },
+    {
+      "cmdline": null,
+      "exit_code": null,
+      "op": "wait",
+      "parent_pid": null,
+      "pid": 100,
+      "seq": 21,
+      "signal": null,
+      "target_pid": 900,
+      "tick": 28
+    },
+    {
+      "cmdline": null,
+      "exit_code": 42,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 901,
+      "seq": 22,
+      "signal": null,
+      "target_pid": null,
+      "tick": 29
+    },
+    {
+      "cmdline": "/usr/bin/zsh",
+      "exit_code": null,
+      "op": "exec",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 23,
+      "signal": null,
+      "target_pid": null,
+      "tick": 30
+    },
+    {
+      "cmdline": null,
+      "exit_code": 0,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 200,
+      "seq": 24,
+      "signal": null,
+      "target_pid": null,
+      "tick": 31
+    },
+    {
+      "cmdline": null,
+      "exit_code": 7,
+      "op": "exit",
+      "parent_pid": null,
+      "pid": 700,
+      "seq": 25,
+      "signal": null,
+      "target_pid": null,
+      "tick": 32
+    }
+  ]
+}

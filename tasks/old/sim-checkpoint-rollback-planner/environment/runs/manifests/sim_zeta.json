@@ -1,0 +1,14 @@
+{
+  "current_checkpoint_step": 600,
+  "engine": "lammps",
+  "inputs_dataset": "ds_argon",
+  "kind": "production",
+  "last_known_good_step": 500,
+  "scheduled_quiesce_window": {
+    "end_day": 245,
+    "start_day": 235
+  },
+  "sim_id": "sim_zeta",
+  "stabilization_steps": 1500,
+  "started_at_day": 232
+}

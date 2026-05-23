@@ -1,0 +1,60 @@
+{
+  "locks": [
+    {
+      "description": "primary mutex (recursive exclusive)",
+      "id": "L_a",
+      "mode_supported": "exclusive",
+      "priority": 10,
+      "recursive": true
+    },
+    {
+      "description": "shared rwlock",
+      "id": "L_b",
+      "mode_supported": "both",
+      "priority": 5,
+      "recursive": null
+    },
+    {
+      "description": "non-reentrant exclusive lock",
+      "id": "L_c",
+      "mode_supported": "exclusive",
+      "priority": 8,
+      "recursive": false
+    },
+    {
+      "description": "raw rwlock (non-reentrant)",
+      "id": "L_d",
+      "mode_supported": "both",
+      "priority": 0,
+      "recursive": false
+    },
+    {
+      "description": "shared cache lock (shared-only)",
+      "id": "L_e",
+      "mode_supported": "shared",
+      "priority": 12,
+      "recursive": true
+    },
+    {
+      "description": "low-priority recursive lock",
+      "id": "L_f",
+      "mode_supported": "exclusive",
+      "priority": -5,
+      "recursive": true
+    },
+    {
+      "description": "tx lock",
+      "id": "L_g",
+      "mode_supported": "both",
+      "priority": 7,
+      "recursive": null
+    },
+    {
+      "description": "io lock",
+      "id": "L_h",
+      "mode_supported": "exclusive",
+      "priority": 3,
+      "recursive": true
+    }
+  ]
+}

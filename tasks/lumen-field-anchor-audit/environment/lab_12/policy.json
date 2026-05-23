@@ -1,0 +1,11 @@
+{
+  "bias_floor": 0,
+  "cap": 67,
+  "cutoff": 47,
+  "fold_mod": 1009,
+  "label": "lumen-field-anchor-audit",
+  "mask": 75,
+  "poly_base": 139,
+  "seed_offset": 48,
+  "square_mod": 999995
+}

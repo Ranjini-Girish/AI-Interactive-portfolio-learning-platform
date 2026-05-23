@@ -1,0 +1,191 @@
+{
+  "steps": [
+    {
+      "step": 1,
+      "charts": [
+        "lib/jwt-keys",
+        "lib/keyring"
+      ],
+      "triggered_by": [
+        "identity::jwt-signer"
+      ]
+    },
+    {
+      "step": 2,
+      "charts": [
+        "chart/jwt-signer"
+      ],
+      "triggered_by": [
+        "identity::jwt-signer"
+      ]
+    },
+    {
+      "step": 3,
+      "charts": [
+        "lib/notify-bus",
+        "lib/notify-bus-impl"
+      ],
+      "triggered_by": [
+        "identity::heartbeat-probe",
+        "payments-prod::ledger-writer"
+      ]
+    },
+    {
+      "step": 4,
+      "charts": [
+        "lib/queue-core",
+        "lib/queue-driver",
+        "lib/queue-shim"
+      ],
+      "triggered_by": [
+        "payments-prod::ledger-writer",
+        "payments-prod::nightly-reconcile"
+      ]
+    },
+    {
+      "step": 5,
+      "charts": [
+        "chart/reconcile"
+      ],
+      "triggered_by": [
+        "payments-prod::nightly-reconcile"
+      ]
+    },
+    {
+      "step": 6,
+      "charts": [
+        "lib/stream-core",
+        "lib/stream-utils"
+      ],
+      "triggered_by": [
+        "analytics::fraud-scorer",
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "step": 7,
+      "charts": [
+        "lib/storage"
+      ],
+      "triggered_by": [
+        "analytics::fraud-scorer",
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "step": 8,
+      "charts": [
+        "chart/cache-warmer"
+      ],
+      "triggered_by": [
+        "edge::cache-warmer"
+      ]
+    },
+    {
+      "step": 9,
+      "charts": [
+        "chart/fraud-scorer"
+      ],
+      "triggered_by": [
+        "analytics::fraud-scorer"
+      ]
+    },
+    {
+      "step": 10,
+      "charts": [
+        "lib/yaml-render"
+      ],
+      "triggered_by": [
+        "edge::probe-runner",
+        "payments-prod::gateway-api",
+        "payments-prod::ledger-writer",
+        "telemetry::collector",
+        "telemetry::node-shipper"
+      ]
+    },
+    {
+      "step": 11,
+      "charts": [
+        "chart/collector"
+      ],
+      "triggered_by": [
+        "telemetry::collector"
+      ]
+    },
+    {
+      "step": 12,
+      "charts": [
+        "chart/ledger"
+      ],
+      "triggered_by": [
+        "payments-prod::ledger-writer"
+      ]
+    },
+    {
+      "step": 13,
+      "charts": [
+        "lib/network"
+      ],
+      "triggered_by": [
+        "edge::probe-runner",
+        "payments-prod::gateway-api",
+        "telemetry::node-shipper"
+      ]
+    },
+    {
+      "step": 14,
+      "charts": [
+        "chart/probe"
+      ],
+      "triggered_by": [
+        "edge::probe-runner"
+      ]
+    },
+    {
+      "step": 15,
+      "charts": [
+        "chart/shipper"
+      ],
+      "triggered_by": [
+        "telemetry::node-shipper"
+      ]
+    },
+    {
+      "step": 16,
+      "charts": [
+        "lib/circuit-breaker"
+      ],
+      "triggered_by": [
+        "payments-prod::gateway-api"
+      ]
+    },
+    {
+      "step": 17,
+      "charts": [
+        "chart/gateway"
+      ],
+      "triggered_by": [
+        "payments-prod::gateway-api"
+      ]
+    },
+    {
+      "step": 18,
+      "charts": [
+        "svc/collector"
+      ],
+      "triggered_by": [
+        "identity::heartbeat-probe",
+        "payments-prod::ledger-writer"
+      ]
+    },
+    {
+      "step": 19,
+      "charts": [
+        "chart/heartbeat"
+      ],
+      "triggered_by": [
+        "identity::heartbeat-probe"
+      ]
+    }
+  ]
+}
