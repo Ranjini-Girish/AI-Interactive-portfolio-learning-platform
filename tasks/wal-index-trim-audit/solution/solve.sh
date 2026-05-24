@@ -166,11 +166,6 @@ def solve_wal_trim(data_dir: Path, audit_dir: Path) -> None:
     dump_pretty(audit_dir / "summary.json", summary)
 
 
-# ---------------------------------------------------------------------------
-# DNS alias chain solver
-# ---------------------------------------------------------------------------
-
-
 data_dir = Path(os.environ.get("WIT_DATA_DIR", "/app/waltrim"))
 audit_dir = Path(os.environ.get("WIT_AUDIT_DIR", "/app/audit"))
 solve_wal_trim(data_dir, audit_dir)

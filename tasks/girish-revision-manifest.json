@@ -1,0 +1,219 @@
+﻿{
+    "updatedAt":  "2026-05-23",
+    "account":  "J26.0479.adl@airdawglabs.com",
+    "workflow":  "wave1-prep-then-wave2-serial-submit",
+    "tasks":  [
+                  {
+                      "uuid":  "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+                      "slug":  "ansible-dependency-impact-task",
+                      "uploadDir":  "tasks/ansible-dependency-impact-task",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "b0907c07-03af-45c7-8136-028704d18838",
+                      "slug":  "wal-index-trim-audit",
+                      "uploadDir":  "tasks/wal-index-trim-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "e0705c3d-623e-4701-823f-4fd683c8a48a",
+                      "slug":  "rle-bursts-merge-audit",
+                      "uploadDir":  "tasks/old/rle-bursts-merge-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "8d198124-d872-4df6-9ef7-3d03eac93ddd",
+                      "slug":  "ledger-epoch-skew-audit",
+                      "uploadDir":  "tasks/old/ledger-epoch-skew-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
+                      "slug":  "pawn-endgame-table-audit",
+                      "uploadDir":  "tasks/pawn-endgame-table-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+                      "slug":  "trap-grid-chain-audit",
+                      "uploadDir":  "tasks/trap-grid-chain-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+                      "slug":  "slo-burn-window-audit",
+                      "uploadDir":  "tasks/slo-burn-window-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "2fd03871-d392-44a6-b133-00c9bb542cd5",
+                      "slug":  "cdc-lag-compactor-audit",
+                      "uploadDir":  "tasks/old/cdc-lag-compactor-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "5b3b84d0-fea4-48ae-ae03-3e670f3cabec",
+                      "slug":  "sensor-calib-lattice-audit",
+                      "uploadDir":  "tasks/old/sensor-calib-lattice-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "49f2e499-d969-4241-986b-074919b78452",
+                      "slug":  "stokes-diffusion-audit",
+                      "uploadDir":  "tasks/stokes-diffusion-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "a711d7b8-a9a9-4e40-88e9-95d3272ac3e1",
+                      "slug":  "replica-lag-window-audit",
+                      "uploadDir":  "tasks/replica-lag-window-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "2cb6ab3c-8725-4c19-b2da-7d3054c02627",
+                      "slug":  "tls-cert-chain-auditor",
+                      "uploadDir":  "tasks/tls-cert-chain-auditor",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "f4bf1aec-a79d-4681-a053-971e215eea2d",
+                      "slug":  "webhook-retry-ledger-audit",
+                      "uploadDir":  "tasks/old/webhook-retry-ledger-audit",
+                      "status":  "pending"
+                  },
+                  {
+                      "uuid":  "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+                      "slug":  "train-slot-lattice-audit",
+                      "uploadDir":  "tasks/old/train-slot-lattice-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "de430a3a-c0e4-45a5-a9e8-f072d9816e52",
+                      "slug":  "infer-blend-quota-audit",
+                      "uploadDir":  "tasks/old/infer-blend-quota-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "2fdf3090-0206-4a34-9dc2-dce225fd2593",
+                      "slug":  "initiative-clash-audit",
+                      "uploadDir":  "tasks/old/initiative-clash-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "335be3bf-cc8d-4016-8894-5a4b00fc4054",
+                      "slug":  "patch-slot-lattice-audit",
+                      "uploadDir":  "tasks/old/patch-slot-lattice-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "3665a277-0a6b-4ba3-910b-31b8e25af67b",
+                      "slug":  "export-batch-window-audit",
+                      "uploadDir":  "tasks/old/export-batch-window-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "c0c86689-5c55-47c8-a238-7ad18532a5c9",
+                      "slug":  "artifact-promote-lattice-audit",
+                      "uploadDir":  "tasks/old/artifact-promote-lattice-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "1cec7fb5-cbe7-41aa-a633-6a3493b97e4a",
+                      "slug":  "ingest-watermark-skew-audit",
+                      "uploadDir":  "tasks/old/ingest-watermark-skew-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "f6e9d77a-a5fb-478f-b52c-98994b9b50a4",
+                      "slug":  "oidc-key-lifecycle-audit",
+                      "uploadDir":  "tasks/old/oidc-key-lifecycle-audit",
+                      "status":  "pending"
+                  },
+                  {
+                      "uuid":  "5f2d92cc-7a8f-401c-a397-a4a8f47cf026",
+                      "slug":  "tsv-gap-bundle-audit",
+                      "uploadDir":  "tasks/old/tsv-gap-bundle-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "fb9cc5df-5d5d-4fe2-bf89-175a4666085c",
+                      "slug":  "attest-bundle-lattice",
+                      "uploadDir":  "tasks/old/attest-bundle-lattice",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "6040892f-37a1-47b8-8d7a-3ee68455888c",
+                      "slug":  "breaker-ledger-audit",
+                      "uploadDir":  "tasks/old/breaker-ledger-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6",
+                      "slug":  "modreplace-lattice-audit",
+                      "uploadDir":  "tasks/old/modreplace-lattice-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "c6ae9d08-406c-4607-b6dc-0ebc4d6ea170",
+                      "slug":  "go-incident-cascade-auditor",
+                      "uploadDir":  "tasks/old/go-incident-cascade-auditor",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f",
+                      "slug":  "stream-shard-rebalancer",
+                      "uploadDir":  "tasks/old/stream-shard-rebalancer",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "02b7c62d-f1f4-4b8e-903e-a0c065b0a57b",
+                      "slug":  "csp-merge-policy-audit",
+                      "uploadDir":  "tasks/old/csp-merge-policy-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "14f3a711-4561-431b-a2c7-cd9bcb488392",
+                      "slug":  "ml-experiment-ledger-auditor",
+                      "uploadDir":  "tasks/old/ml-experiment-ledger-auditor",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "82b85d32-18cf-4184-b0cd-f0bbae6e465a",
+                      "slug":  "go-module-bump-arbiter",
+                      "uploadDir":  "tasks/old/go-module-bump-arbiter",
+                      "status":  "pending"
+                  },
+                  {
+                      "uuid":  "91c375bf-3ab3-4fae-b647-c57bd0ce1d79",
+                      "slug":  "sim-checkpoint-plan-audit",
+                      "uploadDir":  "tasks/sim-checkpoint-plan-audit",
+                      "status":  "submitted"
+                  },
+                  {
+                      "uuid":  "7870689e-5c8a-4452-bac4-a76c025b44f8",
+                      "slug":  "zone-ingress-matrix-audit",
+                      "uploadDir":  "tasks/zone-ingress-matrix-audit",
+                      "status":  "pending"
+                  },
+                  {
+                      "uuid":  "c752d785-a6a0-41c4-a1db-1955c756016b",
+                      "slug":  "rod-pack-void-audit",
+                      "uploadDir":  "tasks/old/rod-pack-void-audit",
+                      "status":  "pending"
+                  },
+                  {
+                      "uuid":  "943ca427-4fb0-4f13-8a48-6379ac6097ff",
+                      "slug":  "replica-lag-window-audit",
+                      "uploadDir":  "tasks/replica-lag-window-audit",
+                      "status":  "skipped_duplicate",
+                      "note":  "duplicate UUID for same slug already submitted"
+                  },
+                  {
+                      "uuid":  "093b3435-06d7-47d7-b3d0-445f89b8a06a",
+                      "slug":  null,
+                      "uploadDir":  null,
+                      "status":  "blocked",
+                      "note":  "no task name in CSV â€” resolve manually"
+                  }
+              ]
+}

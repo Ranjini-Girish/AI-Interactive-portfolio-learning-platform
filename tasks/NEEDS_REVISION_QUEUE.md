@@ -102,39 +102,39 @@ These are `NEEDS_REVISION` on the platform **and** attributed to **Girish** in C
 
 | Task ID | Task name (tracker/CSV) | Local folder (`tasks/`) | Source |
 |---------|-------------------------|-------------------------|--------|
-| `ea5f4223-d084-436e-9a54-8acb7fa45f3f` | ansible-dependency-impact-task | `ansible-dependency-impact-task` | tracker-p1 |
-| `b0907c07-03af-45c7-8136-028704d18838` | wal-index-trim-audit | `wal-index-trim-audit` | tracker-p1 |
-| `e0705c3d-623e-4701-823f-4fd683c8a48a` | rle-bursts-merge-audit | — | tracker-p1 |
-| `8d198124-d872-4df6-9ef7-3d03eac93ddd` | ledger-epoch-skew-audit | — | tracker-p1 |
+| `ea5f4223-d084-436e-9a54-8acb7fa45f3f` | ansible-dependency-impact-task | `ansible-dependency-impact-task` | tracker-p1 — **resubmitted 2026-05-23** (reviewer: remove runtime pip from solve.sh) |
+| `b0907c07-03af-45c7-8136-028704d18838` | wal-index-trim-audit | `wal-index-trim-audit` | tracker-p1 — **resubmitted 2026-05-23** (CRLF→LF oracle fix) |
+| `e0705c3d-623e-4701-823f-4fd683c8a48a` | rle-bursts-merge-audit | `old/rle-bursts-merge-audit` | tracker-p1 — **resubmitted 2026-05-23** |
+| `8d198124-d872-4df6-9ef7-3d03eac93ddd` | ledger-epoch-skew-audit | `old/ledger-epoch-skew-audit` | tracker-p1 — **resubmitted 2026-05-23** (tmux/asciinema + test.sh trap) |
 | `faf82617-f62d-4b79-acfb-4f4e0aa3bce0` | pawn-endgame-table-audit | `pawn-endgame-table-audit` | tracker-p1 — **resubmitted 2026-05-23** |
 | `d13b444b-40f6-46d9-8632-b89bf88ae7ee` | trap-grid-chain-audit | `trap-grid-chain-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** |
 | `6d4acddc-3202-4b70-9e61-0b6c32e0bfd8` | slo-burn-window-audit | `slo-burn-window-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** |
-| `2fd03871-d392-44a6-b133-00c9bb542cd5` | cdc-lag-compactor-audit | — | tracker-p1 + csv |
-| `5b3b84d0-fea4-48ae-ae03-3e670f3cabec` | sensor-calib-lattice-audit | — | tracker-p1 + csv |
-| `49f2e499-d969-4241-986b-074919b78452` | stokes-diffusion-audit | — | tracker-p1 + csv |
-| `f4bf1aec-a79d-4681-a053-971e215eea2d` | webhook-retry-ledger-audit | — | tracker-p1 + csv |
+| `2fd03871-d392-44a6-b133-00c9bb542cd5` | cdc-lag-compactor-audit | `old/cdc-lag-compactor-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** (offline test.sh + Rust oracle source) |
+| `5b3b84d0-fea4-48ae-ae03-3e670f3cabec` | sensor-calib-lattice-audit | `old/sensor-calib-lattice-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** (tmux/asciinema harness) |
+| `49f2e499-d969-4241-986b-074919b78452` | stokes-diffusion-audit | `stokes-diffusion-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** (CRLF fix + Go cruft removed) |
+| `f4bf1aec-a79d-4681-a053-971e215eea2d` | webhook-retry-ledger-audit | `old/webhook-retry-ledger-audit` | tracker-p1 + csv — **Wave 2 FAIL** (no Revise on 0479 queue) |
 | `a711d7b8-a9a9-4e40-88e9-95d3272ac3e1` | replica-lag-window-audit | `replica-lag-window-audit` | tracker-p1 + csv — **resubmitted 2026-05-23** |
-| `943ca427-4fb0-4f13-8a48-6379ac6097ff` | replica-lag-window-audit | `replica-lag-window-audit` | csv |
-| `880ff0fc-751e-4495-aeb8-77827cee6ce5` | train-slot-lattice-audit | — | tracker-p1 + csv |
-| `de430a3a-c0e4-45a5-a9e8-f072d9816e52` | infer-blend-quota-audit | — | tracker-p1 + csv |
-| `2fdf3090-0206-4a34-9dc2-dce225fd2593` | initiative-clash-audit | — | tracker-p1 + csv |
-| `335be3bf-cc8d-4016-8894-5a4b00fc4054` | patch-slot-lattice-audit | — | tracker-p1 + csv |
-| `3665a277-0a6b-4ba3-910b-31b8e25af67b` | export-batch-window-audit | — | tracker-p1 + csv |
-| `c0c86689-5c55-47c8-a238-7ad18532a5c9` | artifact-promote-lattice-audit | — | tracker-p1 + csv |
-| `1cec7fb5-cbe7-41aa-a633-6a3493b97e4a` | ingest-watermark-skew-audit | — | tracker-p1 + csv |
-| `f6e9d77a-a5fb-478f-b52c-98994b9b50a4` | oidc-key-lifecycle-audit | — | tracker-p1 + csv |
-| `5f2d92cc-7a8f-401c-a397-a4a8f47cf026` | tsv-gap-bundle-audit | — | tracker-p1 + csv |
-| `fb9cc5df-5d5d-4fe2-bf89-175a4666085c` | attest-bundle-lattice | — | tracker-p1 + csv |
-| `6040892f-37a1-47b8-8d7a-3ee68455888c` | breaker-ledger-audit | — | tracker-p1 + csv |
-| `23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6` | modreplace-lattice-audit | — | tracker-p1 + csv |
+| `943ca427-4fb0-4f13-8a48-6379ac6097ff` | replica-lag-window-audit | `replica-lag-window-audit` | csv — **skip duplicate** (same slug as `a711d7b8`) |
+| `880ff0fc-751e-4495-aeb8-77827cee6ce5` | train-slot-lattice-audit | `old/train-slot-lattice-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `de430a3a-c0e4-45a5-a9e8-f072d9816e52` | infer-blend-quota-audit | `old/infer-blend-quota-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `2fdf3090-0206-4a34-9dc2-dce225fd2593` | initiative-clash-audit | `old/initiative-clash-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `335be3bf-cc8d-4016-8894-5a4b00fc4054` | patch-slot-lattice-audit | `old/patch-slot-lattice-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `3665a277-0a6b-4ba3-910b-31b8e25af67b` | export-batch-window-audit | `old/export-batch-window-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `c0c86689-5c55-47c8-a238-7ad18532a5c9` | artifact-promote-lattice-audit | `old/artifact-promote-lattice-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `1cec7fb5-cbe7-41aa-a633-6a3493b97e4a` | ingest-watermark-skew-audit | `old/ingest-watermark-skew-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `f6e9d77a-a5fb-478f-b52c-98994b9b50a4` | oidc-key-lifecycle-audit | `old/oidc-key-lifecycle-audit` | tracker-p1 + csv — **Wave 2 FAIL** (no Revise on 0479 queue) |
+| `5f2d92cc-7a8f-401c-a397-a4a8f47cf026` | tsv-gap-bundle-audit | `old/tsv-gap-bundle-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `fb9cc5df-5d5d-4fe2-bf89-175a4666085c` | attest-bundle-lattice | `old/attest-bundle-lattice` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `6040892f-37a1-47b8-8d7a-3ee68455888c` | breaker-ledger-audit | `old/breaker-ledger-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6` | modreplace-lattice-audit | `old/modreplace-lattice-audit` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
 | `2cb6ab3c-8725-4c19-b2da-7d3054c02627` | tls-cert-chain-auditor | `tls-cert-chain-auditor` | tracker-p1 + csv — **resubmitted 2026-05-23** |
-| `c6ae9d08-406c-4607-b6dc-0ebc4d6ea170` | go-incident-cascade-auditor | — | tracker-p1 + csv |
-| `6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f` | stream-shard-rebalancer | — | tracker-p1 + csv |
-| `02b7c62d-f1f4-4b8e-903e-a0c065b0a57b` | csp-merge-policy-audit | — | csv |
-| `093b3435-06d7-47d7-b3d0-445f89b8a06a` | *(no name in csv)* | — | csv |
-| `14f3a711-4561-431b-a2c7-cd9bcb488392` | ml-experiment-ledger-auditor | — | csv |
-| `82b85d32-18cf-4184-b0cd-f0bbae6e465a` | go-module-bump-arbiter | — | csv |
-| `91c375bf-3ab3-4fae-b647-c57bd0ce1d79` | sim-checkpoint-rollback-planner | `sim-checkpoint-plan-audit` | csv |
+| `c6ae9d08-406c-4607-b6dc-0ebc4d6ea170` | go-incident-cascade-auditor | `old/go-incident-cascade-auditor` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f` | stream-shard-rebalancer | `old/stream-shard-rebalancer` | tracker-p1 + csv — **resubmitted Wave 2 2026-05-23** |
+| `02b7c62d-f1f4-4b8e-903e-a0c065b0a57b` | csp-merge-policy-audit | `old/csp-merge-policy-audit` | csv — **resubmitted Wave 2 2026-05-23** |
+| `093b3435-06d7-47d7-b3d0-445f89b8a06a` | *(no name in csv)* | — | csv — **blocked: resolve slug manually** |
+| `14f3a711-4561-431b-a2c7-cd9bcb488392` | ml-experiment-ledger-auditor | `old/ml-experiment-ledger-auditor` | csv — **resubmitted Wave 2 2026-05-23** |
+| `82b85d32-18cf-4184-b0cd-f0bbae6e465a` | go-module-bump-arbiter | `old/go-module-bump-arbiter` | csv — **Wave 2 FAIL** (no Revise on 0479 queue) |
+| `91c375bf-3ab3-4fae-b647-c57bd0ce1d79` | sim-checkpoint-rollback-planner | `sim-checkpoint-plan-audit` | csv — **resubmitted Wave 2 2026-05-23** |
 
 **Notes**
 
@@ -192,17 +192,25 @@ May still need Snorkel resubmit or platform status lag:
 
 | Task ID | Task name |
 |---------|-----------|
-| `7870689e-5c8a-4452-bac4-a76c025b44f8` | zone-ingress-matrix-audit |
-| `7f690c0e-fa7d-467e-a15a-b51b93a8bbef` | ab-arm-allocation-audit |
-| `470f83f7-2cab-47c4-97b8-2897a83a8aed` | lease-slot-coordinator-audit |
-| `c752d785-a6a0-41c4-a1db-1955c756016b` | rod-pack-void-audit |
+| `7870689e-5c8a-4452-bac4-a76c025b44f8` | zone-ingress-matrix-audit | `zone-ingress-matrix-audit` | **Wave 2 FAIL** — not in platform 66 for 0479; submit manually |
+| `7f690c0e-fa7d-467e-a15a-b51b93a8bbef` | ab-arm-allocation-audit | — | (see earlier session) |
+| `470f83f7-2cab-47c4-97b8-2897a83a8aed` | lease-slot-coordinator-audit | — | (see earlier session) |
+| `c752d785-a6a0-41c4-a1db-1955c756016b` | rod-pack-void-audit | `old/rod-pack-void-audit` | **Wave 2 FAIL** — not in platform 66 for 0479; submit manually |
 
 ---
 
 ## 5. Resubmit checklist (per task)
 
+**Batch (Girish queue):**
+
+1. `python tools/revision_wave_prep.py` — Wave 1 mechanical prep; see `e2e/audit/wave1-prep-latest.json`
+2. Fix any `NEEDS_AGENT` rows (Dockerfile harness, offline `test.sh`, reviewer feedback in `e2e/audit/revision-<uuid>-context.json`)
+3. `powershell -File e2e/scripts/wave2-submit.ps1 -OnlyReady` — Wave 2 serial E2E submits (updates `tasks/girish-revision-manifest.json`)
+
+**Single task:**
+
 1. `python tools/terminus-task-tools/terminus_zip.py preflight tasks/<slug>`
-2. E2E: `SNORKEL_TASK_DIR=tasks/<slug>` + `SNORKEL_REVISION_TASK_ID=<uuid>` → `npm run flow:revision:submit:headed` (always Submit unless `SNORKEL_DRY_RUN=1`)
+2. E2E: `SNORKEL_REVISION_TASK_ID=<uuid>` + `SNORKEL_UPLOAD_TASK_DIR=tasks/<slug>` → `npm run flow:revision:submit:headed`
 3. Cycle 2: `regenerate_rubric` OFF, `Send to reviewer` ON (E2E defaults)
 
 ---
@@ -215,7 +223,11 @@ May still need Snorkel resubmit or platform status lag:
 | `tools/_girish_revision_match.py` | Platform 66 ∩ CSV Girish |
 | `tools/_girish_union.py` | Platform 66 ∩ (tracker p1 ∪ CSV) Girish |
 | `tools/_tracker_page1.json` | Snapshot of Cognyzer API page 1 |
+| `tools/revision_wave_prep.py` | Wave 1 batch prep (LF, leakage, preflight) |
+| `e2e/scripts/wave2-submit.ps1` | Wave 2 serial revision submits from manifest |
+| `tasks/girish-revision-manifest.json` | UUID → slug → uploadDir → status tracker |
 | `e2e/.env.example` | `SNORKEL_TRAINER_NAME=Girish` for metadata rows |
+| `tb2-build-completion-timeout.mdc` | 7200s difficulty-check timeout; slim Docker bases |
 | [`JAVA_PORT_SUBMISSION_READY.md`](JAVA_PORT_SUBMISSION_READY.md) | Java-port batch: 19 zips + rubrics (2026-05-23) |
 | `tools/verify_java_batch_submission.py` | Re-run preflight on all 19 Java-port zips |
 | `tools/docker_verify_java_batch.py` | Docker build + oracle + pytest on all 19 |

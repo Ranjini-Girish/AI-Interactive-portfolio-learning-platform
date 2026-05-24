@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for ansible-dependency-impact-hard."""
 
 from __future__ import annotations

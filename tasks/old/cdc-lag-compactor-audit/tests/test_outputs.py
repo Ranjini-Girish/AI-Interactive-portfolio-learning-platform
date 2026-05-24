@@ -9,7 +9,7 @@ from pathlib import Path
 
 DATA_DIR = Path(os.environ.get("CDC_DATA_DIR", "/app/cdc"))
 AUDIT_DIR = Path(os.environ.get("CDC_AUDIT_DIR", "/app/audit"))
-EXPECTED_INPUT_HASH = "aec5b37e7bab93772c56b5e0ab7c0f9b0245e1ed6df78e1a15055c0f57e58807"
+EXPECTED_INPUT_HASH = "44ba20c7063306177b08f2b1003770e546af756e218967e68bf2aba6462cff86"
 EXPECTED_FIELD_HASHES = {'partition_lag.json': '81307cd73c8b160f99493c21c995b9dbf37144340a16bd8c19fd042ae7437869', 'compaction_plan.json': '4a0225230caab86bc024cd3a9d18274a93393411d139318c469148ad8c2006ac', 'replay_risk.json': '981286747db577aedfc80a8843448643aee0473606569900fc7f3084843012d0', 'quarantine_graph.json': '42f08eebf455287295266ca4a18d01cb5754b4544232e5d77d9d9ea2f345b408', 'summary.json': '2a556e11fd3edade61cf948f98dfc4f6a01810fbb418ffd784b99f4604eaba94'}
 REPORTS = [
     "partition_lag.json",

@@ -51,6 +51,20 @@ Must pass cleanly. If `snorkel/dev_prose` fails, the instruction.md reads as LLM
 
 When rewriting, feed the draft through Opus / claude-3.5-sonnet (NOT the model that wrote it) with: *"Rewrite this so it reads like a senior systems engineer wrote it directly. Cut em-dashes, buzzwords, polite filler, triple-bullet symmetry, generic headers. Keep every technical detail. Use plain ASCII quotes. Output the rewrite, nothing else."*
 
+### Stage 1.5 — Docker build timing (7200s timeout gate)
+
+Before model trials, confirm the image is slim enough for platform difficulty check:
+
+```bash
+rg -n '^FROM (golang|rust|gcc):' environment/Dockerfile \
+  && echo "WARN: full toolchain image — prefer debian:bookworm-slim; see tb2-build-completion-timeout.mdc"
+time docker build -t tb2-smoke environment/
+docker run --rm tb2-smoke /bin/bash -lc \
+  'command -v tmux && command -v asciinema && python3 -m pytest --version && echo OK'
+```
+
+If `docker build` is very slow locally, or difficulty check returns **Build Completion Timeout** with **no artifact**, fix the Dockerfile first — do not assume the oracle is wrong. Generic **"Oracle solution failed"** on timeout is a mislead.
+
 ### Stage 2 — full LLMaJ (v2, 11 criteria)
 
 ```bash

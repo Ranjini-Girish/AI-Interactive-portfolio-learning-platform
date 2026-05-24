@@ -146,6 +146,8 @@ Run in this order, fix and re-run on any failure, never skip ahead:
 
 If oracle fails, the task is broken; do NOT proceed to QC or model runs.
 
+**Exception — Build Completion Timeout (7200s):** if difficulty check shows **no artifact** and **Build Completion Timeout: Timed out after 7200s**, treat as **Dockerfile / image-size / pipeline hang**, not oracle logic, until local `docker build` + oracle + pytest are fast and green. See `tb2-build-completion-timeout.mdc`.
+
 ## 9. Common solvability blockers (debug checklist)
 
 When agents consistently reach 12–14 of N tests and stall on the same one, the instruction is usually missing a *unit-binding predicate* on a per-record output. Common patterns to check:
@@ -637,6 +639,31 @@ If both binaries resolve on PATH and the script reaches `OK`, terminus-2 will be
 
 Full pattern (apt pin guidance, layer placement, smoke-check shape) lives in `tb2-harness-runtime-packages.mdc`.
 
+## 24. Build Completion Timeout (7200s) on difficulty check / autoeval
+
+The platform orchestrator allocates **7200s** for the full build + static checks + oracle + agent trials. When this budget is exceeded:
+
+- The job often **never completes** — difficulty-check artifact may be **"No file available"**.
+- The UI may show generic **"Oracle solution failed"** even when `harbor run --agent oracle` passes locally.
+
+**Do not rewrite oracle logic first.** Apply the diagnostic from `tb2-build-completion-timeout.mdc`:
+
+| Signal | Action |
+|--------|--------|
+| 7200s timeout + no artifact | Slim Dockerfile base (`debian:bookworm-slim` / `python:3.13-slim-bookworm`); avoid `golang:*-bookworm`, `rust:*-bookworm`, `gcc:*-bookworm`; timed local `docker build` |
+| Oracle fails with traceback + artifact | Fix oracle / solvability |
+| Static check ❌ before trials | Fix ruff, test.sh suffix, leakage, file count, etc. |
+
+```bash
+# Quick local gate before re-submitting difficulty check
+rg -n '^FROM (golang|rust|gcc):' environment/Dockerfile \
+  && echo "WARN: oversized base — migrate to bookworm-slim"
+time docker build -t tb2-smoke environment/
+harbor run --agent oracle -p .
+```
+
+Legacy tasks under `tasks/old/` that still `FROM golang:1.23-bookworm` or `rust:*-bookworm` should be migrated on the next revision resubmit, not re-uploaded unchanged.
+
 ## Related focused rules
 
 This master checklist composes with the focused rules:
@@ -657,6 +684,7 @@ This master checklist composes with the focused rules:
 - `tb2-schema-constraint-enforcement.mdc` — every `environment/schemas/*.schema.json` constraint must be enforced by the oracle AND pinned by a malformed-input test
 - `tb2-verifier-crash-safety.mdc` — full `tests/test.sh` shape behind §11 (Doc-06)
 - `tb2-harness-runtime-packages.mdc` — `tmux` + `asciinema` are required apt installs so the terminus-2 harness can start the agent session (matches §23)
+- `tb2-build-completion-timeout.mdc` — 7200s difficulty-check timeout, oversized base images, misdiagnosed "Oracle solution failed" (matches §24)
 - `tb2-prelaunch-checklist.mdc` — Stage-by-stage local gating before submit
 
 ## Origin
@@ -672,3 +700,4 @@ Distilled from recurring manual-reviewer feedback patterns:
 - §21 (malformed-test parity) — flagged on `cpp-lease-fencing-replay-medium` where 11 of 22 `test_binary_rejects_*` tests stopped at `assert proc.returncode != 0` while the other 11 also called `_assert_no_valid_outputs(tmp_path)`. The asymmetry was a reviewer-readability flag (could not tell whether the omission was intentional) AND a coverage gap (a binary that exits non-zero AFTER writing all four output files would slip through the weak tests). Fix appended the helper call to all 11 weaker tests and added the missing `test_binary_rejects_initial_fencing_token_zero` to close an unrelated prose-only constraint gap (`instruction.md` mandated "positive `fencing_token`", schema and tests never pinned it; covered by `tb2-schema-constraint-enforcement.mdc`'s prose-vs-test variant).
 - §22 (languages list scope) — clarified after reviewers asked to add `python` to `[metadata.languages]` because `tests/test_outputs.py` is Python. Even when Python is preinstalled for the offline verifier, the language list describes the agent-authored stack only. Keep C++ replay tasks at `languages = ["c++", "bash"]` unless the agent truly authors Python.
 - §23 (harness packages `tmux` + `asciinema`) — surfaced on `cpp-netflow-aggregator-replay-medium` and `cpp-sticky-session-router-replay-medium` (Snorkel submission), both of which shipped bookworm-slim Dockerfiles without the harness packages. Raj's Slack thread (2026-05-19) reported "100% of runs fail before any meaningful evaluation can occur" until Pragnasya pointed at the missing apt entries. Fix added `asciinema` and `tmux` to the existing apt install line in both Dockerfiles; local oracle re-verification on the netflow task subsequently passed at `reward = 1.000` (1/1 trial, 0 errors, image rebuild + verifier run in ~4:52 on a cold apt cache). The lesson generalises: the harness packages are a non-negotiable image-build requirement for every TB-2.0 task and the failure mode ("no trial output, no reward row, no useful logs") is opaque enough that authors will not figure it out from the harbor output alone.
+- §24 (Build Completion Timeout 7200s) — May 2026 platform guidance: full `golang:*-bookworm` / `gcc:*-bookworm` / `rust:*-bookworm` images (~1GB+) exceed the orchestrator's 2-hour build+difficulty-check budget. Symptom: **Build Completion Timeout** with **no difficulty-check artifact** and generic **"Oracle solution failed"** despite a locally green oracle. Fix: migrate to `debian:bookworm-slim` + apt toolchain or `python:3.13-slim-bookworm`; verify with timed local `docker build` before re-submit.

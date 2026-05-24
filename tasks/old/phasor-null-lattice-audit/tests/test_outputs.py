@@ -20,7 +20,7 @@ OUTPUT_FILES = (
 
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "e2ee08707dcf55173837923ef93bb65f1c6e15bda5144ffc911fed97a66275ae",
+    "SPEC.md": "e3468ac0f6b3797f6c02ab201d1faedc26b80adf03897d076d18c45bb4e45827",
     "anchors/a.json": "184744d3329ebb67edc93c26f8c74b4639f1e9ff253378f696259aa90824bb01",
     "anchors/b.json": "15ba205a3e43b19fc6a15189a88f6cae1ca0288971c76c12030cfdd967f40a25",
     "ancillary/meta.json": "e1fb2c2832920c24ba2f6e135b4a090282a7905190df1b8ff5cb6c26c51dfa2b",

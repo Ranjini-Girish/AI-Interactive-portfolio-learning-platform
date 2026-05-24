@@ -40,7 +40,7 @@ Items that are suppressed or whose lineage is quarantined are excluded from phas
 
 ## Outputs under `/app/audit/`
 
-Write exactly three files: `bin_graph.json`, `null_manifest.json`, `summary.json`. Each file is a single JSON object, ends with one newline, and uses canonical serialization: recursively sorted object keys, two-byte comma plus colon separators (no extra spaces), numbers rounded with `round` to six fractional digits, `-0` must never appear (use `0`), arrays preserve the order mandated below (arrays are not sorted).
+Write exactly three files: `bin_graph.json`, `null_manifest.json`, `summary.json`. Each file is a single JSON object, ends with one newline, and uses canonical serialization: recursively sorted object keys, two-byte comma plus colon separators (no extra spaces), numbers rounded with `round` to six fractional digits, `-0` must never appear (use `0`), arrays preserve the order mandated below (arrays are not sorted). Any numeric field whose value is exactly zero after that rounding—including every `phasor.re`, `phasor.im`, and `rms_mag` that evaluates to zero—must be encoded as the JSON integer token `0`, never `0.0` or `-0`.
 
 ### `bin_graph.json`
 
@@ -55,8 +55,8 @@ Key `components`: array of one object per connected bin component, sorted by asc
 - `root_bin`: representative described above.
 - `contributors`: sorted ids of items in those bins that are neither suppressed nor quarantined by lineage.
 - `suppressed_ids`: sorted ids of suppressed items whose normalized bin lies in the component (may be empty).
-- `phasor`: object with keys `im` then `re` in that key order each rounded as above. If there are no contributors, both are `0`.
-- `rms_mag`: `hypot(re, im)` rounded; `0` when vacant.
+- `phasor`: object with keys `im` then `re` in that key order. Sum each contributor phasor in full floating-point precision without per-item rounding, then round the summed `re` and summed `im` independently to six fractional digits using the global rounding rule above. If there are no contributors, both are `0` (integer token in canonical JSON).
+- `rms_mag`: when there are zero contributors, `0` (integer token). Otherwise compute `hypot(re, im)` using the **already-rounded** `phasor.re` and `phasor.im` values from the row above—not the pre-rounding sums—then round that magnitude to six fractional digits. Compare this rounded `rms_mag` to `deep_null_lt` and `soft_null_lt` when assigning `class`.
 - `class`: `vacant` when there are zero contributors. Otherwise compare `rms_mag` to thresholds: `deep_null` when `rms_mag < deep_null_lt`, else `soft_null` when `rms_mag < soft_null_lt`, else `energized`.
 
 ### `summary.json`

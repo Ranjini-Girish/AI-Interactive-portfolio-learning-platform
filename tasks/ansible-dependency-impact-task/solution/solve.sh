@@ -3,8 +3,6 @@ set -euo pipefail
 
 mkdir -p /app/output
 
-pip3 install --no-cache-dir --quiet "PyYAML==6.0.1"
-
 python3 - <<'PY'
 from __future__ import annotations
 

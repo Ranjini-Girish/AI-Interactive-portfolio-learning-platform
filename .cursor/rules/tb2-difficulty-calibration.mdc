@@ -20,6 +20,8 @@ Example: if Opus gets `5/5` and GPT gets `1/5`, the best-model hard condition fa
 
 A miscalibrated label gets the task bounced back independently of the empirical band check (`tb2-task-rejection-signals.mdc` §7). Calibration goes wrong in both directions: a task can feel medium on paper but be hard, or it can feel medium on paper but be trivial under frontier agents.
 
+**Do not confuse difficulty-check timeout with triviality or oracle failure.** A **7200s Build Completion Timeout** with no difficulty artifact means the build pipeline never finished — usually an oversized Docker base (`golang:*-bookworm`, `rust:*-bookworm`, `gcc:*-bookworm`) or a static-check hang. Fix the Dockerfile (`tb2-build-completion-timeout.mdc`) before re-running difficulty check or hardening task logic.
+
 ## Hard markers (any one of these bumps a task to hard)
 
 - **Full implementation from scratch** of a non-trivial system: matching engine, link resolver, BGP best-path replay, replay-driven state machine, RFC implementation, custom VM, allocator.

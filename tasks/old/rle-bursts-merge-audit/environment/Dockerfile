@@ -10,7 +10,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && python -m pip install --no-cache-dir \
         pytest==8.4.1 \
-        pytest-json-ctrf==0.3.5
+        pytest-json-ctrf==0.3.5 \
+    && ln -sf /usr/local/bin/python3 /usr/local/bin/python
 
 COPY rbm_lat/ /app/rbm_lat/
 

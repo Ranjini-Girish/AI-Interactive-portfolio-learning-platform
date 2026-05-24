@@ -107,9 +107,28 @@ export async function runRevisionFlow(
     }
 
     if (!revisionContext) {
-      audit?.step('extract_revision_context', 'Reading reviewer/autoeval feedback from page');
+      audit?.step('extract_revision_context', 'Expanding feedback panels and reading portal metadata');
       revisionContext = await extractRevisionContext(page, taskId);
+      audit?.step('extract_revision_context_done', 'Revision feedback captured', {
+        expandCount: revisionContext.feedbackExpandCount,
+        reasons: revisionContext.revisionReasons,
+        hasAgentReview: Boolean(revisionContext.agentReviewSummary),
+        hasTestQuality: Boolean(revisionContext.testQualitySummary),
+      });
       await captureDemoStep(page, 'revision-context-extracted');
+    }
+
+    if (revisionContext && !revisionContextPath) {
+      const uploadSlug =
+        process.env.SNORKEL_UPLOAD_TASK_DIR
+          ? pathBasename(process.env.SNORKEL_UPLOAD_TASK_DIR)
+          : undefined;
+      revisionContextPath = saveRevisionContext(revisionContext, uploadSlug, undefined);
+      audit?.step('revision_context_saved', 'Wrote revision-context.json', {
+        path: revisionContextPath,
+        reasons: revisionContext.revisionReasons,
+        platformAttachedZip: revisionContext.platformAttachedZip,
+      });
     }
 
     let zipPath = options.zipPath;
@@ -127,19 +146,9 @@ export async function runRevisionFlow(
       audit?.step('swap_zip_selected', 'Replacement zip resolved', { zipPath });
     }
 
-    if (revisionContext && !revisionContextPath) {
-      const uploadSlug = zipPath
-        ? pathBasename(zipPath).replace(/\.zip$/i, '')
-        : process.env.SNORKEL_UPLOAD_TASK_DIR
-          ? pathBasename(process.env.SNORKEL_UPLOAD_TASK_DIR)
-          : undefined;
-      revisionContextPath = saveRevisionContext(revisionContext, uploadSlug, zipPath);
-      audit?.step('revision_context_saved', 'Wrote revision-context.json', {
-        path: revisionContextPath,
-        reasons: revisionContext.revisionReasons,
-        platformAttachedZip: revisionContext.platformAttachedZip,
-        swapZip: zipPath,
-      });
+    if (revisionContext && revisionContextPath && zipPath) {
+      const uploadSlug = pathBasename(zipPath).replace(/\.zip$/i, '');
+      saveRevisionContext(revisionContext, uploadSlug, zipPath);
     }
 
     if (options.uploadZip !== false && zipPath) {

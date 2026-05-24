@@ -14,6 +14,7 @@ CI now expects task images to be reproducible, cacheable, lazy-pull friendly, au
 Hard requirements:
 
 - Every `FROM` line must be pinned by digest: `FROM python:3.13-slim-bookworm@sha256:...`. Floating tags without `@sha256` fail CI.
+- **Avoid full toolchain images as the agent `FROM`** (`golang:*-bookworm`, `rust:*-bookworm`, `gcc:*-bookworm`, ~1GB+). They frequently exceed the platform's **7200s Build Completion Timeout** on difficulty check; the UI may show "Oracle solution failed" with no artifact even when the oracle is fine. Prefer `debian:bookworm-slim@sha256:…` + apt toolchain for C/Go, `python:3.13-slim-bookworm@sha256:…` for Python tasks, multi-stage slim runtime for Rust. See `tb2-build-completion-timeout.mdc`.
 - Prefer sanctioned Terminal-Bench base images when available. Custom base images should be deliberate and flagged before review.
 - Pin dependencies with lockfiles or exact versions. Downloaded binaries must be version-pinned and checksum-verified.
 - Put layers from least volatile to most volatile: base OS packages, runtime tooling, manifests/locks, dependency install, then task source/assets.
@@ -27,5 +28,6 @@ Hard requirements:
 - Store source as normal files, not Dockerfile heredocs or opaque archives. If an archive is needed, extract it at build time so files are individually visible.
 - Do not recursively `chmod -R` or `chown -R` the app tree. Use `COPY --chmod=` or `COPY --chown=` only where needed.
 - Images must not contain secrets, `.env`, SSH keys, local caches, unused build outputs, or large irrelevant datasets.
+- **Pre-submit timing check:** run `time docker build -t tb2-smoke environment/`. If cold build is slow locally (large pull, many apt layers on a full bookworm toolchain image), expect **7200s timeout** on platform difficulty check — slim the base before re-submitting.
 
 Add OCI labels when publishing images if the submission workflow supports them: source, revision, created, version, and license.

@@ -15,6 +15,8 @@ RUN python3 -m pip install --no-cache-dir --break-system-packages \
         pytest==8.4.1 \
         pytest-json-ctrf==0.3.5
 
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+
 COPY waltrim/ /app/waltrim/
 
 RUN mkdir -p /app/audit

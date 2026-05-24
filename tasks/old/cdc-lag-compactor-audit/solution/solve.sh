@@ -9,6 +9,8 @@ trap 'rm -rf "$TMP_DIR"' EXIT
 export PATH="/usr/local/cargo/bin:$PATH"
 
 cat > "$TMP_DIR/cdc_audit.rs" <<'RUST'
+// CDC lag compactor audit reference implementation.
+// Reads TSV fixtures under CDC_DATA_DIR and writes five canonical JSON reports.
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet, VecDeque};
 use std::env;
 use std::fs;
@@ -159,6 +161,8 @@ fn group_json(g:&GroupRow)->String{ format!("{{\"action\": {}, \"bytes\": {}, \"
 fn risk_json(r:&RiskRow)->String{ format!("{{\"reasons\": {}, \"risk_score\": {}, \"status\": {}, \"stream\": {}, \"upstream_quarantine_count\": {}}}", arr_str(&r.reasons),r.risk_score,esc(&r.status),esc(&r.stream),r.upstream_q) }
 RUST
 
-mkdir -p "$(dirname "$BIN_PATH")"
-rustc --edition=2021 "$TMP_DIR/cdc_audit.rs" -O -o "$BIN_PATH"
+AUDITOR_SRC="/app/auditor/src/main.rs"
+mkdir -p "$(dirname "$BIN_PATH")" "$(dirname "$AUDITOR_SRC")"
+cp "$TMP_DIR/cdc_audit.rs" "$AUDITOR_SRC"
+rustc --edition=2021 "$AUDITOR_SRC" -O -o "$BIN_PATH"
 "$BIN_PATH"
