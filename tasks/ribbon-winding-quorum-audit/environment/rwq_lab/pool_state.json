@@ -1,11 +1,10 @@
 {
-  "votes": {
-    "p_e0": 6,
-    "p_e1": 12,
-    "p_w0": 11,
-    "p_w1": 4,
-    "p_n0": 9,
-    "p_n1": 3
+  "tier_cap": {
+    "alpha": 10,
+    "beta": 30
   },
-  "current_day": 2
+  "tier_floor": {
+    "alpha": 10,
+    "beta": 3
+  }
 }

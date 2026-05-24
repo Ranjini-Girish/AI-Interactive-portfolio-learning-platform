@@ -2,16 +2,16 @@ version = "2.0"
 
 [metadata]
 author_name = "anonymous"
-author_email = "anonymous@example.com"
+author_email = "anonymous"
 difficulty = "hard"
 category = "system-administration"
 subcategories = []
 number_of_milestones = 0
 codebase_size = "small"
-languages = ["python", "bash"]
-tags = ["slo-burn", "error-budget", "blackout-window", "freeze-tag", "json-audit"]
-expert_time_estimate_min = 80
-junior_time_estimate_min = 200
+languages = ["go", "bash"]
+tags = ["deterministic-json", "error-budget", "incident-triage", "reliability", "slo-audit"]
+expert_time_estimate_min = 180
+junior_time_estimate_min = 420
 
 [verifier]
 timeout_sec = 600.0
@@ -20,9 +20,10 @@ timeout_sec = 600.0
 timeout_sec = 1500.0
 
 [environment]
-allow_internet = false
-workdir = "/app"
-build_timeout_sec = 900.0
+build_timeout_sec = 600.0
 cpus = 2
-memory_mb = 4096
+memory_mb = 3072
 storage_mb = 10240
+gpu_required = false
+workdir = "/app"
+allow_internet = false

@@ -141,7 +141,7 @@ For an intermediate or root with at least one accepted `ca_compromise` event:
 - Every domain whose chain walk visits that serial (anywhere in `chain`, leaf to root inclusive) gets verdict `"compromised"` overriding any preliminary verdict.
 - Every other domain whose chain shares **at least one** intermediate (not a root, not the leaf) with a compromised chain gets verdict `"tainted"` overriding any preliminary verdict that is not already `"compromised"`. Tainting does not propagate transitively beyond one shared intermediate.
 
-After the compromise cascade, an accepted `audit_review` event with the largest `day` for a given domain (ties on `day` broken by the largest array index in `incident_log.events`) sets the verdict to `target_verdict`, **unless** any of the following hold:
+After the compromise cascade, an accepted `audit_review` event with the largest `day` for a given domain (ties broken by largest list index) sets the verdict to `target_verdict`, **unless** any of the following hold:
 
 - the domain is currently `"compromised"` (compromise overrides audit_review unconditionally);
 - the domain's preliminary verdict was `"revoked"` (including revocation discovered via intermediate OCSP).

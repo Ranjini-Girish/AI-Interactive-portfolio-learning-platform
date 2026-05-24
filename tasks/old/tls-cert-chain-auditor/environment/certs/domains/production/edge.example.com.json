@@ -1,6 +1,0 @@
-{
-  "domain": "edge.example.com",
-  "expected_san": ["edge.example.com"],
-  "leaf_serial": "leaf-edge-v1",
-  "tier": "production"
-}

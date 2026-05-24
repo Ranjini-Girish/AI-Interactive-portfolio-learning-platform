@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import {
   assertRevisionWorkspace,
   resolveRevisionSubmit,
@@ -78,9 +78,30 @@ test.describe('Snorkel Experts — Revision flow', () => {
   test('revision submit: swap zip, extract context, platform Submit', async ({ page }) => {
     test.setTimeout(300_000);
     test.skip(
-      process.env.SNORKEL_DRY_RUN === '1',
-      'Set SNORKEL_DRY_RUN=1 only to rehearse without Submit',
+      process.env.SNORKEL_DRY_RUN === '1' || process.env.SNORKEL_REVISION_EXTRACT_ONLY === '1',
+      'Use revision extract only test for dry/extract-only runs',
     );
+    await runRevisionSubmitTest(page);
+  });
+
+  test('revision extract only: API context + agent-fix-brief, no upload', async ({ page }) => {
+    test.setTimeout(180_000);
+    test.skip(process.env.SNORKEL_REVISION_EXTRACT_ONLY !== '1', 'Set SNORKEL_REVISION_EXTRACT_ONLY=1');
+    const audit = createRevisionAuditLog(undefined);
+    audit.start();
+    const result = await runRevisionFlow(page, {
+      taskId: resolveRevisionTaskId(),
+      uploadZip: false,
+      submitToPlatform: false,
+      audit,
+    });
+    expect(result.submitted).toBe(false);
+    expect(result.revisionContextPath).toBeTruthy();
+  });
+
+  test('revision upload only: build zip and submit (skip extract)', async ({ page }) => {
+    test.setTimeout(300_000);
+    test.skip(process.env.SNORKEL_REVISION_UPLOAD_ONLY !== '1', 'Set SNORKEL_REVISION_UPLOAD_ONLY=1');
     await runRevisionSubmitTest(page);
   });
 

@@ -1,6 +1,0 @@
-{
-  "domain": "ops.example.io",
-  "expected_san": ["ops.example.io"],
-  "leaf_serial": "leaf-ops-v1",
-  "tier": "production"
-}

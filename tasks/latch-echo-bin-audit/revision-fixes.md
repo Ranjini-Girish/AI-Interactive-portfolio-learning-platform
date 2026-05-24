@@ -1,45 +1,46 @@
 # Revision fixes — 9c8fef7e-cac5-4076-a8b8-c5e1fe8c2235
 
-## Platform feedback (likely)
+## Human reviewer blocker
 
-- **Build Completion Timeout (7200s)** — full `golang:1.23-bookworm` base (~1GB+) can exceed CodeBuild budget; UI may misreport as **Oracle solution failed** with no difficulty-check artifact.
+- **reviewer_hash_lock_fixture_gap** — verifier relied only on bundled input/output hash locks; a solution could pass by memorizing this dataset without implementing the latch pipeline generally.
 
 ## Wave 2 hardening (2026-05-24)
 
-- [x] **Dockerfile slim base** — replaced `golang:1.23-bookworm` with `debian:bookworm-slim@sha256:f9c6a2…` + apt `golang-go`, `tmux`, `asciinema`, `python3`, pinned `pytest==8.4.1` / `pytest-json-ctrf==0.3.5`; added `python` → `python3` symlink.
+- [x] **Dockerfile slim base** — `debian:bookworm-slim@sha256:f9c6a2…` + apt `golang-go`, `tmux`, `asciinema`, `python3`, pinned `pytest==8.4.1` / `pytest-json-ctrf==0.3.5`; `python` → `python3` symlink.
 - [x] **Go module pin** — `solution/go.mod` `go 1.19` to match bookworm `golang-go` with `GOTOOLCHAIN=local`.
 - [x] **Oracle build path** — removed stale `PATH=/usr/local/go/bin` from `solution/solve.sh` (apt `go` only).
-- [x] **Scaffold cleanup** — removed `# scaffold-status: oracle-pending` from `tests/test_outputs.py`.
-- [x] **Offline verifier** — `[environment].allow_internet = false` unchanged; `tests/test.sh` retains crash-safe trap + canonical reward block (no runtime installs).
+- [x] **Offline verifier** — `[environment].allow_internet = false`; `tests/test.sh` retains crash-safe trap + canonical reward block (no runtime installs). **pytest stays in Dockerfile** per May 2026 offline-verifier requirement (reviewer note acknowledged; not moved to runtime install).
 - [x] **Leakage grep** — clean on `instruction.md`, `tests/test_outputs.py`, `environment/leb_lab/SPEC.md`, `rubrics.txt`.
+
+## Wave 3 — alternate fixture (2026-05-24)
+
+- [x] **`TestAlternateGeneratedFixture`** — writes a synthetic one-sample lab (mask + latch-echo + echo-max) under `tmp_path`, reruns the agent/oracle binary with `LEB_DATA_DIR` / `LEB_AUDIT_DIR`, and compares `latch_bins.json` + `summary.json` to an in-test `_compute_reference()` re-derivation from SPEC.md (not copied from Go oracle).
+- [x] **Primary hash locks retained** — `EXPECTED_INPUT_HASHES`, `EXPECTED_OUTPUT_CANONICAL_HASHES`, and `EXPECTED_FIELD_HASHES` unchanged; no input fixture edits required.
 
 ## Verification
 
 | Gate | Result |
 |---|---|
 | `terminus_zip.py preflight` | **PASS** (ruff, leakage, env 22 files / `small`, workdir + allow_internet, test.sh, tmux/asciinema) |
-| `terminus_zip.py verify-task` | **PASS** |
-| Docker oracle + pytest | **Not run** (fix-only pass; slim image build not timed locally) |
-| Platform E2E submit | **Skipped** per revision scope |
+| Docker oracle (`bash /solution/solve.sh`) + pytest | **8/8 passed** on slim image `leb-preflight` (includes alternate generated fixture) |
+| `terminus_zip.py build` | **PASS** |
 
 ## Resubmit artifact
 
 | Field | Value |
 |---|---|
 | Path | `tasks/latch-echo-bin-audit.zip` |
-| Bytes | 13,975 |
-| SHA-256 | `8753eefac24285abac76f82e695a1f5fa3fd2509378255a4a8d7accb05511cff` |
+| Entries | 31 |
+| Bytes | 18,063 |
+| SHA-256 | `d4d7b1db967b9e7ae7e578b42fd1e4526c266535b65e3e29ad57a07240f669fa` |
 
 ## Files changed
 
 | File | Change |
 |---|---|
-| `environment/Dockerfile` | Slim debian base + apt toolchain / harness / verifier deps |
-| `solution/go.mod` | `go 1.23` → `go 1.19` |
-| `solution/solve.sh` | Drop `/usr/local/go/bin` PATH override |
-| `tests/test_outputs.py` | Remove scaffold-status comment |
-| `tests/test.sh` | Comment header aligned with offline-verifier pattern |
+| `tests/test_outputs.py` | Added `_compute_reference()`, `_write_generated_lab()`, `TestAlternateGeneratedFixture`; binary discovery via `/app/_leb_build/leb` and sibling paths |
+| `revision-fixes.md` | This note |
 
 ## Blockers
 
-None for static preflight / zip build. **Recommended before platform resubmit:** timed local `docker build` + oracle pytest on slim image to confirm Go build succeeds under apt `golang-go`.
+None for static preflight / zip build / local oracle pytest.

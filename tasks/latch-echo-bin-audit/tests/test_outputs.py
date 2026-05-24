@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -12,7 +13,14 @@ import pytest
 DATA_DIR = Path(os.environ.get("LEB_DATA_DIR", "/app/leb_lab"))
 AUDIT_DIR = Path(os.environ.get("LEB_AUDIT_DIR", "/app/audit"))
 
-OUTPUT_FILES = ['latch_bins.json', 'summary.json']
+OUTPUT_FILES = ["latch_bins.json", "summary.json"]
+
+_BINARY_CANDIDATES = (
+    Path("/app/_leb_build/leb"),
+    Path("/app/bin/leb"),
+    Path("/app/leb"),
+    Path("/app/build/leb"),
+)
 
 
 EXPECTED_INPUT_HASHES = {
@@ -67,6 +75,162 @@ def _canonical(value: object) -> str:
 def _load_json(path: Path) -> object:
     """Parse UTF-8 JSON from ``path``."""
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _json_text(obj: object) -> str:
+    """Write canonical two-space JSON with one trailing newline."""
+    return json.dumps(obj, indent=2, sort_keys=True, ensure_ascii=True, separators=(",", ": ")) + "\n"
+
+
+def _mod_nonneg(x: int, m: int) -> int:
+    """Non-negative remainder matching the specification."""
+    r = x % m
+    return r + m if r < 0 else r
+
+
+def _find_leb_binary() -> Path:
+    """Locate the agent-built latch auditor executable."""
+    for candidate in _BINARY_CANDIDATES:
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return candidate
+    names = ", ".join(str(p) for p in _BINARY_CANDIDATES)
+    raise AssertionError(f"no executable latch auditor found (checked {names})")
+
+
+def _write_generated_lab(root: Path) -> None:
+    """Materialize a minimal lab tree not present in the shipped bundle."""
+    (root / "anchors").mkdir(parents=True)
+    (root / "samples").mkdir(parents=True)
+    (root / "policy.json").write_text(
+        _json_text(
+            {
+                "bin_stride": 4,
+                "blend_mod": 7,
+                "echo_max": True,
+                "latch_echo": True,
+                "latch_mod": 2,
+                "pair_span": 1,
+                "skew_mix": 2,
+            }
+        ),
+        encoding="utf-8",
+    )
+    (root / "pool_state.json").write_text(
+        _json_text({"ledger_serial": 5, "quorum_ring": 3}),
+        encoding="utf-8",
+    )
+    (root / "anchors/east.json").write_text(_json_text({"lane_add": 1}), encoding="utf-8")
+    (root / "anchors/west.json").write_text(_json_text({"lane_add": 2}), encoding="utf-8")
+    (root / "incident_log.json").write_text(
+        _json_text({"masks": [{"sample_id": "alt_a", "zero_slots": [1]}]}),
+        encoding="utf-8",
+    )
+    (root / "samples/sample_00.json").write_text(
+        _json_text(
+            {
+                "latch": -1,
+                "readings": [10, 20, 30],
+                "sample_id": "alt_a",
+                "trace_tag": "gen",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+def _compute_reference(data_dir: Path) -> dict[str, object]:
+    """Independent re-derivation of audit outputs from SPEC.md rules."""
+    policy = _load_json(data_dir / "policy.json")
+    pool = _load_json(data_dir / "pool_state.json")
+    east = _load_json(data_dir / "anchors/east.json")
+    west = _load_json(data_dir / "anchors/west.json")
+    incidents = _load_json(data_dir / "incident_log.json")
+    assert isinstance(policy, dict)
+    assert isinstance(pool, dict)
+    assert isinstance(east, dict)
+    assert isinstance(west, dict)
+    assert isinstance(incidents, dict)
+
+    w = int(policy["bin_stride"])
+    blend_mod = int(policy["blend_mod"])
+    pair_span = int(policy["pair_span"])
+    latch_mod = int(policy["latch_mod"])
+    skew_mix = int(policy["skew_mix"])
+    echo_max = bool(policy["echo_max"])
+    latch_echo = bool(policy["latch_echo"])
+    ledger = int(pool["ledger_serial"])
+    quorum = int(pool["quorum_ring"])
+    e_lane = int(east["lane_add"])
+    v_lane = int(west["lane_add"])
+
+    masks: dict[str, set[int]] = {}
+    for row in incidents.get("masks", []):
+        if not isinstance(row, dict):
+            continue
+        sid = str(row["sample_id"])
+        slots = row.get("zero_slots", [])
+        if sid not in masks:
+            masks[sid] = set()
+        for z in slots:
+            masks[sid].add(int(z))
+
+    samples_out: dict[str, list[dict[str, int]]] = {}
+    tail_parts: list[str] = []
+    total_assignments = 0
+
+    for sample_path in sorted(data_dir.joinpath("samples").glob("sample_*.json")):
+        doc = _load_json(sample_path)
+        assert isinstance(doc, dict)
+        sid = str(doc["sample_id"])
+        latch = int(doc["latch"])
+        readings = [int(x) for x in doc["readings"]]
+        n = len(readings)
+        for zi in masks.get(sid, set()):
+            if 0 <= zi < n:
+                readings[zi] = 0
+
+        adj = [readings[i] + _mod_nonneg(e_lane * i + v_lane, w) for i in range(n)]
+        skew = _mod_nonneg(
+            _mod_nonneg(ledger, blend_mod) * skew_mix + latch + _mod_nonneg(quorum, w),
+            w,
+        )
+        hist: dict[int, int] = {}
+        ssum = 0
+        for k in range(1, n + 1):
+            ssum += adj[k - 1]
+            folded = (ssum + skew) // w // pair_span
+            hist[folded] = hist.get(folded, 0) + 1
+            if latch_echo and k % latch_mod == 0:
+                hist[folded] = hist.get(folded, 0) + 1
+
+        if echo_max and hist:
+            b_max = max(hist)
+            hist[b_max] += _mod_nonneg(e_lane + v_lane + latch, w)
+
+        bins = sorted(b for b, cnt in hist.items() if cnt > 0)
+        rows = [{"bin": b, "tally": hist[b]} for b in bins]
+        samples_out[sid] = rows
+        total_assignments += n
+        tail_parts.append(f"{sid}:{ssum}")
+
+    tail_parts.sort()
+    tail_sha = hashlib.sha256(",".join(tail_parts).encode("utf-8")).hexdigest()
+    return {
+        "latch_bins.json": {"samples": samples_out},
+        "summary.json": {
+            "bin_stride": w,
+            "blend_mod": blend_mod,
+            "echo_max": echo_max,
+            "latch_echo": latch_echo,
+            "latch_mod": latch_mod,
+            "ledger_serial": ledger,
+            "pair_span": pair_span,
+            "quorum_ring": quorum,
+            "skew_mix": skew_mix,
+            "tail_ledger_sha": tail_sha,
+            "total_assignments": total_assignments,
+        },
+    }
 
 
 @pytest.fixture(scope="session")
@@ -160,3 +324,39 @@ class TestLatchBins:
             assert isinstance(rows, list)
             bins = [row["bin"] for row in rows if isinstance(row, dict)]
             assert bins == sorted(bins), f"unsorted bins for {sid}"
+
+
+class TestAlternateGeneratedFixture:
+    """Generated lab data proves the latch pipeline beyond bundled hash locks."""
+
+    def test_generated_lab_matches_independent_reference(self, tmp_path: Path) -> None:
+        """A synthetic lab at LEB_DATA_DIR must yield outputs matching spec re-derivation."""
+        lab = tmp_path / "gen_lab"
+        out_dir = tmp_path / "gen_audit"
+        _write_generated_lab(lab)
+        out_dir.mkdir()
+        expected = _compute_reference(lab)
+        binary = _find_leb_binary()
+
+        env = {
+            k: v
+            for k, v in os.environ.items()
+            if k not in ("LEB_DATA_DIR", "LEB_AUDIT_DIR")
+        }
+        env["LEB_DATA_DIR"] = str(lab)
+        env["LEB_AUDIT_DIR"] = str(out_dir)
+        res = subprocess.run(
+            [str(binary)],
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=120,
+            check=False,
+        )
+        assert res.returncode == 0, res.stderr
+
+        for name in OUTPUT_FILES:
+            path = out_dir / name
+            assert path.is_file(), f"missing {name} under alternate LEB_AUDIT_DIR"
+            actual = _load_json(path)
+            assert _canonical(actual) == _canonical(expected[name]), f"mismatch for {name}"

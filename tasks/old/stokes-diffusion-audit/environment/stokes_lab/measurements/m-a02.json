@@ -1,9 +1,0 @@
-{
-  "measurement_id": "m-a02",
-  "probe_id": "p1",
-  "solvent_id": "water",
-  "solute_id": "s-peg400",
-  "hydrodynamic_radius_nm": 1.0,
-  "temp_reported_K": 298.0,
-  "run_day": 15
-}

@@ -1,7 +1,6 @@
 {
-  "id": "s03",
-  "lane": "east",
-  "winding": 4,
-  "weight": 3,
-  "slot": "p_e0"
+  "flux": 0,
+  "segment_id": "s03",
+  "tier": "alpha",
+  "witness": 12
 }

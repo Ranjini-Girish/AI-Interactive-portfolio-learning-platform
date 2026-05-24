@@ -1,7 +1,6 @@
 {
   "events": [
     {"day": 8, "kind": "jam_echo", "trap_id": "t01"},
-    {"day": 9, "kind": "jam_echo", "trap_id": "t03"},
     {"day": 9, "kind": "room_seal", "room_id": "hall-b"},
     {"day": 10, "kind": "disarm_boost"},
     {"day": 10, "kind": "force_pulse", "trap_id": "t03"},

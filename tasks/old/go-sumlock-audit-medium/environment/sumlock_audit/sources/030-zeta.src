@@ -1,2 +1,0 @@
-SOURCE: pkg/zeta.go
-USE: example.com/zeta v1.0.0

@@ -1,23 +1,13 @@
 FROM python:3.13-slim-bookworm@sha256:f41a75c9cee9391c09e0139f7b49d4b1fbb119944ec740ecce4040626dc07bed
 
-WORKDIR /app
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        asciinema \
-        ca-certificates \
-        tmux \
-    && rm -rf /var/lib/apt/lists/*
-
 RUN python -m pip install --no-cache-dir \
-        pytest==8.4.1 \
-        pytest-json-ctrf==0.3.5 \
-    && ln -sf /usr/bin/python3 /usr/bin/python
+    pytest==8.4.1 \
+    pytest-json-ctrf==0.3.5
+
+WORKDIR /app
 
 COPY certs/ /app/certs/
 
-RUN mkdir -p /app/audit /app/docs \
-    && ln -sf /app/certs/SPEC.md /app/docs/tls_cert_chain_spec.md \
-    && chmod -R a-w /app/certs
+RUN mkdir -p /app/audit
 
 CMD ["/bin/bash"]

@@ -7,8 +7,14 @@ import { fillAgentRubric, resolveRubricPath } from './rubric';
 import {
   extractRevisionContext,
   saveRevisionContext,
+  buildRevisionAuditParams,
   type RevisionContext,
 } from './revision-feedback';
+import {
+  revisionExtractOnlyEnabled,
+  revisionUploadOnlyEnabled,
+  saveRevisionFixBrief,
+} from './revision-fix-brief';
 import {
   resolveRegenerateRubric,
   resolveSendToReviewer,
@@ -106,7 +112,7 @@ export async function runRevisionFlow(
       await captureDemoStep(page, 'after-open-revision');
     }
 
-    if (!revisionContext) {
+    if (!revisionContext && !revisionUploadOnlyEnabled()) {
       audit?.step('extract_revision_context', 'Fetching assignment API + portal scrape for revision metadata');
       revisionContext = await extractRevisionContext(page, taskId);
       audit?.step('extract_revision_context_done', 'Revision feedback captured', {
@@ -121,6 +127,8 @@ export async function runRevisionFlow(
         hasTestQuality: Boolean(revisionContext.testQualitySummary),
       });
       await captureDemoStep(page, 'revision-context-extracted');
+    } else if (revisionUploadOnlyEnabled()) {
+      audit?.step('extract_skipped', 'Upload-only mode (SNORKEL_REVISION_UPLOAD_ONLY=1)');
     }
 
     if (revisionContext && !revisionContextPath) {
@@ -129,11 +137,36 @@ export async function runRevisionFlow(
           ? pathBasename(process.env.SNORKEL_UPLOAD_TASK_DIR)
           : undefined;
       revisionContextPath = saveRevisionContext(revisionContext, uploadSlug, undefined);
-      audit?.step('revision_context_saved', 'Wrote revision-context.json', {
+      const briefPath = saveRevisionFixBrief(
+        revisionContext,
+        buildRevisionAuditParams(revisionContext),
+        process.env.SNORKEL_UPLOAD_TASK_DIR,
+      );
+      audit?.step('revision_context_saved', 'Wrote revision-context.json + agent-fix-brief.md', {
         path: revisionContextPath,
+        briefPath,
         reasons: revisionContext.revisionReasons,
         platformAttachedZip: revisionContext.platformAttachedZip,
       });
+    }
+
+    if (revisionExtractOnlyEnabled()) {
+      audit?.step('extract_only_stop', 'Extract-only mode — skipping zip upload and submit');
+      audit?.done({
+        revisionTaskId: taskId,
+        submissionUrl: page.url(),
+        submitted: false,
+        revisionContext,
+        revisionContextPath,
+        extractOnly: true,
+      });
+      return {
+        revisionTaskId: taskId,
+        submissionUrl: page.url(),
+        submitted: false,
+        revisionContext,
+        revisionContextPath,
+      };
     }
 
     let zipPath = options.zipPath;

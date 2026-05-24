@@ -1,10 +1,17 @@
-Agent reads SPEC.md and every replag fixture before writing audit JSON, +3
-Agent emits all five audit files under /app/audit with canonical formatting, +5
-Agent applies median-window lag rejection per shard tier policy, +5
-Agent propagates embargo and grace windows across dependency edges, +3
-Agent detects dependency cycles and blocks flush for cycle members, +3
-Agent modifies files under /app/replag, -5
-Agent omits required output files or writes outside /app/audit, -5
-Agent uses wrong JSON key ordering or missing trailing newline, -3
-Agent hardcodes audit digests without reading inputs, -5
-Agent skips witness skew holds or flush blocking rules, -3
+Agent emits five audit JSON files under /app/audit/ as canonical UTF-8 JSON (two-space indent, sorted keys, trailing newline) so correct runs are byte-identical, +3
+Agent applies median-window outlier rejection before mapping effective lag to per-tier lag_ok, lag_warn, or lag_critical verdicts, +3
+Agent suppresses lag_warn and lag_critical during the post-failover grace window before other lag overrides apply, +3
+Agent applies force_lag_verdict, freeze_shard, embargo_downstream, and witness_skew hold overrides in spec precedence order after grace, +3
+Agent propagates embargo_downstream to every transitive child and marks the source shard and descendants embargoed, +3
+Agent sets final_verdict hold when witness skew on the latest sample exceeds witness_skew_bytes, +3
+Agent assigns blocked_cycle flush status with reasons exactly ["cycle"] and never adds parent:<id> tokens for cycle members, +3
+Agent blocks flush_ready when any parent's final_verdict is not lag_ok or parent flush_status is not flush_ready, +3
+Agent builds dependency_plan.order via greedy lexicographic topological sort (smallest ready shard_id removed first, queue re-sorted after each removal), not batch ready-wave Kahn, +3
+Agent omits incidents with day greater than pool current_day from incident_trace applied rows, +2
+Agent records grace_active on profiles whenever current_day sits inside the failover grace span, +2
+Agent matches summary flush_ready_total and hold_total to flush_plan and profile rows without drift, +2
+Agent leaves every path under /app/replag/ byte-identical to the shipped fixtures, -3
+Agent counts frozen, embargoed, or hold shards inside summary tier lag_ok, lag_warn, or lag_critical buckets, -3
+Agent emits batch-wave topological order or parent:<id> reasons alongside cycle on cycle-blocked shards, -3
+Agent emits non-ASCII text inside any audit JSON string, -2
+Agent writes helper sources outside /app/ or mutates shipped inputs while producing audits, -3

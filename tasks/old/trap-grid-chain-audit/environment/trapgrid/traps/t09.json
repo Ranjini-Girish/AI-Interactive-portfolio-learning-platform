@@ -1,8 +1,0 @@
-{
-  "armed": true,
-  "difficulty": 2,
-  "initial_pulse": true,
-  "last_trigger_day": null,
-  "room_id": "hall-d",
-  "trap_id": "t09"
-}

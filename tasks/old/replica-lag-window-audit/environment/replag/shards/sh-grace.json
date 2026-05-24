@@ -1,9 +1,0 @@
-{
-  "samples": [
-    {"day": 93, "lag_bytes": 2600000, "witness_lag_bytes": 2650000},
-    {"day": 95, "lag_bytes": 2700000, "witness_lag_bytes": 2750000},
-    {"day": 97, "lag_bytes": 2800000, "witness_lag_bytes": 2850000}
-  ],
-  "shard_id": "sh-grace",
-  "tier": "gold"
-}

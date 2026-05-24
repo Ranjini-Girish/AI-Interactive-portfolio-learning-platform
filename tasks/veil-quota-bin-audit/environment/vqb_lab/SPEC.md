@@ -12,7 +12,7 @@ Each sample object has `sample_id`, `readings` (integers >= 0), `quota` (integer
 
 `pool_state.json` uses `ledger_serial` and `quorum_ring`. Anchors provide `lane_add`.
 
-`incident_log.json` masks behave as in the latch task: union `zero_slots` per `sample_id` before arithmetic.
+`incident_log.json` has `masks`: each row has `sample_id` and `zero_slots` (distinct integers). Union masks per sample; zero `readings[j]` for in-range indices before arithmetic.
 
 ## Per-sample pipeline
 
@@ -21,16 +21,18 @@ Let W = `bin_stride`, E/V = anchor lane adds, L ledger, Q quorum.
 1. Apply masks.
 2. `adj[i] = readings[i] + ((E*i)+V) mod W`, then replace with `min(adj[i], veil_cap)`.
 3. `skew = (((L mod M)*K)+quota+(Q mod Qmod)) mod W`.
-4. Prefix sums and folded bins: same truncating rules as the latch audit (`folded = floor((S[k]+skew)/W)/P`).
-5. If `veil_spill` and histogram non-empty, subtract `((E+V+quota) mod W)` from the tally at the smallest bin key only; remove that bin if tally becomes zero or negative.
+4. Prefix sums S[0]=0, S[k]=S[k-1]+adj[k-1] for k=1..n.
+5. At each k, `folded = floor((S[k]+skew)/W)/P` (truncating division; inputs stay non-negative).
+6. Tally `folded` counts.
+7. If `veil_spill` and histogram non-empty, subtract `((E+V+quota) mod W)` from the tally at the smallest bin key only; remove that bin if tally becomes zero or negative.
 
-Emit positive tallies sorted by `bin`.
+Emit histogram rows with tally > 0 sorted by `bin` ascending. Each row has keys `bin` then `tally`.
 
 ## Outputs
 
 ### `veil_bins.json`
 
-Top-level `samples` object listing every sample id from sorted `sample_*.json` files.
+Object with single key `samples` mapping every discovered `sample_id` (from sorted `samples/sample_*.json` paths) to its histogram array (possibly empty). Each histogram entry is an object with integer keys `bin` (the folded bin index) and `tally` (the positive count for that bin). Map each sample id directly to the array; do not wrap the array in another object.
 
 ### `summary.json`
 

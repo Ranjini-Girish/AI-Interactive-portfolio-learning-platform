@@ -1,8 +1,0 @@
-{
-  "default_underpromotion_cap": 2,
-  "rank_overrides": {
-    "6": 3,
-    "7": 1
-  },
-  "illegal_combo_multiplier": 2
-}

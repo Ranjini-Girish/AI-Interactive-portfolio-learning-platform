@@ -1,6 +1,6 @@
 {
   "taskName": "veil-quota-bin-audit",
-  "updatedAt": "2026-05-24T06:44:16.701Z",
+  "updatedAt": "2026-05-24T12:13:16.216Z",
   "tracker": {
     "trainerName": "Girish",
     "taskId": "021f9c95-f7c9-4d2f-b684-796382447238",
@@ -19,7 +19,7 @@
     "note": ""
   },
   "latest": {
-    "recordedAt": "2026-05-24T06:44:16.701Z",
+    "recordedAt": "2026-05-24T12:13:16.216Z",
     "flow": "revision",
     "dryRun": false,
     "submitted": true,
@@ -29,8 +29,8 @@
     "assignmentId": null,
     "revisionTaskId": "021f9c95-f7c9-4d2f-b684-796382447238",
     "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\veil-quota-bin-audit.zip",
-    "zipBytes": 15371,
-    "zipSha256": "8d5bebda99ff1a25382f6c01b10dd6c2df039a43d885595100373c348a8ff027",
+    "zipBytes": 20733,
+    "zipSha256": "91a9412484b9a7b5f95d9ea0dbdc3ccef3892c4c1e782ba23cb00ae09039bd38",
     "options": {
       "sendToReviewer": true,
       "regenerateRubric": false,
@@ -70,6 +70,44 @@
       "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\veil-quota-bin-audit.zip",
       "zipBytes": 15371,
       "zipSha256": "8d5bebda99ff1a25382f6c01b10dd6c2df039a43d885595100373c348a8ff027",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T10:48:28.727Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "021f9c95-f7c9-4d2f-b684-796382447238",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\veil-quota-bin-audit.zip",
+      "zipBytes": 13879,
+      "zipSha256": "36893d4fc0d340e7232e1b4df71a5d3e686268c9e97583cd4af8ace2924b342e",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T12:13:16.216Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "021f9c95-f7c9-4d2f-b684-796382447238",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\veil-quota-bin-audit.zip",
+      "zipBytes": 20733,
+      "zipSha256": "91a9412484b9a7b5f95d9ea0dbdc3ccef3892c4c1e782ba23cb00ae09039bd38",
       "options": {
         "sendToReviewer": true,
         "regenerateRubric": false,

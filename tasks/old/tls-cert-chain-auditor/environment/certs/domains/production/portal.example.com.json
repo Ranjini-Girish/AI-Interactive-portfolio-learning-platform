@@ -1,6 +1,0 @@
-{
-  "domain": "portal.example.com",
-  "expected_san": ["portal.example.com"],
-  "leaf_serial": "leaf-portal-v1",
-  "tier": "production"
-}

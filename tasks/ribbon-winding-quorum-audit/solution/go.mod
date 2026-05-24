@@ -1,3 +1,3 @@
-module rwqaudit
+module rwq
 
 go 1.19

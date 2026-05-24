@@ -1,9 +1,0 @@
-{
-  "bundle_id": "b99",
-  "delivery_mode": "report-only",
-  "directives": {
-    "script-src": ["https://cdn.evil.example"]
-  },
-  "nonces": [],
-  "origin_id": "o-delta"
-}

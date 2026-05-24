@@ -1,7 +1,0 @@
-Produce a frozen circuit-breaker posture snapshot for each upstream-backed service once rolling failure windows, tier thresholds, incident deltas, failure-day suppressions, gold upstream degradation penalties, fleet silver surge pressure, and operator force directives are reconciled on one timeline keyed to `pool_state.current_day`. Downstream systems should be able to consume the result without replaying raw logs.
-
-Write five UTF-8 JSON files into the active audit directory: `service_verdicts.json`, `tier_thresholds.json`, `incident_journal.json`, `upstream_touchpoints.json`, and `summary.json`. Names, ordering rules, incident kinds, day-window math, and canonical JSON layout are all specified in `/app/breakers/SPEC.md`.
-
-Evidence inputs live under `/app/breakers/`. If `CBSA_DATA_DIR` is set to a non-empty value, read inputs from that directory instead; otherwise use `/app/breakers/`. If `CBSA_AUDIT_DIR` is set to a non-empty value, write outputs there; otherwise use `/app/audit/`. Create the audit directory if it does not exist. Do not modify any file under the directory used for reads.
-
-Ship the audit as a small Java program that honors those two environment overrides for input and output roots.

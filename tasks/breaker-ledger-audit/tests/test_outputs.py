@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Verifier suite for the breaker ledger audit: frozen input digests, canonical
 JSON digests on emitted artifacts, and semantic spot checks on ordering and
 rollup fields."""

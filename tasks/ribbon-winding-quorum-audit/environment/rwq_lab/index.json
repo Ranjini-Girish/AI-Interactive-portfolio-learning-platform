@@ -1,5 +1,5 @@
 {
-  "segments": [
+  "segment_files": [
     "segments/s00.json",
     "segments/s01.json",
     "segments/s02.json",
@@ -11,6 +11,7 @@
     "segments/s08.json",
     "segments/s09.json",
     "segments/s10.json",
-    "segments/s11.json"
+    "segments/s11.json",
+    "segments/s12.json"
   ]
 }

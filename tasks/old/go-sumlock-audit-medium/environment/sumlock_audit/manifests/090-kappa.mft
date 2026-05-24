@@ -1,4 +1,0 @@
-MODULE: example.com/kappa
-PRIORITY: 4
-ENTRY: v1.0.0
-DEPENDS: example.com/lambda

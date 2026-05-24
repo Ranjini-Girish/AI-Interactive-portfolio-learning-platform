@@ -20,7 +20,7 @@ RUN apt-get update \
 
 COPY rwq_lab/ /app/rwq_lab/
 
-RUN mkdir -p /app/rwq_audit
+RUN mkdir -p /app/audit /app/bin /app/src
 
 ENV GOFLAGS="-mod=mod"
 ENV GOTOOLCHAIN=local

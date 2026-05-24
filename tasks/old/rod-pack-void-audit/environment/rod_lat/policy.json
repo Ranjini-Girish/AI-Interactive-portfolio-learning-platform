@@ -1,8 +1,0 @@
-{
-  "ghost_mode": "include",
-  "incident_day_floor": 5,
-  "clusters": [
-    {"name": "alpha", "cell_ids": ["c02", "c01"]},
-    {"name": "beta", "cell_ids": ["c05", "c04"]}
-  ]
-}

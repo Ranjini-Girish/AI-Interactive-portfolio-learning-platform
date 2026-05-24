@@ -1,9 +1,0 @@
-{
-  "samples": [
-    {"day": 90, "lag_bytes": 600000, "witness_lag_bytes": 650000},
-    {"day": 94, "lag_bytes": 700000, "witness_lag_bytes": 750000},
-    {"day": 97, "lag_bytes": 800000, "witness_lag_bytes": 1400000}
-  ],
-  "shard_id": "sh-witness",
-  "tier": "gold"
-}

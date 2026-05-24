@@ -28,7 +28,7 @@ REQUIRED_OUTPUT_FILES = [
 ]
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "00ba96e8c597e752a7f6f303f39836249a4169a20fa5de3193eb9d299115ded4",
+    "SPEC.md": "7403d2215147e61531a24c997a87aa37dae997923e72fc1d4eb21cae4abae3c3",
     "chain_config.json": "f13d99feea1c2a3184891da1baede48f97f98119870cb3f224609a1aab01b350",
     "incident_log.json": "df2b8be55f3bcbfd941d5b12768954d6ea30c859d160c58b9f738e5296b73346",
     "ocsp_responses.json": "991fa1250dbc21a1c416f13050c5e22bac9e713a25c1a1c262a310fbb4a49662",

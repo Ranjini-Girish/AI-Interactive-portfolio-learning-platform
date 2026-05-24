@@ -1,6 +1,0 @@
-{
-  "domain": "cdn.example.com",
-  "expected_san": ["cdn.example.com", "static.example.com"],
-  "leaf_serial": "leaf-cdn-v1",
-  "tier": "production"
-}

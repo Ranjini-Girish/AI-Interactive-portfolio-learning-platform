@@ -1,4 +1,6 @@
 {
-  "operator": "bench-ribbon",
-  "comment": "fixture bundle for quorum replay"
+  "comments": [
+    "not used by audit"
+  ],
+  "owner": "bench"
 }

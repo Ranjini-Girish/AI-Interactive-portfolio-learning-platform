@@ -4,41 +4,45 @@
 
 | Signal | Detail |
 |---|---|
-| **autoeval_build_failed** | Initial CodeBuild FAILED (`5803a165-…`). A later portal static-check run on the same revision card reported **SUCCEEDED** (`1008a177-…`) after the slim Dockerfile was already in tree. |
-| **behavior_in_task_description** | QC flagged `summary.json.tail_ledger_sha` and `summary.json.total_assignments`: SPEC listed keys but deferred to “latch audit” without normative definitions. |
-| **Difficulty** | HARD (Opus 0/5, GPT-5.2 0/5 on last full eval). Solvability gate satisfied. |
+| **agents_unsolvable** | 0/5 both models; universal failures on `tail_ledger_sha` / `veil_bins.json` schema; masks never matched fixtures. |
+| **behavior_in_tests** | `incident_log.json` used `sbr_*` IDs while fixtures are `vqb_*` — masking path unverified. |
+| **structured_data_schema** | `veil_bins.json` per-sample histogram row schema (`bin`, `tally`) not normatively defined. |
+| **behavior_in_task_description** | Prior pass deferred `tail_ledger_sha` / `total_assignments` to “latch audit”. |
+| **Difficulty** | HARD (Opus 0/5, GPT-5.2 0/5). Solvability gate failed until spec gaps closed. |
 
-## Fixes applied (2026-05-24)
+## Fixes applied (2026-05-24, pass 2)
 
-- [x] **SPEC normative text** — `environment/vqb_lab/SPEC.md` now defines `tail_ledger_sha` (SHA-256 of sorted `{sample_id}:{S[n]}` strings) and `total_assignments` (sum of post-mask reading counts). Removed cross-task “latch audit” deferral for those fields.
-- [x] **SPEC hash lock** — updated `EXPECTED_INPUT_HASHES["SPEC.md"]` in `tests/test_outputs.py` to match revised SPEC bytes.
-- [x] **Dockerfile** — already on `debian:bookworm-slim@sha256:f9c6a2…` + apt `golang-go`; `tmux`, `asciinema`, offline pytest preinstalled. No change required.
-- [x] **Oracle-pending leakage** — no `# scaffold-status: oracle-pending` line present; leakage grep clean on reviewer-visible files.
-- [x] **Zip hygiene** — `clean` + `build`; E2E metadata (`platform-submission.json`, `revision-*.json`, `revision-audit.log`) excluded from archive by `terminus_zip.py`.
+- [x] **Mask fixture alignment** — `incident_log.json` now masks `vqb_04` (slot 1) and `vqb_09` (slots 0, 2) so the union-zero path changes oracle output and hash locks reject skipped masking.
+- [x] **SPEC normative mask + fold rules** — inlined mask union semantics and prefix-fold steps; removed “latch task / latch audit” cross-references for pipeline steps.
+- [x] **SPEC `veil_bins.json` schema** — documents `samples` → bare array of `{bin, tally}` objects per sample id (no wrapper object).
+- [x] **SPEC `tail_ledger_sha` / `total_assignments`** — retained normative definitions from pass 1 (SHA-256 of sorted `{sample_id}:{S[n]}`; post-mask reading count sum).
+- [x] **Tests** — regenerated input/output/field hashes; added `test_histogram_rows_use_bin_and_tally` and `test_incident_masks_reference_fixture_samples`.
+- [x] **Dockerfile / verifier** — unchanged (slim debian, offline pytest, tmux/asciinema).
 
 ## Verification
 
 | Gate | Result |
 |---|---|
+| Local pytest (Python oracle mirror, 9 tests) | **PASS** |
 | `terminus_zip.py preflight` | **PASS** (ruff, leakage, env 22 files / `small`, workdir + allow_internet, test.sh, tmux/asciinema) |
-| `terminus_zip.py verify-task` | **PASS** |
-| Docker oracle + pytest | **Not re-run this pass** (local image build skipped; oracle logic unchanged) |
+| Leakage grep (instruction, tests, SPEC, rubrics) | **PASS** |
 
-## Resubmit artifact
+## Solvability gaps addressed
 
-| Field | Value |
+| Gap | Fix |
 |---|---|
-| Path | `tasks/veil-quota-bin-audit.zip` |
-| Bytes | 13,879 |
-| SHA-256 | `36893d4fc0d340e7232e1b4df71a5d3e686268c9e97583cd4af8ace2924b342e` |
+| Undefined “latch audit” for tail hash / assignment count | Normative formulas in SPEC (pass 1); prefix-fold steps inlined (pass 2). |
+| `veil_bins.json` array vs wrapper ambiguity | SPEC states each sample maps directly to a histogram array; tests assert `{bin, tally}` keys. |
+| `"tally"` field name never named | SPEC + test `test_histogram_rows_use_bin_and_tally`. |
+| Masking code path never exercised | `incident_log.json` IDs aligned to `vqb_*`; output hashes regenerated. |
 
 ## Files changed
 
-- `environment/vqb_lab/SPEC.md` — normative `tail_ledger_sha` / `total_assignments` definitions
-- `tests/test_outputs.py` — `SPEC.md` input hash update
+- `environment/vqb_lab/incident_log.json` — `sbr_*` → `vqb_*` mask targets
+- `environment/vqb_lab/SPEC.md` — mask/fold inlining, `veil_bins.json` row schema, normative summary fields
+- `tests/test_outputs.py` — hash lock updates + schema/mask coverage tests
 - `revision-fixes.md` — this note
 
 ## Blockers
 
-- **None for local preflight.** Platform QC must be re-run on resubmit to confirm `behavior_in_task_description` clears.
-- **No E2E submit** performed in this pass (fix-only per assignment).
+- **None for local preflight.** Resubmit for platform QC + agent trials to confirm solvability gate clears.

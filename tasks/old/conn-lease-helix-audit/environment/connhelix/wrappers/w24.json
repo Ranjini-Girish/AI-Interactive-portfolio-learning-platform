@@ -1,9 +1,0 @@
-{
-  "bound_channels": ["anchor_a"],
-  "checkout_tick_ms": 4400000,
-  "entered_idle_tick_ms": null,
-  "parent_wrapper_id": null,
-  "phase": "leased",
-  "segment": "gamma",
-  "wrapper_id": "w24"
-}

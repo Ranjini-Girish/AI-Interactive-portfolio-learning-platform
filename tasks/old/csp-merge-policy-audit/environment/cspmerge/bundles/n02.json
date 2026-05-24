@@ -1,9 +1,0 @@
-{
-  "bundle_id": "n02",
-  "delivery_mode": "report-only",
-  "directives": {
-    "font-src": ["https://fonts.example"]
-  },
-  "nonces": ["nonce-shared"],
-  "origin_id": "o-zeta"
-}

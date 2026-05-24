@@ -1,6 +1,5 @@
 {
-  "id": "n00",
-  "mask": 3,
-  "scale": 0.25,
-  "segment": "edge"
+  "id": "n00", 
+  "mask": 3, 
+  "scale": 0.25
 }

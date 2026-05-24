@@ -1,12 +1,13 @@
-Agent reads `/app/sbr_lab/SPEC.md` and emits only `skew_bins.json` and `summary.json` into the audit directory with canonical UTF-8 JSON, +3
-Agent applies incident slot masking before lane adjustment, computes skew from pool and policy blend terms, folds bins with `pair_span`, and applies `anchor_cross` carry to the smallest present bin only when enabled, +5
-Agent preserves every bundled fixture byte under the lab read root and never deletes ancillary anchors, +2
-Agent honors `SBR_DATA_DIR` and `SBR_AUDIT_DIR` override semantics when those variables are non-empty after trimming, +2
-Agent discovers samples strictly from `samples/sample_*.json` filenames sorted lexicographically and includes every sample id in the `samples` object, +2
-Agent creates the audit directory when missing before writing outputs, +2
-Agent omits extra top-level keys beyond the schema in each output file, +2
-Agent matches the specification's canonical pretty-printer and trailing newline contract, +2
-Agent mishandles modular remainder rules for lane offsets or truncates prefix sums incorrectly, -5
-Agent applies `anchor_cross` carry to every bin, merges bins outside the `pair_span` rule, or skips incident unions for repeated sample ids, -5
-Agent mutates any file under the lab read root or writes outside the resolved audit directory, -5
-Agent drops required output files, reorders histogram rows away from ascending `bin`, or omits zero-tally bins incorrectly, -3
+Agent writes histogram.json and summary.json only into the audit directory, +2
+Agent matches canonical JSON layout from SPEC for every emitted file, +3
+Agent applies suppression incidents before winsorization per probe, +5
+Agent winsorizes each multi-sample probe using median, MAD, and outlier_z from policy, +3
+Agent counts only band-mask eligible samples toward histogram totals, +3
+Agent shifts final bin indices for probes with active shift_bins incidents, +3
+Agent leaves anchors and ancillary JSON untouched under the bundle root, +2
+Agent adds undeclared histogram bins or changes bin_count, -5
+Agent mutates samples or policy files under the frozen bundle root, -5
+Agent applies band mask before winsorization instead of after, -3
+Agent writes outputs outside the configured audit directory tree, -5
+Agent omits clamping bin indices after shifts, -3
+Agent miscounts samples_in relative to raw fixtures, -2

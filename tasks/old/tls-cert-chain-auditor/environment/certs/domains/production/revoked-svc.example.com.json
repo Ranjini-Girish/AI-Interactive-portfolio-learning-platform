@@ -1,6 +1,0 @@
-{
-  "domain": "revoked-svc.example.com",
-  "expected_san": ["revoked-svc.example.com"],
-  "leaf_serial": "leaf-revoked-v1",
-  "tier": "production"
-}

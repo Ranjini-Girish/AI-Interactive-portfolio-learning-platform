@@ -1,9 +1,0 @@
-{
-  "bound_channels": ["anchor_b"],
-  "checkout_tick_ms": 4920000,
-  "entered_idle_tick_ms": null,
-  "parent_wrapper_id": "w11",
-  "phase": "leased",
-  "segment": "alpha",
-  "wrapper_id": "w17"
-}

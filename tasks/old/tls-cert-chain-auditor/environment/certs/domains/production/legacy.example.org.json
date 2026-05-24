@@ -1,6 +1,0 @@
-{
-  "domain": "legacy.example.org",
-  "expected_san": ["legacy.example.org"],
-  "leaf_serial": "leaf-legacy-v1",
-  "tier": "production"
-}

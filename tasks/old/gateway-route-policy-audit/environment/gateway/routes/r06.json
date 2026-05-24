@@ -1,1 +1,0 @@
-{"pack_id":"zeta","rules":[{"id":"cycl-route","host":"api.example.com","host_type":"exact","path_prefix":"/zeta","methods":["GET"],"group":"broken","decision":"allow"}]}

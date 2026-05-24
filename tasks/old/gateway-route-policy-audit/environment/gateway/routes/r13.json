@@ -1,1 +1,0 @@
-{"pack_id":"nu","rules":[{"id":"bill-invoice","host":"api.example.com","host_type":"exact","path_prefix":"/api/v1/billing/invoices","methods":["GET"],"decision":"deny"}]}

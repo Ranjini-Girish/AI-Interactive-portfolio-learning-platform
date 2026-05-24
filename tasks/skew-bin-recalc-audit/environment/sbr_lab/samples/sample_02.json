@@ -1,8 +1,5 @@
 {
-  "phase": 1,
-  "readings": [
-    10
-  ],
-  "sample_id": "sbr_02",
-  "spectrum": "plain"
+  "band": 1, 
+  "probe": "p1", 
+  "value": 12.0
 }

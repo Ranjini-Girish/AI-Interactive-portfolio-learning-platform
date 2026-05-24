@@ -1,12 +1,12 @@
-Agent emits both required JSON files under the audit root with the exact filenames listed in /app/sbm_lab/SPEC.md, +3
-Agent leaves every path under /app/sbm_lab/ byte-identical to the shipped fixtures, -3
-Agent writes canonical JSON per /app/sbm_lab/SPEC.md (two-space indent, sorted keys, trailing newline), +2
-Agent filters items with accept_band_mask so ineligible bands never appear in merge groups, -3
-Agent omits widen_slack extra slack for incidents that are inactive relative to ledger_day for the named lane, -3
-Agent merges only within the same slot_id and breaks groups when gap days exceed the lane slack total, -3
-Agent emits merge_report groups sorted by lanes_rank order then start_day then slot_id with per-group fields matching SPEC.md, +5
-Agent miscomputes group span, inclusive end_day, or max priority when folding merged items, -3
-Agent leaves summary.json counters or sorted lanes list inconsistent with the emitted merge_report.json, -2
-Agent treats anchors or ancillary JSON as mutable and rewrites those paths during the audit, -3
-Agent emits non-ASCII text inside any audit JSON string, -2
-Agent writes helper artifacts outside the audit root or deletes shipped inputs while producing audits, -3
+Agent writes merge_report.json and summary.json only into the audit directory, +2
+Agent matches canonical JSON layout from SPEC for every emitted file, +3
+Agent respects ledger-gated widen_slack incidents per lane before merging spans, +5
+Agent applies accept_band_mask before any lane merge work, +3
+Agent sorts merged groups using lanes_rank then start_day then slot_id, +3
+Agent leaves anchors and ancillary JSON byte-identical under the bundle root, +2
+Agent omits any extra top-level keys beyond SPEC in emitted JSON, -3
+Agent mutates, deletes, or rewrites any file under the frozen bundle root, -5
+Agent ignores merge_slack_days or per-lane slack adjustments from incidents, -5
+Agent writes artifacts outside the configured audit directory tree, -5
+Agent drops eligible items or miscounts summary totals relative to SPEC, -3
+Agent emits unsorted sources arrays inside merge groups, -2

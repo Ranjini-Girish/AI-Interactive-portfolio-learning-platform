@@ -213,6 +213,48 @@
       "day": 5,
       "solvent_id": "water",
       "probe_id": "ghost_probe"
+    },
+    {
+      "event_id": "ev-recall-dmso",
+      "kind": "solvent_recall",
+      "accepted": true,
+      "day": 10,
+      "solvent_id": "dmso"
+    },
+    {
+      "event_id": "ev-lift-dmso",
+      "kind": "recall_lift",
+      "accepted": true,
+      "day": 11,
+      "solvent_id": "dmso"
+    },
+    {
+      "event_id": "ev-relift-dmso",
+      "kind": "recall_relift",
+      "accepted": true,
+      "day": 13,
+      "solvent_id": "dmso"
+    },
+    {
+      "event_id": "ev-stict-p2-day30",
+      "kind": "probe_stiction",
+      "accepted": true,
+      "day": 30,
+      "probe_id": "p2"
+    },
+    {
+      "event_id": "ev-relift-orphan",
+      "kind": "recall_relift",
+      "accepted": true,
+      "day": 25,
+      "solvent_id": "acetone"
+    },
+    {
+      "event_id": "ev-relift-bad-solvent",
+      "kind": "recall_relift",
+      "accepted": true,
+      "day": 5,
+      "solvent_id": "phantom_solvent"
     }
   ]
 }

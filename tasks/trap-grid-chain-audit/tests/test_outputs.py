@@ -27,12 +27,12 @@ OUTPUT_FILES = (
 )
 
 EXPECTED_INPUT_HASHES = {
-    "SPEC.md": "4c122f98fc39d3b129578b1ab177eff1f83470ad997b1b36ab599cf81be75e24",
+    "SPEC.md": "db4c43203f593249eb30cac4d9f9a856e90a030aa761972e8a72d8f11523d48f",
     "anchors/a1.txt": "d58b76ef6935b283f63cd1c648d0a0a2a236daeb5160c6fc114f91d56d808441",
     "anchors/a2.txt": "0669e4f2d6a4a61669bbffb5707d53a3df17b72376d071980f2213f1ec2ba903",
     "grid/dims.json": "73f2be6b123b7232bb0a7b59ade19ab75522fe28c7f2ebc6f2124718637cd707",
-    "incidents.json": "e631237e86a4fedb159665481ede588517eff5b69ff8ffdbe928945bae8213bd",
-    "links.json": "db75a27dafdc94db50b03b9411114c21f6d02679ffb2c0bccf4972d6d8dc7596",
+    "incidents.json": "c4e0343f470c62640232a8ab6168203b0e86117f372bfccbaac4cc27a09f1713",
+    "links.json": "7b6b668d3137f7e65b99000bbf3faec28aaa07960fd91e97fed8083c2fccf5dd",
     "manifest/seq.json": "ba3ec5a89c28644af0903bf25c6b6bb8b7a320ffd8df972395eb86a293a59ee3",
     "manifest/tag.json": "9ac8a324807ab8cc4472a3494e2b5006422b38aaeda4a0e2487f56797419e77d",
     "policy.json": "6f5ba9d92747b9ec467d3f597520e56307cd483df0fc727518f50f8f572807a9",
@@ -53,26 +53,26 @@ EXPECTED_INPUT_HASHES = {
 }
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "trap_states.json": "38320e1913621fa266cba3942497c9920ec8dcb39539a683d423230e4268c7f6",
-    "trigger_plan.json": "a947980702049295198e51d8deb581c617d024ce999e0422457c4f3922014152",
-    "disarm_plan.json": "ca831e8f9a130fbc770362486c2b56e4a13a51a64db3f0eca51592f45e3a98a8",
-    "room_status.json": "1529693cd97b85a3ea445d2a9461d9d7f2dab729e30fc661d60f3e04304ff284",
-    "summary.json": "8a32eef69d0bcd4bf7c95eb41bcbd106c4a9a4812b079543e4c2e64ecc97fedc",
+    "trap_states.json": "ddfcd20961b77c97fe9cdf3c278f271cdb15a23b81040cdae4f5a5a0b636c72d",
+    "trigger_plan.json": "ffc859150c16861c602cb60cb530537cf7d25949d14b53224af1fb2dcd601373",
+    "disarm_plan.json": "322e741457464576cf9dc92722af86e4847740a151cc6ca328eec19b3544804b",
+    "room_status.json": "05394b3b3ce6605a6b5bb223b82d485b365e645c94f6d2ca75f8b064d5cbba3b",
+    "summary.json": "8317c0d87375721a2b72a8740c1756ac6388bfb6ae167359bc4cb06f881f8d9b",
 }
 
 EXPECTED_OUTPUT_RAW_HASHES = {
-    "trap_states.json": "0d7cc11d26530de33efdf4e19075d65609df2fd30ba9a8b5b5efd760046651e8",
-    "trigger_plan.json": "e31bcc1d582d8770513f39c547ae82211393fc5749f12ab728cda128f82dbd81",
-    "disarm_plan.json": "85afa00c56c99f03abbd3267a9a703156117ea0abeba01748f9fcb2cd07f80e0",
-    "room_status.json": "a2959c23f224582d00abdf048361537e88ba51e79bdee011c1fb763b0cc8ac9b",
-    "summary.json": "5ca4bb5b71f32c8e9f08592253e244bc43732b32b0ec1adc16166b0df8eba664",
+    "trap_states.json": "ddc0f8331a952c10a2fd3845ceff475b5d7153b1ef732e45f248b1ca42a2533f",
+    "trigger_plan.json": "4d4f354a37b15c51a5654d5614b99bb0f536f4e09287d9012f6896ed86b82dc7",
+    "disarm_plan.json": "1516f71bdb4c52c19968874cbf404bd3223f38036ea420f0da7a42bb52bbb9c8",
+    "room_status.json": "890798e196e25ad7f7ffd9b9d1f218fc8646fd61eaee8d629edd71108e59bbe9",
+    "summary.json": "19ce6b16c55fd83f33d114e15a140f10029d3b2fb76170fe9319b748300ba41e",
 }
 
 EXPECTED_FIELD_HASHES = {
-    "disarm_plan.entries.t03": "8496ca7340a5adf19f8e18a614134df93f429a1125df11e618a12d47e9d48359",
-    "summary.hazardous_rooms": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
-    "trap_states.traps.t07": "0f1eed8805f9c8e9980ac1add2c8ffd985d9226f681de9de239214a3a503bf5c",
-    "trigger_plan.waves": "63c8f9881098745ba18a14549d293077a83cb4f2b6739bc664c553a6a4f37f02",
+    "disarm_plan.entries.t11": "7eb9d324266b4fa6d34b56a290c98d211b6e1ae3b51efa1fba48ec400259c0de",
+    "summary.hazardous_rooms": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+    "trap_states.traps.t03": "5de160857834a7cd95d3f6fac6de7e073895d79b4d866cb06560aec93d709fec",
+    "trigger_plan.waves": "300af5e5c2e878e55e8b5ec6ca9954ed5cb095dd17ad2daa568ef4ae72fe739e",
 }
 
 
@@ -163,8 +163,8 @@ class TestReportStructure:
         )
         traps = _trap_index(outputs)
         assert (
-            _sha256_bytes(_canonical(traps["t07"]).encode("utf-8"))
-            == EXPECTED_FIELD_HASHES["trap_states.traps.t07"]
+            _sha256_bytes(_canonical(traps["t03"]).encode("utf-8"))
+            == EXPECTED_FIELD_HASHES["trap_states.traps.t03"]
         )
         summary = outputs["summary.json"]
         assert (
@@ -173,13 +173,13 @@ class TestReportStructure:
         )
         disarm = _disarm_index(outputs)
         assert (
-            _sha256_bytes(_canonical(disarm["t03"]).encode("utf-8"))
-            == EXPECTED_FIELD_HASHES["disarm_plan.entries.t03"]
+            _sha256_bytes(_canonical(disarm["t11"]).encode("utf-8"))
+            == EXPECTED_FIELD_HASHES["disarm_plan.entries.t11"]
         )
 
 
 class TestChainPropagation:
-    """Cover jam-echo muting, hop tightening, cross-room surcharges, and wave ordering."""
+    """Cover jam-echo muting, hop tightening, and wave ordering."""
 
     def test_wave_zero_lists_initial_pulses(self, outputs: dict[str, object]) -> None:
         """Wave zero must include every armed initial pulse plus the forced cooldown trap."""
@@ -195,19 +195,12 @@ class TestChainPropagation:
         assert traps["t04"]["final_state"] == "armed_idle"
         assert traps["t04"]["chain_hops"] == -1
 
-    def test_force_pulse_clears_jam_echo_for_t03_outbound(self, outputs: dict[str, object]) -> None:
-        """A later force pulse must clear jam-echo muting so cross-room propagation can fire."""
-        traps = _trap_index(outputs)
-        assert traps["t07"]["final_state"] == "triggered"
-        assert traps["t07"]["chain_hops"] == 2
-
-    def test_cross_room_hop_places_t07_in_third_wave(self, outputs: dict[str, object]) -> None:
-        """Cross-room edges must land at hop two while same-room neighbors stay at hop one."""
+    def test_t10_chains_from_t09_only(self, outputs: dict[str, object]) -> None:
+        """Tag mismatch tightens chain hops so only wave zero and hop-one fire; hop one lists t10."""
         waves = outputs["trigger_plan.json"]["waves"]
         assert isinstance(waves, list)
-        assert len(waves) == 3
+        assert len(waves) == 2
         assert waves[1] == ["t10"]
-        assert waves[2] == ["t07"]
 
 
 class TestCooldownAndForce:
@@ -227,11 +220,11 @@ class TestCooldownAndForce:
 
 
 class TestDisarmStatuses:
-    """Pin tier cap, tag alignment, boost, hot cooloff, sealed blocks, and slot budget."""
+    """Pin tier cap, boost, hot cooloff, sealed blocks, and slot budget."""
 
-    def test_effective_cap_penalizes_tag_mismatch_without_boost(self, outputs: dict[str, object]) -> None:
-        """Misaligned evaluation tags must suppress same-day boost and reduce the silver cap by one."""
-        assert outputs["disarm_plan.json"]["effective_disarm_cap"] == 2
+    def test_effective_cap_includes_boost(self, outputs: dict[str, object]) -> None:
+        """Same-day disarm_boost must raise the silver cap from three to four."""
+        assert outputs["disarm_plan.json"]["effective_disarm_cap"] == 4
 
     def test_t08_blocked_difficulty(self, outputs: dict[str, object]) -> None:
         """Difficulty above the boosted cap must block disarm."""
@@ -249,9 +242,9 @@ class TestDisarmStatuses:
         """Disarmed fixtures must use the not_applicable status."""
         assert _disarm_index(outputs)["t12"]["disarm_status"] == "not_applicable"
 
-    def test_t04_blocked_budget_after_t03(self, outputs: dict[str, object]) -> None:
+    def test_t11_blocked_budget_after_t07(self, outputs: dict[str, object]) -> None:
         """Consumable disarm slots must block later eligible traps."""
-        assert _disarm_index(outputs)["t04"]["disarm_status"] == "blocked_budget"
+        assert _disarm_index(outputs)["t11"]["disarm_status"] == "blocked_budget"
 
 
 class TestRoomStatus:
@@ -265,9 +258,9 @@ class TestRoomStatus:
         """Any triggered trap must make its room hazardous."""
         assert _room_index(outputs)["hall-a"]["status"] == "hazardous"
 
-    def test_hall_c_hazardous_from_cross_room_trigger(self, outputs: dict[str, object]) -> None:
-        """Cross-room chain triggers must mark the destination room hazardous."""
-        assert _room_index(outputs)["hall-c"]["status"] == "hazardous"
+    def test_hall_c_partial(self, outputs: dict[str, object]) -> None:
+        """Mixed idle, suppressed, and disarmable traps yield partial clearance."""
+        assert _room_index(outputs)["hall-c"]["status"] == "partial"
 
 
 class TestSummaryTotals:

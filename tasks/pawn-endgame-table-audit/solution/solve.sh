@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-export PATH="/usr/local/go/bin:/usr/bin:${PATH}"
+export PATH="/usr/local/go/bin:${PATH}"
 
 SRC_DIR="${PET_SRC_DIR:-/app/src}"
 BIN_DIR="${PET_BIN_DIR:-/app/bin}"
@@ -13,7 +13,7 @@ rm -f "$AUDIT_DIR"/*.json
 cat > "$SRC_DIR/go.mod" <<'GOMOD'
 module petaudit
 
-go 1.19
+go 1.23
 GOMOD
 
 cat > "$SRC_DIR/main.go" <<'GOEOF'

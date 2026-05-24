@@ -8,7 +8,7 @@ category = "games"
 subcategories = []
 number_of_milestones = 0
 codebase_size = "small"
-languages = ["go", "bash"]
+languages = ["go"]
 tags = ["games", "trap-chain", "go", "dungeon-grid", "deterministic-json"]
 expert_time_estimate_min = 150
 junior_time_estimate_min = 360
@@ -21,12 +21,9 @@ timeout_sec = 1500.0
 
 [environment]
 build_timeout_sec = 600.0
-docker_flags = []
 cpus = 2
 memory_mb = 3072
 storage_mb = 10240
-gpus = 0
-gpu_types = []
 gpu_required = false
 network_required = false
 workdir = "/app"

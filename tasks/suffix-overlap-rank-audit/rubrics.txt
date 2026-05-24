@@ -1,15 +1,16 @@
-Agent ignores overlap or tie-break rules defined in the bundle specification, -5
-Agent writes audit JSON without the single trailing newline the specification requires, -3
-Agent mutates any file under the read-only bundle tree including anchors or ancillary paths, -5
-Agent emits filenames or top-level keys not listed in the mandated audit contract, -3
-Agent sorts overlap pairs or ids with a collation that disagrees with ASCII lexicographic order, -3
-Agent omits the symmetric overlap case when only the reverse-direction suffix test applies, -5
-Agent emits duplicate overlap records for the same unordered id pair, -3
-Agent hard-codes `current_day` instead of reading `pool_state.json`, -3
+Agent ignores normative rules that exist only in the bundle specification, -5
+Agent writes audit JSON files missing the single trailing newline required on disk, -3
+Agent mutates any read-only bundle file under the evidence tree, -5
+Agent fabricates incident kinds that never appear in the provided incident vocabulary, -2
+Agent emits audit filenames or top-level keys absent from the mandated contract, -3
+Agent sorts deterministic rows using a collation that disagrees with ASCII tie-break rules, -3
+Agent applies a different floating rounding mode than the stated four-decimal rule, -3
+Agent merges identifiers that the specification keeps disjoint, -2
+Agent silently ignores accepted incidents while reconciling deltas, -5
+Agent substitutes a baked-in pool day instead of reading `pool_state.json`, -3
 Agent leaves any required audit artifact missing after the run, -5
-Agent treats empty `SOR_DATA_DIR` or `SOR_AUDIT_DIR` as a signal to skip the default path fallbacks, -2
 Agent emits every mandated artifact with schema-complete objects and stable ordering, +5
-Agent writes only under the audit directory while leaving bundle bytes unchanged, +3
-Agent honors non-empty override environment variables for input and output roots, +2
-Agent derives summary counts from the same item scan that builds the rank report, +3
-Agent threads `current_day` from pool state into the summary field required by the specification, +2
+Agent leaves anchors and ancillary bytes untouched while writing only the audit directory, +3
+Agent honors empty override environment variables by falling back to default roots, +2
+Agent reconciles policy ceilings with per-row evidence before populating summaries, +3
+Agent threads the pool timeline through every time-based comparison in the bundle, +2

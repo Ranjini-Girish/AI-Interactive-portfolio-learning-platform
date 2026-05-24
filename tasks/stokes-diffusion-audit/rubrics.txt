@@ -1,10 +1,32 @@
-Agent writes required deliverables at /app/audit/ diffusion JSON using canonical UTF-8 JSON from the task spec, +5
-Agent implements the audit logic in Java on sources under the task workspace, +3
-Agent reads bundled inputs without altering fixture files, +2
-Agent computes Stokes diffusion coefficients from measurement fixtures, +3
-Agent applies probe void and stiction recall rules, +3
-Agent emits deterministic sorted keys and documented list order in every output, +2
-Agent modifies files under read-only input directories, -5
-Agent omits a required output file or documented top-level schema field, -3
-Agent emits non-canonical JSON (wrong indentation, key order, or trailing newline), -2
-Agent hardcodes expected outputs instead of computing from bundled inputs, -5
+Agent reads the normative contract under the read-only laboratory tree before writing any code, +2
+Agent emits exactly the three JSON filenames under the audit directory with sorted keys and a single trailing newline on each file, +3
+Agent keeps every byte under the dataset root unchanged for the whole run, +2
+Agent implements the computation in Go, links an executable at the prescribed absolute path, and wires environment-driven input and output directories, +3
+Agent brackets viscosity using the drift-adjusted temperature while applying bench corrections only to the emitted effective temperature and diffusion estimate, +2
+Agent applies probe stiction precedence ahead of solvent recall when both could apply to the same hypothetical row, +2
+Agent recomputes solvent recall activation by comparing the latest of recall and relift days against the latest applicable recall lift day for the measurement, +3
+Agent emits every sensor drift event that contributes to at least one ok-row aggregate, not just a single winner per row, +3
+Agent sums sensor drift contributions over the documented inclusive day window and applies the pool drift cap when present, +3
+Agent selects bench corrections only from candidates strictly after the latest matching solvent recall day when such a recall exists, +3
+Agent applies bench correction selection after drift aggregation and adds the winning bench delta to effective temperature before diffusion, +1
+Agent counts radius clamping whenever the pool bounds change the parsed hydrodynamic radius before diffusion, +2
+Agent restricts probe stiction to the documented lookback window when the pool supplies stiction_lookback_days, +2
+Agent propagates a primary-probe stiction event to chain-secondary probes using the halved lookback specified in the contract, +3
+Agent emits the chain-propagating stiction identifier in applied_events when its only effect is on a chain secondary, +2
+Agent emits the recall_relift identifier only when its day equals the measurement’s latest applicable relift day and the recall is active, +2
+Agent reports chain_propagated_void_count and recall_relift_count as documented aggregate counters in summary.json, +2
+Agent writes helper artifacts or scratch JSON under the dataset root, -3
+Agent emits fewer than three audit files or names them differently from the contract, -5
+Agent omits half-even rounding at any of the three documented numeric precisions, -3
+Agent fabricates anomaly identifiers that never influence a measurement outcome, -2
+Agent collapses sensor drift contributions to a single greatest-day winner instead of summing the window, -3
+Agent feeds bench-adjusted temperature into viscosity bracketing or ignores the recall-day bench floor, -3
+Agent emits bench correction identifiers when the winner only influences voided measurements, -2
+Agent emits a recall lift identifier when there is no matching solvent recall for it to cancel, -3
+Agent treats expired probe stiction outside the lookback window as still voiding the row, -3
+Agent skips optional pool radius bounds or applies them after forming the Stokes radius in meters, -3
+Agent ignores chain_id and chain_role on probes when evaluating stiction precedence, -3
+Agent treats a recall_relift identical to a recall_lift instead of overruling the lift on the recall-active axis, -3
+Agent emits a recall_relift identifier whose measurement has no matching solvent_recall for that solvent, -2
+Agent mutates shipped measurement shards to force a passing digest, -5
+Agent reads decorative meta payloads to influence numeric outputs, -3

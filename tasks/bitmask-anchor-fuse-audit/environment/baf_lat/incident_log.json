@@ -1,38 +1,18 @@
 {
   "events": [
     {
-      "accepted": true,
-      "kind": "xor_acc",
+      "accepted": true, 
+      "kind": "xor_acc", 
       "value": 5
-    },
+    }, 
     {
-      "accepted": false,
-      "kind": "xor_acc",
-      "value": 99
-    },
-    {
-      "accepted": true,
-      "kind": "fuse_xor",
-      "value": 240
-    },
-    {
-      "accepted": true,
-      "kind": "xor_acc",
+      "accepted": true, 
+      "kind": "xor_acc", 
       "value": 2
-    },
+    }, 
     {
-      "accepted": true,
-      "kind": "tier_skew",
-      "value": 128
-    },
-    {
-      "accepted": true,
-      "kind": "fuse_xor",
-      "value": 7
-    },
-    {
-      "accepted": true,
-      "delta": 0,
+      "accepted": true, 
+      "delta": 0, 
       "kind": "noop"
     }
   ]

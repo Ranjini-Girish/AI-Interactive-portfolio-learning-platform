@@ -22,7 +22,7 @@ EXPECTED_INPUT_HASHES = {
     "ancillary/meta.json": "8c183cc752b30a37abd323114a0ec6775a191c5b2d886e5aad85589a6d31ea81",
     "ancillary/notes.json": "35939c1e11de41c34c3ca02d0b877737dd0dd3fec8b669fb719b9c84de2a61cb",
     "domain_layout.json": "6c322304d0e092797682ec43070b1a8374ac38b05f01e4036a2b09dc966c7f39",
-    "incident_log.json": "d91cb68778fd4deac977670dde84b594e4ffeb0332fc9d0345767aad3831df3f",
+    "incident_log.json": "4c3fa1a7af68fd2d8795a65049856b6cf0a4f23ecedfe7a12434bbfbea7fb493",
     "policy.json": "60670b933863d34ba7abb988abd7f681feb7b9dc892f07e1ece893b8b82703d3",
     "pool_state.json": "9f22c46193ca7e2bec3bf0fdbe27e8f0fbd7b2a2f4e4fc6b74b151b668dc6f68",
     "samples/sample_00.json": "acaeac9806440d4ef60eda3a69b9a8c30abab4cf8df1ad8b8f97cc3fc953ff7c",
@@ -37,19 +37,19 @@ EXPECTED_INPUT_HASHES = {
     "samples/sample_09.json": "b90ac90fe7823fa4058e2b7461025707f17bc839c56e35861e558997cfe00292",
     "samples/sample_10.json": "878e1466dc532a1c2aa1318ce596eff4602e7464f858678a30cb77493ae1e59f",
     "samples/sample_11.json": "66df51b94c4456f0be98b11428475a7541184bba6bca32fd83460ae77f0339fb",
-    "SPEC.md": "95af21e5c8642762e16bbf27eae2d7066e5044b6be59493e3f0e4672820e278b"
+    "SPEC.md": "4d14a19f1652d60f49ddd303f33cca49b7412833e7a1e12f16359537b89b28a2"
 }
 
 
 EXPECTED_OUTPUT_CANONICAL_HASHES = {
-    "veil_bins.json": "8fc6fbb25a171ab4c4734f065ba607a0bd178578e2a4799498e93ea26c65f1f5",
-    "summary.json": "d5e5baee0807bff5c6cc52990d7e1df91f802173905bacfa30c2c5934ef36d3c"
+    "veil_bins.json": "a35589bd14b0c9782e0cb259dea0f896af14cbfefb137173070dbe3a568dc735",
+    "summary.json": "f20d5bc96e961ecaca364496f9ec04b164abc960e4a26a0d3a35e2c1d600bc34"
 }
 
 
 EXPECTED_FIELD_HASHES = {
-    "veil_bins.json.samples": "2b6472854625544490df2ba9c37b106d3243431dca0a1174aa7ff0f051ecdd1a",
-    "summary.json.tail_ledger_sha": "f14f68a8de76552f699e8af62e31edc6b83732e950a3485c9a6951b116eb2087",
+    "veil_bins.json.samples": "aeb17a3f99c3e9bb2081418260409b501894935a851139d138dfdc9261170005",
+    "summary.json.tail_ledger_sha": "8250b2566f6ee84aff391f31cee2e99833ea2e7ed471b2ec7b96333b5abc45ae",
     "summary.json.total_assignments": "9f14025af0065b30e47e23ebb3b491d39ae8ed17d33739e5ff3827ffb3634953"
 }
 
@@ -160,3 +160,33 @@ class TestVeilBins:
             assert isinstance(rows, list)
             bins = [row["bin"] for row in rows if isinstance(row, dict)]
             assert bins == sorted(bins), f"unsorted bins for {sid}"
+
+    def test_histogram_rows_use_bin_and_tally(self, outputs: dict[str, object]) -> None:
+        """Each sample maps to a bare list of {bin, tally} objects."""
+        main = outputs["veil_bins.json"]
+        assert isinstance(main, dict)
+        samples = main.get("samples")
+        assert isinstance(samples, dict)
+        for sid, rows in samples.items():
+            assert isinstance(rows, list), f"{sid} must map to a histogram array"
+            for row in rows:
+                assert isinstance(row, dict), f"{sid} row must be an object"
+                assert set(row.keys()) == {"bin", "tally"}, f"{sid} row keys must be bin and tally"
+                assert isinstance(row["bin"], int)
+                assert isinstance(row["tally"], int)
+
+    def test_incident_masks_reference_fixture_samples(self) -> None:
+        """Every masked sample_id exists in the fixture set."""
+        incidents = _load_json(DATA_DIR / "incident_log.json")
+        assert isinstance(incidents, dict)
+        masks = incidents.get("masks")
+        assert isinstance(masks, list)
+        fixture_ids: list[str] = []
+        for path in sorted((DATA_DIR / "samples").glob("sample_*.json")):
+            doc = _load_json(path)
+            assert isinstance(doc, dict)
+            fixture_ids.append(doc["sample_id"])
+        masked_ids = {row["sample_id"] for row in masks if isinstance(row, dict)}
+        assert masked_ids, "fixture must include at least one incident mask"
+        for sid in masked_ids:
+            assert sid in fixture_ids, f"mask references unknown sample {sid}"

@@ -28,15 +28,13 @@ type tagFile struct {
 	Bundle string `json:"bundle"`
 }
 
-type incidentEvent struct {
-	Day    int    `json:"day"`
-	Kind   string `json:"kind"`
-	RoomID string `json:"room_id"`
-	TrapID string `json:"trap_id"`
-}
-
 type incidentFile struct {
-	Events []incidentEvent `json:"events"`
+	Events []struct {
+		Day    int    `json:"day"`
+		Kind   string `json:"kind"`
+		RoomID string `json:"room_id"`
+		TrapID string `json:"trap_id"`
+	} `json:"events"`
 }
 
 type linksFile struct {
@@ -194,28 +192,6 @@ func neighbors(id string, adj map[string][]string) []string {
 	return ns
 }
 
-func eventSortKey(ev incidentEvent) string {
-	if ev.RoomID != "" {
-		return ev.RoomID
-	}
-	if ev.TrapID != "" {
-		return ev.TrapID
-	}
-	return ev.Kind
-}
-
-func lessEvent(a, b incidentEvent) bool {
-	if a.Day != b.Day {
-		return a.Day < b.Day
-	}
-	ka := eventSortKey(a)
-	kb := eventSortKey(b)
-	if ka != kb {
-		return ka < kb
-	}
-	return a.Kind < b.Kind
-}
-
 func main() {
 	dataDir := os.Getenv("TGC_DATA_DIR")
 	if dataDir == "" {
@@ -273,14 +249,7 @@ func main() {
 	forcePulse := map[string]struct{}{}
 	outboundMuted := map[string]struct{}{}
 	boost := false
-	tagsAligned := pool.EvaluationTag == tag.Bundle
-
-	sortedEvents := append([]incidentEvent{}, inc.Events...)
-	sort.Slice(sortedEvents, func(i, j int) bool {
-		return lessEvent(sortedEvents[i], sortedEvents[j])
-	})
-
-	for _, ev := range sortedEvents {
+	for _, ev := range inc.Events {
 		if ev.Day > pol.CurrentDay {
 			continue
 		}
@@ -289,9 +258,8 @@ func main() {
 			sealedRooms[ev.RoomID] = struct{}{}
 		case "force_pulse":
 			forcePulse[ev.TrapID] = struct{}{}
-			delete(outboundMuted, ev.TrapID)
 		case "disarm_boost":
-			if ev.Day == pol.CurrentDay && tagsAligned {
+			if ev.Day == pol.CurrentDay {
 				boost = true
 			}
 		case "jam_echo":
@@ -308,12 +276,6 @@ func main() {
 	effectiveCap := pol.TierDisarmCap[pol.PartyTier]
 	if boost {
 		effectiveCap++
-	}
-	if !tagsAligned {
-		effectiveCap--
-		if effectiveCap < 0 {
-			effectiveCap = 0
-		}
 	}
 
 	chainMax := pol.ChainMaxHops
@@ -369,65 +331,40 @@ func main() {
 		traps[id].ChainHops = 0
 	}
 
-	changed := true
-	for changed {
-		changed = false
-		idsByHop := make([]string, 0, len(triggered))
-		for id := range triggered {
-			idsByHop = append(idsByHop, id)
-		}
-		sort.Slice(idsByHop, func(i, j int) bool {
-			hi, hj := triggered[idsByHop[i]], triggered[idsByHop[j]]
-			if hi != hj {
-				return hi < hj
-			}
-			return idsByHop[i] < idsByHop[j]
-		})
-		for _, id := range idsByHop {
+	waves := [][]string{wave0}
+	prev := wave0
+	for hop := 1; hop <= chainMax; hop++ {
+		var nxt []string
+		seen := map[string]struct{}{}
+		for _, id := range prev {
 			if isMuted(id) {
 				continue
 			}
-			h := triggered[id]
-			srcRoom := traps[id].RoomID
 			for _, nb := range neighbors(id, adj) {
+				if _, ok := seen[nb]; ok {
+					continue
+				}
 				st, ok := traps[nb]
 				if !ok || st.Sealed || !st.Armed {
 					continue
 				}
-				cost := 1
-				if st.RoomID != srcRoom {
-					cost = 2
-				}
-				cand := h + cost
-				if cand > chainMax {
+				if _, already := triggered[nb]; already {
 					continue
 				}
-				cur, seen := triggered[nb]
-				if !seen || cand < cur {
-					triggered[nb] = cand
-					traps[nb].ChainHops = cand
-					changed = true
-				}
+				seen[nb] = struct{}{}
+				nxt = append(nxt, nb)
 			}
 		}
-	}
-
-	hopGroups := map[int][]string{}
-	maxHop := -1
-	for id, hop := range triggered {
-		hopGroups[hop] = append(hopGroups[hop], id)
-		if hop > maxHop {
-			maxHop = hop
+		if len(nxt) == 0 {
+			break
 		}
-	}
-	waves := make([][]string, 0)
-	for hop := 0; hop <= maxHop; hop++ {
-		group := hopGroups[hop]
-		if len(group) == 0 {
-			continue
+		sort.Strings(nxt)
+		for _, id := range nxt {
+			triggered[id] = hop
+			traps[id].ChainHops = hop
 		}
-		sort.Strings(group)
-		waves = append(waves, group)
+		waves = append(waves, nxt)
+		prev = nxt
 	}
 
 	for _, st := range traps {

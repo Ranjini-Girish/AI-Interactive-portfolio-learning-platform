@@ -1,9 +1,0 @@
-{
-  "samples": [
-    {"day": 91, "lag_bytes": 1200000, "witness_lag_bytes": 1250000},
-    {"day": 94, "lag_bytes": 1100000, "witness_lag_bytes": 1150000},
-    {"day": 96, "lag_bytes": 1050000, "witness_lag_bytes": 1080000}
-  ],
-  "shard_id": "sh-bronze-ok",
-  "tier": "bronze"
-}

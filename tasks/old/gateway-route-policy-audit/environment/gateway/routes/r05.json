@@ -1,1 +1,0 @@
-{"pack_id":"epsilon","rules":[{"id":"ghost","host":"ghost.example.com","host_type":"exact","path_prefix":"/ghost","methods":["GET"],"group":"not-a-real-group","decision":"allow"}]}

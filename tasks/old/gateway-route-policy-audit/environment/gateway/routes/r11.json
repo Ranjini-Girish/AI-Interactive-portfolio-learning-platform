@@ -1,1 +1,0 @@
-{"pack_id":"lambda","rules":[{"id":"payments-pay","host":"payments.example.com","host_type":"exact","path_prefix":"/pay","methods":["GET"],"decision":"allow"}]}

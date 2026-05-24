@@ -1,6 +1,3 @@
 {
-  "anchors_dir": "anchors",
-  "ancillary_dir": "ancillary",
-  "samples_dir": "samples",
-  "version": 1
+  "site": "ridge"
 }

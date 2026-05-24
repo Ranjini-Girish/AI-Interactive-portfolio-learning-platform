@@ -1,9 +1,0 @@
-{
-  "bundle_id": "h20",
-  "delivery_mode": "enforce",
-  "directives": {
-    "script-src": ["'unsafe-inline'", "sha256-deadbeef"]
-  },
-  "nonces": [],
-  "origin_id": "o-eta"
-}

@@ -1,44 +1,25 @@
 {
-  "events": [
+  "windows": [
     {
-      "day": 1,
-      "event_id": "e1",
-      "action": "freeze_lane",
-      "lanes": ["east"],
-      "severity": 4,
-      "bias": 0
+      "relax": 4,
+      "tiers": [
+        "alpha"
+      ],
+      "until_day": 90
     },
     {
-      "day": 1,
-      "event_id": "e2",
-      "action": "pulse_carry",
-      "lanes": ["west"],
-      "severity": 2,
-      "bias": 2
+      "relax": 3,
+      "tiers": [
+        "alpha"
+      ],
+      "until_day": 100
     },
     {
-      "day": 2,
-      "event_id": "e3",
-      "action": "thaw_lane",
-      "lanes": ["east"],
-      "severity": 1,
-      "bias": 0
-    },
-    {
-      "day": 2,
-      "event_id": "e4",
-      "action": "pulse_carry",
-      "lanes": ["east"],
-      "severity": 5,
-      "bias": 1
-    },
-    {
-      "day": 2,
-      "event_id": "e5",
-      "action": "freeze_lane",
-      "lanes": ["north"],
-      "severity": 2,
-      "bias": 0
+      "relax": 2,
+      "tiers": [
+        "beta"
+      ],
+      "until_day": 80
     }
   ]
 }

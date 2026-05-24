@@ -1,13 +1,13 @@
 {
   "masks": [
     {
-      "sample_id": "sbr_04",
+      "sample_id": "vqb_04",
       "zero_slots": [
         1
       ]
     },
     {
-      "sample_id": "sbr_09",
+      "sample_id": "vqb_09",
       "zero_slots": [
         0,
         2

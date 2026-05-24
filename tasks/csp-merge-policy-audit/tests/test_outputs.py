@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for the CSP merge policy audit task."""
 
 from __future__ import annotations

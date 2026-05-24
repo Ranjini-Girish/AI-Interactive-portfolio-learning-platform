@@ -1,8 +1,0 @@
-{
-  "accept_band_mask": 11, 
-  "lanes_rank": [
-    "B", 
-    "A"
-  ], 
-  "merge_slack_days": 1
-}

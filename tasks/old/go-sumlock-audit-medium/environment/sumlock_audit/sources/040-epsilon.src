@@ -1,2 +1,0 @@
-SOURCE: pkg/eps.go
-USE: example.com/epsilon v1.0.0

@@ -1,9 +1,0 @@
-{
-  "bundle_id": "d99",
-  "delivery_mode": "enforce",
-  "directives": {
-    "script-src": ["'nonce-rotate'", "sha256-abc123"]
-  },
-  "nonces": ["'nonce-rotate'"],
-  "origin_id": "o-delta"
-}

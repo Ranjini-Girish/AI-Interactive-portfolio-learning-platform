@@ -4,9 +4,7 @@ WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        asciinema \
         ca-certificates \
-        tmux \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python -m pip install --no-cache-dir \

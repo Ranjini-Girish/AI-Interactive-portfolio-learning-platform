@@ -3,10 +3,46 @@
   "platformTaskSlug": "ribbon-winding-quorum-audit",
   "assignmentId": "2a3a62d8-aff8-4c1f-8164-9883b798aad4",
   "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=2a3a62d8-aff8-4c1f-8164-9883b798aad4",
-  "capturedAt": "2026-05-24T06:40:57.575Z",
+  "capturedAt": "2026-05-24T10:43:25.151Z",
   "revisionReasons": [
-    "autoeval_build_failed"
+    "difficulty_trivial",
+    "platform_needs_revision",
+    "autoeval_build_failed",
+    "difficulty_below_medium"
   ],
+  "extractionSource": "api+scrape",
+  "difficultyBand": "trivial",
+  "solvable": true,
+  "agentStats": {
+    "nop": {
+      "n_runs": 1,
+      "accuracy": 0,
+      "n_successes": 0,
+      "n_agent_timeouts": 0,
+      "n_other_failures": 1
+    },
+    "oracle": {
+      "n_runs": 3,
+      "accuracy": 1,
+      "n_successes": 3,
+      "n_agent_timeouts": 0,
+      "n_other_failures": 0
+    },
+    "terminus-gpt5-2": {
+      "n_runs": 5,
+      "accuracy": 1,
+      "n_successes": 5,
+      "n_agent_timeouts": 0,
+      "n_other_failures": 0
+    },
+    "terminus-claude-opus-4-6": {
+      "n_runs": 5,
+      "accuracy": 1,
+      "n_successes": 5,
+      "n_agent_timeouts": 0,
+      "n_other_failures": 0
+    }
+  },
   "autoEval": {
     "buildFailed": true,
     "buildId": "CodeExecutionEnvironment:4cf17a6f-e90e-4523-bb3b-df02637e94e9",
@@ -14,12 +50,12 @@
   },
   "difficulty": {
     "failed": true,
-    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at least MEDIUM\n\nStatus: ✅ Solvable (all tests passed by at least one agent run)\n\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0% (5/5 runs)\n  • terminus-gpt5-2: 100.0% (5/5 runs)\n\nReference Agents:\n  • nop: 0.0% (0/1 runs)\n  • oracle: 100.0% (3/3 runs)\n\nFailure Breakdown:\n  • nop: 1 other\n\nUnit Tests Results:\n  • TestInputIntegrity → test_each_input_file_sha256: 10 passed / 10 runs\n  • TestReportStructure → test_output_canonical_hashes: 10 passed / 10 runs\n  • TestReportStructure → test_nested_field_hashes: 10 passed / 10 runs\n  • TestCrisisAndSummary → test_crisis_latches_on_severity_day: 10 passed / 10 runs\n  • TestCrisisAndSummary → test_summary_counts: 10 passed / 10 runs\n  • TestSegmentStatuses → test_status_examples_present: 10 passed / 10 runs\n  • TestIncidentTrail → test_applied_follows_day_then_event_id: 10 passed / 10 runs\n  • TestLaneRollups → test_west_lane_ok_and_short_split: 10 passed / 10 runs\n  • TestLaneRollups → test_north_lane_frozen_bucket: 10 passed / 10 runs\n\nAnalysis on Agent Failures:\n  • Task Instruction Sufficiency: ➖ NOT_APPLICABLE, debug output not available"
   },
   "qualityCheck": {
-    "failed": false,
+    "failed": true,
     "failures": [],
-    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfour output files (segment_quorum.\njson, lane_summary.json, \nincident_effects.json, summary.json), \nstates the binary name (rwqaudit),"
+    "summary": "## Quality Check Results\n✅ pass - behavior_in_task_description: instruction.md explicitly names all four output files (segment_quorum.json, lane_summary.json, incident_effects.json, summary.json), states the binary name (rwqaudit), the Go version (1.23), the env-var overrides (RWQ_DATA_DIR, RWQ_AUDIT_DIR), and the formatting rules. It defers algorithm details to /app/rwq_lab/SPEC.md, which is present in the environment and comprehensively covers every computation the tests verify (crisis latch, incident replay order, effective winding, quorum need, status priority, lane rollups, summary fields).\n❌ fail - behavior_in_tests: instruction.md explicitly requires 'ASCII-only text, two-space indentation, recursively sorted object keys at every object level, no stray trailing spaces on lines, and exactly one trailing newline at EOF.' The tests verify only the canonical minified JSON hash (json.dumps with sort_keys=True and no indent), which confirms data values and key presence but does not check the actual file presentation: 2-space indentation, absence of trailing spaces, and the single trailing newline are untested. Additionally, the requirement to never modify files under the read root and the binary location/name are not tested.\n✅ pass - informative_test_structure: The test file is well-organised into clearly named pytest classes (TestInputIntegrity, TestReportStructure, TestCrisisAndSummary, TestSegmentStatuses, TestIncidentTrail, TestLaneRollups), each with a descriptive docstring explaining what it verifies. Individual test methods also carry docstrings. Helper functions (_sha256_bytes, _canonical, _load_json) are concise and named clearly.\n✅ pass - anti_cheating_measures: The Dockerfile copies only rwq_lab/ into the image; tests/ and solution/ are absent at runtime. Expected output hashes live exclusively in tests/test_outputs.py, which the agent cannot read. TestInputIntegrity hash-locks every input file so the agent cannot tamper with the lab tree to reach a trivially correct answer. The four output hashes are SHA-256 of canonical JSON derived from a non-trivial multi-step computation, making brute-force guessing infeasible.\n✅ pass - structured_data_schema: SPEC.md (referenced normatively from instruction.md) explicitly documents every field for all four output files: key names, types, sort order, status strings, counting rules, and the exact lexicographic key order required for summary.json. It also defines all input schemas. This constitutes a normative schema, not just examples.\n✅ pass - pinned_dependencies: The base image is pinned by digest (debian:bookworm-slim@sha256:f9c6a2fd…). Python packages are explicitly versioned: pytest==8.4.1 and pytest-json-ctrf==0.3.5. The apt package golang-go is not pinned, but apt packages are generally exempt per the criterion. No other external dependencies are used.\n✅ pass - typos: No typos were found in filenames, paths, commands, or variable names across instruction.md, SPEC.md, the Dockerfile, test files, or the solution. Field names used in the solution structs match the SPEC exactly (e.g. missing_slot, lane_frozen, effective_winding, quorum_need, active_quorum_floor, crisis_trigger_day).\n✅ pass - tests_or_solution_in_image: The Dockerfile contains only 'COPY rwq_lab/ /app/rwq_lab/'. Neither the tests/ directory nor the solution/ directory is copied into the image. The verifier test script is mounted at /tests/ at runtime by the harness, not baked in.\n✅ pass - hardcoded_solution: solve.sh copies main.go and go.mod into /app/rwq_tool/, compiles a rwqaudit binary with 'go build', and runs it. main.go reads all input files, replays incidents via a state machine, computes effective windings using bitwise operations on anchor masks, evaluates segment statuses, aggregates lane rollups and summary counters, and writes the four JSON outputs. The computation is genuine and non-trivial.\n✅ pass - file_reference_mentioned: instruction.md explicitly lists all four output filenames: segment_quorum.json, lane_summary.json, incident_effects.json, and summary.json, along with the output directory /app/rwq_audit/. These match exactly what tests/test_outputs.py checks.\n"
   },
   "oracle": {
     "failed": false,

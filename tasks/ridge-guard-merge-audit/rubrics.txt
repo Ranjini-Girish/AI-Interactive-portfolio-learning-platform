@@ -1,13 +1,14 @@
-Agent reads `/app/rgma_lab/SPEC.md` and emits canonical JSON into the audit directory given as the second program argument without mutating bundled inputs, +3
-Agent applies incident ordering, day-floor clipping of the effective policy window before anchor overlap, anchor overlap clamping, transitive alias ridge propagation across overlapping groups, and microlambda cap exactly as specified, +5
+Agent reads `/app/rgma_lab/SPEC.md` and emits canonical JSON under `/app/audit/` without mutating bundled inputs, +3
+Agent applies incident ordering, anchor overlap clamping, alias max merge, and microlambda cap exactly as specified, +5
 Agent preserves witness bytes for `pool_state.json` and `domain_layout.json`, +2
-Agent honors the `RGMA_DATA_DIR` / `RGMA_AUDIT_DIR` override semantics used by the harness when those variables are non-empty, +2
-Agent creates the second-argument audit directory when missing before writing outputs, +2
+Agent documents `RGMA_DATA_DIR` / `RGMA_AUDIT_DIR` override semantics exactly as stated in the prompt, +2
+Agent leaves anchors and ancillary JSON read-only, +2
+Agent creates missing audit directory before writing outputs, +2
 Agent omits extra top-level keys beyond the schema in each output file, +2
 Agent uses UTF-8 JSON with sorted keys, two-space indent, trailing newline, +2
-Agent mishandles day-floor clipping, decimal microlambda conversion, or float formatting for `anchor_factor`, -3
-Agent applies alias ridge work when `alias_guard` is false or collapses components incorrectly when true, -5
-Agent mutates any file under the lab read root or drops required witness files, -5
-Agent writes outputs outside the audit directory passed as the second argument, -3
+Agent mishandles decimal microlambda conversion or float formatting for `anchor_factor`, -3
+Agent applies alias merge when `alias_guard` is false or skips merge when true, -5
+Agent mutates any file under `/app/rgma_lab/` or drops required witness files, -5
+Agent writes outputs outside `/app/audit/` when env vars are unset, -3
 Agent freezes bump targets incorrectly or ignores `lift_freeze` ordering rules, -3
 Agent emits `bias_class` outside the closed set for non-frozen hosts, -3
