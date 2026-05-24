@@ -1,0 +1,12 @@
+{
+  "id": "src/components/chart",
+  "base_size_bytes": 20,
+  "exports": [
+    {"name": "Chart", "size_bytes": 280}
+  ],
+  "imports": [
+    {"module": "src/utils/render", "names": ["render"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

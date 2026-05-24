@@ -1,0 +1,12 @@
+{
+  "name": "atmospheric-profile-analysis",
+  "version": "1.0.0",
+  "description": "Radiosonde sounding thermodynamic analysis pipeline",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "aliases": [
+    {
+      "from": "achen@corp.dev",
+      "to": "alice@example.com"
+    },
+    {
+      "from": "bob.smith@old.dev",
+      "to": "bob@example.com"
+    },
+    {
+      "from": "charlie.p@uni.edu",
+      "to": "charlie.park@research.io"
+    },
+    {
+      "from": "charlie.park@research.io",
+      "to": "charlie@example.com"
+    }
+  ]
+}

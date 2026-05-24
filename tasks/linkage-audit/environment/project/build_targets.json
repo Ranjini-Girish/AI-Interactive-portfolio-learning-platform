@@ -1,0 +1,62 @@
+[
+  {
+    "name": "server",
+    "objects": ["src/main.cpp"],
+    "libraries": [
+      {
+        "name": "libcore",
+        "members": ["src/logger.cpp", "src/string_formatter.cpp"]
+      },
+      {
+        "name": "libmath",
+        "members": ["src/math_engine.cpp"]
+      },
+      {
+        "name": "libio",
+        "members": ["src/serializer_impl.cpp", "src/network_client.cpp", "src/cache_manager.cpp"]
+      }
+    ]
+  },
+  {
+    "name": "pipeline",
+    "objects": ["src/pipeline_main.cpp"],
+    "libraries": [
+      {
+        "name": "libprocess",
+        "members": ["src/processor_a.cpp", "src/processor_b.cpp"]
+      },
+      {
+        "name": "libcore",
+        "members": ["src/logger.cpp", "src/math_engine.cpp", "src/string_formatter.cpp"]
+      }
+    ]
+  },
+  {
+    "name": "worker",
+    "objects": ["src/worker_main.cpp"],
+    "libraries": [
+      {
+        "name": "libinfra",
+        "members": ["src/logger.cpp", "src/math_engine.cpp", "src/string_formatter.cpp"]
+      },
+      {
+        "name": "libcomm",
+        "members": ["src/network_client.cpp", "src/cache_manager.cpp"]
+      }
+    ]
+  },
+  {
+    "name": "plugin_host",
+    "objects": ["src/main.cpp", "src/util.cpp"],
+    "libraries": [
+      {
+        "name": "libplugin",
+        "members": ["src/plugin_loader.cpp", "src/thread_manager.cpp"]
+      },
+      {
+        "name": "libcore",
+        "members": ["src/logger.cpp", "src/math_engine.cpp", "src/string_formatter.cpp"]
+      }
+    ]
+  }
+]

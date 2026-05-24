@@ -1,0 +1,9 @@
+{
+  "name": "rogue",
+  "stats": {"hp": 90, "attack": 35, "defense": 12, "speed": 30},
+  "element": "wind",
+  "abilities": {
+    "backstab": {"type": "attack", "power": 55, "element": "wind"},
+    "poison_blade": {"type": "attack", "power": 20, "element": "neutral", "applies": "poison"}
+  }
+}

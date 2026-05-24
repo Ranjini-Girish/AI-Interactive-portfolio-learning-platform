@@ -1,0 +1,17 @@
+{
+  "trace_id": "trace_12",
+  "description": "Mixed realloc with OOM retry after freeing and coalescing adjacent blocks",
+  "operations": [
+    {"op": "alloc", "id": "x", "size": 200, "align": 8},
+    {"op": "alloc", "id": "y", "size": 200, "align": 8},
+    {"op": "alloc", "id": "z", "size": 200, "align": 8},
+    {"op": "alloc", "id": "w", "size": 200, "align": 8},
+    {"op": "dealloc", "id": "y"},
+    {"op": "realloc", "id": "x", "new_size": 350, "align": 8},
+    {"op": "realloc", "id": "z", "new_size": 400, "align": 8},
+    {"op": "dealloc", "id": "w"},
+    {"op": "realloc", "id": "z", "new_size": 350, "align": 8},
+    {"op": "dealloc", "id": "x"},
+    {"op": "dealloc", "id": "z"}
+  ]
+}

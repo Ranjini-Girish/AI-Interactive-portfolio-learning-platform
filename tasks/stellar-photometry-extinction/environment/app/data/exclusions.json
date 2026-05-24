@@ -1,0 +1,35 @@
+{
+  "excluded_filters_per_night": [
+    {
+      "filters": [
+        "B"
+      ],
+      "night_id": "N005"
+    },
+    {
+      "filters": [
+        "B"
+      ],
+      "night_id": "N007"
+    },
+    {
+      "filters": [
+        "R"
+      ],
+      "night_id": "N003"
+    }
+  ],
+  "excluded_nights": [
+    "N005"
+  ],
+  "excluded_observations": [
+    "N001-IMG-0007",
+    "N004-IMG-0010",
+    "N011-IMG-0005",
+    "N013-IMG-0008"
+  ],
+  "excluded_stars": [
+    "PROG_D2",
+    "STD_014"
+  ]
+}

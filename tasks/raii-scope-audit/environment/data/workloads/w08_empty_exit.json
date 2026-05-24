@@ -1,0 +1,12 @@
+{
+  "workload_id": "w08_empty_exit",
+  "events": [
+    {
+      "event_id": "e1",
+      "sequence": 1,
+      "logged_at": "2026-02-01T10:00:00Z",
+      "kind": "exit",
+      "scope_id": "Z"
+    }
+  ]
+}

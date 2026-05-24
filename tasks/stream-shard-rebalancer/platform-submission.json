@@ -1,0 +1,61 @@
+{
+  "taskName": "stream-shard-rebalancer",
+  "updatedAt": "2026-05-23T17:43:08.899Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f",
+    "taskStatus": "Evaluation pending",
+    "taskName": "stream-shard-rebalancer",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "stream-shard-rebalancer.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:43:08.899Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\stream-shard-rebalancer.zip",
+    "zipBytes": 31919,
+    "zipSha256": "2fb7d7291f5c9fc52283b2ed7a2dc8d08737b6a79427da0c7b1837b76b3a264b",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:43:08.899Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "6bdc8901-5d5e-4a3a-ac5f-55aaaee0b21f",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\stream-shard-rebalancer.zip",
+      "zipBytes": 31919,
+      "zipSha256": "2fb7d7291f5c9fc52283b2ed7a2dc8d08737b6a79427da0c7b1837b76b3a264b",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

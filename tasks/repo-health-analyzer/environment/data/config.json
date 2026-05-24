@@ -1,0 +1,7 @@
+{
+  "half_life_days": 90,
+  "analysis_date": "2025-06-15T00:00:00Z",
+  "default_branch": "main",
+  "binary_churn_weight": 5,
+  "min_churn": 15
+}

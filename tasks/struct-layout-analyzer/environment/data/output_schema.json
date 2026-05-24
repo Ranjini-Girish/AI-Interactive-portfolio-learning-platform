@@ -1,0 +1,33 @@
+{
+  "platform": "linux_amd64",
+  "pointer_size": 8,
+  "structs": [
+    {
+      "name": "Example",
+      "size": 16,
+      "alignment": 8,
+      "fields": [
+        {
+          "name": "Flag",
+          "type": "bool",
+          "offset": 0,
+          "size": 1,
+          "alignment": 1,
+          "padding_after": 7
+        },
+        {
+          "name": "Value",
+          "type": "int64",
+          "offset": 8,
+          "size": 8,
+          "alignment": 8,
+          "padding_after": 0
+        }
+      ],
+      "total_padding": 7,
+      "is_optimal": true,
+      "optimal_size": 16,
+      "optimal_order": ["Value", "Flag"]
+    }
+  ]
+}

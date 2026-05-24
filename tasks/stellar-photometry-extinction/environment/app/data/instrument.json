@@ -1,0 +1,23 @@
+{
+  "ccd_id": "andicam2-e2v",
+  "color_terms": {
+    "B": 0.04,
+    "R": -0.03,
+    "V": 0.0
+  },
+  "filter_descriptions": {
+    "B": "Johnson B (~440 nm)",
+    "R": "Cousins R (~640 nm)",
+    "V": "Johnson V (~550 nm)"
+  },
+  "filters": [
+    "B",
+    "V",
+    "R"
+  ],
+  "gain_e_per_adu": 1.36,
+  "name": "ANDICAM-II",
+  "pixel_scale_arcsec": 0.43,
+  "read_noise_e": 6.4,
+  "saturation_adu": 60000
+}

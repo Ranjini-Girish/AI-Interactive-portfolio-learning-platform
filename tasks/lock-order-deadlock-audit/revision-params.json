@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "fb9cc5df-5d5d-4fe2-bf89-175a4666085c",
+  "platformTaskSlug": "lock-order-deadlock-audit",
+  "assignmentId": "0db34025-f7f3-4b25-b17f-54d7c09ecc19",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=0db34025-f7f3-4b25-b17f-54d7c09ecc19",
+  "capturedAt": "2026-05-23T17:28:42.229Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:e8bb01da-cf5e-4a01-a00c-85a23818486f",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:e8bb01da-cf5e-4a01-a00c-85a23818486f."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nThis task is not tested with any \nagents as the Oracle solution failed. \nPlease fix the Oracle solution and \nre-run the tests.\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md is exhaustive: it \nnames all six output files by exact \nfilename, specifies the CLI contract \n(two positional args, exit non-zero \non wrong arg count/failure), details"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "attest-bundle-lattice",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\attest-bundle-lattice.zip",
+    "excludedPlatformZip": "lock-order-deadlock-audit.zip"
+  }
+}

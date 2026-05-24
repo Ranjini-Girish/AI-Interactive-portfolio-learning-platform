@@ -1,0 +1,39 @@
+{
+  "endpoint_id": "ep_02",
+  "deliveries": [
+    {
+      "delivery_id": "del_ok",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "success",
+          "sent_at": 1000,
+          "received_at": 1010,
+          "body": {
+            "event": "stock.low",
+            "sku": "A1"
+          },
+          "signature": "4fe6c71dca5e2f72d5823e6badb89c9885fb90a0118056350ac8a16c407e9fe0",
+          "jitter_pct": 0
+        }
+      ]
+    },
+    {
+      "delivery_id": "del_bad_sig",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "failed",
+          "sent_at": 2000,
+          "received_at": 2010,
+          "body": {
+            "event": "stock.low",
+            "sku": "B2"
+          },
+          "signature": "bad000000000000000000000000000000000000000000000000000000000000",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

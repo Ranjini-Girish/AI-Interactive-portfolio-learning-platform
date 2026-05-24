@@ -1,0 +1,3 @@
+The reactive dataflow engine at `/app/src/` implements a spreadsheet-like computation graph where cells hold values or formulas referencing other cells, with automatic recalculation of dependents when inputs change. The implementation has several correctness bugs that cause the engine to produce wrong results.
+
+Fix all bugs so that `TypeScript on Node 22 /app/src/main.js` produces correct results at `/app/output/results.json`. The engine's behavioral contract is specified in `/app/docs/SPEC.md`. All engine operations — including single updates, batch updates, cell type transitions, and graph management — must conform to that specification.

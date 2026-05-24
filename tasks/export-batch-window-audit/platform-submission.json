@@ -1,0 +1,61 @@
+{
+  "taskName": "export-batch-window-audit",
+  "updatedAt": "2026-05-23T17:16:23.459Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "3665a277-0a6b-4ba3-910b-31b8e25af67b",
+    "taskStatus": "Evaluation pending",
+    "taskName": "export-batch-window-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "export-batch-window-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:16:23.459Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "3665a277-0a6b-4ba3-910b-31b8e25af67b",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\export-batch-window-audit.zip",
+    "zipBytes": 23100,
+    "zipSha256": "eb48add5975fa99467486c5393a7611aede957df972741c2b56a1ab409afef46",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:16:23.459Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "3665a277-0a6b-4ba3-910b-31b8e25af67b",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\export-batch-window-audit.zip",
+      "zipBytes": 23100,
+      "zipSha256": "eb48add5975fa99467486c5393a7611aede957df972741c2b56a1ab409afef46",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "mongoose",
+  "version": "7.6.3",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "mongodb",
+      "version_range": "^6.0"
+    },
+    {
+      "name": "kareem",
+      "version_range": "^2.5"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "hash": "5a1d8e63",
+  "author_name": "Bob Smith",
+  "author_email": "BOB@Example.com",
+  "parent_hashes": [
+    "3f7b5c18"
+  ],
+  "timestamp": "2025-03-10T11:00:00Z",
+  "message": "API pagination\nReviewed-by: Charlie Park",
+  "file_changes": [
+    {
+      "path": "src/api.js",
+      "additions": 35,
+      "deletions": 10
+    },
+    {
+      "path": "src/pagination.js",
+      "additions": 60,
+      "deletions": 0
+    },
+    {
+      "path": "docs/API_GUIDE.md",
+      "additions": 45,
+      "deletions": 0
+    }
+  ]
+}

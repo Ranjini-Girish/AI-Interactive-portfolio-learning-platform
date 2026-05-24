@@ -1,0 +1,61 @@
+{
+  "taskName": "sim-checkpoint-plan-audit",
+  "updatedAt": "2026-05-23T17:54:56.352Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "91c375bf-3ab3-4fae-b647-c57bd0ce1d79",
+    "taskStatus": "Evaluation pending",
+    "taskName": "sim-checkpoint-plan-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "sim-checkpoint-plan-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:54:56.352Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "91c375bf-3ab3-4fae-b647-c57bd0ce1d79",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\sim-checkpoint-plan-audit.zip",
+    "zipBytes": 50811,
+    "zipSha256": "42184dd8506f83a39516a392523adda9db3d946f1763dab14d69380f6a2d2936",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:54:56.352Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "91c375bf-3ab3-4fae-b647-c57bd0ce1d79",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\sim-checkpoint-plan-audit.zip",
+      "zipBytes": 50811,
+      "zipSha256": "42184dd8506f83a39516a392523adda9db3d946f1763dab14d69380f6a2d2936",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

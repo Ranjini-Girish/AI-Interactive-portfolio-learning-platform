@@ -1,0 +1,10 @@
+name=macro-derive
+kind=proc-macro
+build_ms=320
+public=crates/macro-derive/src/lib.rs
+private=crates/macro-derive/src/expand.rs
+build=
+tests=
+features=debug-expand:private
+unsafe=0
+deps=

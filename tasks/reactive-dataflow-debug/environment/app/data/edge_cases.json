@@ -1,0 +1,28 @@
+{
+  "edge_cases": {
+    "division_by_zero": {
+      "formula": "A1 / 0",
+      "expected": "DIV0 error"
+    },
+    "self_reference": {
+      "formula": "A1 + A1",
+      "expected": "Valid - references same cell twice, not circular"
+    },
+    "deeply_nested_functions": {
+      "formula": "SUM(AVG(A1, A2), MAX(B1, B2), MIN(C1, C2))",
+      "expected": "Evaluates inner functions first"
+    },
+    "empty_sum": {
+      "formula": "SUM()",
+      "expected": "Returns 0"
+    },
+    "comparison_in_arithmetic": {
+      "formula": "(A1 > 5) * 10",
+      "expected": "10 if A1>5, else 0"
+    },
+    "chained_divisions": {
+      "formula": "A1 / 3 / 7 * 21",
+      "expected": "Full precision through chain, A1 remains unchanged"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "project_name": "web-app-bundle",
+  "entry_points": ["src/index"],
+  "external_packages": ["react", "lodash", "axios"],
+  "min_shared_size_bytes": 100,
+  "savings_decimal_places": 2
+}

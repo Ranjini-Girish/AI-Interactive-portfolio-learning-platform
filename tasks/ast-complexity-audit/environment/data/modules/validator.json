@@ -1,0 +1,81 @@
+{
+  "module_name": "validator",
+  "path": "src/utils/validator.js",
+  "lines_of_code": 70,
+  "imports": ["./logger"],
+  "exports": ["validateSchema", "sanitizeInput"],
+  "functions": [
+    {
+      "name": "validateSchema",
+      "lines": 35,
+      "parameters": ["data", "schema"],
+      "body": [
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "if",
+              "condition": [{"type": "logical_and"}, {"type": "logical_and"}, {"type": "logical_and"}],
+              "body": [],
+              "else_body": [
+                {
+                  "type": "else_if",
+                  "condition": [{"type": "logical_or"}],
+                  "body": [
+                    {
+                      "type": "for",
+                      "body": [
+                        {"type": "if", "condition": [], "body": [], "else_body": []}
+                      ]
+                    }
+                  ],
+                  "else_body": [
+                    {
+                      "type": "else",
+                      "body": [
+                        {"type": "ternary", "body": [], "else_body": []}
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "!==", "&&", "||", "?:", ".", "()", "=", "[]", "typeof", "instanceof", "!", "in", "+"],
+      "operands": ["data", "schema", "field", "rule", "value", "type", "errors", "i", "j", "valid", "null", "undefined", "true", "false"]
+    },
+    {
+      "name": "sanitizeInput",
+      "lines": 20,
+      "parameters": ["input", "rules"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [{"type": "nullish_coalesce"}],
+          "body": [],
+          "else_body": []
+        },
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "switch",
+              "cases": [
+                {"type": "case", "body": []},
+                {"type": "case", "body": []},
+                {"type": "case", "body": [
+                  {"type": "if", "condition": [], "body": [], "else_body": []}
+                ]},
+                {"type": "default", "body": []}
+              ]
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "??", ".", "()", "=", "[]", "typeof", "switch", "case", "+", "replace"],
+      "operands": ["input", "rules", "rule", "key", "value", "result", "i", "null", "undefined", "empty"]
+    }
+  ]
+}

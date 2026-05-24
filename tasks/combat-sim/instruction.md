@@ -1,0 +1,3 @@
+Implement a turn-based RPG combat simulator in Java that processes the character definitions and battle scenarios under `/app/data/` and produces `/app/output/combat_log.json`. Compiled class files must be placed in `/app/build/`. JDK 21 and `wget` are available. Do not modify any file under `/app/data/`.
+
+The combat rules, damage formula, turn ordering, and required output structure are documented in `/app/data/rules.md`, `/app/data/damage_formula.md`, `/app/data/turn_order.md`, and `/app/data/output_format.md` respectively. Global configuration is in `/app/data/config.json`, characters are in `/app/data/characters/`, and battle scenarios are in `/app/data/battles/`.

@@ -1,0 +1,26 @@
+{
+  "name": "api-client",
+  "path": "src/services/api-client.js",
+  "size_bytes": 1340,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "http-utils",
+      "specifiers": [
+        "createRequest"
+      ]
+    },
+    {
+      "source": "auth-service",
+      "specifiers": [
+        "getAuthToken"
+      ]
+    }
+  ],
+  "exports": [
+    "apiGet",
+    "apiPost",
+    "apiRequest"
+  ],
+  "re_exports": []
+}

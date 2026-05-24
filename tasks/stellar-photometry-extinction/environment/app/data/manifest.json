@@ -1,0 +1,82 @@
+{
+  "instrument_name": "ANDICAM-II",
+  "nights": [
+    {
+      "date_utc": "2025-09-12",
+      "night_id": "N001",
+      "observations_file": "N001.csv"
+    },
+    {
+      "date_utc": "2025-09-13",
+      "night_id": "N002",
+      "observations_file": "N002.csv"
+    },
+    {
+      "date_utc": "2025-09-14",
+      "night_id": "N003",
+      "observations_file": "N003.csv"
+    },
+    {
+      "date_utc": "2025-09-15",
+      "night_id": "N004",
+      "observations_file": "N004.csv"
+    },
+    {
+      "date_utc": "2025-09-16",
+      "night_id": "N005",
+      "observations_file": "N005.csv"
+    },
+    {
+      "date_utc": "2025-09-17",
+      "night_id": "N006",
+      "observations_file": "N006.csv"
+    },
+    {
+      "date_utc": "2025-09-18",
+      "night_id": "N007",
+      "observations_file": "N007.csv"
+    },
+    {
+      "date_utc": "2025-09-19",
+      "night_id": "N008",
+      "observations_file": "N008.csv"
+    },
+    {
+      "date_utc": "2025-09-20",
+      "night_id": "N009",
+      "observations_file": "N009.csv"
+    },
+    {
+      "date_utc": "2025-09-21",
+      "night_id": "N010",
+      "observations_file": "N010.csv"
+    },
+    {
+      "date_utc": "2025-09-22",
+      "night_id": "N011",
+      "observations_file": "N011.csv"
+    },
+    {
+      "date_utc": "2025-09-23",
+      "night_id": "N012",
+      "observations_file": "N012.csv"
+    },
+    {
+      "date_utc": "2025-09-24",
+      "night_id": "N013",
+      "observations_file": "N013.csv"
+    },
+    {
+      "date_utc": "2025-09-25",
+      "night_id": "N014",
+      "observations_file": "N014.csv"
+    },
+    {
+      "date_utc": "2025-09-26",
+      "night_id": "N015",
+      "observations_file": "N015.csv"
+    }
+  ],
+  "schema_version": 1,
+  "site_iau_code": "C29"
+}

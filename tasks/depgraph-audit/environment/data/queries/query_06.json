@@ -1,0 +1,17 @@
+{
+  "excludes": [],
+  "project_license": "MIT",
+  "query_id": "query_06",
+  "replaces": [],
+  "requirements": [
+    {
+      "min_version": "1.1.0",
+      "module": "example.com/db/sql"
+    },
+    {
+      "min_version": "1.1.0",
+      "module": "example.com/core/config"
+    }
+  ],
+  "root_module": "my-app"
+}

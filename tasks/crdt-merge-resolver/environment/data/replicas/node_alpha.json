@@ -1,0 +1,77 @@
+{
+  "replica_id": "alpha",
+  "operations": [
+    {
+      "op_id": "alpha-001",
+      "key": "user:1001",
+      "value": "Alice",
+      "op_type": "SET",
+      "lamport_ts": 1,
+      "vector_clock": {"alpha": 1},
+      "wall_clock_ms": 1000
+    },
+    {
+      "op_id": "alpha-002",
+      "key": "user:1002",
+      "value": "Bob",
+      "op_type": "SET",
+      "lamport_ts": 2,
+      "vector_clock": {"alpha": 2},
+      "wall_clock_ms": 2000
+    },
+    {
+      "op_id": "alpha-003",
+      "key": "user:1001",
+      "value": "Alice-Updated",
+      "op_type": "SET",
+      "lamport_ts": 5,
+      "vector_clock": {"alpha": 3, "beta": 2},
+      "wall_clock_ms": 5000
+    },
+    {
+      "op_id": "alpha-004",
+      "key": "config:theme",
+      "value": "dark",
+      "op_type": "SET",
+      "lamport_ts": 6,
+      "vector_clock": {"alpha": 4, "beta": 2},
+      "wall_clock_ms": 6000
+    },
+    {
+      "op_id": "alpha-005",
+      "key": "user:1003",
+      "value": "__TOMBSTONE__",
+      "op_type": "DELETE",
+      "lamport_ts": 8,
+      "vector_clock": {"alpha": 5, "beta": 3, "gamma": 1},
+      "wall_clock_ms": 8000
+    },
+    {
+      "op_id": "alpha-006",
+      "key": "counter:visits",
+      "value": "42",
+      "op_type": "SET",
+      "lamport_ts": 10,
+      "vector_clock": {"alpha": 6, "beta": 3, "gamma": 2},
+      "wall_clock_ms": 10000
+    },
+    {
+      "op_id": "alpha-007",
+      "key": "user:1004",
+      "value": "Diana",
+      "op_type": "SET",
+      "lamport_ts": 12,
+      "vector_clock": {"alpha": 7, "beta": 4, "gamma": 2},
+      "wall_clock_ms": 12000
+    },
+    {
+      "op_id": "alpha-008",
+      "key": "config:lang",
+      "value": "en-US",
+      "op_type": "SET",
+      "lamport_ts": 14,
+      "vector_clock": {"alpha": 8, "beta": 4, "gamma": 3},
+      "wall_clock_ms": 14000
+    }
+  ]
+}

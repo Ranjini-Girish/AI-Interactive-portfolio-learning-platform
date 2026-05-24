@@ -1,0 +1,4 @@
+output/
+*.o
+.git
+__pycache__

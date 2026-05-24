@@ -1,0 +1,20 @@
+{
+  "name": "nokogiri",
+  "versions": {
+    "1.14.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2022-12-01"
+    },
+    "1.15.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2023-06-01"
+    },
+    "1.16.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2024-02-01"
+    }
+  }
+}

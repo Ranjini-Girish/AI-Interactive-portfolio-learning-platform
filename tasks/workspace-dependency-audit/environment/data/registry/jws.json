@@ -1,0 +1,13 @@
+{
+  "name": "jws",
+  "versions": {
+    "3.2.2": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "4.0.0": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

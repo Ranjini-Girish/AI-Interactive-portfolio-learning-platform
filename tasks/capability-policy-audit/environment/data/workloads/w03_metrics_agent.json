@@ -1,0 +1,8 @@
+{
+  "workload_id": "metrics-agent",
+  "risk_tier": "medium",
+  "required_capabilities": ["CAP_NET_BIND_SERVICE"],
+  "observed_capabilities": ["CAP_NET_BIND_SERVICE"],
+  "forbidden_capabilities": ["CAP_SYS_ADMIN"],
+  "observed_syscalls": ["read", "write", "open", "mmap", "connect", "socket"]
+}

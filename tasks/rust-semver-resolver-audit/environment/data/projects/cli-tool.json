@@ -1,0 +1,12 @@
+{
+  "name": "cli-tool",
+  "version": "0.3.0",
+  "dependencies": {
+    "anyhow": "^1.0",
+    "clap": "^3.0",
+    "log": "^0.4",
+    "regex": "^1.5",
+    "serde": "^1.0",
+    "tokio": "^1.0"
+  }
+}

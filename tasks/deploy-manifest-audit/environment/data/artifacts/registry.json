@@ -1,0 +1,52 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "art-alpha-bundle",
+      "bundle_path": "bundles/alpha.pkg",
+      "size_bytes": 524288,
+      "sha256": "8d14d7c1308aa55a561c452cad760a051851faf527bc80cdad79c855a10b1c47"
+    },
+    {
+      "artifact_id": "art-beta-bundle",
+      "bundle_path": "bundles/beta.pkg",
+      "size_bytes": 1048576,
+      "sha256": "fcd1dbc48db9d9acd4b318eb44f835854691722697dd1faf187ecaa05f341ada"
+    },
+    {
+      "artifact_id": "art-gamma-bundle",
+      "bundle_path": "bundles/gamma.pkg",
+      "size_bytes": 786432,
+      "sha256": "888a5aa3f4267a77460d09f1225a5fed96d247875dbe5c4a5f0bea59ea857c48"
+    },
+    {
+      "artifact_id": "art-delta-bundle",
+      "bundle_path": "bundles/delta.pkg",
+      "size_bytes": 262144,
+      "sha256": "4be1d2d718f73c319a3a28c2cd9eef5ee65ee0a89b562b827df7e6405fc0e100"
+    },
+    {
+      "artifact_id": "art-epsilon-bundle",
+      "bundle_path": "bundles/epsilon.pkg",
+      "size_bytes": 1310720,
+      "sha256": "383791a94b065c451d0116a4e29daa4b09e18ddbaebcf5ca3143d4d31b9aff94"
+    },
+    {
+      "artifact_id": "art-zeta-bundle",
+      "bundle_path": "bundles/zeta.pkg",
+      "size_bytes": 655360,
+      "sha256": "9ff25e2b897f532290e92252ee62eae3ec3eac22c635813edd2b2350c667ed27"
+    },
+    {
+      "artifact_id": "art-eta-bundle",
+      "bundle_path": "bundles/eta.pkg",
+      "size_bytes": 917504,
+      "sha256": "8200276e0ca040c0c820a9662ffe41ed14da003dd3af1fc968d0c0c6849c21e5"
+    },
+    {
+      "artifact_id": "art-theta-bundle",
+      "bundle_path": "bundles/theta.pkg",
+      "size_bytes": 409600,
+      "sha256": "c279855570a67d6e3a59794034f321e4c7ff9dc59b36c75512725c03191b069a"
+    }
+  ]
+}

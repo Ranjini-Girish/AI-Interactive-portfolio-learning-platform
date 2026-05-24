@@ -1,0 +1,10 @@
+{
+  "id": "type_03_packed",
+  "kind": "struct",
+  "repr": "packed",
+  "fields": [
+    {"name": "a", "type": "u8"},
+    {"name": "b", "type": "u64"},
+    {"name": "c", "type": "u32"}
+  ]
+}

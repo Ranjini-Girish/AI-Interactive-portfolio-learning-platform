@@ -1,0 +1,9 @@
+{
+  "workflow_id": "dep-601",
+  "fsm_id": "deploy",
+  "transitions": [
+    {"transition_id": "d1", "sequence": 1, "logged_at": 6000, "from_state": "pending", "to_state": "building", "duration_ms": 100},
+    {"transition_id": "d2", "sequence": 2, "logged_at": 6100, "from_state": "building", "to_state": "testing", "duration_ms": 200},
+    {"transition_id": "d3", "sequence": 3, "logged_at": 6200, "from_state": "testing", "to_state": "staging", "duration_ms": 150}
+  ]
+}

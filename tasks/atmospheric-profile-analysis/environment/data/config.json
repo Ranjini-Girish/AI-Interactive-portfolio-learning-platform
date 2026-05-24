@@ -1,0 +1,30 @@
+{
+  "analysis": {
+    "brunt_vaisala_report": "signed_frequency",
+    "cape_method": "virtual_temperature",
+    "integration_rule": "trapezoidal",
+    "interpolation_method": "log_linear_pressure",
+    "lcl_method": "bolton_1980",
+    "pbl_ri_critical": 0.25
+  },
+  "constants": {
+    "P_0": 1000.0,
+    "R_d": 287.05,
+    "R_v": 461.52,
+    "c_pd": 1004.68,
+    "epsilon": 0.62197,
+    "g": 9.80665
+  },
+  "output": {
+    "brunt_vaisala_decimals": 6,
+    "cape_decimals": 2,
+    "height_decimals": 2,
+    "index_decimals": 2,
+    "json_indent": 2,
+    "mixing_ratio_decimals": 6,
+    "pressure_decimals": 2,
+    "sort_keys": true,
+    "temperature_decimals": 4,
+    "theta_decimals": 4
+  }
+}

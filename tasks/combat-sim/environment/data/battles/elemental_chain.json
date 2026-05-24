@@ -1,0 +1,21 @@
+{
+  "name": "elemental_chain",
+  "teams": {
+    "A": ["mage", "druid"],
+    "B": ["rogue", "healer"]
+  },
+  "actions": [
+    [
+      {"character": "mage", "ability": "fireball", "target": "rogue"},
+      {"character": "druid", "ability": "vine_whip", "target": "healer"},
+      {"character": "rogue", "ability": "backstab", "target": "mage"},
+      {"character": "healer", "ability": "splash", "target": "druid"}
+    ],
+    [
+      {"character": "mage", "ability": "ember", "target": "healer"},
+      {"character": "druid", "ability": "vine_whip", "target": "healer"},
+      {"character": "rogue", "ability": "backstab", "target": "druid"},
+      {"character": "healer", "ability": "heal", "target": "healer"}
+    ]
+  ]
+}

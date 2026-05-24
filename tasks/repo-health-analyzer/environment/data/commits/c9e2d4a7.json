@@ -1,0 +1,27 @@
+{
+  "hash": "c9e2d4a7",
+  "author_name": "Charlie Park",
+  "author_email": "charlie@example.com",
+  "parent_hashes": [
+    "9f5b1d72"
+  ],
+  "timestamp": "2025-02-20T10:00:00Z",
+  "message": "API v2 endpoints",
+  "file_changes": [
+    {
+      "path": "src/api.js",
+      "additions": 40,
+      "deletions": 15
+    },
+    {
+      "path": "tests/api.test.js",
+      "additions": 55,
+      "deletions": 0
+    },
+    {
+      "path": "src/config.js",
+      "additions": 0,
+      "deletions": 0
+    }
+  ]
+}

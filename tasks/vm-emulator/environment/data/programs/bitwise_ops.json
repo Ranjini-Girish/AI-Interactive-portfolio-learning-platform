@@ -1,0 +1,20 @@
+{
+  "name": "bitwise_ops",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 170]},
+    {"op": "MOV", "args": ["R1", 204]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "AND", "args": ["R2", "R1"]},
+    {"op": "MOV", "args": ["R3", "R0"]},
+    {"op": "OR", "args": ["R3", "R1"]},
+    {"op": "MOV", "args": ["R4", "R0"]},
+    {"op": "XOR", "args": ["R4", "R1"]},
+    {"op": "MOV", "args": ["R5", "R0"]},
+    {"op": "NOT", "args": ["R5"]},
+    {"op": "MOV", "args": ["R6", 1]},
+    {"op": "SHL", "args": ["R6", 31]},
+    {"op": "MOV", "args": ["R7", "R6"]},
+    {"op": "SHR", "args": ["R7", 31]},
+    {"op": "HALT", "args": []}
+  ]
+}

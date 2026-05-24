@@ -1,0 +1,10 @@
+name=integration-tests
+kind=test
+build_ms=180
+public=crates/integration-tests/tests/integration.rs
+private=
+build=
+tests=crates/integration-tests/tests/helpers.rs
+features=
+unsafe=0
+deps=api:dev:public,cli:dev:public

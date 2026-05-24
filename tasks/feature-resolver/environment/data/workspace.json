@@ -1,0 +1,6 @@
+{
+  "name": "acme-platform",
+  "version": "3.1.0",
+  "root_crate": "app-server",
+  "crates_dir": "crates"
+}

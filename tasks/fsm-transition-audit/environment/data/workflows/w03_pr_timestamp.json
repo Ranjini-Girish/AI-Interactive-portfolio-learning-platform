@@ -1,0 +1,10 @@
+{
+  "workflow_id": "pr-303",
+  "fsm_id": "pull_request",
+  "transitions": [
+    {"transition_id": "t1", "sequence": 1, "logged_at": 3000, "from_state": "draft", "to_state": "open", "duration_ms": 10},
+    {"transition_id": "t2", "sequence": 2, "logged_at": 2900, "from_state": "open", "to_state": "in_review", "duration_ms": 20},
+    {"transition_id": "t3", "sequence": 3, "logged_at": 3100, "from_state": "in_review", "to_state": "approved", "duration_ms": 30},
+    {"transition_id": "t4", "sequence": 4, "logged_at": 3200, "from_state": "approved", "to_state": "merged", "duration_ms": 40}
+  ]
+}

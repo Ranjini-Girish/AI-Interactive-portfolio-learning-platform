@@ -1,0 +1,13 @@
+{
+  "id": "src/components/header",
+  "base_size_bytes": 15,
+  "exports": [
+    {"name": "Header", "size_bytes": 200},
+    {"name": "NavBar", "size_bytes": 150}
+  ],
+  "imports": [
+    {"module": "src/components/button", "names": ["Button"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

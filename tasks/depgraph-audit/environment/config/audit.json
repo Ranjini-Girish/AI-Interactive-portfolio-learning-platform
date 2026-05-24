@@ -1,0 +1,38 @@
+{
+  "resolution_algorithm": "mvs",
+  "prerelease_policy": "explicit_only",
+  "build_order_tiebreak": "lexicographic",
+  "cycle_report_order": "lexicographic_smallest",
+  "depth_metric": "longest_path",
+  "vulnerability_range_semantics": "inclusive_min_exclusive_max",
+  "license_compatibility": {
+    "MIT": ["MIT", "ISC", "BSD-2-Clause", "BSD-3-Clause"],
+    "Apache-2.0": ["MIT", "Apache-2.0", "ISC", "BSD-2-Clause", "BSD-3-Clause", "MPL-2.0"],
+    "BSD-2-Clause": ["MIT", "ISC", "BSD-2-Clause", "BSD-3-Clause"],
+    "BSD-3-Clause": ["MIT", "ISC", "BSD-2-Clause", "BSD-3-Clause"],
+    "ISC": ["MIT", "ISC", "BSD-2-Clause", "BSD-3-Clause"],
+    "MPL-2.0": ["MIT", "Apache-2.0", "ISC", "BSD-2-Clause", "BSD-3-Clause", "MPL-2.0"],
+    "GPL-2.0": ["MIT", "ISC", "BSD-2-Clause", "BSD-3-Clause", "GPL-2.0", "LGPL-2.1"],
+    "GPL-3.0": ["MIT", "Apache-2.0", "ISC", "BSD-2-Clause", "BSD-3-Clause", "GPL-2.0", "GPL-3.0", "LGPL-2.1", "LGPL-3.0", "MPL-2.0"],
+    "LGPL-2.1": ["MIT", "ISC", "BSD-2-Clause", "BSD-3-Clause", "LGPL-2.1"],
+    "LGPL-3.0": ["MIT", "Apache-2.0", "ISC", "BSD-2-Clause", "BSD-3-Clause", "LGPL-3.0", "MPL-2.0"]
+  },
+  "finding_severity": {
+    "vulnerability_critical": "critical",
+    "vulnerability_high": "high",
+    "vulnerability_medium": "medium",
+    "license_incompatible": "high",
+    "cycle_detected": "critical",
+    "retracted_version": "medium",
+    "no_stable_version": "low",
+    "deep_dependency_chain": "info"
+  },
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 4,
+    "info": 5
+  },
+  "deep_chain_threshold": 5
+}

@@ -1,0 +1,18 @@
+{
+  "finding_severity": {
+    "duplicate_event_skipped": "info",
+    "exit_without_enter": "high",
+    "scope_exit_mismatch": "high",
+    "scope_reentered": "medium",
+    "scope_leak": "critical",
+    "timestamp_regression": "medium",
+    "unwind_order_violation": "high"
+  },
+  "severity_ranks": {
+    "info": 1,
+    "low": 2,
+    "medium": 3,
+    "high": 4,
+    "critical": 5
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "template-engine",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "dependencies": {
+        "core-utils": "^1.0.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "1.1.0",
+      "dependencies": {
+        "core-utils": "^1.0.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

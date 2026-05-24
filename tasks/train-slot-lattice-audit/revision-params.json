@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+  "platformTaskSlug": "train-slot-lattice-audit",
+  "assignmentId": "a109dd72-f787-4928-9489-ee47d3c85374",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=a109dd72-f787-4928-9489-ee47d3c85374",
+  "capturedAt": "2026-05-24T02:19:06.730Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:0b8810a6-6dfb-4257-acde-ea0fdea24210",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:0b8810a6-6dfb-4257-acde-ea0fdea24210."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed by \nat least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0% (5/"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - behavior_in_task_description: \ninstruction.md explicitly names all \nfive output files (allocation_plan.\njson, dependency_graph.json, \nincident_trace.json, tenant_utilization.\njson, summary.json), the output \ndirectory /app/audit/, the two"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "train-slot-lattice-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\train-slot-lattice-audit.zip",
+    "excludedPlatformZip": "train-slot-lattice-audit.zip"
+  }
+}

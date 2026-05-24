@@ -1,0 +1,11 @@
+{
+  "name": "video-utils",
+  "version": "2.0.0",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "ffmpeg-node",
+      "version_range": "^1.0"
+    }
+  ]
+}

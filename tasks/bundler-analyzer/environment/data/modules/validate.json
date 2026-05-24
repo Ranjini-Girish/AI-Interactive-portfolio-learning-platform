@@ -1,0 +1,11 @@
+{
+  "id": "src/utils/validate",
+  "base_size_bytes": 10,
+  "exports": [
+    {"name": "validate", "size_bytes": 90},
+    {"name": "sanitize", "size_bytes": 70}
+  ],
+  "imports": [],
+  "dynamic_imports": [],
+  "side_effects": false
+}

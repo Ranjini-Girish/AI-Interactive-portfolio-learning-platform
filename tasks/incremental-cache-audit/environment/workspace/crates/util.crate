@@ -1,0 +1,10 @@
+name=util
+kind=lib
+build_ms=140
+public=crates/util/src/lib.rs
+private=crates/util/src/fs.rs
+build=
+tests=
+features=path-cache:private
+unsafe=1
+deps=

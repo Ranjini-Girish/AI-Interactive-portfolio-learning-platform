@@ -1,0 +1,10 @@
+{
+  "workflow_id": "inc-808",
+  "fsm_id": "incident",
+  "transitions": [
+    {"transition_id": "i1", "sequence": 1, "logged_at": 8000, "from_state": "detected", "to_state": "triaged", "duration_ms": 300},
+    {"transition_id": "i2", "sequence": 2, "logged_at": 8100, "from_state": "triaged", "to_state": "investigating", "duration_ms": 600},
+    {"transition_id": "i3", "sequence": 3, "logged_at": 8200, "from_state": "investigating", "to_state": "mitigated", "duration_ms": 400},
+    {"transition_id": "i4", "sequence": 4, "logged_at": 8300, "from_state": "mitigated", "to_state": "resolved", "duration_ms": 200}
+  ]
+}

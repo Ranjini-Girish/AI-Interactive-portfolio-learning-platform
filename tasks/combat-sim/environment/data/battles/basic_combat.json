@@ -1,0 +1,20 @@
+{
+  "name": "basic_combat",
+  "teams": {
+    "A": ["knight", "mage"],
+    "B": ["rogue", "healer"]
+  },
+  "actions": [
+    [
+      {"character": "knight", "ability": "slash", "target": "rogue"},
+      {"character": "mage", "ability": "fireball", "target": "rogue"},
+      {"character": "rogue", "ability": "backstab", "target": "mage"},
+      {"character": "healer", "ability": "splash", "target": "knight"}
+    ],
+    [
+      {"character": "knight", "ability": "slash", "target": "healer"},
+      {"character": "mage", "ability": "ember", "target": "healer"},
+      {"character": "healer", "ability": "heal", "target": "healer"}
+    ]
+  ]
+}

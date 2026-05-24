@@ -1,0 +1,80 @@
+{
+  "taskName": "ansible-dependency-impact-task",
+  "updatedAt": "2026-05-24T02:16:45.777Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+    "taskStatus": "Evaluation pending",
+    "taskName": "ansible-dependency-impact-task",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "ansible-dependency-impact-task.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T02:16:45.777Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
+    "zipBytes": 48336,
+    "zipSha256": "206c9050e2d6d91005c7af7c1c4c29063b8ea9c3baa19955d0df0e0ddf859d22",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T13:31:00.226Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
+      "zipBytes": 48720,
+      "zipSha256": "f92e5e668220fad0080e8b3af38bf630b70045fcbb2bdc5add238b2d002caaf8",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T02:16:45.777Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
+      "zipBytes": 48336,
+      "zipSha256": "206c9050e2d6d91005c7af7c1c4c29063b8ea9c3baa19955d0df0e0ddf859d22",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

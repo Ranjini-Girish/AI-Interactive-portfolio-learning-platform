@@ -1,0 +1,10 @@
+name=core-model
+kind=lib
+build_ms=300
+public=crates/core-model/src/lib.rs,crates/core-model/src/schema.rs
+private=crates/core-model/src/cache.rs
+build=
+tests=
+features=schema-v2:public,compact-cache:private
+unsafe=0
+deps=util:normal:public

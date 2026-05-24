@@ -1,0 +1,8 @@
+{
+  "workload_id": "batch-worker",
+  "risk_tier": "critical",
+  "required_capabilities": ["CAP_SETUID", "CAP_SETGID"],
+  "observed_capabilities": ["CAP_SETUID", "CAP_SETGID", "CAP_SYS_CHROOT", "CAP_SYS_ADMIN"],
+  "forbidden_capabilities": ["CAP_SYS_ADMIN"],
+  "observed_syscalls": ["read", "write", "open", "mmap", "clone", "execve"]
+}

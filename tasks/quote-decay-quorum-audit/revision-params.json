@@ -1,0 +1,34 @@
+{
+  "revisionTaskId": "e4b31f18-96db-4795-8179-7a2de335cfcf",
+  "platformTaskSlug": "quote-decay-quorum-audit",
+  "assignmentId": "90f51cd1-de51-41d1-adc4-0623c8f37e27",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=90f51cd1-de51-41d1-adc4-0623c8f37e27",
+  "capturedAt": "2026-05-23T11:46:41.938Z",
+  "revisionReasons": [
+    "autoeval_build_failed",
+    "behavior_not_in_task_description"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:0c756e63-47f2-4481-94eb-7b6f899e6391",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:0c756e63-47f2-4481-94eb-7b6f899e6391."
+  },
+  "difficulty": {
+    "failed": false,
+    "summary": null
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n❌ fail - \nbehavior_in_task_description: The \ninstruction says to emit artifacts \n'into the audit directory' and SPEC.\nmd heads its output section 'Outputs \n(under the audit directory)', but \nneither document ever defines what \nAgent review (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nAgent review\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                         REVIEW \n                         REPORT: \n                         tbench-task\n======================================\n======================================\nTest Quality Report (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nTest Quality Report\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                      TEST QUALITY \n                      REVIEW: \n                      tbench-task\n======================================\n======================================\nComments for Reviewer (optional)\n\nUse this field to provide any context or justification for your task that you would like the reviewer to see\n\nCheck to send to reviewer if difficulty and quality checks are passing. Otherwise, it will always result in revision.\n\nSend to reviewer?"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "tls-cert-chain-auditor",
+    "localZipPath": null,
+    "excludedPlatformZip": "quote-decay-quorum-audit.zip"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "src/utils/format",
+  "base_size_bytes": 10,
+  "exports": [
+    {"name": "formatDate", "size_bytes": 100},
+    {"name": "formatCurrency", "size_bytes": 80},
+    {"name": "formatNumber", "size_bytes": 60}
+  ],
+  "imports": [
+    {"module": "lodash", "names": ["padStart"], "external": true}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

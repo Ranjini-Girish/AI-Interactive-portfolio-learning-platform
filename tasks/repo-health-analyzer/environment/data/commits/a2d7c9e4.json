@@ -1,0 +1,27 @@
+{
+  "hash": "a2d7c9e4",
+  "author_name": "Bob Smith",
+  "author_email": "bob.smith@old.dev",
+  "parent_hashes": [
+    "4e6f8b31"
+  ],
+  "timestamp": "2025-01-28T15:00:00Z",
+  "message": "Auth: token validation\nReviewed-by: Alice Chen",
+  "file_changes": [
+    {
+      "path": "src/auth.js",
+      "additions": 30,
+      "deletions": 8
+    },
+    {
+      "path": "src/crypto.js",
+      "additions": 12,
+      "deletions": 3
+    },
+    {
+      "path": "tests/auth.test.js",
+      "additions": 65,
+      "deletions": 0
+    }
+  ]
+}

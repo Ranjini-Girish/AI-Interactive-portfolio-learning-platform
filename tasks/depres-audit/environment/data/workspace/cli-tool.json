@@ -1,0 +1,13 @@
+{
+  "name": "cli-tool",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "clap": { "version": "^4.0" },
+    "regex": { "version": "^1.0" },
+    "tokio": { "version": "^1.0" },
+    "config-rs": { "version": "^1.0" },
+    "log": { "version": "~0.4.17" },
+    "compress": { "version": "^1.0" }
+  }
+}

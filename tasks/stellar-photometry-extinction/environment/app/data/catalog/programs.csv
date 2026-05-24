@@ -1,0 +1,12 @@
+star_id,ra_deg,dec_deg,target_type
+PROG_A1,161.488,-10.402,rr_lyrae
+PROG_A2,161.5,-10.388,constant
+PROG_B1,162.04,-10.18,eclipsing_binary
+PROG_B2,162.075,-10.215,constant
+PROG_C1,162.205,-10.29,delta_scuti
+PROG_C2,162.245,-10.31,constant
+PROG_D1,162.33,-10.42,constant
+PROG_D2,162.36,-10.45,long_period_variable
+PROG_E1,163.01,-10.52,constant
+PROG_F1,163.08,-10.55,eclipsing_binary
+STD_006,162.072,-10.11,photometric_standard

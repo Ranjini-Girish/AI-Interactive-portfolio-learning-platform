@@ -1,0 +1,13 @@
+{
+  "name": "auth-service",
+  "version": "0.2.0",
+  "dependencies": {
+    "base64": "^0.21",
+    "hmac": "^0.12",
+    "log": "^0.4",
+    "ring": "^0.16",
+    "serde": "^1.0",
+    "sha2": "^0.10",
+    "tokio": "^1.28"
+  }
+}

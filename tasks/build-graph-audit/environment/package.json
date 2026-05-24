@@ -1,0 +1,9 @@
+{
+  "name": "build-graph-auditor",
+  "version": "1.0.0",
+  "description": "Analyze JavaScript module dependency graphs",
+  "main": "src/main.js",
+  "scripts": {
+    "audit": "node src/main.js"
+  }
+}

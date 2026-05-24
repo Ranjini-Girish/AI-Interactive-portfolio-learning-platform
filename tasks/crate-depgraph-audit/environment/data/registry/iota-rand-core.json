@@ -1,0 +1,17 @@
+{
+  "name": "iota-rand-core",
+  "versions": [
+    {
+      "version": "0.6.4",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "0.5.1",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT"
+    }
+  ]
+}

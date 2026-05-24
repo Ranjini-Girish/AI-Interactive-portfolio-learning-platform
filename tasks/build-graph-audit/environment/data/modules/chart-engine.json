@@ -1,0 +1,25 @@
+{
+  "name": "chart-engine",
+  "path": "src/components/chart-engine.js",
+  "size_bytes": 3200,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "utils",
+      "specifiers": [
+        "formatNumber"
+      ]
+    },
+    {
+      "source": "data-service",
+      "specifiers": [
+        "fetchData"
+      ]
+    }
+  ],
+  "exports": [
+    "ChartPanel",
+    "renderChart"
+  ],
+  "re_exports": []
+}

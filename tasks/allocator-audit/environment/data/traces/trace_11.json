@@ -1,0 +1,18 @@
+{
+  "trace_id": "trace_11",
+  "description": "Realloc at exact split boundary with OOM retry after coalescing",
+  "operations": [
+    {"op": "alloc", "id": "a", "size": 64, "align": 8},
+    {"op": "alloc", "id": "b", "size": 64, "align": 8},
+    {"op": "alloc", "id": "c", "size": 64, "align": 8},
+    {"op": "alloc", "id": "d", "size": 64, "align": 8},
+    {"op": "dealloc", "id": "b"},
+    {"op": "dealloc", "id": "c"},
+    {"op": "realloc", "id": "a", "new_size": 200, "align": 8},
+    {"op": "realloc", "id": "d", "new_size": 600, "align": 8},
+    {"op": "realloc", "id": "a", "new_size": 500, "align": 8},
+    {"op": "dealloc", "id": "d"},
+    {"op": "realloc", "id": "a", "new_size": 500, "align": 8},
+    {"op": "dealloc", "id": "a"}
+  ]
+}

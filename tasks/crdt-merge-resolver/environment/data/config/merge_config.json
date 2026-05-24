@@ -1,0 +1,10 @@
+{
+  "rounding_decimals": 6,
+  "alpha": 0.05,
+  "tombstone_marker": "__TOMBSTONE__",
+  "hash_algorithm": "sha256",
+  "hash_encoding": "hex",
+  "max_clock_drift_ms": 500,
+  "anomaly_types": ["causal_violation", "concurrent_write", "resurrection", "clock_regression"],
+  "output_file": "/app/output/merge_report.json"
+}

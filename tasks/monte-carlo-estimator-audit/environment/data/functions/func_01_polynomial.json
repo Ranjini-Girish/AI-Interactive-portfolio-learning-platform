@@ -1,0 +1,17 @@
+{
+  "id": "func_01_polynomial",
+  "type": "polynomial",
+  "params": {
+    "coefficients": [
+      1.0,
+      2.0,
+      3.0
+    ]
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 3.0,
+  "description": "f(x) = 1 + 2x + 3x^2"
+}

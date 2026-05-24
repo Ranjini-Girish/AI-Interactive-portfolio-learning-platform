@@ -1,0 +1,17 @@
+{
+  "name": "accepts",
+  "versions": {
+    "1.3.5": {
+      "dependencies": {
+        "negotiator": "^0.6.0"
+      },
+      "license": "MIT"
+    },
+    "1.3.8": {
+      "dependencies": {
+        "negotiator": "^0.6.0"
+      },
+      "license": "MIT"
+    }
+  }
+}

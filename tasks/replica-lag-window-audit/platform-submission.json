@@ -1,0 +1,80 @@
+{
+  "taskName": "replica-lag-window-audit",
+  "updatedAt": "2026-05-24T03:18:49.388Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "a711d7b8-a9a9-4e40-88e9-95d3272ac3e1",
+    "taskStatus": "Evaluation pending",
+    "taskName": "replica-lag-window-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "replica-lag-window-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T03:18:49.388Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "a711d7b8-a9a9-4e40-88e9-95d3272ac3e1",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+    "zipBytes": 24023,
+    "zipSha256": "608768e43d938c99e769cc4d8626d6b2da136b83ecd4b67ebc879f3aef6eab16",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T07:41:26.282Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=4a52d2f3-5b0c-4051-bc4d-63600f198393",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "4a52d2f3-5b0c-4051-bc4d-63600f198393",
+      "revisionTaskId": "a711d7b8-a9a9-4e40-88e9-95d3272ac3e1",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+      "zipBytes": 26727,
+      "zipSha256": "bdf16a9184f86a7d3da30227c73da30893f8d40121c894a1c7657145194c7048",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T03:18:49.388Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "a711d7b8-a9a9-4e40-88e9-95d3272ac3e1",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+      "zipBytes": 24023,
+      "zipSha256": "608768e43d938c99e769cc4d8626d6b2da136b83ecd4b67ebc879f3aef6eab16",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "libauth",
+  "type": "library",
+  "sources": ["auth/token.cpp"],
+  "headers": ["auth/token.h"],
+  "depends_on": ["libcrypto", "libdb"],
+  "build_time_ms": 700
+}

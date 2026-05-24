@@ -1,0 +1,26 @@
+{
+  "name": "puma",
+  "versions": {
+    "5.0.0": {
+      "dependencies": {
+        "rack": "~> 2.1"
+      },
+      "license": "BSD-3-Clause",
+      "release_date": "2022-04-01"
+    },
+    "6.0.0": {
+      "dependencies": {
+        "rack": ">= 2.2"
+      },
+      "license": "BSD-3-Clause",
+      "release_date": "2023-07-01"
+    },
+    "6.4.0": {
+      "dependencies": {
+        "rack": ">= 3.0"
+      },
+      "license": "BSD-3-Clause",
+      "release_date": "2024-03-01"
+    }
+  }
+}

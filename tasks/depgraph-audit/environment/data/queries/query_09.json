@@ -1,0 +1,13 @@
+{
+  "excludes": [],
+  "project_license": "Apache-2.0",
+  "query_id": "query_09",
+  "replaces": [],
+  "requirements": [
+    {
+      "min_version": "1.0.0",
+      "module": "example.com/mesh/client"
+    }
+  ],
+  "root_module": "my-app"
+}

@@ -1,0 +1,32 @@
+{
+  "dependencies": [
+    {
+      "constraint": "~> 3.1",
+      "gem": "bcrypt",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 2.7.0",
+      "gem": "jwt",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 3.0",
+      "gem": "rack",
+      "group": "runtime"
+    },
+    {
+      "constraint": ">= 1.0",
+      "gem": "multi_json",
+      "group": "runtime"
+    },
+    {
+      "constraint": ">= 3.0",
+      "gem": "rspec",
+      "group": "development"
+    }
+  ],
+  "platform": "ruby",
+  "project_id": "auth_lib",
+  "project_license": "BSD-2-Clause"
+}

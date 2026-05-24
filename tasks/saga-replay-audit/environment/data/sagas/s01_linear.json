@@ -1,0 +1,41 @@
+{
+  "saga_id": "pay-001",
+  "events": [
+    {
+      "event_id": "pay-001-e1",
+      "sequence": 1,
+      "timestamp_ms": 100,
+      "step": "authorize",
+      "status": "completed",
+      "duration_ms": 40,
+      "parent_event_id": null
+    },
+    {
+      "event_id": "pay-001-e2",
+      "sequence": 2,
+      "timestamp_ms": 110,
+      "step": "capture",
+      "status": "completed",
+      "duration_ms": 60,
+      "parent_event_id": "pay-001-e1"
+    },
+    {
+      "event_id": "pay-001-e3",
+      "sequence": 3,
+      "timestamp_ms": 120,
+      "step": "settle",
+      "status": "completed",
+      "duration_ms": 20,
+      "parent_event_id": "pay-001-e2"
+    },
+    {
+      "event_id": "pay-001-e4",
+      "sequence": 4,
+      "timestamp_ms": 130,
+      "step": "receipt",
+      "status": "completed",
+      "duration_ms": 30,
+      "parent_event_id": "pay-001-e3"
+    }
+  ]
+}

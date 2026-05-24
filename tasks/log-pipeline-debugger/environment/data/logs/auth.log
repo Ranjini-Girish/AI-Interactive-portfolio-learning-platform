@@ -1,0 +1,9 @@
+{"ts":"2024-01-15T08:01:06+00:00","event":"login_attempt","user":"alice","result":"SUCCESS","latency_ms":82,"trace_id":"tr_002","detail":"method=password ip=10.0.1.5"}
+{"ts":"2024-01-15T08:03:23+00:00","event":"login_attempt","user":"bob","result":"ERROR","latency_ms":150,"trace_id":"tr_003","detail":"error=\"invalid_credentials\" path=\"/api/login\""}
+{"ts":"2024-01-15T08:15:34+00:00","event":"token_validate","user":"alice","result":"SUCCESS","latency_ms":12,"trace_id":"tr_005","detail":"token_type=bearer"}
+{"ts":"2024-01-15T08:22:18+00:00","event":"token_validate","user":"charlie","result":"SUCCESS","latency_ms":15,"trace_id":"tr_006","detail":"token_type=bearer"}
+{"ts":"2024-01-15T08:35:43+00:00","event":"login_attempt","user":"dave","result":"SUCCESS","latency_ms":95,"trace_id":"tr_008","detail":"method=\"oauth\" provider=\"google\""}
+{"ts":"2024-01-15T09:01:12+00:00","event":"login_attempt","user":"eve","result":"ERROR","latency_ms":180,"trace_id":"tr_009","detail":"error=\"account_locked\" source=\"10.0.3.9\""}
+{"ts":"2024-01-15T09:12:46+00:00","event":"token_validate","user":"alice","result":"SUCCESS","latency_ms":11,"trace_id":"tr_011","detail":"token_type=bearer"}
+{"ts":"2024-01-15T09:25:18+00:00","event":"login_attempt","user":"frank","result":"SUCCESS","latency_ms":88,"trace_id":"tr_013","detail":"token_type=password"}
+{"ts":"2024-01-15T09:30:22+00:00","event":"token_validate","user":"dave","result":"SUCCESS","latency_ms":14,"trace_id":"tr_014","detail":"token_type=oauth"}

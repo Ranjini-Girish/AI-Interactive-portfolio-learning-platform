@@ -1,0 +1,17 @@
+{
+  "name": "math_utils.o",
+  "sections": [
+    {"name": ".text", "size": 128, "alignment": 16},
+    {"name": ".data", "size": 16, "alignment": 8}
+  ],
+  "symbols": [
+    {"name": "compute_sum", "section": ".text", "offset": 0, "size": 64, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "compute_avg", "section": ".text", "offset": 64, "size": 32, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "helper_div", "section": ".text", "offset": 96, "size": 32, "binding": "LOCAL", "type": "FUNC"},
+    {"name": "math_pi", "section": ".data", "offset": 0, "size": 8, "binding": "GLOBAL", "type": "OBJECT"},
+    {"name": "math_e", "section": ".data", "offset": 8, "size": 8, "binding": "GLOBAL", "type": "OBJECT"}
+  ],
+  "relocations": [
+    {"section": ".text", "offset": 72, "type": "R_ABS_32", "symbol": "math_pi", "addend": 0}
+  ]
+}

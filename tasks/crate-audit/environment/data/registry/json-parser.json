@@ -1,0 +1,40 @@
+{
+  "name": "json-parser",
+  "versions": [
+    {
+      "version": "0.9.0",
+      "dependencies": {},
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "1.0.0-rc.1",
+      "dependencies": {},
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "1.0.0-rc.2",
+      "dependencies": {},
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "1.0.0-rc.10",
+      "dependencies": {},
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "1.0.0",
+      "dependencies": {},
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "replicas": 1,
+  "log_level": "info",
+  "feature_x": false
+}

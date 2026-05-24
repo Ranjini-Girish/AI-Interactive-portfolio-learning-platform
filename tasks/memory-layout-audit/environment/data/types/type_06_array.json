@@ -1,0 +1,10 @@
+{
+  "id": "type_06_array",
+  "kind": "struct",
+  "repr": "C",
+  "fields": [
+    {"name": "tag", "type": "u8"},
+    {"name": "data", "type": "[u32; 3]"},
+    {"name": "count", "type": "u16"}
+  ]
+}

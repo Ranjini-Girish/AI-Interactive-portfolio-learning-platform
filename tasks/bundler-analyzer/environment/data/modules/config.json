@@ -1,0 +1,13 @@
+{
+  "id": "src/services/config",
+  "base_size_bytes": 20,
+  "exports": [
+    {"name": "config", "size_bytes": 200},
+    {"name": "defaults", "size_bytes": 100}
+  ],
+  "imports": [
+    {"module": "src/services/api", "names": ["api"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

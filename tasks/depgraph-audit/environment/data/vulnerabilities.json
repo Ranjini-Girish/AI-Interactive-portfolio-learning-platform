@@ -1,0 +1,52 @@
+{
+  "vulnerabilities": [
+    {
+      "id": "VULN-2024-001",
+      "module": "example.com/net/http",
+      "affected_min": "1.0.0",
+      "affected_max": "2.0.0",
+      "severity": "high",
+      "title": "HTTP request smuggling via malformed headers"
+    },
+    {
+      "id": "VULN-2024-002",
+      "module": "example.com/auth/jwt",
+      "affected_min": "1.0.0",
+      "affected_max": "1.2.0",
+      "severity": "critical",
+      "title": "JWT signature bypass with algorithm confusion"
+    },
+    {
+      "id": "VULN-2024-003",
+      "module": "example.com/data/json",
+      "affected_min": "1.0.0",
+      "affected_max": "1.1.0",
+      "severity": "medium",
+      "title": "Denial of service via deeply nested JSON objects"
+    },
+    {
+      "id": "VULN-2024-004",
+      "module": "example.com/core/config",
+      "affected_min": "1.0.0",
+      "affected_max": "1.1.0",
+      "severity": "medium",
+      "title": "Environment variable injection in config parsing"
+    },
+    {
+      "id": "VULN-2024-005",
+      "module": "example.com/db/sql",
+      "affected_min": "1.0.0",
+      "affected_max": "1.2.0",
+      "severity": "critical",
+      "title": "SQL injection via unescaped string interpolation"
+    },
+    {
+      "id": "VULN-2024-006",
+      "module": "example.com/net/http",
+      "affected_min": "2.0.0",
+      "affected_max": "2.1.0",
+      "severity": "medium",
+      "title": "TLS certificate validation bypass"
+    }
+  ]
+}

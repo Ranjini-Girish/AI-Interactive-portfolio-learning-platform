@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+  "platformTaskSlug": "trap-grid-chain-audit",
+  "assignmentId": "53aa72a6-ac25-4bf8-96a9-624c5ae387c7",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=53aa72a6-ac25-4bf8-96a9-624c5ae387c7",
+  "capturedAt": "2026-05-24T03:12:28.046Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:aa50375f-edea-4b63-9b59-627be0461438",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:aa50375f-edea-4b63-9b59-627be0461438."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive output files, references SPEC.md \nfor full schemas, and calls out every \nalgorithmic behaviour the tests \nexercise: jam-echo muting,"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "trap-grid-chain-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trap-grid-chain-audit.zip",
+    "excludedPlatformZip": "trap-grid-chain-audit.zip"
+  }
+}

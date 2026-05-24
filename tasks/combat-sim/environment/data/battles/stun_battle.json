@@ -1,0 +1,27 @@
+{
+  "name": "stun_battle",
+  "teams": {
+    "A": ["archer", "druid"],
+    "B": ["mage", "knight"]
+  },
+  "actions": [
+    [
+      {"character": "archer", "ability": "stun_shot", "target": "mage"},
+      {"character": "druid", "ability": "vine_whip", "target": "knight"},
+      {"character": "mage", "ability": "fireball", "target": "archer"},
+      {"character": "knight", "ability": "slash", "target": "archer"}
+    ],
+    [
+      {"character": "archer", "ability": "arrow", "target": "mage"},
+      {"character": "druid", "ability": "vine_whip", "target": "knight"},
+      {"character": "mage", "ability": "fireball", "target": "archer"},
+      {"character": "knight", "ability": "slash", "target": "druid"}
+    ],
+    [
+      {"character": "archer", "ability": "arrow", "target": "knight"},
+      {"character": "druid", "ability": "vine_whip", "target": "knight"},
+      {"character": "mage", "ability": "ember", "target": "druid"},
+      {"character": "knight", "ability": "slash", "target": "archer"}
+    ]
+  ]
+}

@@ -1,0 +1,10 @@
+name=cli
+kind=bin
+build_ms=220
+public=crates/cli/src/main.rs
+private=crates/cli/src/args.rs
+build=
+tests=
+features=color:public
+unsafe=0
+deps=api:normal:public,codegen:build:private

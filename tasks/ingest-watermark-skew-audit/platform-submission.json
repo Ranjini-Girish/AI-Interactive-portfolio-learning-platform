@@ -1,0 +1,61 @@
+{
+  "taskName": "ingest-watermark-skew-audit",
+  "updatedAt": "2026-05-23T17:22:03.503Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "1cec7fb5-cbe7-41aa-a633-6a3493b97e4a",
+    "taskStatus": "Evaluation pending",
+    "taskName": "ingest-watermark-skew-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "ingest-watermark-skew-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:22:03.503Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "1cec7fb5-cbe7-41aa-a633-6a3493b97e4a",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ingest-watermark-skew-audit.zip",
+    "zipBytes": 23446,
+    "zipSha256": "68f8ee4d4e535cb5669c018d671d4f8c8db2ad81c48f40814106ece2901d7cf7",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:22:03.503Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "1cec7fb5-cbe7-41aa-a633-6a3493b97e4a",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ingest-watermark-skew-audit.zip",
+      "zipBytes": 23446,
+      "zipSha256": "68f8ee4d4e535cb5669c018d671d4f8c8db2ad81c48f40814106ece2901d7cf7",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

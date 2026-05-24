@@ -1,0 +1,14 @@
+{
+  "description": "Expected parameter ranges for validation (not used by the program, reference only)",
+  "coefficients": {
+    "intercept": {"min": -200.0, "max": 200.0},
+    "temp": {"min": 0.5, "max": 5.0},
+    "pressure": {"min": -1.0, "max": 1.0},
+    "humidity": {"min": 0.0, "max": 2.0}
+  },
+  "diagnostics": {
+    "r_squared_min": 0.8,
+    "max_outlier_fraction": 0.25,
+    "convergence_expected": true
+  }
+}

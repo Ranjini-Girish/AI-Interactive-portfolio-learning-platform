@@ -1,0 +1,26 @@
+{
+  "scene_id": "scene_04",
+  "polygon_properties": true,
+  "convex_hull": true,
+  "point_in_polygon": [
+    {
+      "point_idx": 0,
+      "polygon_id": "tri_A"
+    },
+    {
+      "point_idx": 1,
+      "polygon_id": "tri_A"
+    },
+    {
+      "point_idx": 2,
+      "polygon_id": "tri_A"
+    },
+    {
+      "point_idx": 3,
+      "polygon_id": "tri_A"
+    }
+  ],
+  "segment_intersections": true,
+  "closest_pair": true,
+  "min_enclosing_circle": true
+}

@@ -1,0 +1,61 @@
+{
+  "taskName": "rle-bursts-merge-audit",
+  "updatedAt": "2026-05-23T16:35:33.776Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "e0705c3d-623e-4701-823f-4fd683c8a48a",
+    "taskStatus": "Evaluation pending",
+    "taskName": "rle-bursts-merge-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "rle-bursts-merge-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T16:35:33.776Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "e0705c3d-623e-4701-823f-4fd683c8a48a",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\rle-bursts-merge-audit.zip",
+    "zipBytes": 13141,
+    "zipSha256": "f12bba70df2149690dee612278bba9c69f248c64dbaee35f19dad6851e87ff15",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T16:35:33.776Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "e0705c3d-623e-4701-823f-4fd683c8a48a",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\rle-bursts-merge-audit.zip",
+      "zipBytes": 13141,
+      "zipSha256": "f12bba70df2149690dee612278bba9c69f248c64dbaee35f19dad6851e87ff15",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

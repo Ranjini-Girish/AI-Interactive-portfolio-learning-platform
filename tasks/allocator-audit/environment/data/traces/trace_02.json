@@ -1,0 +1,22 @@
+{
+  "trace_id": "trace_02",
+  "description": "Alignment stress test with various alignment requirements",
+  "operations": [
+    {"op": "alloc", "id": "a1", "size": 10, "align": 2},
+    {"op": "alloc", "id": "a2", "size": 10, "align": 4},
+    {"op": "alloc", "id": "a3", "size": 10, "align": 8},
+    {"op": "alloc", "id": "a4", "size": 10, "align": 16},
+    {"op": "alloc", "id": "a5", "size": 10, "align": 32},
+    {"op": "alloc", "id": "a6", "size": 10, "align": 64},
+    {"op": "alloc", "id": "a7", "size": 1, "align": 8},
+    {"op": "alloc", "id": "a8", "size": 7, "align": 8},
+    {"op": "dealloc", "id": "a1"},
+    {"op": "dealloc", "id": "a2"},
+    {"op": "dealloc", "id": "a3"},
+    {"op": "dealloc", "id": "a4"},
+    {"op": "dealloc", "id": "a5"},
+    {"op": "dealloc", "id": "a6"},
+    {"op": "dealloc", "id": "a7"},
+    {"op": "dealloc", "id": "a8"}
+  ]
+}

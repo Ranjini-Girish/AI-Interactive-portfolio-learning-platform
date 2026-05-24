@@ -1,0 +1,14 @@
+{
+  "id": "src/pages/dashboard",
+  "base_size_bytes": 25,
+  "exports": [
+    {"name": "Dashboard", "size_bytes": 400}
+  ],
+  "imports": [
+    {"module": "src/components/chart", "names": ["Chart"]},
+    {"module": "src/services/api", "names": ["api"]},
+    {"module": "src/utils/render", "names": ["*"]}
+  ],
+  "dynamic_imports": ["src/pages/settings"],
+  "side_effects": false
+}

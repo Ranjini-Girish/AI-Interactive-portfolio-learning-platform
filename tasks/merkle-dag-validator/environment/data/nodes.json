@@ -1,0 +1,22 @@
+[
+  {"id": "n01", "content": "genesis-block", "declared_hash": "CORRECT"},
+  {"id": "n02", "content": "config-root", "declared_hash": "CORRECT"},
+  {"id": "n03", "content": "auth-module", "declared_hash": "CORRECT"},
+  {"id": "n04", "content": "data-layer", "declared_hash": "CORRECT"},
+  {"id": "n05", "content": "api-gateway", "declared_hash": "CORRECT"},
+  {"id": "n06", "content": "cache-service", "declared_hash": "CORRECT"},
+  {"id": "n07", "content": "user-store", "declared_hash": "CORRECT"},
+  {"id": "n08", "content": "session-mgr", "declared_hash": "CORRUPTED_08"},
+  {"id": "n09", "content": "token-service", "declared_hash": "CORRECT"},
+  {"id": "n10", "content": "rate-limiter", "declared_hash": "CORRECT"},
+  {"id": "n11", "content": "logger", "declared_hash": "CORRUPTED_11"},
+  {"id": "n12", "content": "crypto-utils", "declared_hash": "CORRECT"},
+  {"id": "n13", "content": "hash-engine", "declared_hash": "CORRECT"},
+  {"id": "n14", "content": "key-derivation", "declared_hash": "CORRECT"},
+  {"id": "n15", "content": "cert-validator", "declared_hash": "CORRECT"},
+  {"id": "n16", "content": "tls-handshake", "declared_hash": "CORRECT"},
+  {"id": "n17", "content": "entropy-pool", "declared_hash": "CORRECT"},
+  {"id": "n18", "content": "rng-source", "declared_hash": "CORRECT"},
+  {"id": "n19", "content": "time-oracle", "declared_hash": "CORRECT"},
+  {"id": "n20", "content": "nonce-gen", "declared_hash": "CORRUPTED_20"}
+]

@@ -1,0 +1,61 @@
+{
+  "taskName": "patch-slot-lattice-audit",
+  "updatedAt": "2026-05-23T17:13:19.909Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "335be3bf-cc8d-4016-8894-5a4b00fc4054",
+    "taskStatus": "Evaluation pending",
+    "taskName": "patch-slot-lattice-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "patch-slot-lattice-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:13:19.909Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "335be3bf-cc8d-4016-8894-5a4b00fc4054",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\patch-slot-lattice-audit.zip",
+    "zipBytes": 22871,
+    "zipSha256": "f8556fa3b70291b106a4bcc6f39b2958b30b039206897225a8d9df30e237c71f",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:13:19.909Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "335be3bf-cc8d-4016-8894-5a4b00fc4054",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\patch-slot-lattice-audit.zip",
+      "zipBytes": 22871,
+      "zipSha256": "f8556fa3b70291b106a4bcc6f39b2958b30b039206897225a8d9df30e237c71f",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

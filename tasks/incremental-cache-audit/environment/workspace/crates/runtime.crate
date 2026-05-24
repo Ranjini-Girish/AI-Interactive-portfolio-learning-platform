@@ -1,0 +1,10 @@
+name=runtime
+kind=lib
+build_ms=260
+public=crates/runtime/src/lib.rs
+private=crates/runtime/src/scheduler.rs
+build=
+tests=
+features=work-stealing:public
+unsafe=5
+deps=util:normal:private

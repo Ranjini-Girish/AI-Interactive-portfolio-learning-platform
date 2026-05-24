@@ -1,0 +1,23 @@
+{
+  "manifest_id": "m05",
+  "deployments": [
+    {
+      "deployment_id": "dep-iota-09",
+      "environment": "production",
+      "artifact_ref": "art-missing-bundle",
+      "build_duration_sec": 90,
+      "deploy_duration_sec": 40,
+      "declared_size_bytes": 100000,
+      "overlay": "production"
+    },
+    {
+      "deployment_id": "dep-kappa-10",
+      "environment": "staging",
+      "artifact_ref": "art-alpha-bundle",
+      "build_duration_sec": 85,
+      "deploy_duration_sec": 38,
+      "declared_size_bytes": 524288,
+      "overlay": "staging"
+    }
+  ]
+}

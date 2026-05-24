@@ -1,0 +1,8 @@
+{
+  "name": "libapi",
+  "type": "library",
+  "sources": ["api/router.cpp", "api/handler.cpp"],
+  "headers": ["api/router.h", "api/handler.h"],
+  "depends_on": ["libnet", "libdb", "libcache"],
+  "build_time_ms": 2500
+}

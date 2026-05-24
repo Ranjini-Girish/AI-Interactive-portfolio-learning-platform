@@ -1,0 +1,42 @@
+{
+  "dependencies": [
+    {
+      "constraint": "~> 3.0.0",
+      "gem": "sinatra",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 5.0",
+      "gem": "puma",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 2.7",
+      "gem": "faraday",
+      "group": "runtime"
+    },
+    {
+      "constraint": ">= 2.5",
+      "gem": "jwt",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 1.14",
+      "gem": "nokogiri",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 3.12",
+      "gem": "rspec",
+      "group": "development"
+    },
+    {
+      "constraint": ">= 1.8",
+      "gem": "webrick",
+      "group": "development"
+    }
+  ],
+  "platform": "ruby",
+  "project_id": "api_service",
+  "project_license": "Apache-2.0"
+}

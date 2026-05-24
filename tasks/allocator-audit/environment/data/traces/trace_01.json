@@ -1,0 +1,14 @@
+{
+  "trace_id": "trace_01",
+  "description": "Basic alloc and dealloc sequence",
+  "operations": [
+    {"op": "alloc", "id": "a", "size": 64, "align": 8},
+    {"op": "alloc", "id": "b", "size": 128, "align": 8},
+    {"op": "alloc", "id": "c", "size": 32, "align": 8},
+    {"op": "dealloc", "id": "b"},
+    {"op": "alloc", "id": "d", "size": 48, "align": 8},
+    {"op": "dealloc", "id": "a"},
+    {"op": "dealloc", "id": "c"},
+    {"op": "dealloc", "id": "d"}
+  ]
+}

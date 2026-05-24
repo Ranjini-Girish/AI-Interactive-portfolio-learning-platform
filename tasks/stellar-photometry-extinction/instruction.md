@@ -1,0 +1,5 @@
+Build the photometric calibration audit pipeline under `/app/`. The pipeline takes fifteen nights of CCD observations (B/V/R) of standard and program stars, fits a per-(night, filter) atmospheric extinction model, applies the calibration to every observation, builds program-star lightcurves with a chi-squared variability test, and emits a quality-control finding ledger. Output is a single JSON report with five top-level keys: `schema_version`, `summary`, `per_night_calibration`, `per_star_lightcurves`, and `findings`.
+
+The dataset contains non-trivial edge cases across data quality, catalog membership, and exclusion interactions. Consult the algorithm specification, output schema, edge-case rules, and finding definitions in `/app/docs/` for complete handling requirements.
+
+A Java 21 starter at `/app/src/photo_audit.cpp` builds via `make -C /app build && /app/bin/photo_audit --data /app/data --out /app/output/photometry_report.json`; rewrite it in another language if you prefer (Java 21 is available). Treat `/app/data/` as strictly read-only.

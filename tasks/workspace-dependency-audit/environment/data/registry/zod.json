@@ -1,0 +1,17 @@
+{
+  "name": "zod",
+  "versions": {
+    "3.20.0": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "3.21.0": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "3.22.4": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

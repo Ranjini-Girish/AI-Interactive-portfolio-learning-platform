@@ -1,0 +1,74 @@
+[
+  {
+    "id": "PROD-001",
+    "name": "Widget Alpha",
+    "category": "electronics",
+    "unit_price": 19.99
+  },
+  {
+    "id": "PROD-002",
+    "name": "Widget Beta",
+    "category": "electronics",
+    "unit_price": 29.99
+  },
+  {
+    "id": "MFG-PART-003",
+    "name": "Gadget Gamma",
+    "category": "hardware",
+    "unit_price": 49.5
+  },
+  {
+    "id": "PROD-004",
+    "name": "Cable Delta",
+    "category": "accessories",
+    "unit_price": 9.99
+  },
+  {
+    "id": "EXT-COMP-005",
+    "name": "Board Epsilon",
+    "category": "electronics",
+    "unit_price": 149.99
+  },
+  {
+    "id": "PROD-006",
+    "name": "Sensor Zeta",
+    "category": "hardware",
+    "unit_price": 34.75
+  },
+  {
+    "id": "PROD-007",
+    "name": "Mount Eta",
+    "category": "hardware",
+    "unit_price": 12.5
+  },
+  {
+    "id": "SUP-ITEM-008",
+    "name": "Adapter Theta",
+    "category": "accessories",
+    "unit_price": 7.99
+  },
+  {
+    "id": "PROD-009",
+    "name": "Screen Iota",
+    "category": "electronics",
+    "unit_price": 299.99
+  },
+  {
+    "id": "WH-BULK-010",
+    "name": "Fan Kappa",
+    "category": "hardware",
+    "unit_price": 24.99
+  },
+  {
+    "id": "PROD-011",
+    "name": "Relay Lambda",
+    "category": "electronics",
+    "unit_price": 5.49
+  },
+  {
+    "id": "PROD-012",
+    "name": "Bracket Mu",
+    "category": "hardware",
+    "unit_price": 3.25
+  }
+]

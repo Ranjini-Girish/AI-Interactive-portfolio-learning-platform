@@ -1,0 +1,13 @@
+{
+  "id": "src/pages/settings",
+  "base_size_bytes": 25,
+  "exports": [
+    {"name": "Settings", "size_bytes": 350}
+  ],
+  "imports": [
+    {"module": "src/utils/validate", "names": ["validate"]},
+    {"module": "src/utils/render", "names": ["render"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

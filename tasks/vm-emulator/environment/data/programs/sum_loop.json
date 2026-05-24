@@ -1,0 +1,15 @@
+{
+  "name": "sum_loop",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 10]},
+    {"op": "MOV", "args": ["R1", 0]},
+    {"op": "MOV", "args": ["R2", 1]},
+    {"op": "CMP", "args": ["R2", "R0"]},
+    {"op": "JG", "args": [8]},
+    {"op": "ADD", "args": ["R1", "R2"]},
+    {"op": "ADD", "args": ["R2", 1]},
+    {"op": "JMP", "args": [3]},
+    {"op": "MOV", "args": ["R0", "R1"]},
+    {"op": "HALT", "args": []}
+  ]
+}

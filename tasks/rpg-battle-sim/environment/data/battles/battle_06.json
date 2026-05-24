@@ -1,0 +1,42 @@
+{
+  "battle_id": "battle_06",
+  "description": "Boss fight with burn and long endurance",
+  "rng_seed": 31415,
+  "heroes": [
+    {
+      "id": "aria", "name": "Aria", "element": "fire",
+      "max_hp": 200, "attack": 45, "defense": 20, "speed": 35, "crit_rate": 25,
+      "skills": [
+        {"id": "flame_slash", "power": 120, "target_type": "single", "element": "fire", "effect": "burn"},
+        {"id": "fire_ball", "power": 80, "target_type": "aoe", "element": "fire", "effect": "none"}
+      ]
+    },
+    {
+      "id": "kai", "name": "Kai", "element": "water",
+      "max_hp": 250, "attack": 35, "defense": 35, "speed": 25, "crit_rate": 15,
+      "skills": [
+        {"id": "tidal_strike", "power": 110, "target_type": "single", "element": "water", "effect": "none"},
+        {"id": "aqua_shield", "power": 0, "target_type": "self", "element": "water", "effect": "shield"}
+      ]
+    },
+    {
+      "id": "luna", "name": "Luna", "element": "light",
+      "max_hp": 180, "attack": 50, "defense": 15, "speed": 40, "crit_rate": 30,
+      "skills": [
+        {"id": "holy_smite", "power": 130, "target_type": "single", "element": "light", "effect": "none"},
+        {"id": "radiance", "power": 70, "target_type": "aoe", "element": "light", "effect": "none"}
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "drake_a", "name": "Flame Drake", "element": "fire",
+      "max_hp": 450, "attack": 52, "defense": 28, "speed": 30, "crit_rate": 18,
+      "skills": [
+        {"id": "dragon_breath", "power": 85, "target_type": "aoe", "element": "fire", "effect": "burn"},
+        {"id": "tail_swipe", "power": 115, "target_type": "single", "element": "neutral", "effect": "none"},
+        {"id": "flame_roar", "power": 95, "target_type": "aoe", "element": "fire", "effect": "none"}
+      ]
+    }
+  ]
+}

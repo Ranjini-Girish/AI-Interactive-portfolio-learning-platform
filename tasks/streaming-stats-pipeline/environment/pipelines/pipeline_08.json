@@ -1,0 +1,9 @@
+{
+  "stream_id": "stream_08",
+  "computations": {
+    "basic_stats": true,
+    "stale_detection": {
+      "stale_count": 6
+    }
+  }
+}

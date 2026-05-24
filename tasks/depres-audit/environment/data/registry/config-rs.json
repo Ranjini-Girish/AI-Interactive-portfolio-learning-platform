@@ -1,0 +1,8 @@
+{
+  "name": "config-rs",
+  "versions": [
+    { "version": "1.0.0", "license": "MIT", "dependencies": { "serde": { "version": "^1.0" } }, "features": {} },
+    { "version": "1.0.3", "license": "MIT", "dependencies": { "serde": { "version": "^1.0" }, "encoding": { "version": "^0.2" } }, "features": {} },
+    { "version": "1.1.0", "license": "MIT", "dependencies": { "serde": { "version": "^1.0" }, "encoding": { "version": "^0.2" }, "validator": { "version": "^1.0" } }, "features": {} }
+  ]
+}

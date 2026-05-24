@@ -1,0 +1,59 @@
+{
+  "module_name": "event_emitter",
+  "path": "src/events/emitter.js",
+  "lines_of_code": 60,
+  "imports": ["./logger"],
+  "exports": ["EventEmitter"],
+  "functions": [
+    {
+      "name": "on",
+      "lines": 10,
+      "parameters": ["event", "handler"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [],
+          "body": [],
+          "else_body": []
+        }
+      ],
+      "operators": ["===", ".", "()", "=", "[]", "typeof"],
+      "operands": ["event", "handler", "listeners", "this", "undefined"]
+    },
+    {
+      "name": "emit",
+      "lines": 22,
+      "parameters": ["event", "args"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [],
+          "body": [
+            {
+              "type": "for",
+              "body": [
+                {
+                  "type": "try",
+                  "body": [],
+                  "catch_body": [
+                    {
+                      "type": "if",
+                      "condition": [],
+                      "body": [],
+                      "else_body": [
+                        {"type": "else", "body": []}
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else_body": []
+        }
+      ],
+      "operators": ["===", ".", "()", "=", "[]", "++", "typeof", "!"],
+      "operands": ["event", "args", "listeners", "handler", "i", "error", "this", "null", "false"]
+    }
+  ]
+}

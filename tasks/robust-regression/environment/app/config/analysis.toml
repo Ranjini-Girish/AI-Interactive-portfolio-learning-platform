@@ -1,0 +1,12 @@
+[regression]
+predictors = "temp,pressure,humidity"
+response = "flux"
+max_iterations = 50
+convergence_tolerance = 1e-6
+huber_k = 1.345
+
+[outliers]
+threshold = 2.5
+
+[output]
+precision = 6

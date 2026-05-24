@@ -1,0 +1,9 @@
+{
+  "stream_id": "stream_11",
+  "computations": {
+    "basic_stats": true,
+    "outliers": {
+      "method": "modified_zscore"
+    }
+  }
+}

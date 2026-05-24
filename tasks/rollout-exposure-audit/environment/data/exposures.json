@@ -1,0 +1,122 @@
+[
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "exposed_at": "2026-01-05T12:00:00Z"
+  },
+  {
+    "user_id": "u03",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u04",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u05",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u06",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u07",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u08",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "exposed_at": "2026-01-05T08:00:00Z"
+  },
+  {
+    "user_id": "u09",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "exposed_at": "2026-01-06T08:00:00Z"
+  },
+  {
+    "user_id": "u10",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "exposed_at": "2026-01-06T08:00:00Z"
+  },
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u03",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u04",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u05",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u06",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u07",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u08",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "exposed_at": "2026-01-05T09:00:00Z"
+  },
+  {
+    "user_id": "u10",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "exposed_at": "2026-01-06T09:00:00Z"
+  }
+]

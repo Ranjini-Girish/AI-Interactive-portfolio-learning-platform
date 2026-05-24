@@ -1,0 +1,11 @@
+{
+  "id": "type_02_reorder",
+  "kind": "struct",
+  "repr": "Rust",
+  "fields": [
+    {"name": "x", "type": "u8"},
+    {"name": "y", "type": "u64"},
+    {"name": "z", "type": "u32"},
+    {"name": "w", "type": "u16"}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "f4bf1aec-a79d-4681-a053-971e215eea2d",
+  "platformTaskSlug": "token-pail-merge-audit",
+  "assignmentId": "1976858b-26ac-4b45-a68b-9de5ea6859c7",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=1976858b-26ac-4b45-a68b-9de5ea6859c7",
+  "capturedAt": "2026-05-23T16:57:50.980Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:92a63fc5-01ff-4423-9cd2-062f588cb07b",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:92a63fc5-01ff-4423-9cd2-062f588cb07b."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast HARD for python\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly references /\napp/tpm_lat/SPEC.md as the normative \nsource, and SPEC.md fully documents \nboth output files (pail_levels.json \nand summary.json), their field names,"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "webhook-retry-ledger-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\webhook-retry-ledger-audit.zip",
+    "excludedPlatformZip": "token-pail-merge-audit.zip"
+  }
+}

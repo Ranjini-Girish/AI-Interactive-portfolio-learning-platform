@@ -1,0 +1,8 @@
+{
+  "name": "libdb",
+  "type": "library",
+  "sources": ["db/connection.cpp", "db/query.cpp"],
+  "headers": ["db/connection.h", "db/query.h"],
+  "depends_on": ["libbase", "libconfig", "liblog"],
+  "build_time_ms": 1800
+}

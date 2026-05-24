@@ -1,0 +1,23 @@
+{
+  "anomaly_sigma_threshold": 3.0,
+  "min_activity_bq": 0.001,
+  "clearance_activity_bq": 10.0,
+  "dose_rate_limit_sv_per_h": 1.0e-3,
+  "nearly_equal_lambda_rel_tol": 0.01,
+  "equilibrium_ratio_tolerance": 0.05,
+  "rounding_decimals": 6,
+  "time_unit": "hours",
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 4,
+    "info": 5
+  },
+  "finding_severity": {
+    "measurement_anomaly": "high",
+    "dose_rate_exceeded": "critical",
+    "clearance_violation": "medium",
+    "near_degenerate_chain": "low"
+  }
+}

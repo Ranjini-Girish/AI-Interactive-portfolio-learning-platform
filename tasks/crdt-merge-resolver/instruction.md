@@ -1,0 +1,3 @@
+The TypeScript on Node 22 project at `/app` needs a CRDT operation log merge engine. It reads operation logs from multiple replica TypeScript on Node 22s under `/app/data/replicas/`, merges them into a causally consistent total order, resolves the final state of each key using Last-Writer-Wins semantics, detects causal anomalies, and writes a JSON merge report to `/app/output/merge_report.json`.
+
+The merge configuration is in `/app/data/config/merge_config.json`. The CRDT merge semantics, vector clock rules, tie-breaking protocol, anomaly detection logic, and the full output schema are documented in `/app/docs/crdt_semantics.md` and `/app/docs/merge_protocol.md`. Run the engine via `TypeScript on Node 22 /app/src/main.js`.

@@ -1,0 +1,17 @@
+{
+  "name": "theta-derive",
+  "versions": [
+    {
+      "version": "4.2.0",
+      "features": {"default": []},
+      "dependencies": [],
+      "license": "MIT"
+    },
+    {
+      "version": "4.1.0",
+      "features": {"default": []},
+      "dependencies": [],
+      "license": "MIT"
+    }
+  ]
+}

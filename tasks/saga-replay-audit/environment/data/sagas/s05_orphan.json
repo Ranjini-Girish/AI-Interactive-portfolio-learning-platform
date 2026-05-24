@@ -1,0 +1,32 @@
+{
+  "saga_id": "reg-005",
+  "events": [
+    {
+      "event_id": "reg-005-e1",
+      "sequence": 1,
+      "timestamp_ms": 400,
+      "step": "signup",
+      "status": "completed",
+      "duration_ms": 20,
+      "parent_event_id": null
+    },
+    {
+      "event_id": "reg-005-e2",
+      "sequence": 2,
+      "timestamp_ms": 410,
+      "step": "verify",
+      "status": "completed",
+      "duration_ms": 45,
+      "parent_event_id": "ghost-9"
+    },
+    {
+      "event_id": "reg-005-e3",
+      "sequence": 3,
+      "timestamp_ms": 420,
+      "step": "activate",
+      "status": "completed",
+      "duration_ms": 12,
+      "parent_event_id": "reg-005-e2"
+    }
+  ]
+}

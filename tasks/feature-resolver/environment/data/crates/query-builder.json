@@ -1,0 +1,20 @@
+{
+  "name": "query-builder",
+  "version": "1.5.0",
+  "base_size_bytes": 1900,
+  "features": {
+    "default": ["safe-mode"],
+    "safe-mode": [],
+    "raw-sql": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "safe-mode": 0.05,
+    "raw-sql": 0.10
+  },
+  "build_priority": 8,
+  "weak_features": {},
+  "dependencies": [],
+  "exports": ["Query", "build_select", "build_insert"],
+  "conditional_exports": {}
+}

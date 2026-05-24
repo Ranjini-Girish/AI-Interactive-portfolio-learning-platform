@@ -1,0 +1,28 @@
+{
+  "messages": [
+    {
+      "magic": 171,
+      "version": 1,
+      "msg_type": 1,
+      "field_count": 3,
+      "fields": [
+        {
+          "id": 1,
+          "type_name": "u32",
+          "value": 0
+        },
+        {
+          "id": 2,
+          "type_name": "i32",
+          "value": -2147483648
+        },
+        {
+          "id": 3,
+          "type_name": "u64",
+          "value": 18446744073709551615
+        }
+      ],
+      "crc_valid": true
+    }
+  ]
+}

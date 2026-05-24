@@ -1,0 +1,43 @@
+{
+  "module_path": "example.com/core/logger",
+  "retracted": [
+    "1.0.0"
+  ],
+  "versions": [
+    {
+      "dependencies": [],
+      "license": "MIT",
+      "version": "1.0.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "MIT",
+      "version": "1.1.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "MIT",
+      "version": "1.2.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.2.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "Apache-2.0",
+      "version": "2.0.0"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "advisories": [
+    {
+      "advisory_id": "CVE-2023-1001",
+      "affected_versions": [
+        "< 1.15.0"
+      ],
+      "cvss_score": 7.5,
+      "description": "XML external entity injection vulnerability",
+      "gem": "nokogiri",
+      "severity": "high"
+    },
+    {
+      "advisory_id": "CVE-2023-1002",
+      "affected_versions": [
+        "< 2.2.3",
+        ">= 2.0.0"
+      ],
+      "cvss_score": 5.3,
+      "description": "ReDoS vulnerability in media type parsing",
+      "gem": "rack",
+      "severity": "medium"
+    },
+    {
+      "advisory_id": "CVE-2024-1003",
+      "affected_versions": [
+        "< 5.0.0"
+      ],
+      "cvss_score": 8.1,
+      "description": "Authentication bypass in cluster mode",
+      "gem": "redis",
+      "severity": "high"
+    }
+  ]
+}

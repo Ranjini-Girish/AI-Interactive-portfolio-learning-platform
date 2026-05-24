@@ -1,0 +1,24 @@
+{
+  "architecture": "x86_64",
+  "pointer_size": 8,
+  "pointer_align": 8,
+  "primitives": {
+    "bool": {"size": 1, "align": 1},
+    "u8": {"size": 1, "align": 1},
+    "i8": {"size": 1, "align": 1},
+    "u16": {"size": 2, "align": 2},
+    "i16": {"size": 2, "align": 2},
+    "u32": {"size": 4, "align": 4},
+    "i32": {"size": 4, "align": 4},
+    "f32": {"size": 4, "align": 4},
+    "u64": {"size": 8, "align": 8},
+    "i64": {"size": 8, "align": 8},
+    "f64": {"size": 8, "align": 8},
+    "u128": {"size": 16, "align": 16},
+    "i128": {"size": 16, "align": 16},
+    "usize": {"size": 8, "align": 8},
+    "isize": {"size": 8, "align": 8},
+    "pointer": {"size": 8, "align": 8},
+    "reference": {"size": 8, "align": 8}
+  }
+}

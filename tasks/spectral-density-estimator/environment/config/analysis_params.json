@@ -1,0 +1,11 @@
+{
+  "segment_length": 512,
+  "overlap_fraction": 0.5,
+  "window_type": "hann_symmetric",
+  "sample_rate_hz": 1024.0,
+  "input_file": "/app/data/sensor_timeseries.csv",
+  "output_file": "/app/output/spectral_report.json",
+  "precision_digits": 6,
+  "psd_floor_db": -300.0,
+  "notes": "overlap_fraction 0.5 means 50% overlap; overlap_samples = segment_length * overlap_fraction"
+}

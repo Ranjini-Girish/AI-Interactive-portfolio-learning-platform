@@ -1,0 +1,9 @@
+{
+  "sample_id": "S03",
+  "description": "Mixed Fn-250 and Zy-224 dual-chain sample",
+  "collection_time": "2026-01-15T08:00:00Z",
+  "initial_activities_bq": {
+    "Fn250": 800.0,
+    "Zy224": 150.0
+  }
+}

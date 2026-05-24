@@ -1,0 +1,21 @@
+{
+  "endpoint_id": "ep_06",
+  "deliveries": [
+    {
+      "delivery_id": "del_skew",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "success",
+          "sent_at": 50000,
+          "received_at": 56500,
+          "body": {
+            "metric": "cpu"
+          },
+          "signature": "a92aaf5919e855fb66662be70d617bbb680dd0b929bbbafbd7ef50703d9a4736",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

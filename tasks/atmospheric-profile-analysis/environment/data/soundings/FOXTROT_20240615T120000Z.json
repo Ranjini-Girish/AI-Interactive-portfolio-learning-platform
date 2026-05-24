@@ -1,0 +1,102 @@
+{
+  "station_id": "FOXTROT",
+  "launch_time": "2024-06-15T12:00:00Z",
+  "levels": [
+    {
+      "pressure": 1014,
+      "temperature": 30,
+      "dewpoint": 25,
+      "wind_direction": 120,
+      "wind_speed": 4,
+      "height": 2
+    },
+    {
+      "pressure": 975,
+      "temperature": 27,
+      "dewpoint": 23,
+      "wind_direction": 130,
+      "wind_speed": 5,
+      "height": 350
+    },
+    {
+      "pressure": 950,
+      "temperature": 25,
+      "dewpoint": 21,
+      "wind_direction": 140,
+      "wind_speed": 6,
+      "height": 600
+    },
+    {
+      "pressure": 925,
+      "temperature": 22,
+      "dewpoint": 19,
+      "wind_direction": 150,
+      "wind_speed": 8,
+      "height": 850
+    },
+    {
+      "pressure": 900,
+      "temperature": 20,
+      "dewpoint": 16,
+      "wind_direction": 160,
+      "wind_speed": 10,
+      "height": 1100
+    },
+    {
+      "pressure": 850,
+      "temperature": 15,
+      "dewpoint": 10,
+      "wind_direction": 180,
+      "wind_speed": 12,
+      "height": 1520
+    },
+    {
+      "pressure": 700,
+      "temperature": 1,
+      "dewpoint": -8,
+      "wind_direction": 220,
+      "wind_speed": 16,
+      "height": 3100
+    },
+    {
+      "pressure": 500,
+      "temperature": -18,
+      "dewpoint": -36,
+      "wind_direction": 250,
+      "wind_speed": 22,
+      "height": 5700
+    },
+    {
+      "pressure": 400,
+      "temperature": -33,
+      "dewpoint": -52,
+      "wind_direction": 260,
+      "wind_speed": 26,
+      "height": 7350
+    },
+    {
+      "pressure": 300,
+      "temperature": -48,
+      "dewpoint": -66,
+      "wind_direction": 270,
+      "wind_speed": 28,
+      "height": 9350
+    },
+    {
+      "pressure": 250,
+      "temperature": -55,
+      "dewpoint": -72,
+      "wind_direction": 268,
+      "wind_speed": 26,
+      "height": 10600
+    },
+    {
+      "pressure": 200,
+      "temperature": -62,
+      "dewpoint": -78,
+      "wind_direction": 265,
+      "wind_speed": 22,
+      "height": 12150
+    }
+  ]
+}

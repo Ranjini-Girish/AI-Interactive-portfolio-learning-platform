@@ -1,0 +1,13 @@
+{
+  "name": "bcrypt",
+  "versions": {
+    "5.0.0": {
+      "dependencies": {},
+      "license": "Apache-2.0"
+    },
+    "5.1.1": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

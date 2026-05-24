@@ -1,0 +1,24 @@
+{
+  "name": "settings",
+  "path": "src/views/settings.js",
+  "size_bytes": 1680,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "form-validator",
+      "specifiers": [
+        "FormValidator"
+      ]
+    },
+    {
+      "source": "auth-service",
+      "specifiers": [
+        "updateProfile"
+      ]
+    }
+  ],
+  "exports": [
+    "SettingsView"
+  ],
+  "re_exports": []
+}

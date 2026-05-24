@@ -1,0 +1,77 @@
+{
+  "isotopes": {
+    "Zy224": {
+      "half_life_hours": 120.0,
+      "dose_coefficient_sv_per_bq_h": 2.5e-6,
+      "decay_modes": [
+        {"daughter": "Zy220", "branching_ratio": 0.65, "mode": "alpha"},
+        {"daughter": "Mv190", "branching_ratio": 0.35, "mode": "beta_minus"}
+      ]
+    },
+    "Zy220": {
+      "half_life_hours": 48.0,
+      "dose_coefficient_sv_per_bq_h": 4.0e-6,
+      "decay_modes": [
+        {"daughter": "Zy216", "branching_ratio": 1.0, "mode": "alpha"}
+      ]
+    },
+    "Zy216": {
+      "half_life_hours": null,
+      "dose_coefficient_sv_per_bq_h": 0.0,
+      "decay_modes": []
+    },
+    "Mv190": {
+      "half_life_hours": 200.0,
+      "dose_coefficient_sv_per_bq_h": 1.2e-6,
+      "decay_modes": [
+        {"daughter": "Zy216", "branching_ratio": 1.0, "mode": "beta_minus"}
+      ]
+    },
+    "Tx310": {
+      "half_life_hours": 8.0,
+      "dose_coefficient_sv_per_bq_h": 8.0e-6,
+      "decay_modes": [
+        {"daughter": "Tx306", "branching_ratio": 1.0, "mode": "alpha"}
+      ]
+    },
+    "Tx306": {
+      "half_life_hours": 0.25,
+      "dose_coefficient_sv_per_bq_h": 15.0e-6,
+      "decay_modes": [
+        {"daughter": "Tx302", "branching_ratio": 1.0, "mode": "beta_minus"}
+      ]
+    },
+    "Tx302": {
+      "half_life_hours": null,
+      "dose_coefficient_sv_per_bq_h": 0.0,
+      "decay_modes": []
+    },
+    "Fn250": {
+      "half_life_hours": 300.0,
+      "dose_coefficient_sv_per_bq_h": 0.8e-6,
+      "decay_modes": [
+        {"daughter": "Fn246", "branching_ratio": 0.80, "mode": "alpha"},
+        {"daughter": "Wp400", "branching_ratio": 0.20, "mode": "beta_minus"}
+      ]
+    },
+    "Fn246": {
+      "half_life_hours": 299.0,
+      "dose_coefficient_sv_per_bq_h": 3.0e-6,
+      "decay_modes": [
+        {"daughter": "Fn242", "branching_ratio": 1.0, "mode": "alpha"}
+      ]
+    },
+    "Fn242": {
+      "half_life_hours": null,
+      "dose_coefficient_sv_per_bq_h": 0.0,
+      "decay_modes": []
+    },
+    "Wp400": {
+      "half_life_hours": 5.0,
+      "dose_coefficient_sv_per_bq_h": 12.0e-6,
+      "decay_modes": [
+        {"daughter": "Fn242", "branching_ratio": 1.0, "mode": "beta_minus"}
+      ]
+    }
+  }
+}

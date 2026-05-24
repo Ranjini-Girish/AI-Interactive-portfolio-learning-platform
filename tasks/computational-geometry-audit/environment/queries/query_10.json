@@ -1,0 +1,11 @@
+{
+  "scene_id": "scene_10",
+  "polygon_properties": true,
+  "convex_hull": true,
+  "point_in_polygon": [
+    {"point_idx": 5, "polygon_id": "slim_trap"}
+  ],
+  "segment_intersections": true,
+  "closest_pair": true,
+  "min_enclosing_circle": true
+}

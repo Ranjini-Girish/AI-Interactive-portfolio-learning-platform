@@ -1,0 +1,9 @@
+{
+  "name": "assassin",
+  "stats": {"hp": 75, "attack": 55, "defense": 8, "speed": 35},
+  "element": "wind",
+  "abilities": {
+    "shadow_strike": {"type": "attack", "power": 70, "element": "wind"},
+    "quick_slash": {"type": "attack", "power": 25, "element": "neutral"}
+  }
+}

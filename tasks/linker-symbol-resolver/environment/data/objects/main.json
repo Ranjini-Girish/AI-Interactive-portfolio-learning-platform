@@ -1,0 +1,18 @@
+{
+  "name": "main.o",
+  "sections": [
+    {"name": ".text", "size": 100, "alignment": 16}
+  ],
+  "symbols": [
+    {"name": "main", "section": ".text", "offset": 0, "size": 48, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "_start", "section": ".text", "offset": 48, "size": 52, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "compute_sum", "section": null, "offset": 0, "size": 0, "binding": "GLOBAL", "type": "UNDEF"},
+    {"name": "format_string", "section": null, "offset": 0, "size": 0, "binding": "GLOBAL", "type": "UNDEF"},
+    {"name": "log_message", "section": null, "offset": 0, "size": 0, "binding": "GLOBAL", "type": "UNDEF"}
+  ],
+  "relocations": [
+    {"section": ".text", "offset": 16, "type": "R_ABS_32", "symbol": "compute_sum", "addend": 0},
+    {"section": ".text", "offset": 32, "type": "R_ABS_32", "symbol": "format_string", "addend": 0},
+    {"section": ".text", "offset": 64, "type": "R_ABS_32", "symbol": "log_message", "addend": 0}
+  ]
+}

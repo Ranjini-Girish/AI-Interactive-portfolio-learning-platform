@@ -1,0 +1,25 @@
+{
+  "advisories": [
+    {
+      "affected_range": "<1.0.0",
+      "description": "SSRF vulnerability in axios versions below 1.0.0",
+      "id": "GHSA-2024-001",
+      "package": "axios",
+      "severity": "high"
+    },
+    {
+      "affected_range": "<9.0.0",
+      "description": "Algorithm confusion in jsonwebtoken before 9.0.0",
+      "id": "GHSA-2024-002",
+      "package": "jsonwebtoken",
+      "severity": "medium"
+    },
+    {
+      "affected_range": "<4.18.0",
+      "description": "Open redirect vulnerability in express before 4.18.0",
+      "id": "GHSA-2024-003",
+      "package": "express",
+      "severity": "low"
+    }
+  ]
+}

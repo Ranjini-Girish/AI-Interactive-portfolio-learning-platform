@@ -1,0 +1,15 @@
+{
+  "id": "func_04_logarithmic",
+  "type": "logarithmic",
+  "params": {
+    "amplitude": 1.0,
+    "scale": 1.0,
+    "shift": 1.0
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 0.3862943611198906,
+  "description": "f(x) = ln(1 + x)"
+}

@@ -1,0 +1,8 @@
+.git
+.gitignore
+*.swp
+__pycache__
+*.pyc
+.pytest_cache
+output
+node_modules

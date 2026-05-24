@@ -1,0 +1,21 @@
+{
+  "name": "oauth-client",
+  "version": "1.0.0",
+  "base_size_bytes": 2200,
+  "features": {
+    "default": [],
+    "pkce": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "pkce": 0.15
+  },
+  "build_priority": 5,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "http-layer", "optional": false, "default_features": true, "features": ["http1"]},
+    {"name": "serde-core", "optional": false, "default_features": true, "features": []}
+  ],
+  "exports": ["OAuthClient", "TokenResponse"],
+  "conditional_exports": {}
+}

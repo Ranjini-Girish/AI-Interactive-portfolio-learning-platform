@@ -1,0 +1,10 @@
+{
+  "name": "druid",
+  "stats": {"hp": 130, "attack": 25, "defense": 18, "speed": 15},
+  "element": "earth",
+  "abilities": {
+    "vine_whip": {"type": "attack", "power": 35, "element": "earth"},
+    "rejuvenate": {"type": "heal", "power": 30},
+    "poison_spore": {"type": "attack", "power": 15, "element": "neutral", "applies": "poison"}
+  }
+}

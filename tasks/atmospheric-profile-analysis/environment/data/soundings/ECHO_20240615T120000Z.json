@@ -1,0 +1,86 @@
+{
+  "station_id": "ECHO",
+  "launch_time": "2024-06-15T12:00:00Z",
+  "levels": [
+    {
+      "pressure": 1015,
+      "temperature": 26,
+      "dewpoint": 19,
+      "wind_direction": 200,
+      "wind_speed": 6,
+      "height": 4
+    },
+    {
+      "pressure": 975,
+      "temperature": 23,
+      "dewpoint": 17,
+      "wind_direction": 210,
+      "wind_speed": 8,
+      "height": 350
+    },
+    {
+      "pressure": 950,
+      "temperature": 21,
+      "dewpoint": 15,
+      "wind_direction": 220,
+      "wind_speed": 10,
+      "height": 580
+    },
+    {
+      "pressure": 925,
+      "temperature": 18,
+      "dewpoint": 13,
+      "wind_direction": 230,
+      "wind_speed": 12,
+      "height": 830
+    },
+    {
+      "pressure": 900,
+      "temperature": 16,
+      "dewpoint": 10,
+      "wind_direction": 240,
+      "wind_speed": 14,
+      "height": 1080
+    },
+    {
+      "pressure": 850,
+      "temperature": 11,
+      "dewpoint": 4,
+      "wind_direction": 250,
+      "wind_speed": 18,
+      "height": 1520
+    },
+    {
+      "pressure": 700,
+      "temperature": -2,
+      "dewpoint": -16,
+      "wind_direction": 260,
+      "wind_speed": 24,
+      "height": 3080
+    },
+    {
+      "pressure": 500,
+      "temperature": -22,
+      "dewpoint": -40,
+      "wind_direction": 270,
+      "wind_speed": 32,
+      "height": 5620
+    },
+    {
+      "pressure": 300,
+      "temperature": -50,
+      "dewpoint": -67,
+      "wind_direction": 280,
+      "wind_speed": 36,
+      "height": 9240
+    },
+    {
+      "pressure": 200,
+      "temperature": -60,
+      "dewpoint": -76,
+      "wind_direction": 275,
+      "wind_speed": 30,
+      "height": 12050
+    }
+  ]
+}

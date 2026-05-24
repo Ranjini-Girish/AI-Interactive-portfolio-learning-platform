@@ -1,0 +1,23 @@
+{
+  "name": "crypto-utils",
+  "version": "2.1.0",
+  "base_size_bytes": 2800,
+  "features": {
+    "default": ["ring"],
+    "ring": [],
+    "openssl": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "ring": 0.15,
+    "openssl": 0.25
+  },
+  "build_priority": 2,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "utils", "optional": false, "default_features": false, "features": ["no-std"]},
+    {"name": "tls-provider", "optional": false, "default_features": true, "features": []}
+  ],
+  "exports": ["encrypt", "decrypt", "CryptoProvider"],
+  "conditional_exports": {}
+}

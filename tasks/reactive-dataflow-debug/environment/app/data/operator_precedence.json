@@ -1,0 +1,10 @@
+{
+  "precedence_levels": [
+    { "level": 1, "operators": ["*", "/"], "associativity": "left" },
+    { "level": 2, "operators": ["+", "-"], "associativity": "left" },
+    { "level": 3, "operators": [">", "<", ">=", "<=", "==", "!="], "associativity": "left" }
+  ],
+  "function_call_precedence": 0,
+  "parentheses_override": true,
+  "notes": "Lower level number = higher precedence (binds tighter)"
+}

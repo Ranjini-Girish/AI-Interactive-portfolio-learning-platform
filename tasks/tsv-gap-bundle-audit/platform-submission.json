@@ -1,0 +1,61 @@
+{
+  "taskName": "tsv-gap-bundle-audit",
+  "updatedAt": "2026-05-23T17:26:40.786Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "5f2d92cc-7a8f-401c-a397-a4a8f47cf026",
+    "taskStatus": "Evaluation pending",
+    "taskName": "tsv-gap-bundle-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "tsv-gap-bundle-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:26:40.786Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "5f2d92cc-7a8f-401c-a397-a4a8f47cf026",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\tsv-gap-bundle-audit.zip",
+    "zipBytes": 19803,
+    "zipSha256": "c9bc6c9d9d8f122d45a9d22bb41947a78b485fd9465dc1778b3087ca9fddbc25",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:26:40.786Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "5f2d92cc-7a8f-401c-a397-a4a8f47cf026",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\tsv-gap-bundle-audit.zip",
+      "zipBytes": 19803,
+      "zipSha256": "c9bc6c9d9d8f122d45a9d22bb41947a78b485fd9465dc1778b3087ca9fddbc25",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

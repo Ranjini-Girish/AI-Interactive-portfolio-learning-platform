@@ -1,0 +1,22 @@
+{
+  "hash": "3f7b5c18",
+  "author_name": "Dana Evans",
+  "author_email": "dana@example.com",
+  "parent_hashes": [
+    "c9e2d4a7"
+  ],
+  "timestamp": "2025-03-01T14:00:00Z",
+  "message": "Add binary assets",
+  "file_changes": [
+    {
+      "path": "assets/logo.png",
+      "additions": null,
+      "deletions": null
+    },
+    {
+      "path": "assets/banner.jpg",
+      "additions": null,
+      "deletions": null
+    }
+  ]
+}

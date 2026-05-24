@@ -1,0 +1,50 @@
+{
+  "saga_id": "inv-002",
+  "events": [
+    {
+      "event_id": "inv-002-e1",
+      "sequence": 1,
+      "timestamp_ms": 200,
+      "step": "receive",
+      "status": "completed",
+      "duration_ms": 10,
+      "parent_event_id": null
+    },
+    {
+      "event_id": "dup-x",
+      "sequence": 2,
+      "timestamp_ms": 210,
+      "step": "count",
+      "status": "completed",
+      "duration_ms": 25,
+      "parent_event_id": "inv-002-e1"
+    },
+    {
+      "event_id": "inv-002-e3",
+      "sequence": 3,
+      "timestamp_ms": 220,
+      "step": "adjust",
+      "status": "completed",
+      "duration_ms": 15,
+      "parent_event_id": "dup-x"
+    },
+    {
+      "event_id": "dup-x",
+      "sequence": 4,
+      "timestamp_ms": 230,
+      "step": "count",
+      "status": "completed",
+      "duration_ms": 99,
+      "parent_event_id": "inv-002-e3"
+    },
+    {
+      "event_id": "inv-002-e5",
+      "sequence": 5,
+      "timestamp_ms": 240,
+      "step": "close",
+      "status": "completed",
+      "duration_ms": 5,
+      "parent_event_id": "dup-x"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "module_path": "example.com/data/json",
+  "retracted": [],
+  "versions": [
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.0.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.1.0-alpha"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.1.0-beta"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.1.0-beta.2"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.1.0-beta.11"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.1.0-rc.1"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.1.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.2.0",
+          "module": "example.com/core/errors"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "version": "1.2.0"
+    }
+  ]
+}

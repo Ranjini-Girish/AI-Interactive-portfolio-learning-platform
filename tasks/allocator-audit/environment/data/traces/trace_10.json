@@ -1,0 +1,20 @@
+{
+  "trace_id": "trace_10",
+  "description": "Combined edge cases: headers, alignment, coalescing, realloc, errors",
+  "operations": [
+    {"op": "alloc", "id": "m1", "size": 0, "align": 8},
+    {"op": "alloc", "id": "m2", "size": 100, "align": 16},
+    {"op": "alloc", "id": "m3", "size": 50, "align": 32},
+    {"op": "alloc", "id": "m4", "size": 200, "align": 8},
+    {"op": "dealloc", "id": "m2"},
+    {"op": "realloc", "id": "m1", "new_size": 10, "align": 8},
+    {"op": "alloc", "id": "m5", "size": 60, "align": 8},
+    {"op": "dealloc", "id": "m3"},
+    {"op": "dealloc", "id": "m5"},
+    {"op": "realloc", "id": "m4", "new_size": 250, "align": 8},
+    {"op": "dealloc", "id": "m1"},
+    {"op": "dealloc", "id": "m1"},
+    {"op": "dealloc", "id": "m4"},
+    {"op": "alloc", "id": "m6", "size": 900, "align": 8}
+  ]
+}

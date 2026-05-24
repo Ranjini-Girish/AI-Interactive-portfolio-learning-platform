@@ -1,0 +1,26 @@
+{
+  "name": "crypto-lib",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "dependencies": {},
+      "license": "GPL-3.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.1.5",
+      "dependencies": {},
+      "license": "GPL-3.0",
+      "yanked": false,
+      "vulnerability_score": 7.5
+    },
+    {
+      "version": "0.2.0",
+      "dependencies": {},
+      "license": "GPL-3.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

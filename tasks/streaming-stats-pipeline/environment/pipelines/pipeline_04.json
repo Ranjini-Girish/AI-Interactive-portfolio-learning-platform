@@ -1,0 +1,7 @@
+{
+  "stream_id": "stream_04",
+  "computations": {
+    "basic_stats": true,
+    "change_points": true
+  }
+}

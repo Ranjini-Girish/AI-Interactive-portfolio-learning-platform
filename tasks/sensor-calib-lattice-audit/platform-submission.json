@@ -1,0 +1,61 @@
+{
+  "taskName": "sensor-calib-lattice-audit",
+  "updatedAt": "2026-05-23T16:44:29.162Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "5b3b84d0-fea4-48ae-ae03-3e670f3cabec",
+    "taskStatus": "Evaluation pending",
+    "taskName": "sensor-calib-lattice-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "sensor-calib-lattice-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T16:44:29.162Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "5b3b84d0-fea4-48ae-ae03-3e670f3cabec",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\sensor-calib-lattice-audit.zip",
+    "zipBytes": 22296,
+    "zipSha256": "90f6e113b920e915fc0dd212c7098e08a66317ea644babe174d69408346a9f29",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T16:44:29.162Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "5b3b84d0-fea4-48ae-ae03-3e670f3cabec",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\sensor-calib-lattice-audit.zip",
+      "zipBytes": 22296,
+      "zipSha256": "90f6e113b920e915fc0dd212c7098e08a66317ea644babe174d69408346a9f29",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

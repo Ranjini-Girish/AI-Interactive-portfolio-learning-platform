@@ -1,0 +1,17 @@
+{
+  "trace_id": "trace_04",
+  "description": "Realloc scenarios: in-place grow, shrink, and copy fallback",
+  "operations": [
+    {"op": "alloc", "id": "r1", "size": 32, "align": 8},
+    {"op": "alloc", "id": "r2", "size": 64, "align": 8},
+    {"op": "alloc", "id": "r3", "size": 32, "align": 8},
+    {"op": "dealloc", "id": "r2"},
+    {"op": "realloc", "id": "r1", "new_size": 80, "align": 8},
+    {"op": "realloc", "id": "r3", "new_size": 16, "align": 8},
+    {"op": "alloc", "id": "r4", "size": 100, "align": 8},
+    {"op": "realloc", "id": "r3", "new_size": 64, "align": 8},
+    {"op": "dealloc", "id": "r1"},
+    {"op": "dealloc", "id": "r3"},
+    {"op": "dealloc", "id": "r4"}
+  ]
+}

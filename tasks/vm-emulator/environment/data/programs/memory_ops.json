@@ -1,0 +1,19 @@
+{
+  "name": "memory_ops",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 42]},
+    {"op": "STORE", "args": ["R0", 100]},
+    {"op": "MOV", "args": ["R0", 0]},
+    {"op": "LOAD", "args": ["R0", 100]},
+    {"op": "MOV", "args": ["R1", "R0"]},
+    {"op": "MOV", "args": ["R0", 255]},
+    {"op": "STORE", "args": ["R0", 4092]},
+    {"op": "LOAD", "args": ["R1", 4092]},
+    {"op": "MOV", "args": ["R0", 123]},
+    {"op": "STORE", "args": ["R0", 4093]},
+    {"op": "MOV", "args": ["R0", 0]},
+    {"op": "LOAD", "args": ["R0", 4093]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "HALT", "args": []}
+  ]
+}

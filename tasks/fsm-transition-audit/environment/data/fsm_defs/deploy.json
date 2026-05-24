@@ -1,0 +1,14 @@
+{
+  "fsm_id": "deploy",
+  "initial_state": "pending",
+  "terminal_states": ["live", "failed"],
+  "allowed_edges": [
+    ["pending", "building"],
+    ["building", "testing"],
+    ["testing", "staging"],
+    ["staging", "live"],
+    ["building", "failed"],
+    ["testing", "failed"],
+    ["failed", "building"]
+  ]
+}

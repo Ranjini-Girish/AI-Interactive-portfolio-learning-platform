@@ -1,0 +1,77 @@
+{
+  "replica_id": "beta",
+  "operations": [
+    {
+      "op_id": "beta-001",
+      "key": "user:1001",
+      "value": "Alice-B",
+      "op_type": "SET",
+      "lamport_ts": 3,
+      "vector_clock": {"alpha": 1, "beta": 1},
+      "wall_clock_ms": 3000
+    },
+    {
+      "op_id": "beta-002",
+      "key": "user:1003",
+      "value": "Charlie",
+      "op_type": "SET",
+      "lamport_ts": 4,
+      "vector_clock": {"alpha": 1, "beta": 2},
+      "wall_clock_ms": 4000
+    },
+    {
+      "op_id": "beta-003",
+      "key": "user:1001",
+      "value": "Alice-B2",
+      "op_type": "SET",
+      "lamport_ts": 5,
+      "vector_clock": {"alpha": 2, "beta": 3},
+      "wall_clock_ms": 5200
+    },
+    {
+      "op_id": "beta-004",
+      "key": "config:theme",
+      "value": "light",
+      "op_type": "SET",
+      "lamport_ts": 7,
+      "vector_clock": {"alpha": 3, "beta": 4},
+      "wall_clock_ms": 7000
+    },
+    {
+      "op_id": "beta-005",
+      "key": "user:1003",
+      "value": "Charlie-Updated",
+      "op_type": "SET",
+      "lamport_ts": 9,
+      "vector_clock": {"alpha": 5, "beta": 5, "gamma": 1},
+      "wall_clock_ms": 7200
+    },
+    {
+      "op_id": "beta-006",
+      "key": "counter:visits",
+      "value": "38",
+      "op_type": "SET",
+      "lamport_ts": 10,
+      "vector_clock": {"alpha": 5, "beta": 6, "gamma": 1},
+      "wall_clock_ms": 10200
+    },
+    {
+      "op_id": "beta-007",
+      "key": "user:1005",
+      "value": "Eve",
+      "op_type": "SET",
+      "lamport_ts": 11,
+      "vector_clock": {"alpha": 5, "beta": 7, "gamma": 2},
+      "wall_clock_ms": 11000
+    },
+    {
+      "op_id": "beta-008",
+      "key": "config:lang",
+      "value": "en-GB",
+      "op_type": "SET",
+      "lamport_ts": 13,
+      "vector_clock": {"alpha": 7, "beta": 8, "gamma": 2},
+      "wall_clock_ms": 13500
+    }
+  ]
+}

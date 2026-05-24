@@ -1,0 +1,9 @@
+{
+  "name": "nop_test",
+  "instructions": [
+    {"op": "NOP", "args": []},
+    {"op": "NOP", "args": []},
+    {"op": "NOP", "args": []},
+    {"op": "HALT", "args": []}
+  ]
+}

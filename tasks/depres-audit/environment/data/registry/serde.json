@@ -1,0 +1,9 @@
+{
+  "name": "serde",
+  "versions": [
+    { "version": "1.0.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "1.0.100", "license": "MIT", "dependencies": {}, "features": { "derive": { "optional_deps": [] } } },
+    { "version": "1.0.180", "license": "MIT", "dependencies": {}, "features": { "derive": { "optional_deps": [] } } },
+    { "version": "1.0.210", "license": "MIT", "dependencies": {}, "features": { "derive": { "optional_deps": [] } } }
+  ]
+}

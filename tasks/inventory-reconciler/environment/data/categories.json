@@ -1,0 +1,14 @@
+{
+  "electronics": {
+    "tax_rate": 0.08,
+    "min_stock": 10
+  },
+  "hardware": {
+    "tax_rate": 0.06,
+    "min_stock": 20
+  },
+  "accessories": {
+    "tax_rate": 0.05,
+    "min_stock": 50
+  }
+}

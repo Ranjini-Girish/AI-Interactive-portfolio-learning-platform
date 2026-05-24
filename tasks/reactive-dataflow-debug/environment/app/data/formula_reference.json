@@ -1,0 +1,17 @@
+{
+  "supported_operators": ["+", "-", "*", "/"],
+  "supported_comparators": [">", "<", ">=", "<=", "==", "!="],
+  "supported_functions": {
+    "SUM": { "min_args": 1, "max_args": null, "description": "Sum of arguments" },
+    "AVG": { "min_args": 1, "max_args": null, "description": "Arithmetic mean" },
+    "MIN": { "min_args": 1, "max_args": null, "description": "Minimum value" },
+    "MAX": { "min_args": 1, "max_args": null, "description": "Maximum value" },
+    "IF": { "min_args": 3, "max_args": 3, "description": "Conditional evaluation" },
+    "ABS": { "min_args": 1, "max_args": 1, "description": "Absolute value" },
+    "ROUND": { "min_args": 1, "max_args": 2, "description": "Round to N places" },
+    "COUNT": { "min_args": 1, "max_args": null, "description": "Count of arguments" },
+    "COUNTIF": { "min_args": 2, "max_args": null, "description": "Count args > threshold" }
+  },
+  "cell_id_pattern": "[A-Z][A-Z0-9]*[0-9]+",
+  "comparison_returns": { "true": 1, "false": 0 }
+}

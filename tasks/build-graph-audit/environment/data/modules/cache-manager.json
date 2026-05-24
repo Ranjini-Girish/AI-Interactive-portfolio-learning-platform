@@ -1,0 +1,19 @@
+{
+  "name": "cache-manager",
+  "path": "src/services/cache-manager.js",
+  "size_bytes": 840,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "logger",
+      "specifiers": [
+        "log"
+      ]
+    }
+  ],
+  "exports": [
+    "getCached",
+    "invalidate"
+  ],
+  "re_exports": []
+}

@@ -1,0 +1,78 @@
+{
+  "station_id": "CHARLIE",
+  "launch_time": "2024-06-15T12:00:00Z",
+  "levels": [
+    {
+      "pressure": 835,
+      "temperature": 26,
+      "dewpoint": 10,
+      "wind_direction": 200,
+      "wind_speed": 6,
+      "height": 1609
+    },
+    {
+      "pressure": 800,
+      "temperature": 22,
+      "dewpoint": 7,
+      "wind_direction": 210,
+      "wind_speed": 8,
+      "height": 1950
+    },
+    {
+      "pressure": 750,
+      "temperature": 17,
+      "dewpoint": 2,
+      "wind_direction": 220,
+      "wind_speed": 12,
+      "height": 2500
+    },
+    {
+      "pressure": 700,
+      "temperature": 11,
+      "dewpoint": -5,
+      "wind_direction": 240,
+      "wind_speed": 16,
+      "height": 3050
+    },
+    {
+      "pressure": 600,
+      "temperature": -2,
+      "dewpoint": -20,
+      "wind_direction": 260,
+      "wind_speed": 22,
+      "height": 4300
+    },
+    {
+      "pressure": 500,
+      "temperature": -16,
+      "dewpoint": -36,
+      "wind_direction": 270,
+      "wind_speed": 28,
+      "height": 5700
+    },
+    {
+      "pressure": 400,
+      "temperature": -32,
+      "dewpoint": -52,
+      "wind_direction": 280,
+      "wind_speed": 32,
+      "height": 7350
+    },
+    {
+      "pressure": 300,
+      "temperature": -48,
+      "dewpoint": -66,
+      "wind_direction": 285,
+      "wind_speed": 36,
+      "height": 9350
+    },
+    {
+      "pressure": 200,
+      "temperature": -60,
+      "dewpoint": -76,
+      "wind_direction": 280,
+      "wind_speed": 30,
+      "height": 12100
+    }
+  ]
+}

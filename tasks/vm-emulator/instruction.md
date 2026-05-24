@@ -1,0 +1,3 @@
+You are given a VM specification and test programs under `/app/data/`. Implement the VM as a TypeScript on Node 22 program, compile it to `/app/build/vm`, and run it to produce `/app/output/execution_report.json`. The environment has `the TypeScript toolchain` and `make` installed; acquire any additional libraries you need. Do not modify any file under `/app/data/`.
+
+The VM architecture and complete instruction semantics are documented in `/app/data/vm_spec.md`. Read `/app/data/config.json` for machine configuration (register count, memory size, cycle limit, stack start address). Execute each `.json` program file in `/app/data/programs/` sorted by filename ascending. The required output structure is specified in `/app/data/output_format.md`.

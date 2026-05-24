@@ -1,0 +1,11 @@
+#include "linker/relocator.h"
+
+std::vector<AppliedReloc> apply_relocations(
+    const std::vector<ObjectFile>& /*objects*/,
+    const std::map<std::string, int64_t>& /*global_addrs*/,
+    const std::map<std::string, int64_t>& /*section_bases*/,
+    const std::map<std::string, int64_t>& /*local_addrs*/)
+{
+    // TODO: apply R_ABS_32 and R_PC_32 relocations
+    return {};
+}

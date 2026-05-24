@@ -1,0 +1,23 @@
+{
+  "manifest_id": "m04",
+  "deployments": [
+    {
+      "deployment_id": "dep-eta-07",
+      "environment": "production",
+      "artifact_ref": "art_eta_bundle",
+      "build_duration_sec": 100,
+      "deploy_duration_sec": 45,
+      "declared_size_bytes": 900000,
+      "overlay": "production"
+    },
+    {
+      "deployment_id": "dep-theta-08",
+      "environment": "staging",
+      "artifact_ref": "art-theta-bundle",
+      "build_duration_sec": 50,
+      "deploy_duration_sec": 20,
+      "declared_size_bytes": 409600,
+      "overlay": "staging"
+    }
+  ]
+}

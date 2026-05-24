@@ -1,0 +1,25 @@
+{
+  "battle_id": "battle_02",
+  "description": "Mutual elemental weakness duel",
+  "rng_seed": 137,
+  "heroes": [
+    {
+      "id": "luna", "name": "Luna", "element": "light",
+      "max_hp": 180, "attack": 50, "defense": 15, "speed": 40, "crit_rate": 30,
+      "skills": [
+        {"id": "holy_smite", "power": 130, "target_type": "single", "element": "light", "effect": "none"},
+        {"id": "radiance", "power": 70, "target_type": "aoe", "element": "light", "effect": "none"}
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "wraith_a", "name": "Shadow Wraith", "element": "dark",
+      "max_hp": 160, "attack": 48, "defense": 14, "speed": 38, "crit_rate": 35,
+      "skills": [
+        {"id": "shadow_strike", "power": 135, "target_type": "single", "element": "dark", "effect": "none"},
+        {"id": "curse", "power": 80, "target_type": "single", "element": "dark", "effect": "poison"}
+      ]
+    }
+  ]
+}

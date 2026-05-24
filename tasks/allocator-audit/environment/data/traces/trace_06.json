@@ -1,0 +1,14 @@
+{
+  "trace_id": "trace_06",
+  "description": "Double-free and use-after-free detection",
+  "operations": [
+    {"op": "alloc", "id": "p1", "size": 64, "align": 8},
+    {"op": "alloc", "id": "p2", "size": 64, "align": 8},
+    {"op": "dealloc", "id": "p1"},
+    {"op": "dealloc", "id": "p1"},
+    {"op": "realloc", "id": "p1", "new_size": 128, "align": 8},
+    {"op": "dealloc", "id": "p2"},
+    {"op": "dealloc", "id": "p2"},
+    {"op": "dealloc", "id": "nonexistent"}
+  ]
+}

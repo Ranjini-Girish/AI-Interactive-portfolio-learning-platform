@@ -1,0 +1,31 @@
+{
+  "name": "dashboard",
+  "path": "src/views/dashboard.js",
+  "size_bytes": 2100,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "chart-engine",
+      "specifiers": [
+        "ChartPanel"
+      ]
+    },
+    {
+      "source": "data-service",
+      "specifiers": [
+        "fetchMetrics"
+      ]
+    },
+    {
+      "source": "router",
+      "specifiers": [
+        "navigateTo",
+        "Router"
+      ]
+    }
+  ],
+  "exports": [
+    "DashboardView"
+  ],
+  "re_exports": []
+}

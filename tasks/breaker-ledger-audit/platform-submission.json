@@ -1,0 +1,61 @@
+{
+  "taskName": "breaker-ledger-audit",
+  "updatedAt": "2026-05-23T17:33:13.705Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "6040892f-37a1-47b8-8d7a-3ee68455888c",
+    "taskStatus": "Evaluation pending",
+    "taskName": "breaker-ledger-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "breaker-ledger-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:33:13.705Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "6040892f-37a1-47b8-8d7a-3ee68455888c",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\breaker-ledger-audit.zip",
+    "zipBytes": 19808,
+    "zipSha256": "47c8f94686bc4ec707f79d4c2a6d29226e19b08efd466430bde440f2594448ea",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:33:13.705Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "6040892f-37a1-47b8-8d7a-3ee68455888c",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\breaker-ledger-audit.zip",
+      "zipBytes": 19808,
+      "zipSha256": "47c8f94686bc4ec707f79d4c2a6d29226e19b08efd466430bde440f2594448ea",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

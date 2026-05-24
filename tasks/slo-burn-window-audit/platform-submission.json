@@ -1,0 +1,80 @@
+{
+  "taskName": "slo-burn-window-audit",
+  "updatedAt": "2026-05-23T07:31:27.365Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+    "taskStatus": "Evaluation pending",
+    "taskName": "slo-burn-window-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "slo-burn-window-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T07:31:27.365Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+    "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+    "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "assignmentId": "6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+    "revisionTaskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\slo-burn-window-audit.zip",
+    "zipBytes": 13615,
+    "zipSha256": "7b7ed626e95a63288a142e355c1bf616c2df3ea35e00f502cd17645b587db01b",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T07:29:59.365Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+      "revisionTaskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+      "zipBytes": 26685,
+      "zipSha256": "87627ca033c4ea0a02dca271d699fe74b07b20369d94adfc282cd01cb8e022f5",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-23T07:31:27.365Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+      "revisionTaskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\slo-burn-window-audit.zip",
+      "zipBytes": 13615,
+      "zipSha256": "7b7ed626e95a63288a142e355c1bf616c2df3ea35e00f502cd17645b587db01b",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

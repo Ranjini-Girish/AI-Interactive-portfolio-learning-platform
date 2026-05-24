@@ -1,0 +1,35 @@
+{
+  "name": "core-lib",
+  "version": "2.5.0",
+  "base_size_bytes": 4500,
+  "features": {
+    "default": ["std"],
+    "std": [],
+    "serde": ["dep:serde-core"],
+    "full": ["serde", "async-support"],
+    "async-support": ["dep:async-rt"]
+  },
+  "feature_conflicts": [["tracing", "std"]],
+  "feature_size_weights": {
+    "std": 0.10,
+    "serde": 0.20,
+    "async-support": 0.25,
+    "full": 0.0,
+    "tracing": 0.05
+  },
+  "build_priority": 3,
+  "weak_features": {
+    "tracing": ["logger/structured"]
+  },
+  "dependencies": [
+    {"name": "logger", "optional": false, "default_features": true, "features": []},
+    {"name": "utils", "optional": false, "default_features": true, "features": []},
+    {"name": "serde-core", "optional": true, "default_features": true, "features": []},
+    {"name": "async-rt", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["CoreEngine", "init"],
+  "conditional_exports": {
+    "serde": ["Serialize", "Deserialize"],
+    "async-support": ["AsyncEngine"]
+  }
+}

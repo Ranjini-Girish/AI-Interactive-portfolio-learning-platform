@@ -1,0 +1,8 @@
+{
+  "name": "libcrypto",
+  "type": "library",
+  "sources": ["crypto/hash.cpp"],
+  "headers": ["crypto/hash.h"],
+  "depends_on": ["libutil"],
+  "build_time_ms": 2000
+}

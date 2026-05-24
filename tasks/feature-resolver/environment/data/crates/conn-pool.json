@@ -1,0 +1,22 @@
+{
+  "name": "conn-pool",
+  "version": "1.0.0",
+  "base_size_bytes": 1400,
+  "features": {
+    "default": ["bounded"],
+    "bounded": [],
+    "unbounded": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "bounded": 0.10,
+    "unbounded": 0.10
+  },
+  "build_priority": 3,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "logger", "optional": false, "default_features": true, "features": []}
+  ],
+  "exports": ["ConnectionPool", "PoolConfig"],
+  "conditional_exports": {}
+}

@@ -1,0 +1,10 @@
+{
+  "project_id": "video-svc",
+  "license": "Apache-2.0",
+  "direct_dependencies": [
+    "express",
+    "video-utils",
+    "winston",
+    "cache-manager"
+  ]
+}

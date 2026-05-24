@@ -1,0 +1,8 @@
+{
+  "workload_id": "cache-proxy",
+  "risk_tier": "high",
+  "required_capabilities": ["CAP_NET_BIND_SERVICE"],
+  "observed_capabilities": ["CAP_NET_BIND_SERVICE", "CAP_SETGID"],
+  "forbidden_capabilities": ["CAP_SYS_ADMIN"],
+  "observed_syscalls": ["read", "write", "mmap", "bind", "accept", "connect", "socket", "ioctl"]
+}

@@ -1,0 +1,41 @@
+{
+  "saga_id": "ship-003",
+  "events": [
+    {
+      "event_id": "ship-003-e1",
+      "sequence": 1,
+      "timestamp_ms": 100,
+      "step": "label",
+      "status": "completed",
+      "duration_ms": 12,
+      "parent_event_id": null
+    },
+    {
+      "event_id": "ship-003-e2",
+      "sequence": 2,
+      "timestamp_ms": 90,
+      "step": "route",
+      "status": "completed",
+      "duration_ms": 18,
+      "parent_event_id": "ship-003-e1"
+    },
+    {
+      "event_id": "ship-003-e3",
+      "sequence": 3,
+      "timestamp_ms": 120,
+      "step": "dispatch",
+      "status": "completed",
+      "duration_ms": 22,
+      "parent_event_id": "ship-003-e2"
+    },
+    {
+      "event_id": "ship-003-e4",
+      "sequence": 4,
+      "timestamp_ms": 130,
+      "step": "deliver",
+      "status": "completed",
+      "duration_ms": 35,
+      "parent_event_id": "ship-003-e3"
+    }
+  ]
+}

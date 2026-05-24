@@ -1,0 +1,17 @@
+{
+  "name": "raw-body",
+  "versions": {
+    "2.4.3": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "2.5.2": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "3.0.0": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

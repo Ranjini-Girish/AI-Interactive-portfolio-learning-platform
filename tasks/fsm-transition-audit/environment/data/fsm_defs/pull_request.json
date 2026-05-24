@@ -1,0 +1,15 @@
+{
+  "fsm_id": "pull_request",
+  "initial_state": "draft",
+  "terminal_states": ["merged", "abandoned"],
+  "allowed_edges": [
+    ["draft", "open"],
+    ["open", "in_review"],
+    ["in_review", "changes_requested"],
+    ["changes_requested", "in_review"],
+    ["in_review", "approved"],
+    ["approved", "merged"],
+    ["open", "abandoned"],
+    ["in_review", "abandoned"]
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "logger.o",
+  "sections": [
+    {"name": ".text", "size": 80, "alignment": 16},
+    {"name": ".data", "size": 8, "alignment": 4}
+  ],
+  "symbols": [
+    {"name": "log_message", "section": ".text", "offset": 0, "size": 48, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "log_level", "section": ".data", "offset": 0, "size": 4, "binding": "GLOBAL", "type": "OBJECT"},
+    {"name": "compute_avg", "section": ".text", "offset": 48, "size": 32, "binding": "WEAK", "type": "FUNC"},
+    {"name": "format_string", "section": null, "offset": 0, "size": 0, "binding": "GLOBAL", "type": "UNDEF"},
+    {"name": "write_output", "section": null, "offset": 0, "size": 0, "binding": "GLOBAL", "type": "UNDEF"}
+  ],
+  "relocations": [
+    {"section": ".text", "offset": 8, "type": "R_ABS_32", "symbol": "format_string", "addend": 0},
+    {"section": ".text", "offset": 28, "type": "R_ABS_32", "symbol": "write_output", "addend": 0},
+    {"section": ".text", "offset": 56, "type": "R_PC_32", "symbol": "log_level", "addend": -4}
+  ]
+}

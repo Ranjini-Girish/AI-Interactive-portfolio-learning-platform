@@ -1,0 +1,91 @@
+{
+  "packages": {
+    "alpha": {
+      "versions": {
+        "1.0.0": {"dependencies": {}},
+        "1.1.0": {"dependencies": {}},
+        "1.2.0": {"dependencies": {"beta": "^0.2.0", "gamma": "^1.0.0"}},
+        "1.2.1": {"dependencies": {"beta": "^0.2.0", "gamma": "^1.0.0", "iota": "^1.0.0"}},
+        "2.0.0": {"dependencies": {"beta": "^1.0.0", "epsilon": "^2.0.0"}}
+      }
+    },
+    "beta": {
+      "versions": {
+        "0.1.0": {"dependencies": {}},
+        "0.2.0": {"dependencies": {}},
+        "0.2.3": {"dependencies": {}},
+        "0.3.0": {"dependencies": {"delta": "^0.0.2"}},
+        "1.0.0": {"dependencies": {"theta": "^1.0.0"}}
+      }
+    },
+    "gamma": {
+      "versions": {
+        "1.0.0-alpha": {"dependencies": {}},
+        "1.0.0-alpha.1": {"dependencies": {}},
+        "1.0.0-beta.2": {"dependencies": {}},
+        "1.0.0-beta.11": {"dependencies": {}},
+        "1.0.0-rc.1": {"dependencies": {}},
+        "1.0.0": {"dependencies": {"eta": "^1.0.0"}},
+        "1.0.1": {"dependencies": {"eta": "^1.0.0"}},
+        "1.1.0": {"dependencies": {"eta": "^1.1.0"}}
+      }
+    },
+    "delta": {
+      "versions": {
+        "0.0.1": {"dependencies": {}},
+        "0.0.2": {"dependencies": {}},
+        "0.0.3": {"dependencies": {}},
+        "0.1.0": {"dependencies": {}},
+        "1.0.0": {"dependencies": {}}
+      }
+    },
+    "epsilon": {
+      "versions": {
+        "1.0.0": {"dependencies": {}},
+        "1.5.0": {"dependencies": {}},
+        "2.0.0": {"dependencies": {"theta": "^1.0.0", "zeta": "^1.0.0"}},
+        "2.1.0": {"dependencies": {"theta": "^1.0.0", "zeta": "^1.1.0"}},
+        "2.1.1": {"dependencies": {"theta": "^1.0.0", "zeta": "^1.1.0"}}
+      }
+    },
+    "zeta": {
+      "versions": {
+        "1.0.0": {"dependencies": {}},
+        "1.1.0": {"dependencies": {}},
+        "1.2.0": {"dependencies": {"eta": "^1.2.0"}},
+        "2.0.0": {"dependencies": {"eta": "^2.0.0"}}
+      }
+    },
+    "eta": {
+      "versions": {
+        "1.0.0": {"dependencies": {}},
+        "1.1.0": {"dependencies": {}},
+        "1.2.0": {"dependencies": {}},
+        "1.2.1": {"dependencies": {}},
+        "2.0.0": {"dependencies": {}}
+      }
+    },
+    "theta": {
+      "versions": {
+        "0.5.0": {"dependencies": {}},
+        "1.0.0": {"dependencies": {}},
+        "1.0.1": {"dependencies": {}},
+        "1.1.0": {"dependencies": {"iota": "^1.0.0"}}
+      }
+    },
+    "iota": {
+      "versions": {
+        "1.0.0": {"dependencies": {}},
+        "1.0.1": {"dependencies": {}},
+        "1.1.0": {"dependencies": {}}
+      }
+    },
+    "kappa": {
+      "versions": {
+        "1.0.0": {"dependencies": {}},
+        "1.1.0": {"dependencies": {"eta": "~1.0.0"}},
+        "2.0.0": {"dependencies": {"eta": "^2.0.0"}}
+      }
+    }
+  }
+}

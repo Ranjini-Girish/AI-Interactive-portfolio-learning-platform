@@ -1,0 +1,97 @@
+{
+  "endpoint_id": "ep_08",
+  "deliveries": [
+    {
+      "delivery_id": "f1",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "failed",
+          "sent_at": 100,
+          "received_at": 105,
+          "body": {
+            "k": 1
+          },
+          "signature": "3c007f3b223a426f88d64806ae343cddb9809cffa801ff262597832bb4e91c07",
+          "jitter_pct": 0
+        },
+        {
+          "attempt_number": 2,
+          "status": "failed",
+          "sent_at": 700,
+          "received_at": 705,
+          "body": {
+            "k": 1
+          },
+          "signature": "6737ae23422957c9690451fa669ef497ef0c1f46f2af6382a5a86ed16bd22bb6",
+          "jitter_pct": 0
+        },
+        {
+          "attempt_number": 3,
+          "status": "dead_letter",
+          "sent_at": 1900,
+          "received_at": 1905,
+          "body": {
+            "k": 1
+          },
+          "signature": "c5d0185c776c20d92a59fd602f6a4a8bc085eedc2408d557423f97c849217a5b",
+          "jitter_pct": 0
+        }
+      ]
+    },
+    {
+      "delivery_id": "f2",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "failed",
+          "sent_at": 200,
+          "received_at": 205,
+          "body": {
+            "k": 2
+          },
+          "signature": "d14513e75ca36a3e2ddbb3b0c42b2c37989a265999b861f29cd887758c1927e4",
+          "jitter_pct": 0
+        },
+        {
+          "attempt_number": 2,
+          "status": "timeout",
+          "sent_at": 800,
+          "received_at": 810,
+          "body": {
+            "k": 2
+          },
+          "signature": "6e20436de9a6f1a39de85674a56e5e6d4004aef03d242d4a24671546d2da41fa",
+          "jitter_pct": 0
+        },
+        {
+          "attempt_number": 3,
+          "status": "dead_letter",
+          "sent_at": 2000,
+          "received_at": 2005,
+          "body": {
+            "k": 2
+          },
+          "signature": "dc3306b9fb8eed2699460bf7a49ee9c27eb46051a893b46a3cb7990cdfa28fdd",
+          "jitter_pct": 0
+        }
+      ]
+    },
+    {
+      "delivery_id": "f3",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "success",
+          "sent_at": 300,
+          "received_at": 305,
+          "body": {
+            "k": 3
+          },
+          "signature": "357b0e8ec5d8db006af8fa225242e6fa7f723bbd7df7057a8fb5c013700dae1a",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

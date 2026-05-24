@@ -1,0 +1,16 @@
+{
+  "finding_severity": {
+    "compensation_order_violation": "medium",
+    "duplicate_event_skipped": "info",
+    "orphan_parent": "high",
+    "out_of_order_timestamp": "medium",
+    "stalled_step": "high"
+  },
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "info": 5,
+    "low": 4,
+    "medium": 3
+  }
+}

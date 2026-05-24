@@ -1,0 +1,86 @@
+{
+  "station_id": "FOXTROT",
+  "launch_time": "2024-06-16T00:00:00Z",
+  "levels": [
+    {
+      "pressure": 1014,
+      "temperature": 26,
+      "dewpoint": 23,
+      "wind_direction": 100,
+      "wind_speed": 3,
+      "height": 2
+    },
+    {
+      "pressure": 975,
+      "temperature": 25,
+      "dewpoint": 22,
+      "wind_direction": 110,
+      "wind_speed": 4,
+      "height": 350
+    },
+    {
+      "pressure": 950,
+      "temperature": 23,
+      "dewpoint": 20,
+      "wind_direction": 120,
+      "wind_speed": 5,
+      "height": 600
+    },
+    {
+      "pressure": 925,
+      "temperature": 21,
+      "dewpoint": 18,
+      "wind_direction": 130,
+      "wind_speed": 6,
+      "height": 850
+    },
+    {
+      "pressure": 900,
+      "temperature": 19,
+      "dewpoint": 15,
+      "wind_direction": 140,
+      "wind_speed": 8,
+      "height": 1100
+    },
+    {
+      "pressure": 850,
+      "temperature": 14,
+      "dewpoint": 8,
+      "wind_direction": 160,
+      "wind_speed": 10,
+      "height": 1520
+    },
+    {
+      "pressure": 700,
+      "temperature": 0,
+      "dewpoint": -10,
+      "wind_direction": 200,
+      "wind_speed": 14,
+      "height": 3100
+    },
+    {
+      "pressure": 500,
+      "temperature": -19,
+      "dewpoint": -37,
+      "wind_direction": 240,
+      "wind_speed": 20,
+      "height": 5700
+    },
+    {
+      "pressure": 300,
+      "temperature": -49,
+      "dewpoint": -67,
+      "wind_direction": 260,
+      "wind_speed": 24,
+      "height": 9350
+    },
+    {
+      "pressure": 200,
+      "temperature": -62,
+      "dewpoint": -78,
+      "wind_direction": 255,
+      "wind_speed": 20,
+      "height": 12150
+    }
+  ]
+}

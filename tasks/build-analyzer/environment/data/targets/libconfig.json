@@ -1,0 +1,8 @@
+{
+  "name": "libconfig",
+  "type": "library",
+  "sources": ["config/parser.cpp"],
+  "headers": ["config/parser.h"],
+  "depends_on": ["libbase", "libutil"],
+  "build_time_ms": 600
+}

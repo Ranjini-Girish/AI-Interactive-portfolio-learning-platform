@@ -1,0 +1,9 @@
+{
+  "name": "inventory-reconciler",
+  "version": "1.0.0",
+  "description": "Inventory reconciliation system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}

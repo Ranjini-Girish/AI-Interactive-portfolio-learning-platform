@@ -1,0 +1,5 @@
+output/
+*.o
+spectral_analyzer
+__pycache__/
+*.pyc

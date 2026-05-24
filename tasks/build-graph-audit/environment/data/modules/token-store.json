@@ -1,0 +1,26 @@
+{
+  "name": "token-store",
+  "path": "src/services/token-store.js",
+  "size_bytes": 620,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "utils",
+      "specifiers": [
+        "sanitize"
+      ]
+    },
+    {
+      "source": "logger",
+      "specifiers": [
+        "log"
+      ]
+    }
+  ],
+  "exports": [
+    "loadToken",
+    "saveToken",
+    "clearToken"
+  ],
+  "re_exports": []
+}

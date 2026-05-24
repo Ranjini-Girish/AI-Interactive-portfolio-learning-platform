@@ -1,0 +1,79 @@
+{
+  "pipeline_id": "evt-proc-v3",
+  "created": "2026-01-15T08:00:00Z",
+  "nodes": [
+    {
+      "node_id": "ingest",
+      "type": "source",
+      "weight": 1.0,
+      "capacity": 500,
+      "outputs": ["validate", "enrich"]
+    },
+    {
+      "node_id": "validate",
+      "type": "transform",
+      "weight": 2.5,
+      "capacity": 300,
+      "outputs": ["aggregate"]
+    },
+    {
+      "node_id": "enrich",
+      "type": "transform",
+      "weight": 1.8,
+      "capacity": 400,
+      "outputs": ["aggregate", "archive"]
+    },
+    {
+      "node_id": "aggregate",
+      "type": "transform",
+      "weight": 3.2,
+      "capacity": 200,
+      "outputs": ["score"]
+    },
+    {
+      "node_id": "score",
+      "type": "transform",
+      "weight": 4.0,
+      "capacity": 150,
+      "outputs": ["route"]
+    },
+    {
+      "node_id": "route",
+      "type": "router",
+      "weight": 1.5,
+      "capacity": 350,
+      "outputs": ["sink_a", "sink_b"]
+    },
+    {
+      "node_id": "archive",
+      "type": "sink",
+      "weight": 0.8,
+      "capacity": 600,
+      "outputs": []
+    },
+    {
+      "node_id": "sink_a",
+      "type": "sink",
+      "weight": 1.0,
+      "capacity": 250,
+      "outputs": []
+    },
+    {
+      "node_id": "sink_b",
+      "type": "sink",
+      "weight": 1.2,
+      "capacity": 250,
+      "outputs": []
+    }
+  ],
+  "routing_rules": {
+    "route": {
+      "field": "priority",
+      "threshold": 7,
+      "above": "sink_a",
+      "at_or_below": "sink_b"
+    }
+  },
+  "sliding_window_ms": 5000,
+  "latency_per_unit_weight_ms": 12
+}

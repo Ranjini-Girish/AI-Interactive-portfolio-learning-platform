@@ -1,0 +1,10 @@
+name=legacy-adapter
+kind=lib
+build_ms=240
+public=crates/legacy-adapter/src/lib.rs
+private=crates/legacy-adapter/src/legacy.rs
+build=
+tests=
+features=legacy-protocol:public
+unsafe=4
+deps=api:normal:public,core-model:normal:private

@@ -1,0 +1,22 @@
+{
+  "name": "tls-provider",
+  "version": "1.0.3",
+  "base_size_bytes": 3200,
+  "features": {
+    "default": ["native-tls"],
+    "native-tls": [],
+    "rustls": ["dep:rustls-impl"]
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "native-tls": 0.15,
+    "rustls": 0.20
+  },
+  "build_priority": 2,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "crypto-utils", "optional": false, "default_features": true, "features": ["openssl"]}
+  ],
+  "exports": ["TlsConnector"],
+  "conditional_exports": {}
+}

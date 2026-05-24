@@ -1,0 +1,9 @@
+{
+  "sample_id": "S01",
+  "description": "Zy-series mixed source",
+  "collection_time": "2026-01-15T08:00:00Z",
+  "initial_activities_bq": {
+    "Zy224": 1000.0,
+    "Zy220": 200.0
+  }
+}

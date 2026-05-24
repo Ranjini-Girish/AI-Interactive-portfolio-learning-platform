@@ -1,0 +1,18 @@
+{
+  "resolution_strategy": "mvs",
+  "prerelease_policy": "exclude",
+  "vulnerability_policy": {
+    "fail_on_severity": ["critical"],
+    "depth_decay_base": 0.85,
+    "severity_weights": {
+      "critical": 10.0,
+      "high": 7.5,
+      "medium": 5.0,
+      "low": 2.5
+    }
+  },
+  "metrics": {
+    "instability_warning_threshold": 0.8,
+    "depth_limit": 10
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "type_04_align16",
+  "kind": "struct",
+  "repr": "align(16)",
+  "fields": [
+    {"name": "val", "type": "u32"},
+    {"name": "flag", "type": "u8"}
+  ]
+}

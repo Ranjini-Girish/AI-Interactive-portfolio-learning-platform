@@ -1,0 +1,29 @@
+{
+  "name": "epsilon-json",
+  "versions": [
+    {
+      "version": "3.0.0",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [
+        {"name": "alpha-core", "version_req": "^2.1", "optional": false, "default_features": true}
+      ],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "2.8.1",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [
+        {"name": "alpha-core", "version_req": "^2.0", "optional": false, "default_features": true}
+      ],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "2.8.0",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [
+        {"name": "alpha-core", "version_req": "^2.0", "optional": false, "default_features": true}
+      ],
+      "license": "MIT OR Apache-2.0"
+    }
+  ]
+}

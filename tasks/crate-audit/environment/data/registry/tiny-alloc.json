@@ -1,0 +1,37 @@
+{
+  "name": "tiny-alloc",
+  "versions": [
+    {
+      "version": "0.0.1",
+      "dependencies": {},
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.0.2",
+      "dependencies": {},
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.0.3",
+      "dependencies": {
+        "logger": "^1.1.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 2.0
+    },
+    {
+      "version": "0.0.4",
+      "dependencies": {
+        "logger": "^1.1.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

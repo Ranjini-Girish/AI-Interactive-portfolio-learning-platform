@@ -1,0 +1,11 @@
+{
+  "name": "config-reader",
+  "version": "1.5.0",
+  "license": "Apache-2.0",
+  "dependencies": [
+    {
+      "name": "xml-parser",
+      "version_range": "^2.0"
+    }
+  ]
+}

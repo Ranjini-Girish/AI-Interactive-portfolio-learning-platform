@@ -1,0 +1,6 @@
+{
+  "name": "infinite_loop",
+  "instructions": [
+    {"op": "JMP", "args": [0]}
+  ]
+}

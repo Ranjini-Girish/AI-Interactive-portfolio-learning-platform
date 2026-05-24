@@ -1,0 +1,8 @@
+{
+  "name": "encoding",
+  "versions": [
+    { "version": "0.2.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "0.2.5", "license": "MIT", "dependencies": { "log": { "version": "^0.4" } }, "features": {} },
+    { "version": "0.3.0", "license": "MIT", "dependencies": { "serde": { "version": "^1.0" }, "log": { "version": "^0.4" } }, "features": {} }
+  ]
+}

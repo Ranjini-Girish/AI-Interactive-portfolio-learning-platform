@@ -1,0 +1,87 @@
+{
+  "stream_id": "stream_03",
+  "sensor_type": "humidity",
+  "unit": "percent",
+  "observations": [
+    {
+      "timestamp": 1000000,
+      "value": 55.0
+    },
+    {
+      "timestamp": 1000060,
+      "value": 60.2
+    },
+    {
+      "timestamp": 1000120,
+      "value": 58.1
+    },
+    {
+      "timestamp": 1000180,
+      "value": null
+    },
+    {
+      "timestamp": 1000240,
+      "value": 62.5
+    },
+    {
+      "timestamp": 1000300,
+      "value": 57.3
+    },
+    {
+      "timestamp": 1000360,
+      "value": null
+    },
+    {
+      "timestamp": 1000420,
+      "value": 59.8
+    },
+    {
+      "timestamp": 1000480,
+      "value": 61.0
+    },
+    {
+      "timestamp": 1000540,
+      "value": 56.4
+    },
+    {
+      "timestamp": 1000600,
+      "value": 58.7
+    },
+    {
+      "timestamp": 1000660,
+      "value": 60.1
+    },
+    {
+      "timestamp": 1000720,
+      "value": null
+    },
+    {
+      "timestamp": 1000780,
+      "value": 57.9
+    },
+    {
+      "timestamp": 1000840,
+      "value": 63.2
+    },
+    {
+      "timestamp": 1000900,
+      "value": 55.8
+    },
+    {
+      "timestamp": 1000960,
+      "value": 59.0
+    },
+    {
+      "timestamp": 1001020,
+      "value": 61.5
+    },
+    {
+      "timestamp": 1001080,
+      "value": 58.3
+    },
+    {
+      "timestamp": 1001140,
+      "value": 60.0
+    }
+  ]
+}

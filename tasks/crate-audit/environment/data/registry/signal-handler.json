@@ -1,0 +1,30 @@
+{
+  "name": "signal-handler",
+  "versions": [
+    {
+      "version": "0.3.0",
+      "dependencies": {},
+      "license": "MPL-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.3.1",
+      "dependencies": {
+        "crypto-lib": "^0.1.0"
+      },
+      "license": "MPL-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.4.0",
+      "dependencies": {
+        "crypto-lib": "^0.1.0"
+      },
+      "license": "MPL-2.0",
+      "yanked": false,
+      "vulnerability_score": 4.0
+    }
+  ]
+}

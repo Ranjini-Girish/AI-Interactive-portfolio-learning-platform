@@ -1,0 +1,122 @@
+[
+  {
+    "id": "TXN-001",
+    "product_id": "PROD001",
+    "type": "sale",
+    "quantity": 10,
+    "unit_price": 19.99,
+    "date": "2024-01-15"
+  },
+  {
+    "id": "TXN-002",
+    "product_id": "PROD002",
+    "type": "sale",
+    "quantity": 5,
+    "unit_price": 29.99,
+    "date": "2024-01-16"
+  },
+  {
+    "id": "TXN-003",
+    "product_id": "MFGPART003",
+    "type": "sale",
+    "quantity": 3,
+    "unit_price": 49.5,
+    "date": "2024-01-17"
+  },
+  {
+    "id": "TXN-004",
+    "product_id": "PROD004",
+    "type": "sale",
+    "quantity": 25,
+    "unit_price": 9.99,
+    "date": "2024-01-17"
+  },
+  {
+    "id": "TXN-005",
+    "product_id": "EXTCOMP005",
+    "type": "sale",
+    "quantity": 2,
+    "unit_price": 149.99,
+    "date": "2024-01-18"
+  },
+  {
+    "id": "TXN-006",
+    "product_id": "PROD006",
+    "type": "sale",
+    "quantity": 8,
+    "unit_price": 34.75,
+    "date": "2024-01-18"
+  },
+  {
+    "id": "TXN-007",
+    "product_id": "PROD007",
+    "type": "purchase",
+    "quantity": 50,
+    "unit_price": 12.5,
+    "date": "2024-01-19"
+  },
+  {
+    "id": "TXN-008",
+    "product_id": "SUPITEM008",
+    "type": "sale",
+    "quantity": 15,
+    "unit_price": 7.99,
+    "date": "2024-01-20"
+  },
+  {
+    "id": "TXN-009",
+    "product_id": "PROD009",
+    "type": "sale",
+    "quantity": 1,
+    "unit_price": 299.99,
+    "date": "2024-01-20"
+  },
+  {
+    "id": "TXN-010",
+    "product_id": "WHBULK010",
+    "type": "sale",
+    "quantity": 12,
+    "unit_price": 24.99,
+    "date": "2024-01-21"
+  },
+  {
+    "id": "TXN-011",
+    "product_id": "PROD011",
+    "type": "sale",
+    "quantity": 100,
+    "unit_price": 5.49,
+    "date": "2024-01-22"
+  },
+  {
+    "id": "TXN-012",
+    "product_id": "PROD012",
+    "type": "purchase",
+    "quantity": 200,
+    "unit_price": 3.25,
+    "date": "2024-01-22"
+  },
+  {
+    "id": "TXN-013",
+    "product_id": "PROD001",
+    "type": "sale",
+    "quantity": 20,
+    "unit_price": 19.99,
+    "date": "2024-01-23"
+  },
+  {
+    "id": "TXN-014",
+    "product_id": "PROD004",
+    "type": "sale",
+    "quantity": 30,
+    "unit_price": 9.99,
+    "date": "2024-01-24"
+  },
+  {
+    "id": "TXN-015",
+    "product_id": "PROD006",
+    "type": "purchase",
+    "quantity": 40,
+    "unit_price": 34.75,
+    "date": "2024-01-25"
+  }
+]

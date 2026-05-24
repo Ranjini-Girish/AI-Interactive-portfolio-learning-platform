@@ -1,0 +1,17 @@
+{
+  "name": "shift_test",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", -1]},
+    {"op": "SHR", "args": ["R0", 16]},
+    {"op": "MOV", "args": ["R1", "R0"]},
+    {"op": "MOV", "args": ["R0", -1]},
+    {"op": "SHL", "args": ["R0", 16]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "MOV", "args": ["R0", 1]},
+    {"op": "SHL", "args": ["R0", 31]},
+    {"op": "MOV", "args": ["R3", "R0"]},
+    {"op": "SHR", "args": ["R0", 31]},
+    {"op": "MOV", "args": ["R4", "R0"]},
+    {"op": "HALT", "args": []}
+  ]
+}

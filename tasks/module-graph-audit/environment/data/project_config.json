@@ -1,0 +1,7 @@
+{
+  "base_path": "/app/data/modules",
+  "entry_points": ["index.js"],
+  "output_precision": 6,
+  "include_dynamic_imports": true,
+  "file_extension": ".js"
+}

@@ -1,0 +1,80 @@
+{
+  "taskName": "pawn-endgame-table-audit",
+  "updatedAt": "2026-05-24T03:16:40.495Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
+    "taskStatus": "Evaluation pending",
+    "taskName": "pawn-endgame-table-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "pawn-endgame-table-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T03:16:40.495Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\pawn-endgame-table-audit.zip",
+    "zipBytes": 21696,
+    "zipSha256": "dfff45ead7d0fb21d6b0b530f9c9fcaa199ede6bccd296a89fcad11d265a3aef",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T10:57:13.294Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=40c75a1b-fec5-4381-b645-22a39c7bd33c",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "40c75a1b-fec5-4381-b645-22a39c7bd33c",
+      "revisionTaskId": "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\pawn-endgame-table-audit.zip",
+      "zipBytes": 19811,
+      "zipSha256": "4bec0bf005fa7d41c55f7e9bf7a8f624a5594ff7218ba8d088bffa7f858e5f1d",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T03:16:40.495Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\pawn-endgame-table-audit.zip",
+      "zipBytes": 21696,
+      "zipSha256": "dfff45ead7d0fb21d6b0b530f9c9fcaa199ede6bccd296a89fcad11d265a3aef",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

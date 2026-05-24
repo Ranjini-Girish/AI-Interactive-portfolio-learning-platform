@@ -1,0 +1,7 @@
+Analyze the npm-style monorepo workspace in `/app/data/workspace/` and produce a dependency audit report at `/app/output/workspace_audit.json`.
+
+The workspace contains 5 packages with inter-package links (`workspace:*` protocol) and external dependencies resolved against the local registry in `/app/data/registry/`. The audit report must resolve every external dependency to its highest satisfying version following the semver constraint rules documented in `/app/docs/SEMVER_RULES.md` — the caret operator has special behavior for 0.x versions that differs from its behavior on 1.x and above. Resolved dependencies include full transitive chains with BFS-computed minimum depths.
+
+The report must identify any circular workspace dependency paths, phantom dependencies (modules required in source files but not declared in `package.json`), license incompatibilities per the policy matrix in `/app/data/workspace/policy.json`, and versions matched by security advisories in `/app/data/workspace/advisories.json`. A hoisting analysis determines which resolved packages share a single version across all workspace consumers versus those with conflicting versions. Summary metrics use harmonic mean for average depth and geometric mean for aggregate risk score.
+
+The complete algorithm specification is in `/app/docs/ALGORITHM.md`. The output JSON schema and formatting rules are in `/app/docs/OUTPUT_FORMAT.md`. TypeScript on Node 22 is available in the environment.

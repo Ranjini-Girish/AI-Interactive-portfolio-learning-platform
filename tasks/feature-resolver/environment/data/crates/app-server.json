@@ -1,0 +1,27 @@
+{
+  "name": "app-server",
+  "version": "3.1.0",
+  "base_size_bytes": 8200,
+  "features": {
+    "default": [],
+    "with-metrics": ["dep:metrics-sink"]
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "with-metrics": 0.15
+  },
+  "build_priority": 5,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "core-lib", "optional": false, "default_features": true, "features": []},
+    {"name": "http-layer", "optional": false, "default_features": true, "features": ["full", "websocket"]},
+    {"name": "auth-module", "optional": false, "default_features": true, "features": ["oauth"]},
+    {"name": "db-connector", "optional": false, "default_features": true, "features": ["postgres", "mysql"]},
+    {"name": "config-reader", "optional": false, "default_features": true, "features": []},
+    {"name": "metrics-sink", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["main", "AppServer", "run"],
+  "conditional_exports": {
+    "with-metrics": ["MetricsCollector"]
+  }
+}

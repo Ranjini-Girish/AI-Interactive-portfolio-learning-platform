@@ -1,0 +1,34 @@
+{
+  "revisionTaskId": "e94b2ec4-38a4-452c-872b-13f22639daec",
+  "platformTaskSlug": "phase-skew-hold-audit",
+  "assignmentId": "f92abb18-cd10-44f7-8d3f-56c655dc04a4",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=f92abb18-cd10-44f7-8d3f-56c655dc04a4",
+  "capturedAt": "2026-05-23T13:14:55.434Z",
+  "revisionReasons": [
+    "autoeval_build_failed",
+    "behavior_not_in_task_description"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:1d3fbe8d-61ec-4a8e-b7a4-59a026228678",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:1d3fbe8d-61ec-4a8e-b7a4-59a026228678."
+  },
+  "difficulty": {
+    "failed": false,
+    "summary": null
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly directs the \nagent to follow SPEC.md at /app/\npsh_lab/SPEC.md for all precedence \nand merge rules. SPEC.md is normative \nand detailed, covering all seven row \nAgent review (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nAgent review\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                          REVIEW \n                          REPORT: \n                          tbench-task\n======================================\n======================================\nTest Quality Report (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nTest Quality Report\nWrap\nExpand\n1\n2\n3\n======================================\n======================================\n====\n                      TEST QUALITY \n                      REVIEW: \n                      tbench-task\n======================================\n======================================\nComments for Reviewer (optional)\n\nUse this field to provide any context or justification for your task that you would like the reviewer to see\n\nCheck to send to reviewer if difficulty and quality checks are passing. Otherwise, it will always result in revision.\n\nSend to reviewer?"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "phase-skew-hold-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\phase-skew-hold-audit.zip",
+    "excludedPlatformZip": "phase-skew-hold-audit.zip"
+  }
+}

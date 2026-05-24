@@ -1,0 +1,15 @@
+{
+  "name": "winston",
+  "version": "3.11.0",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "winston-transport",
+      "version_range": "^4.5"
+    },
+    {
+      "name": "logform",
+      "version_range": "^2.5"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "libvips",
+  "version": "1.0.2",
+  "license": "LGPL-2.1-or-later",
+  "linking_type": "dynamic",
+  "dependencies": []
+}

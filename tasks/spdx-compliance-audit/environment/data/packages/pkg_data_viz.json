@@ -1,0 +1,15 @@
+{
+  "name": "data-viz",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "chart-lib",
+      "version_range": "^3.0"
+    },
+    {
+      "name": "lodash",
+      "version_range": "^4.17"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "func_07_gaussian",
+  "type": "gaussian_density",
+  "params": {
+    "amplitude": 1.0,
+    "mean": 0.5,
+    "sigma": 0.2
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 0.495099511029,
+  "description": "f(x) = exp(-(x-0.5)^2 / (2*0.04))"
+}

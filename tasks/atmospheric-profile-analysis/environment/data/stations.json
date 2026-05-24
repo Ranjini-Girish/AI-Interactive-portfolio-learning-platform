@@ -1,0 +1,44 @@
+[
+  {
+    "station_id": "ALPHA",
+    "name": "Alpha Observatory",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "elevation_m": 186
+  },
+  {
+    "station_id": "BRAVO",
+    "name": "Bravo Research Station",
+    "latitude": 32.7767,
+    "longitude": -96.797,
+    "elevation_m": 130
+  },
+  {
+    "station_id": "CHARLIE",
+    "name": "Charlie High Altitude Lab",
+    "latitude": 39.7392,
+    "longitude": -104.9903,
+    "elevation_m": 1609
+  },
+  {
+    "station_id": "DELTA",
+    "name": "Delta Coastal Facility",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "elevation_m": 56
+  },
+  {
+    "station_id": "ECHO",
+    "name": "Echo Atlantic Station",
+    "latitude": 40.6413,
+    "longitude": -73.7781,
+    "elevation_m": 4
+  },
+  {
+    "station_id": "FOXTROT",
+    "name": "Foxtrot Tropical Center",
+    "latitude": 25.7617,
+    "longitude": -80.1918,
+    "elevation_m": 2
+  }
+]

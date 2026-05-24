@@ -1,0 +1,28 @@
+{
+  "messages": [
+    {
+      "magic": 171,
+      "version": 1,
+      "msg_type": 7,
+      "field_count": 3,
+      "fields": [
+        {
+          "id": 1,
+          "type_name": "str",
+          "value": "hello"
+        },
+        {
+          "id": 2,
+          "type_name": "u8",
+          "value": 99
+        },
+        {
+          "id": 3,
+          "type_name": "str",
+          "value": "world"
+        }
+      ],
+      "crc_valid": true
+    }
+  ]
+}

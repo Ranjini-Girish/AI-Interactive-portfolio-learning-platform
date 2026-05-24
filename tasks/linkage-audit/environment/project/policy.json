@@ -1,0 +1,14 @@
+{
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 4,
+    "info": 5
+  },
+  "finding_types": {
+    "odr_violation": "critical",
+    "unresolved_symbol": "high",
+    "unused_library_member": "low"
+  }
+}

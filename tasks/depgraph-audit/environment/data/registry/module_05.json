@@ -1,0 +1,56 @@
+{
+  "module_path": "example.com/net/grpc",
+  "retracted": [],
+  "versions": [
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/net/http"
+        },
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/logger"
+        }
+      ],
+      "license": "Apache-2.0",
+      "version": "1.0.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/net/http"
+        },
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/core/logger"
+        },
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/data/json"
+        }
+      ],
+      "license": "Apache-2.0",
+      "version": "1.1.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "2.0.0",
+          "module": "example.com/net/http"
+        },
+        {
+          "min_version": "1.2.0",
+          "module": "example.com/core/logger"
+        },
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/data/json"
+        }
+      ],
+      "license": "Apache-2.0",
+      "version": "1.2.0"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "pg-driver",
+  "version": "0.8.0",
+  "base_size_bytes": 2600,
+  "features": {
+    "default": [],
+    "tls": ["dep:tls-provider"]
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "tls": 0.15
+  },
+  "build_priority": 4,
+  "weak_features": {
+    "tls-auto": ["tls-provider/native-tls"]
+  },
+  "dependencies": [
+    {"name": "conn-pool", "optional": false, "default_features": true, "features": []},
+    {"name": "serde-core", "optional": false, "default_features": true, "features": []},
+    {"name": "tls-provider", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["PgDriver", "PgConfig"],
+  "conditional_exports": {}
+}

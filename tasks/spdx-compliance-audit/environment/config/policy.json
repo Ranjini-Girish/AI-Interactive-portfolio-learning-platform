@@ -1,0 +1,45 @@
+{
+  "policy_version": "1.0",
+  "categories": {
+    "allowed": {
+      "licenses": [
+        "MIT",
+        "BSD-2-Clause",
+        "BSD-3-Clause",
+        "ISC",
+        "Apache-2.0"
+      ],
+      "severity": 0
+    },
+    "restricted": {
+      "licenses": [
+        "LGPL-2.1-or-later",
+        "LGPL-3.0-or-later",
+        "MPL-2.0"
+      ],
+      "severity": 5
+    },
+    "banned": {
+      "licenses": [
+        "GPL-2.0-only",
+        "GPL-3.0-only",
+        "AGPL-3.0-only"
+      ],
+      "severity": 10
+    }
+  },
+  "copyleft_propagation_severity": 8,
+  "copyleft_licenses": [
+    "GPL-2.0-only",
+    "GPL-3.0-only",
+    "AGPL-3.0-only"
+  ],
+  "lgpl_dynamic_linking_exempt": true,
+  "waivers": [
+    {
+      "package": "libvips",
+      "project": "web-api",
+      "reason": "Approved by legal team for image processing use case"
+    }
+  ]
+}

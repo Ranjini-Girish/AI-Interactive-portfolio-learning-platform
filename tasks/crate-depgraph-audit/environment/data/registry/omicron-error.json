@@ -1,0 +1,17 @@
+{
+  "name": "omicron-error",
+  "versions": [
+    {
+      "version": "1.0.75",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "1.0.70",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    }
+  ]
+}

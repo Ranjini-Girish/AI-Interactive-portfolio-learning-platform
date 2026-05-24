@@ -1,0 +1,9 @@
+{
+  "name": "knight",
+  "stats": {"hp": 200, "attack": 30, "defense": 25, "speed": 10},
+  "element": "neutral",
+  "abilities": {
+    "slash": {"type": "attack", "power": 40, "element": "neutral"},
+    "guard": {"type": "buff", "stat": "defense", "value": 10, "duration": 2}
+  }
+}

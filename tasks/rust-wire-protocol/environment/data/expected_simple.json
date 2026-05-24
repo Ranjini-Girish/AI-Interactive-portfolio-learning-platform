@@ -1,0 +1,23 @@
+{
+  "messages": [
+    {
+      "magic": 171,
+      "version": 1,
+      "msg_type": 5,
+      "field_count": 2,
+      "fields": [
+        {
+          "id": 1,
+          "type_name": "u8",
+          "value": 42
+        },
+        {
+          "id": 2,
+          "type_name": "u32",
+          "value": 1000
+        }
+      ],
+      "crc_valid": true
+    }
+  ]
+}

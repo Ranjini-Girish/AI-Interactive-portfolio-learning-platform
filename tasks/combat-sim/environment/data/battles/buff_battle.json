@@ -1,0 +1,27 @@
+{
+  "name": "buff_battle",
+  "teams": {
+    "A": ["knight", "tank"],
+    "B": ["assassin", "mage"]
+  },
+  "actions": [
+    [
+      {"character": "knight", "ability": "guard", "target": "knight"},
+      {"character": "tank", "ability": "fortify", "target": "tank"},
+      {"character": "assassin", "ability": "shadow_strike", "target": "knight"},
+      {"character": "mage", "ability": "fireball", "target": "tank"}
+    ],
+    [
+      {"character": "knight", "ability": "slash", "target": "assassin"},
+      {"character": "tank", "ability": "slam", "target": "mage"},
+      {"character": "assassin", "ability": "quick_slash", "target": "tank"},
+      {"character": "mage", "ability": "ember", "target": "knight"}
+    ],
+    [
+      {"character": "knight", "ability": "slash", "target": "mage"},
+      {"character": "tank", "ability": "slam", "target": "assassin"},
+      {"character": "assassin", "ability": "shadow_strike", "target": "tank"},
+      {"character": "mage", "ability": "fireball", "target": "tank"}
+    ]
+  ]
+}

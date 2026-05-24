@@ -1,0 +1,34 @@
+{
+  "workload_id": "w07_panic_unwind",
+  "events": [
+    {
+      "event_id": "e1",
+      "sequence": 1,
+      "logged_at": "2026-02-01T10:00:00Z",
+      "kind": "enter",
+      "scope_id": "U1"
+    },
+    {
+      "event_id": "e2",
+      "sequence": 2,
+      "logged_at": "2026-02-01T10:00:01Z",
+      "kind": "enter",
+      "scope_id": "U2"
+    },
+    {
+      "event_id": "e3",
+      "sequence": 3,
+      "logged_at": "2026-02-01T10:00:02Z",
+      "kind": "panic_mark",
+      "scope_id": "U2"
+    },
+    {
+      "event_id": "e4",
+      "sequence": 4,
+      "logged_at": "2026-02-01T10:00:03Z",
+      "kind": "exit",
+      "scope_id": "U1",
+      "hold_ms": 5
+    }
+  ]
+}

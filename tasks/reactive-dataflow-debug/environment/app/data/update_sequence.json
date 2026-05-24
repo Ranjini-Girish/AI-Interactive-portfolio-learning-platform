@@ -1,0 +1,194 @@
+{
+  "updates": [
+    {
+      "comment": "Update 0: Change A1 to 100",
+      "type": "value",
+      "cell": "A1",
+      "value": 100
+    },
+    {
+      "comment": "Update 1: Change A3 formula",
+      "type": "formula",
+      "cell": "A3",
+      "formula": "B1 * 2"
+    },
+    {
+      "comment": "Update 2: Change A1 again",
+      "type": "value",
+      "cell": "A1",
+      "value": 50
+    },
+    {
+      "comment": "Update 3: Create diamond graph node F4",
+      "type": "formula",
+      "cell": "F4",
+      "formula": "F1 + 1"
+    },
+    {
+      "type": "formula",
+      "cell": "F5",
+      "formula": "F1 + 2"
+    },
+    {
+      "type": "formula",
+      "cell": "F6",
+      "formula": "F4 + F5"
+    },
+    {
+      "comment": "Update 6: Create chain H1->H2->H3",
+      "type": "formula",
+      "cell": "H1",
+      "formula": "G4 + 10"
+    },
+    {
+      "type": "formula",
+      "cell": "H2",
+      "formula": "H1 + 1"
+    },
+    {
+      "type": "formula",
+      "cell": "H3",
+      "formula": "H2 + 1"
+    },
+    {
+      "comment": "Update 9: Create cycle K1->K2->K3->K1",
+      "type": "formula",
+      "cell": "K1",
+      "formula": "K3 + 1"
+    },
+    {
+      "type": "formula",
+      "cell": "K2",
+      "formula": "K1 + 1"
+    },
+    {
+      "type": "formula",
+      "cell": "K3",
+      "formula": "K2 + 1"
+    },
+    {
+      "comment": "Update 12: IF with error in unused branch",
+      "type": "formula",
+      "cell": "L1",
+      "formula": "IF(A1 > 0, A1, K1)"
+    },
+    {
+      "comment": "Update 13: Precision test",
+      "type": "value",
+      "cell": "D1",
+      "value": 2
+    },
+    {
+      "comment": "Update 14: Precision test",
+      "type": "value",
+      "cell": "F1",
+      "value": 100
+    },
+    {
+      "comment": "Update 15: Batch update G values",
+      "type": "batch",
+      "changes": [
+        { "cell": "G1", "value": 10 },
+        { "cell": "G2", "value": 20 },
+        { "cell": "G3", "value": 30 }
+      ]
+    },
+    {
+      "comment": "Update 16-18: Create M cells for tie-breaking test",
+      "type": "formula",
+      "cell": "M3",
+      "formula": "G4 + 3"
+    },
+    {
+      "type": "formula",
+      "cell": "M1",
+      "formula": "G4 + 1"
+    },
+    {
+      "type": "formula",
+      "cell": "M2",
+      "formula": "G4 + 2"
+    },
+    {
+      "comment": "Update 19: Trigger M-cell recalculation for ordering test",
+      "type": "value",
+      "cell": "G1",
+      "value": 100
+    },
+    {
+      "comment": "Update 20-22: Create N chain",
+      "type": "formula",
+      "cell": "N1",
+      "formula": "A1 + 1"
+    },
+    {
+      "type": "formula",
+      "cell": "N2",
+      "formula": "N1 * 2"
+    },
+    {
+      "type": "formula",
+      "cell": "N3",
+      "formula": "N2 + A1"
+    },
+    {
+      "comment": "Update 23: Batch affecting N chain plus others",
+      "type": "batch",
+      "changes": [
+        { "cell": "A1", "value": 7 }
+      ]
+    },
+    {
+      "comment": "Update 24: Change E1 formula to remove A1 dependency",
+      "type": "formula",
+      "cell": "E1",
+      "formula": "B1 + G1"
+    },
+    {
+      "comment": "Update 25: Verify E1 no longer affected by A1",
+      "type": "value",
+      "cell": "A1",
+      "value": 3
+    },
+    {
+      "comment": "Update 26: Batch - change E3 formula (existing formula cell) and P1 to value",
+      "type": "batch",
+      "changes": [
+        { "cell": "E3", "formula": "G1 + G2" },
+        { "cell": "P1", "value": 42 }
+      ]
+    },
+    {
+      "comment": "Update 27: Change A1 - tests stale dep cleanup for E3 (batch formula) and P1 (batch value-to-value)",
+      "type": "value",
+      "cell": "A1",
+      "value": 5
+    },
+    {
+      "comment": "Update 28: Change S2 from formula to plain value",
+      "type": "value",
+      "cell": "S2",
+      "value": 10
+    },
+    {
+      "comment": "Update 29: Change S1 - S2 should not recalculate (now a value cell)",
+      "type": "value",
+      "cell": "S1",
+      "value": 99
+    },
+    {
+      "comment": "Update 30: Batch affecting G-cells again for additional ordering test",
+      "type": "batch",
+      "changes": [
+        { "cell": "G1", "value": 50 },
+        { "cell": "G3", "value": 15 }
+      ]
+    },
+    {
+      "comment": "Update 31: Precision chain test with D1=7",
+      "type": "value",
+      "cell": "D1",
+      "value": 7
+    }
+  ]
+}

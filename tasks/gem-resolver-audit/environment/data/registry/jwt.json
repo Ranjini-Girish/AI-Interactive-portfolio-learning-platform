@@ -1,0 +1,20 @@
+{
+  "name": "jwt",
+  "versions": {
+    "2.5.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2022-04-01"
+    },
+    "2.7.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2023-06-01"
+    },
+    "2.8.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2024-01-01"
+    }
+  }
+}

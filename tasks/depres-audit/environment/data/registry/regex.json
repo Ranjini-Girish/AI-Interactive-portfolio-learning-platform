@@ -1,0 +1,8 @@
+{
+  "name": "regex",
+  "versions": [
+    { "version": "1.0.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "1.10.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "1.10.6", "license": "Apache-2.0", "dependencies": {}, "features": {} }
+  ]
+}

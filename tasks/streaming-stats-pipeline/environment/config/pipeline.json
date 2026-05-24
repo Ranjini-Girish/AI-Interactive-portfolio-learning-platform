@@ -1,0 +1,35 @@
+{
+  "epsilon": 1e-9,
+  "output_decimals": 6,
+  "variance_type": "population",
+  "percentile_method": "exclusive",
+  "ema_alpha_method": "halflife",
+  "outlier_threshold": 3.5,
+  "outlier_comparison": "strict_greater",
+  "mad_consistency_constant": 1.4826,
+  "extreme_outlier_factor": 2.0,
+  "nan_policy_default": "omit",
+  "max_gap_seconds": 120,
+  "min_gap_duration": 300,
+  "cusum_warmup_count": 10,
+  "cusum_drift": 1.0,
+  "cusum_threshold": 15.0,
+  "stale_count_default": 6,
+  "min_observations": 5,
+  "rolling_min_window": 3,
+  "finding_severity": {
+    "extreme_outlier": "critical",
+    "outlier": "high",
+    "change_point": "high",
+    "data_gap": "medium",
+    "stale_data": "low",
+    "insufficient_data": "info"
+  },
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 4,
+    "info": 5
+  }
+}

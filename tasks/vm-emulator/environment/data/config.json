@@ -1,0 +1,6 @@
+{
+  "registers": 8,
+  "memory_bytes": 4096,
+  "max_cycles": 10000,
+  "stack_start": 4096
+}

@@ -1,0 +1,32 @@
+{
+  "endpoint_id": "ep_03",
+  "deliveries": [
+    {
+      "delivery_id": "del_retry",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "failed",
+          "sent_at": 10000,
+          "received_at": 10020,
+          "body": {
+            "event": "ping"
+          },
+          "signature": "9f9acab52e1033f3792ef30c102ee7d11a09b538f526a6cad1d6e609b8e0eb41",
+          "jitter_pct": 0
+        },
+        {
+          "attempt_number": 2,
+          "status": "success",
+          "sent_at": 10500,
+          "received_at": 10520,
+          "body": {
+            "event": "ping"
+          },
+          "signature": "26b209518f1a074d67582b0b8801980605974872535c16c1642ddb63fcd3f025",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

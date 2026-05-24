@@ -1,0 +1,14 @@
+{
+  "id": "src/app",
+  "base_size_bytes": 30,
+  "exports": [
+    {"name": "App", "size_bytes": 500}
+  ],
+  "imports": [
+    {"module": "src/components/button", "names": ["Button"]},
+    {"module": "src/components/header", "names": ["Header"]},
+    {"module": "src/utils/format", "names": ["formatDate"]}
+  ],
+  "dynamic_imports": ["src/pages/dashboard"],
+  "side_effects": false
+}

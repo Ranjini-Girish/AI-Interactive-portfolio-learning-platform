@@ -1,0 +1,12 @@
+{
+  "name": "crdt-merge-resolver",
+  "version": "1.0.0",
+  "description": "CRDT operation log merge engine with vector clock ordering and anomaly detection",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

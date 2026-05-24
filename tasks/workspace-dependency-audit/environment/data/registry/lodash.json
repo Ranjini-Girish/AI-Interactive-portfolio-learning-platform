@@ -1,0 +1,17 @@
+{
+  "name": "lodash",
+  "versions": {
+    "3.10.1": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "4.17.20": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "4.17.21": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

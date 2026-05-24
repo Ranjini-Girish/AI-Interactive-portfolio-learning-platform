@@ -1,0 +1,35 @@
+{
+  "bad_night_residual_stddev": 0.04,
+  "finding_severity": {
+    "bad_night_residuals": "high",
+    "degenerate_airmass_range": "high",
+    "excluded_filter": "info",
+    "excluded_night": "info",
+    "excluded_observation": "info",
+    "excluded_star": "info",
+    "insufficient_lightcurve_observations": "low",
+    "insufficient_standards": "high",
+    "large_zero_point_uncertainty": "medium",
+    "negative_extinction": "high",
+    "outlier_observation": "info",
+    "program_star_no_data": "medium",
+    "variable_star_detected": "medium"
+  },
+  "large_zero_point_uncertainty": 0.05,
+  "mad_outlier_k": 3.5,
+  "max_airmass": 2.0,
+  "max_rejection_passes": 2,
+  "min_observations_per_lightcurve": 4,
+  "min_standards_per_fit": 4,
+  "negative_extinction_threshold": -0.02,
+  "schema_version": 1,
+  "severity_ranks": {
+    "critical": 5,
+    "high": 4,
+    "info": 1,
+    "low": 2,
+    "medium": 3
+  },
+  "uncertainty_floor_mag": 0.005,
+  "variability_chi2_threshold": 5.0
+}

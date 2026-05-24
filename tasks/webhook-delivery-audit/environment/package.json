@@ -1,0 +1,9 @@
+{
+  "name": "webhook-delivery-auditor",
+  "version": "1.0.0",
+  "description": "Audit outbound webhook delivery logs",
+  "main": "src/main.js",
+  "scripts": {
+    "audit": "node src/main.js"
+  }
+}

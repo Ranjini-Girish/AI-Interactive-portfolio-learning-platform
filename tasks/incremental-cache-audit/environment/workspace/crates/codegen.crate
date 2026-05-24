@@ -1,0 +1,10 @@
+name=codegen
+kind=lib
+build_ms=410
+public=crates/codegen/src/lib.rs
+private=crates/codegen/src/render.rs
+build=crates/codegen/build.rs
+tests=
+features=templates:public
+unsafe=3
+deps=parser:normal:public,macro-derive:normal:public,util:build:private

@@ -1,0 +1,122 @@
+[
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T10:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T14:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u03",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T11:00:00Z",
+    "value": 0
+  },
+  {
+    "user_id": "u04",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T11:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u05",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u06",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u07",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 0
+  },
+  {
+    "user_id": "u08",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u09",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-06T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u10",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-06T12:00:00Z",
+    "value": 0
+  },
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T11:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T11:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u03",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T11:00:00Z",
+    "value": 0
+  },
+  {
+    "user_id": "u04",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T11:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u05",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u06",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 0
+  },
+  {
+    "user_id": "u07",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u08",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-05T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u10",
+    "experiment_id": "exp_checkout",
+    "converted_at": "2026-01-06T12:00:00Z",
+    "value": 1
+  },
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_auth",
+    "converted_at": "2026-01-20T10:00:00Z",
+    "value": 1
+  }
+]

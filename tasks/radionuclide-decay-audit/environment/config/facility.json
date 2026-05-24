@@ -1,0 +1,33 @@
+{
+  "facility_id": "NUC-LAB-07",
+  "facility_name": "Isotope Research Annex Building 7",
+  "license_number": "NRC-2026-4418",
+  "max_samples": 20,
+  "storage_zones": {
+    "zone_A": {
+      "description": "Primary sample storage",
+      "shielding_factor": 0.15,
+      "max_total_activity_bq": 50000.0,
+      "samples": ["S01", "S02", "S03"]
+    },
+    "zone_B": {
+      "description": "Secondary containment area",
+      "shielding_factor": 0.08,
+      "max_total_activity_bq": 30000.0,
+      "samples": ["S04", "S05"]
+    },
+    "zone_C": {
+      "description": "Mixed-waste handling bay",
+      "shielding_factor": 0.20,
+      "max_total_activity_bq": 80000.0,
+      "samples": ["S06"]
+    }
+  },
+  "detector_assignments": {
+    "det_alpha": {"zone": "zone_A", "efficiency": 0.92, "background_bq": 0.5},
+    "det_beta": {"zone": "zone_A", "efficiency": 0.88, "background_bq": 0.8},
+    "det_gamma": {"zone": "zone_B", "efficiency": 0.95, "background_bq": 0.3},
+    "det_delta": {"zone": "zone_B", "efficiency": 0.90, "background_bq": 0.6},
+    "det_epsilon": {"zone": "zone_C", "efficiency": 0.87, "background_bq": 1.0}
+  }
+}

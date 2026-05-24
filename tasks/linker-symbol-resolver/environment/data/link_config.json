@@ -1,0 +1,6 @@
+{
+  "base_address": 4096,
+  "section_order": [".text", ".rodata", ".data", ".bss"],
+  "entry_point": "main",
+  "object_files": ["main.json", "math_utils.json", "string_utils.json", "io_handler.json", "logger.json"]
+}

@@ -1,0 +1,39 @@
+{
+  "battle_id": "battle_01",
+  "description": "Basic skirmish with elemental advantage",
+  "rng_seed": 42,
+  "heroes": [
+    {
+      "id": "aria", "name": "Aria", "element": "fire",
+      "max_hp": 200, "attack": 45, "defense": 20, "speed": 35, "crit_rate": 25,
+      "skills": [
+        {"id": "flame_slash", "power": 120, "target_type": "single", "element": "fire", "effect": "burn"},
+        {"id": "fire_ball", "power": 80, "target_type": "aoe", "element": "fire", "effect": "none"}
+      ]
+    },
+    {
+      "id": "kai", "name": "Kai", "element": "water",
+      "max_hp": 250, "attack": 35, "defense": 35, "speed": 25, "crit_rate": 15,
+      "skills": [
+        {"id": "tidal_strike", "power": 110, "target_type": "single", "element": "water", "effect": "none"},
+        {"id": "aqua_shield", "power": 0, "target_type": "self", "element": "water", "effect": "shield"}
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "goblin_a", "name": "Goblin Scout", "element": "nature",
+      "max_hp": 120, "attack": 25, "defense": 15, "speed": 30, "crit_rate": 20,
+      "skills": [
+        {"id": "quick_stab", "power": 90, "target_type": "single", "element": "neutral", "effect": "none"}
+      ]
+    },
+    {
+      "id": "goblin_b", "name": "Goblin Archer", "element": "nature",
+      "max_hp": 100, "attack": 30, "defense": 12, "speed": 32, "crit_rate": 22,
+      "skills": [
+        {"id": "arrow_shot", "power": 95, "target_type": "single", "element": "neutral", "effect": "none"}
+      ]
+    }
+  ]
+}

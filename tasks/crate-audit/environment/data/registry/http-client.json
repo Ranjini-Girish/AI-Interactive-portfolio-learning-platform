@@ -1,0 +1,44 @@
+{
+  "name": "http-client",
+  "versions": [
+    {
+      "version": "0.2.0",
+      "dependencies": {
+        "core-utils": "^1.0.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.2.5",
+      "dependencies": {
+        "core-utils": "^1.0.0",
+        "crypto-lib": "^0.1.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.3.0",
+      "dependencies": {
+        "core-utils": "^1.0.0",
+        "crypto-lib": "^0.1.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.3.1",
+      "dependencies": {
+        "core-utils": "^1.0.0",
+        "crypto-lib": "^0.1.0"
+      },
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

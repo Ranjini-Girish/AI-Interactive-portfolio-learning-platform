@@ -1,0 +1,17 @@
+{
+  "name": "semver",
+  "versions": {
+    "6.3.1": {
+      "dependencies": {},
+      "license": "ISC"
+    },
+    "7.3.8": {
+      "dependencies": {},
+      "license": "ISC"
+    },
+    "7.5.4": {
+      "dependencies": {},
+      "license": "ISC"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "webrick",
+  "versions": {
+    "1.8.0": {
+      "dependencies": {},
+      "license": "BSD-2-Clause",
+      "release_date": "2023-01-01"
+    },
+    "1.8.1": {
+      "dependencies": {},
+      "license": "BSD-2-Clause",
+      "release_date": "2023-11-01"
+    }
+  }
+}

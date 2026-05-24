@@ -1,0 +1,12 @@
+{
+  "scene_id": "scene_09",
+  "polygon_properties": true,
+  "convex_hull": true,
+  "point_in_polygon": [
+    {"point_idx": 4, "polygon_id": "square_simple"},
+    {"point_idx": 5, "polygon_id": "square_simple"}
+  ],
+  "segment_intersections": true,
+  "closest_pair": true,
+  "min_enclosing_circle": true
+}

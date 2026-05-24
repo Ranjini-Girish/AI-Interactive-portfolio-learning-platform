@@ -1,0 +1,5 @@
+{
+  "strategy": "highest_compatible",
+  "conflict_detection": true,
+  "tie_breaking": "alphabetical_first"
+}

@@ -133,7 +133,7 @@ These are `NEEDS_REVISION` on the platform **and** attributed to **Girish** in C
 | `02b7c62d-f1f4-4b8e-903e-a0c065b0a57b` | csp-merge-policy-audit | `old/csp-merge-policy-audit` | csv — **resubmitted Wave 2 2026-05-23** |
 | `093b3435-06d7-47d7-b3d0-445f89b8a06a` | *(no name in csv)* | — | csv — **blocked: resolve slug manually** |
 | `14f3a711-4561-431b-a2c7-cd9bcb488392` | ml-experiment-ledger-auditor | `old/ml-experiment-ledger-auditor` | csv — **resubmitted Wave 2 2026-05-23** |
-| `82b85d32-18cf-4184-b0cd-f0bbae6e465a` | go-module-bump-arbiter | `old/go-module-bump-arbiter` | csv — **Wave 2 FAIL** (no Revise on 0479 queue) |
+| `82b85d32-18cf-4184-b0cd-f0bbae6e465a` | go-module-bump-arbiter | `old/go-module-bump-arbiter` | csv — **resubmitted 2026-05-24** (slim Dockerfile; AutoEval SUCCEEDED) |
 | `91c375bf-3ab3-4fae-b647-c57bd0ce1d79` | sim-checkpoint-rollback-planner | `sim-checkpoint-plan-audit` | csv — **resubmitted Wave 2 2026-05-23** |
 
 **Notes**

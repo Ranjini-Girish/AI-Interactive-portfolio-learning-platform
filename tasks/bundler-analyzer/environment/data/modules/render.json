@@ -1,0 +1,11 @@
+{
+  "id": "src/utils/render",
+  "base_size_bytes": 10,
+  "exports": [
+    {"name": "render", "size_bytes": 180},
+    {"name": "measure", "size_bytes": 90}
+  ],
+  "imports": [],
+  "dynamic_imports": [],
+  "side_effects": false
+}

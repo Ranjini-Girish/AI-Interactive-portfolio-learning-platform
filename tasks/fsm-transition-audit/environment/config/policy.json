@@ -1,0 +1,17 @@
+{
+  "finding_severity": {
+    "duplicate_transition_skipped": "info",
+    "illegal_transition": "high",
+    "state_mismatch": "high",
+    "stuck_workflow": "medium",
+    "terminal_reopened": "critical",
+    "timestamp_regression": "medium"
+  },
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "info": 5,
+    "low": 4,
+    "medium": 3
+  }
+}

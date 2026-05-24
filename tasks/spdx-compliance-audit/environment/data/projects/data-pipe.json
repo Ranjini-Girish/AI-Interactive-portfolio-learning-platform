@@ -1,0 +1,10 @@
+{
+  "project_id": "data-pipe",
+  "license": "MIT",
+  "direct_dependencies": [
+    "lodash",
+    "data-viz",
+    "config-reader",
+    "cache-manager"
+  ]
+}

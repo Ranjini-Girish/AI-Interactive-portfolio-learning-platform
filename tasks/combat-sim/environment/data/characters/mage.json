@@ -1,0 +1,9 @@
+{
+  "name": "mage",
+  "stats": {"hp": 100, "attack": 50, "defense": 10, "speed": 20},
+  "element": "fire",
+  "abilities": {
+    "fireball": {"type": "attack", "power": 60, "element": "fire"},
+    "ember": {"type": "attack", "power": 30, "element": "fire"}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "scene_id": "scene_07",
+  "polygon_properties": true,
+  "convex_hull": true,
+  "point_in_polygon": [
+    {"point_idx": 0, "polygon_id": "bowtie"},
+    {"point_idx": 1, "polygon_id": "bowtie"},
+    {"point_idx": 2, "polygon_id": "bowtie"},
+    {"point_idx": 3, "polygon_id": "bowtie"},
+    {"point_idx": 4, "polygon_id": "near_degen"},
+    {"point_idx": 5, "polygon_id": "chevron"},
+    {"point_idx": 6, "polygon_id": "chevron"}
+  ],
+  "segment_intersections": true,
+  "closest_pair": true,
+  "min_enclosing_circle": true
+}

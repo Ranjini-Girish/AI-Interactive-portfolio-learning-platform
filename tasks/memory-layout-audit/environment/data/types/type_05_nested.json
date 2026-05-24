@@ -1,0 +1,10 @@
+{
+  "id": "type_05_nested",
+  "kind": "struct",
+  "repr": "C",
+  "fields": [
+    {"name": "header", "type": "u8"},
+    {"name": "inner", "type": "type_01_simple"},
+    {"name": "tail", "type": "u64"}
+  ]
+}

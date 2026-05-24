@@ -1,0 +1,27 @@
+{
+  "name": "compression",
+  "version": "0.7.1",
+  "base_size_bytes": 2400,
+  "features": {
+    "default": ["gzip"],
+    "gzip": [],
+    "zstd": ["dep:zstd-impl"],
+    "brotli": ["dep:brotli-impl"],
+    "all": ["gzip", "zstd", "brotli"]
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "gzip": 0.15,
+    "zstd": 0.20,
+    "brotli": 0.15,
+    "all": 0.0
+  },
+  "build_priority": 7,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "zstd-impl", "optional": true, "default_features": true, "features": []},
+    {"name": "brotli-impl", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["compress", "decompress"],
+  "conditional_exports": {}
+}

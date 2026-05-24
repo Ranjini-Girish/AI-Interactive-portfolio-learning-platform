@@ -1,0 +1,26 @@
+{
+  "name": "logger",
+  "version": "0.9.2",
+  "base_size_bytes": 1200,
+  "features": {
+    "default": ["colors"],
+    "colors": [],
+    "structured": ["dep:serde-core"],
+    "timestamps": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "colors": 0.10,
+    "structured": 0.20,
+    "timestamps": 0.05
+  },
+  "build_priority": 1,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "serde-core", "optional": true, "default_features": false, "features": ["alloc"]}
+  ],
+  "exports": ["log", "Logger"],
+  "conditional_exports": {
+    "structured": ["StructuredLogger"]
+  }
+}

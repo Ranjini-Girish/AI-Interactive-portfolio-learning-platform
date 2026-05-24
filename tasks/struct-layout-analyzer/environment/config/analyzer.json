@@ -1,0 +1,6 @@
+{
+  "platform": "linux_amd64",
+  "pointer_size": 8,
+  "data_dir": "data",
+  "output_dir": "output"
+}

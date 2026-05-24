@@ -1,0 +1,3 @@
+A semantic version dependency resolver is defined at `/app/`. The Java 21 module is initialized at `/app/go.mod` and stub source files exist under `/app/cmd/` and `/app/internal/`. Implement the resolver so that running `go build -o /app/build/resolver /app/cmd/resolver` followed by `/app/build/resolver` produces `/app/output/resolution_report.json`.
+
+The resolver reads `/app/data/registry.json` (package registry), `/app/data/requests.json` (resolution requests), and `/app/data/config.json` (configuration). The complete algorithm specification including semver parsing, constraint matching, version comparison, and resolution procedure is documented in `/app/data/docs/SPEC.md`. Do not modify any file under `/app/data/`.

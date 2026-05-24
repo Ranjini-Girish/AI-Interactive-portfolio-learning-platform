@@ -1,0 +1,10 @@
+{
+  "name": "macro-utils",
+  "version": "0.1.0",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "serde": { "version": "^1.0" },
+    "encoding": { "version": "^0.2" },
+    "validator": { "version": "^1.0" }
+  }
+}

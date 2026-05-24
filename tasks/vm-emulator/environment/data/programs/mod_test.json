@@ -1,0 +1,18 @@
+{
+  "name": "mod_test",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 17]},
+    {"op": "MOV", "args": ["R1", 5]},
+    {"op": "MOD", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "MOV", "args": ["R0", -17]},
+    {"op": "MOV", "args": ["R1", 5]},
+    {"op": "MOD", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R3", "R0"]},
+    {"op": "MOV", "args": ["R0", 10]},
+    {"op": "MOV", "args": ["R1", 0]},
+    {"op": "MOD", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R4", "R0"]},
+    {"op": "HALT", "args": []}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "rollout-auditor",
+  "type": "module",
+  "private": true
+}

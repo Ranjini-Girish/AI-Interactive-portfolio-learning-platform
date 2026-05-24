@@ -1,0 +1,61 @@
+{
+  "taskName": "ml-experiment-ledger-auditor",
+  "updatedAt": "2026-05-23T17:50:03.418Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "14f3a711-4561-431b-a2c7-cd9bcb488392",
+    "taskStatus": "Evaluation pending",
+    "taskName": "ml-experiment-ledger-auditor",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "ml-experiment-ledger-auditor.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:50:03.418Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "14f3a711-4561-431b-a2c7-cd9bcb488392",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ml-experiment-ledger-auditor.zip",
+    "zipBytes": 49230,
+    "zipSha256": "4db5cf139322a34550dc6e9592bfb5689ea691fd6e5fcc17c332265629e16870",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:50:03.418Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "14f3a711-4561-431b-a2c7-cd9bcb488392",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ml-experiment-ledger-auditor.zip",
+      "zipBytes": 49230,
+      "zipSha256": "4db5cf139322a34550dc6e9592bfb5689ea691fd6e5fcc17c332265629e16870",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

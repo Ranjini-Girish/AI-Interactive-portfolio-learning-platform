@@ -1,0 +1,17 @@
+{
+  "name": "mysql-driver",
+  "version": "0.6.0",
+  "base_size_bytes": 2400,
+  "features": {
+    "default": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {},
+  "build_priority": 4,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "conn-pool", "optional": false, "default_features": true, "features": []}
+  ],
+  "exports": ["MysqlDriver"],
+  "conditional_exports": {}
+}

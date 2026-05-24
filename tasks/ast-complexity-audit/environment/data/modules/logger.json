@@ -1,0 +1,58 @@
+{
+  "module_name": "logger",
+  "path": "src/utils/logger.js",
+  "lines_of_code": 45,
+  "imports": [],
+  "exports": ["createLogger", "formatMessage"],
+  "functions": [
+    {
+      "name": "createLogger",
+      "lines": 20,
+      "parameters": ["config"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [],
+          "body": [],
+          "else_body": [
+            {
+              "type": "else",
+              "body": []
+            }
+          ]
+        },
+        {
+          "type": "switch",
+          "cases": [
+            {"type": "case", "body": []},
+            {"type": "case", "body": []},
+            {"type": "case", "body": []},
+            {"type": "default", "body": []}
+          ]
+        }
+      ],
+      "operators": ["===", ".", "()", "=", "switch", "case", "||"],
+      "operands": ["config", "level", "format", "output", "this", "console", "debug", "info", "warn"]
+    },
+    {
+      "name": "formatMessage",
+      "lines": 15,
+      "parameters": ["level", "message", "meta"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [],
+          "body": [],
+          "else_body": []
+        },
+        {
+          "type": "ternary",
+          "body": [],
+          "else_body": []
+        }
+      ],
+      "operators": ["===", "?:", "+", ".", "()", "=", "typeof"],
+      "operands": ["level", "message", "meta", "timestamp", "output", "null", "undefined", "Date"]
+    }
+  ]
+}

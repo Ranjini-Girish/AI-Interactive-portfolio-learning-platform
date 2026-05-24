@@ -1,0 +1,10 @@
+name=parser
+kind=lib
+build_ms=280
+public=crates/parser/src/lib.rs,crates/parser/src/ast.rs
+private=crates/parser/src/lexer.rs
+build=
+tests=
+features=fast-lexer:public
+unsafe=2
+deps=util:normal:public,macro-derive:normal:private

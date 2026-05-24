@@ -1,0 +1,12 @@
+{
+  "name": "worker",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "tokio": { "version": "^1.35" },
+    "serde": { "version": "^1.0.180" },
+    "async-io": { "version": "^1.0" },
+    "compress": { "version": "^1.0" },
+    "log": { "version": "^0.4.17" }
+  }
+}

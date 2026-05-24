@@ -1,0 +1,13 @@
+{
+  "trace_id": "trace_03",
+  "description": "Coalescing patterns: left, right, and both neighbors",
+  "operations": [
+    {"op": "alloc", "id": "x", "size": 64, "align": 8},
+    {"op": "alloc", "id": "y", "size": 64, "align": 8},
+    {"op": "alloc", "id": "z", "size": 64, "align": 8},
+    {"op": "alloc", "id": "w", "size": 64, "align": 8},
+    {"op": "dealloc", "id": "x"},
+    {"op": "dealloc", "id": "z"},
+    {"op": "dealloc", "id": "y"}
+  ]
+}

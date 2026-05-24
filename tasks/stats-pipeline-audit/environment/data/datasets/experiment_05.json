@@ -1,0 +1,8 @@
+{
+  "experiment_id": "exp_05",
+  "description": "Groups with many tied values for rank correlation testing",
+  "groups": {
+    "tied_a": [1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0],
+    "tied_b": [2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 7.0]
+  }
+}

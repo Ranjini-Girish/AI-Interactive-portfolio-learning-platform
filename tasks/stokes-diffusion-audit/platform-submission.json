@@ -1,0 +1,61 @@
+{
+  "taskName": "stokes-diffusion-audit",
+  "updatedAt": "2026-05-23T16:47:46.130Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "49f2e499-d969-4241-986b-074919b78452",
+    "taskStatus": "Evaluation pending",
+    "taskName": "stokes-diffusion-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "stokes-diffusion-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T16:47:46.130Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "49f2e499-d969-4241-986b-074919b78452",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\stokes-diffusion-audit.zip",
+    "zipBytes": 1984866,
+    "zipSha256": "c1fee8b6dad646f1f50b18612ea6e40cad0ba10048104305e75ae46ee1477c83",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T16:47:46.130Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "49f2e499-d969-4241-986b-074919b78452",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\stokes-diffusion-audit.zip",
+      "zipBytes": 1984866,
+      "zipSha256": "c1fee8b6dad646f1f50b18612ea6e40cad0ba10048104305e75ae46ee1477c83",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

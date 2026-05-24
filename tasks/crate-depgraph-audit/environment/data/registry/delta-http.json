@@ -1,0 +1,31 @@
+{
+  "name": "delta-http",
+  "versions": [
+    {
+      "version": "0.3.0",
+      "features": {"default": ["tls"], "tls": ["dep:sigma-tls"]},
+      "dependencies": [
+        {"name": "alpha-core", "version_req": "^2.0", "optional": false, "default_features": true},
+        {"name": "sigma-tls", "version_req": "^0.9", "optional": true, "default_features": true}
+      ],
+      "license": "MIT"
+    },
+    {
+      "version": "0.2.8",
+      "features": {"default": ["tls"], "tls": ["dep:sigma-tls"]},
+      "dependencies": [
+        {"name": "alpha-core", "version_req": "^2.0", "optional": false, "default_features": true},
+        {"name": "sigma-tls", "version_req": "^0.9", "optional": true, "default_features": true}
+      ],
+      "license": "MIT"
+    },
+    {
+      "version": "0.2.5",
+      "features": {"default": ["tls"], "tls": []},
+      "dependencies": [
+        {"name": "alpha-core", "version_req": "^1.9", "optional": false, "default_features": true}
+      ],
+      "license": "MIT"
+    }
+  ]
+}

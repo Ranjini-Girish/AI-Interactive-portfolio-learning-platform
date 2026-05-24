@@ -45,6 +45,7 @@ function deriveRevisionReasons(ctx: Omit<RevisionContext, 'revisionReasons' | 'c
     .join('\n');
 
   if (/Build status:\s*FAILED/i.test(blob)) reasons.push('autoeval_build_failed');
+  if (/Build Completion Timeout:/i.test(blob)) reasons.push('build_completion_timeout');
   if (/Oracle failed|oracle failed|Oracle solution failed/i.test(blob)) reasons.push('oracle_failed');
   if (/Requires at least HARD/i.test(blob)) reasons.push('difficulty_below_hard');
   if (/Requires at least MEDIUM/i.test(blob)) reasons.push('difficulty_below_medium');
@@ -247,11 +248,17 @@ export async function extractRevisionContext(
 
   const zipMatch = body.match(/([\w-]+\.zip)\s*\n\d{1,2}\/\d{1,2}\/\d{4}/);
 
-  const autoEvalSummary = extractSection(
-    body,
-    /AutoEval Execution Summary:/i,
-    /Do you disagree with the reviewer feedback\?/i,
-  );
+  const autoEvalSummary =
+    extractSection(
+      body,
+      /AutoEval Execution Summary:/i,
+      /Do you disagree with the reviewer feedback\?/i,
+    ) ??
+    extractSection(
+      body,
+      /Build Completion Timeout:/i,
+      /Do you disagree with the reviewer feedback\?/i,
+    );
   const buildLogsSummary = extractSection(
     body,
     /Show Build Logs|Build Logs|CodeBuild/i,

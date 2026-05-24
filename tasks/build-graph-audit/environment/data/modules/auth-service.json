@@ -1,0 +1,26 @@
+{
+  "name": "auth-service",
+  "path": "src/services/auth-service.js",
+  "size_bytes": 1580,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "api-client",
+      "specifiers": [
+        "apiRequest"
+      ]
+    },
+    {
+      "source": "token-store",
+      "specifiers": [
+        "loadToken"
+      ]
+    }
+  ],
+  "exports": [
+    "isAuthenticated",
+    "getAuthToken",
+    "updateProfile"
+  ],
+  "re_exports": []
+}

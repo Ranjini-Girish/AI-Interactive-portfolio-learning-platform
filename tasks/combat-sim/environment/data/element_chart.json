@@ -1,0 +1,14 @@
+{
+  "elements": ["fire", "water", "earth", "wind", "neutral"],
+  "cycle": {
+    "fire": "wind",
+    "wind": "earth",
+    "earth": "water",
+    "water": "fire"
+  },
+  "rules": {
+    "super_effective_multiplier": [3, 2],
+    "not_very_effective_multiplier": [1, 2],
+    "normal_multiplier": [1, 1]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "excludes": [],
+  "project_license": "Apache-2.0",
+  "query_id": "query_05",
+  "replaces": [
+    {
+      "new_module": "example.com/fork/logger",
+      "new_version": "1.0.0",
+      "old_module": "example.com/core/logger"
+    }
+  ],
+  "requirements": [
+    {
+      "min_version": "1.1.0",
+      "module": "example.com/core/config"
+    }
+  ],
+  "root_module": "my-app"
+}

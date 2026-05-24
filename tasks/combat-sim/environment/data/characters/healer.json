@@ -1,0 +1,9 @@
+{
+  "name": "healer",
+  "stats": {"hp": 120, "attack": 15, "defense": 15, "speed": 25},
+  "element": "water",
+  "abilities": {
+    "heal": {"type": "heal", "power": 40},
+    "splash": {"type": "attack", "power": 25, "element": "water"}
+  }
+}

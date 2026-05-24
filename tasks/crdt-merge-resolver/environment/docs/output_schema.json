@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CRDT Merge Report",
+  "type": "object",
+  "required": ["anomalies", "key_states", "merged_log", "metadata", "summary"],
+  "additionalProperties": false,
+  "properties": {
+    "anomalies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "key", "op_ids", "type"],
+        "properties": {
+          "type": { "type": "string", "enum": ["causal_violation", "concurrent_write", "resurrection", "clock_regression"] },
+          "description": { "type": "string" },
+          "op_ids": { "type": "array", "items": { "type": "string" } },
+          "key": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "key_states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["conflict_count", "final_op_id", "final_value", "is_tombstoned", "key", "write_count"],
+        "properties": {
+          "conflict_count": { "type": "integer", "minimum": 0 },
+          "final_op_id": { "type": "string" },
+          "final_value": { "type": ["string", "null"] },
+          "is_tombstoned": { "type": "boolean" },
+          "key": { "type": "string" },
+          "write_count": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "merged_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "lamport_ts", "op_id", "op_type", "replica_id", "value", "vector_clock", "wall_clock_ms"],
+        "properties": {
+          "key": { "type": "string" },
+          "lamport_ts": { "type": "integer" },
+          "op_id": { "type": "string" },
+          "op_type": { "type": "string", "enum": ["SET", "DELETE"] },
+          "replica_id": { "type": "string" },
+          "value": { "type": "string" },
+          "vector_clock": { "type": "object", "additionalProperties": { "type": "integer" } },
+          "wall_clock_ms": { "type": "integer" }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["replica_ids", "total_operations", "total_replicas", "unique_keys"],
+      "properties": {
+        "replica_ids": { "type": "array", "items": { "type": "string" } },
+        "total_operations": { "type": "integer" },
+        "total_replicas": { "type": "integer" },
+        "unique_keys": { "type": "integer" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["active_keys", "anomalies_by_type", "state_hash", "tombstoned_keys", "total_anomalies", "total_conflicts", "total_keys"],
+      "properties": {
+        "active_keys": { "type": "integer" },
+        "anomalies_by_type": {
+          "type": "object",
+          "required": ["causal_violation", "clock_regression", "concurrent_write", "resurrection"],
+          "properties": {
+            "causal_violation": { "type": "integer" },
+            "clock_regression": { "type": "integer" },
+            "concurrent_write": { "type": "integer" },
+            "resurrection": { "type": "integer" }
+          }
+        },
+        "state_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "tombstoned_keys": { "type": "integer" },
+        "total_anomalies": { "type": "integer" },
+        "total_conflicts": { "type": "integer" },
+        "total_keys": { "type": "integer" }
+      }
+    }
+  }
+}

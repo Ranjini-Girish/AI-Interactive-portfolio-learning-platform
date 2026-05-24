@@ -1,0 +1,28 @@
+{
+  "name": "sinatra",
+  "versions": {
+    "2.0.0": {
+      "dependencies": {
+        "rack": "~> 2.0"
+      },
+      "license": "MIT",
+      "release_date": "2022-03-01"
+    },
+    "3.0.0": {
+      "dependencies": {
+        "multi_json": ">= 1.0",
+        "rack": "~> 2.2.0"
+      },
+      "license": "MIT",
+      "release_date": "2023-04-01"
+    },
+    "3.1.0": {
+      "dependencies": {
+        "multi_json": ">= 1.0",
+        "rack": "~> 3.0"
+      },
+      "license": "MIT",
+      "release_date": "2024-02-01"
+    }
+  }
+}

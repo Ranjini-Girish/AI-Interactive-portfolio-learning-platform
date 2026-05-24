@@ -1,0 +1,26 @@
+{
+  "module_path": "example.com/cache/lru",
+  "retracted": [],
+  "versions": [
+    {
+      "dependencies": [
+        {
+          "min_version": "1.0.0",
+          "module": "example.com/core/logger"
+        }
+      ],
+      "license": "MIT",
+      "version": "1.0.0"
+    },
+    {
+      "dependencies": [
+        {
+          "min_version": "1.1.0",
+          "module": "example.com/core/logger"
+        }
+      ],
+      "license": "MIT",
+      "version": "1.1.0"
+    }
+  ]
+}

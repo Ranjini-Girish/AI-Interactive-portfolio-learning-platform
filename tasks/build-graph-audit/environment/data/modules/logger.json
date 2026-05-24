@@ -1,0 +1,13 @@
+{
+  "name": "logger",
+  "path": "src/shared/logger.js",
+  "size_bytes": 380,
+  "side_effects": false,
+  "imports": [],
+  "exports": [
+    "log",
+    "warn",
+    "error"
+  ],
+  "re_exports": []
+}

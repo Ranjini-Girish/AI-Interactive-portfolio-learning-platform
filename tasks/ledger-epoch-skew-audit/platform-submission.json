@@ -1,0 +1,61 @@
+{
+  "taskName": "ledger-epoch-skew-audit",
+  "updatedAt": "2026-05-23T16:38:03.490Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "8d198124-d872-4df6-9ef7-3d03eac93ddd",
+    "taskStatus": "Evaluation pending",
+    "taskName": "ledger-epoch-skew-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "ledger-epoch-skew-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T16:38:03.490Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "8d198124-d872-4df6-9ef7-3d03eac93ddd",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ledger-epoch-skew-audit.zip",
+    "zipBytes": 19118,
+    "zipSha256": "d82696eb044281e141f04a49b6ddef8c6949347bd5a6ce1f5f51529f43f6484d",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T16:38:03.490Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "8d198124-d872-4df6-9ef7-3d03eac93ddd",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ledger-epoch-skew-audit.zip",
+      "zipBytes": 19118,
+      "zipSha256": "d82696eb044281e141f04a49b6ddef8c6949347bd5a6ce1f5f51529f43f6484d",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

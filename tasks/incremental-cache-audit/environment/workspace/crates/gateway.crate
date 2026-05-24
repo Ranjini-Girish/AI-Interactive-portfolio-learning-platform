@@ -1,0 +1,10 @@
+name=gateway
+kind=bin
+build_ms=380
+public=crates/gateway/src/main.rs
+private=crates/gateway/src/http.rs
+build=
+tests=
+features=tls:public
+unsafe=1
+deps=api:normal:public,telemetry:normal:private

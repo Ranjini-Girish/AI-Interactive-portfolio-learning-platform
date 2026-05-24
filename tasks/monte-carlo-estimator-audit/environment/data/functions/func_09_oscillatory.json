@@ -1,0 +1,14 @@
+{
+  "id": "func_09_oscillatory",
+  "type": "oscillatory",
+  "params": {
+    "amplitude": 1.0,
+    "periods": 5.0
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 0.0,
+  "description": "f(x) = cos(10*pi*x)"
+}

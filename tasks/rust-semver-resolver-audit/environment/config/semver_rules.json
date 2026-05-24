@@ -1,0 +1,7 @@
+{
+  "operators": ["^", "~", "="],
+  "pre_release_allowed": true,
+  "build_metadata_ignored": true,
+  "zero_major_semantics": "minor_is_breaking",
+  "zero_minor_semantics": "patch_is_breaking"
+}

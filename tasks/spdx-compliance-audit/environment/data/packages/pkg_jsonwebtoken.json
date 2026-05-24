@@ -1,0 +1,11 @@
+{
+  "name": "jsonwebtoken",
+  "version": "9.0.2",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "jws",
+      "version_range": "^4.0"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# path|change_kind|symbol
+crates/core-model/src/schema.rs|api|SchemaVersion
+crates/util/src/fs.rs|impl|normalize_path
+crates/util/src/fs.rs|impl|normalize_path
+crates/codegen/build.rs|build_script|OUT_DIR
+crates/macro-derive/src/expand.rs|impl|derive_builder
+crates/integration-tests/tests/helpers.rs|test_only|fixture_seed
+crates/telemetry/src/export.rs|impl|span_export

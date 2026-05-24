@@ -1,0 +1,8 @@
+{
+  "name": "liblog",
+  "type": "library",
+  "sources": ["log/logger.cpp"],
+  "headers": ["log/logger.h"],
+  "depends_on": ["libbase"],
+  "build_time_ms": 400
+}

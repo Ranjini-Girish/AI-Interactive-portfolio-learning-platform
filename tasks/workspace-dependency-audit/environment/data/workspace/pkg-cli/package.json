@@ -1,0 +1,13 @@
+{
+  "name": "@myorg/cli",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@myorg/core": "workspace:*",
+    "@myorg/api": "workspace:*",
+    "commander": "^11.0.0",
+    "chalk": "^4.1.0",
+    "axios": "^0.27.0"
+  },
+  "devDependencies": {}
+}

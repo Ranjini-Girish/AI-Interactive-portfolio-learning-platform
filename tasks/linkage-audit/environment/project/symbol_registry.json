@@ -1,0 +1,104 @@
+{
+  "src/main.cpp": {
+    "defines": [
+      {"symbol": "main", "linkage": "strong"}
+    ],
+    "references": ["log_message", "compute", "format_string"]
+  },
+  "src/math_engine.cpp": {
+    "defines": [
+      {"symbol": "compute", "linkage": "strong"},
+      {"symbol": "transform", "linkage": "strong"}
+    ],
+    "references": ["log_message"]
+  },
+  "src/string_formatter.cpp": {
+    "defines": [
+      {"symbol": "format_string", "linkage": "strong"}
+    ],
+    "references": []
+  },
+  "src/logger.cpp": {
+    "defines": [
+      {"symbol": "log_message", "linkage": "strong"},
+      {"symbol": "set_log_level", "linkage": "strong"}
+    ],
+    "references": []
+  },
+  "src/serializer_impl.cpp": {
+    "defines": [
+      {"symbol": "write_binary", "linkage": "strong"},
+      {"symbol": "read_binary", "linkage": "strong"}
+    ],
+    "references": []
+  },
+  "src/network_client.cpp": {
+    "defines": [
+      {"symbol": "connect", "linkage": "strong"},
+      {"symbol": "send_data", "linkage": "strong"}
+    ],
+    "references": ["log_message"]
+  },
+  "src/cache_manager.cpp": {
+    "defines": [
+      {"symbol": "cache_get", "linkage": "strong"},
+      {"symbol": "cache_put", "linkage": "strong"},
+      {"symbol": "cache_evict", "linkage": "strong"}
+    ],
+    "references": ["log_message"]
+  },
+  "src/plugin_loader.cpp": {
+    "defines": [
+      {"symbol": "load_plugin", "linkage": "strong"},
+      {"symbol": "unload_plugin", "linkage": "strong"}
+    ],
+    "references": ["log_message"]
+  },
+  "src/thread_manager.cpp": {
+    "defines": [
+      {"symbol": "spawn_thread", "linkage": "strong"},
+      {"symbol": "join_all", "linkage": "strong"}
+    ],
+    "references": ["log_message"]
+  },
+  "src/processor_a.cpp": {
+    "defines": [
+      {"symbol": "process", "linkage": "strong"},
+      {"symbol": "validate_a", "linkage": "strong"}
+    ],
+    "references": ["compute", "format_string"]
+  },
+  "src/processor_b.cpp": {
+    "defines": [
+      {"symbol": "process", "linkage": "strong"},
+      {"symbol": "validate_b", "linkage": "strong"}
+    ],
+    "references": ["compute"]
+  },
+  "src/util.cpp": {
+    "defines": [
+      {"symbol": "internal_helper", "linkage": "local"},
+      {"symbol": "parse_int", "linkage": "strong"},
+      {"symbol": "trim_string", "linkage": "strong"}
+    ],
+    "references": []
+  },
+  "src/pipeline_main.cpp": {
+    "defines": [
+      {"symbol": "main", "linkage": "strong"}
+    ],
+    "references": ["validate_a", "validate_b"]
+  },
+  "src/worker_main.cpp": {
+    "defines": [
+      {"symbol": "main", "linkage": "strong"}
+    ],
+    "references": ["connect", "cache_get", "compute", "send_data", "cache_put"]
+  },
+  "include/serializer.h": {
+    "defines": [
+      {"symbol": "serialize", "linkage": "weak"}
+    ],
+    "references": []
+  }
+}

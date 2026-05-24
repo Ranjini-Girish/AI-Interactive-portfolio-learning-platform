@@ -1,0 +1,28 @@
+{
+  "name": "conditional_jumps",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 5]},
+    {"op": "MOV", "args": ["R1", 10]},
+    {"op": "CMP", "args": ["R0", "R1"]},
+    {"op": "JL", "args": [5]},
+    {"op": "HALT", "args": []},
+    {"op": "CMP", "args": ["R1", "R0"]},
+    {"op": "JG", "args": [8]},
+    {"op": "HALT", "args": []},
+    {"op": "CMP", "args": ["R0", "R0"]},
+    {"op": "JZ", "args": [11]},
+    {"op": "HALT", "args": []},
+    {"op": "CMP", "args": ["R0", "R0"]},
+    {"op": "JGE", "args": [14]},
+    {"op": "HALT", "args": []},
+    {"op": "CMP", "args": ["R0", "R1"]},
+    {"op": "JLE", "args": [17]},
+    {"op": "HALT", "args": []},
+    {"op": "MOV", "args": ["R0", 42]},
+    {"op": "CMP", "args": ["R0", 0]},
+    {"op": "JNZ", "args": [21]},
+    {"op": "HALT", "args": []},
+    {"op": "MOV", "args": ["R2", 1]},
+    {"op": "HALT", "args": []}
+  ]
+}

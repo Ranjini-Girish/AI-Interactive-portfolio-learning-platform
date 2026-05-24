@@ -1,0 +1,11 @@
+{
+  "id": "type_11_multi_array",
+  "kind": "struct",
+  "repr": "Rust",
+  "fields": [
+    {"name": "small", "type": "u8"},
+    {"name": "matrix", "type": "[f64; 4]"},
+    {"name": "index", "type": "u32"},
+    {"name": "pairs", "type": "[u16; 3]"}
+  ]
+}

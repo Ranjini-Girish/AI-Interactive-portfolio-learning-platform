@@ -1,0 +1,17 @@
+{
+  "name": "xi-regex",
+  "versions": [
+    {
+      "version": "1.10.2",
+      "features": {"default": ["std", "unicode"], "std": [], "unicode": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "1.9.0",
+      "features": {"default": ["std", "unicode"], "std": [], "unicode": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    }
+  ]
+}

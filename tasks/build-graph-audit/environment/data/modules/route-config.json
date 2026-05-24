@@ -1,0 +1,12 @@
+{
+  "name": "route-config",
+  "path": "src/route-config.js",
+  "size_bytes": 680,
+  "side_effects": false,
+  "imports": [],
+  "exports": [
+    "routes",
+    "navigateTo"
+  ],
+  "re_exports": []
+}

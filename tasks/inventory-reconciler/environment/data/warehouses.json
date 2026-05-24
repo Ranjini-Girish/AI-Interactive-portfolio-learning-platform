@@ -1,0 +1,12 @@
+{
+  "warehouse_north": {
+    "location": "Portland",
+    "capacity": 5000,
+    "priority": "high"
+  },
+  "warehouse_south": {
+    "location": "Austin",
+    "capacity": 3000,
+    "priority": "normal"
+  }
+}

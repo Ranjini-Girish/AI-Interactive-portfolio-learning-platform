@@ -1,0 +1,5 @@
+{
+  "precision": 6,
+  "max_iterations": 1000,
+  "audit_enabled": true
+}

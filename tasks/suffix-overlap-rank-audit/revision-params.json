@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "2fdf3090-0206-4a34-9dc2-dce225fd2593",
+  "platformTaskSlug": "suffix-overlap-rank-audit",
+  "assignmentId": "185e64a1-15ac-41e3-b33e-1a714123bfd6",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=185e64a1-15ac-41e3-b33e-1a714123bfd6",
+  "capturedAt": "2026-05-23T17:08:59.408Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:e05eb9ab-4548-49be-934b-d560377b9507",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:e05eb9ab-4548-49be-934b-d560377b9507."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nThis task is not tested with any \nagents as the Oracle solution failed. \nPlease fix the Oracle solution and \nre-run the tests.\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md names the SOR_DATA_DIR \nand SOR_AUDIT_DIR environment \nvariables, the canonical \npretty-printer, reading pool_state.\njson for current_day, and explicitly"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "initiative-clash-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\initiative-clash-audit.zip",
+    "excludedPlatformZip": "suffix-overlap-rank-audit.zip"
+  }
+}

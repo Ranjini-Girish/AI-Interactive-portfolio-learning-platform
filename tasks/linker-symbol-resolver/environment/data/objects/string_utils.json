@@ -1,0 +1,15 @@
+{
+  "name": "string_utils.o",
+  "sections": [
+    {"name": ".text", "size": 80, "alignment": 16},
+    {"name": ".rodata", "size": 32, "alignment": 8}
+  ],
+  "symbols": [
+    {"name": "format_string", "section": ".text", "offset": 0, "size": 48, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "str_compare", "section": ".text", "offset": 48, "size": 32, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "fmt_template", "section": ".rodata", "offset": 0, "size": 32, "binding": "LOCAL", "type": "OBJECT"}
+  ],
+  "relocations": [
+    {"section": ".text", "offset": 8, "type": "R_ABS_32", "symbol": "fmt_template", "addend": 0}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "replicas": 2,
+  "log_level": "debug",
+  "feature_x": true
+}

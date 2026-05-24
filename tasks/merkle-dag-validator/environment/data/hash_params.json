@@ -1,0 +1,7 @@
+{
+  "salt_prefix": "merkle-v1",
+  "separator": "|",
+  "children_join": "+",
+  "leaf_marker": "leaf",
+  "children_sort_by": "hash_value"
+}

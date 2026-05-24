@@ -1,0 +1,80 @@
+{
+  "taskName": "zone-ingress-matrix-audit",
+  "updatedAt": "2026-05-23T11:47:43.516Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "90f51cd1-de51-41d1-adc4-0623c8f37e27",
+    "taskStatus": "Evaluation pending",
+    "taskName": "zone-ingress-matrix-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "language": "Python",
+    "domain": "system-administration",
+    "taskFolderLink": "zone-ingress-matrix-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T11:47:43.516Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=90f51cd1-de51-41d1-adc4-0623c8f37e27",
+    "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+    "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+    "assignmentId": "90f51cd1-de51-41d1-adc4-0623c8f37e27",
+    "revisionTaskId": "e4b31f18-96db-4795-8179-7a2de335cfcf",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\tls-cert-chain-auditor.zip",
+    "zipBytes": 34372,
+    "zipSha256": "c88e322824e0314018d5ff8caab14e9205c3bfc96314bfe0d998e6e5e5d352d7",
+    "options": {
+      "sendToReviewer": false,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T11:33:37.215Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=90f51cd1-de51-41d1-adc4-0623c8f37e27",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "90f51cd1-de51-41d1-adc4-0623c8f37e27",
+      "revisionTaskId": "e4b31f18-96db-4795-8179-7a2de335cfcf",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\antireplay-window-audit.zip",
+      "zipBytes": 36544,
+      "zipSha256": "290784bf963582b86ca0cf80aef9200c4de734061cff28ca74265fc16fbd07e6",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-23T11:47:43.516Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=90f51cd1-de51-41d1-adc4-0623c8f37e27",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "90f51cd1-de51-41d1-adc4-0623c8f37e27",
+      "revisionTaskId": "e4b31f18-96db-4795-8179-7a2de335cfcf",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\tls-cert-chain-auditor.zip",
+      "zipBytes": 34372,
+      "zipSha256": "c88e322824e0314018d5ff8caab14e9205c3bfc96314bfe0d998e6e5e5d352d7",
+      "options": {
+        "sendToReviewer": false,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

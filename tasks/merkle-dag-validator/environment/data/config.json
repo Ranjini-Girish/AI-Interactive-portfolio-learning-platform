@@ -1,0 +1,12 @@
+{
+  "hash_algorithm": "sha256",
+  "hash_truncate_bytes": 16,
+  "severity_levels": {
+    "critical": 3,
+    "high": 2,
+    "low": 1
+  },
+  "repair_model": "parallel",
+  "depth_algorithm": "longest_path",
+  "output_precision": 6
+}

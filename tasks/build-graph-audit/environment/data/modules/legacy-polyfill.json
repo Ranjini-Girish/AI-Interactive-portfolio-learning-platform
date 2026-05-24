@@ -1,0 +1,11 @@
+{
+  "name": "legacy-polyfill",
+  "path": "src/legacy-polyfill.js",
+  "size_bytes": 350,
+  "side_effects": false,
+  "imports": [],
+  "exports": [
+    "LegacyPolyfill"
+  ],
+  "re_exports": []
+}

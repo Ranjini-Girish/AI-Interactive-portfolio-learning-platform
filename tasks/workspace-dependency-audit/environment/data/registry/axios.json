@@ -1,0 +1,29 @@
+{
+  "name": "axios",
+  "versions": {
+    "0.21.4": {
+      "dependencies": {
+        "follow-redirects": "^1.14.0"
+      },
+      "license": "MIT"
+    },
+    "0.27.2": {
+      "dependencies": {
+        "follow-redirects": "^1.14.0"
+      },
+      "license": "MIT"
+    },
+    "1.5.1": {
+      "dependencies": {
+        "follow-redirects": "^1.15.0"
+      },
+      "license": "MIT"
+    },
+    "1.6.0": {
+      "dependencies": {
+        "follow-redirects": "^1.15.0"
+      },
+      "license": "MIT"
+    }
+  }
+}

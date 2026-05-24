@@ -1,0 +1,27 @@
+{
+  "workload_id": "w05_reenter",
+  "events": [
+    {
+      "event_id": "e1",
+      "sequence": 1,
+      "logged_at": "2026-02-01T10:00:00Z",
+      "kind": "enter",
+      "scope_id": "R"
+    },
+    {
+      "event_id": "e2",
+      "sequence": 2,
+      "logged_at": "2026-02-01T10:00:01Z",
+      "kind": "enter",
+      "scope_id": "R"
+    },
+    {
+      "event_id": "e3",
+      "sequence": 3,
+      "logged_at": "2026-02-01T10:00:02Z",
+      "kind": "exit",
+      "scope_id": "R",
+      "hold_ms": 30
+    }
+  ]
+}

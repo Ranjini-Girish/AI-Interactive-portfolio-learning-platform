@@ -1,0 +1,8 @@
+{
+  "fire": {"strong_against": "nature", "weak_against": "water"},
+  "water": {"strong_against": "fire", "weak_against": "nature"},
+  "nature": {"strong_against": "water", "weak_against": "fire"},
+  "light": {"strong_against": "dark", "weak_against": "dark"},
+  "dark": {"strong_against": "light", "weak_against": "light"},
+  "neutral": {"strong_against": null, "weak_against": null}
+}

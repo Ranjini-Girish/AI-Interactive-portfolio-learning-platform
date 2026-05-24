@@ -1,0 +1,14 @@
+{
+  "id": "src/services/api",
+  "base_size_bytes": 20,
+  "exports": [
+    {"name": "api", "size_bytes": 250},
+    {"name": "request", "size_bytes": 150}
+  ],
+  "imports": [
+    {"module": "src/services/config", "names": ["config"]},
+    {"module": "axios", "names": ["create"], "external": true}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

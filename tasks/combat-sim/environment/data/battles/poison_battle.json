@@ -1,0 +1,27 @@
+{
+  "name": "poison_battle",
+  "teams": {
+    "A": ["rogue", "archer"],
+    "B": ["knight", "tank"]
+  },
+  "actions": [
+    [
+      {"character": "rogue", "ability": "poison_blade", "target": "knight"},
+      {"character": "archer", "ability": "arrow", "target": "knight"},
+      {"character": "knight", "ability": "slash", "target": "rogue"},
+      {"character": "tank", "ability": "slam", "target": "archer"}
+    ],
+    [
+      {"character": "rogue", "ability": "backstab", "target": "knight"},
+      {"character": "archer", "ability": "arrow", "target": "knight"},
+      {"character": "knight", "ability": "slash", "target": "rogue"},
+      {"character": "tank", "ability": "slam", "target": "rogue"}
+    ],
+    [
+      {"character": "rogue", "ability": "poison_blade", "target": "tank"},
+      {"character": "archer", "ability": "arrow", "target": "tank"},
+      {"character": "knight", "ability": "slash", "target": "archer"},
+      {"character": "tank", "ability": "fortify", "target": "tank"}
+    ]
+  ]
+}

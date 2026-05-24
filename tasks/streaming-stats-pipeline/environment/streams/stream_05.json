@@ -1,0 +1,107 @@
+{
+  "stream_id": "stream_05",
+  "sensor_type": "flow_rate",
+  "unit": "liters_per_min",
+  "observations": [
+    {
+      "timestamp": 1000000,
+      "value": 20.5
+    },
+    {
+      "timestamp": 1000060,
+      "value": 21.0
+    },
+    {
+      "timestamp": 1000120,
+      "value": 20.8
+    },
+    {
+      "timestamp": 1000180,
+      "value": 21.2
+    },
+    {
+      "timestamp": 1000240,
+      "value": 20.9
+    },
+    {
+      "timestamp": 1000300,
+      "value": 21.1
+    },
+    {
+      "timestamp": 1000360,
+      "value": 20.7
+    },
+    {
+      "timestamp": 1000420,
+      "value": 21.3
+    },
+    {
+      "timestamp": 1000480,
+      "value": 20.6
+    },
+    {
+      "timestamp": 1000540,
+      "value": 21.0
+    },
+    {
+      "timestamp": 1000780,
+      "value": 20.4
+    },
+    {
+      "timestamp": 1000840,
+      "value": 21.5
+    },
+    {
+      "timestamp": 1000900,
+      "value": 20.3
+    },
+    {
+      "timestamp": 1000960,
+      "value": 21.4
+    },
+    {
+      "timestamp": 1001020,
+      "value": 20.8
+    },
+    {
+      "timestamp": 1001680,
+      "value": 21.0
+    },
+    {
+      "timestamp": 1001740,
+      "value": 20.5
+    },
+    {
+      "timestamp": 1001800,
+      "value": 21.2
+    },
+    {
+      "timestamp": 1001860,
+      "value": 20.9
+    },
+    {
+      "timestamp": 1001920,
+      "value": 21.1
+    },
+    {
+      "timestamp": 1001980,
+      "value": 20.7
+    },
+    {
+      "timestamp": 1002040,
+      "value": 21.3
+    },
+    {
+      "timestamp": 1002100,
+      "value": 20.6
+    },
+    {
+      "timestamp": 1002160,
+      "value": 21.0
+    },
+    {
+      "timestamp": 1002220,
+      "value": 20.8
+    }
+  ]
+}

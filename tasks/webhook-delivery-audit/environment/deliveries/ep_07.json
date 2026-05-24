@@ -1,0 +1,32 @@
+{
+  "endpoint_id": "ep_07",
+  "deliveries": [
+    {
+      "delivery_id": "del_gap",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "failed",
+          "sent_at": 1000,
+          "received_at": 1010,
+          "body": {
+            "step": 1
+          },
+          "signature": "e3616c20beaa3bd1e784beb5b9b8648b9a75d78b498eadcec9df45db84ddaac4",
+          "jitter_pct": 0
+        },
+        {
+          "attempt_number": 3,
+          "status": "success",
+          "sent_at": 5000,
+          "received_at": 5010,
+          "body": {
+            "step": 3
+          },
+          "signature": "dbf6c20c553f0a6ceb9bc59bf8c088ec55a034525d4d746f3d273a8fcd4456f2",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

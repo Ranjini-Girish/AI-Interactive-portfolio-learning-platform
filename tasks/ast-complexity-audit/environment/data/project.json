@@ -1,0 +1,14 @@
+{
+  "project_name": "web-toolkit",
+  "modules_dir": "data/modules",
+  "module_files": [
+    "auth_handler.json",
+    "data_processor.json",
+    "event_emitter.json",
+    "http_client.json",
+    "logger.json",
+    "router.json",
+    "validator.json",
+    "cache_manager.json"
+  ]
+}

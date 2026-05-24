@@ -1,0 +1,5 @@
+{
+  "entry_points": [
+    "index.js"
+  ]
+}

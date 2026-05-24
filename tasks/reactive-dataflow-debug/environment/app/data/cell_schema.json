@@ -1,0 +1,22 @@
+{
+  "cell_definition": {
+    "value_cell": {
+      "required_fields": ["value"],
+      "value_type": "number"
+    },
+    "formula_cell": {
+      "required_fields": ["formula"],
+      "formula_type": "string",
+      "expression_syntax": "infix with function calls"
+    }
+  },
+  "output_schema": {
+    "initial_snapshot": "object<cellId, number|null>",
+    "updates": "array<{index, type, cell, recalculated_cells}>",
+    "final_values": "object<cellId, number|null>",
+    "cycles_detected": "array<array<cellId>>",
+    "recalc_counts": "object<cellId, integer>",
+    "errors": "object<cellId, {message, type}>",
+    "recalculation_order": "array<cellId>"
+  }
+}

@@ -1,0 +1,10 @@
+name=telemetry
+kind=lib
+build_ms=190
+public=crates/telemetry/src/lib.rs
+private=crates/telemetry/src/export.rs
+build=
+tests=
+features=otlp:public
+unsafe=0
+deps=runtime:normal:public,util:normal:private

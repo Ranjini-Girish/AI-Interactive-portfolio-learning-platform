@@ -1,0 +1,61 @@
+{
+  "taskName": "phasor-null-lattice-audit",
+  "updatedAt": "2026-05-24T02:45:30.655Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+    "taskStatus": "Evaluation pending",
+    "taskName": "phasor-null-lattice-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "phasor-null-lattice-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T02:45:30.655Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\phasor-null-lattice-audit.zip",
+    "zipBytes": 20026,
+    "zipSha256": "f7b38660222552df0535b15c53cd1f68c27ed85c41da1fa4dc42a368782a6ec8",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-24T02:45:30.655Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\phasor-null-lattice-audit.zip",
+      "zipBytes": 20026,
+      "zipSha256": "f7b38660222552df0535b15c53cd1f68c27ed85c41da1fa4dc42a368782a6ec8",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

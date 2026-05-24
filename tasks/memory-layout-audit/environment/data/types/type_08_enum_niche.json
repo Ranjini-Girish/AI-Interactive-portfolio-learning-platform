@@ -1,0 +1,9 @@
+{
+  "id": "type_08_enum_niche",
+  "kind": "enum",
+  "repr": "Rust",
+  "variants": [
+    {"name": "None", "fields": []},
+    {"name": "Some", "fields": [{"name": "0", "type": "pointer"}]}
+  ]
+}

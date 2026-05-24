@@ -41,7 +41,14 @@ SKIP_DIR_NAMES = frozenset(
         "tools",
     }
 )
-SKIP_FILE_NAMES = frozenset({"rubrics.txt", ".DS_Store", "platform-submission.json"})
+SKIP_FILE_NAMES = frozenset({
+    "rubrics.txt",
+    ".DS_Store",
+    "platform-submission.json",
+    "revision-audit.log",
+    "revision-context.json",
+    "revision-params.json",
+})
 ROOT_DEV_FILES = frozenset(
     {
         "run_oracle_local.py",

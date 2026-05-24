@@ -1,0 +1,22 @@
+{
+  "hash": "8d2e4f19",
+  "author_name": "Bob Smith",
+  "author_email": "bob@example.com",
+  "parent_hashes": [
+    "f3a1b7c0"
+  ],
+  "timestamp": "2025-01-15T14:30:00Z",
+  "message": "Add API layer\nReviewed-by: Alice Chen",
+  "file_changes": [
+    {
+      "path": "src/api.js",
+      "additions": 85,
+      "deletions": 0
+    },
+    {
+      "path": "src/config.js",
+      "additions": 20,
+      "deletions": 0
+    }
+  ]
+}

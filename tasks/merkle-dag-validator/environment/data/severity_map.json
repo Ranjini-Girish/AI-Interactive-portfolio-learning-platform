@@ -1,0 +1,5 @@
+{
+  "hash_mismatch": "critical",
+  "unreachable_node": "high",
+  "depth_exceeds_threshold": "low"
+}

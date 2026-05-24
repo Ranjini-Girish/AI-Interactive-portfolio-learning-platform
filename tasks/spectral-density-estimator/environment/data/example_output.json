@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "duration_s": 4.0,
+    "fft_bins": 257,
+    "frequency_resolution_hz": 2.0,
+    "hop_size": 256,
+    "num_segments": 15,
+    "overlap_samples": 256,
+    "sample_rate_hz": 1024.0,
+    "segment_length": 512,
+    "total_samples": 4096,
+    "window_type": "hann_symmetric"
+  },
+  "peaks": [
+    {
+      "bin_index": 50,
+      "frequency_hz": 100.0,
+      "power_db": -1.769406,
+      "prominence_db": 102.622571
+    }
+  ],
+  "psd": {
+    "frequencies_hz": [0.0, 2.0, "...remaining 255 entries..."],
+    "power_density": [0.001277, 0.0, "...remaining 255 entries..."],
+    "power_density_db": [-28.937876, -295.860731, "...remaining 255 entries..."]
+  },
+  "statistics": {
+    "enbw_hz": 3.005871,
+    "spectral_centroid_hz": 146.471014,
+    "spectral_flatness": 0.0,
+    "total_power": 3.37
+  },
+  "window_properties": {
+    "enbw_bins": 1.502935,
+    "enbw_hz": 3.005871,
+    "s1_sum": 255.5,
+    "s2_sum_sq": 191.625
+  }
+}

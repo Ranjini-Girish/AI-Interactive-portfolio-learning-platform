@@ -1,0 +1,15 @@
+{
+  "id": "func_08_step",
+  "type": "step",
+  "params": {
+    "threshold": 0.5,
+    "value_below": 2.0,
+    "value_above": 1.0
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 1.5,
+  "description": "f(x) = 2 if x < 0.5, else 1"
+}

@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "c6ae9d08-406c-4607-b6dc-0ebc4d6ea170",
+  "platformTaskSlug": "go-incident-cascade-auditor",
+  "assignmentId": "d7d58cea-80d8-4865-8170-717f6a1c1878",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=d7d58cea-80d8-4865-8170-717f6a1c1878",
+  "capturedAt": "2026-05-23T17:38:04.739Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:b5c3efa4-aee8-4fd0-8675-32a232aeec5a",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:b5c3efa4-aee8-4fd0-8675-32a232aeec5a."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ HARD\nStatus: ❌ Some tests not passed by \nany agent run\nAgent Performance:\n  • terminus-claude-opus-4-6: 0.0% (0/\n  5 runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive required output files \n(anomaly_report.json, blast_radius.\njson, paging_plan.json, node_health.\njson, summary.json), specifies the"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "go-incident-cascade-auditor",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\go-incident-cascade-auditor.zip",
+    "excludedPlatformZip": "go-incident-cascade-auditor.zip"
+  }
+}

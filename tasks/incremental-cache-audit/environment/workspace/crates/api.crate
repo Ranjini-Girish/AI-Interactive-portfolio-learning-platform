@@ -1,0 +1,10 @@
+name=api
+kind=lib
+build_ms=500
+public=crates/api/src/lib.rs,crates/api/src/api.rs
+private=crates/api/src/handlers.rs
+build=
+tests=
+features=json:public,internal-metrics:private
+unsafe=1
+deps=core-model:normal:public,storage:normal:private,parser:normal:private

@@ -1,0 +1,11 @@
+{
+  "name": "sharp",
+  "version": "0.33.0",
+  "license": "Apache-2.0",
+  "dependencies": [
+    {
+      "name": "libvips",
+      "version_range": "^1.0"
+    }
+  ]
+}

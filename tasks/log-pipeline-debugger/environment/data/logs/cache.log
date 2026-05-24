@@ -1,0 +1,9 @@
+timestamp_ms,operation,key,result,latency_us,trace_id
+1705305312000,GET,health:status,HIT,800,tr_001
+1705305668000,GET,user:alice,MISS,2500,tr_002
+1705306244000,GET,user:list,HIT,600,tr_004
+1705306938000,GET,profile:charlie,HIT,900,tr_006
+1705307743000,SET,submission:d001,OK,1800,tr_008
+1705309528000,GET,health:status,HIT,500,tr_010
+1705309965000,GET,user:alice,HIT,700,tr_011
+1705311022000,SET,submission:d002,OK,2100,tr_014

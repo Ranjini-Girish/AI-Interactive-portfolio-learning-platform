@@ -1,0 +1,37 @@
+{
+  "endpoint_id": "ep_04",
+  "deliveries": [
+    {
+      "delivery_id": "dup_1",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "success",
+          "sent_at": 5000,
+          "received_at": 5010,
+          "body": {
+            "id": 1
+          },
+          "signature": "4fa55b63a075c17c424e2af106a138c7381f04aed8a833f7191be5573269ff3b",
+          "jitter_pct": 0
+        }
+      ]
+    },
+    {
+      "delivery_id": "dup_1",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "failed",
+          "sent_at": 6000,
+          "received_at": 6010,
+          "body": {
+            "id": 1
+          },
+          "signature": "3f5111c156492a2d4bd277917bcad15d7758321958ddbb8d067ca42eadf4ecb0",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

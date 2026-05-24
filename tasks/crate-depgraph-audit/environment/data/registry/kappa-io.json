@@ -1,0 +1,23 @@
+{
+  "name": "kappa-io",
+  "versions": [
+    {
+      "version": "1.2.0",
+      "features": {"default": [], "net": [], "fs": []},
+      "dependencies": [],
+      "license": "MIT"
+    },
+    {
+      "version": "1.0.0",
+      "features": {"default": [], "net": [], "fs": []},
+      "dependencies": [],
+      "license": "MIT"
+    },
+    {
+      "version": "0.8.3",
+      "features": {"default": []},
+      "dependencies": [],
+      "license": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "sample_id": "S06",
+  "description": "Mixed Tx-310 and Wp-400 cross-chain sample",
+  "collection_time": "2026-01-15T08:00:00Z",
+  "initial_activities_bq": {
+    "Tx310": 2000.0,
+    "Wp400": 1500.0
+  }
+}

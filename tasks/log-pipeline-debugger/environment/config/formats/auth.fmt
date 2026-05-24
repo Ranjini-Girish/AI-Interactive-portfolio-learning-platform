@@ -1,0 +1,2 @@
+# auth log format
+# JSON lines: one JSON object per line with ts, event, user, result, latency_ms, trace_id, detail

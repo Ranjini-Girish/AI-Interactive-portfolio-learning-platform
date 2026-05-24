@@ -1,0 +1,18 @@
+{
+  "name": "div_zero_test",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 42]},
+    {"op": "MOV", "args": ["R1", 0]},
+    {"op": "DIV", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "MOV", "args": ["R0", 100]},
+    {"op": "MOV", "args": ["R1", 7]},
+    {"op": "DIV", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R3", "R0"]},
+    {"op": "MOV", "args": ["R0", -7]},
+    {"op": "MOV", "args": ["R1", 2]},
+    {"op": "DIV", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R4", "R0"]},
+    {"op": "HALT", "args": []}
+  ]
+}

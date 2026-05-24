@@ -1,0 +1,27 @@
+{
+  "methods": [
+    {
+      "id": "crude_mc",
+      "name": "Crude Monte Carlo",
+      "evaluations_per_sample": 1
+    },
+    {
+      "id": "antithetic",
+      "name": "Antithetic Variates",
+      "evaluations_per_sample": 2
+    },
+    {
+      "id": "stratified",
+      "name": "Stratified Sampling",
+      "num_strata": 10,
+      "evaluations_per_sample": 1
+    },
+    {
+      "id": "control_variate",
+      "name": "Control Variates",
+      "control_function": "x",
+      "control_exact_mean": 0.5,
+      "evaluations_per_sample": 2
+    }
+  ]
+}

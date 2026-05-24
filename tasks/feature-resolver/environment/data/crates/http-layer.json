@@ -1,0 +1,32 @@
+{
+  "name": "http-layer",
+  "version": "1.8.0",
+  "base_size_bytes": 6800,
+  "features": {
+    "default": ["http1"],
+    "http1": [],
+    "http2": ["http1"],
+    "full": ["http2"],
+    "websocket": ["dep:ws-codec"]
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "http1": 0.15,
+    "http2": 0.20,
+    "websocket": 0.30,
+    "full": 0.0
+  },
+  "build_priority": 2,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "core-lib", "optional": false, "default_features": true, "features": ["full"]},
+    {"name": "tls-provider", "optional": false, "default_features": true, "features": []},
+    {"name": "compression", "optional": false, "default_features": true, "features": []},
+    {"name": "ws-codec", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["HttpServer", "Request", "Response"],
+  "conditional_exports": {
+    "http2": ["Http2Connection"],
+    "websocket": ["WsHandler"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "reactive-dataflow-engine",
+  "version": "1.0.0",
+  "description": "A reactive dataflow computation engine with dependency tracking",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

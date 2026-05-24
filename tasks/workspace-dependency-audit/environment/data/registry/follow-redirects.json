@@ -1,0 +1,13 @@
+{
+  "name": "follow-redirects",
+  "versions": {
+    "1.14.9": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "1.15.6": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

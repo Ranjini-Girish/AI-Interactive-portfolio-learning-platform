@@ -1,0 +1,16 @@
+{
+  "id": "func_02_trigonometric",
+  "type": "trigonometric",
+  "params": {
+    "amplitude": 1.0,
+    "frequency": 3.14159265358979,
+    "phase": 0.0,
+    "offset": 0.0
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 0.6366197723675814,
+  "description": "f(x) = sin(pi*x)"
+}

@@ -1,0 +1,50 @@
+{
+  "PROD-001": {
+    "name": "TechCorp",
+    "rating": 4.5,
+    "lead_days": 7
+  },
+  "PROD-002": {
+    "name": "TechCorp",
+    "rating": 4.5,
+    "lead_days": 7
+  },
+  "MFG-PART-003": null,
+  "PROD-004": {
+    "name": "CableWorks",
+    "rating": 3.8,
+    "lead_days": 14
+  },
+  "EXT-COMP-005": {
+    "name": "ChipMakers",
+    "rating": 4.2,
+    "lead_days": 21
+  },
+  "PROD-006": {
+    "name": "SensorTech",
+    "rating": 4.0,
+    "lead_days": 10
+  },
+  "PROD-007": null,
+  "SUP-ITEM-008": {
+    "name": "PartsPlus",
+    "rating": 3.5,
+    "lead_days": 5
+  },
+  "PROD-009": {
+    "name": "DisplayPro",
+    "rating": 4.8,
+    "lead_days": 30
+  },
+  "WH-BULK-010": {
+    "name": "FanFactory",
+    "rating": 3.9,
+    "lead_days": 12
+  },
+  "PROD-011": {
+    "name": "ElectroCo",
+    "rating": 4.1,
+    "lead_days": 8
+  },
+  "PROD-012": null
+}

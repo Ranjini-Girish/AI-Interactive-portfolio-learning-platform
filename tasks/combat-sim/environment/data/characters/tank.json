@@ -1,0 +1,9 @@
+{
+  "name": "tank",
+  "stats": {"hp": 300, "attack": 15, "defense": 40, "speed": 5},
+  "element": "earth",
+  "abilities": {
+    "slam": {"type": "attack", "power": 30, "element": "earth"},
+    "fortify": {"type": "buff", "stat": "defense", "value": 15, "duration": 3}
+  }
+}

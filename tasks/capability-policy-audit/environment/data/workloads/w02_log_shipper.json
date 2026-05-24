@@ -1,0 +1,8 @@
+{
+  "workload_id": "log-shipper",
+  "risk_tier": "low",
+  "required_capabilities": ["CAP_DAC_READ_SEARCH"],
+  "observed_capabilities": ["CAP_DAC_READ_SEARCH"],
+  "forbidden_capabilities": ["CAP_SYS_ADMIN", "CAP_NET_RAW"],
+  "observed_syscalls": ["read", "write", "open"]
+}

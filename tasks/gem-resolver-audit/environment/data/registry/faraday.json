@@ -1,0 +1,33 @@
+{
+  "name": "faraday",
+  "versions": {
+    "1.0.0": {
+      "dependencies": {
+        "multi_json": ">= 1.0"
+      },
+      "license": "MIT",
+      "release_date": "2021-01-01"
+    },
+    "2.0.0": {
+      "dependencies": {
+        "multi_json": ">= 1.0"
+      },
+      "license": "MIT",
+      "release_date": "2022-05-01"
+    },
+    "2.7.0": {
+      "dependencies": {
+        "multi_json": ">= 1.0"
+      },
+      "license": "MIT",
+      "release_date": "2023-08-01"
+    },
+    "2.9.0": {
+      "dependencies": {
+        "multi_json": ">= 1.0"
+      },
+      "license": "MIT",
+      "release_date": "2024-03-01"
+    }
+  }
+}

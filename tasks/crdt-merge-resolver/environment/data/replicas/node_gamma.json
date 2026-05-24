@@ -1,0 +1,68 @@
+{
+  "replica_id": "gamma",
+  "operations": [
+    {
+      "op_id": "gamma-001",
+      "key": "user:1003",
+      "value": "Charlie-G",
+      "op_type": "SET",
+      "lamport_ts": 3,
+      "vector_clock": {"gamma": 1},
+      "wall_clock_ms": 2800
+    },
+    {
+      "op_id": "gamma-002",
+      "key": "counter:visits",
+      "value": "10",
+      "op_type": "SET",
+      "lamport_ts": 4,
+      "vector_clock": {"gamma": 2},
+      "wall_clock_ms": 4500
+    },
+    {
+      "op_id": "gamma-003",
+      "key": "user:1003",
+      "value": "__TOMBSTONE__",
+      "op_type": "DELETE",
+      "lamport_ts": 11,
+      "vector_clock": {"alpha": 5, "beta": 5, "gamma": 3},
+      "wall_clock_ms": 11200
+    },
+    {
+      "op_id": "gamma-004",
+      "key": "user:1006",
+      "value": "Frank",
+      "op_type": "SET",
+      "lamport_ts": 12,
+      "vector_clock": {"alpha": 6, "beta": 5, "gamma": 4},
+      "wall_clock_ms": 12500
+    },
+    {
+      "op_id": "gamma-005",
+      "key": "config:theme",
+      "value": "auto",
+      "op_type": "SET",
+      "lamport_ts": 15,
+      "vector_clock": {"alpha": 8, "beta": 8, "gamma": 5},
+      "wall_clock_ms": 15000
+    },
+    {
+      "op_id": "gamma-006",
+      "key": "user:1003",
+      "value": "Charlie-Resurrected",
+      "op_type": "SET",
+      "lamport_ts": 16,
+      "vector_clock": {"alpha": 8, "beta": 8, "gamma": 6},
+      "wall_clock_ms": 16000
+    },
+    {
+      "op_id": "gamma-007",
+      "key": "config:lang",
+      "value": "fr-FR",
+      "op_type": "SET",
+      "lamport_ts": 14,
+      "vector_clock": {"alpha": 7, "beta": 7, "gamma": 5},
+      "wall_clock_ms": 14800
+    }
+  ]
+}

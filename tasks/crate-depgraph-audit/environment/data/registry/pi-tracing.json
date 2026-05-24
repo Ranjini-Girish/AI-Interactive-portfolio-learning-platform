@@ -1,0 +1,31 @@
+{
+  "name": "pi-tracing",
+  "versions": [
+    {
+      "version": "0.1.40",
+      "features": {"default": ["std"], "std": [], "log": ["dep:gamma-log"]},
+      "dependencies": [
+        {"name": "pi-tracing-core", "version_req": "^0.1.30", "optional": false, "default_features": true},
+        {"name": "gamma-log", "version_req": "^0.4", "optional": true, "default_features": true}
+      ],
+      "license": "MIT"
+    },
+    {
+      "version": "0.1.37",
+      "features": {"default": ["std"], "std": [], "log": ["dep:gamma-log"]},
+      "dependencies": [
+        {"name": "pi-tracing-core", "version_req": "^0.1.30", "optional": false, "default_features": true},
+        {"name": "gamma-log", "version_req": "^0.4", "optional": true, "default_features": true}
+      ],
+      "license": "MIT"
+    },
+    {
+      "version": "0.1.30",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [
+        {"name": "pi-tracing-core", "version_req": "^0.1.20", "optional": false, "default_features": true}
+      ],
+      "license": "MIT"
+    }
+  ]
+}

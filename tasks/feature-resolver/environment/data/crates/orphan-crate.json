@@ -1,0 +1,20 @@
+{
+  "name": "orphan-crate",
+  "version": "0.1.0",
+  "base_size_bytes": 900,
+  "features": {
+    "default": ["experimental"],
+    "experimental": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "experimental": 0.10
+  },
+  "build_priority": 10,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "utils", "optional": false, "default_features": true, "features": []}
+  ],
+  "exports": ["OrphanTool"],
+  "conditional_exports": {}
+}

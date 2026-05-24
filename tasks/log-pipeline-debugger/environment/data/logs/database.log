@@ -1,0 +1,10 @@
+[2024-01-15 08:01:08] service=database query=SELECT table=users duration_ms=35 status=OK trace_id=tr_002
+[2024-01-15 08:10:47] service=database query=SELECT table=users duration_ms=28 status=OK trace_id=tr_004
+[2024-01-15 08:15:36] service=database query=SELECT table=data duration_ms=42 status=OK trace_id=tr_005
+[2024-01-15 08:22:21] service=database query=SELECT table=profiles duration_ms=31 status=OK trace_id=tr_006
+[2024-01-15 08:30:58] service=database query=SELECT table=reports duration_ms=650 status=SLOW trace_id=tr_007
+[2024-01-15 08:35:45] service=database query=INSERT table=submissions duration_ms=38 status=OK trace_id=tr_008
+[2024-01-15 09:01:14] service=database query=SELECT table=users duration_ms=550 status=ERROR trace_id=tr_009
+[2024-01-15 09:12:48] service=database query=SELECT table=users duration_ms=33 status=OK trace_id=tr_011
+[2024-01-15 09:20:36] service=database query=SELECT table=reports duration_ms=580 status=SLOW trace_id=tr_012
+[2024-01-15 09:30:25] service=database query=INSERT table=submissions duration_ms=40 status=OK trace_id=tr_014

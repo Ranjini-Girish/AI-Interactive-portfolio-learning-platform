@@ -1,0 +1,13 @@
+{
+  "name": "commander",
+  "versions": {
+    "11.1.0": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "9.5.0": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

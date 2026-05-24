@@ -1,0 +1,82 @@
+{
+  "module_name": "router",
+  "path": "src/http/router.js",
+  "lines_of_code": 85,
+  "imports": ["./auth_handler", "./logger", "./validator"],
+  "exports": ["createRouter", "matchRoute"],
+  "functions": [
+    {
+      "name": "createRouter",
+      "lines": 15,
+      "parameters": ["routes"],
+      "body": [
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "if",
+              "condition": [{"type": "logical_and"}],
+              "body": [],
+              "else_body": []
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "&&", ".", "()", "=", "[]", "typeof", "new"],
+      "operands": ["routes", "route", "i", "path", "handler", "method", "null", "this"]
+    },
+    {
+      "name": "matchRoute",
+      "lines": 42,
+      "parameters": ["method", "path"],
+      "body": [
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [
+                {
+                  "type": "switch",
+                  "cases": [
+                    {
+                      "type": "case",
+                      "body": [
+                        {"type": "if", "condition": [{"type": "logical_or"}, {"type": "logical_or"}], "body": [], "else_body": []}
+                      ]
+                    },
+                    {
+                      "type": "case",
+                      "body": [
+                        {
+                          "type": "for",
+                          "body": [
+                            {"type": "if", "condition": [{"type": "logical_and"}], "body": [], "else_body": []}
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "case",
+                      "body": []
+                    },
+                    {"type": "default", "body": []}
+                  ]
+                }
+              ],
+              "else_body": []
+            }
+          ]
+        },
+        {
+          "type": "ternary",
+          "body": [],
+          "else_body": []
+        }
+      ],
+      "operators": ["===", "!==", "&&", "||", ".", "()", "=", "[]", "?:", "+", "match", "typeof"],
+      "operands": ["method", "path", "routes", "route", "i", "j", "pattern", "params", "segments", "match", "null", "false"]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "libutil",
+  "type": "library",
+  "sources": ["util/string.cpp", "util/math.cpp"],
+  "headers": ["util/string.h", "util/math.h"],
+  "depends_on": [],
+  "build_time_ms": 1200
+}

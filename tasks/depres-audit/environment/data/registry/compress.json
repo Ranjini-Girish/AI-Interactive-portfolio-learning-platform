@@ -1,0 +1,8 @@
+{
+  "name": "compress",
+  "versions": [
+    { "version": "0.5.0", "license": "BSD-3-Clause", "dependencies": {}, "features": {} },
+    { "version": "1.0.0", "license": "BSD-3-Clause", "dependencies": { "encoding": { "version": "^0.2" } }, "features": {} },
+    { "version": "1.0.2", "license": "GPL-3.0", "dependencies": { "encoding": { "version": "^0.2" } }, "features": {} }
+  ]
+}

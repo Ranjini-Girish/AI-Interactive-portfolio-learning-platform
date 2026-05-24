@@ -1,0 +1,10 @@
+{
+  "name": "mul_overflow",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 100000]},
+    {"op": "MOV", "args": ["R1", 100000]},
+    {"op": "MUL", "args": ["R0", "R1"]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "HALT", "args": []}
+  ]
+}

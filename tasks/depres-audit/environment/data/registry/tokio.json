@@ -1,0 +1,9 @@
+{
+  "name": "tokio",
+  "versions": [
+    { "version": "1.0.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "1.28.0", "license": "MIT", "dependencies": { "log": { "version": "^0.4" } }, "features": {} },
+    { "version": "1.35.0", "license": "MIT", "dependencies": { "log": { "version": "^0.4" } }, "features": {} },
+    { "version": "1.38.0", "license": "MIT", "dependencies": { "log": { "version": "^0.4" } }, "features": {} }
+  ]
+}

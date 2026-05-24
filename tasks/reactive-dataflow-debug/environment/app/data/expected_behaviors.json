@@ -1,0 +1,42 @@
+{
+  "value_propagation": {
+    "rule": "When a value cell changes, all transitive dependents are recalculated",
+    "example": "Changing A1 recalculates cells whose formulas reference A1 directly or transitively"
+  },
+  "formula_evaluation": {
+    "rule": "All intermediate calculations retain full IEEE 754 double precision internally",
+    "example": "D2 = D1/3 retains full precision for downstream calculations; rounding applies only at output"
+  },
+  "dependency_management": {
+    "rule": "The dependency graph always reflects the current definition of each cell",
+    "example": "If a cell's formula changes, the graph must update to match the new references"
+  },
+  "cycle_handling": {
+    "rule": "Circular dependencies are detected via DFS back-edge detection; only true cycles are reported",
+    "example": "K1→K2→K3→K1 is a cycle; diamond-shaped and chain-shaped graphs are not"
+  },
+  "conditional_evaluation": {
+    "rule": "IF evaluates only the branch selected by the condition (short-circuit semantics)",
+    "example": "IF(true, A1, K1) returns A1 without evaluating K1"
+  },
+  "batch_semantics": {
+    "rule": "Batch updates apply all changes atomically before recalculating the affected set",
+    "example": "Changing G1, G2, G3 in a batch recalculates their dependents exactly once"
+  },
+  "recalculation_ordering": {
+    "rule": "Recalculation follows topological order with alphabetical tie-breaking at equal depth",
+    "example": "Cells M1, M2, M3 with identical topological depth evaluate in that alphabetical order"
+  },
+  "type_transitions": {
+    "rule": "When a cell transitions from formula to value (or vice versa), its dependency graph edges are updated accordingly",
+    "example": "A formula cell becoming a value cell has all its outgoing dependency edges removed"
+  },
+  "error_propagation": {
+    "rule": "A reference to a cell in error state causes the referencing cell to also enter error state",
+    "example": "A cell referencing a cycle member evaluates to null"
+  },
+  "output_format": {
+    "rule": "Final output values are rounded to the configured precision (default 6 decimal places)",
+    "example": "D2 = 2/3 appears as 0.666667 in the output with precision=6"
+  }
+}

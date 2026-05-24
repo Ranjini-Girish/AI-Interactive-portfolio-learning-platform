@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ADV-2024-001",
+    "package": "crypto-utils",
+    "affected_versions": "<=1.0.0",
+    "severity": "critical",
+    "cvss": 9.1,
+    "title": "Weak key derivation in symmetric encryption"
+  },
+  {
+    "id": "ADV-2024-002",
+    "package": "session-store",
+    "affected_versions": "<=1.0.0",
+    "severity": "high",
+    "cvss": 7.5,
+    "title": "Session fixation vulnerability"
+  },
+  {
+    "id": "ADV-2024-003",
+    "package": "format-utils",
+    "affected_versions": "<=1.0.0",
+    "severity": "medium",
+    "cvss": 5.3,
+    "title": "Format string injection in template rendering"
+  },
+  {
+    "id": "ADV-2024-004",
+    "package": "logger",
+    "affected_versions": "<=2.0.0",
+    "severity": "low",
+    "cvss": 3.1,
+    "title": "Log injection via unescaped user input"
+  },
+  {
+    "id": "ADV-2024-005",
+    "package": "cache-driver",
+    "affected_versions": "<=1.1.0",
+    "severity": "medium",
+    "cvss": 6.2,
+    "title": "Cache poisoning through key collision"
+  }
+]

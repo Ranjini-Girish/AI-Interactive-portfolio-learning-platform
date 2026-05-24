@@ -1,0 +1,15 @@
+{
+  "name": "register_chain",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 1]},
+    {"op": "MOV", "args": ["R1", "R0"]},
+    {"op": "ADD", "args": ["R1", "R0"]},
+    {"op": "MOV", "args": ["R2", "R1"]},
+    {"op": "ADD", "args": ["R2", "R1"]},
+    {"op": "MOV", "args": ["R3", "R2"]},
+    {"op": "ADD", "args": ["R3", "R2"]},
+    {"op": "MOV", "args": ["R4", "R3"]},
+    {"op": "ADD", "args": ["R4", "R3"]},
+    {"op": "HALT", "args": []}
+  ]
+}

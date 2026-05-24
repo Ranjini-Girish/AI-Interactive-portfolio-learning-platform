@@ -123,8 +123,28 @@ def main():
     quarantine_domains = {ev["domain"] for ev in accepted_events if ev["kind"] == "quarantine_hold"}
 
     audit_overrides = {}
-    for idx, ev in enumerate(accepted_events):
-        if ev["kind"] == "audit_review":
+    for idx, ev in enumerate(log.get("events", [])):
+        kind = ev.get("kind")
+        day = ev.get("day")
+        if kind not in ALLOWED_INCIDENT_KINDS:
+            continue
+        if not isinstance(day, int) or isinstance(day, bool):
+            continue
+        if day > current_day:
+            continue
+        if kind == "key_compromise":
+            if ev.get("serial") not in leaf_serials:
+                continue
+        elif kind == "ca_compromise":
+            s = ev.get("serial")
+            if s not in inter_serials and s not in trusted_roots:
+                continue
+        elif kind in ("audit_review", "quarantine_hold"):
+            if ev.get("domain") not in domain_set:
+                continue
+            if kind == "audit_review" and ev.get("target_verdict") not in ALLOWED_TARGET_VERDICTS:
+                continue
+        if kind == "audit_review":
             d = ev["domain"]
             cur = audit_overrides.get(d)
             if cur is None or ev["day"] > cur[1]["day"] or (ev["day"] == cur[1]["day"] and idx > cur[0]):

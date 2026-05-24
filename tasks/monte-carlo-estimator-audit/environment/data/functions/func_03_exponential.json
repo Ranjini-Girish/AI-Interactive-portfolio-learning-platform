@@ -1,0 +1,14 @@
+{
+  "id": "func_03_exponential",
+  "type": "exponential",
+  "params": {
+    "amplitude": 1.0,
+    "rate": -2.0
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 0.43233235838169365,
+  "description": "f(x) = exp(-2x)"
+}

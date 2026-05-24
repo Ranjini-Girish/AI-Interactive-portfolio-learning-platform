@@ -1,0 +1,10 @@
+{
+  "description": "Target codebase for static analysis",
+  "name": "module-analyzer-target",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}

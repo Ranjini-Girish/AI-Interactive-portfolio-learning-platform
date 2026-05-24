@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
+  "platformTaskSlug": "phasor-null-lattice-audit",
+  "assignmentId": "6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=6e2962af-c807-4ae9-a1c6-6a8ffc1c6eef",
+  "capturedAt": "2026-05-24T02:43:08.289Z",
+  "revisionReasons": [
+    "reviewer_feedback_present"
+  ],
+  "autoEval": {
+    "buildFailed": false,
+    "buildId": null,
+    "summary": null
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ HARD\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 0.0% (0/\n  5 runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nthree output files (bin_graph.json, \nnull_manifest.json, summary.json) \nunder /app/audit/, and opens by \ndirecting the agent to SPEC.md as the"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "phasor-null-lattice-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\phasor-null-lattice-audit.zip",
+    "excludedPlatformZip": "phasor-null-lattice-audit.zip"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "transactions": {
+    "id_field": "txn_id",
+    "amount_field": "amount",
+    "currency_field": "currency",
+    "date_field": "timestamp",
+    "date_format": "iso8601"
+  },
+  "settlements": {
+    "id_field": "settlement_id",
+    "txn_ref_field": "txn_id",
+    "amount_field": "settled_amount",
+    "date_field": "settlement_date",
+    "date_format": "mm/dd/yyyy"
+  },
+  "ledger": {
+    "id_field": "entry_id",
+    "txn_ref_field": "txn_id",
+    "date_field": "posted_date",
+    "date_format": "yyyy-mm-dd"
+  }
+}

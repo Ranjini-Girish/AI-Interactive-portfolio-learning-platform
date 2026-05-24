@@ -1,0 +1,20 @@
+{
+  "output_precision": 6,
+  "thresholds": {
+    "max_depth": 3,
+    "max_fan_out": 4,
+    "max_fan_in": 5,
+    "max_instability": 0.4,
+    "oversized_crate_bytes": 7000
+  },
+  "severity_ranks": {
+    "critical": 4,
+    "high": 3,
+    "medium": 2,
+    "low": 1,
+    "info": 0
+  },
+  "feature_exclusion_groups": {
+    "tls_backend": ["openssl", "rustls", "native-tls"]
+  }
+}

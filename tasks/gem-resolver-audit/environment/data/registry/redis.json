@@ -1,0 +1,25 @@
+{
+  "name": "redis",
+  "versions": {
+    "4.0.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2021-05-01"
+    },
+    "4.8.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2022-08-01"
+    },
+    "5.0.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2023-02-01"
+    },
+    "5.2.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2024-01-01"
+    }
+  }
+}

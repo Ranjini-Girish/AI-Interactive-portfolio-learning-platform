@@ -1,0 +1,17 @@
+{
+  "name": "call_chain",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 0]},
+    {"op": "CALL", "args": [4]},
+    {"op": "MOV", "args": ["R7", "R0"]},
+    {"op": "HALT", "args": []},
+    {"op": "ADD", "args": ["R0", 1]},
+    {"op": "CALL", "args": [7]},
+    {"op": "RET", "args": []},
+    {"op": "ADD", "args": ["R0", 1]},
+    {"op": "CALL", "args": [10]},
+    {"op": "RET", "args": []},
+    {"op": "ADD", "args": ["R0", 1]},
+    {"op": "RET", "args": []}
+  ]
+}

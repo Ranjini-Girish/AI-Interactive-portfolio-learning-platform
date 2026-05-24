@@ -1,0 +1,5 @@
+{
+  "amount_tolerance": 0.01,
+  "max_fee_percent": 0.50,
+  "duplicate_window_days": 7
+}

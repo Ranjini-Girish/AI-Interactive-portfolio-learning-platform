@@ -1,0 +1,19 @@
+{
+  "name": "form-validator",
+  "path": "src/components/form-validator.js",
+  "size_bytes": 890,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "utils",
+      "specifiers": [
+        "sanitize"
+      ]
+    }
+  ],
+  "exports": [
+    "FormValidator",
+    "validateField"
+  ],
+  "re_exports": []
+}

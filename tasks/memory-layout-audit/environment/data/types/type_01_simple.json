@@ -1,0 +1,10 @@
+{
+  "id": "type_01_simple",
+  "kind": "struct",
+  "repr": "C",
+  "fields": [
+    {"name": "a", "type": "u8"},
+    {"name": "b", "type": "u32"},
+    {"name": "c", "type": "u16"}
+  ]
+}

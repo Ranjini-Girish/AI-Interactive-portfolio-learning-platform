@@ -1,0 +1,31 @@
+{
+  "battle_id": "battle_03",
+  "description": "Shield mechanics and water advantage",
+  "rng_seed": 256,
+  "heroes": [
+    {
+      "id": "kai", "name": "Kai", "element": "water",
+      "max_hp": 250, "attack": 35, "defense": 35, "speed": 25, "crit_rate": 15,
+      "skills": [
+        {"id": "tidal_strike", "power": 110, "target_type": "single", "element": "water", "effect": "none"},
+        {"id": "aqua_shield", "power": 0, "target_type": "self", "element": "water", "effect": "shield"}
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "imp_a", "name": "Fire Imp", "element": "fire",
+      "max_hp": 100, "attack": 38, "defense": 10, "speed": 36, "crit_rate": 25,
+      "skills": [
+        {"id": "ember", "power": 105, "target_type": "single", "element": "fire", "effect": "burn"}
+      ]
+    },
+    {
+      "id": "imp_b", "name": "Fire Imp", "element": "fire",
+      "max_hp": 100, "attack": 38, "defense": 10, "speed": 34, "crit_rate": 25,
+      "skills": [
+        {"id": "ember", "power": 105, "target_type": "single", "element": "fire", "effect": "burn"}
+      ]
+    }
+  ]
+}

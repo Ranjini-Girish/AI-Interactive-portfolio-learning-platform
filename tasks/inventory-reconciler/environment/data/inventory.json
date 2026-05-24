@@ -1,0 +1,18 @@
+{
+  "warehouse_north": {
+    "PROD-001": 150,
+    "PROD-002": 80,
+    "MFG-PART-003": 45,
+    "PROD-004": 200,
+    "PROD-006": 60,
+    "PROD-011": 500
+  },
+  "warehouse_south": {
+    "EXT-COMP-005": 30,
+    "PROD-007": 120,
+    "SUP-ITEM-008": 300,
+    "PROD-009": 15,
+    "WH-BULK-010": 90,
+    "PROD-012": 250
+  }
+}

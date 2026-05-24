@@ -1,0 +1,13 @@
+{
+  "name": "@myorg/auth",
+  "version": "0.8.0",
+  "license": "MIT",
+  "dependencies": {
+    "@myorg/core": "workspace:*",
+    "@myorg/utils": "workspace:*",
+    "jsonwebtoken": "^9.0.0",
+    "bcrypt": "^5.0.0",
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,55 @@
+[2026-05-24T03:26:14.173Z] START run_begin
+  E2E flow started
+  {"revisionTaskId":"943ca427-4fb0-4f13-8a48-6379ac6097ff","env":{"SNORKEL_REGENERATE_RUBRIC":"0","SNORKEL_STATIC_CHECKS":"1"}}
+
+[2026-05-24T03:26:14.188Z] STEP open_revision
+  Opening revision card from home
+  {"revisionTaskId":"943ca427-4fb0-4f13-8a48-6379ac6097ff"}
+
+[2026-05-24T03:26:31.590Z] STEP assert_workspace
+  Revision workspace loaded
+  {"taskId":"943ca427-4fb0-4f13-8a48-6379ac6097ff","url":"https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=7e3d16db-4afb-4c95-b85c-dd3045039394"}
+
+[2026-05-24T03:26:36.006Z] STEP extract_revision_context
+  Expanding feedback panels and reading portal metadata
+
+[2026-05-24T03:26:38.939Z] STEP extract_revision_context_done
+  Revision feedback captured
+  {"expandCount":1,"reasons":["autoeval_build_failed"],"hasAgentReview":true,"hasTestQuality":true}
+
+[2026-05-24T03:26:38.972Z] STEP revision_context_saved
+  Wrote revision-context.json
+  {"path":"C:\\Users\\gengi\\Projects\\Airdawg_terminal\\e2e\\audit\\revision-943ca427-4fb0-4f13-8a48-6379ac6097ff-context.json","reasons":["autoeval_build_failed"],"platformAttachedZip":"replica-lag-window-audit.zip"}
+
+[2026-05-24T03:26:39.066Z] STEP resolve_swap_zip
+  Selecting different local task zip for revision slot
+  {"exclude":"replica-lag-window-audit.zip","uploadTaskDir":"tasks/replica-lag-window-audit"}
+
+[2026-05-24T03:26:44.758Z] STEP swap_zip_selected
+  Replacement zip resolved
+  {"zipPath":"C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip"}
+
+[2026-05-24T03:26:44.789Z] STEP upload_zip
+  Uploading replacement task zip (not platform original)
+  {"zipPath":"C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip","excludedPlatformZip":"replica-lag-window-audit.zip"}
+
+[2026-05-24T03:26:46.487Z] STEP upload_zip_done
+  Replacement zip confirmed on form
+
+[2026-05-24T03:26:46.493Z] STEP set_regenerate_rubric
+  Unchecking
+  {"regenerateRubric":false}
+
+[2026-05-24T03:26:46.728Z] STEP fill_rubric
+  Pasting rubrics.txt from upload task
+  {"rubricPath":"C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit\\rubrics.txt"}
+
+[2026-05-24T03:26:47.978Z] STEP fill_rubric_done
+  Rubric paste complete
+
+[2026-05-24T03:26:47.988Z] STEP set_send_to_reviewer
+  Checked
+  {"sendToReviewer":true}
+
+[2026-05-24T03:26:48.451Z] STEP static_checks
+  Running fast static checks

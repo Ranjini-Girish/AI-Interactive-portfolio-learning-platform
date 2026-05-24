@@ -1,0 +1,13 @@
+{
+  "excludes": [],
+  "project_license": "Apache-2.0",
+  "query_id": "query_02",
+  "replaces": [],
+  "requirements": [
+    {
+      "min_version": "1.1.0",
+      "module": "example.com/api/rest"
+    }
+  ],
+  "root_module": "my-app"
+}

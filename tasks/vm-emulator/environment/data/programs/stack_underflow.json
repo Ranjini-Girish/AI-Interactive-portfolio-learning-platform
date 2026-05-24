@@ -1,0 +1,11 @@
+{
+  "name": "stack_underflow",
+  "instructions": [
+    {"op": "POP", "args": ["R0"]},
+    {"op": "MOV", "args": ["R1", 42]},
+    {"op": "PUSH", "args": ["R1"]},
+    {"op": "POP", "args": ["R0"]},
+    {"op": "POP", "args": ["R2"]},
+    {"op": "HALT", "args": []}
+  ]
+}

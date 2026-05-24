@@ -1,0 +1,6 @@
+{
+  "name": "mongodb",
+  "version": "6.3.0",
+  "license": "Apache-2.0",
+  "dependencies": []
+}

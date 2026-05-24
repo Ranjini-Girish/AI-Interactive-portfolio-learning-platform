@@ -1,0 +1,59 @@
+{
+  "replica_id": "delta",
+  "operations": [
+    {
+      "op_id": "delta-001",
+      "key": "user:1007",
+      "value": "Grace",
+      "op_type": "SET",
+      "lamport_ts": 1,
+      "vector_clock": {"delta": 1},
+      "wall_clock_ms": 1500
+    },
+    {
+      "op_id": "delta-002",
+      "key": "counter:visits",
+      "value": "5",
+      "op_type": "SET",
+      "lamport_ts": 2,
+      "vector_clock": {"delta": 2},
+      "wall_clock_ms": 2500
+    },
+    {
+      "op_id": "delta-003",
+      "key": "user:1007",
+      "value": "__TOMBSTONE__",
+      "op_type": "DELETE",
+      "lamport_ts": 6,
+      "vector_clock": {"alpha": 2, "delta": 3},
+      "wall_clock_ms": 6500
+    },
+    {
+      "op_id": "delta-004",
+      "key": "user:1007",
+      "value": "Grace-Reborn",
+      "op_type": "SET",
+      "lamport_ts": 7,
+      "vector_clock": {"alpha": 2, "delta": 4},
+      "wall_clock_ms": 7500
+    },
+    {
+      "op_id": "delta-005",
+      "key": "config:timeout",
+      "value": "3000",
+      "op_type": "SET",
+      "lamport_ts": 9,
+      "vector_clock": {"alpha": 4, "beta": 2, "delta": 5},
+      "wall_clock_ms": 9000
+    },
+    {
+      "op_id": "delta-006",
+      "key": "user:1001",
+      "value": "Alice-D",
+      "op_type": "SET",
+      "lamport_ts": 5,
+      "vector_clock": {"alpha": 2, "delta": 3},
+      "wall_clock_ms": 5100
+    }
+  ]
+}

@@ -21,6 +21,7 @@
     "flow:revision:iterate:headed": "playwright test tests/revision-flow.spec.ts -g \"revision submit:\" --headed",
     "flow:revision:dry": "playwright test tests/revision-flow.spec.ts -g \"revision dry run\"",
     "flow:revision:demo:headed": "playwright test tests/revision-flow.spec.ts -g \"revision demo\" --headed",
+    "audit:viewer": "npm run dev --prefix audit-viewer",
     "submit:new": "playwright test tests/submit-new-task.spec.ts -g \"upload and prepare\" --project=chromium",
     "submit:new:headed": "playwright test tests/submit-new-task.spec.ts -g \"upload and prepare\" --project=chromium --headed",
     "submit:new:live": "playwright test tests/submit-new-task.spec.ts -g \"submit new task to platform\" --project=chromium",

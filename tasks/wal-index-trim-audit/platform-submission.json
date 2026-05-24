@@ -1,0 +1,99 @@
+{
+  "taskName": "wal-index-trim-audit",
+  "updatedAt": "2026-05-24T02:18:34.379Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "b0907c07-03af-45c7-8136-028704d18838",
+    "taskStatus": "Evaluation pending",
+    "taskName": "wal-index-trim-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "wal-index-trim-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T02:18:34.379Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "b0907c07-03af-45c7-8136-028704d18838",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\wal-index-trim-audit.zip",
+    "zipBytes": 18777,
+    "zipSha256": "5bcc48e5d278f4d294a357106bb43f0407cbe4f0fc4d2cdc0706ba820c305ace",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T14:34:32.548Z",
+      "flow": "revision",
+      "dryRun": true,
+      "submitted": false,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=2256d1fa-386d-4d4a-ac24-69c9ce1072fb",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "2256d1fa-386d-4d4a-ac24-69c9ce1072fb",
+      "revisionTaskId": "b0907c07-03af-45c7-8136-028704d18838",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\wal-index-trim-audit.zip",
+      "zipBytes": 18262,
+      "zipSha256": "dc1575d4d72b84500bcfa260f3a17bc395d1ea61e1d02c6192b31d31d68eb07b",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-23T14:40:55.351Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "b0907c07-03af-45c7-8136-028704d18838",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\wal-index-trim-audit.zip",
+      "zipBytes": 18668,
+      "zipSha256": "9f80f33720f24f38a23e2c22af269b1ffa7f5768e7b5e5550f44026ba304de76",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T02:18:34.379Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "b0907c07-03af-45c7-8136-028704d18838",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\wal-index-trim-audit.zip",
+      "zipBytes": 18777,
+      "zipSha256": "5bcc48e5d278f4d294a357106bb43f0407cbe4f0fc4d2cdc0706ba820c305ace",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

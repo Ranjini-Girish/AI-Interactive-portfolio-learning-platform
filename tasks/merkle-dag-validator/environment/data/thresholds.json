@@ -1,0 +1,5 @@
+{
+  "max_depth": 3,
+  "max_repair_cost": 50,
+  "min_integrity_ratio": 0.8
+}

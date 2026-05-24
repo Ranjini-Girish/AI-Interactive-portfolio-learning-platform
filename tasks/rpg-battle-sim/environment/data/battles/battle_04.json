@@ -1,0 +1,33 @@
+{
+  "battle_id": "battle_04",
+  "description": "Poison and stun timing test",
+  "rng_seed": 999,
+  "heroes": [
+    {
+      "id": "aria", "name": "Aria", "element": "fire",
+      "max_hp": 200, "attack": 45, "defense": 20, "speed": 35, "crit_rate": 25,
+      "skills": [
+        {"id": "flame_slash", "power": 120, "target_type": "single", "element": "fire", "effect": "burn"},
+        {"id": "fire_ball", "power": 80, "target_type": "aoe", "element": "fire", "effect": "none"}
+      ]
+    },
+    {
+      "id": "rex", "name": "Rex", "element": "nature",
+      "max_hp": 280, "attack": 40, "defense": 30, "speed": 20, "crit_rate": 10,
+      "skills": [
+        {"id": "vine_lash", "power": 100, "target_type": "single", "element": "nature", "effect": "poison"},
+        {"id": "natures_guard", "power": 0, "target_type": "self", "element": "nature", "effect": "shield"}
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "golem_a", "name": "Frost Golem", "element": "water",
+      "max_hp": 320, "attack": 32, "defense": 42, "speed": 10, "crit_rate": 5,
+      "skills": [
+        {"id": "ice_slam", "power": 125, "target_type": "single", "element": "water", "effect": "none"},
+        {"id": "frost_nova", "power": 55, "target_type": "aoe", "element": "water", "effect": "stun"}
+      ]
+    }
+  ]
+}

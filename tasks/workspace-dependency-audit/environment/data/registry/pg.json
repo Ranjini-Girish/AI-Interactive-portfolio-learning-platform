@@ -1,0 +1,17 @@
+{
+  "name": "pg",
+  "versions": {
+    "8.11.3": {
+      "dependencies": {
+        "pg-protocol": "^1.6.0"
+      },
+      "license": "MIT"
+    },
+    "8.8.0": {
+      "dependencies": {
+        "pg-protocol": "^1.5.0"
+      },
+      "license": "MIT"
+    }
+  }
+}

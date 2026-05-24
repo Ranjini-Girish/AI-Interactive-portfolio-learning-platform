@@ -1,0 +1,61 @@
+{
+  "taskName": "phase-skew-hold-audit",
+  "updatedAt": "2026-05-23T13:16:22.140Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "e94b2ec4-38a4-452c-872b-13f22639daec",
+    "taskStatus": "Evaluation pending",
+    "taskName": "phase-skew-hold-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "phase-skew-hold-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T13:16:22.140Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "e94b2ec4-38a4-452c-872b-13f22639daec",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\phase-skew-hold-audit.zip",
+    "zipBytes": 17444,
+    "zipSha256": "41252bf7bc65a1411b7e07d6b64307f1860f89ac1f6f6498c8990613856c66b8",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T13:16:22.140Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "e94b2ec4-38a4-452c-872b-13f22639daec",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\phase-skew-hold-audit.zip",
+      "zipBytes": 17444,
+      "zipSha256": "41252bf7bc65a1411b7e07d6b64307f1860f89ac1f6f6498c8990613856c66b8",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

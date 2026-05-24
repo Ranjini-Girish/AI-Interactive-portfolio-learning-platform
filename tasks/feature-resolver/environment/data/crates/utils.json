@@ -1,0 +1,26 @@
+{
+  "name": "utils",
+  "version": "1.4.0",
+  "base_size_bytes": 1800,
+  "features": {
+    "default": ["std"],
+    "std": [],
+    "no-std": [],
+    "hashing": ["dep:hash-impl"]
+  },
+  "feature_conflicts": [["std", "no-std"]],
+  "feature_size_weights": {
+    "std": 0.10,
+    "no-std": 0.05,
+    "hashing": 0.15
+  },
+  "build_priority": 1,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "hash-impl", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["format_string", "parse_int"],
+  "conditional_exports": {
+    "hashing": ["compute_hash", "HashAlgo"]
+  }
+}

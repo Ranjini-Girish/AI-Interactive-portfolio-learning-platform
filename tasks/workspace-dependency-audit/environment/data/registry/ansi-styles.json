@@ -1,0 +1,13 @@
+{
+  "name": "ansi-styles",
+  "versions": {
+    "3.2.1": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "4.3.0": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "workload_id": "w01_linear",
+  "events": [
+    {
+      "event_id": "e1",
+      "sequence": 1,
+      "logged_at": "2026-02-01T10:00:00Z",
+      "kind": "enter",
+      "scope_id": "A"
+    },
+    {
+      "event_id": "e2",
+      "sequence": 2,
+      "logged_at": "2026-02-01T10:00:01Z",
+      "kind": "enter",
+      "scope_id": "B"
+    },
+    {
+      "event_id": "e3",
+      "sequence": 3,
+      "logged_at": "2026-02-01T10:00:02Z",
+      "kind": "exit",
+      "scope_id": "B",
+      "hold_ms": 100
+    },
+    {
+      "event_id": "e4",
+      "sequence": 4,
+      "logged_at": "2026-02-01T10:00:03Z",
+      "kind": "exit",
+      "scope_id": "A",
+      "hold_ms": 200
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "overflow_test",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 2147483647]},
+    {"op": "ADD", "args": ["R0", 1]},
+    {"op": "MOV", "args": ["R1", "R0"]},
+    {"op": "MOV", "args": ["R0", -2147483648]},
+    {"op": "SUB", "args": ["R0", 1]},
+    {"op": "MOV", "args": ["R2", "R0"]},
+    {"op": "HALT", "args": []}
+  ]
+}

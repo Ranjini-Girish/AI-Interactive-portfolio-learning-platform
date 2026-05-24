@@ -1,0 +1,34 @@
+{
+  "name": "db-connector",
+  "version": "2.0.1",
+  "base_size_bytes": 3800,
+  "features": {
+    "default": ["postgres"],
+    "postgres": ["dep:pg-driver"],
+    "mysql": ["dep:mysql-driver"],
+    "sqlite": ["dep:sqlite-driver"]
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "postgres": 0.20,
+    "mysql": 0.20,
+    "sqlite": 0.15
+  },
+  "build_priority": 3,
+  "weak_features": {
+    "tracing": ["logger/structured"]
+  },
+  "dependencies": [
+    {"name": "core-lib", "optional": false, "default_features": true, "features": []},
+    {"name": "conn-pool", "optional": false, "default_features": true, "features": []},
+    {"name": "query-builder", "optional": false, "default_features": true, "features": []},
+    {"name": "pg-driver", "optional": true, "default_features": true, "features": []},
+    {"name": "mysql-driver", "optional": true, "default_features": true, "features": []},
+    {"name": "sqlite-driver", "optional": true, "default_features": true, "features": []}
+  ],
+  "exports": ["DbPool", "query"],
+  "conditional_exports": {
+    "postgres": ["PgConnection"],
+    "mysql": ["MysqlConnection"]
+  }
+}

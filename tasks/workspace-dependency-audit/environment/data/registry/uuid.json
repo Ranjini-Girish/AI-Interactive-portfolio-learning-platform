@@ -1,0 +1,13 @@
+{
+  "name": "uuid",
+  "versions": {
+    "8.3.2": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "9.0.0": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

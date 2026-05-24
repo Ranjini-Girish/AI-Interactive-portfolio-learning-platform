@@ -1,0 +1,47 @@
+{
+  "experiments": [
+    {
+      "experiment_id": "exp_auth",
+      "variants": [
+        {
+          "variant_id": "control",
+          "weight": 0.5
+        },
+        {
+          "variant_id": "treatment",
+          "weight": 0.5
+        }
+      ],
+      "attribution_window_hours": 72
+    },
+    {
+      "experiment_id": "exp_checkout",
+      "variants": [
+        {
+          "variant_id": "legacy",
+          "weight": 0.5
+        },
+        {
+          "variant_id": "streamlined",
+          "weight": 0.5
+        }
+      ],
+      "attribution_window_hours": 72
+    }
+  ],
+  "mutex_groups": [
+    {
+      "group_id": "surface",
+      "experiment_ids": [
+        "exp_auth",
+        "exp_checkout"
+      ]
+    }
+  ],
+  "analysis_period": {
+    "start": "2026-01-01",
+    "end": "2026-01-31"
+  },
+  "rounding_decimals": 6,
+  "srm_alpha": 0.05
+}

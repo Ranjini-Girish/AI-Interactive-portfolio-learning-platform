@@ -1,0 +1,26 @@
+{
+  "cyclomatic_complexity": {
+    "low": 5,
+    "moderate": 10,
+    "high": 20,
+    "very_high": 50
+  },
+  "cognitive_complexity": {
+    "low": 8,
+    "moderate": 15,
+    "high": 25,
+    "very_high": 50
+  },
+  "maintainability_index": {
+    "high": 85,
+    "moderate": 65,
+    "low": 20
+  },
+  "halstead_difficulty": {
+    "low": 10,
+    "moderate": 20,
+    "high": 40
+  },
+  "instability_warning": 0.8,
+  "min_cohesion_functions": 2
+}

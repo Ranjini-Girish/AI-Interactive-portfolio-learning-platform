@@ -1,0 +1,17 @@
+{
+  "name": "json-parser",
+  "version": "2.0.0",
+  "base_size_bytes": 1500,
+  "features": {
+    "default": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {},
+  "build_priority": 6,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "serde-core", "optional": false, "default_features": true, "features": ["derive"]}
+  ],
+  "exports": ["JsonParser", "parse_json"],
+  "conditional_exports": {}
+}

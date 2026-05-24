@@ -1,0 +1,22 @@
+{
+  "causal_violation": {
+    "enabled": true,
+    "scope": "same_key",
+    "condition": "B.wall_clock_ms < A.wall_clock_ms - max_clock_drift_ms when A happens-before B"
+  },
+  "concurrent_write": {
+    "enabled": true,
+    "scope": "same_key",
+    "condition": "neither A happens-before B nor B happens-before A"
+  },
+  "resurrection": {
+    "enabled": true,
+    "scope": "same_key",
+    "condition": "SET after DELETE in total order for the same key"
+  },
+  "clock_regression": {
+    "enabled": true,
+    "scope": "per_replica",
+    "condition": "operation[i+1].wall_clock_ms < operation[i].wall_clock_ms in log order"
+  }
+}

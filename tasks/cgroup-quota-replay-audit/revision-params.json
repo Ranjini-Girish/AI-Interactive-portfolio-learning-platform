@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "5f2d92cc-7a8f-401c-a397-a4a8f47cf026",
+  "platformTaskSlug": "cgroup-quota-replay-audit",
+  "assignmentId": "b5422777-e20d-4c8e-ac82-5374b51bcc5b",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=b5422777-e20d-4c8e-ac82-5374b51bcc5b",
+  "capturedAt": "2026-05-23T17:25:10.893Z",
+  "revisionReasons": [
+    "reviewer_feedback_present"
+  ],
+  "autoEval": {
+    "buildFailed": false,
+    "buildId": null,
+    "summary": null
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nFailed to run difficulty check\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File\nNo file available"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive output files, their canonical \nJSON requirements (UTF-8, ASCII-only, \n2-space indent, lex-sorted keys, \ntrailing newline), the input file"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "tsv-gap-bundle-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\tsv-gap-bundle-audit.zip",
+    "excludedPlatformZip": "cgroup-quota-replay-audit.zip"
+  }
+}

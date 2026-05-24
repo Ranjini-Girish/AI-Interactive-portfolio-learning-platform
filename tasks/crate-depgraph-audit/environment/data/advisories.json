@@ -1,0 +1,30 @@
+[
+  {
+    "id": "RUSTSEC-2024-0001",
+    "crate": "sigma-tls",
+    "affected_versions": "<0.9.1",
+    "severity": "high",
+    "title": "Certificate validation bypass in TLS handshake"
+  },
+  {
+    "id": "RUSTSEC-2024-0002",
+    "crate": "eta-crypto",
+    "affected_versions": "<0.10.1",
+    "severity": "critical",
+    "title": "Buffer overflow in hash computation"
+  },
+  {
+    "id": "RUSTSEC-2024-0003",
+    "crate": "iota-rand-core",
+    "affected_versions": ">=0.6.0, <0.6.5",
+    "severity": "medium",
+    "title": "Predictable seed generation in default configuration"
+  },
+  {
+    "id": "RUSTSEC-2024-0004",
+    "crate": "kappa-io",
+    "affected_versions": ">=1.0.0, <=1.2.0",
+    "severity": "low",
+    "title": "File descriptor leak under high concurrency"
+  }
+]

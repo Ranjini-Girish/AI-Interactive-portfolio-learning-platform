@@ -1,0 +1,13 @@
+{
+  "fsm_id": "incident",
+  "initial_state": "detected",
+  "terminal_states": ["resolved", "wont_fix"],
+  "allowed_edges": [
+    ["detected", "triaged"],
+    ["triaged", "investigating"],
+    ["investigating", "mitigated"],
+    ["mitigated", "resolved"],
+    ["detected", "wont_fix"],
+    ["triaged", "wont_fix"]
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "taskName": "csp-merge-policy-audit",
+  "updatedAt": "2026-05-23T17:46:20.964Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "02b7c62d-f1f4-4b8e-903e-a0c065b0a57b",
+    "taskStatus": "Evaluation pending",
+    "taskName": "csp-merge-policy-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "csp-merge-policy-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:46:20.964Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "02b7c62d-f1f4-4b8e-903e-a0c065b0a57b",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\csp-merge-policy-audit.zip",
+    "zipBytes": 22387,
+    "zipSha256": "648cc0e94f0104098f4ececb874b4458ca5dafc02e167059f187d55bbe4e5549",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:46:20.964Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "02b7c62d-f1f4-4b8e-903e-a0c065b0a57b",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\csp-merge-policy-audit.zip",
+      "zipBytes": 22387,
+      "zipSha256": "648cc0e94f0104098f4ececb874b4458ca5dafc02e167059f187d55bbe4e5549",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

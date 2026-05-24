@@ -1,0 +1,16 @@
+{
+  "id": "func_05_rational",
+  "type": "rational",
+  "params": {
+    "numerator": 1.0,
+    "x2_coeff": 25.0,
+    "x1_coeff": 0.0,
+    "x0_coeff": 1.0
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 0.2746801533890032,
+  "description": "f(x) = 1 / (1 + 25x^2)"
+}

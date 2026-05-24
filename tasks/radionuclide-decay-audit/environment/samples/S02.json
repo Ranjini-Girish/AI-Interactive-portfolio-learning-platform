@@ -1,0 +1,8 @@
+{
+  "sample_id": "S02",
+  "description": "Pure Tx-310 fast-decay source",
+  "collection_time": "2026-01-15T08:00:00Z",
+  "initial_activities_bq": {
+    "Tx310": 5000.0
+  }
+}

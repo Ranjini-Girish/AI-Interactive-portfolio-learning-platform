@@ -1,0 +1,21 @@
+{
+  "bucket_size_seconds": 300,
+  "quality_filter": ["good", "acceptable"],
+  "threshold_rules": [
+    {
+      "sensor_pattern": "TEMP-*",
+      "metric": "mean",
+      "operator": "gt",
+      "value": 35.0
+    },
+    {
+      "sensor_pattern": "HUMID-*",
+      "metric": "max",
+      "operator": "gt",
+      "value": 90.0
+    }
+  ],
+  "output_precision": 4,
+  "sort_by": "sensor_id",
+  "sort_order": "ascending"
+}

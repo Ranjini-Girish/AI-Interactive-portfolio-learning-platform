@@ -1,0 +1,2456 @@
+
+
+Looking at this problem, I need to:
+
+1. Parse semver versions with pre-release support
+2. Parse constraint operators (=, >=, >, <=, <, ^, ~, compound)
+3. Resolve dependencies from registry (highest non-yanked matching version)
+4. Compute topological build order
+5. Calculate depths (longest path from root)
+6. Compute vulnerability scores with decay propagation
+7. Check license compatibility
+8. Compute statistics and integrity hash
+9. Output formatted JSON
+
+Let me carefully trace through the data to ensure correctness.
+
+```rust
+use serde::{Deserialize, Serialize};
+use serde_json::{json, Value, Map};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet, VecDeque};
+use std::fs;
+use std::path::Path;
+
+// ---- Semver ----
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+struct Version {
+    major: u64,
+    minor: u64,
+    patch: u64,
+    pre: Vec<PreRelaseId>,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+enum PreRelaseId {
+    Num(u64),
+    Str(String),
+}
+
+impl Ord for PreRelaseId {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        match (self, other) {
+            (PreRelaseId::Num(a), PreRelaseId::Num(b)) => a.cmp(b),
+            (PreRelaseId::Str(a), PreRelaseId::Str(b)) => a.cmp(b),
+            (PreRelaseId::Num(_), PreRelaseId::Str(_)) => std::cmp::Ordering::Less,
+            (PreRelaseId::Str(_), PreRelaseId::Num(_)) => std::cmp::Ordering::Greater,
+        }
+    }
+}
+
+impl PartialOrd for PreRelaseId {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Version {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        match self.major.cmp(&other.major) {
+            std::cmp::Ordering::Equal => {}
+            o => return o,
+        }
+        match self.minor.cmp(&other.minor) {
+            std::cmp::Ordering::Equal => {}
+            o => return o,
+        }
+        match self.patch.cmp(&other.patch) {
+            std::cmp::Ordering::Equal => {}
+            o => return o,
+        }
+        // No pre-release > any pre-release
+        match (self.pre.is_empty(), other.pre.is_empty()) {
+            (true, true) => std::cmp::Ordering::Equal,
+            (true, false) => std::cmp::Ordering::Greater,
+            (false, true) => std::cmp::Ordering::Less,
+            (false, false) => {
+                for (a, b) in self.pre.iter().zip(other.pre.iter()) {
+                    match a.cmp(b) {
+                        std::cmp::Ordering::Equal => continue,
+                        o => return o,
+                    }
+                }
+                self.pre.len().cmp(&other.pre.len())
+            }
+        }
+    }
+}
+
+impl PartialOrd for Version {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Version {
+    fn parse(s: &str) -> Version {
+        let s = s.trim();
+        let (main, pre_str) = if let Some(idx) = s.find('-') {
+            (&s[..idx], Some(&s[idx + 1..]))
+        } else {
+            (s, None)
+        };
+        let parts: Vec<&str> = main.split('.').collect();
+        let major = parts[0].parse().unwrap();
+        let minor = parts[1].parse().unwrap();
+        let patch = parts[2].parse().unwrap();
+        let pre = if let Some(ps) = pre_str {
+            ps.split('.')
+                .map(|id| {
+                    if let Ok(n) = id.parse::<u64>() {
+                        PreRelaseId::Num(n)
+                    } else {
+                        PreRelaseId::Str(id.to_string())
+                    }
+                })
+                .collect()
+        } else {
+            vec![]
+        };
+        Version { major, minor, patch, pre }
+    }
+
+    fn to_string(&self) -> String {
+        let base = format!("{}.{}.{}", self.major, self.minor, self.patch);
+        if self.pre.is_empty() {
+            base
+        } else {
+            let pre_str: Vec<String> = self.pre.iter().map(|p| match p {
+                PreRelaseId::Num(n) => n.to_string(),
+                PreRelaseId::Str(s) => s.clone(),
+            }).collect();
+            format!("{}-{}", base, pre_str.join("."))
+        }
+    }
+}
+
+// ---- Constraints ----
+
+#[derive(Clone, Debug)]
+enum Constraint {
+    Exact(Version),
+    Gte(Version),
+    Gt(Version),
+    Lte(Version),
+    Lt(Version),
+    Caret(Version),
+    Tilde(Version),
+}
+
+fn parse_constraints(s: &str) -> Vec<Constraint> {
+    let s = s.trim();
+    let parts: Vec<&str> = s.split(',').collect();
+    parts.iter().map(|p| parse_single_constraint(p.trim())).collect()
+}
+
+fn parse_single_constraint(s: &str) -> Constraint {
+    let s = s.trim();
+    if s.starts_with(">=") {
+        Constraint::Gte(Version::parse(&s[2..]))
+    } else if s.starts_with('>') {
+        Constraint::Gt(Version::parse(&s[1..]))
+    } else if s.starts_with("<=") {
+        Constraint::Lte(Version::parse(&s[2..]))
+    } else if s.starts_with('<') {
+        Constraint::Lt(Version::parse(&s[1..]))
+    } else if s.starts_with('=') {
+        Constraint::Exact(Version::parse(&s[1..]))
+    } else if s.starts_with('^') {
+        Constraint::Caret(Version::parse(&s[1..]))
+    } else if s.starts_with('~') {
+        Constraint::Tilde(Version::parse(&s[1..]))
+    } else {
+        Constraint::Exact(Version::parse(s))
+    }
+}
+
+fn version_satisfies(v: &Version, constraint: &Constraint) -> bool {
+    match constraint {
+        Constraint::Exact(target) => v == target,
+        Constraint::Gte(target) => v >= target,
+        Constraint::Gt(target) => v > target,
+        Constraint::Lte(target) => v <= target,
+        Constraint::Lt(target) => v < target,
+        Constraint::Caret(target) => {
+            // >=target, < next breaking
+            if v < target {
+                return false;
+            }
+            if target.major != 0 {
+                // <(major+1).0.0
+                v.major == target.major
+                    && Version { major: v.major, minor: v.minor, patch: v.patch, pre: v.pre.clone() }
+                        < Version { major: target.major + 1, minor: 0, patch: 0, pre: vec![] }
+            } else if target.minor != 0 {
+                // ^0.Y.Z => >=0.Y.Z, <0.(Y+1).0
+                v.major == 0 && v.minor == target.minor
+                    && *v < Version { major: 0, minor: target.minor + 1, patch: 0, pre: vec![] }
+            } else {
+                // ^0.0.Z => >=0.0.Z, <0.0.(Z+1)
+                v.major == 0 && v.minor == 0 && v.patch == target.patch
+                    && *v < Version { major: 0, minor: 0, patch: target.patch + 1, pre: vec![] }
+            }
+        }
+        Constraint::Tilde(target) => {
+            // >=target, <major.(minor+1).0
+            if v < target {
+                return false;
+            }
+            v.major == target.major && v.minor == target.minor
+                && *v < Version { major: target.major, minor: target.minor + 1, patch: 0, pre: vec![] }
+        }
+    }
+}
+
+fn satisfies_all(v: &Version, constraints: &[Constraint]) -> bool {
+    constraints.iter().all(|c| version_satisfies(v, c))
+}
+
+// ---- Registry ----
+
+#[derive(Deserialize, Debug)]
+struct RegistryPackage {
+    name: String,
+    versions: Vec<RegistryVersion>,
+}
+
+#[derive(Deserialize, Debug)]
+struct RegistryVersion {
+    version: String,
+    dependencies: HashMap<String, String>,
+    license: String,
+    yanked: bool,
+    vulnerability_score: f64,
+}
+
+#[derive(Deserialize, Debug)]
+struct Project {
+    name: String,
+    dependencies: HashMap<String, String>,
+}
+
+#[derive(Deserialize, Debug)]
+struct Config {
+    vulnerability_decay_factor: f64,
+    license_categories: HashMap<String, Vec<String>>,
+    output_precision: usize,
+}
+
+fn main() {
+    // Load config
+    let config: Config = serde_json::from_str(
+        &fs::read_to_string("/app/data/config.json").unwrap()
+    ).unwrap();
+
+    // Load project
+    let project: Project = serde_json::from_str(
+        &fs::read_to_string("/app/data/project.json").unwrap()
+    ).unwrap();
+
+    // Load registry
+    let mut registry: HashMap<String, RegistryPackage> = HashMap::new();
+    let registry_dir = Path::new("/app/data/registry/");
+    for entry in fs::read_dir(registry_dir).unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if path.extension().map_or(false, |e| e == "json") {
+            let content = fs::read_to_string(&path).unwrap();
+            let pkg: RegistryPackage = serde_json::from_str(&content).unwrap();
+            registry.insert(pkg.name.clone(), pkg);
+        }
+    }
+
+    // Build license category map
+    let mut license_to_category: HashMap<String, String> = HashMap::new();
+    for (cat, licenses) in &config.license_categories {
+        for lic in licenses {
+            license_to_category.insert(lic.clone(), cat.clone());
+        }
+    }
+
+    // Resolve dependencies
+    // resolved: name -> (Version, resolved version info)
+    struct ResolvedPkg {
+        name: String,
+        version: Version,
+        version_str: String,
+        license: String,
+        vulnerability_score: f64,
+        dependencies: HashMap<String, String>, // name -> constraint string
+    }
+
+    let mut resolved: HashMap<String, ResolvedPkg> = HashMap::new();
+    // constraints accumulated per package: name -> Vec<Constraint>
+    let mut all_constraints: HashMap<String, Vec<Constraint>> = HashMap::new();
+    // Queue of (package_name, constraint_string)
+    let mut queue: VecDeque<(String, String)> = VecDeque::new();
+
+    // Add project's direct dependencies
+    for (dep_name, constraint_str) in &project.dependencies {
+        queue.push_back((dep_name.clone(), constraint_str.clone()));
+    }
+
+    while let Some((pkg_name, constraint_str)) = queue.pop_front() {
+        let new_constraints = parse_constraints(&constraint_str);
+
+        // Add new constraints
+        let entry = all_constraints.entry(pkg_name.clone()).or_insert_with(Vec::new);
+        let had_constraints_before = !entry.is_empty();
+        entry.extend(new_constraints);
+
+        let all_cons = &all_constraints[&pkg_name];
+
+        // Find highest non-yanked version satisfying all constraints
+        let reg_pkg = registry.get(&pkg_name).unwrap_or_else(|| panic!("Package {} not found in registry", pkg_name));
+        
+        let mut candidates: Vec<&RegistryVersion> = reg_pkg.versions.iter()
+            .filter(|v| !v.yanked)
+            .filter(|v| {
+                let ver = Version::parse(&v.version);
+                satisfies_all(&ver, all_cons)
+            })
+            .collect();
+        
+        candidates.sort_by(|a, b| {
+            let va = Version::parse(&a.version);
+            let vb = Version::parse(&b.version);
+            vb.cmp(&va)
+        });
+
+        let best = candidates.first().unwrap_or_else(|| panic!("No version found for {} with constraints", pkg_name));
+        let best_version = Version::parse(&best.version);
+
+        if let Some(existing) = resolved.get(&pkg_name) {
+            if existing.version == best_version {
+                // Same version, no change needed
+                continue;
+            }
+            // Version changed due to new constraints - need to re-resolve
+        }
+
+        let rpkg = ResolvedPkg {
+            name: pkg_name.clone(),
+            version: best_version.clone(),
+            version_str: best.version.clone(),
+            license: best.license.clone(),
+            vulnerability_score: best.vulnerability_score,
+            dependencies: best.dependencies.clone(),
+        };
+
+        resolved.insert(pkg_name.clone(), rpkg);
+
+        // Add transitive dependencies to queue
+        for (dep_name, dep_constraint) in &best.dependencies {
+            queue.push_back((dep_name.clone(), dep_constraint.clone()));
+        }
+    }
+
+    // Build dependency graph
+    // For each resolved package, its direct dependencies (also resolved)
+    let pkg_names: Vec<String> = resolved.keys().cloned().collect();
+    let mut dep_graph: HashMap<String, Vec<String>> = HashMap::new(); // pkg -> [deps]
+    let mut reverse_graph: HashMap<String, Vec<String>> = HashMap::new(); // pkg -> [dependents]
+
+    for name in &pkg_names {
+        dep_graph.insert(name.clone(), Vec::new());
+        reverse_graph.insert(name.clone(), Vec::new());
+    }
+
+    for (name, rpkg) in &resolved {
+        for dep_name in rpkg.dependencies.keys() {
+            if resolved.contains_key(dep_name) {
+                dep_graph.get_mut(name).unwrap().push(dep_name.clone());
+                reverse_graph.get_mut(dep_name).unwrap().push(name.clone());
+            }
+        }
+    }
+
+    // Sort dependency lists for determinism
+    for v in dep_graph.values_mut() {
+        v.sort();
+    }
+    for v in reverse_graph.values_mut() {
+        v.sort();
+    }
+
+    // Compute depths: longest path from project root
+    // Project root connects to its direct dependencies
+    // Depth = longest path from root to package
+    // We need to compute longest path in a DAG
+    let mut depths: HashMap<String, usize> = HashMap::new();
+    
+    // BFS/DFS from project root
+    // Project's direct deps are at depth >= 1
+    // But depth is longest path, so we need to compute it properly
+    
+    // Add project as a virtual node with edges to its direct deps
+    // Then compute longest path from project to each node
+    // Project itself has depth 0, its direct deps have depth >= 1
+    
+    // Topological sort first (of the resolved packages + project)
+    // Then compute longest paths
+    
+    // Build full graph including project
+    let project_name = &project.name;
+    let mut full_dep_graph: HashMap<String, Vec<String>> = dep_graph.clone();
+    let mut project_deps: Vec<String> = Vec::new();
+    for dep_name in project.dependencies.keys() {
+        if resolved.contains_key(dep_name) {
+            project_deps.push(dep_name.clone());
+        }
+    }
+    project_deps.sort();
+    full_dep_graph.insert(project_name.clone(), project_deps.clone());
+
+    // Topological sort using Kahn's algorithm on the full graph
+    let mut in_degree: HashMap<String, usize> = HashMap::new();
+    for name in full_dep_graph.keys() {
+        in_degree.entry(name.clone()).or_insert(0);
+    }
+    for (_, deps) in &full_dep_graph {
+        for dep in deps {
+            *in_degree.entry(dep.clone()).or_insert(0) += 1;
+        }
+    }
+
+    // Compute longest path from project root
+    // Initialize all depths to 0
+    let mut dist: HashMap<String, usize> = HashMap::new();
+    for name in full_dep_graph.keys() {
+        dist.insert(name.clone(), 0);
+    }
+    dist.insert(project_name.clone(), 0);
+
+    // Process in topological order (from sources to sinks)
+    // But we want longest path from project, so we process in topo order
+    // and relax edges
+    
+    // Topo sort
+    let mut topo_order: Vec<String> = Vec::new();
+    let mut in_deg = in_degree.clone();
+    let mut q: BTreeSet<String> = BTreeSet::new();
+    for (name, &deg) in &in_deg {
+        if deg == 0 {
+            q.insert(name.clone());
+        }
+    }
+    while let Some(name) = q.iter().next().cloned() {
+        q.remove(&name);
+        topo_order.push(name.clone());
+        if let Some(deps) = full_dep_graph.get(&name) {
+            for dep in deps {
+                let d = in_deg.get_mut(dep).unwrap();
+                *d -= 1;
+                if *d == 0 {
+                    q.insert(dep.clone());
+                }
+            }
+        }
+    }
+
+    // Compute longest path from project_name
+    for name in &topo_order {
+        if let Some(deps) = full_dep_graph.get(name) {
+            let current_dist = dist[name];
+            for dep in deps {
+                let new_dist = current_dist + 1;
+                if new_dist > dist[dep] {
+                    dist.insert(dep.clone(), new_dist);
+                }
+            }
+        }
+    }
+
+    for (name, d) in &dist {
+        if name != project_name {
+            depths.insert(name.clone(), *d);
+        }
+    }
+
+    // Build order: topological sort of resolved packages only (not project)
+    // Packages with no deps first, alphabetical tie-breaking
+    let mut build_order: Vec<String> = Vec::new();
+    let mut build_in_deg: HashMap<String, usize> = HashMap::new();
+    for name in &pkg_names {
+        build_in_deg.insert(name.clone(), 0);
+    }
+    for (name, deps) in &dep_graph {
+        for dep in deps {
+            *build_in_deg.get_mut(dep).unwrap() += 1;
+        }
+    }
+    let mut build_q: BTreeSet<String> = BTreeSet::new();
+    for (name, &deg) in &build_in_deg {
+        if deg == 0 {
+            build_q.insert(name.clone());
+        }
+    }
+    while let Some(name) = build_q.iter().next().cloned() {
+        build_q.remove(&name);
+        build_order.push(name.clone());
+        if let Some(deps) = dep_graph.get(&name) {
+            for dep in deps {
+                // Wait, build order: a package must be built before its dependents
+                // So we need reverse: if A depends on B, B must be built first
+                // In dep_graph, A -> [B, C] means A depends on B and C
+                // For build order, we want B and C before A
+                // So we should use reverse_graph for Kahn's
+            }
+        }
+    }
+
+    // Redo build order correctly
+    // For build order: if A depends on B, then B must come before A
+    // In Kahn's: in-degree based on "who depends on me" = reverse_graph edges count
+    // Actually, let me think again:
+    // dep_graph: A -> [B, C] means A depends on B and C
+    // For build order, B and C must come before A
+    // So the edge direction for topo sort should be: B -> A, C -> A (i.e., "B must be before A")
+    // In-degree of A = number of dependencies A has
+    
+    build_order.clear();
+    let mut build_in_deg2: HashMap<String, usize> = HashMap::new();
+    for name in &pkg_names {
+        build_in_deg2.insert(name.clone(), dep_graph[name].len());
+    }
+    let mut build_q2: BTreeSet<String> = BTreeSet::new();
+    for (name, &deg) in &build_in_deg2 {
+        if deg == 0 {
+            build_q2.insert(name.clone());
+        }
+    }
+    while let Some(name) = build_q2.iter().next().cloned() {
+        build_q2.remove(&name);
+        build_order.push(name.clone());
+        // For each package that depends on 'name', decrease their in-degree
+        if let Some(dependents) = reverse_graph.get(&name) {
+            for dependent in dependents {
+                let d = build_in_deg2.get_mut(dependent).unwrap();
+                *d -= 1;
+                if *d == 0 {
+                    build_q2.insert(dependent.clone());
+                }
+            }
+        }
+    }
+
+    // Compute effective vulnerability scores
+    // effective_score(pkg) = base_score + decay * sum(effective_score(dep) for dep in deps)
+    // Process in build order (dependencies first)
+    let mut effective_scores: HashMap<String, f64> = HashMap::new();
+    for name in &build_order {
+        let rpkg = &resolved[name];
+        let base = rpkg.vulnerability_score;
+        let mut dep_sum = 0.0;
+        for dep in &dep_graph[name] {
+            dep_sum += effective_scores[dep];
+        }
+        let eff = base + config.vulnerability_decay_factor * dep_sum;
+        effective_scores.insert(name.clone(), eff);
+    }
+
+    // Build resolved packages output
+    let mut resolved_list: Vec<Value> = Vec::new();
+    let mut sorted_names: Vec<String> = pkg_names.clone();
+    sorted_names.sort();
+
+    // Sort by depth ascending, then name ascending
+    let mut name_depth: Vec<(String, usize)> = pkg_names.iter()
+        .map(|n| (n.clone(), depths[n]))
+        .collect();
+    name_depth.sort_by(|a, b| a.1.cmp(&b.1).then(a.0.cmp(&b.0)));
+
+    for (name, depth) in &name_depth {
+        let rpkg = &resolved[name];
+        let cat = license_to_category.get(&rpkg.license)
+            .cloned()
+            .unwrap_or_else(|| "unknown".to_string());
+        
+        let mut direct_deps: Vec<String> = dep_graph[name].iter()
+            .map(|d| format!("{}@{}", d, resolved[d].version_str))
+            .collect();
+        direct_deps.sort();
+
+        let mut dependents: Vec<String> = Vec::new();
+        // Dependents include project root and other resolved packages
+        // Check if project depends on this package directly
+        if project.dependencies.contains_key(name) {
+            dependents.push(format!("{}@0.0.0", project_name));
+            // Wait, project doesn't have a version... Let me re-read the spec
+            // "dependents" are packages that depend on this one
+            // The spec says "excluding the project root" for max_fan_in
+            // But for dependents list... let me check output_schema
+            // It says dependents: [<string "name@version">, ...]
+            // The project doesn't have a version in the manifest
+            // Let me check if project root should be included
+        }
+        
+        // Actually, looking at the spec more carefully:
+        // "max_fan_in: Maximum number of dependents any single package has (reverse dependencies in the resolved graph, excluding the project root)"
+        // So for max_fan_in we exclude project root
+        // But for the dependents list in resolved_package, it's not clear
+        // Let me include only resolved packages as dependents (not project root)
+        
+        // Actually wait - the resolved packages are "excluding the project itself" per statistics
+        // The dependents should be other resolved packages that depend on this one
+        
+        let mut dependents: Vec<String> = reverse_graph[name].iter()
+            .map(|d| format!("{}@{}", d, resolved[d].version_str))
+            .collect();
+        dependents.sort();
+
+        resolved_list.push(json!({
+            "name": name,
+            "version": rpkg.version_str,
+            "license": rpkg.license,
+            "license_category": cat,
+            "depth": depth,
+            "direct_dependencies": direct_deps,
+            "dependents": dependents
+        }));
+    }
+
+    // Build order as name@version strings
+    let build_order_strs: Vec<String> = build_order.iter()
+        .map(|n| format!("{}@{}", n, resolved[n].version_str))
+        .collect();
+
+    // Vulnerability report
+    let precision = config.output_precision;
+    
+    let mut vulnerable_entries: Vec<(String, f64, f64)> = Vec::new(); // (name, base, effective)
+    let mut max_score: f64 = 0.0;
+    let mut total_vulnerable = 0;
+
+    for name in &pkg_names {
+        let eff = effective_scores[name];
+        if eff > 0.0 {
+            total_vulnerable += 1;
+            let base = resolved[name].vulnerability_score;
+            vulnerable_entries.push((name.clone(), base, eff));
+            if eff > max_score {
+                max_score = eff;
+            }
+        }
+    }
+
+    // critical_packages sorted by effective_score desc, then name asc
+    vulnerable_entries.sort_by(|a, b| {
+        b.2.partial_cmp(&a.2).unwrap().then(a.0.cmp(&b.0))
+    });
+
+    let critical_packages: Vec<Value> = vulnerable_entries.iter().map(|(name, base, eff)| {
+        json!({
+            "name": name,
+            "version": resolved[name].version_str,
+            "base_score": format_float(*base, precision),
+            "effective_score": format_float(*eff, precision)
+        })
+    }).collect();
+
+    // License conflicts
+    let category_rank = |cat: &str| -> i32 {
+        match cat {
+            "permissive" => 0,
+            "weak_copyleft" => 1,
+            "strong_copyleft" => 2,
+            "unknown" => -1, // unknown doesn't cause conflicts? Let me think...
+            _ => -1,
+        }
+    };
+
+    // A conflict occurs when a package depends on another with MORE restrictive license
+    // permissive < weak_copyleft < strong_copyleft
+    // So if pkg has permissive and dep has strong_copyleft, that's a conflict
+    let mut conflicts: Vec<Value> = Vec::new();
+    
+    for name in &pkg_names {
+        let rpkg = &resolved[name];
+        let pkg_cat = license_to_category.get(&rpkg.license)
+            .cloned()
+            .unwrap_or("unknown".to_string());
+        let pkg_rank = category_rank(&pkg_cat);
+        
+        for dep_name in &dep_graph[name] {
+            let dep_rpkg = &resolved[dep_name];
+            let dep_cat = license_to_category.get(&dep_rpkg.license)
+                .cloned()
+                .unwrap_or("unknown".to_string());
+            let dep_rank = category_rank(&dep_cat);
+            
+            // Conflict if dependency has MORE restrictive license
+            if dep_rank > pkg_rank && pkg_rank >= 0 && dep_rank >= 0 {
+                conflicts.push(json!({
+                    "package": format!("{}@{}", name, rpkg.version_str),
+                    "package_license": rpkg.license,
+                    "dependency": format!("{}@{}", dep_name, dep_rpkg.version_str),
+                    "dependency_license": dep_rpkg.license
+                }));
+            }
+        }
+    }
+
+    // Sort conflicts by package name ascending
+    conflicts.sort_by(|a, b| {
+        let pa = a["package"].as_str().unwrap();
+        let pb = b["package"].as_str().unwrap();
+        pa.cmp(pb)
+    });
+
+    let total_conflicts = conflicts.len();
+
+    // Statistics
+    let total_packages = pkg_names.len();
+    let max_depth = depths.values().cloned().max().unwrap_or(0);
+    let avg_depth = if total_packages > 0 {
+        depths.values().sum::<usize>() as f64 / total_packages as f64
+    } else {
+        0.0
+    };
+    
+    let total_edges: usize = dep_graph.values().map(|v| v.len()).sum();
+    let max_fan_out = dep_graph.values().map(|v| v.len()).max().unwrap_or(0);
+    
+    // max_fan_in: excluding project root
+    let max_fan_in = reverse_graph.values().map(|v| v.len()).max().unwrap_or(0);
+
+    // Integrity hash
+    let mut hash_entries: Vec<String> = Vec::new();
+    let mut sorted_for_hash: Vec<&String> = pkg_names.iter().collect();
+    sorted_for_hash.sort();
+    for name in &sorted_for_hash {
+        let rpkg = &resolved[*name];
+        let depth = depths[*name];
+        hash_entries.push(format!("{}:{}:{}:{}", name, rpkg.version_str, depth, rpkg.license));
+    }
+    let hash_input = format!("{};{}", hash_entries.join("\n"), build_order_strs.join(";"));
+    
+    let integrity_hash = sha256_hex(&hash_input);
+
+    // Build output
+    let max_score_val = format_float(max_score, precision);
+    let avg_depth_val = format_float(avg_depth, precision);
+
+    let output = json!({
+        "schema_version": 1,
+        "resolution": {
+            "total_packages": total_packages,
+            "resolved": resolved_list
+        },
+        "build_order": build_order_strs,
+        "audit": {
+            "vulnerability_report": {
+                "max_score": max_score_val,
+                "critical_packages": critical_packages,
+                "total_vulnerable": total_vulnerable
+            },
+            "license_report": {
+                "conflicts": conflicts,
+                "total_conflicts": total_conflicts
+            },
+            "statistics": {
+                "total_packages": total_packages,
+                "max_depth": max_depth,
+                "avg_depth": avg_depth_val,
+                "total_edges": total_edges,
+                "max_fan_out": max_fan_out,
+                "max_fan_in": max_fan_in
+            },
+            "integrity_hash": integrity_hash
+        }
+    });
+
+    // Write output with 2-space indentation
+    fs::create_dir_all("/app/output").unwrap();
+    let output_str = serde_json::to_string_pretty(&output).unwrap();
+    // serde_json::to_string_pretty uses 2-space indentation by default
+    fs::write("/app/output/audit_report.json", format!("{}\n", output_str)).unwrap();
+}
+
+fn format_float(val: f64, precision: usize) -> serde_json::Value {
+    // Round to precision decimal places
+    let factor = 10f64.powi(precision as i32);
+    let rounded = (val * factor).round() / factor;
+    // Format: trailing zeros may be omitted
+    // We need to output as a JSON number, not a string
+    // Use serde_json::Number
+    serde_json::Value::Number(serde_json::Number::from_f64(rounded).unwrap())
+}
+
+// SHA-256 implementation
+fn sha256_hex(input: &str) -> String {
+    let bytes = input.as_bytes();
+    let hash = sha256(bytes);
+    hash.iter().map(|b| format!("{:02x}", b)).collect()
+}
+
+fn sha256(message: &[u8]) -> [u8; 32] {
+    let k: [u32; 64] = [
+        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
+        0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+        0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
+        0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+        0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
+        0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
+        0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+        0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
+        0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+        0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
+        0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
+        0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
+        0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+    ];
+
+    let mut h0: u32 = 0x6a09e667;
+    let mut h1: u32 = 0xbb67ae85;
+    let mut h2: u32 = 0x3c6ef372;
+    let mut h3: u32 = 0xa54ff53a;
+    let mut h4: u32 = 0x510e527f;
+    let mut h5: u32 = 0x9b05688c;
+    let mut h6: u32 = 0x1f83d9ab;
+    let mut h7: u32 = 0x5be0cd19;
+
+    let ml = message.len() as u64 * 8;
+    let mut msg = message.to_vec();
+    msg.push(0x80);
+    while msg.len() % 64 != 56 {
+        msg.push(0x00);
+    }
+    msg.extend_from_slice(&ml.to_be_bytes());
+
+    for chunk in msg.chunks(64) {
+        let mut w = [0u32; 64];
+        for i in 0..16 {
+            w[i] = u32::from_be_bytes([
+                chunk[i * 4],
+                chunk[i * 4 + 1],
+                chunk[i * 4 + 2],
+                chunk[i * 4 + 3],
+            ]);
+        }
+        for i in 16..64 {
+            let s0 = w[i - 15].rotate_right(7) ^ w[i - 15].rotate_right(18) ^ (w[i - 15] >> 3);
+            let s1 = w[i - 2].rotate_right(17) ^ w[i - 2].rotate_right(19) ^ (w[i - 2] >> 10);
+            w[i] = w[i - 16].wrapping_add(s0).wrapping_add(w[i - 7]).wrapping_add(s1);
+        }
+
+        let mut a = h0;
+        let mut b = h1;
+        let mut c = h2;
+        let mut d = h3;
+        let mut e = h4;
+        let mut f = h5;
+        let mut g = h6;
+        let mut hh = h7;
+
+        for i in 0..64 {
+            let s1 = e.rotate_right(6) ^ e.rotate_right(11) ^ e.rotate_right(25);
+            let ch = (e & f) ^ ((!e) & g);
+            let temp1 = hh.wrapping_add(s1).wrapping_add(ch).wrapping_add(k[i]).wrapping_add(w[i]);
+            let s0 = a.rotate_right(2) ^ a.rotate_right(13) ^ a.rotate_right(22);
+            let maj = (a & b) ^ (a & c) ^ (b & c);
+            let temp2 = s0.wrapping_add(maj);
+
+            hh = g;
+            g = f;
+            f = e;
+            e = d.wrapping_add(temp1);
+            d = c;
+            c = b;
+            b = a;
+            a = temp1.wrapping_add(temp2);
+        }
+
+        h0 = h0.wrapping_add(a);
+        h1 = h1.wrapping_add(b);
+        h2 = h2.wrapping_add(c);
+        h3 = h3.wrapping_add(d);
+        h4 = h4.wrapping_add(e);
+        h5 = h5.wrapping_add(f);
+        h6 = h6.wrapping_add(g);
+        h7 = h7.wrapping_add(hh);
+    }
+
+    let mut result = [0u8; 32];
+    result[0..4].copy_from_slice(&h0.to_be_bytes());
+    result[4..8].copy_from_slice(&h1.to_be_bytes());
+    result[8..12].copy_from_slice(&h2.to_be_bytes());
+    result[12..16].copy_from_slice(&h3.to_be_bytes());
+    result[16..20].copy_from_slice(&h4.to_be_bytes());
+    result[20..24].copy_from_slice(&h5.to_be_bytes());
+    result[24..28].copy_from_slice(&h6.to_be_bytes());
+    result[28..32].copy_from_slice(&h7.to_be_bytes());
+    result
+}
+```
+
+Wait, I need to reconsider several things. Let me re-examine the code more carefully and fix issues.
+
+The main issues I see:
+1. The `format_float` approach using `serde_json::Number::from_f64` will work but I need to verify the output format
+2. The hash computation spec says "Append a semicolon followed by the build order entries joined by semicolons" - so the format is `entries_joined_by_newline` + `;` + `build_order_joined_by_semicolons`
+3. Need to handle the resolution more carefully - when constraints tighten and version changes, need to re-process
+
+Let me rewrite more carefully:
+
+```rust
+use serde::{Deserialize, Serialize, Serializer};
+use serde_json::{json, Value, Map};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet, VecDeque};
+use std::fs;
+use std::path::Path;
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+struct Version {
+    major: u64,
+    minor: u64,
+    patch: u64,
+    pre: Vec<PreId>,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+enum PreId {
+    Num(u64),
+    Str(String),
+}
+
+impl Ord for PreId {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        match (self, other) {
+            (PreId::Num(a), PreId::Num(b)) => a.cmp(b),
+            (PreId::Str(a), PreId::Str(b)) => a.cmp(b),
+            (PreId::Num(_), PreId::Str(_)) => std::cmp::Ordering::Less,
+            (PreId::Str(_), PreId::Num(_)) => std::cmp::Ordering::Greater,
+        }
+    }
+}
+
+impl PartialOrd for PreId {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Version {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        let c = self.major.cmp(&other.major)
+            .then(self.minor.cmp(&other.minor))
+            .then(self.patch.cmp(&other.patch));
+        if c != std::cmp::Ordering::Equal {
+            return c;
+        }
+        match (self.pre.is_empty(), other.pre.is_empty()) {
+            (true, true) => std::cmp::Ordering::Equal,
+            (true, false) => std::cmp::Ordering::Greater,
+            (false, true) => std::cmp::Ordering::Less,
+            (false, false) => {
+                for (a, b) in self.pre.iter().zip(other.pre.iter()) {
+                    let c = a.cmp(b);
+                    if c != std::cmp::Ordering::Equal {
+                        return c;
+                    }
+                }
+                self.pre.len().cmp(&other.pre.len())
+            }
+        }
+    }
+}
+
+impl PartialOrd for Version {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Version {
+    fn parse(s: &str) -> Version {
+        let s = s.trim();
+        let (main, pre_str) = match s.find('-') {
+            Some(idx) => (&s[..idx], Some(&s[idx + 1..])),
+            None => (s, None),
+        };
+        let parts: Vec<&str> = main.split('.').collect();
+        Version {
+            major: parts[0].parse().unwrap(),
+            minor: parts[1].parse().unwrap(),
+            patch: parts[2].parse().unwrap(),
+            pre: pre_str.map_or(vec![], |ps| {
+                ps.split('.').map(|id| {
+                    match id.parse::<u64>() {
+                        Ok(n) => PreId::Num(n),
+                        Err(_) => PreId::Str(id.to_string()),
+                    }
+                }).collect()
+            }),
+        }
+    }
+
+    fn display(&self) -> String {
+        let base = format!("{}.{}.{}", self.major, self.minor, self.patch);
+        if self.pre.is_empty() {
+            base
+        } else {
+            let pre_str: Vec<String> = self.pre.iter().map(|p| match p {
+                PreId::Num(n) => n.to_string(),
+                PreId::Str(s) => s.clone(),
+            }).collect();
+            format!("{}-{}", base, pre_str.join("."))
+        }
+    }
+}
+
+#[derive(Clone, Debug)]
+enum Constraint {
+    Exact(Version),
+    Gte(Version),
+    Gt(Version),
+    Lte(Version),
+    Lt(Version),
+    Caret(Version),
+    Tilde(Version),
+}
+
+fn parse_constraints(s: &str) -> Vec<Constraint> {
+    s.split(',').map(|p| {
+        let p = p.trim();
+        if p.starts_with(">=") {
+            Constraint::Gte(Version::parse(&p[2..]))
+        } else if p.starts_with('>') {
+            Constraint::Gt(Version::parse(&p[1..]))
+        } else if p.starts_with("<=") {
+            Constraint::Lte(Version::parse(&p[2..]))
+        } else if p.starts_with('<') {
+            Constraint::Lt(Version::parse(&p[1..]))
+        } else if p.starts_with('=') {
+            Constraint::Exact(Version::parse(&p[1..]))
+        } else if p.starts_with('^') {
+            Constraint::Caret(Version::parse(&p[1..]))
+        } else if p.starts_with('~') {
+            Constraint::Tilde(Version::parse(&p[1..]))
+        } else {
+            Constraint::Exact(Version::parse(p))
+        }
+    }).collect()
+}
+
+fn satisfies(v: &Version, c: &Constraint) -> bool {
+    match c {
+        Constraint::Exact(t) => v == t,
+        Constraint::Gte(t) => v >= t,
+        Constraint::Gt(t) => v > t,
+        Constraint::Lte(t) => v <= t,
+        Constraint::Lt(t) => v < t,
+        Constraint::Caret(t) => {
+            if v < t { return false; }
+            if t.major != 0 {
+                v.major == t.major
+            } else if t.minor != 0 {
+                v.major == 0 && v.minor == t.minor
+            } else {
+                v.major == 0 && v.minor == 0 && v.patch == t.patch
+            }
+            && *v < upper_bound_caret(t)
+        }
+        Constraint::Tilde(t) => {
+            v >= t && *v < Version { major: t.major, minor: t.minor + 1, patch: 0, pre: vec![] }
+        }
+    }
+}
+
+fn upper_bound_caret(t: &Version) -> Version {
+    if t.major != 0 {
+        Version { major: t.major + 1, minor: 0, patch: 0, pre: vec![] }
+    } else if t.minor != 0 {
+        Version { major: 0, minor: t.minor + 1, patch: 0, pre: vec![] }
+    } else {
+        Version { major: 0, minor: 0, patch: t.patch + 1, pre: vec![] }
+    }
+}
+
+fn satisfies_all(v: &Version, constraints: &[Constraint]) -> bool {
+    constraints.iter().all(|c| satisfies(v, c))
+}
+
+#[derive(Deserialize)]
+struct RegistryPackage {
+    name: String,
+    versions: Vec<RegistryVersion>,
+}
+
+#[derive(Deserialize, Clone)]
+struct RegistryVersion {
+    version: String,
+    dependencies: HashMap<String, String>,
+    license: String,
+    yanked: bool,
+    vulnerability_score: f64,
+}
+
+#[derive(Deserialize)]
+struct Project {
+    name: String,
+    dependencies: HashMap<String, String>,
+}
+
+#[derive(Deserialize)]
+struct Config {
+    vulnerability_decay_factor: f64,
+    license_categories: HashMap<String, Vec<String>>,
+    output_precision: usize,
+}
+
+fn round_to(val: f64, precision: usize) -> f64 {
+    let factor = 10f64.powi(precision as i32);
+    (val * factor).round() / factor
+}
+
+fn format_float_value(val: f64, _precision: usize) -> Value {
+    // serde_json::Number::from_f64 handles it
+    Value::Number(serde_json::Number::from_f64(val).unwrap())
+}
+
+fn sha256_hex(input: &str) -> String {
+    let bytes = input.as_bytes();
+    let hash = sha256(bytes);
+    hash.iter().map(|b| format!("{:02x}", b)).collect()
+}
+
+fn sha256(message: &[u8]) -> [u8; 32] {
+    let k: [u32; 64] = [
+        0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,
+        0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+        0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,
+        0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+        0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,
+        0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+        0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,
+        0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+        0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,
+        0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+        0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,
+        0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+        0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,
+        0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+        0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,
+        0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2,
+    ];
+    let (mut h0,mut h1,mut h2,mut h3,mut h4,mut h5,mut h6,mut h7) =
+        (0x6a09e667u32,0xbb67ae85u32,0x3c6ef372u32,0xa54ff53au32,
+         0x510e527fu32,0x9b05688cu32,0x1f83d9abu32,0x5be0cd19u32);
+    let ml = (message.len() as u64) * 8;
+    let mut msg = message.to_vec();
+    msg.push(0x80);
+    while msg.len() % 64 != 56 { msg.push(0); }
+    msg.extend_from_slice(&ml.to_be_bytes());
+    for chunk in msg.chunks(64) {
+        let mut w = [0u32; 64];
+        for i in 0..16 {
+            w[i] = u32::from_be_bytes([chunk[4*i],chunk[4*i+1],chunk[4*i+2],chunk[4*i+3]]);
+        }
+        for i in 16..64 {
+            let s0 = w[i-15].rotate_right(7)^w[i-15].rotate_right(18)^(w[i-15]>>3);
+            let s1 = w[i-2].rotate_right(17)^w[i-2].rotate_right(19)^(w[i-2]>>10);
+            w[i] = w[i-16].wrapping_add(s0).wrapping_add(w[i-7]).wrapping_add(s1);
+        }
+        let (mut a,mut b,mut c,mut d,mut e,mut f,mut g,mut hh) = (h0,h1,h2,h3,h4,h5,h6,h7);
+        for i in 0..64 {
+            let s1 = e.rotate_right(6)^e.rotate_right(11)^e.rotate_right(25);
+            let ch = (e&f)^((!e)&g);
+            let t1 = hh.wrapping_add(s1).wrapping_add(ch).wrapping_add(k[i]).wrapping_add(w[i]);
+            let s0 = a.rotate_right(2)^a.rotate_right(13)^a.rotate_right(22);
+            let maj = (a&b)^(a&c)^(b&c);
+            let t2 = s0.wrapping_add(maj);
+            hh=g; g=f; f=e; e=d.wrapping_add(t1); d=c; c=b; b=a; a=t1.wrapping_add(t2);
+        }
+        h0=h0.wrapping_add(a); h1=h1.wrapping_add(b); h2=h2.wrapping_add(c); h3=h3.wrapping_add(d);
+        h4=h4.wrapping_add(e); h5=h5.wrapping_add(f); h6=h6.wrapping_add(g); h7=h7.wrapping_add(hh);
+    }
+    let mut r = [0u8;32];
+    r[0..4].copy_from_slice(&h0.to_be_bytes());
+    r[4..8].copy_from_slice(&h1.to_be_bytes());
+    r[8..12].copy_from_slice(&h2.to_be_bytes());
+    r[12..16].copy_from_slice(&h3.to_be_bytes());
+    r[16..20].copy_from_slice(&h4.to_be_bytes());
+    r[20..24].copy_from_slice(&h5.to_be_bytes());
+    r[24..28].copy_from_slice(&h6.to_be_bytes());
+    r[28..32].copy_from_slice(&h7.to_be_bytes());
+    r
+}
+
+fn main() {
+    let config: Config = serde_json::from_str(&fs::read_to_string("/app/data/config.json").unwrap()).unwrap();
+    let project: Project = serde_json::from_str(&fs::read_to_string("/app/data/project.json").unwrap()).unwrap();
+
+    let mut registry: HashMap<String, RegistryPackage> = HashMap::new();
+    for entry in fs::read_dir("/app/data/registry/").unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if path.extension().map_or(false, |e| e == "json") {
+            let pkg: RegistryPackage = serde_json::from_str(&fs::read_to_string(&path).unwrap()).unwrap();
+            registry.insert(pkg.name.clone(), pkg);
+        }
+    }
+
+    let mut license_to_cat: HashMap<String, String> = HashMap::new();
+    for (cat, lics) in &config.license_categories {
+        for lic in lics {
+            license_to_cat.insert(lic.clone(), cat.clone());
+        }
+    }
+
+    // Resolution with constraint accumulation
+    // We need to handle the case where adding new constraints changes the resolved version
+    // Use iterative approach: keep resolving until stable
+    
+    let mut resolved: HashMap<String, RegistryVersion> = HashMap::new();
+    let mut all_constraints: HashMap<String, Vec<Constraint>> = HashMap::new();
+    
+    // Queue: (pkg_name, constraint_str, from)
+    let mut queue: VecDeque<(String, String)> = VecDeque::new();
+    let mut processed_edges: HashSet<(String, String, String)> = HashSet::new(); // (from, pkg, constraint)
+    
+    for (dep_name, constraint_str) in &project.dependencies {
+        queue.push_back((dep_name.clone(), constraint_str.clone()));
+    }
+
+    loop {
+        let mut changed = false;
+        
+        while let Some((pkg_name, constraint_str)) = queue.pop_front() {
+            let new_constraints = parse_constraints(&constraint_str);
+            let entry = all_constraints.entry(pkg_name.clone()).or_insert_with(Vec::new);
+            entry.extend(new_constraints);
+            
+            let all_cons = &all_constraints[&pkg_name];
+            let reg_pkg = registry.get(&pkg_name).expect(&format!("Package {} not in registry", pkg_name));
+            
+            let mut candidates: Vec<(&RegistryVersion, Version)> = reg_pkg.versions.iter()
+                .filter(|v| !v.yanked)
+                .map(|v| (v, Version::parse(&v.version)))
+                .filter(|(_, ver)| satisfies_all(ver, all_cons))
+                .collect();
+            
+            candidates.sort_by(|a, b| b.1.cmp(&a.1));
+            
+            let (best, _best_ver) = candidates.first()
+                .expect(&format!("No version for {} satisfying constraints", pkg_name));
+            
+            let prev = resolved.get(&pkg_name);
+            if prev.map_or(true, |p| p.version != best.version) {
+                changed = true;
+                resolved.insert(pkg_name.clone(), (*best).clone());
+                // Add transitive deps
+                for (dep_name, dep_constraint) in &best.dependencies {
+                    queue.push_back((dep_name.clone(), dep_constraint.clone()));
+                }
+            }
+        }
+        
+        if !changed {
+            break;
+        }
+        
+        // Re-check: re-add all dependency constraints to make sure everything is consistent
+        // Rebuild constraints from scratch based on resolved versions
+        let mut new_constraints: HashMap<String, Vec<Constraint>> = HashMap::new();
+        let mut new_queue: VecDeque<(String, String)> = VecDeque::new();
+        
+        // Add project constraints
+        for (dep_name, constraint_str) in &project.dependencies {
+            new_constraints.entry(dep_name.clone()).or_default()
+                .extend(parse_constraints(constraint_str));
+        }
+        
+        // Add constraints from all resolved packages
+        for (name, rv) in &resolved {
+            for (dep_name, constraint_str) in &rv.dependencies {
+                new_constraints.entry(dep_name.clone()).or_default()
+                    .extend(parse_constraints(constraint_str));
+            }
+        }
+        
+        // Check if any resolved version no longer satisfies its constraints
+        let mut need_rerun = false;
+        for (name, cons) in &new_constraints {
+            if let Some(rv) = resolved.get(name) {
+                let ver = Version::parse(&rv.version);
+                if !satisfies_all(&ver, cons) {
+                    need_rerun = true;
+                    break;
+                }
+            }
+        }
+        
+        if !need_rerun {
+            all_constraints = new_constraints;
+            break;
+        }
+        
+        // Need to re-resolve with accumulated constraints
+        all_constraints = new_constraints;
+        resolved.clear();
+        for (name, cons) in &all_constraints {
+            queue.push_back((name.clone(), String::new())); // dummy, constraints already in all_constraints
+        }
+        // Actually, let me redo this more carefully
+        break; // For now, trust the first pass
+    }
+
+    // Actually, let me redo the resolution more carefully with a proper algorithm
+    // The issue is that when we resolve package A which depends on B with constraint C1,
+    // and later package D also depends on B with constraint C2, we need to intersect C1 and C2
+    // and potentially pick a different version of B.
+    
+    // Let me use a simpler iterative approach:
+    // 1. Start with project deps
+    // 2. Resolve each, collecting all constraints
+    // 3. When a package is already resolved, check if new constraint is satisfied
+    // 4. If not, re-resolve with all constraints
+    // 5. If version changes, re-process its dependencies
+    
+    let mut resolved: HashMap<String, RegistryVersion> = HashMap::new();
+    let mut all_constraints: HashMap<String, Vec<Constraint>> = HashMap::new();
+    let mut to_process: VecDeque<String> = VecDeque::new();
+    
+    // Initialize with project deps
+    for (dep_name, constraint_str) in &project.dependencies {
+        all_constraints.entry(dep_name.clone()).or_default()
+            .extend(parse_constraints(constraint_str));
+        to_process.push_back(dep_name.clone());
+    }
+    
+    let mut visited_in_queue: HashSet<String> = HashSet::new();
+    for name in &to_process {
+        visited_in_queue.insert(name.clone());
+    }
+    
+    while let Some(pkg_name) = to_process.pop_front() {
+        let cons = all_constraints.get(&pkg_name).unwrap().clone();
+        let reg_pkg = registry.get(&pkg_name).expect(&format!("Package {} not in registry", pkg_name));
+        
+        let mut candidates: Vec<(&RegistryVersion, Version)> = reg_pkg.versions.iter()
+            .filter(|v| !v.yanked)
+            .map(|v| (v, Version::parse(&v.version)))
+            .filter(|(_, ver)| satisfies_all(ver, &cons))
+            .collect();
+        
+        candidates.sort_by(|a, b| b.1.cmp(&a.1));
+        
+        let (best, _) = candidates.first()
+            .expect(&format!("No version for {} satisfying constraints", pkg_name));
+        
+        let prev_version = resolved.get(&pkg_name).map(|r| r.version.clone());
+        
+        if prev_version.as_deref() == Some(&best.version) {
+            continue; // No change
+        }
+        
+        resolved.insert(pkg_name.clone(), (*best).clone());
+        
+        // Process dependencies of this version
+        for (dep_name, dep_constraint) in &best.dependencies {
+            let new_cons = parse_constraints(dep_constraint);
+            let entry = all_constraints.entry(dep_name.clone()).or_default();
+            
+            // Check if the current resolved version (if any) satisfies the new constraints
+            let need_reprocess = if let Some(existing) = resolved.get(dep_name) {
+                let ver = Version::parse(&existing.version);
+                !satisfies_all(&ver, &new_cons)
+            } else {
+                true
+            };
+            
+            entry.extend(new_cons);
+            
+            if need_reprocess {
+                to_process.push_back(dep_name.clone());
+            }
+        }
+    }
+
+    // Build dependency graph (only among resolved packages)
+    let pkg_names: Vec<String> = resolved.keys().cloned().collect();
+    let mut dep_graph: HashMap<String, Vec<String>> = HashMap::new();
+    let mut reverse_graph: HashMap<String, Vec<String>> = HashMap::new();
+    
+    for name in &pkg_names {
+        dep_graph.insert(name.clone(), Vec::new());
+        reverse_graph.insert(name.clone(), Vec::new());
+    }
+    
+    for name in &pkg_names {
+        let rv = &resolved[name];
+        for dep_name in rv.dependencies.keys() {
+            if resolved.contains_key(dep_name) {
+                dep_graph.get_mut(name).unwrap().push(dep_name.clone());
+                reverse_graph.get_mut(dep_name).unwrap().push(name.clone());
+            }
+        }
+    }
+    
+    for v in dep_graph.values_mut() { v.sort(); }
+    for v in reverse_graph.values_mut() { v.sort(); }
+
+    // Compute depths: longest path from project root
+    // Project root has edges to its direct dependencies
+    let mut full_graph: HashMap<String, Vec<String>> = dep_graph.clone();
+    let mut project_deps: Vec<String> = project.dependencies.keys()
+        .filter(|k| resolved.contains_key(*k))
+        .cloned().collect();
+    project_deps.sort();
+    full_graph.insert(project.name.clone(), project_deps);
+    
+    // Topological sort of full graph
+    let mut in_deg: HashMap<String, usize> = HashMap::new();
+    for name in full_graph.keys() {
+        in_deg.entry(name.clone()).or_insert(0);
+        for dep in &full_graph[name] {
+            *in_deg.entry(dep.clone()).or_insert(0) += 1;
+        }
+    }
+    
+    let mut topo: Vec<String> = Vec::new();
+    let mut q: BTreeSet<String> = BTreeSet::new();
+    for (name, &deg) in &in_deg {
+        if deg == 0 { q.insert(name.clone()); }
+    }
+    while let Some(name) = q.iter().next().cloned() {
+        q.remove(&name);
+        topo.push(name.clone());
+        if let Some(deps) = full_graph.get(&name) {
+            for dep in deps {
+                let d = in_deg.get_mut(dep).unwrap();
+                *d -= 1;
+                if *d == 0 { q.insert(dep.clone()); }
+            }
+        }
+    }
+    
+    // Longest path from project root
+    let mut dist: HashMap<String, usize> = HashMap::new();
+    for name in full_graph.keys() {
+        dist.insert(name.clone(), 0);
+    }
+    
+    for name in &topo {
+        let d = dist[name];
+        if let Some(deps) = full_graph.get(name) {
+            for dep in deps {
+                let new_d = d + 1;
+                if new_d > dist[dep] {
+                    dist.insert(dep.clone(), new_d);
+                }
+            }
+        }
+    }
+    
+    let mut depths: HashMap<String, usize> = HashMap::new();
+    for name in &pkg_names {
+        depths.insert(name.clone(), dist[name]);
+    }
+
+    // Build order: topological sort of resolved packages only
+    // A package can be built when all its dependencies are built
+    let mut build_in_deg: HashMap<String, usize> = HashMap::new();
+    for name in &pkg_names {
+        build_in_deg.insert(name.clone(), dep_graph[name].len());
+    }
+    
+    let mut build_order: Vec<String> = Vec::new();
+    let mut bq: BTreeSet<String> = BTreeSet::new();
+    for (name, &deg) in &build_in_deg {
+        if deg == 0 { bq.insert(name.clone()); }
+    }
+    while let Some(name) = bq.iter().next().cloned() {
+        bq.remove(&name);
+        build_order.push(name.clone());
+        if let Some(dependents) = reverse_graph.get(&name) {
+            for dep in dependents {
+                let d = build_in_deg.get_mut(dep).unwrap();
+                *d -= 1;
+                if *d == 0 { bq.insert(dep.clone()); }
+            }
+        }
+    }
+
+    // Effective vulnerability scores (process in build order - deps first)
+    let decay = config.vulnerability_decay_factor;
+    let mut eff_scores: HashMap<String, f64> = HashMap::new();
+    for name in &build_order {
+        let base = resolved[name].vulnerability_score;
+        let dep_sum: f64 = dep_graph[name].iter()
+            .map(|d| eff_scores[d])
+            .sum();
+        eff_scores.insert(name.clone(), base + decay * dep_sum);
+    }
+
+    let precision = config.output_precision;
+
+    // Resolved packages output
+    let mut name_depth: Vec<(String, usize)> = pkg_names.iter()
+        .map(|n| (n.clone(), depths[n]))
+        .collect();
+    name_depth.sort_by(|a, b| a.1.cmp(&b.1).then(a.0.cmp(&b.0)));
+
+    let resolved_list: Vec<Value> = name_depth.iter().map(|(name, depth)| {
+        let rv = &resolved[name];
+        let cat = license_to_cat.get(&rv.license).cloned().unwrap_or("unknown".to_string());
+        
+        let mut direct_deps: Vec<String> = dep_graph[name].iter()
+            .map(|d| format!("{}@{}", d, resolved[d].version))
+            .collect();
+        direct_deps.sort();
+        
+        let mut dependents: Vec<String> = reverse_graph[name].iter()
+            .map(|d| format!("{}@{}", d, resolved[d].version))
+            .collect();
+        dependents.sort();
+        
+        json!({
+            "name": name,
+            "version": rv.version,
+            "license": rv.license,
+            "license_category": cat,
+            "depth": depth,
+            "direct_dependencies": direct_deps,
+            "dependents": dependents
+        })
+    }).collect();
+
+    let build_order_strs: Vec<String> = build_order.iter()
+        .map(|n| format!("{}@{}", n, resolved[n].version))
+        .collect();
+
+    // Vulnerability report
+    let mut max_score: f64 = 0.0;
+    let mut total_vulnerable = 0;
+    let mut vuln_entries: Vec<(String, f64, f64)> = Vec::new();
+    
+    for name in &pkg_names {
+        let eff = round_to(eff_scores[name], precision);
+        if eff > 0.0 {
+            total_vulnerable += 1;
+            let base = round_to(resolved[name].vulnerability_score, precision);
+            vuln_entries.push((name.clone(), base, eff));
+            if eff > max_score { max_score = eff; }
+        }
+    }
+    
+    vuln_entries.sort_by(|a, b| b.2.partial_cmp(&a.2).unwrap().then(a.0.cmp(&b.0)));
+    
+    let critical_packages: Vec<Value> = vuln_entries.iter().map(|(name, base, eff)| {
+        json!({
+            "name": name,
+            "version": resolved[name].version,
+            "base_score": format_float_value(*base, precision),
+            "effective_score": format_float_value(*eff, precision)
+        })
+    }).collect();
+
+    // License conflicts
+    let cat_rank = |cat: &str| -> Option<i32> {
+        match cat {
+            "permissive" => Some(0),
+            "weak_copyleft" => Some(1),
+            "strong_copyleft" => Some(2),
+            _ => None,
+        }
+    };
+    
+    let mut conflicts: Vec<Value> = Vec::new();
+    for name in &pkg_names {
+        let rv = &resolved[name];
+        let pkg_cat = license_to_cat.get(&rv.license).cloned().unwrap_or("unknown".to_string());
+        let pkg_rank = cat_rank(&pkg_cat);
+        
+        for dep_name in &dep_graph[name] {
+            let dep_rv = &resolved[dep_name];
+            let dep_cat = license_to_cat.get(&dep_rv.license).cloned().unwrap_or("unknown".to_string());
+            let dep_rank = cat_rank(&dep_cat);
+            
+            if let (Some(pr), Some(dr)) = (pkg_rank, dep_rank) {
+                if dr > pr {
+                    conflicts.push(json!({
+                        "package": format!("{}@{}", name, rv.version),
+                        "package_license": rv.license,
+                        "dependency": format!("{}@{}", dep_name, dep_rv.version),
+                        "dependency_license": dep_rv.license
+                    }));
+                }
+            }
+        }
+    }
+    conflicts.sort_by(|a, b| {
+        a["package"].as_str().unwrap().cmp(b["package"].as_str().unwrap())
+    });
+
+    // Statistics
+    let total_packages = pkg_names.len();
+    let max_depth = depths.values().cloned().max().unwrap_or(0);
+    let avg_depth = if total_packages > 0 {
+        round_to(depths.values().sum::<usize>() as f64 / total_packages as f64, precision)
+    } else { 0.0 };
+    let total_edges: usize = dep_graph.values().map(|v| v.len()).sum();
+    let max_fan_out = dep_graph.values().map(|v| v.len()).max().unwrap_or(0);
+    let max_fan_in = reverse_graph.values().map(|v| v.len()).max().unwrap_or(0);
+
+    // Integrity hash
+    let mut sorted_names: Vec<&String> = pkg_names.iter().collect();
+    sorted_names.sort();
+    let hash_entries: Vec<String> = sorted_names.iter()
+        .map(|n| format!("{}:{}:{}:{}", n, resolved[*n].version, depths[*n], resolved[*n].license))
+        .collect();
+    let hash_input = format!("{};{}", hash_entries.join("\n"), build_order_strs.join(";"));
+    let integrity_hash = sha256_hex(&hash_input);
+
+    let max_score_rounded = round_to(max_score, precision);
+
+    // Build output JSON
+    // Need to use a custom approach to ensure field ordering
+    let mut output = serde_json::Map::new();
+    output.insert("schema_version".into(), json!(1));
+    
+    let mut resolution = serde_json::Map::new();
+    resolution.insert("total_packages".into(), json!(total_packages));
+    resolution.insert("resolved".into(), json!(resolved_list));
+    output.insert("resolution".into(), Value::Object(resolution));
+    
+    output.insert("build_order".into(), json!(build_order_strs));
+    
+    let mut audit = serde_json::Map::new();
+    
+    let mut vuln_report = serde_json::Map::new();
+    vuln_report.insert("max_score".into(), format_float_value(max_score_rounded, precision));
+    vuln_report.insert("critical_packages".into(), json!(critical_packages));
+    vuln_report.insert("total_vulnerable".into(), json!(total_vulnerable));
+    audit.insert("vulnerability_report".into(), Value::Object(vuln_report));
+    
+    let mut lic_report = serde_json::Map::new();
+    lic_report.insert("conflicts".into(), json!(conflicts));
+    lic_report.insert("total_conflicts".into(), json!(conflicts.len()));
+    audit.insert("license_report".into(), Value::Object(lic_report));
+    
+    let mut stats = serde_json::Map::new();
+    stats.insert("total_packages".into(), json!(total_packages));
+    stats.insert("max_depth".into(), json!(max_depth));
+    stats.insert("avg_depth".into(), format_float_value(avg_depth, precision));
+    stats.insert("total_edges".into(), json!(total_edges));
+    stats.insert("max_fan_out".into(), json!(max_fan_out));
+    stats.insert("max_fan_in".into(), json!(max_fan_in));
+    audit.insert("statistics".into(), Value::Object(stats));
+    
+    audit.insert("integrity_hash".into(), json!(integrity_hash));
+    
+    output.insert("audit".into(), Value::Object(audit));
+
+    fs::create_dir_all("/app/output").unwrap();
+    let buf = Vec::new();
+    let formatter = serde_json::ser::PrettyFormatter::with_indent(b"  ");
+    let mut ser = serde_json::Serializer::with_formatter(buf, formatter);
+    Value::Object(output).serialize(&mut ser).unwrap();
+    let mut output_str = String::from_utf8(ser.into_inner()).unwrap();
+    output_str.push('\n');
+    fs::write("/app/output/audit_report.json", output_str).unwrap();
+}
+```
+
+Hmm, I realize there are several issues with my approach. Let me think through this more carefully and write a clean, correct solution.
+
+Key issues to address:
+1. `serde_json::Map` doesn't preserve insertion order by default - need to check. Actually, serde_json::Map uses BTreeMap by default which sorts keys alphabetically. I need to use the `preserve_order` feature or handle ordering differently.
+2. The caret constraint check has a syntax issue with the `&&` across lines.
+3. The resolution algorithm needs to handle constraint intersection properly.
+4. Need to handle the case where `total_conflicts` is computed from the conflicts vec before it's consumed.
+
+Let me also trace through the actual resolution to verify my algorithm works:
+
+Project deps:
+- core-utils: ^1.1.0 → >=1.1.0, <2.0.0 → highest non-yanked: 1.2.0
+- http-client: ^0.2.3 → >=0.2.3, <0.3.0 → 0.2.5 (0.3.0 and 0.3.1 are >=0.3.0 so excluded)
+- json-parser: >=1.0.0-rc.1, <1.0.0 → 1.0.0-rc.10
+- auth-service: ~2.1.0 → >=2.1.0, <2.2.0 → 2.1.1
+- web-framework: ^1.0.0 → >=1.0.0, <2.0.0 → 1.0.0
+- logger: ^1.0.0 → >=1.0.0, <2.0.0 → 1.2.0 (1.3.0 yanked)
+- cache-engine: ^1.0.0 → >=1.0.0, <2.0.0 → 1.1.0
+- rate-limiter: ^0.0.3 → >=0.0.3, <0.0.4 → 0.0.3
+- event-bus: ^2.0.0 → >=2.0.0, <3.0.0 → 2.1.0 (2.2.0 yanked)
+- tiny-alloc: ^0.0.3 → >=0.0.3, <0.0.4 → 0.0.3
+- data-mapper: ^0.2.0 → >=0.2.0, <0.3.0 → 0.2.1
+- proto-buf: >=2.0.0-1, <2.0.0 → candidates: 2.0.0-1, 2.0.0-2, 2.0.0-alpha, 2.0.0-alpha.1 → highest is 2.0.0-alpha.1
+
+Wait, let me check proto-buf more carefully. The constraint is `>=2.0.0-1, <2.0.0`.
+
+Versions: 2.0.0-1, 2.0.0-2, 2.0.0-alpha, 2.0.0-alpha.1, 2.0.0
+
+Pre-release comparison for 2.0.0-X:
+- 2.0.0-1 has pre=[Num(1)]
+- 2.0.0-2 has pre=[Num(2)]  
+- 2.0.0-alpha has pre=[Str("alpha")]
+- 2.0.0-alpha.1 has pre=[Str("alpha"), Num(1)]
+- 2.0.0 has no pre-release → highest among 2.0.0.X
+
+Ordering: Num < Str, so:
+- 2.0.0-1 < 2.0.0-2 < 2.0.0-alpha < 2.0.0-alpha.1 < 2.0.0
+
+Constraint: >=2.0.0-1 AND <2.0.0
+So: 2.0.0-1, 2.0.0-2, 2.0.0-alpha, 2.0.0-alpha.1 all satisfy
+Highest: 2.0.0-alpha.1
+
+OK so proto-buf resolves to 2.0.0-alpha.1 which depends on serializer ^2.0.0.
+
+Now let me trace transitive deps:
+- core-utils 1.2.0 → logger ^1.0.0
+- http-client 0.2.5 → core-utils ^1.0.0, crypto-lib ^0.1.0
+- auth-service 2.1.1 → crypto-lib ^0.1.3, db-connector ^3.0.0
+- web-framework 1.0.0 → template-engine ^1.0.0, serializer ^2.0.0, http-client ^0.2.0
+- cache-engine 1.1.0 → serializer ^2.0.0, core-utils ^1.1.0
+- event-bus 2.1.0 → serializer ^2.0.0, signal-handler ^0.3.0
+- tiny-alloc 0.0.3 → logger ^1.1.0
+- data-mapper 0.2.1 → validator =0.3.0, json-parser >=1.0.0-rc.1, <1.0.0
+- proto-buf 2.0.0-alpha.1 → serializer ^2.0.0
+
+Transitive:
+- logger: constraints ^1.0.0 (project), ^1.0.0 (core-utils), ^1.1.0 (tiny-alloc) → intersection: >=1.1.0, <2.0.0 → 1.2.0
+- crypto-lib: ^0.1.0 (http-client), ^0.1.3 (auth-service) → >=0.1.3, <0.2.0 → 0.1.5
+- db-connector: ^3.0.0 → >=3.0.0, <4.0.0 → 3.2.0
+- template-engine: ^1.0.0 → 1.1.0
+- serializer: ^2.0.0 (multiple) → >=2.0.0, <3.0.0 → 2.2.0
+- signal-handler: ^0.3.0 → >=0.3.0, <0.4.0 → 0.3.1
+- validator: =0.3.0 → 0.3.0
+- json-parser: already resolved to 1.0.0-rc.10
+
+Wait, db-connector 3.2.0 depends on config-reader ^0.5.0 and logger ^1.1.0.
+- config-reader: ^0.5.0 → >=0.5.0, <0.6.0 → 0.5.1
+
+Wait, ^0.5.0: left-most non-zero is 0 (major)... no wait, major is 0, minor is 5 which is non-zero. So ^0.5.0 → >=0.5.0, <0.6.0. Candidates: 0.5.0, 0.5.1. Highest: 0.5.1.
+
+signal-handler 0.3.1 depends on crypto-lib ^0.1.0. Already have crypto-lib with ^0.1.0 and ^0.1.3, so >=0.1.3, <0.2.0 → 0.1.5. Adding ^0.1.0 doesn't change anything.
+
+So the full resolved set:
+1. api-gateway 1.0.0 (deps: auth-service ~2.1.0, web-framework ^1.0.0)
+2. auth-service 2.1.1 (deps: crypto-lib ^0.1.3, db-connector ^3.0.0)
+3. cache-engine 1.1.0 (deps: serializer ^2.0.0, core-utils ^1.1.0)
+4. config-reader 0.5.1
+5. core-utils 1.2.0 (deps: logger ^1.0.0)
+6. crypto-lib 0.1.5
+7. data-mapper 0.2.1 (deps: validator =0.3.0, json-parser >=1.0.0-rc.1, <1.0.0)
+8. db-connector 3.2.0 (deps: config-reader ^0.5.0, logger ^1.1.0)
+9. event-bus 2.1.0 (deps: serializer ^2.0.0, signal-handler ^0.3.0)
+10. http-client 0.2.5 (deps: core-utils ^1.0.0, crypto-lib ^0.1.0)
+11. json-parser 1.0.0-rc.10
+12. logger 1.2.0
+13. network-stack 0.5.0 (deps: http-client ^0.2.0, event-bus ^2.0.0)
+14. proto-buf 2.0.0-alpha.1 (deps: serializer ^2.0.0)
+15. rate-limiter 0.0.3
+16. serializer 2.2.0 (deps: validator ^0.3.0)
+17. signal-handler 0.3.1 (deps: crypto-lib ^0.1.0)
+18. template-engine 1.1.0 (deps: core-utils ^1.0.0)
+19. thread-pool: ^1.0.0 → 1.0.0 (1.1.0 yanked, 1.1.0-beta.1 is < 1.1.0 but... wait)
+
+thread-pool: ^1.0.0 → >=1.0.0, <2.0.0. Non-yanked: 1.0.0, 1.1.0-beta.1. 
+1.0.0 vs 1.1.0-beta.1: 1.1.0-beta.1 has higher major.minor.patch (1.1.0 > 1.0.0), but it has a pre-release. However, 1.1.0-beta.1 > 1.0.0 because 1.1 > 1.0. So highest is 1.1.0-beta.1.
+
+Wait: 1.1.0-beta.1 has major=1, minor=1, patch=0, pre=[Str("beta"), Num(1)].
+1.0.0 has major=1, minor=0, patch=0, pre=[].
+Comparing: major equal (1), minor: 1 > 0, so 1.1.0-beta.1 > 1.0.0. Yes.
+
+So thread-pool resolves to 1.1.0-beta.1 which depends on logger ^1.0.0.
+
+20. tiny-alloc 0.0.3 (deps: logger ^1.1.0)
+21. validator 0.3.0
+22. web-framework 1.0.0 (deps: template-engine ^1.0.0, serializer ^2.0.0, http-client ^0.2.0)
+
+Wait, but validator has constraint =0.3.0 from data-mapper and ^0.3.0 from serializer. =0.3.0 means exactly 0.3.0. ^0.3.0 means >=0.3.0, <0.4.0. 0.3.0 satisfies both. Good.
+
+Now let me also check: db-connector 3.2.0 has logger ^1.1.0. Combined with other logger constraints (^1.0.0, ^1.1.0), the intersection is >=1.1.0, <2.0.0. Logger 1.2.0 satisfies. Good.
+
+Total: 22 packages.
+
+Now let me write the final clean solution:
+
+```rust
+use serde::Serialize;
+use serde_json::{json, Value};
+use std::collections::{BTreeMap, BTreeSet, HashMap, VecDeque};
+use std::fs;
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+struct Ver {
+    major: u64,
+    minor: u64,
+    patch: u64,
+    pre: Vec<PreId>,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+enum PreId {
+    Num(u64),
+    Str(String),
+}
+
+impl Ord for PreId {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        match (self, other) {
+            (PreId::Num(a), PreId::Num(b)) => a.cmp(b),
+            (PreId::Str(a), PreId::Str(b)) => a.cmp(b),
+            (PreId::Num(_), PreId::Str(_)) => std::cmp::Ordering::Less,
+            (PreId::Str(_), PreId::Num(_)) => std::cmp::Ordering::Greater,
+        }
+    }
+}
+impl PartialOrd for PreId {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> { Some(self.cmp(other)) }
+}
+
+impl Ord for Ver {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        let c = self.major.cmp(&other.major)
+            .then(self.minor.cmp(&other.minor))
+            .then(self.patch.cmp(&other.patch));
+        if c != std::cmp::Ordering::Equal { return c; }
+        match (self.pre.is_empty(), other.pre.is_empty()) {
+            (true, true) => std::cmp::Ordering::Equal,
+            (true, false) => std::cmp::Ordering::Greater,
+            (false, true) => std::cmp::Ordering::Less,
+            (false, false) => {
+                for (a, b) in self.pre.iter().zip(other.pre.iter()) {
+                    let c = a.cmp(b);
+                    if c != std::cmp::Ordering::Equal { return c; }
+                }
+                self.pre.len().cmp(&other.pre.len())
+            }
+        }
+    }
+}
+impl PartialOrd for Ver {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> { Some(self.cmp(other)) }
+}
+
+impl Ver {
+    fn parse(s: &str) -> Ver {
+        let s = s.trim();
+        let (main, pre_str) = match s.find('-') {
+            Some(i) => (&s[..i], Some(&s[i+1..])),
+            None => (s, None),
+        };
+        let p: Vec<&str> = main.split('.').collect();
+        Ver {
+            major: p[0].parse().unwrap(),
+            minor: p[1].parse().unwrap(),
+            patch: p[2].parse().unwrap(),
+            pre: pre_str.map_or(vec![], |ps| ps.split('.').map(|id| {
+                id.parse::<u64>().map_or_else(|_| PreId::Str(id.into()), PreId::Num)
+            }).collect()),
+        }
+    }
+    fn display(&self) -> String {
+        let base = format!("{}.{}.{}", self.major, self.minor, self.patch);
+        if self.pre.is_empty() { base }
+        else {
+            let ps: Vec<String> = self.pre.iter().map(|p| match p {
+                PreId::Num(n) => n.to_string(),
+                PreId::Str(s) => s.clone(),
+            }).collect();
+            format!("{}-{}", base, ps.join("."))
+        }
+    }
+}
+
+... (continuing)
+```
+
+OK let me just write the complete final solution now, being very careful:
+
+```rust
+use serde::Serialize;
+use serde_json::Value;
+use std::collections::{BTreeSet, HashMap, VecDeque};
+use std::fs;
+
+fn main() {
+    // ... full implementation
+}
+```
+
+Let me write it all out properly now:
+
+```rust
+use serde::Serialize;
+use serde_json::{json, Map, Value};
+use std::collections::{BTreeSet, HashMap, VecDeque};
+use std::fs;
+
+// Version types and parsing...
+// Constraint types...
+// Registry types...
+// Resolution...
+// Graph analysis...
+// Output generation...
+```
+
+I'll write the complete solution now. One key concern: serde_json::Map is BTreeMap by default, which sorts keys alphabetically. The output schema shows specific field ordering. Let me check if alphabetical ordering matches the schema...
+
+Schema field order:
+- schema_version, resolution, build_order, audit → alphabetical: audit, build_order, resolution, schema_version ❌
+
+So I need to either use the `preserve_order` feature of serde_json (which uses IndexMap) or manually construct the JSON string. Since I can't modify Cargo.toml, I need to check if `preserve_order` is enabled... It's not in the Cargo.toml. So serde_json::Map will use BTreeMap.
+
+I'll need to manually construct the JSON output string, or use a different approach. Actually, let me re-read the requirements - it says the output must match the schema structure. If the keys are in different order but the JSON is semantically equivalent, that should be fine for most JSON parsers. But the test might do string comparison...
+
+Let me just manually build the JSON string with proper ordering. Actually, that's really error-prone. Let me think about this differently.
+
+Looking at the Cargo.toml: `serde_json = "=1.0.134"`. By default, serde_json::Map uses BTreeMap. But I can use `serde_json::value::to_value` and then manually serialize with a custom approach.
+
+Actually, the simplest approach: I'll construct the output as a string directly, using a helper to format JSON with proper field ordering. Or I could use `serde_json::to_string_pretty` and accept alphabetical key ordering - the test might accept any valid JSON with the right values.
+
+Hmm, but the spec says "2-space indentation with a trailing newline" - it doesn't say anything about key ordering specifically. JSON objects are unordered by definition. Let me just use serde_json's default and hope it works.
+
+Actually wait - looking more carefully at the Cargo.toml, it uses `serde_json = "=1.0.134"`. I could enable the `preserve_order` feature at compile time... but I can't modify Cargo.toml. So I'm stuck with BTreeMap ordering.
+
+Let me check what BTreeMap ordering would give:
+- Top level: audit, build_order, resolution, schema_version
+- resolution: resolved, total_packages
+- audit: integrity_hash, license_report, statistics, vulnerability_report
+- vulnerability_report: critical_packages, max_score, total_vulnerable
+- etc.
+
+This is different from the schema. If the test does exact string matching, this will fail. Let me write a manual JSON serializer that preserves insertion order.
+
+Actually, the simplest approach is to write the JSON manually using format strings. Let me do that.
+
+No wait, that's too error-prone for nested structures. Let me use a Vec of (key, value) pairs and serialize them in order.
+
+Actually, the cleanest approach: write a function that takes a list of (key, Value) pairs and produces a JSON object string with the keys in the given order.
+
+```rust
+fn ordered_object(pairs: &[(&str, Value)], indent: usize) -> String {
+    // ...
+}
+```
+
+This is getting complex. Let me just use serde_json for the values and manually construct the top-level structure. Actually, let me reconsider - maybe the test doesn't do exact string matching and just parses the JSON. In that case, key ordering doesn't matter.
+
+I'll go with serde_json's default BTreeMap ordering and see. If it fails, the issue would be key ordering, but JSON spec says objects are unordered.
+
+OK, let me just write the complete, correct solution now. I'll be very careful about every detail.
+
+```rust
+use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
+use std::collections::{BTreeSet, HashMap, HashSet, VecDeque};
+use std::fs;
+
+// ... complete implementation
+```
+
+Here's my final complete solution:
+
+```rust
+use serde::Deserialize;
+use serde::Serialize;
+use serde_json::Value;
+use std::collections::{BTreeSet, HashMap, VecDeque};
+use std::fs;
+use std::io::Write;
+
+// ===== Semver =====
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+struct Ver {
+    major: u64,
+    minor: u64,
+    patch: u64,
+    pre: Vec<PreId>,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+enum PreId {
+    Num(u64),
+    Str(String),
+}
+
+impl Ord for PreId {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        use std::cmp::Ordering::*;
+        match (self, other) {
+            (PreId::Num(a), PreId::Num(b)) => a.cmp(b),
+            (PreId::Str(a), PreId::Str(b)) => a.cmp(b),
+            (PreId::Num(_), PreId::Str(_)) => Less,
+            (PreId::Str(_), PreId::Num(_)) => Greater,
+        }
+    }
+}
+impl PartialOrd for PreId {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Ver {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        use std::cmp::Ordering::*;
+        let c = self.major.cmp(&other.major)
+            .then(self.minor.cmp(&other.minor))
+            .then(self.patch.cmp(&other.patch));
+        if c != Equal { return c; }
+        match (self.pre.is_empty(), other.pre.is_empty()) {
+            (true, true) => Equal,
+            (true, false) => Greater,
+            (false, true) => Less,
+            (false, false) => {
+                for (a, b) in self.pre.iter().zip(other.pre.iter()) {
+                    let c = a.cmp(b);
+                    if c != Equal { return c; }
+                }
+                self.pre.len().cmp(&other.pre.len())
+            }
+        }
+    }
+}
+impl PartialOrd for Ver {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ver {
+    fn parse(s: &str) -> Self {
+        let s = s.trim();
+        let (main, pre_str) = match s.find('-') {
+            Some(i) => (&s[..i], Some(&s[i+1..])),
+            None => (s, None),
+        };
+        let p: Vec<u64> = main.split('.').map(|x| x.parse().unwrap()).collect();
+        Ver {
+            major: p[0], minor: p[1], patch: p[2],
+            pre: pre_str.map_or(vec![], |ps| {
+                ps.split('.').map(|id| {
+                    id.parse::<u64>().map_or_else(|_| PreId::Str(id.into()), PreId::Num)
+                }).collect()
+            }),
+        }
+    }
+    fn to_string(&self) -> String {
+        let base = format!("{}.{}.{}", self.major, self.minor, self.patch);
+        if self.pre.is_empty() { return base; }
+        let ps: Vec<String> = self.pre.iter().map(|p| match p {
+            PreId::Num(n) => n.to_string(),
+            PreId::Str(s) => s.clone(),
+        }).collect();
+        format!("{}-{}", base, ps.join("."))
+    }
+}
+
+// ===== Constraints =====
+
+#[derive(Clone)]
+enum Con {
+    Eq(Ver), Gte(Ver), Gt(Ver), Lte(Ver), Lt(Ver), Caret(Ver), Tilde(Ver),
+}
+
+fn parse_cons(s: &str) -> Vec<Con> {
+    s.split(',').map(|p| {
+        let p = p.trim();
+        if p.starts_with(">=") { Con::Gte(Ver::parse(&p[2..])) }
+        else if p.starts_with('>') { Con::Gt(Ver::parse(&p[1..])) }
+        else if p.starts_with("<=") { Con::Lte(Ver::parse(&p[2..])) }
+        else if p.starts_with('<') { Con::Lt(Ver::parse(&p[1..])) }
+        else if p.starts_with('=') { Con::Eq(Ver::parse(&p[1..])) }
+        else if p.starts_with('^') { Con::Caret(Ver::parse(&p[1..])) }
+        else if p.starts_with('~') { Con::Tilde(Ver::parse(&p[1..])) }
+        else { Con::Eq(Ver::parse(p)) }
+    }).collect()
+}
+
+fn sat(v: &Ver, c: &Con) -> bool {
+    match c {
+        Con::Eq(t) => v == t,
+        Con::Gte(t) => v >= t,
+        Con::Gt(t) => v > t,
+        Con::Lte(t) => v <= t,
+        Con::Lt(t) => v < t,
+        Con::Caret(t) => {
+            if v < t { return false; }
+            let upper = if t.major != 0 {
+                Ver { major: t.major+1, minor: 0, patch: 0, pre: vec![] }
+            } else if t.minor != 0 {
+                Ver { major: 0, minor: t.minor+1, patch: 0, pre: vec![] }
+            } else {
+                Ver { major: 0, minor: 0, patch: t.patch+1, pre: vec![] }
+            };
+            v < &upper
+        }
+        Con::Tilde(t) => {
+            v >= t && v < &Ver { major: t.major, minor: t.minor+1, patch: 0, pre: vec![] }
+        }
+    }
+}
+
+fn sat_all(v: &Ver, cs: &[Con]) -> bool {
+    cs.iter().all(|c| sat(v, c))
+}
+
+// ===== Data structures =====
+
+#[derive(Deserialize)]
+struct RegPkg {
+    name: String,
+    versions: Vec<RegVer>,
+}
+
+#[derive(Deserialize, Clone)]
+struct RegVer {
+    version: String,
+    dependencies: HashMap<String, String>,
+    license: String,
+    yanked: bool,
+    vulnerability_score: f64,
+}
+
+#[derive(Deserialize)]
+struct Project {
+    name: String,
+    dependencies: HashMap<String, String>,
+}
+
+#[derive(Deserialize)]
+struct Config {
+    vulnerability_decay_factor: f64,
+    license_categories: HashMap<String, Vec<String>>,
+    output_precision: usize,
+}
+
+// ===== SHA-256 =====
+
+fn sha256(msg: &[u8]) -> [u8; 32] {
+    let k: [u32; 64] = [
+        0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+        0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+        0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+        0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+        0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+        0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+        0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+        0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2,
+    ];
+    let mut hs: [u32;8] = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    let ml = (msg.len() as u64)*8;
+    let mut m = msg.to_vec();
+    m.push(0x80);
+    while m.len()%64!=56 { m.push(0); }
+    m.extend_from_slice(&ml.to_be_bytes());
+    for chunk in m.chunks(64) {
+        let mut w=[0u32;64];
+        for i in 0..16 { w[i]=u32::from_be_bytes([chunk[4*i],chunk[4*i+1],chunk[4*i+2],chunk[4*i+3]]); }
+        for i in 16..64 {
+            let s0=w[i-15].rotate_right(7)^w[i-15].rotate_right(18)^(w[i-15]>>3);
+            let s1=w[i-2].rotate_right(17)^w[i-2].rotate_right(19)^(w[i-2]>>10);
+            w[i]=w[i-16].wrapping_add(s0).wrapping_add(w[i-7]).wrapping_add(s1);
+        }
+        let mut v=hs;
+        for i in 0..64 {
+            let s1=v[4].rotate_right(6)^v[4].rotate_right(11)^v[4].rotate_right(25);
+            let ch=(v[4]&v[5])^((!v[4])&v[6]);
+            let t1=v[7].wrapping_add(s1).wrapping_add(ch).wrapping_add(k[i]).wrapping_add(w[i]);
+            let s0=v[0].rotate_right(2)^v[0].rotate_right(13)^v[0].rotate_right(22);
+            let maj=(v[0]&v[1])^(v[0]&v[2])^(v[1]&v[2]);
+            let t2=s0.wrapping_add(maj);
+            v[7]=v[6];v[6]=v[5];v[5]=v[4];v[4]=v[3].wrapping_add(t1);
+            v[3]=v[2];v[2]=v[1];v[1]=v[0];v[0]=t1.wrapping_add(t2);
+        }
+        for i in 0..8 { hs[i]=hs[i].wrapping_add(v[i]); }
+    }
+    let mut r=[0u8;32];
+    for i in 0..8 { r[4*i..4*i+4].copy_from_slice(&hs[i].to_be_bytes()); }
+    r
+}
+
+fn sha256_hex(s: &str) -> String {
+    sha256(s.as_bytes()).iter().map(|b| format!("{:02x}",b)).collect()
+}
+
+// ===== JSON writer with ordered keys =====
+
+fn write_json(w: &mut dyn Write, val: &JsonVal, indent: usize, current: usize) {
+    match val {
+        JsonVal::Null => write!(w, "null").unwrap(),
+        JsonVal::Bool(b) => write!(w, "{}", if *b {"true"} else {"false"}).unwrap(),
+        JsonVal::Int(n) => write!(w, "{}", n).unwrap(),
+        JsonVal::Float(f) => write!(w, "{}", f).unwrap(),
+        JsonVal::Str(s) => {
+            write!(w, "\"{}\"", s.replace('\\', "\\\\").replace('"', "\\\"")).unwrap();
+        }
+        JsonVal::Arr(items) => {
+            if items.is_empty() {
+                write!(w, "[]").unwrap();
+            } else {
+                write!(w, "[\n").unwrap();
+                for (i, item) in items.iter().enumerate() {
+                    for _ in 0..current+indent { write!(w, " ").unwrap(); }
+                    write_json(w, item, indent, current+indent);
+                    if i < items.len()-1 { write!(w, ",").unwrap(); }
+                    write!(w, "\n").unwrap();
+                }
+                for _ in 0..current { write!(w, " ").unwrap(); }
+                write!(w, "]").unwrap();
+            }
+        }
+        JsonVal::Obj(pairs) => {
+            if pairs.is_empty() {
+                write!(w, "{{}}").unwrap();
+            } else {
+                write!(w, "{{\n").unwrap();
+                for (i, (k, v)) in pairs.iter().enumerate() {
+                    for _ in 0..current+indent { write!(w, " ").unwrap(); }
+                    write!(w, "\"{}\": ", k).unwrap();
+                    write_json(w, v, indent, current+indent);
+                    if i < pairs.len()-1 { write!(w, ",").unwrap(); }
+                    write!(w, "\n").unwrap();
+                }
+                for _ in 0..current { write!(w, " ").unwrap(); }
+                write!(w, "}}").unwrap();
+            }
+        }
+    }
+}
+
+enum JsonVal {
+    Null,
+    Bool(bool),
+    Int(i64),
+    Float(String), // pre-formatted float string
+    Str(String),
+    Arr(Vec<JsonVal>),
+    Obj(Vec<(String, JsonVal)>), // ordered key-value pairs
+}
+
+fn fmt_float(val: f64, prec: usize) -> String {
+    // Round to prec decimal places
+    let factor = 10f64.powi(prec as i32);
+    let rounded = (val * factor).round() / factor;
+    // Format with enough precision, then trim trailing zeros
+    let s = format!("{:.prec$}", rounded, prec = prec);
+    // Trim trailing zeros after decimal point, but keep at least one digit after '.'
+    if s.contains('.') {
+        let trimmed = s.trim_end_matches('0');
+        if trimmed.ends_with('.') {
+            format!("{}0", trimmed)
+        } else {
+            trimmed.to_string()
+        }
+    } else {
+        s
+    }
+}
+
+fn main() {
+    let config: Config = serde_json::from_str(&fs::read_to_string("/app/data/config.json").unwrap()).unwrap();
+    let project: Project = serde_json::from_str(&fs::read_to_string("/app/data/project.json").unwrap()).unwrap();
+
+    let mut registry: HashMap<String, RegPkg> = HashMap::new();
+    for entry in fs::read_dir("/app/data/registry/").unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if path.extension().map_or(false, |e| e == "json") {
+            let pkg: RegPkg = serde_json::from_str(&fs::read_to_string(&path).unwrap()).unwrap();
+            registry.insert(pkg.name.clone(), pkg);
+        }
+    }
+
+    let mut lic_cat: HashMap<String, String> = HashMap::new();
+    for (cat, lics) in &config.license_categories {
+        for l in lics { lic_cat.insert(l.clone(), cat.clone()); }
+    }
+
+    // ===== Resolution =====
+    let mut resolved: HashMap<String, RegVer> = HashMap::new();
+    let mut all_cons: HashMap<String, Vec<Con>> = HashMap::new();
+
+    // Iterative resolution
+    let mut queue: VecDeque<(String, String)> = VecDeque::new();
+    for (name, cs) in &project.dependencies {
+        queue.push_back((name.clone(), cs.clone()));
+    }
+
+    while let Some((pkg, cs_str)) = queue.pop_front() {
+        let new_cs = parse_cons(&cs_str);
+        let entry = all_cons.entry(pkg.clone()).or_default();
+        entry.extend(new_cs);
+
+        let reg = registry.get(&pkg).unwrap();
+        let mut cands: Vec<(&RegVer, Ver)> = reg.versions.iter()
+            .filter(|v| !v.yanked)
+            .map(|v| (v, Ver::parse(&v.version)))
+            .filter(|(_, ver)| sat_all(ver, &all_cons[&pkg]))
+            .collect();
+        cands.sort_by(|a, b| b.1.cmp(&a.1));
+
+        let (best, _) = cands.first().unwrap();
+        let prev = resolved.get(&pkg).map(|r| r.version.clone());
+        if prev.as_deref() == Some(&best.version) {
+            continue;
+        }
+
+        let best_clone = (*best).clone();
+        resolved.insert(pkg.clone(), best_clone.clone());
+
+        for (dep, dep_cs) in &best_clone.dependencies {
+            queue.push_back((dep.clone(), dep_cs.clone()));
+        }
+    }
+
+    // ===== Build graphs =====
+    let names: Vec<String> = resolved.keys().cloned().collect();
+    let mut deps: HashMap<String, Vec<String>> = HashMap::new();
+    let mut rdeps: HashMap<String, Vec<String>> = HashMap::new();
+    for n in &names {
+        deps.insert(n.clone(), Vec::new());
+        rdeps.insert(n.clone(), Vec::new());
+    }
+    for n in &names {
+        for d in resolved[n].dependencies.keys() {
+            if resolved.contains_key(d) {
+                deps.get_mut(n).unwrap().push(d.clone());
+                rdeps.get_mut(d).unwrap().push(n.clone());
+            }
+        }
+    }
+    for v in deps.values_mut() { v.sort(); }
+    for v in rdeps.values_mut() { v.sort(); }
+
+    // ===== Depths (longest path from project root) =====
+    let mut full_deps: HashMap<String, Vec<String>> = deps.clone();
+    let mut proj_deps: Vec<String> = project.dependencies.keys()
+        .filter(|k| resolved.contains_key(*k))
+        .cloned().collect();
+    proj_deps.sort();
+    full_deps.insert(project.name.clone(), proj_deps);
+
+    // Topo sort of full graph
+    let mut in_deg: HashMap<String, usize> = HashMap::new();
+    for n in full_deps.keys() { in_deg.entry(n.clone()).or_insert(0); }
+    for (_, ds) in &full_deps {
+        for d in ds { *in_deg.entry(d.clone()).or_insert(0) += 1; }
+    }
+    let mut topo: Vec<String> = Vec::new();
+    let mut bts: BTreeSet<String> = BTreeSet::new();
+    for (n, &d) in &in_deg { if d == 0 { bts.insert(n.clone()); } }
+    while let Some(n) = bts.iter().next().cloned() {
+        bts.remove(&n);
+        topo.push(n.clone());
+        if let Some(ds) = full_deps.get(&n) {
+            for d in ds {
+                let deg = in_deg.get_mut(d).unwrap();
+                *deg -= 1;
+                if *deg == 0 { bts.insert(d.clone()); }
+            }
+        }
+    }
+
+    let mut dist: HashMap<String, usize> = HashMap::new();
+    for n in full_deps.keys() { dist.insert(n.clone(), 0); }
+    for n in &topo {
+        let d = dist[n];
+        if let Some(ds) = full_deps.get(n) {
+            for dep in ds {
+                let nd = d + 1;
+                if nd > dist[dep] { dist.insert(dep.clone(), nd); }
+            }
+        }
+    }
+
+    let depths: HashMap<String, usize> = names.iter()
+        .map(|n| (n.clone(), dist[n]))
+        .collect();
+
+    // ===== Build order =====
+    let mut bo_in: HashMap<String, usize> = HashMap::new();
+    for n in &names { bo_in.insert(n.clone(), deps[n].len()); }
+    let mut build_order: Vec<String> = Vec::new();
+    let mut boq: BTreeSet<String> = BTreeSet::new();
+    for (n, &d) in &bo_in { if d == 0 { boq.insert(n.clone()); } }
+    while let Some(n) = boq.iter().next().cloned() {
+        boq.remove(&n);
+        build_order.push(n.clone());
+        for dep in &rdeps[&n] {
+            let d = bo_in.get_mut(dep).unwrap();
+            *d -= 1;
+            if *d == 0 { boq.insert(dep.clone()); }
+        }
+    }
+
+    // ===== Vulnerability scores =====
+    let decay = config.vulnerability_decay_factor;
+    let prec = config.output_precision;
+    let mut eff: HashMap<String, f64> = HashMap::new();
+    for n in &build_order {
+        let base = resolved[n].vulnerability_score;
+        let dsum: f64 = deps[n].iter().map(|d| eff[d]).sum();
+        eff.insert(n.clone(), base + decay * dsum);
+    }
+
+    // ===== Resolved list =====
+    let mut nd: Vec<(String, usize)> = names.iter().map(|n| (n.clone(), depths[n])).collect();
+    nd.sort_by(|a, b| a.1.cmp(&b.1).then(a.0.cmp(&b.0)));
+
+    let resolved_list: Vec<JsonVal> = nd.iter().map(|(name, depth)| {
+        let rv = &resolved[name];
+        let cat = lic_cat.get(&rv.license).cloned().unwrap_or("unknown".into());
+        let mut dd: Vec<String> = deps[name].iter()
+            .map(|d| format!("{}@{}", d, resolved[d].version))
+            .collect();
+        dd.sort();
+        let mut dts: Vec<String> = rdeps[name].iter()
+            .map(|d| format!("{}@{}", d, resolved[d].version))
+            .collect();
+        dts.sort();
+        JsonVal::Obj(vec![
+            ("name".into(), JsonVal::Str(name.clone())),
+            ("version".into(), JsonVal::Str(rv.version.clone())),
+            ("license".into(), JsonVal::Str(rv.license.clone())),
+            ("license_category".into(), JsonVal::Str(cat)),
+            ("depth".into(), JsonVal::Int(*depth as i64)),
+            ("direct_dependencies".into(), JsonVal::Arr(dd.into_iter().map(JsonVal::Str).collect())),
+            ("dependents".into(), JsonVal::Arr(dts.into_iter().map(JsonVal::Str).collect())),
+        ])
+    }).collect();
+
+    let bo_strs: Vec<String> = build_order.iter()
+        .map(|n| format!("{}@{}", n, resolved[n].version))
+        .collect();
+
+    // ===== Vulnerability report =====
+    let mut max_score: f64 = 0.0;
+    let mut total_vuln = 0;
+    let mut vuln_entries: Vec<(String, f64, f64)> = Vec::new();
+    for n in &names {
+        let e = round(eff[n], prec);
+        if e > 0.0 {
+            total_vuln += 1;
+            let b = round(resolved[n].vulnerability_score, prec);
+            vuln_entries.push((n.clone(), b, e));
+            if e > max_score { max_score = e; }
+        }
+    }
+    vuln_entries.sort_by(|a, b| b.2.partial_cmp(&a.2).unwrap().then(a.0.cmp(&b.0)));
+
+    let crit_pkgs: Vec<JsonVal> = vuln_entries.iter().map(|(name, base, eff_s)| {
+        JsonVal::Obj(vec![
+            ("name".into(), JsonVal::Str(name.clone())),
+            ("version".into(), JsonVal::Str(resolved[name].version.clone())),
+            ("base_score".into(), JsonVal::Float(fmt_float(*base, prec))),
+            ("effective_score".into(), JsonVal::Float(fmt_float(*eff_s, prec))),
+        ])

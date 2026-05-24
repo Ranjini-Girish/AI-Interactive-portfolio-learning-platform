@@ -37,23 +37,28 @@ async function clickReviseAndWait(page: Page, revise: ReturnType<Page['getByRole
   ]);
 }
 
+const REVISION_CARD_SELECTOR = '[data-testid$="-Terminus-2nd-Edition"]';
+
 /** Match revision cards by platform UID text when assignment test id differs. */
 function revisionCardReviseButtonByUid(page: Page, uid: string) {
   return page
-    .locator('div, article, li, section')
-    .filter({ hasText: uid })
-    .filter({ has: page.getByRole('button', { name: 'Revise' }) })
-    .first()
+    .locator(REVISION_CARD_SELECTOR)
+    .filter({ has: page.getByText(uid, { exact: true }) })
     .getByRole('button', { name: 'Revise' });
 }
 
 function revisionCardReviseButtonByLabel(page: Page, label: string | RegExp) {
   return page
-    .locator('motion-div, article, li, div')
+    .locator(REVISION_CARD_SELECTOR)
     .filter({ hasText: label })
-    .filter({ has: page.getByRole('button', { name: 'Revise' }) })
-    .first()
     .getByRole('button', { name: 'Revise' });
+}
+
+async function searchRevisionQueue(page: Page, query: string): Promise<void> {
+  const search = page.getByPlaceholder(/search/i).first();
+  if (!(await search.count())) return;
+  await search.fill(query);
+  await page.waitForTimeout(800);
 }
 
 async function extractAssignmentIdFromReviseButton(
@@ -83,17 +88,43 @@ export async function openRevisionTask(page: Page, taskId?: string): Promise<str
 
   if (id) {
     const byAssignment = revisionCardReviseButtonByAssignmentId(page, id);
-    const byUid = revisionCardReviseButtonByUid(page, id);
-  if (await byAssignment.count()) {
+    if (await byAssignment.count()) {
       await clickReviseAndWait(page, byAssignment);
       return id;
     }
-    await clickReviseAndWait(page, byUid);
-    return id;
+
+    let byUid = revisionCardReviseButtonByUid(page, id);
+    if (!(await byUid.count())) {
+      await searchRevisionQueue(page, id.slice(0, 8));
+      byUid = revisionCardReviseButtonByUid(page, id);
+    }
+    if (await byUid.count()) {
+      await clickReviseAndWait(page, byUid);
+      return id;
+    }
+
+    if (name) {
+      let byLabel = revisionCardReviseButtonByLabel(page, name);
+      if (!(await byLabel.count())) {
+        await searchRevisionQueue(page, name);
+        byLabel = revisionCardReviseButtonByLabel(page, name);
+      }
+      await expect(byLabel).toBeVisible({ timeout: 30_000 });
+      await clickReviseAndWait(page, byLabel);
+      return id;
+    }
+
+    throw new Error(
+      `No Revise card for revision UID ${id}. Set SNORKEL_REVISION_TASK_NAME or SNORKEL_REVISION_ASSIGNMENT_ID.`,
+    );
   }
 
   if (name) {
-    const revise = revisionCardReviseButtonByLabel(page, name);
+    let revise = revisionCardReviseButtonByLabel(page, name);
+    if (!(await revise.count())) {
+      await searchRevisionQueue(page, name);
+      revise = revisionCardReviseButtonByLabel(page, name);
+    }
     await expect(revise).toBeVisible({ timeout: 30_000 });
     const resolvedId = await extractAssignmentIdFromReviseButton(revise);
     await clickReviseAndWait(page, revise);

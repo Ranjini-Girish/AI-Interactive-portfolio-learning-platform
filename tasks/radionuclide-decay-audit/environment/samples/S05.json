@@ -1,0 +1,8 @@
+{
+  "sample_id": "S05",
+  "description": "Pure Fn-250 near-degenerate chain source",
+  "collection_time": "2026-01-15T08:00:00Z",
+  "initial_activities_bq": {
+    "Fn250": 3000.0
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "station_id": "BRAVO",
+  "launch_time": "2024-06-15T12:00:00Z",
+  "levels": [
+    {
+      "pressure": 1008,
+      "temperature": 34,
+      "dewpoint": 22,
+      "wind_direction": 170,
+      "wind_speed": 8,
+      "height": 130
+    },
+    {
+      "pressure": 975,
+      "temperature": 31,
+      "dewpoint": 21,
+      "wind_direction": 180,
+      "wind_speed": 10,
+      "height": 420
+    },
+    {
+      "pressure": 950,
+      "temperature": 28,
+      "dewpoint": 20,
+      "wind_direction": 190,
+      "wind_speed": 12,
+      "height": 660
+    },
+    {
+      "pressure": 925,
+      "temperature": 25,
+      "dewpoint": 18,
+      "wind_direction": 200,
+      "wind_speed": 14,
+      "height": 900
+    },
+    {
+      "pressure": 900,
+      "temperature": 22,
+      "dewpoint": 15,
+      "wind_direction": 210,
+      "wind_speed": 16,
+      "height": 1150
+    },
+    {
+      "pressure": 850,
+      "temperature": 16,
+      "dewpoint": 8,
+      "wind_direction": 230,
+      "wind_speed": 20,
+      "height": 1500
+    },
+    {
+      "pressure": 700,
+      "temperature": 0,
+      "dewpoint": -12,
+      "wind_direction": 260,
+      "wind_speed": 28,
+      "height": 3100
+    },
+    {
+      "pressure": 500,
+      "temperature": -20,
+      "dewpoint": -38,
+      "wind_direction": 275,
+      "wind_speed": 36,
+      "height": 5700
+    },
+    {
+      "pressure": 400,
+      "temperature": -35,
+      "dewpoint": -53,
+      "wind_direction": 280,
+      "wind_speed": 40,
+      "height": 7400
+    },
+    {
+      "pressure": 300,
+      "temperature": -48,
+      "dewpoint": -65,
+      "wind_direction": 285,
+      "wind_speed": 44,
+      "height": 9400
+    },
+    {
+      "pressure": 250,
+      "temperature": -55,
+      "dewpoint": -72,
+      "wind_direction": 280,
+      "wind_speed": 42,
+      "height": 10700
+    },
+    {
+      "pressure": 200,
+      "temperature": -60,
+      "dewpoint": -76,
+      "wind_direction": 275,
+      "wind_speed": 38,
+      "height": 12200
+    }
+  ]
+}

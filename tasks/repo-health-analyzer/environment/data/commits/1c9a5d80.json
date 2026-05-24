@@ -1,0 +1,20 @@
+{
+  "hash": "1c9a5d80",
+  "author_name": "Charlie Park",
+  "author_email": "charlie@example.com",
+  "parent_hashes": [],
+  "timestamp": "2025-03-20T10:00:00Z",
+  "message": "Experimental prototype - see Reviewed-by: process docs",
+  "file_changes": [
+    {
+      "path": "src/experiment.js",
+      "additions": 150,
+      "deletions": 0
+    },
+    {
+      "path": "assets/logo.png",
+      "additions": null,
+      "deletions": null
+    }
+  ]
+}

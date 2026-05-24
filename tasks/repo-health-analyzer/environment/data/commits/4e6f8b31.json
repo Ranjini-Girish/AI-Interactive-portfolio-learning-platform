@@ -1,0 +1,22 @@
+{
+  "hash": "4e6f8b31",
+  "author_name": "Alice Chen",
+  "author_email": "alice@example.com",
+  "parent_hashes": [
+    "b5c9d3e2"
+  ],
+  "timestamp": "2025-01-25T13:00:00Z",
+  "message": "Auth: add login flow",
+  "file_changes": [
+    {
+      "path": "src/auth.js",
+      "additions": 70,
+      "deletions": 0
+    },
+    {
+      "path": "src/crypto.js",
+      "additions": 45,
+      "deletions": 0
+    }
+  ]
+}

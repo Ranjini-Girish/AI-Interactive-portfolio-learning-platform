@@ -1,0 +1,11 @@
+{
+  "name": "ffmpeg-node",
+  "version": "1.2.0",
+  "license": "GPL-3.0-only",
+  "dependencies": [
+    {
+      "name": "media-codec",
+      "version_range": "^1.0"
+    }
+  ]
+}

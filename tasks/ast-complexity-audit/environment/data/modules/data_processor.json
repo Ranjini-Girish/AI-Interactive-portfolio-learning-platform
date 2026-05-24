@@ -1,0 +1,106 @@
+{
+  "module_name": "data_processor",
+  "path": "src/data/processor.js",
+  "lines_of_code": 120,
+  "imports": ["./validator", "./logger", "lodash"],
+  "exports": ["processRecords", "aggregateResults"],
+  "functions": [
+    {
+      "name": "processRecords",
+      "lines": 55,
+      "parameters": ["records", "options"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [{"type": "logical_or"}],
+          "body": [],
+          "else_body": []
+        },
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "switch",
+              "cases": [
+                {
+                  "type": "case",
+                  "body": [
+                    {"type": "if", "condition": [], "body": [], "else_body": []}
+                  ]
+                },
+                {
+                  "type": "case",
+                  "body": []
+                },
+                {
+                  "type": "case",
+                  "body": [
+                    {
+                      "type": "while",
+                      "body": [
+                        {"type": "if", "condition": [{"type": "logical_and"}], "body": [], "else_body": []}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "default",
+                  "body": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "try",
+          "body": [],
+          "catch_body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [],
+              "else_body": [
+                {"type": "else", "body": []}
+              ]
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "!==", "&&", "||", "+", "-", "*", ".", "()", "=", "[]", "typeof", "switch", "case"],
+      "operands": ["records", "options", "record", "result", "i", "type", "data", "error", "null", "undefined", "0", "output", "batch"]
+    },
+    {
+      "name": "aggregateResults",
+      "lines": 30,
+      "parameters": ["results", "groupBy"],
+      "body": [
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [
+                {"type": "ternary", "body": [], "else_body": []}
+              ],
+              "else_body": []
+            }
+          ]
+        },
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "if",
+              "condition": [{"type": "logical_and"}, {"type": "logical_or"}],
+              "body": [],
+              "else_body": []
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "&&", "||", "+", "/", ".", "()", "=", "[]", "?:"],
+      "operands": ["results", "groupBy", "result", "key", "group", "acc", "i", "sum", "count", "0"]
+    }
+  ]
+}

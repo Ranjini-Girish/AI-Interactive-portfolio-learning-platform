@@ -1,0 +1,61 @@
+{
+  "taskName": "artifact-promote-lattice-audit",
+  "updatedAt": "2026-05-23T17:19:04.812Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "c0c86689-5c55-47c8-a238-7ad18532a5c9",
+    "taskStatus": "Evaluation pending",
+    "taskName": "artifact-promote-lattice-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "artifact-promote-lattice-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:19:04.812Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "c0c86689-5c55-47c8-a238-7ad18532a5c9",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\artifact-promote-lattice-audit.zip",
+    "zipBytes": 20897,
+    "zipSha256": "f6720917f9f582c96b2e83b5bec46f9de0f420d249ead193a7841aa3f0c7faaf",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:19:04.812Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "c0c86689-5c55-47c8-a238-7ad18532a5c9",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\artifact-promote-lattice-audit.zip",
+      "zipBytes": 20897,
+      "zipSha256": "f6720917f9f582c96b2e83b5bec46f9de0f420d249ead193a7841aa3f0c7faaf",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "serde-core",
+  "version": "1.0.200",
+  "base_size_bytes": 3600,
+  "features": {
+    "default": ["derive"],
+    "derive": [],
+    "alloc": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "derive": 0.15,
+    "alloc": 0.10
+  },
+  "build_priority": 1,
+  "weak_features": {},
+  "dependencies": [],
+  "exports": ["Serialize", "Deserialize", "SerdeError"],
+  "conditional_exports": {}
+}

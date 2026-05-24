@@ -1,0 +1,9 @@
+{
+  "stream_id": "stream_09",
+  "computations": {
+    "basic_stats": true,
+    "trend": {
+      "weights": "uniform"
+    }
+  }
+}

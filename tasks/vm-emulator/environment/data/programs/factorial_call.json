@@ -1,0 +1,19 @@
+{
+  "name": "factorial_call",
+  "instructions": [
+    {"op": "MOV", "args": ["R0", 5]},
+    {"op": "CALL", "args": [3]},
+    {"op": "HALT", "args": []},
+    {"op": "PUSH", "args": ["R0"]},
+    {"op": "CMP", "args": ["R0", 1]},
+    {"op": "JLE", "args": [11]},
+    {"op": "SUB", "args": ["R0", 1]},
+    {"op": "CALL", "args": [3]},
+    {"op": "POP", "args": ["R1"]},
+    {"op": "MUL", "args": ["R0", "R1"]},
+    {"op": "RET", "args": []},
+    {"op": "POP", "args": ["R1"]},
+    {"op": "MOV", "args": ["R0", 1]},
+    {"op": "RET", "args": []}
+  ]
+}

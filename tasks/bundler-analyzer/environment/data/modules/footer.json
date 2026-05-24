@@ -1,0 +1,12 @@
+{
+  "id": "src/components/footer",
+  "base_size_bytes": 15,
+  "exports": [
+    {"name": "Footer", "size_bytes": 180}
+  ],
+  "imports": [
+    {"module": "src/utils/format", "names": ["formatDate"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

@@ -1,0 +1,26 @@
+{
+  "name": "event-bus",
+  "path": "src/event-bus.js",
+  "size_bytes": 550,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "logger",
+      "specifiers": [
+        "log"
+      ]
+    }
+  ],
+  "exports": [
+    "EventBus",
+    "emit"
+  ],
+  "re_exports": [
+    {
+      "source": "logger",
+      "specifiers": [
+        "warn"
+      ]
+    }
+  ]
+}

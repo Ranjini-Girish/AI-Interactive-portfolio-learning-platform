@@ -1,0 +1,18 @@
+{
+  "name": "ws-codec",
+  "version": "0.3.1",
+  "base_size_bytes": 1100,
+  "features": {
+    "default": [],
+    "binary-frames": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "binary-frames": 0.10
+  },
+  "build_priority": 9,
+  "weak_features": {},
+  "dependencies": [],
+  "exports": ["WebSocketCodec", "Frame"],
+  "conditional_exports": {}
+}

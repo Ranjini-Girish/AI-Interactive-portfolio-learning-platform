@@ -1,0 +1,8 @@
+{
+  "name": "tests",
+  "type": "executable",
+  "sources": ["tests/test_main.cpp"],
+  "headers": [],
+  "depends_on": ["server", "libutil"],
+  "build_time_ms": 1000
+}

@@ -1,0 +1,61 @@
+{
+  "taskName": "cdc-lag-compactor-audit",
+  "updatedAt": "2026-05-23T16:41:08.509Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "2fd03871-d392-44a6-b133-00c9bb542cd5",
+    "taskStatus": "Evaluation pending",
+    "taskName": "cdc-lag-compactor-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "cdc-lag-compactor-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T16:41:08.509Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "2fd03871-d392-44a6-b133-00c9bb542cd5",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\cdc-lag-compactor-audit.zip",
+    "zipBytes": 20768,
+    "zipSha256": "af5df7d63672341c22d6a1b7d3ef1e27a7143198ed077ec98d995dcbfddb7311",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T16:41:08.509Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "2fd03871-d392-44a6-b133-00c9bb542cd5",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\cdc-lag-compactor-audit.zip",
+      "zipBytes": 20768,
+      "zipSha256": "af5df7d63672341c22d6a1b7d3ef1e27a7143198ed077ec98d995dcbfddb7311",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

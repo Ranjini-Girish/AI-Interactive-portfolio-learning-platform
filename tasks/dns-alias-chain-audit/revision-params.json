@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+  "platformTaskSlug": "dns-alias-chain-audit",
+  "assignmentId": "a109dd72-f787-4928-9489-ee47d3c85374",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=a109dd72-f787-4928-9489-ee47d3c85374",
+  "capturedAt": "2026-05-23T17:03:28.061Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:828b89f8-38db-442b-9e22-c48dedb6280a",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:828b89f8-38db-442b-9e22-c48dedb6280a."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nThis task is not tested with any \nagents as the Oracle solution failed. \nPlease fix the Oracle solution and \nre-run the tests.\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n❌ fail - \nbehavior_in_task_description: The \ninstruction.md (and the referenced \nSPEC.md) does not fully document the \nschema for type_votes.json entries. \nThe SPEC explicitly lists fields for \nrecord_states ('deny, epoch, name,"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "train-slot-lattice-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\train-slot-lattice-audit.zip",
+    "excludedPlatformZip": "dns-alias-chain-audit.zip"
+  }
+}

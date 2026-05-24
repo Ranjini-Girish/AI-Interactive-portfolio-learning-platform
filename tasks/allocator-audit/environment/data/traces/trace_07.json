@@ -1,0 +1,16 @@
+{
+  "trace_id": "trace_07",
+  "description": "Zero-size allocations mixed with normal ones",
+  "operations": [
+    {"op": "alloc", "id": "z1", "size": 0, "align": 8},
+    {"op": "alloc", "id": "n1", "size": 64, "align": 8},
+    {"op": "alloc", "id": "z2", "size": 0, "align": 16},
+    {"op": "alloc", "id": "z3", "size": 0, "align": 8},
+    {"op": "dealloc", "id": "z1"},
+    {"op": "alloc", "id": "n2", "size": 32, "align": 8},
+    {"op": "dealloc", "id": "z2"},
+    {"op": "dealloc", "id": "z3"},
+    {"op": "dealloc", "id": "n1"},
+    {"op": "dealloc", "id": "n2"}
+  ]
+}

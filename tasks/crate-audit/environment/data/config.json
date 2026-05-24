@@ -1,0 +1,9 @@
+{
+  "vulnerability_decay_factor": 0.6,
+  "license_categories": {
+    "permissive": ["MIT", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Apache-2.0"],
+    "weak_copyleft": ["LGPL-2.1", "MPL-2.0"],
+    "strong_copyleft": ["GPL-2.0", "GPL-3.0", "AGPL-3.0"]
+  },
+  "output_precision": 4
+}

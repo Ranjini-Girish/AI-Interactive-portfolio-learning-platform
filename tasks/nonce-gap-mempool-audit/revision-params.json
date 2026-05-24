@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "1cec7fb5-cbe7-41aa-a633-6a3493b97e4a",
+  "platformTaskSlug": "nonce-gap-mempool-audit",
+  "assignmentId": "4b14a598-66d6-4ea3-baa4-520e3e94bb3e",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=4b14a598-66d6-4ea3-baa4-520e3e94bb3e",
+  "capturedAt": "2026-05-23T17:20:55.463Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:ab85e0cd-8dea-4c70-abf6-06fb28779290",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:ab85e0cd-8dea-4c70-abf6-06fb28779290."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nThis task is not tested with any \nagents as the Oracle solution failed. \nPlease fix the Oracle solution and \nre-run the tests.\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all 4 \noutput files, lists every outcome \nvalue (ok, gap_violation, \nnonce_replay, replace_accepted, \nreplace_rejected, cancel_ok,"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "ingest-watermark-skew-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ingest-watermark-skew-audit.zip",
+    "excludedPlatformZip": "nonce-gap-mempool-audit.zip"
+  }
+}

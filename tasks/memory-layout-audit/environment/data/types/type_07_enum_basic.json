@@ -1,0 +1,10 @@
+{
+  "id": "type_07_enum_basic",
+  "kind": "enum",
+  "repr": "C",
+  "variants": [
+    {"name": "Empty", "fields": []},
+    {"name": "Single", "fields": [{"name": "0", "type": "u32"}]},
+    {"name": "Double", "fields": [{"name": "0", "type": "u64"}, {"name": "1", "type": "u8"}]}
+  ]
+}

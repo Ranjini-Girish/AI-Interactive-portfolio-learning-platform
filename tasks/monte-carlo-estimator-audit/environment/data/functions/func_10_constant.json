@@ -1,0 +1,13 @@
+{
+  "id": "func_10_constant",
+  "type": "constant",
+  "params": {
+    "value": 4.5
+  },
+  "domain": [
+    0.0,
+    1.0
+  ],
+  "exact_integral": 4.5,
+  "description": "f(x) = 4.5"
+}

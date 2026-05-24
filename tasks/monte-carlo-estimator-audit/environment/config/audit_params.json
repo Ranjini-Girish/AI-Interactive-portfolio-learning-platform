@@ -1,0 +1,11 @@
+{
+  "sample_sizes": [
+    100,
+    500,
+    1000,
+    5000
+  ],
+  "rounding_decimals": 8,
+  "output_file": "audit_report.json",
+  "output_directory": "/app/output"
+}

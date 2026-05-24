@@ -1,0 +1,26 @@
+{
+  "name": "thread-pool",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "dependencies": {},
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "1.1.0-beta.1",
+      "dependencies": {"logger": "^1.0.0"},
+      "license": "MIT",
+      "yanked": false,
+      "vulnerability_score": 1.0
+    },
+    {
+      "version": "1.1.0",
+      "dependencies": {"logger": "^1.0.0"},
+      "license": "MIT",
+      "yanked": true,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

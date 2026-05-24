@@ -1,0 +1,9 @@
+{
+  "name": "archer",
+  "stats": {"hp": 110, "attack": 40, "defense": 12, "speed": 25},
+  "element": "neutral",
+  "abilities": {
+    "arrow": {"type": "attack", "power": 45, "element": "neutral"},
+    "stun_shot": {"type": "attack", "power": 20, "element": "neutral", "applies": "stun"}
+  }
+}

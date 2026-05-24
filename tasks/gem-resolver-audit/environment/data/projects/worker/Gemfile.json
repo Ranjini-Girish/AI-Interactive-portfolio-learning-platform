@@ -1,0 +1,32 @@
+{
+  "dependencies": [
+    {
+      "constraint": "~> 6.0.0",
+      "gem": "sidekiq",
+      "group": "runtime"
+    },
+    {
+      "constraint": ">= 2.0",
+      "gem": "faraday",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 6.1.0",
+      "gem": "activerecord",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 1.8",
+      "gem": "geocoder",
+      "group": "runtime"
+    },
+    {
+      "constraint": "~> 3.12.0",
+      "gem": "rspec",
+      "group": "development"
+    }
+  ],
+  "platform": "ruby",
+  "project_id": "worker",
+  "project_license": "MIT"
+}

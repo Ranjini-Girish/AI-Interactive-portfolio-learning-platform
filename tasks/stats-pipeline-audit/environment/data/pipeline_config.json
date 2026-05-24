@@ -1,0 +1,9 @@
+{
+  "trim_fraction": 0.1,
+  "outlier_threshold": 3.5,
+  "confidence_level": 0.95,
+  "bootstrap_iterations": 10000,
+  "bootstrap_seed": 42,
+  "significance_alpha": 0.05,
+  "rounding_decimals": 6
+}

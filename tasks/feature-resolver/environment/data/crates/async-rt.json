@@ -1,0 +1,22 @@
+{
+  "name": "async-rt",
+  "version": "1.0.0",
+  "base_size_bytes": 2900,
+  "features": {
+    "default": ["multi-thread"],
+    "multi-thread": [],
+    "single-thread": []
+  },
+  "feature_conflicts": [],
+  "feature_size_weights": {
+    "multi-thread": 0.20,
+    "single-thread": 0.10
+  },
+  "build_priority": 2,
+  "weak_features": {},
+  "dependencies": [
+    {"name": "logger", "optional": false, "default_features": true, "features": []}
+  ],
+  "exports": ["AsyncRuntime", "spawn", "block_on"],
+  "conditional_exports": {}
+}

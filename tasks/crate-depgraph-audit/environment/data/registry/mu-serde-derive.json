@@ -1,0 +1,17 @@
+{
+  "name": "mu-serde-derive",
+  "versions": [
+    {
+      "version": "1.0.5",
+      "features": {"default": []},
+      "dependencies": [],
+      "license": "MIT"
+    },
+    {
+      "version": "1.0.0",
+      "features": {"default": []},
+      "dependencies": [],
+      "license": "MIT"
+    }
+  ]
+}

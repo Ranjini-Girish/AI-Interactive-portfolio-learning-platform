@@ -1,0 +1,5 @@
+{
+  "max_rounds_default": 10,
+  "min_damage": 1,
+  "poison_divisor": 8
+}

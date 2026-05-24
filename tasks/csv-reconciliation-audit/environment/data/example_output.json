@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "total_transactions": 5,
+    "settled_count": 4,
+    "unsettled_count": 1,
+    "orphan_count": 0,
+    "mismatch_count": 1,
+    "imbalance_count": 1,
+    "duplicate_pair_count": 0,
+    "total_volume_usd": 10000.00,
+    "total_fees_usd": 20.00,
+    "fee_rate_percent": 0.20
+  },
+  "unsettled_transactions": ["TX003"],
+  "orphan_settlements": [],
+  "amount_mismatches": [
+    {
+      "txn_id": "TX001",
+      "txn_amount": 500.00,
+      "settled_amount": 499.50,
+      "difference": 0.50
+    }
+  ],
+  "ledger_imbalances": [
+    {
+      "txn_id": "TX002",
+      "total_debit": 1000.00,
+      "total_credit": 999.00,
+      "imbalance": 1.00
+    }
+  ],
+  "duplicate_pairs": [],
+  "volume_by_currency": {
+    "USD": {
+      "count": 3,
+      "total": 7500.00
+    },
+    "EUR": {
+      "count": 2,
+      "total_eur": 2000.00,
+      "total_usd": 2500.00
+    }
+  }
+}

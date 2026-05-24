@@ -1,0 +1,23 @@
+{
+  "manifest_id": "m03",
+  "deployments": [
+    {
+      "deployment_id": "dep-epsilon-05",
+      "environment": "production",
+      "artifact_ref": "ART_EPSILON_BUNDLE",
+      "build_duration_sec": 140,
+      "deploy_duration_sec": 70,
+      "declared_size_bytes": 1310720,
+      "overlay": "production"
+    },
+    {
+      "deployment_id": "dep-zeta-06",
+      "environment": "staging",
+      "artifact_ref": "art-zeta-bundle",
+      "build_duration_sec": 75,
+      "deploy_duration_sec": 30,
+      "declared_size_bytes": 655360,
+      "overlay": "staging"
+    }
+  ]
+}

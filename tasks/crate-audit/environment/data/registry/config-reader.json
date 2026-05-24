@@ -1,0 +1,26 @@
+{
+  "name": "config-reader",
+  "versions": [
+    {
+      "version": "0.5.0",
+      "dependencies": {},
+      "license": "BSD-3-Clause",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.5.1",
+      "dependencies": {},
+      "license": "BSD-3-Clause",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.6.0",
+      "dependencies": {},
+      "license": "BSD-3-Clause",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "endpoint_id": "ep_01",
+  "deliveries": [
+    {
+      "delivery_id": "del_a",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "success",
+          "sent_at": 1000000,
+          "received_at": 1000050,
+          "body": {
+            "type": "invoice.paid",
+            "amount": 10
+          },
+          "signature": "27cab325f8425c485ee18f1d54e62eae144491274108e22e2fcf2243274364ce",
+          "jitter_pct": 0
+        }
+      ]
+    },
+    {
+      "delivery_id": "del_b",
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "success",
+          "sent_at": 2000000,
+          "received_at": 2000100,
+          "body": {
+            "type": "invoice.paid",
+            "amount": 25
+          },
+          "signature": "531891cb995dc914b575e3ad7bf9cda9fdd453a2a5d029118e091afe164262d6",
+          "jitter_pct": 0
+        }
+      ]
+    }
+  ]
+}

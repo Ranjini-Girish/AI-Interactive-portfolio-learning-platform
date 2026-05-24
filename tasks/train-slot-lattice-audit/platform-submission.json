@@ -1,0 +1,80 @@
+{
+  "taskName": "train-slot-lattice-audit",
+  "updatedAt": "2026-05-24T02:20:23.861Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+    "taskStatus": "Evaluation pending",
+    "taskName": "train-slot-lattice-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "train-slot-lattice-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T02:20:23.861Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\train-slot-lattice-audit.zip",
+    "zipBytes": 20325,
+    "zipSha256": "d8733f959e50173ed72914db5f7ea07c65a81fedde17738264325f5e63ba3a67",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:04:54.882Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\train-slot-lattice-audit.zip",
+      "zipBytes": 20325,
+      "zipSha256": "d8733f959e50173ed72914db5f7ea07c65a81fedde17738264325f5e63ba3a67",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T02:20:23.861Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "880ff0fc-751e-4495-aeb8-77827cee6ce5",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\train-slot-lattice-audit.zip",
+      "zipBytes": 20325,
+      "zipSha256": "d8733f959e50173ed72914db5f7ea07c65a81fedde17738264325f5e63ba3a67",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "data-service",
+  "path": "src/services/data-service.js",
+  "size_bytes": 1100,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "api-client",
+      "specifiers": [
+        "apiGet"
+      ]
+    },
+    {
+      "source": "cache-manager",
+      "specifiers": [
+        "getCached"
+      ]
+    }
+  ],
+  "exports": [
+    "fetchData",
+    "fetchMetrics"
+  ],
+  "re_exports": []
+}

@@ -1,0 +1,23 @@
+{
+  "name": "eta-crypto",
+  "versions": [
+    {
+      "version": "0.10.2",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "0.10.0",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "0.9.0",
+      "features": {"default": []},
+      "dependencies": [],
+      "license": "MIT"
+    }
+  ]
+}

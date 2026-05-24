@@ -1,0 +1,8 @@
+{
+  "name": "ring",
+  "versions": [
+    { "version": "0.16.0", "license": "ISC", "dependencies": {}, "features": {} },
+    { "version": "0.16.20", "license": "ISC", "dependencies": {}, "features": {} },
+    { "version": "0.17.8", "license": "ISC", "dependencies": { "encoding": { "version": "^0.2" } }, "features": {} }
+  ]
+}

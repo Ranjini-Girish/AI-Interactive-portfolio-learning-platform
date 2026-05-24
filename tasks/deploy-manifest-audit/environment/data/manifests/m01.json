@@ -1,0 +1,23 @@
+{
+  "manifest_id": "m01",
+  "deployments": [
+    {
+      "deployment_id": "dep-ALPHA-01",
+      "environment": "production",
+      "artifact_ref": "ART_ALPHA_BUNDLE",
+      "build_duration_sec": 95,
+      "deploy_duration_sec": 40,
+      "declared_size_bytes": 524288,
+      "overlay": "production"
+    },
+    {
+      "deployment_id": "dep-beta-02",
+      "environment": "staging",
+      "artifact_ref": "art-beta-bundle",
+      "build_duration_sec": 110,
+      "deploy_duration_sec": 55,
+      "declared_size_bytes": 1100000,
+      "overlay": "staging"
+    }
+  ]
+}

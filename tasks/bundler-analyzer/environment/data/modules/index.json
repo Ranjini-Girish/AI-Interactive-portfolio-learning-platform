@@ -1,0 +1,11 @@
+{
+  "id": "src/index",
+  "base_size_bytes": 20,
+  "exports": [],
+  "imports": [
+    {"module": "src/app", "names": ["App"]},
+    {"module": "src/utils/startup", "names": ["init"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

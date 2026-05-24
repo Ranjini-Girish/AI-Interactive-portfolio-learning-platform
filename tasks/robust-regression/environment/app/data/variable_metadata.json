@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "temp": {
+      "description": "Ambient temperature sensor reading",
+      "unit": "degrees Celsius",
+      "expected_range": [15.0, 45.0],
+      "sensor_id": "TMP-117A"
+    },
+    "pressure": {
+      "description": "Barometric pressure reading",
+      "unit": "hectopascals (hPa)",
+      "expected_range": [990.0, 1030.0],
+      "sensor_id": "BMP-280"
+    },
+    "humidity": {
+      "description": "Relative humidity measurement",
+      "unit": "percent",
+      "expected_range": [20.0, 90.0],
+      "sensor_id": "SHT-31D"
+    },
+    "flux": {
+      "description": "Measured radiant flux from target source",
+      "unit": "watts per square meter (W/m²)",
+      "expected_range": [0.0, 200.0],
+      "sensor_id": "TSL-2591"
+    }
+  },
+  "collection_interval_sec": 300,
+  "station_id": "OBS-NW-042"
+}

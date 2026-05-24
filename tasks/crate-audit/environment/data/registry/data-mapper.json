@@ -1,0 +1,25 @@
+{
+  "name": "data-mapper",
+  "versions": [
+    {
+      "version": "0.2.0",
+      "dependencies": {
+        "validator": "=0.3.0",
+        "json-parser": ">=1.0.0-rc.1, <1.0.0"
+      },
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    },
+    {
+      "version": "0.2.1",
+      "dependencies": {
+        "validator": "=0.3.0",
+        "json-parser": ">=1.0.0-rc.1, <1.0.0"
+      },
+      "license": "Apache-2.0",
+      "yanked": false,
+      "vulnerability_score": 0.0
+    }
+  ]
+}

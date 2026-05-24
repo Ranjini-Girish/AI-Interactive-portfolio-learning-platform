@@ -1,0 +1,14 @@
+{
+  "standard": {
+    "max_attempts": 5,
+    "base_delay_ms": 1000,
+    "max_delay_ms": 32000,
+    "multiplier": 2
+  },
+  "aggressive": {
+    "max_attempts": 3,
+    "base_delay_ms": 500,
+    "max_delay_ms": 8000,
+    "multiplier": 2
+  }
+}

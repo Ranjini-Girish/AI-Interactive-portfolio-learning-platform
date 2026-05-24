@@ -1,0 +1,30 @@
+{
+  "scene_id": "scene_02",
+  "polygon_properties": true,
+  "convex_hull": true,
+  "point_in_polygon": [
+    {
+      "point_idx": 0,
+      "polygon_id": "L_shape"
+    },
+    {
+      "point_idx": 1,
+      "polygon_id": "L_shape"
+    },
+    {
+      "point_idx": 2,
+      "polygon_id": "L_shape"
+    },
+    {
+      "point_idx": 3,
+      "polygon_id": "L_shape"
+    },
+    {
+      "point_idx": 4,
+      "polygon_id": "L_shape"
+    }
+  ],
+  "segment_intersections": true,
+  "closest_pair": true,
+  "min_enclosing_circle": true
+}

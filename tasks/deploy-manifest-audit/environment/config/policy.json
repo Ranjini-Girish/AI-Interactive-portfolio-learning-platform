@@ -1,0 +1,9 @@
+{
+  "risk_drift_threshold": 0.05,
+  "overlay_priority": [
+    "base",
+    "staging",
+    "production"
+  ],
+  "medium_drift_threshold": 0.02
+}

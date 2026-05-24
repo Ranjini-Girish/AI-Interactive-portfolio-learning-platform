@@ -1,0 +1,13 @@
+{
+  "name": "cookie-parser",
+  "versions": {
+    "1.4.5": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "1.4.6": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

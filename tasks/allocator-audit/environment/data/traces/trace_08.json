@@ -1,0 +1,16 @@
+{
+  "trace_id": "trace_08",
+  "description": "Fragmentation stress: alternating alloc/free creating holes",
+  "operations": [
+    {"op": "alloc", "id": "s1", "size": 32, "align": 8},
+    {"op": "alloc", "id": "s2", "size": 32, "align": 8},
+    {"op": "alloc", "id": "s3", "size": 32, "align": 8},
+    {"op": "alloc", "id": "s4", "size": 32, "align": 8},
+    {"op": "alloc", "id": "s5", "size": 32, "align": 8},
+    {"op": "alloc", "id": "s6", "size": 32, "align": 8},
+    {"op": "dealloc", "id": "s1"},
+    {"op": "dealloc", "id": "s3"},
+    {"op": "dealloc", "id": "s5"},
+    {"op": "alloc", "id": "big", "size": 100, "align": 8}
+  ]
+}

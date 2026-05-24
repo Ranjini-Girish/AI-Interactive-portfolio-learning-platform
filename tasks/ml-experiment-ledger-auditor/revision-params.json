@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "14f3a711-4561-431b-a2c7-cd9bcb488392",
+  "platformTaskSlug": "ml-experiment-ledger-auditor",
+  "assignmentId": "e270d2b8-30c1-4c87-98ca-d58de9561e9e",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=e270d2b8-30c1-4c87-98ca-d58de9561e9e",
+  "capturedAt": "2026-05-23T17:48:19.290Z",
+  "revisionReasons": [
+    "reviewer_feedback_present"
+  ],
+  "autoEval": {
+    "buildFailed": false,
+    "buildId": null,
+    "summary": null
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nFailed to run difficulty check\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File\nNo file available"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive output files (run_status.json, \nlineage_graph.json, \ncheckpoint_disposition.json, \nregistry_promotion.json, summary."
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "ml-experiment-ledger-auditor",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\ml-experiment-ledger-auditor.zip",
+    "excludedPlatformZip": "ml-experiment-ledger-auditor.zip"
+  }
+}

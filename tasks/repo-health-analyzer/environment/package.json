@@ -1,0 +1,12 @@
+{
+  "name": "repo-health-analyzer",
+  "version": "1.0.0",
+  "description": "Repository health analysis tool",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "analyze": "node src/main.js"
+  },
+  "keywords": ["repository", "health", "analysis", "git"],
+  "license": "MIT"
+}

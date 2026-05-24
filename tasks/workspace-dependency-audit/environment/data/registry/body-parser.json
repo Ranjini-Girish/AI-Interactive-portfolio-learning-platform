@@ -1,0 +1,23 @@
+{
+  "name": "body-parser",
+  "versions": {
+    "1.19.0": {
+      "dependencies": {
+        "raw-body": "^2.4.0"
+      },
+      "license": "MIT"
+    },
+    "1.20.2": {
+      "dependencies": {
+        "raw-body": "^2.5.0"
+      },
+      "license": "MIT"
+    },
+    "2.0.0": {
+      "dependencies": {
+        "raw-body": "^3.0.0"
+      },
+      "license": "MIT"
+    }
+  }
+}

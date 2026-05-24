@@ -1,0 +1,41 @@
+{
+  "saga_id": "ord-004",
+  "events": [
+    {
+      "event_id": "ord-004-e1",
+      "sequence": 1,
+      "timestamp_ms": 300,
+      "step": "reserve",
+      "status": "completed",
+      "duration_ms": 30,
+      "parent_event_id": null
+    },
+    {
+      "event_id": "ord-004-e2",
+      "sequence": 2,
+      "timestamp_ms": 310,
+      "step": "charge",
+      "status": "completed",
+      "duration_ms": 50,
+      "parent_event_id": "ord-004-e1"
+    },
+    {
+      "event_id": "ord-004-e3",
+      "sequence": 3,
+      "timestamp_ms": 320,
+      "step": "charge",
+      "status": "compensated",
+      "duration_ms": null,
+      "parent_event_id": "ord-004-e2"
+    },
+    {
+      "event_id": "ord-004-e4",
+      "sequence": 4,
+      "timestamp_ms": 330,
+      "step": "notify",
+      "status": "completed",
+      "duration_ms": 15,
+      "parent_event_id": "ord-004-e3"
+    }
+  ]
+}

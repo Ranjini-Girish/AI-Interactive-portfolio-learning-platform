@@ -1,0 +1,18 @@
+{
+  "name": "@myorg/api",
+  "version": "3.0.0",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@myorg/core": "workspace:*",
+    "@myorg/utils": "workspace:*",
+    "@myorg/auth": "workspace:*",
+    "express": "^4.18.0",
+    "cors": "^2.8.0",
+    "winston": "^3.8.0",
+    "dotenv": "~16.3.0",
+    "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "semver": "^7.3.0"
+  }
+}

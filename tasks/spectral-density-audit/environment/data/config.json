@@ -1,0 +1,50 @@
+{
+  "analysis_parameters": {
+    "default_window": "hann",
+    "default_welch": {
+      "enabled": false,
+      "segment_length": 64,
+      "overlap_fraction": 0.5
+    },
+    "peak_detection": {
+      "min_height_db": -40.0,
+      "prominence_db": 10.0
+    },
+    "output_precision": {
+      "frequency_decimals": 4,
+      "power_db_decimals": 4,
+      "snr_db_decimals": 2
+    }
+  },
+  "per_signal_overrides": {
+    "signal_01": {
+      "window": "rectangular"
+    },
+    "signal_02": {
+      "window": "hann"
+    },
+    "signal_03": {
+      "window": "hamming"
+    },
+    "signal_04": {
+      "window": "hann",
+      "welch": {
+        "enabled": true,
+        "segment_length": 128,
+        "overlap_fraction": 0.5
+      }
+    },
+    "signal_05": {
+      "window": "rectangular"
+    },
+    "signal_06": {
+      "window": "rectangular"
+    },
+    "signal_07": {
+      "window": "blackman"
+    },
+    "signal_08": {
+      "window": "hann"
+    }
+  }
+}

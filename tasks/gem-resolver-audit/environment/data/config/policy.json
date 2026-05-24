@@ -1,0 +1,79 @@
+{
+  "banned_licenses": [
+    "GPL-3.0",
+    "AGPL-3.0"
+  ],
+  "compatibility_rules": {
+    "Apache-2.0": [
+      "MIT",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC"
+    ],
+    "BSD-2-Clause": [
+      "MIT",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "LGPL-3.0"
+    ],
+    "MIT": [
+      "MIT",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "LGPL-3.0",
+      "GPL-2.0",
+      "GPL-3.0"
+    ]
+  },
+  "copyleft_licenses": [
+    "LGPL-3.0",
+    "GPL-2.0",
+    "GPL-3.0",
+    "AGPL-3.0"
+  ],
+  "evaluation_date": "2024-06-01",
+  "exclude_prerelease": true,
+  "finding_severity": {
+    "banned_license": "critical",
+    "copyleft_in_permissive": "medium",
+    "license_incompatibility": "high",
+    "outdated_gem": "info",
+    "prerelease_dependency": "low",
+    "version_conflict": "medium",
+    "vulnerability": "high"
+  },
+  "max_dependency_depth": 5,
+  "permissive_licenses": [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC"
+  ],
+  "risk_score": {
+    "depth_decay_base": 0.85,
+    "rounding_decimals": 6,
+    "severity_multipliers": {
+      "critical": 10.0,
+      "high": 7.5,
+      "info": 1.0,
+      "low": 2.5,
+      "medium": 5.0
+    }
+  },
+  "scope_filter": [
+    "runtime"
+  ],
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "info": 5,
+    "low": 4,
+    "medium": 3
+  }
+}

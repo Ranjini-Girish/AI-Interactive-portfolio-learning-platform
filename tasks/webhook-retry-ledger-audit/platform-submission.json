@@ -1,0 +1,61 @@
+{
+  "taskName": "webhook-retry-ledger-audit",
+  "updatedAt": "2026-05-23T16:59:20.089Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "f4bf1aec-a79d-4681-a053-971e215eea2d",
+    "taskStatus": "Evaluation pending",
+    "taskName": "webhook-retry-ledger-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "webhook-retry-ledger-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T16:59:20.089Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "f4bf1aec-a79d-4681-a053-971e215eea2d",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\webhook-retry-ledger-audit.zip",
+    "zipBytes": 22852,
+    "zipSha256": "699354ad52615ec72ab9d89e990890498d06e3e8c62aedbe75d20252a0f504e9",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T16:59:20.089Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "f4bf1aec-a79d-4681-a053-971e215eea2d",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\webhook-retry-ledger-audit.zip",
+      "zipBytes": 22852,
+      "zipSha256": "699354ad52615ec72ab9d89e990890498d06e3e8c62aedbe75d20252a0f504e9",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

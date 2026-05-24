@@ -1,0 +1,32 @@
+{
+  "hash": "d1a5e7c3",
+  "author_name": "Bob Smith",
+  "author_email": "bob@example.com",
+  "parent_hashes": [
+    "7b4d9f20"
+  ],
+  "timestamp": "2025-04-10T09:00:00Z",
+  "message": "Final cleanup\nReviewed-by: Alice Chen",
+  "file_changes": [
+    {
+      "path": "src/index.js",
+      "additions": 8,
+      "deletions": 12
+    },
+    {
+      "path": "src/api.js",
+      "additions": 5,
+      "deletions": 9
+    },
+    {
+      "path": "README.md",
+      "additions": 12,
+      "deletions": 4
+    },
+    {
+      "path": "assets/banner.jpg",
+      "additions": null,
+      "deletions": null
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ast-complexity-audit",
+  "version": "1.0.0",
+  "description": "JavaScript AST complexity metrics analyzer",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "medium": 3,
+    "low": 4,
+    "info": 5
+  },
+  "finding_severity": {
+    "very_high_cyclomatic": "critical",
+    "high_cyclomatic": "high",
+    "moderate_cyclomatic": "medium",
+    "very_high_cognitive": "critical",
+    "high_cognitive": "high",
+    "moderate_cognitive": "medium",
+    "low_maintainability": "high",
+    "moderate_maintainability": "medium",
+    "high_instability": "medium",
+    "high_halstead_difficulty": "medium"
+  },
+  "risk_score": {
+    "severity_multipliers": {
+      "critical": 10.0,
+      "high": 7.5,
+      "medium": 5.0,
+      "low": 2.5,
+      "info": 1.0
+    },
+    "complexity_decay_base": 0.9,
+    "rounding_decimals": 6
+  }
+}

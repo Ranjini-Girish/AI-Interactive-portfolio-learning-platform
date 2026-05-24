@@ -1,0 +1,4 @@
+{
+  "max_depth": 10,
+  "strategy": "highest-compatible"
+}

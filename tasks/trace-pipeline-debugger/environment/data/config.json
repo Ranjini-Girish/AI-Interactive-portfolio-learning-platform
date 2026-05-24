@@ -1,0 +1,22 @@
+{
+  "filter": {
+    "min_level": "info",
+    "exclude_services": []
+  },
+  "correlator": {
+    "window_ms": 5000,
+    "min_spans_per_trace": 2
+  },
+  "metrics": {
+    "percentiles": [50, 90, 95, 99]
+  },
+  "anomaly": {
+    "method": "zscore",
+    "threshold": 2.5,
+    "min_samples": 3
+  },
+  "output": {
+    "precision": 4,
+    "hash_algorithm": "sha256"
+  }
+}

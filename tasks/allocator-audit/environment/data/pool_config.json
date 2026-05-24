@@ -1,0 +1,5 @@
+{
+  "pool_size": 1024,
+  "header_size": 16,
+  "min_alignment": 8
+}

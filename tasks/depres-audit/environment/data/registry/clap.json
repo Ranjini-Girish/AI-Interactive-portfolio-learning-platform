@@ -1,0 +1,8 @@
+{
+  "name": "clap",
+  "versions": [
+    { "version": "3.2.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "4.0.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "4.5.16", "license": "Apache-2.0", "dependencies": {}, "features": {} }
+  ]
+}

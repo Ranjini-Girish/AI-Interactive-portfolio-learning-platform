@@ -1,0 +1,61 @@
+{
+  "taskName": "modreplace-lattice-audit",
+  "updatedAt": "2026-05-23T17:36:10.466Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6",
+    "taskStatus": "Evaluation pending",
+    "taskName": "modreplace-lattice-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "modreplace-lattice-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:36:10.466Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\modreplace-lattice-audit.zip",
+    "zipBytes": 22805,
+    "zipSha256": "78a2fef3c9e035b97003ff9767ed6a760fe0bc5901ef819a5851e2ef97c2d5c3",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:36:10.466Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "23f88a9b-27b3-4f3d-8134-f31f1f2e2fe6",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\modreplace-lattice-audit.zip",
+      "zipBytes": 22805,
+      "zipSha256": "78a2fef3c9e035b97003ff9767ed6a760fe0bc5901ef819a5851e2ef97c2d5c3",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

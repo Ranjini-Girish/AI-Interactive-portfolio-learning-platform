@@ -1,0 +1,13 @@
+{
+  "project_id": "web-api",
+  "license": "MIT",
+  "direct_dependencies": [
+    "express",
+    "mongoose",
+    "jsonwebtoken",
+    "bcrypt",
+    "winston",
+    "sharp",
+    "pg"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "type_09_complex",
+  "kind": "struct",
+  "repr": "C",
+  "fields": [
+    {"name": "flags", "type": "u8"},
+    {"name": "id", "type": "u64"},
+    {"name": "count", "type": "u32"},
+    {"name": "weight", "type": "f64"},
+    {"name": "tag", "type": "u16"},
+    {"name": "active", "type": "bool"}
+  ]
+}

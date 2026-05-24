@@ -1,0 +1,13 @@
+{
+  "name": "cors",
+  "versions": {
+    "0.1.0": {
+      "dependencies": {},
+      "license": "MIT"
+    },
+    "2.8.5": {
+      "dependencies": {},
+      "license": "MIT"
+    }
+  }
+}

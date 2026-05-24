@@ -1,0 +1,21 @@
+{
+  "game_version": "1.0",
+  "max_rounds_per_battle": 50,
+  "damage_minimum": 1,
+  "crit_multiplier": 1.75,
+  "strong_element_multiplier": 1.5,
+  "weak_element_multiplier": 0.75,
+  "defense_scaling_factor": 0.6,
+  "burn_defense_reduction": 0.8,
+  "burn_tick_ratio": 0.05,
+  "burn_duration": 3,
+  "poison_tick_ratio": 0.08,
+  "poison_duration": 3,
+  "stun_duration": 1,
+  "shield_defense_multiplier": 1.5,
+  "shield_duration": 2,
+  "lcg_multiplier": 1103515245,
+  "lcg_increment": 12345,
+  "lcg_mask": 2147483647,
+  "crit_roll_modulus": 100
+}

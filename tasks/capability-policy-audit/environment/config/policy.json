@@ -1,0 +1,50 @@
+{
+  "risk_tiers": {
+    "critical": 4,
+    "high": 3,
+    "low": 1,
+    "medium": 2
+  },
+  "finding_severity": {
+    "forbidden_capability_present": "critical",
+    "missing_required_capability": "high",
+    "syscall_not_allowlisted": "medium"
+  },
+  "severity_ranks": {
+    "critical": 1,
+    "high": 2,
+    "info": 5,
+    "low": 4,
+    "medium": 3
+  },
+  "syscall_risk_weights": {
+    "accept": 2,
+    "bind": 3,
+    "clone": 5,
+    "connect": 4,
+    "execve": 6,
+    "mmap": 3,
+    "open": 2,
+    "read": 1,
+    "socket": 4,
+    "write": 2
+  },
+  "policy_syscall_order": [
+    "read",
+    "write",
+    "open",
+    "mmap",
+    "bind",
+    "accept",
+    "connect",
+    "socket",
+    "clone",
+    "execve"
+  ],
+  "tier_syscall_allowlist": {
+    "low": ["read", "write", "open"],
+    "medium": ["read", "write", "open", "mmap", "bind", "accept", "connect", "socket"],
+    "high": ["read", "write", "open", "mmap", "bind", "accept", "connect", "socket", "clone"],
+    "critical": ["read", "write", "open", "mmap", "bind", "accept", "connect", "socket", "clone", "execve"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "src/components/button",
+  "base_size_bytes": 15,
+  "exports": [
+    {"name": "Button", "size_bytes": 300},
+    {"name": "ButtonProps", "size_bytes": 50}
+  ],
+  "imports": [
+    {"module": "src/utils/validate", "names": ["validate"]},
+    {"module": "react", "names": ["useState"], "external": true}
+  ],
+  "dynamic_imports": [],
+  "side_effects": false
+}

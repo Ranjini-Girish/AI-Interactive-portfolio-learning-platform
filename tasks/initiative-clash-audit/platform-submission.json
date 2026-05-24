@@ -1,0 +1,61 @@
+{
+  "taskName": "initiative-clash-audit",
+  "updatedAt": "2026-05-23T17:10:24.362Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "2fdf3090-0206-4a34-9dc2-dce225fd2593",
+    "taskStatus": "Evaluation pending",
+    "taskName": "initiative-clash-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "initiative-clash-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:10:24.362Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "2fdf3090-0206-4a34-9dc2-dce225fd2593",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\initiative-clash-audit.zip",
+    "zipBytes": 1967827,
+    "zipSha256": "6c31a43c9fdcaac923ad70a4d521061489c45834250ba9d01370f9a869fdf6d6",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:10:24.362Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "2fdf3090-0206-4a34-9dc2-dce225fd2593",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\initiative-clash-audit.zip",
+      "zipBytes": 1967827,
+      "zipSha256": "6c31a43c9fdcaac923ad70a4d521061489c45834250ba9d01370f9a869fdf6d6",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "libbase",
+  "type": "library",
+  "sources": ["base/alloc.cpp"],
+  "headers": ["base/types.h"],
+  "depends_on": [],
+  "build_time_ms": 800
+}

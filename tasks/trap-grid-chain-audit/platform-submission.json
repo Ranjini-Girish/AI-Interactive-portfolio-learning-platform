@@ -1,0 +1,99 @@
+{
+  "taskName": "trap-grid-chain-audit",
+  "updatedAt": "2026-05-24T03:13:53.328Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+    "taskStatus": "Evaluation pending",
+    "taskName": "trap-grid-chain-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "trap-grid-chain-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T03:13:53.328Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trap-grid-chain-audit.zip",
+    "zipBytes": 21122,
+    "zipSha256": "eae5e3bb64636091f8925e71e0ffa9c4060576852cce0ea822f78a8627905a0c",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T09:43:37.131Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=53aa72a6-ac25-4bf8-96a9-624c5ae387c7",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "53aa72a6-ac25-4bf8-96a9-624c5ae387c7",
+      "revisionTaskId": "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trap-grid-chain-audit.zip",
+      "zipBytes": 18451,
+      "zipSha256": "6e0dfed92cc2e6ee34f9e684eaa490860bee8568cb47694b1f26fc01c553f349",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-23T09:45:35.043Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=53aa72a6-ac25-4bf8-96a9-624c5ae387c7",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "53aa72a6-ac25-4bf8-96a9-624c5ae387c7",
+      "revisionTaskId": "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trap-grid-chain-audit.zip",
+      "zipBytes": 18451,
+      "zipSha256": "6e0dfed92cc2e6ee34f9e684eaa490860bee8568cb47694b1f26fc01c553f349",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T03:13:53.328Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trap-grid-chain-audit.zip",
+      "zipBytes": 21122,
+      "zipSha256": "eae5e3bb64636091f8925e71e0ffa9c4060576852cce0ea822f78a8627905a0c",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "build_order": ["pkg-a", "pkg-b"],
+  "cycles": [],
+  "metadata": {
+    "prerelease_policy": "exclude",
+    "resolution_strategy": "mvs",
+    "total_registry_packages": 3,
+    "total_registry_versions": 5
+  },
+  "resolved_packages": [
+    {
+      "constraint_path": ["root", "pkg-a"],
+      "depth": 1,
+      "fan_in": 1,
+      "fan_out": 0,
+      "instability": 0.0,
+      "max_vuln_score": 0.0,
+      "package": "pkg-a",
+      "required_by": ["root"],
+      "version": "1.0.0"
+    }
+  ],
+  "root_modules": [
+    {
+      "dependencies": ["pkg-a"],
+      "module_name": "root",
+      "version": "1.0.0"
+    }
+  ],
+  "schema_version": 1,
+  "source_checksum": "abc123...",
+  "summary": {
+    "avg_instability": 0.0,
+    "critical_vulns": 0,
+    "max_depth": 1,
+    "total_direct": 1,
+    "total_packages": 1,
+    "total_transitive": 0,
+    "vulnerability_score": 0.0
+  },
+  "vulnerabilities": []
+}

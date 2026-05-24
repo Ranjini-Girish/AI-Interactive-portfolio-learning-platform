@@ -1,0 +1,14 @@
+{
+  "trace_id": "trace_05",
+  "description": "OOM conditions: allocations exceeding available space",
+  "operations": [
+    {"op": "alloc", "id": "big1", "size": 400, "align": 8},
+    {"op": "alloc", "id": "big2", "size": 400, "align": 8},
+    {"op": "alloc", "id": "oom1", "size": 200, "align": 8},
+    {"op": "dealloc", "id": "big1"},
+    {"op": "alloc", "id": "fit1", "size": 300, "align": 8},
+    {"op": "alloc", "id": "oom2", "size": 500, "align": 8},
+    {"op": "dealloc", "id": "big2"},
+    {"op": "dealloc", "id": "fit1"}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "libnet",
+  "type": "library",
+  "sources": ["net/socket.cpp", "net/http.cpp"],
+  "headers": ["net/socket.h", "net/http.h"],
+  "depends_on": ["libbase", "liblog"],
+  "build_time_ms": 1500
+}

@@ -1,0 +1,80 @@
+{
+  "taskName": "tls-cert-chain-auditor",
+  "updatedAt": "2026-05-24T03:24:25.294Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "2cb6ab3c-8725-4c19-b2da-7d3054c02627",
+    "taskStatus": "Evaluation pending",
+    "taskName": "tls-cert-chain-auditor",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "tls-cert-chain-auditor.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T03:24:25.294Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "2cb6ab3c-8725-4c19-b2da-7d3054c02627",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\tls-cert-chain-auditor.zip",
+    "zipBytes": 31891,
+    "zipSha256": "02454e93db757b9b65320c76a358d1717d01eb1c764ac36c52cc786bc5eeae8f",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T11:04:13.875Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=f9f6c6a8-7b5e-4137-ae8c-127df0e69a8b",
+      "projectId": "bfe79c33-8ab0-4061-9849-08d3207c9927",
+      "submissionSlug": "941bede0-d9c6-42f0-874d-cd3d25582c72",
+      "assignmentId": "f9f6c6a8-7b5e-4137-ae8c-127df0e69a8b",
+      "revisionTaskId": "2cb6ab3c-8725-4c19-b2da-7d3054c02627",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\tls-cert-chain-auditor.zip",
+      "zipBytes": 30113,
+      "zipSha256": "f12b2df8f45a0f75e47809194190ed82e88e3abc08bd36c8c4435753a9d6efaf",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T03:24:25.294Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "2cb6ab3c-8725-4c19-b2da-7d3054c02627",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\tls-cert-chain-auditor.zip",
+      "zipBytes": 31891,
+      "zipSha256": "02454e93db757b9b65320c76a358d1717d01eb1c764ac36c52cc786bc5eeae8f",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "stream_id": "stream_10",
+  "computations": {
+    "basic_stats": true,
+    "percentiles": {
+      "levels": [
+        0.25,
+        0.5,
+        0.75
+      ]
+    },
+    "outliers": {
+      "method": "modified_zscore"
+    }
+  }
+}

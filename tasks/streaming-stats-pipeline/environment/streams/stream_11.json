@@ -1,0 +1,51 @@
+{
+  "stream_id": "stream_11",
+  "sensor_type": "calibration",
+  "unit": "unitless",
+  "observations": [
+    {
+      "timestamp": 1000000,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000060,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000120,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000180,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000240,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000300,
+      "value": 105.0
+    },
+    {
+      "timestamp": 1000360,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000420,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000480,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000540,
+      "value": 100.0
+    },
+    {
+      "timestamp": 1000600,
+      "value": 100.0
+    }
+  ]
+}

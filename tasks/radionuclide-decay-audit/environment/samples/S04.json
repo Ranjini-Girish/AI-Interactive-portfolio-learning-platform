@@ -1,0 +1,8 @@
+{
+  "sample_id": "S04",
+  "description": "Daughter-only Zy-220 source (zero parent)",
+  "collection_time": "2026-01-15T08:00:00Z",
+  "initial_activities_bq": {
+    "Zy220": 500.0
+  }
+}

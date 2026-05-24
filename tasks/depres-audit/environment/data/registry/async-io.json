@@ -1,0 +1,9 @@
+{
+  "name": "async-io",
+  "versions": [
+    { "version": "0.9.0", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "1.0.0-beta.1", "license": "MIT", "dependencies": {}, "features": {} },
+    { "version": "1.0.0", "license": "MIT", "dependencies": { "log": { "version": "^0.4" } }, "features": {} },
+    { "version": "1.1.0", "license": "Apache-2.0", "dependencies": { "log": { "version": "^0.4" } }, "features": {} }
+  ]
+}

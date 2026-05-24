@@ -1,0 +1,8 @@
+{
+  "name": "server",
+  "type": "executable",
+  "sources": ["server/main.cpp"],
+  "headers": [],
+  "depends_on": ["libapi", "libauth", "libconfig"],
+  "build_time_ms": 3000
+}

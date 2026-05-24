@@ -1,0 +1,8 @@
+{
+  "name": "libcache",
+  "type": "library",
+  "sources": ["cache/lru.cpp"],
+  "headers": ["cache/lru.h"],
+  "depends_on": ["libdb", "libcrypto"],
+  "build_time_ms": 900
+}

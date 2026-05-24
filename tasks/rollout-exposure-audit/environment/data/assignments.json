@@ -1,0 +1,128 @@
+[
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "assigned_at": "2026-01-02T11:00:00Z"
+  },
+  {
+    "user_id": "u01",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "assigned_at": "2026-01-02T12:00:00Z"
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "assigned_at": "2026-01-02T11:00:00Z"
+  },
+  {
+    "user_id": "u02",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "assigned_at": "2026-01-02T12:00:00Z"
+  },
+  {
+    "user_id": "u03",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "assigned_at": "2026-01-02T11:00:00Z"
+  },
+  {
+    "user_id": "u03",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "assigned_at": "2026-01-02T12:00:00Z"
+  },
+  {
+    "user_id": "u04",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "assigned_at": "2026-01-02T11:00:00Z"
+  },
+  {
+    "user_id": "u04",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "assigned_at": "2026-01-02T12:00:00Z"
+  },
+  {
+    "user_id": "u05",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "assigned_at": "2026-01-02T10:00:00Z"
+  },
+  {
+    "user_id": "u05",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "assigned_at": "2026-01-02T14:00:00Z"
+  },
+  {
+    "user_id": "u06",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "assigned_at": "2026-01-02T10:00:00Z"
+  },
+  {
+    "user_id": "u06",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "assigned_at": "2026-01-02T14:00:00Z"
+  },
+  {
+    "user_id": "u07",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "assigned_at": "2026-01-02T10:00:00Z"
+  },
+  {
+    "user_id": "u07",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "assigned_at": "2026-01-02T14:00:00Z"
+  },
+  {
+    "user_id": "u08",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "assigned_at": "2026-01-02T10:00:00Z"
+  },
+  {
+    "user_id": "u08",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "assigned_at": "2026-01-02T14:00:00Z"
+  },
+  {
+    "user_id": "u09",
+    "experiment_id": "exp_checkout",
+    "variant_id": "legacy",
+    "assigned_at": "2026-01-03T10:00:00Z"
+  },
+  {
+    "user_id": "u09",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "assigned_at": "2026-01-03T09:00:00Z"
+  },
+  {
+    "user_id": "u09",
+    "experiment_id": "exp_auth",
+    "variant_id": "treatment",
+    "assigned_at": "2026-01-04T09:00:00Z"
+  },
+  {
+    "user_id": "u10",
+    "experiment_id": "exp_auth",
+    "variant_id": "control",
+    "assigned_at": "2026-01-03T09:00:00Z"
+  },
+  {
+    "user_id": "u10",
+    "experiment_id": "exp_checkout",
+    "variant_id": "streamlined",
+    "assigned_at": "2026-01-03T10:00:00Z"
+  }
+]

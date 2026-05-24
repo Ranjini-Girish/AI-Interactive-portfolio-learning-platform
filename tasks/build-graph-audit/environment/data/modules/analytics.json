@@ -1,0 +1,19 @@
+{
+  "name": "analytics",
+  "path": "src/analytics.js",
+  "size_bytes": 920,
+  "side_effects": true,
+  "imports": [
+    {
+      "source": "event-bus",
+      "specifiers": [
+        "warn",
+        "emit"
+      ]
+    }
+  ],
+  "exports": [
+    "trackEvent"
+  ],
+  "re_exports": []
+}

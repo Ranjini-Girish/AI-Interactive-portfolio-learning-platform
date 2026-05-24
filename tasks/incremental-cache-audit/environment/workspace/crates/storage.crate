@@ -1,0 +1,10 @@
+name=storage
+kind=lib
+build_ms=350
+public=crates/storage/src/lib.rs
+private=crates/storage/src/sql.rs
+build=crates/storage/build.rs
+tests=
+features=sqlite:public
+unsafe=1
+deps=core-model:normal:public,util:normal:private

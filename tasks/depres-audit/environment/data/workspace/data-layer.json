@@ -1,0 +1,14 @@
+{
+  "name": "data-layer",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "serde": { "version": "^1.0.100" },
+    "tokio": { "version": "^1.0" },
+    "config-rs": { "version": "~1.0" },
+    "validator": { "version": "^1.0" },
+    "thiserror": { "version": "^1.0" },
+    "uuid": { "version": "^1.0" },
+    "log": { "version": "^0.4" }
+  }
+}

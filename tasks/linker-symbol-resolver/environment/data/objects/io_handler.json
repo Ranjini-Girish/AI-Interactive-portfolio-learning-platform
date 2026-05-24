@@ -1,0 +1,15 @@
+{
+  "name": "io_handler.o",
+  "sections": [
+    {"name": ".text", "size": 128, "alignment": 16},
+    {"name": ".bss", "size": 256, "alignment": 32}
+  ],
+  "symbols": [
+    {"name": "write_output", "section": ".text", "offset": 0, "size": 64, "binding": "GLOBAL", "type": "FUNC"},
+    {"name": "log_message", "section": ".text", "offset": 64, "size": 48, "binding": "WEAK", "type": "FUNC"},
+    {"name": "io_buffer", "section": ".bss", "offset": 0, "size": 256, "binding": "GLOBAL", "type": "OBJECT"}
+  ],
+  "relocations": [
+    {"section": ".text", "offset": 24, "type": "R_ABS_32", "symbol": "io_buffer", "addend": 0}
+  ]
+}

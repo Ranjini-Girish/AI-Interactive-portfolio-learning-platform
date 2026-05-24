@@ -1,0 +1,8 @@
+{
+  "min_height_db": -20.0,
+  "min_prominence_db": 5.0,
+  "prominence_window_bins": 20,
+  "interpolation_method": "parabolic",
+  "sort_by": "power_db_descending",
+  "notes": "prominence is computed as the difference between the peak and the higher of the two minima within prominence_window_bins on each side"
+}

@@ -1,0 +1,61 @@
+{
+  "taskName": "attest-bundle-lattice",
+  "updatedAt": "2026-05-23T17:30:12.129Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "fb9cc5df-5d5d-4fe2-bf89-175a4666085c",
+    "taskStatus": "Evaluation pending",
+    "taskName": "attest-bundle-lattice",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "attest-bundle-lattice.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:30:12.129Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "fb9cc5df-5d5d-4fe2-bf89-175a4666085c",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\attest-bundle-lattice.zip",
+    "zipBytes": 20816,
+    "zipSha256": "336b26018682e62c3fe086a77f7e66d0bdad5ac3433876d0225fe2d00d6432a4",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:30:12.129Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "fb9cc5df-5d5d-4fe2-bf89-175a4666085c",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\attest-bundle-lattice.zip",
+      "zipBytes": 20816,
+      "zipSha256": "336b26018682e62c3fe086a77f7e66d0bdad5ac3433876d0225fe2d00d6432a4",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

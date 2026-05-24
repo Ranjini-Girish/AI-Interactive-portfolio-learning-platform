@@ -1,0 +1,117 @@
+{
+  "module_name": "http_client",
+  "path": "src/net/client.js",
+  "lines_of_code": 110,
+  "imports": ["./logger", "./cache_manager", "node-fetch"],
+  "exports": ["get", "post", "withRetry"],
+  "functions": [
+    {
+      "name": "get",
+      "lines": 28,
+      "parameters": ["url", "headers"],
+      "body": [
+        {
+          "type": "try",
+          "body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [],
+              "else_body": []
+            }
+          ],
+          "catch_body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [],
+              "else_body": [
+                {
+                  "type": "else_if",
+                  "condition": [],
+                  "body": [],
+                  "else_body": [
+                    {"type": "else", "body": []}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "operators": ["===", ".", "()", "=", "new", "await", "typeof"],
+      "operands": ["url", "headers", "response", "data", "error", "null", "undefined", "status"]
+    },
+    {
+      "name": "post",
+      "lines": 30,
+      "parameters": ["url", "body", "headers"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [{"type": "logical_and"}],
+          "body": [],
+          "else_body": []
+        },
+        {
+          "type": "try",
+          "body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [
+                {"type": "ternary", "body": [], "else_body": []}
+              ],
+              "else_body": []
+            }
+          ],
+          "catch_body": []
+        }
+      ],
+      "operators": ["===", "&&", "?:", ".", "()", "=", "new", "await", "typeof", "!"],
+      "operands": ["url", "body", "headers", "response", "data", "error", "null", "method", "content", "status"]
+    },
+    {
+      "name": "withRetry",
+      "lines": 32,
+      "parameters": ["fn", "maxRetries", "delay"],
+      "body": [
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "try",
+              "body": [],
+              "catch_body": [
+                {
+                  "type": "if",
+                  "condition": [],
+                  "body": [],
+                  "else_body": [
+                    {
+                      "type": "else_if",
+                      "condition": [{"type": "logical_and"}],
+                      "body": [
+                        {
+                          "type": "if",
+                          "condition": [],
+                          "body": [],
+                          "else_body": []
+                        }
+                      ],
+                      "else_body": [
+                        {"type": "else", "body": []}
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "<", "&&", "+", "*", ".", "()", "=", "await", "new", "throw"],
+      "operands": ["fn", "maxRetries", "delay", "attempt", "error", "i", "result", "null", "0", "1", "2"]
+    }
+  ]
+}

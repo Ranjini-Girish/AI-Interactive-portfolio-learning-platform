@@ -1,0 +1,8 @@
+{
+  "workflow_id": "pr-505",
+  "fsm_id": "pull_request",
+  "transitions": [
+    {"transition_id": "t1", "sequence": 1, "logged_at": 5000, "from_state": "draft", "to_state": "open", "duration_ms": 50},
+    {"transition_id": "t2", "sequence": 2, "logged_at": 5100, "from_state": "approved", "to_state": "merged", "duration_ms": 30}
+  ]
+}

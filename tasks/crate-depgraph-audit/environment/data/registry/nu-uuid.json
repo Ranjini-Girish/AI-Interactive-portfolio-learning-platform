@@ -1,0 +1,29 @@
+{
+  "name": "nu-uuid",
+  "versions": [
+    {
+      "version": "1.6.1",
+      "features": {"default": ["std"], "std": [], "v4": ["dep:iota-rand"]},
+      "dependencies": [
+        {"name": "iota-rand", "version_req": "^0.8", "optional": true, "default_features": true}
+      ],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "1.5.0",
+      "features": {"default": ["std"], "std": [], "v4": ["dep:iota-rand"]},
+      "dependencies": [
+        {"name": "iota-rand", "version_req": "^0.8", "optional": true, "default_features": true}
+      ],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "version": "0.8.2",
+      "features": {"default": ["std"], "std": [], "v4": ["dep:iota-rand"]},
+      "dependencies": [
+        {"name": "iota-rand", "version_req": "^0.7", "optional": true, "default_features": true}
+      ],
+      "license": "MIT"
+    }
+  ]
+}

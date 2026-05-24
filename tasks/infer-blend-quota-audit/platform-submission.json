@@ -1,0 +1,61 @@
+{
+  "taskName": "infer-blend-quota-audit",
+  "updatedAt": "2026-05-23T17:07:43.451Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "de430a3a-c0e4-45a5-a9e8-f072d9816e52",
+    "taskStatus": "Evaluation pending",
+    "taskName": "infer-blend-quota-audit",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "infer-blend-quota-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:07:43.451Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "de430a3a-c0e4-45a5-a9e8-f072d9816e52",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\infer-blend-quota-audit.zip",
+    "zipBytes": 16967,
+    "zipSha256": "fee8b416723b7111d205e3274033887277109399363365fb76e566964772883f",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:07:43.451Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "de430a3a-c0e4-45a5-a9e8-f072d9816e52",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\infer-blend-quota-audit.zip",
+      "zipBytes": 16967,
+      "zipSha256": "fee8b416723b7111d205e3274033887277109399363365fb76e566964772883f",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "battle_id": "battle_05",
+  "description": "AoE damage against multiple targets",
+  "rng_seed": 7777,
+  "heroes": [
+    {
+      "id": "luna", "name": "Luna", "element": "light",
+      "max_hp": 180, "attack": 50, "defense": 15, "speed": 40, "crit_rate": 30,
+      "skills": [
+        {"id": "holy_smite", "power": 130, "target_type": "single", "element": "light", "effect": "none"},
+        {"id": "radiance", "power": 70, "target_type": "aoe", "element": "light", "effect": "none"}
+      ]
+    },
+    {
+      "id": "rex", "name": "Rex", "element": "nature",
+      "max_hp": 280, "attack": 40, "defense": 30, "speed": 20, "crit_rate": 10,
+      "skills": [
+        {"id": "vine_lash", "power": 100, "target_type": "single", "element": "nature", "effect": "poison"},
+        {"id": "natures_guard", "power": 0, "target_type": "self", "element": "nature", "effect": "shield"}
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "goblin_c", "name": "Goblin Scout", "element": "nature",
+      "max_hp": 120, "attack": 25, "defense": 15, "speed": 30, "crit_rate": 20,
+      "skills": [
+        {"id": "quick_stab", "power": 90, "target_type": "single", "element": "neutral", "effect": "none"}
+      ]
+    },
+    {
+      "id": "goblin_d", "name": "Goblin Mage", "element": "nature",
+      "max_hp": 90, "attack": 32, "defense": 10, "speed": 28, "crit_rate": 18,
+      "skills": [
+        {"id": "thorn_bolt", "power": 100, "target_type": "single", "element": "nature", "effect": "poison"}
+      ]
+    },
+    {
+      "id": "goblin_e", "name": "Goblin Brute", "element": "nature",
+      "max_hp": 150, "attack": 28, "defense": 22, "speed": 18, "crit_rate": 12,
+      "skills": [
+        {"id": "heavy_swing", "power": 115, "target_type": "single", "element": "neutral", "effect": "none"}
+      ]
+    }
+  ]
+}

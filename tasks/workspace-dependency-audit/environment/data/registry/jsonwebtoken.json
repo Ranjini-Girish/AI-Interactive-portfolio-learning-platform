@@ -1,0 +1,23 @@
+{
+  "name": "jsonwebtoken",
+  "versions": {
+    "8.5.1": {
+      "dependencies": {
+        "jws": "^3.2.0"
+      },
+      "license": "MIT"
+    },
+    "9.0.0": {
+      "dependencies": {
+        "jws": "^4.0.0"
+      },
+      "license": "MIT"
+    },
+    "9.0.2": {
+      "dependencies": {
+        "jws": "^4.0.0"
+      },
+      "license": "MIT"
+    }
+  }
+}

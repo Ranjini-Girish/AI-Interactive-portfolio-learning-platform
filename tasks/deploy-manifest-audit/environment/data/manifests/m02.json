@@ -1,0 +1,23 @@
+{
+  "manifest_id": "m02",
+  "deployments": [
+    {
+      "deployment_id": "dep-gamma-03",
+      "environment": "production",
+      "artifact_ref": "art_gamma_bundle",
+      "build_duration_sec": 80,
+      "deploy_duration_sec": 35,
+      "declared_size_bytes": 786432,
+      "overlay": "production"
+    },
+    {
+      "deployment_id": "dep-delta-04",
+      "environment": "staging",
+      "artifact_ref": "art-delta-bundle",
+      "build_duration_sec": 60,
+      "deploy_duration_sec": 25,
+      "declared_size_bytes": 250000,
+      "overlay": "staging"
+    }
+  ]
+}

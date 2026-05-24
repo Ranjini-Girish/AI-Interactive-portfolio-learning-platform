@@ -1,0 +1,19 @@
+{
+  "workload_id": "w04_leak",
+  "events": [
+    {
+      "event_id": "e1",
+      "sequence": 1,
+      "logged_at": "2026-02-01T10:00:00Z",
+      "kind": "enter",
+      "scope_id": "L1"
+    },
+    {
+      "event_id": "e2",
+      "sequence": 2,
+      "logged_at": "2026-02-01T10:00:01Z",
+      "kind": "enter",
+      "scope_id": "L2"
+    }
+  ]
+}

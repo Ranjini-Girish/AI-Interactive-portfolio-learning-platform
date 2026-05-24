@@ -1,0 +1,9 @@
+We've got a radioactive sample monitoring setup at /app/ that needs an auditor built. There's a set of isotope definitions with decay chains (some branching), six samples with initial activities, and detector readings over time in CSV files. The config, sample, and measurement data all live under /app/config/, /app/samples/, and /app/measurements/ respectively.
+
+The auditor needs to read everything, solve the Bateman equations for each sample's decay chains to predict isotope activities at every measurement timestamp, then compare those predictions against the actual detector readings to flag anomalies. It also needs to compute dose rates and check zone safety limits from the facility config.
+
+Output goes to /app/output/decay_audit.json. There's a TypeScript on Node 22 starter skeleton at /app/decay_audit.cpp with a Makefile, but TypeScript on Node 22 works too -- whatever gets the job done. The docs at /app/docs/decay_math.md and /app/docs/output_schema.md have the mathematical formulas and output format. Don't modify any of the input data files.
+
+## Success Criteria
+
+The auditor must produce a comprehensive JSON report that verifies the integrity of all input files, traces every decay chain from root isotopes through to stable endpoints, and predicts isotope activities over time using the Bateman equations (including the limiting form for near-degenerate decay constants). It should compare those predictions against actual detector measurements to flag statistical anomalies, compute dose rates and check them against policy limits, evaluate clearance status for each sample, and assess zone-level safety by aggregating activity and dose rates across all samples in each storage zone. The full output format and required fields are documented in `/app/docs/output_schema.md`, and the mathematical formulas are in `/app/docs/decay_math.md`.

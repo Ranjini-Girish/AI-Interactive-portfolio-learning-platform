@@ -1,0 +1,22 @@
+{
+  "output_precision": 6,
+  "transforms": {
+    "minify_ratio": 0.65,
+    "compress_ratio": 0.3
+  },
+  "thresholds": {
+    "max_depth": 5,
+    "max_fan_out": 3,
+    "max_instability": 0.8,
+    "max_cycle_size": 2,
+    "oversized_module_bytes": 2500,
+    "deep_chain_length": 5
+  },
+  "severity_ranks": {
+    "critical": 4,
+    "high": 3,
+    "medium": 2,
+    "low": 1,
+    "info": 0
+  }
+}

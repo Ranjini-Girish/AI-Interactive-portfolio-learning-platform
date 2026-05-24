@@ -1,0 +1,17 @@
+{
+  "excludes": [],
+  "project_license": "BSD-3-Clause",
+  "query_id": "query_04",
+  "replaces": [],
+  "requirements": [
+    {
+      "min_version": "1.1.0-beta.2",
+      "module": "example.com/data/json"
+    },
+    {
+      "min_version": "1.0.0",
+      "module": "example.com/cache/lru"
+    }
+  ],
+  "root_module": "my-app"
+}

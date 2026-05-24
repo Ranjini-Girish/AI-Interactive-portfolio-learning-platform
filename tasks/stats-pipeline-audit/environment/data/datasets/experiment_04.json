@@ -1,0 +1,8 @@
+{
+  "experiment_id": "exp_04",
+  "description": "Small sample sizes for edge case testing",
+  "groups": {
+    "micro_a": [10.0, 20.0, 30.0, 40.0, 50.0],
+    "micro_b": [15.0, 25.0, 35.0, 45.0, 55.0]
+  }
+}

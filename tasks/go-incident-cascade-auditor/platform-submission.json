@@ -1,0 +1,61 @@
+{
+  "taskName": "go-incident-cascade-auditor",
+  "updatedAt": "2026-05-23T17:39:28.485Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "c6ae9d08-406c-4607-b6dc-0ebc4d6ea170",
+    "taskStatus": "Evaluation pending",
+    "taskName": "go-incident-cascade-auditor",
+    "date": "05/23/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "go-incident-cascade-auditor.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-23T17:39:28.485Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "c6ae9d08-406c-4607-b6dc-0ebc4d6ea170",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\go-incident-cascade-auditor.zip",
+    "zipBytes": 19634,
+    "zipSha256": "5d48953300e208c619d91f2e0c907891f1b39d85d654a7087a2ff72c6e70637c",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-23T17:39:28.485Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "c6ae9d08-406c-4607-b6dc-0ebc4d6ea170",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\go-incident-cascade-auditor.zip",
+      "zipBytes": 19634,
+      "zipSha256": "5d48953300e208c619d91f2e0c907891f1b39d85d654a7087a2ff72c6e70637c",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

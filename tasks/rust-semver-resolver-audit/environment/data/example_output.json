@@ -1,0 +1,44 @@
+{
+  "conflicts": [
+    {
+      "package": "example-pkg",
+      "projects": {
+        "project-a": {
+          "constraint": "^1.0",
+          "resolved": "1.5.0"
+        },
+        "project-b": {
+          "constraint": "^2.0",
+          "resolved": "2.3.0"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "project_count": 2,
+    "registry_package_count": 1,
+    "registry_version_count": 4
+  },
+  "resolutions": {
+    "project-a": {
+      "resolved": {
+        "example-pkg": "1.5.0"
+      },
+      "unresolved": []
+    },
+    "project-b": {
+      "resolved": {
+        "example-pkg": "2.3.0"
+      },
+      "unresolved": []
+    }
+  },
+  "statistics": {
+    "conflict_count": 1,
+    "most_depended_count": 2,
+    "most_depended_package": "example-pkg",
+    "projects_fully_resolved": 2,
+    "projects_with_unresolved": 0,
+    "total_unique_dependencies": 1
+  }
+}

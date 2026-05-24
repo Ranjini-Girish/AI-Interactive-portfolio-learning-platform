@@ -1,0 +1,2 @@
+# cache log format
+# CSV: timestamp_ms,operation,key,result,latency_us,trace_id

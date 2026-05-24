@@ -1,0 +1,6 @@
+{
+  "members": ["api-gateway", "auth-service", "cli-tool", "data-layer", "macro-utils", "shared-lib", "worker"],
+  "resolve_strategy": "highest",
+  "output_precision": 6,
+  "target_platform": "linux-x86_64"
+}

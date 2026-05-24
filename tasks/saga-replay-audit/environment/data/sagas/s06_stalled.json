@@ -1,0 +1,41 @@
+{
+  "saga_id": "ful-006",
+  "events": [
+    {
+      "event_id": "ful-006-e1",
+      "sequence": 1,
+      "timestamp_ms": 500,
+      "step": "pick",
+      "status": "started",
+      "duration_ms": null,
+      "parent_event_id": null
+    },
+    {
+      "event_id": "ful-006-e2",
+      "sequence": 2,
+      "timestamp_ms": 510,
+      "step": "pick",
+      "status": "completed",
+      "duration_ms": 28,
+      "parent_event_id": "ful-006-e1"
+    },
+    {
+      "event_id": "ful-006-e3",
+      "sequence": 3,
+      "timestamp_ms": 520,
+      "step": "pack",
+      "status": "started",
+      "duration_ms": null,
+      "parent_event_id": "ful-006-e2"
+    },
+    {
+      "event_id": "ful-006-e4",
+      "sequence": 4,
+      "timestamp_ms": 530,
+      "step": "ship",
+      "status": "completed",
+      "duration_ms": 40,
+      "parent_event_id": "ful-006-e3"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "src/utils/startup",
+  "base_size_bytes": 25,
+  "exports": [
+    {"name": "init", "size_bytes": 120}
+  ],
+  "imports": [
+    {"module": "src/services/config", "names": ["config"]}
+  ],
+  "dynamic_imports": [],
+  "side_effects": true
+}

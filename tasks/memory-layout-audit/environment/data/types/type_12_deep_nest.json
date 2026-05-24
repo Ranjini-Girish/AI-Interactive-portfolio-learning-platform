@@ -1,0 +1,10 @@
+{
+  "id": "type_12_deep_nest",
+  "kind": "struct",
+  "repr": "C",
+  "fields": [
+    {"name": "prefix", "type": "u16"},
+    {"name": "nested", "type": "type_05_nested"},
+    {"name": "suffix", "type": "u8"}
+  ]
+}

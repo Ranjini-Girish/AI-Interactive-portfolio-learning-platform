@@ -1,0 +1,3 @@
+The Java 21 log-analysis pipeline at `/app` ingests logs from five microservices (webserver, database, auth, cache, queue), normalizes timestamps, deduplicates events, correlates them into request traces, computes per-service statistics, detects incidents, and writes a JSON report to `/app/output/report.json`. The pipeline entry point is `/app/pipeline.sh`.
+
+The report currently contains incorrect results. The correct pipeline behavior is defined by the architecture overview at `/app/docs/architecture.md`, the log format specifications at `/app/docs/log_formats.md`, the expected output schema at `/app/docs/output_schema.md`, and the incident thresholds at `/app/config/thresholds.conf`.

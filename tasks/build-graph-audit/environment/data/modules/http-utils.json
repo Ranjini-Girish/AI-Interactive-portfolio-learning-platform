@@ -1,0 +1,19 @@
+{
+  "name": "http-utils",
+  "path": "src/services/http-utils.js",
+  "size_bytes": 760,
+  "side_effects": false,
+  "imports": [
+    {
+      "source": "logger",
+      "specifiers": [
+        "log"
+      ]
+    }
+  ],
+  "exports": [
+    "createRequest",
+    "parseResponse"
+  ],
+  "re_exports": []
+}

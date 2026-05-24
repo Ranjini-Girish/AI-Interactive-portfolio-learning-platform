@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
+  "platformTaskSlug": "pawn-endgame-table-audit",
+  "assignmentId": "40c75a1b-fec5-4381-b645-22a39c7bd33c",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=40c75a1b-fec5-4381-b645-22a39c7bd33c",
+  "capturedAt": "2026-05-24T03:15:17.799Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:392bb089-3d5d-4923-b9cf-11feb9ed6e25",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:392bb089-3d5d-4923-b9cf-11feb9ed6e25."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ MEDIUM\nStatus: ❌ Some tests not passed by \nany agent run\nAgent Performance:\n  • terminus-claude-opus-4-6: 60.0% \n  (3/5 runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all 5 \noutput files (passed_pawn_races.json, \nopposition_grid.json, \ntempo_loss_windows.json, \nunderpromotion_caps.json, summary."
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "pawn-endgame-table-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\pawn-endgame-table-audit.zip",
+    "excludedPlatformZip": "pawn-endgame-table-audit.zip"
+  }
+}

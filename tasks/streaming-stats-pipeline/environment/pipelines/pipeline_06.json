@@ -1,0 +1,9 @@
+{
+  "stream_id": "stream_06",
+  "computations": {
+    "basic_stats": true,
+    "ema": {
+      "halflife": 5
+    }
+  }
+}

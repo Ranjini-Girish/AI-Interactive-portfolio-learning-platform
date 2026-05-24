@@ -1,0 +1,82 @@
+{
+  "module_name": "cache_manager",
+  "path": "src/cache/manager.js",
+  "lines_of_code": 80,
+  "imports": ["./logger", "./event_emitter"],
+  "exports": ["CacheManager"],
+  "functions": [
+    {
+      "name": "get",
+      "lines": 18,
+      "parameters": ["key"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [{"type": "logical_and"}],
+          "body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [],
+              "else_body": [
+                {"type": "else", "body": []}
+              ]
+            }
+          ],
+          "else_body": []
+        }
+      ],
+      "operators": ["===", "&&", ">", "-", ".", "()", "=", "delete", "!"],
+      "operands": ["key", "entry", "ttl", "now", "value", "cache", "null", "Date", "this"]
+    },
+    {
+      "name": "set",
+      "lines": 15,
+      "parameters": ["key", "value", "ttl"],
+      "body": [
+        {
+          "type": "if",
+          "condition": [],
+          "body": [
+            {
+              "type": "while",
+              "body": []
+            }
+          ],
+          "else_body": []
+        }
+      ],
+      "operators": [">=", ".", "()", "=", "new", "delete", ">"],
+      "operands": ["key", "value", "ttl", "cache", "size", "maxSize", "entry", "Date", "this", "null"]
+    },
+    {
+      "name": "evict",
+      "lines": 22,
+      "parameters": [],
+      "body": [
+        {
+          "type": "for",
+          "body": [
+            {
+              "type": "if",
+              "condition": [],
+              "body": [],
+              "else_body": [
+                {
+                  "type": "else_if",
+                  "condition": [{"type": "logical_and"}, {"type": "logical_or"}],
+                  "body": [
+                    {"type": "ternary", "body": [], "else_body": []}
+                  ],
+                  "else_body": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "operators": ["===", "<", "&&", "||", "?:", "-", ".", "()", "=", "delete", "[]"],
+      "operands": ["cache", "key", "entry", "now", "ttl", "oldest", "score", "i", "null", "0", "this"]
+    }
+  ]
+}

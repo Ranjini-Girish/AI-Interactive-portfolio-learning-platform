@@ -1,0 +1,23 @@
+{
+  "name": "alpha-core",
+  "versions": [
+    {
+      "version": "2.1.0",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT"
+    },
+    {
+      "version": "2.0.5",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT"
+    },
+    {
+      "version": "1.9.0",
+      "features": {"default": ["std"], "std": []},
+      "dependencies": [],
+      "license": "MIT"
+    }
+  ]
+}

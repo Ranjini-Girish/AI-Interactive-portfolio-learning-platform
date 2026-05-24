@@ -1,0 +1,6 @@
+{
+  "id": "example_simple",
+  "constraints": {
+    "alpha": "^1.0.0"
+  }
+}

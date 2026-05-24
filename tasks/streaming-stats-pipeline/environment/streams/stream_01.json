@@ -1,0 +1,87 @@
+{
+  "stream_id": "stream_01",
+  "sensor_type": "temperature",
+  "unit": "celsius",
+  "observations": [
+    {
+      "timestamp": 1000000,
+      "value": 2
+    },
+    {
+      "timestamp": 1000060,
+      "value": 7
+    },
+    {
+      "timestamp": 1000120,
+      "value": 4
+    },
+    {
+      "timestamp": 1000180,
+      "value": 9
+    },
+    {
+      "timestamp": 1000240,
+      "value": 5
+    },
+    {
+      "timestamp": 1000300,
+      "value": 11
+    },
+    {
+      "timestamp": 1000360,
+      "value": 3
+    },
+    {
+      "timestamp": 1000420,
+      "value": 6
+    },
+    {
+      "timestamp": 1000480,
+      "value": 8
+    },
+    {
+      "timestamp": 1000540,
+      "value": 10
+    },
+    {
+      "timestamp": 1000600,
+      "value": 1
+    },
+    {
+      "timestamp": 1000660,
+      "value": 12
+    },
+    {
+      "timestamp": 1000720,
+      "value": 15
+    },
+    {
+      "timestamp": 1000780,
+      "value": 14
+    },
+    {
+      "timestamp": 1000840,
+      "value": 13
+    },
+    {
+      "timestamp": 1000900,
+      "value": 6
+    },
+    {
+      "timestamp": 1000960,
+      "value": 8
+    },
+    {
+      "timestamp": 1001020,
+      "value": 10
+    },
+    {
+      "timestamp": 1001080,
+      "value": 4
+    },
+    {
+      "timestamp": 1001140,
+      "value": 7
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "devise",
+  "versions": {
+    "4.9.0": {
+      "dependencies": {
+        "bcrypt": "~> 3.1.0",
+        "rack": "~> 2.2.0",
+        "warden": "~> 1.2.0"
+      },
+      "license": "MIT",
+      "release_date": "2023-05-01"
+    },
+    "4.9.3": {
+      "dependencies": {
+        "bcrypt": "~> 3.1.0",
+        "rack": "~> 2.2.0",
+        "warden": "~> 1.2.0"
+      },
+      "license": "MIT",
+      "release_date": "2024-02-01"
+    }
+  }
+}

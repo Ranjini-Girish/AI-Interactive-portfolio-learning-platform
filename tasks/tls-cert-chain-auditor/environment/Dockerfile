@@ -11,10 +11,13 @@ RUN apt-get update \
 
 RUN python -m pip install --no-cache-dir \
         pytest==8.4.1 \
-        pytest-json-ctrf==0.3.5
+        pytest-json-ctrf==0.3.5 \
+    && ln -sf /usr/bin/python3 /usr/bin/python
 
 COPY certs/ /app/certs/
 
-RUN mkdir -p /app/audit
+RUN mkdir -p /app/audit /app/docs \
+    && ln -sf /app/certs/SPEC.md /app/docs/tls_cert_chain_spec.md \
+    && chmod -R a-w /app/certs
 
 CMD ["/bin/bash"]

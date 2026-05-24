@@ -1,0 +1,34 @@
+{
+  "scenarios": {
+    "single_value_update": {
+      "description": "Changing a single value cell triggers correct cascade recalculation"
+    },
+    "formula_update": {
+      "description": "Changing a cell's formula updates its value and propagates to dependents"
+    },
+    "batch_update": {
+      "description": "Multiple simultaneous changes are applied atomically with correct evaluation order"
+    },
+    "dependency_chain": {
+      "description": "Linear dependency chains evaluate in the correct order"
+    },
+    "parallel_siblings": {
+      "description": "Cells at the same topological depth follow deterministic ordering rules"
+    },
+    "diamond_graph": {
+      "description": "Multiple paths from source to sink are handled without false diagnostics"
+    },
+    "circular_dependency": {
+      "description": "True cycles are detected and reported; affected cells enter error state"
+    },
+    "conditional_with_error": {
+      "description": "Conditional functions handle error branches correctly per short-circuit semantics"
+    },
+    "precision_chain": {
+      "description": "Arithmetic chains preserve correct precision through intermediate calculations"
+    },
+    "type_transition": {
+      "description": "Cells changing between formula and value types maintain correct graph state"
+    }
+  }
+}

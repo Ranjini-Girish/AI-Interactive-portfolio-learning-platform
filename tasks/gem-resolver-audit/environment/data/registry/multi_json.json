@@ -1,0 +1,10 @@
+{
+  "name": "multi_json",
+  "versions": {
+    "1.15.0": {
+      "dependencies": {},
+      "license": "MIT",
+      "release_date": "2022-01-01"
+    }
+  }
+}

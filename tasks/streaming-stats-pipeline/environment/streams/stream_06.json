@@ -1,0 +1,67 @@
+{
+  "stream_id": "stream_06",
+  "sensor_type": "vibration",
+  "unit": "mm_per_s",
+  "observations": [
+    {
+      "timestamp": 1000000,
+      "value": 10.0
+    },
+    {
+      "timestamp": 1000060,
+      "value": 12.0
+    },
+    {
+      "timestamp": 1000120,
+      "value": 8.0
+    },
+    {
+      "timestamp": 1000180,
+      "value": 15.0
+    },
+    {
+      "timestamp": 1000240,
+      "value": 11.0
+    },
+    {
+      "timestamp": 1000300,
+      "value": 14.0
+    },
+    {
+      "timestamp": 1000360,
+      "value": 9.0
+    },
+    {
+      "timestamp": 1000420,
+      "value": 13.0
+    },
+    {
+      "timestamp": 1000480,
+      "value": 16.0
+    },
+    {
+      "timestamp": 1000540,
+      "value": 7.0
+    },
+    {
+      "timestamp": 1000600,
+      "value": 12.0
+    },
+    {
+      "timestamp": 1000660,
+      "value": 14.0
+    },
+    {
+      "timestamp": 1000720,
+      "value": 10.0
+    },
+    {
+      "timestamp": 1000780,
+      "value": 15.0
+    },
+    {
+      "timestamp": 1000840,
+      "value": 11.0
+    }
+  ]
+}
