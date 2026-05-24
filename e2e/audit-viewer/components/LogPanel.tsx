@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo, useState } from 'react';
+
 type LogEntry = {
   ts: string;
   phase: string;
@@ -7,6 +9,8 @@ type LogEntry = {
   detail?: string;
   data?: Record<string, unknown>;
 };
+
+const PHASES = ['all', 'start', 'step', 'done', 'error'] as const;
 
 export function LogPanel({
   entries,
@@ -17,22 +21,43 @@ export function LogPanel({
   title?: string;
   autoScroll?: boolean;
 }) {
+  const [filter, setFilter] = useState<(typeof PHASES)[number]>('all');
+
+  const visible = useMemo(() => {
+    if (filter === 'all') return entries;
+    return entries.filter((e) => e.phase === filter);
+  }, [entries, filter]);
+
   return (
-    <div className="card flex flex-col gap-2">
-      <div className="flex items-center justify-between">
+    <div className="card flex flex-col gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-sm font-semibold">{title}</h3>
-        <span className="text-xs text-[var(--muted)]">{entries.length} events</span>
+        <span className="text-xs text-[var(--muted)]">{visible.length} / {entries.length}</span>
+      </div>
+      <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Filter log by phase">
+        {PHASES.map((p) => (
+          <button
+            key={p}
+            type="button"
+            role="tab"
+            aria-selected={filter === p}
+            onClick={() => setFilter(p)}
+            className={`phase-filter ${filter === p ? 'phase-filter-active' : ''}`}
+          >
+            {p}
+          </button>
+        ))}
       </div>
       <div
-        className="max-h-[28rem] overflow-y-auto rounded-md border border-[var(--border)] bg-[var(--bg)] p-3"
+        className="log-panel"
         ref={(el) => {
           if (autoScroll && el) el.scrollTop = el.scrollHeight;
         }}
       >
-        {entries.length === 0 ? (
-          <p className="text-sm text-[var(--muted)]">No log entries yet.</p>
+        {visible.length === 0 ? (
+          <p className="text-sm text-[var(--muted)]">No log entries for this filter.</p>
         ) : (
-          entries.map((e, i) => <LogLine key={`${e.ts}-${e.step}-${i}`} entry={e} />)
+          visible.map((e, i) => <LogLine key={`${e.ts}-${e.step}-${i}`} entry={e} />)
         )}
       </div>
     </div>
@@ -81,5 +106,12 @@ export function StatusBadge({ status }: { status: 'running' | 'success' | 'faile
       : status === 'failed'
         ? 'badge-danger'
         : 'badge-running';
-  return <span className={`badge ${cls}`}>{status}</span>;
+  return (
+    <span className={`badge ${cls}`}>
+      {status === 'running' ? (
+        <span className="live-dot mr-0.5 inline-block h-1.5 w-1.5 rounded-full bg-current" aria-hidden />
+      ) : null}
+      {status}
+    </span>
+  );
 }

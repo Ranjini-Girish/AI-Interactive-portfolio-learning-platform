@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { IconArrowLeft, IconRadio } from '@/components/icons';
 
 type StreamEvent = {
   ts: string;
@@ -35,49 +36,37 @@ export default function LivePage() {
 
   return (
     <div className="space-y-4">
-      <LiveHeader connected={connected} eventCount={events.length} />
-      <div className="card max-h-[70vh] overflow-y-auto font-mono text-xs">
+      <div className="flex flex-wrap items-center gap-3">
+        <Link href="/" className="back-link">
+          <IconArrowLeft className="h-4 w-4" />
+          Dashboard
+        </Link>
+        <h1 className="page-title">Live tail</h1>
+        <span className={`badge ${connected ? 'badge-running' : 'badge-pending'}`}>
+          <IconRadio className="h-3.5 w-3.5" />
+          {connected ? 'connected' : 'disconnected'}
+        </span>
+        <span className="text-sm text-[var(--muted)]">{events.length} events buffered</span>
+      </div>
+
+      <div className="card log-panel max-h-[70vh] p-3">
         {events.length === 0 ? (
-          <p className="text-[var(--muted)]">
-            Waiting for revision-runs.jsonl events… Run a Playwright revision flow to see live
-            steps.
+          <p className="text-sm text-[var(--muted)]">
+            Waiting for revision-runs.jsonl events. Run a Playwright revision flow to see live steps.
           </p>
         ) : (
           events.map((e, i) => (
-            <div key={`${e.runId}-${e.ts}-${i}`} className="border-b border-[var(--border)]/40 py-2">
+            <div key={`${e.runId}-${e.ts}-${i}`} className="log-line border-b border-[var(--border)]/40 py-2">
               <span className="text-[var(--muted)]">{formatTs(e.ts)}</span>{' '}
               <span className="text-[var(--accent)]">{slugFromRun(e.runId)}</span>{' '}
-              <span className="uppercase text-[var(--warning)]">{e.phase}</span> <span>{e.step}</span>
+              <span className="uppercase text-[var(--warning)]">{e.phase}</span>{' '}
+              <span>{e.step}</span>
               {e.detail ? <span className="text-[var(--muted)]"> — {e.detail}</span> : null}
             </div>
           ))
         )}
         <div ref={bottomRef} />
       </div>
-    </div>
-  );
-}
-
-function LiveHeader({
-  connected,
-  eventCount,
-}: {
-  connected: boolean;
-  eventCount: number;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-3">
-      <Link href="/" className="text-sm text-[var(--muted)] hover:text-[var(--accent)]">
-        ← Dashboard
-      </Link>
-      <h1 className="text-xl font-bold">Live tail</h1>
-      <span className={`badge ${connected ? 'badge-running' : 'badge-pending'}`}>
-        <span
-          className={`mr-1 inline-block h-2 w-2 rounded-full ${connected ? 'live-dot bg-[var(--accent)]' : 'bg-[var(--pending)]'}`}
-        />
-        {connected ? 'connected' : 'disconnected'}
-      </span>
-      <span className="text-sm text-[var(--muted)]">{eventCount} events buffered</span>
     </div>
   );
 }

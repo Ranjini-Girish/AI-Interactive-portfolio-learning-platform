@@ -31,13 +31,15 @@
                       "uuid":  "faf82617-f62d-4b79-acfb-4f4e0aa3bce0",
                       "slug":  "pawn-endgame-table-audit",
                       "uploadDir":  "tasks/pawn-endgame-table-audit",
-                      "status":  "submitted"
+                      "status":  "submitted",
+                      "note":  "resubmitted 2026-05-24 — slim Docker + argv-free pawnaudit spec"
                   },
                   {
                       "uuid":  "d13b444b-40f6-46d9-8632-b89bf88ae7ee",
                       "slug":  "trap-grid-chain-audit",
                       "uploadDir":  "tasks/trap-grid-chain-audit",
-                      "status":  "submitted"
+                      "status":  "submitted",
+                      "note":  "resubmitted 2026-05-24 — difficulty hardening + slim Docker"
                   },
                   {
                       "uuid":  "6d4acddc-3202-4b70-9e61-0b6c32e0bfd8",
@@ -67,13 +69,15 @@
                       "uuid":  "a711d7b8-a9a9-4e40-88e9-95d3272ac3e1",
                       "slug":  "replica-lag-window-audit",
                       "uploadDir":  "tasks/replica-lag-window-audit",
-                      "status":  "submitted"
+                      "status":  "submitted",
+                      "note":  "resubmitted 2026-05-24 — slim Docker"
                   },
                   {
                       "uuid":  "2cb6ab3c-8725-4c19-b2da-7d3054c02627",
                       "slug":  "tls-cert-chain-auditor",
                       "uploadDir":  "tasks/tls-cert-chain-auditor",
-                      "status":  "submitted"
+                      "status":  "submitted",
+                      "note":  "resubmitted 2026-05-24 — solvability + slim Docker + SPEC clarity"
                   },
                   {
                       "uuid":  "f4bf1aec-a79d-4681-a053-971e215eea2d",
@@ -205,8 +209,8 @@
                       "uuid":  "943ca427-4fb0-4f13-8a48-6379ac6097ff",
                       "slug":  "replica-lag-window-audit",
                       "uploadDir":  "tasks/replica-lag-window-audit",
-                      "status":  "skipped_duplicate",
-                      "note":  "duplicate UUID for same slug already submitted"
+                      "status":  "submitted",
+                      "note":  "duplicate UUID resubmitted 2026-05-24 — same zip as a711d7b8"
                   },
                   {
                       "uuid":  "093b3435-06d7-47d7-b3d0-445f89b8a06a",

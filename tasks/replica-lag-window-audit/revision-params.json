@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "943ca427-4fb0-4f13-8a48-6379ac6097ff",
+  "platformTaskSlug": "replica-lag-window-audit",
+  "assignmentId": "7e3d16db-4afb-4c95-b85c-dd3045039394",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=7e3d16db-4afb-4c95-b85c-dd3045039394",
+  "capturedAt": "2026-05-24T03:26:38.937Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:bc0372d1-d20e-4209-b607-95c8b4e20616",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:bc0372d1-d20e-4209-b607-95c8b4e20616."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: The \ninstruction.md explicitly names all \nfive output files and references SPEC.\nmd for full behavioral details. SPEC.\nmd covers every aspect tested: \ncanonical JSON formatting (indent=2,"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "replica-lag-window-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+    "excludedPlatformZip": "replica-lag-window-audit.zip"
+  }
+}

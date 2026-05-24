@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Verifier suite for the rod pack void audit task.
 
 Tests assert both frozen digest locks on the bundled fixtures and a handful

@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { IconArrowLeft } from '@/components/icons';
 import { WorkflowTimeline } from '@/components/WorkflowTimeline';
 import { LogPanel, StatusBadge } from '@/components/LogPanel';
+import { Skeleton } from '@/components/ui/Skeleton';
 import type { PhaseState } from '@/lib/workflow';
 
 type RunDetail = {
@@ -39,7 +41,15 @@ export default function RunDetailPage() {
     return () => clearInterval(t);
   }, [runId]);
 
-  if (!data) return <p className="text-[var(--muted)]">Loading run…</p>;
+  if (!data) {
+    return (
+      <div className="space-y-4">
+        <Skeleton className="h-8 w-64 rounded-lg" />
+        <Skeleton className="h-40 rounded-xl" />
+        <Skeleton className="h-72 rounded-xl" />
+      </div>
+    );
+  }
   if (data.error) return <p className="text-[var(--danger)]">{data.error}</p>;
 
   const status = data.events.some((e) => e.phase === 'error')
@@ -63,10 +73,11 @@ export default function RunDetailPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-3">
-        <Link href="/" className="text-sm text-[var(--muted)] hover:text-[var(--accent)]">
-          ← Dashboard
+        <Link href="/" className="back-link">
+          <IconArrowLeft className="h-4 w-4" />
+          Dashboard
         </Link>
-        <h1 className="text-xl font-bold">{data.taskSlug}</h1>
+        <h1 className="page-title">{data.taskSlug}</h1>
         <StatusBadge status={status} />
         {reasons.map((r) => (
           <span key={r} className="badge badge-pending">
@@ -80,7 +91,7 @@ export default function RunDetailPage() {
       </p>
 
       <section>
-        <h2 className="mb-3 text-lg font-semibold">Workflow</h2>
+        <h2 className="section-title">Workflow</h2>
         <WorkflowTimeline phases={data.workflow} />
       </section>
 
@@ -105,7 +116,7 @@ function ContextPanel({
         <h3 className="text-sm font-semibold">Revision context</h3>
         <p className="mt-2 text-sm text-[var(--muted)]">
           No context JSON.{' '}
-          <Link href={`/tasks/${encodeURIComponent(slug)}`} className="text-[var(--accent)]">
+          <Link href={`/tasks/${encodeURIComponent(slug)}`} className="text-link">
             View task log
           </Link>
         </p>

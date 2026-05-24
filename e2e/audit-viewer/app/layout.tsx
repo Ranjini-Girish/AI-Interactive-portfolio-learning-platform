@@ -1,6 +1,19 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
+import { AppNav } from '@/components/AppNav';
 import './globals.css';
+
+const sans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
   title: 'Revision Audit Viewer',
@@ -9,23 +22,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
-        <header className="border-b border-[var(--border)] bg-[var(--surface)]">
-          <nav className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-3 text-sm">
-            <Link href="/" className="font-semibold text-[var(--accent)]">
-              Revision Audit
-            </Link>
-            <Link href="/" className="text-[var(--muted)] hover:text-[var(--text)]">
-              Dashboard
-            </Link>
-            <Link href="/live" className="text-[var(--muted)] hover:text-[var(--text)]">
-              Live tail
-            </Link>
-            <span className="ml-auto text-xs text-[var(--muted)]">e2e/audit → visual workflow</span>
-          </nav>
-        </header>
-        <main className="mx-auto max-w-7xl px-4 py-6">{children}</main>
+        <AppNav />
+        <main className="page-main">{children}</main>
       </body>
     </html>
   );

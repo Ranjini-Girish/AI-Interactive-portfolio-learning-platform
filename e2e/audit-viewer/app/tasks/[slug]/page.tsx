@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { IconArrowLeft } from '@/components/icons';
 import { WorkflowTimeline } from '@/components/WorkflowTimeline';
 import { LogPanel, StatusBadge } from '@/components/LogPanel';
+import { Skeleton } from '@/components/ui/Skeleton';
 import type { PhaseState } from '@/lib/workflow';
 
 type TaskDetail = {
@@ -39,7 +41,15 @@ export default function TaskDetailPage() {
     return () => clearInterval(t);
   }, [slug]);
 
-  if (!data) return <p className="text-[var(--muted)]">Loading task log…</p>;
+  if (!data) {
+    return (
+      <div className="space-y-4">
+        <Skeleton className="h-8 w-64 rounded-lg" />
+        <Skeleton className="h-40 rounded-xl" />
+        <Skeleton className="h-72 rounded-xl" />
+      </div>
+    );
+  }
   if (data.error) return <p className="text-[var(--danger)]">{data.error}</p>;
 
   const status = data.humanLog.some((e) => e.phase === 'error')
@@ -59,10 +69,11 @@ export default function TaskDetailPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-3">
-        <Link href="/" className="text-sm text-[var(--muted)] hover:text-[var(--accent)]">
-          ← Dashboard
+        <Link href="/" className="back-link">
+          <IconArrowLeft className="h-4 w-4" />
+          Dashboard
         </Link>
-        <h1 className="text-xl font-bold">{data.slug}</h1>
+        <h1 className="page-title">{data.slug}</h1>
         <StatusBadge status={status} />
         <span className="text-xs text-[var(--muted)]">{new Date(data.mtime).toLocaleString()}</span>
         {data.revisionTaskId ? (
@@ -71,7 +82,7 @@ export default function TaskDetailPage() {
       </div>
 
       <section>
-        <h2 className="mb-3 text-lg font-semibold">Workflow</h2>
+        <h2 className="section-title">Workflow</h2>
         <WorkflowTimeline phases={data.workflow} />
       </section>
 

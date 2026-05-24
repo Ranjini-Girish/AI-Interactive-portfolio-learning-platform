@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "021f9c95-f7c9-4d2f-b684-796382447238",
+  "platformTaskSlug": "veil-quota-bin-audit",
+  "assignmentId": "db76db63-230e-40e2-8e8e-050f22a9e3b4",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=db76db63-230e-40e2-8e8e-050f22a9e3b4",
+  "capturedAt": "2026-05-24T05:00:08.737Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:5803a165-5a00-4ee2-8609-fdc0d9db19c3",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:5803a165-5a00-4ee2-8609-fdc0d9db19c3."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ HARD\nStatus: ❌ Some tests not passed by any \nagent run\nAgent Performance:\n  • terminus-claude-opus-4-6: 0.0% (0/5 \n  runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n❌ fail - behavior_in_task_description: \nThe tests (via EXPECTED_FIELD_HASHES) \nverify exact values for `summary.json.\ntail_ledger_sha` and `summary.json.\ntotal_assignments`. SPEC.md lists these \nkeys but says only 'with the same tail \nhash and assignment counting rules as"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "replica-lag-window-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+    "excludedPlatformZip": "veil-quota-bin-audit.zip"
+  }
+}
