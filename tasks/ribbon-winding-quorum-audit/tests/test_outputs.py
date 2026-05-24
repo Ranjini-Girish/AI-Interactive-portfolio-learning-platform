@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Verifier suite for the ribbon winding quorum audit task.
 
 Hash-locks the bundled lab tree and the four emitted audit JSON files, plus a

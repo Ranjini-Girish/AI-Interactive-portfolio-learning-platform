@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for latch-echo-bin-audit."""
 
 from __future__ import annotations

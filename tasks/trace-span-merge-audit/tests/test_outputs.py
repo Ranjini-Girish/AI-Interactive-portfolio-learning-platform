@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Verifier suite for trace-span-merge-audit."""
 
 from __future__ import annotations

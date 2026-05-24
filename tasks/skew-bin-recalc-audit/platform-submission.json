@@ -1,0 +1,61 @@
+{
+  "taskName": "skew-bin-recalc-audit",
+  "updatedAt": "2026-05-24T05:20:52.877Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "d125f402-a1cb-4d9f-aa9d-d117b0090686",
+    "taskStatus": "Evaluation pending",
+    "taskName": "skew-bin-recalc-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "skew-bin-recalc-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T05:20:52.877Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "d125f402-a1cb-4d9f-aa9d-d117b0090686",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\skew-bin-recalc-audit.zip",
+    "zipBytes": 14911,
+    "zipSha256": "0da5015e9c0ffcbc12358a9324bbe299eb1287159991cf3ba66e93864e018aaf",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-24T05:20:52.877Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "d125f402-a1cb-4d9f-aa9d-d117b0090686",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\skew-bin-recalc-audit.zip",
+      "zipBytes": 14911,
+      "zipSha256": "0da5015e9c0ffcbc12358a9324bbe299eb1287159991cf3ba66e93864e018aaf",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "taskName": "trace-span-merge-audit",
+  "updatedAt": "2026-05-24T05:37:52.991Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "5da23e79-2fb1-4be0-8176-f7da7b601086",
+    "taskStatus": "Evaluation pending",
+    "taskName": "trace-span-merge-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "trace-span-merge-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T05:37:52.991Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "5da23e79-2fb1-4be0-8176-f7da7b601086",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trace-span-merge-audit.zip",
+    "zipBytes": 15663,
+    "zipSha256": "315322e82baf6bcafa12817193af11905e7db080d167ae0742a1344cfe49e284",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-24T05:37:52.991Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "5da23e79-2fb1-4be0-8176-f7da7b601086",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trace-span-merge-audit.zip",
+      "zipBytes": 15663,
+      "zipSha256": "315322e82baf6bcafa12817193af11905e7db080d167ae0742a1344cfe49e284",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

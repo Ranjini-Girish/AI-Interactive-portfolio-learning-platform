@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 import { IconLayoutGrid, IconRadio, IconTerminal } from './icons';
 
 const NAV = [
-  { href: '/', label: 'Dashboard', icon: IconLayoutGrid },
-  { href: '/live', label: 'Live tail', icon: IconRadio },
+  { href: '/', label: 'Quest board', icon: IconLayoutGrid },
+  { href: '/live', label: 'Live feed', icon: IconRadio },
 ] as const;
 
 export function AppNav() {
@@ -17,7 +17,7 @@ export function AppNav() {
       <nav className="app-nav" aria-label="Main">
         <Link href="/" className="brand-link">
           <IconTerminal className="h-5 w-5 text-[var(--accent)]" />
-          <span>Revision Audit</span>
+          <span>Revision Trail</span>
         </Link>
         <div className="nav-links">
           {NAV.map(({ href, label, icon: Icon }) => {
@@ -35,7 +35,7 @@ export function AppNav() {
             );
           })}
         </div>
-        <p className="nav-meta">e2e/audit · 5s refresh</p>
+        <p className="nav-meta">Quest log · 5s refresh</p>
       </nav>
     </header>
   );

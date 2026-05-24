@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { IconArrowLeft } from '@/components/icons';
-import { WorkflowTimeline } from '@/components/WorkflowTimeline';
+import { TrailView } from '@/components/TrailView';
 import { LogPanel, StatusBadge } from '@/components/LogPanel';
 import { Skeleton } from '@/components/ui/Skeleton';
+import { achievements, levelFromXp, runQuestTitle, xpFromPhases } from '@/lib/gamification';
 import type { PhaseState } from '@/lib/workflow';
 
 type TaskDetail = {
@@ -66,15 +67,32 @@ export default function TaskDetailPage() {
     data: e.data,
   }));
 
+  const xp = xpFromPhases(data.workflow);
+  const level = levelFromXp(xp);
+  const badges = achievements(data.workflow, Boolean(data.context));
+
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="quest-detail-header">
         <Link href="/" className="back-link">
           <IconArrowLeft className="h-4 w-4" />
-          Dashboard
+          Quest board
         </Link>
-        <h1 className="page-title">{data.slug}</h1>
-        <StatusBadge status={status} />
+        <div className="quest-detail-head">
+          <div>
+            <p className="quest-label">Rank {level.level} · {level.title}</p>
+            <h1 className="page-title">{runQuestTitle(data.slug, status)}</h1>
+          </div>
+          <StatusBadge status={status} />
+        </div>
+        <div className="quest-badges">
+          <span className="player-chip">{xp} XP earned</span>
+          {badges.map((b) => (
+            <span key={b} className="quest-badge">
+              {b}
+            </span>
+          ))}
+        </div>
         <span className="text-xs text-[var(--muted)]">{new Date(data.mtime).toLocaleString()}</span>
         {data.revisionTaskId ? (
           <span className="log-line text-xs text-[var(--muted)]">UID {data.revisionTaskId}</span>
@@ -82,8 +100,8 @@ export default function TaskDetailPage() {
       </div>
 
       <section>
-        <h2 className="section-title">Workflow</h2>
-        <WorkflowTimeline phases={data.workflow} />
+        <h2 className="section-title">Trail map</h2>
+        <TrailView phases={data.workflow} />
       </section>
 
       <LogPanel entries={logEntries} title={`revision-${data.slug}-latest.log`} />

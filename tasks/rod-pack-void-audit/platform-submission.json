@@ -1,0 +1,61 @@
+{
+  "taskName": "rod-pack-void-audit",
+  "updatedAt": "2026-05-24T05:13:28.822Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "c752d785-a6a0-41c4-a1db-1955c756016b",
+    "taskStatus": "Evaluation pending",
+    "taskName": "rod-pack-void-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "rod-pack-void-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T05:13:28.822Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "c752d785-a6a0-41c4-a1db-1955c756016b",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\rod-pack-void-audit.zip",
+    "zipBytes": 16263,
+    "zipSha256": "1be80588c0661c4d2421c49c04eca1e351eefa00b877bb438896477d14e7d27f",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-24T05:13:28.822Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "c752d785-a6a0-41c4-a1db-1955c756016b",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\rod-pack-void-audit.zip",
+      "zipBytes": 16263,
+      "zipSha256": "1be80588c0661c4d2421c49c04eca1e351eefa00b877bb438896477d14e7d27f",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

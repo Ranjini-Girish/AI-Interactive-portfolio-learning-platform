@@ -34,7 +34,9 @@ Top-level `samples` object listing every sample id from sorted `sample_*.json` f
 
 ### `summary.json`
 
-Keys: `bin_stride`, `blend_mod`, `ledger_serial`, `pair_span`, `quota_mod`, `quorum_ring`, `skew_mix`, `veil_cap`, `veil_spill`, `tail_ledger_sha`, `total_assignments` with the same tail hash and assignment counting rules as the latch audit.
+Keys: `bin_stride`, `blend_mod`, `ledger_serial`, `pair_span`, `quota_mod`, `quorum_ring`, `skew_mix`, `veil_cap`, `veil_spill`, `tail_ledger_sha`, `total_assignments`.
+
+Copy policy and pool integers into the matching keys. `tail_ledger_sha` is lowercase hex SHA-256 of the UTF-8 bytes of comma-joined lexicographically sorted strings `{sample_id}:{S[n]}` for every processed sample (one entry per sample), where `S[n]` is the prefix sum after the final reading index (the running sum after the last prefix step in the per-sample pipeline). `total_assignments` is the sum over processed samples of each sample's reading count after masking.
 
 ## Canonical JSON
 

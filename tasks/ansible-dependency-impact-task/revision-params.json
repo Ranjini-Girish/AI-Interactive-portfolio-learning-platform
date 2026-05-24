@@ -3,7 +3,7 @@
   "platformTaskSlug": "ansible-dependency-impact-task",
   "assignmentId": "b06022f4-dd77-48a7-a2ad-2627ed9dda95",
   "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=b06022f4-dd77-48a7-a2ad-2627ed9dda95",
-  "capturedAt": "2026-05-24T05:01:58.213Z",
+  "capturedAt": "2026-05-24T05:16:11.644Z",
   "revisionReasons": [
     "autoeval_build_failed"
   ],
@@ -14,20 +14,20 @@
   },
   "difficulty": {
     "failed": true,
-    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ HARD\nStatus: ❌ Some tests not passed by any \nagent run\nAgent Performance:\n  • terminus-claude-opus-4-6: 0.0% (0/5 \n  runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ HARD\nStatus: ❌ Some tests not passed by \nany agent run\nAgent Performance:\n  • terminus-claude-opus-4-6: 0.0% (0/\n  5 runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
   },
   "qualityCheck": {
     "failed": false,
     "failures": [],
-    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - behavior_in_task_description: \ninstruction.md explicitly names all \nthree output files (playbook_drift.\njson, dependency_impact.json, \nremediation_plan.json), the output \ndirectory (/app/output), the SHA-256 \nrequirement, the 2-space indent +"
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nthree output files (playbook_drift.\njson, dependency_impact.json, \nremediation_plan.json), the output \ndirectory (/app/output), the SHA-256"
   },
   "oracle": {
     "failed": false,
     "agentsSkipped": false
   },
   "swapUpload": {
-    "localTaskSlug": "replica-lag-window-audit",
-    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+    "localTaskSlug": "ansible-dependency-impact-task",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
     "excludedPlatformZip": "ansible-dependency-impact-task.zip"
   }
 }

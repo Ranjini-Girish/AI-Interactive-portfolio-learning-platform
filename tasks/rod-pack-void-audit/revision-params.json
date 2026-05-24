@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "c752d785-a6a0-41c4-a1db-1955c756016b",
+  "platformTaskSlug": "rod-pack-void-audit",
+  "assignmentId": "1885b6de-917e-490e-84d8-5c0373a083af",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=1885b6de-917e-490e-84d8-5c0373a083af",
+  "capturedAt": "2026-05-24T05:12:12.589Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:1a65e583-927c-4168-982d-9e1c85b587ad",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:1a65e583-927c-4168-982d-9e1c85b587ad."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Difficulty: ❌ EASY - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfour output files (cluster_voids.\njson, cell_snapshots.json, \nincident_trail.json, summary.json), \nthe binary name (rpvaudit), tool path"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "rod-pack-void-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\rod-pack-void-audit.zip",
+    "excludedPlatformZip": "rod-pack-void-audit.zip"
+  }
+}

@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for skew-bin-recalc-audit."""
 
 from __future__ import annotations

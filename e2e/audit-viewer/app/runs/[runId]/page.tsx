@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { IconArrowLeft } from '@/components/icons';
-import { WorkflowTimeline } from '@/components/WorkflowTimeline';
+import { TrailView } from '@/components/TrailView';
 import { LogPanel, StatusBadge } from '@/components/LogPanel';
 import { Skeleton } from '@/components/ui/Skeleton';
 import type { PhaseState } from '@/lib/workflow';
@@ -91,8 +91,8 @@ export default function RunDetailPage() {
       </p>
 
       <section>
-        <h2 className="section-title">Workflow</h2>
-        <WorkflowTimeline phases={data.workflow} />
+        <h2 className="section-title">Trail map</h2>
+        <TrailView phases={data.workflow} />
       </section>
 
       <div className="grid gap-6 lg:grid-cols-2">

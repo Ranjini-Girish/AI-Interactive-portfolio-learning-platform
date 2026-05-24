@@ -3,7 +3,7 @@
   "platformTaskSlug": "skew-bin-recalc-audit",
   "assignmentId": "fedc8111-a66a-4dad-bec4-3857b88e7ebe",
   "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=fedc8111-a66a-4dad-bec4-3857b88e7ebe",
-  "capturedAt": "2026-05-24T05:04:16.536Z",
+  "capturedAt": "2026-05-24T05:18:45.142Z",
   "revisionReasons": [
     "autoeval_build_failed"
   ],
@@ -14,20 +14,20 @@
   },
   "difficulty": {
     "failed": true,
-    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed by \nat least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0% (5/"
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
   },
   "qualityCheck": {
     "failed": false,
     "failures": [],
-    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - behavior_in_task_description: \ninstruction.md explicitly names both \noutput files, references SPEC.md at /\napp/sbr_lab/SPEC.md as the normative \nspec, and SPEC.md defines the complete \nalgorithm, all field names, array \nordering, schema for both outputs, and"
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names both \noutput files, references SPEC.md at /\napp/sbr_lab/SPEC.md as the normative \nspec, and SPEC.md defines the \ncomplete algorithm, all field names,"
   },
   "oracle": {
     "failed": false,
     "agentsSkipped": false
   },
   "swapUpload": {
-    "localTaskSlug": "replica-lag-window-audit",
-    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\replica-lag-window-audit.zip",
+    "localTaskSlug": "skew-bin-recalc-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\skew-bin-recalc-audit.zip",
     "excludedPlatformZip": "skew-bin-recalc-audit.zip"
   }
 }

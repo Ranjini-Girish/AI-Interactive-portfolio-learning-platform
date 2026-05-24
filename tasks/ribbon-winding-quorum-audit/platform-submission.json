@@ -1,0 +1,61 @@
+{
+  "taskName": "ribbon-winding-quorum-audit",
+  "updatedAt": "2026-05-24T05:30:14.456Z",
+  "tracker": {
+    "trainerName": "Girish",
+    "taskId": "c0f4de24-3ef0-447e-a93a-311e67b21bb4",
+    "taskStatus": "Evaluation pending",
+    "taskName": "ribbon-winding-quorum-audit",
+    "date": "05/24/2026",
+    "submittedOnId": "",
+    "language": "",
+    "domain": "",
+    "taskFolderLink": "ribbon-winding-quorum-audit.zip",
+    "uploadedToSnorkel": "Yes",
+    "needRevisionAutoEval": "",
+    "needRevisionManualReview": "",
+    "lastReviewerRemarks": "",
+    "issues": "",
+    "note": ""
+  },
+  "latest": {
+    "recordedAt": "2026-05-24T05:30:14.456Z",
+    "flow": "revision",
+    "dryRun": false,
+    "submitted": true,
+    "submissionUrl": "https://experts.snorkel-ai.com/home",
+    "projectId": null,
+    "submissionSlug": null,
+    "assignmentId": null,
+    "revisionTaskId": "c0f4de24-3ef0-447e-a93a-311e67b21bb4",
+    "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ribbon-winding-quorum-audit.zip",
+    "zipBytes": 16275,
+    "zipSha256": "df8b4cf6989edcac8bb1925cb45703af29c3a0b8e44ac8d0c0dc37c4274cde43",
+    "options": {
+      "sendToReviewer": true,
+      "regenerateRubric": false,
+      "staticChecks": true
+    }
+  },
+  "submissions": [
+    {
+      "recordedAt": "2026-05-24T05:30:14.456Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "c0f4de24-3ef0-447e-a93a-311e67b21bb4",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ribbon-winding-quorum-audit.zip",
+      "zipBytes": 16275,
+      "zipSha256": "df8b4cf6989edcac8bb1925cb45703af29c3a0b8e44ac8d0c0dc37c4274cde43",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    }
+  ]
+}

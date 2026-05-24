@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "5da23e79-2fb1-4be0-8176-f7da7b601086",
+  "platformTaskSlug": "trace-span-merge-audit",
+  "assignmentId": "cd26fc59-b7a8-4004-b26a-71fbb45c9e65",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=cd26fc59-b7a8-4004-b26a-71fbb45c9e65",
+  "capturedAt": "2026-05-24T05:35:41.682Z",
+  "revisionReasons": [
+    "autoeval_build_failed"
+  ],
+  "autoEval": {
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:7dc35b26-2c37-4ed7-b228-338241481387",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:7dc35b26-2c37-4ed7-b228-338241481387."
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nThis task is not tested with any \nagents as the Oracle solution failed. \nPlease fix the Oracle solution and \nre-run the tests.\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfive output files and the /app/audit/ \ndirectory, specifies the canonical \nformatting rules (two-space indent, \nrecursively sorted keys, ASCII-only,"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "trace-span-merge-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\trace-span-merge-audit.zip",
+    "excludedPlatformZip": "trace-span-merge-audit.zip"
+  }
+}

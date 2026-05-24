@@ -1,4 +1,3 @@
-# scaffold-status: oracle-pending
 """Behavioral tests for veil-quota-bin-audit."""
 
 from __future__ import annotations
@@ -38,7 +37,7 @@ EXPECTED_INPUT_HASHES = {
     "samples/sample_09.json": "b90ac90fe7823fa4058e2b7461025707f17bc839c56e35861e558997cfe00292",
     "samples/sample_10.json": "878e1466dc532a1c2aa1318ce596eff4602e7464f858678a30cb77493ae1e59f",
     "samples/sample_11.json": "66df51b94c4456f0be98b11428475a7541184bba6bca32fd83460ae77f0339fb",
-    "SPEC.md": "fba29f077b921b0fc5f74a30be70053a1e346836f845dd844e30a84ced0c91eb"
+    "SPEC.md": "95af21e5c8642762e16bbf27eae2d7066e5044b6be59493e3f0e4672820e278b"
 }
 
 

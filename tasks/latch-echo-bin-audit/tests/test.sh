@@ -1,5 +1,6 @@
 #!/bin/bash
-# Verifier deps are pre-installed in environment/Dockerfile.
+# `allow_internet = false` is enforced at runtime. Verifier deps
+# (pytest, pytest-json-ctrf) are pre-installed in environment/Dockerfile.
 
 mkdir -p /logs/verifier
 

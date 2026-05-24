@@ -1,9 +1,9 @@
 {
   "taskName": "ansible-dependency-impact-task",
-  "updatedAt": "2026-05-24T02:16:45.777Z",
+  "updatedAt": "2026-05-24T05:17:37.387Z",
   "tracker": {
     "trainerName": "Girish",
-    "taskId": "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+    "taskId": "c12f5c5c-1896-471d-a039-601ff5ac2fba",
     "taskStatus": "Evaluation pending",
     "taskName": "ansible-dependency-impact-task",
     "date": "05/24/2026",
@@ -19,7 +19,7 @@
     "note": ""
   },
   "latest": {
-    "recordedAt": "2026-05-24T02:16:45.777Z",
+    "recordedAt": "2026-05-24T05:17:37.387Z",
     "flow": "revision",
     "dryRun": false,
     "submitted": true,
@@ -27,10 +27,10 @@
     "projectId": null,
     "submissionSlug": null,
     "assignmentId": null,
-    "revisionTaskId": "ea5f4223-d084-436e-9a54-8acb7fa45f3f",
+    "revisionTaskId": "c12f5c5c-1896-471d-a039-601ff5ac2fba",
     "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
-    "zipBytes": 48336,
-    "zipSha256": "206c9050e2d6d91005c7af7c1c4c29063b8ea9c3baa19955d0df0e0ddf859d22",
+    "zipBytes": 43838,
+    "zipSha256": "e7afab31d36527111f7a77187ac9b8563683294153b32785cca46b5b09c61240",
     "options": {
       "sendToReviewer": true,
       "regenerateRubric": false,
@@ -70,6 +70,25 @@
       "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
       "zipBytes": 48336,
       "zipSha256": "206c9050e2d6d91005c7af7c1c4c29063b8ea9c3baa19955d0df0e0ddf859d22",
+      "options": {
+        "sendToReviewer": true,
+        "regenerateRubric": false,
+        "staticChecks": true
+      }
+    },
+    {
+      "recordedAt": "2026-05-24T05:17:37.387Z",
+      "flow": "revision",
+      "dryRun": false,
+      "submitted": true,
+      "submissionUrl": "https://experts.snorkel-ai.com/home",
+      "projectId": null,
+      "submissionSlug": null,
+      "assignmentId": null,
+      "revisionTaskId": "c12f5c5c-1896-471d-a039-601ff5ac2fba",
+      "zipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ansible-dependency-impact-task.zip",
+      "zipBytes": 43838,
+      "zipSha256": "e7afab31d36527111f7a77187ac9b8563683294153b32785cca46b5b09c61240",
       "options": {
         "sendToReviewer": true,
         "regenerateRubric": false,

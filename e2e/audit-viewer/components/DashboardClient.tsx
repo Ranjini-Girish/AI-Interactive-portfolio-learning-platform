@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { IconActivity, IconChevronRight, IconLayoutGrid, IconRadio, IconSearch } from './icons';
+import { IconChevronRight, IconRadio, IconSearch } from './icons';
 import { StatusBadge } from './LogPanel';
-import { StatCard } from './ui/StatCard';
+import { PlayerStatsBar } from './PlayerStatsBar';
+import { QuestCard } from './QuestCard';
 import { DashboardSkeleton } from './ui/Skeleton';
+import { estimatePhasesCleared } from '@/lib/gamification';
 
 type RunSummary = {
   runId: string;
@@ -36,6 +38,8 @@ type DashboardData = {
   runs: RunSummary[];
   tasks: TaskSummary[];
 };
+
+const XP_PER_WAYPOINT = 118;
 
 export function DashboardClient() {
   const [data, setData] = useState<DashboardData | null>(null);
@@ -69,8 +73,12 @@ export function DashboardClient() {
     if (!data) return null;
     const running = data.runs.filter((r) => r.status === 'running').length;
     const failed = data.runs.filter((r) => r.status === 'failed').length;
-    const submitted = data.tasks.filter((t) => t.submitted).length;
-    return { running, failed, submitted };
+    const cleared = data.tasks.filter((t) => t.status === 'success' || t.submitted).length;
+    const totalXp = data.tasks.reduce((sum, t) => {
+      const waypoints = estimatePhasesCleared(t.lastStep, t.status);
+      return sum + waypoints * XP_PER_WAYPOINT;
+    }, 0);
+    return { running, failed, cleared, totalXp };
   }, [data]);
 
   const filteredTasks = useMemo(() => {
@@ -80,9 +88,7 @@ export function DashboardClient() {
     return data.tasks.filter((t) => t.slug.toLowerCase().includes(q));
   }, [data, query]);
 
-  if (!data) {
-    return <DashboardSkeleton />;
-  }
+  if (!data) return <DashboardSkeleton />;
 
   if (!data.exists) {
     return (
@@ -97,99 +103,74 @@ export function DashboardClient() {
     <div className="space-y-8">
       <section className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="page-title">Revision flows</h1>
+          <p className="quest-label">Revision Trail</p>
+          <h1 className="page-title">Quest Board</h1>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Snorkel E2E revision automation · polling every 5s
+            Clear waypoints · earn XP · resubmit to the council
           </p>
         </div>
         <Link href="/live" className="badge badge-running badge-link">
           <IconRadio className="h-3.5 w-3.5" />
-          Live tail
+          Live feed
           <IconChevronRight className="h-3.5 w-3.5" />
         </Link>
       </section>
 
       {stats ? (
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Summary">
-          <StatCard
-            label="Total runs"
-            value={data.runs.length}
-            hint="From revision-runs.jsonl"
-            icon={<IconLayoutGrid className="h-4 w-4" />}
-          />
-          <StatCard
-            label="Task logs"
-            value={data.tasks.length}
-            hint="Latest per slug"
-            icon={<IconActivity className="h-4 w-4" />}
-          />
-          <StatCard
-            label="Live events"
-            value={liveCount}
-            hint="SSE stream this session"
-            accent="live"
-            icon={<span className="live-dot inline-block h-2 w-2 rounded-full bg-[var(--accent)]" />}
-          />
-          <StatCard
-            label="Running / failed"
-            value={`${stats.running} / ${stats.failed}`}
-            hint={`${stats.submitted} submitted`}
-            accent={stats.failed > 0 ? 'danger' : stats.running > 0 ? 'live' : 'success'}
-          />
-        </section>
+        <PlayerStatsBar
+          totalXp={stats.totalXp}
+          questsCleared={stats.cleared}
+          questsTotal={data.tasks.length}
+          liveEvents={liveCount}
+          running={stats.running}
+          failed={stats.failed}
+        />
       ) : null}
 
       <section>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-          <h2 className="section-title mb-0">Latest per task</h2>
+          <h2 className="section-title mb-0">Active quests</h2>
           <div className="search-wrap">
             <IconSearch className="h-4 w-4" />
             <input
               type="search"
-              placeholder="Filter tasks…"
+              placeholder="Search quests…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="search-input"
-              aria-label="Filter tasks"
+              aria-label="Search quests"
             />
           </div>
         </div>
-        <div className="grid gap-2">
+        <div className="quest-grid">
           {filteredTasks.length === 0 ? (
-            <div className="card text-sm text-[var(--muted)]">No tasks match your filter.</div>
+            <div className="card text-sm text-[var(--muted)]">No quests match your search.</div>
           ) : (
             filteredTasks.slice(0, 24).map((t) => (
-              <Link
+              <QuestCard
                 key={t.slug}
-                href={`/tasks/${encodeURIComponent(t.slug)}`}
-                className="card card-interactive flex flex-wrap items-center gap-3"
-              >
-                <span className="font-medium">{t.slug}</span>
-                <StatusBadge status={t.status} />
-                {t.submitted ? <span className="badge badge-success">submitted</span> : null}
-                <span className="log-line text-xs text-[var(--muted)]">{t.lastStep ?? '—'}</span>
-                <span className="ml-auto text-xs text-[var(--muted)]">
-                  {new Date(t.mtime).toLocaleString()}
-                </span>
-                <IconChevronRight className="ml-1 h-4 w-4 text-[var(--muted)]" />
-              </Link>
+                slug={t.slug}
+                status={t.status}
+                lastStep={t.lastStep}
+                submitted={t.submitted}
+                mtime={t.mtime}
+              />
             ))
           )}
         </div>
       </section>
 
       <section>
-        <h2 className="section-title">All runs</h2>
+        <h2 className="section-title">Quest log</h2>
         <div className="card overflow-x-auto p-0">
           <table className="data-table">
             <thead>
               <tr>
-                <th>Task</th>
+                <th>Quest</th>
                 <th>Status</th>
-                <th>Last step</th>
+                <th>Last waypoint</th>
                 <th>Events</th>
                 <th>Updated</th>
-                <th>UID</th>
               </tr>
             </thead>
             <tbody>
@@ -207,9 +188,6 @@ export function DashboardClient() {
                   <td>{r.eventCount}</td>
                   <td className="text-xs text-[var(--muted)]">
                     {new Date(r.updatedAt).toLocaleString()}
-                  </td>
-                  <td className="log-line text-xs text-[var(--muted)]">
-                    {r.revisionTaskId?.slice(0, 8) ?? '—'}…
                   </td>
                 </tr>
               ))}
