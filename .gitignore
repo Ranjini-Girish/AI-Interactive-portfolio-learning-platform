@@ -27,6 +27,10 @@ _dev_compute_hashes.py
 !Snorkel_Accepted_Tasks/**/*.zip
 tasks/*.zip
 
+# Tracker DB
+tracker-db/node_modules/
+tracker-db/.env
+
 # Playwright E2E (e2e/)
 e2e/node_modules/
 e2e/.env

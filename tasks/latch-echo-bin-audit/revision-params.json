@@ -1,0 +1,33 @@
+{
+  "revisionTaskId": "9c8fef7e-cac5-4076-a8b8-c5e1fe8c2235",
+  "platformTaskSlug": "latch-echo-bin-audit",
+  "assignmentId": "e2416453-41d2-4545-ba40-e5b2a7713662",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=e2416453-41d2-4545-ba40-e5b2a7713662",
+  "capturedAt": "2026-05-24T06:45:01.634Z",
+  "revisionReasons": [
+    "reviewer_feedback_present"
+  ],
+  "autoEval": {
+    "buildFailed": false,
+    "buildId": null,
+    "summary": null
+  },
+  "difficulty": {
+    "failed": true,
+    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\n2\n3\n4\n5\n6\nDifficulty: ✅ HARD\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0% \n  (5/5 runs)\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File"
+  },
+  "qualityCheck": {
+    "failed": false,
+    "failures": [],
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names both \noutput files (latch_bins.json and \nsummary.json), states the audit \ndirectory rules, env-var overrides \n(LEB_DATA_DIR / LEB_AUDIT_DIR),"
+  },
+  "oracle": {
+    "failed": false,
+    "agentsSkipped": false
+  },
+  "swapUpload": {
+    "localTaskSlug": "latch-echo-bin-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\latch-echo-bin-audit.zip",
+    "excludedPlatformZip": "latch-echo-bin-audit.zip"
+  }
+}

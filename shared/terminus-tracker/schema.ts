@@ -20,6 +20,15 @@ export const TRACKER_COLUMN_HEADERS = [
   'Note',
 ] as const;
 
+/** Extended Cognyzer export columns (May 2026 sheet). */
+export const TRACKER_EXTENDED_HEADERS = [
+  ...TRACKER_COLUMN_HEADERS,
+  'Last Updated',
+  'Review Outcome',
+  'Last Sync Hash',
+  'Last Revision Count Key',
+] as const;
+
 export type TrackerColumnHeader = (typeof TRACKER_COLUMN_HEADERS)[number];
 
 /** One row in the tracker sheet (camelCase keys in JSON metadata). */
@@ -39,6 +48,10 @@ export type TrackerRow = {
   lastReviewerRemarks: string;
   issues: string;
   note: string;
+  lastUpdated?: string;
+  reviewOutcome?: string;
+  lastSyncHash?: string;
+  lastRevisionCountKey?: string;
 };
 
 export const EMPTY_TRACKER_ROW: TrackerRow = {
@@ -81,7 +94,7 @@ export function trackerRowToSheetValues(row: TrackerRow): string[] {
 
 export function sheetValuesToTrackerRow(values: string[]): TrackerRow {
   const v = (i: number) => values[i]?.trim() ?? '';
-  return {
+  const base: TrackerRow = {
     trainerName: v(0),
     taskId: v(1),
     taskStatus: v(2),
@@ -98,6 +111,21 @@ export function sheetValuesToTrackerRow(values: string[]): TrackerRow {
     issues: v(13),
     note: v(14),
   };
+  if (values.length > 15) {
+    base.lastUpdated = v(15);
+    base.reviewOutcome = v(16);
+    base.lastSyncHash = v(17);
+    base.lastRevisionCountKey = v(18);
+  }
+  return base;
+}
+
+/** Normalize sheet task name to repo folder slug. */
+export function taskNameToSlug(taskName: string): string {
+  let s = taskName.trim().toLowerCase();
+  s = s.replace(/\.zip$/i, '');
+  s = s.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return s.slice(0, 30);
 }
 
 /** Map camelCase JSON (metadata upload) to TrackerRow. */

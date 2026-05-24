@@ -43,6 +43,7 @@ SKIP_DIR_NAMES = frozenset(
 )
 SKIP_FILE_NAMES = frozenset({
     "rubrics.txt",
+    "revision-fixes.md",
     ".DS_Store",
     "platform-submission.json",
     "revision-audit.log",

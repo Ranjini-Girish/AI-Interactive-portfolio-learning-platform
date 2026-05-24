@@ -3,14 +3,14 @@
   "platformTaskSlug": "veil-quota-bin-audit",
   "assignmentId": "db76db63-230e-40e2-8e8e-050f22a9e3b4",
   "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=db76db63-230e-40e2-8e8e-050f22a9e3b4",
-  "capturedAt": "2026-05-24T05:14:03.842Z",
+  "capturedAt": "2026-05-24T06:42:58.565Z",
   "revisionReasons": [
     "autoeval_build_failed"
   ],
   "autoEval": {
     "buildFailed": true,
-    "buildId": "CodeExecutionEnvironment:5803a165-5a00-4ee2-8609-fdc0d9db19c3",
-    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:5803a165-5a00-4ee2-8609-fdc0d9db19c3."
+    "buildId": "CodeExecutionEnvironment:11ce3cf4-4ca9-4e91-86ef-903cdda11f23",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:11ce3cf4-4ca9-4e91-86ef-903cdda11f23."
   },
   "difficulty": {
     "failed": true,
@@ -19,7 +19,7 @@
   "qualityCheck": {
     "failed": false,
     "failures": [],
-    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n❌ fail - \nbehavior_in_task_description: The \ntests (via EXPECTED_FIELD_HASHES) \nverify exact values for `summary.json.\ntail_ledger_sha` and `summary.json.\ntotal_assignments`. SPEC.md lists \nthese keys but says only 'with the"
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md describes all tested \nbehaviors: applying masks, lane \noffsets with non-negative modular \nreduction, clipping at veil_cap, \nfolding prefix sums, and veil_spill"
   },
   "oracle": {
     "failed": false,

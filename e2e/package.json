@@ -27,7 +27,11 @@
     "submit:new:live": "playwright test tests/submit-new-task.spec.ts -g \"submit new task to platform\" --project=chromium",
     "submit:new:live:headed": "playwright test tests/submit-new-task.spec.ts -g \"submit new task to platform\" --project=chromium --headed",
     "submit:new:cli": "node scripts/submit-new-task.mjs",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "tracker:register": "npm run register --prefix ../tracker-db",
+    "tracker:poll": "npm run poll:status --prefix ../tracker-db",
+    "tracker:scheduler": "npm run scheduler --prefix ../tracker-db",
+    "tracker:backfill": "npm run backfill --prefix ../tracker-db"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0",

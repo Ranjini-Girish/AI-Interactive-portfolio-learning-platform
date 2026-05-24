@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { IconLayoutGrid, IconRadio, IconTerminal } from './icons';
+import { IconGitBranch, IconLayoutGrid, IconRadio, IconTable, IconTerminal } from './icons';
 
 const NAV = [
   { href: '/', label: 'Quest board', icon: IconLayoutGrid },
+  { href: '/pipeline', label: 'Pipeline', icon: IconGitBranch },
+  { href: '/tracker', label: 'Task tracker', icon: IconTable },
   { href: '/live', label: 'Live feed', icon: IconRadio },
 ] as const;
 

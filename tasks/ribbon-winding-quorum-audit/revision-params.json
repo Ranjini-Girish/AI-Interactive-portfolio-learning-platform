@@ -1,33 +1,33 @@
 {
-  "revisionTaskId": "82b85d32-18cf-4184-b0cd-f0bbae6e465a",
+  "revisionTaskId": "c0f4de24-3ef0-447e-a93a-311e67b21bb4",
   "platformTaskSlug": "ribbon-winding-quorum-audit",
-  "assignmentId": "7b0e8c12-b863-44e3-83ca-d6feefed292f",
-  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=7b0e8c12-b863-44e3-83ca-d6feefed292f",
-  "capturedAt": "2026-05-24T02:41:04.291Z",
+  "assignmentId": "2a3a62d8-aff8-4c1f-8164-9883b798aad4",
+  "submissionUrl": "https://experts.snorkel-ai.com/projects/bfe79c33-8ab0-4061-9849-08d3207c9927/submission-941bede0-d9c6-42f0-874d-cd3d25582c72/review?assignmentId=2a3a62d8-aff8-4c1f-8164-9883b798aad4",
+  "capturedAt": "2026-05-24T06:40:57.575Z",
   "revisionReasons": [
-    "build_completion_timeout"
+    "autoeval_build_failed"
   ],
   "autoEval": {
-    "buildFailed": false,
-    "buildId": null,
-    "summary": "Build Completion Timeout: Timed out after 7200s waiting for completion marker at s3://daas-blobs/codebuild_uploads/autoeval_artifacts/c0f4de24-3ef0-447e-a93a-311e67b21bb4/b84507fa/completion_marker.json"
+    "buildFailed": true,
+    "buildId": "CodeExecutionEnvironment:4cf17a6f-e90e-4523-bb3b-df02637e94e9",
+    "summary": "AutoEval Execution Summary: AutoEval execution failed. Build status: FAILED. Build ID: CodeExecutionEnvironment:4cf17a6f-e90e-4523-bb3b-df02637e94e9."
   },
   "difficulty": {
     "failed": true,
-    "summary": "Summary (optional)\n\nSummary of difficulty check - contains results of agent simulation and stats for each test as well as instruction sufficiency check.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nSummary\nWrap\nExpand\n1\nFailed to run difficulty check\nDownload difficulty check results (optional)\n\nThis field will be populated by the system when your code is run by the system.\n\nDownload File\nNo file available"
+    "summary": "Difficulty: ❌ TRIVIAL - Requires at \nleast MEDIUM\nStatus: ✅ Solvable (all tests passed \nby at least one agent run)\nAgent Performance:\n  • terminus-claude-opus-4-6: 100.0%"
   },
   "qualityCheck": {
     "failed": false,
     "failures": [],
-    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: The \ninstruction.md explicitly specifies: \nthe binary target path (/app/bin/\nrwqaudit), source directory (/app/\nsrc/), Go 1.23, the two output files \n(summary.json and segment_verdicts."
+    "summary": "Quality check summary (optional)\n\nPlease disregard this field if it is blank, during initial submission. This field will be populated by the system when your code is run by the system.\n\nLanguage:\nPython\nPython\nGo\nSQL (Snowflake)\nJavaScript\nTypeScript\nQuality check summary\nWrap\nExpand\n1\n2\n## Quality Check Results\n✅ pass - \nbehavior_in_task_description: \ninstruction.md explicitly names all \nfour output files (segment_quorum.\njson, lane_summary.json, \nincident_effects.json, summary.json), \nstates the binary name (rwqaudit),"
   },
   "oracle": {
     "failed": false,
     "agentsSkipped": false
   },
   "swapUpload": {
-    "localTaskSlug": "go-module-bump-arbiter",
-    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\old\\go-module-bump-arbiter.zip",
+    "localTaskSlug": "ribbon-winding-quorum-audit",
+    "localZipPath": "C:\\Users\\gengi\\Projects\\Airdawg_terminal\\tasks\\ribbon-winding-quorum-audit.zip",
     "excludedPlatformZip": "ribbon-winding-quorum-audit.zip"
   }
 }

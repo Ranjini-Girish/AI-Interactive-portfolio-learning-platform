@@ -1,6 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { resolveTaskNameFromEnv } from './submission-metadata';
+import {
+  syncFlowRunDone,
+  syncFlowRunStart,
+  syncFlowRunStep,
+} from './tracker-sync';
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const AUDIT_DIR = path.join(REPO_ROOT, 'e2e', 'audit');
@@ -71,9 +76,21 @@ export class FlowAuditLog {
         `${options.flow}-audit.log`,
       );
     }
+
+    syncFlowRunStart({
+      runId: this.runId,
+      flow: options.flow,
+      taskName: options.taskName,
+      revisionTaskId: options.revisionTaskId,
+      zipPath: options.zipPath,
+    });
   }
 
   start(extra?: Record<string, unknown>): void {
+    syncFlowRunStep(this.runId, 'run_begin', 'E2E flow started', {
+      taskName: this.taskName,
+      ...extra,
+    });
     this.record('start', 'run_begin', 'E2E flow started', {
       revisionTaskId: this.revisionTaskId,
       zipPath: this.zipPath,
@@ -90,16 +107,19 @@ export class FlowAuditLog {
   }
 
   step(step: string, detail?: string, data?: Record<string, unknown>): void {
+    syncFlowRunStep(this.runId, step, detail, { taskName: this.taskName, ...data });
     this.record('step', step, detail, data);
   }
 
   error(step: string, err: unknown, data?: Record<string, unknown>): void {
     const message = err instanceof Error ? err.message : String(err);
     const stack = err instanceof Error ? err.stack : undefined;
+    syncFlowRunDone(this.runId, 'failed', { step, message, ...data });
     this.record('error', step, message, { stack, ...data });
   }
 
   done(result: Record<string, unknown>): void {
+    syncFlowRunDone(this.runId, 'success', result);
     this.record('done', 'run_complete', 'E2E flow finished', result);
   }
 

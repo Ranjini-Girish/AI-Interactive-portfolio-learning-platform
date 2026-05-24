@@ -107,11 +107,16 @@ export async function runRevisionFlow(
     }
 
     if (!revisionContext) {
-      audit?.step('extract_revision_context', 'Expanding feedback panels and reading portal metadata');
+      audit?.step('extract_revision_context', 'Fetching assignment API + portal scrape for revision metadata');
       revisionContext = await extractRevisionContext(page, taskId);
       audit?.step('extract_revision_context_done', 'Revision feedback captured', {
+        extractionSource: revisionContext.extractionSource,
         expandCount: revisionContext.feedbackExpandCount,
         reasons: revisionContext.revisionReasons,
+        difficultyBand: revisionContext.difficultyBand,
+        solvable: revisionContext.solvable,
+        evaluationOutcome: revisionContext.evaluationOutcome,
+        agentStats: revisionContext.agentStats,
         hasAgentReview: Boolean(revisionContext.agentReviewSummary),
         hasTestQuality: Boolean(revisionContext.testQualitySummary),
       });

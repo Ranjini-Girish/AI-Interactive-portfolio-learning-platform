@@ -7,6 +7,7 @@ import type {
   SubmissionRecord,
   TaskPlatformMetadata,
 } from '../../shared/terminus-tracker/metadata';
+import { syncSubmissionToDb } from './tracker-sync';
 
 export type { SubmissionFlowKind, SubmissionRecord, TaskPlatformMetadata };
 export type { TrackerRow } from '../../shared/terminus-tracker/schema';
@@ -171,5 +172,13 @@ export function saveSubmissionMetadata(input: SaveSubmissionMetadataInput): stri
   };
 
   fs.writeFileSync(outPath, `${JSON.stringify(doc, null, 2)}\n`, 'utf8');
+
+  syncSubmissionToDb(input, record, {
+    trainerName: tracker.trainerName,
+    language: tracker.language,
+    domain: tracker.domain,
+    taskStatus: tracker.taskStatus,
+  });
+
   return outPath;
 }
