@@ -1,0 +1,34 @@
+{
+  "incidents": [
+    {
+      "epoch": 0,
+      "kind": "noop"
+    },
+    {
+      "delta": 50,
+      "epoch": 1,
+      "hop_id": "h1",
+      "kind": "cap_add"
+    },
+    {
+      "epoch": 1,
+      "hop_id": "h3",
+      "kind": "halt_hop"
+    },
+    {
+      "epoch": 2,
+      "hop_id": "h3",
+      "kind": "resume_hop"
+    },
+    {
+      "delta": 40,
+      "epoch": 2,
+      "hop_id": "h2",
+      "kind": "cap_add"
+    },
+    {
+      "epoch": 2,
+      "kind": "noop"
+    }
+  ]
+}

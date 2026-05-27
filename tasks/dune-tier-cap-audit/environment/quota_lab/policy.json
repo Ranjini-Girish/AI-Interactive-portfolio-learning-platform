@@ -1,0 +1,13 @@
+{
+  "audit_day": 16,
+  "tier_caps": {
+    "gold": 70,
+    "platinum": 90,
+    "silver": 35
+  },
+  "tier_order": [
+    "platinum",
+    "gold",
+    "silver"
+  ]
+}

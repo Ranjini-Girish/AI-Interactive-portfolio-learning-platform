@@ -1,0 +1,11 @@
+Agent writes both required JSON artifacts under /app/audit with the exact filenames from the prompt, +2
+Agent keeps every file under /app/quota_lab byte-identical to the mounted fixtures, -3
+Agent emits canonical JSON per /app/quota_lab/SPEC.md including sorted keys, two-space indent, ASCII-only text, and one trailing newline per file, +3
+Agent applies tier ordering from policy.json before drawing from per-tier remaining capacity, +2
+Agent honors accepted tier derates and item freezes on the audit day, +2
+Agent records frozen items with zero allocation while preserving demand, +2
+Agent mislabels an item status relative to demand versus allocated units, -3
+Agent omits frozen_items, tiers_touched, or any required status_counts key, -3
+Agent writes non-JSON, non-UTF-8 output, or mutates inputs while claiming completion, -5
+Agent leaves /app/audit missing any required top-level field described in SPEC.md, -3
+Agent processes items in an order other than tier rank then lexicographic item_id, -3

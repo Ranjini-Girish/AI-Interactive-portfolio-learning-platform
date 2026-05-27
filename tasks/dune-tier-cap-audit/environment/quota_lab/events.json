@@ -1,0 +1,22 @@
+{
+  "item_freezes": [
+    {
+      "end_day": 18,
+      "item_id": "item-03",
+      "start_day": 14
+    },
+    {
+      "end_day": 99,
+      "item_id": "item-15",
+      "start_day": 0
+    }
+  ],
+  "tier_derates": [
+    {
+      "end_day": 30,
+      "factor_bp": 6000,
+      "start_day": 0,
+      "tier": "silver"
+    }
+  ]
+}

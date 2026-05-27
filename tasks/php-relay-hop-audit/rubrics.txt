@@ -1,0 +1,16 @@
+Agent Writes four JSON artefacts under `/app/audit/` with the exact filenames the prompt names, +2
+Agent Applies canonical JSON with two-space indentation, sorted keys, ASCII-only text, and one trailing newline per file, +3
+Agent Records admissions with the epoch, hop, flow, and admitted byte fields demanded by the spec, +2
+Agent Records denials with requested versus available headroom for every rejected flow, +2
+Agent Mirrors incident kinds into `summary.incidents_applied` in the fixture array order, +2
+Agent Emits `carry_ledgers.json` rows for every epoch and hop listed in `policy.hops_order`, +5
+Agent Leaves every file under `/app/relayhop/` byte-for-byte unchanged, -3
+Agent Omits any required top-level output file listed in the prompt, -5
+Agent Ignores the epoch ordering, hop ordering, or all-or-nothing admission contract from `/app/relayhop/SPEC.md`, -5
+Agent Emits non-JSON text, UTF-8 byte order marks, or duplicate `flow_id` admission rows, -3
+Agent Skips creating `/app/audit/` when it is missing, -2
+Agent Mutates anchor evidence files or rewrites hop or flow fixtures, -5
+Agent Leaves `carry_ledgers.json` rows unsorted or drops hops from the ledger grid, -3
+Agent Surfaces incident kinds out of file order in `summary.json`, -2
+Agent Treats halted hops as still admitting bytes in the same epoch, -5
+Agent Ignores the carry cap when forwarding unused budget into the next epoch, -3

@@ -118,6 +118,29 @@ Track all tasks to maintain diversity requirements across submissions.
 | 101 | postgres-migration-impact | software-engineering | hard | small | java, bash | 0 | Ayesha import (was python) | 2026-05-22 |
 | 102 | spectral-calibration-audit | scientific-computing | hard | small | typescript, bash | 0 | Ayesha import; TS stack (not strict Java) | 2026-05-22 |
 | 103 | user-acct-hardening-audit | security | hard | small | java, bash | 0 | Ayesha import; strict Java `AccountHardening.java`; `/app/audit`; preflight pass | 2026-05-22 |
+| 104 | bash-tier-quota-audit | machine-learning | hard | small | bash | 0 | tier-quota family; Docker oracle 7/7; preflight + zip | 2026-05-25 |
+| 105 | c-tier-quota-audit | data-processing | hard | small | c | 0 | tier-quota family; libcjson oracle; preflight + zip | 2026-05-25 |
+| 106 | cpp-tier-quota-audit | debugging | hard | small | c++ | 0 | tier-quota family; C++17 oracle; preflight + zip | 2026-05-25 |
+| 107 | elixir-tier-quota-audit | scientific-computing | hard | small | elixir | 0 | tier-quota family; Jason baked in image; preflight + zip | 2026-05-25 |
+| 108 | go-tier-quota-audit | build-and-dependency-management | hard | small | go | 0 | tier-quota family; debian golang-go; preflight + zip | 2026-05-25 |
+| 109 | hs-tier-quota-audit | games | hard | small | haskell | 0 | tier-quota family; agent Haskell; preflight + zip | 2026-05-25 |
+| 110 | java-tier-quota-audit | software-engineering | hard | small | java | 0 | tier-quota family; Gson oracle; preflight + zip | 2026-05-25 |
+| 111 | js-tier-quota-audit | security | hard | small | javascript | 0 | tier-quota family; Node oracle; preflight + zip | 2026-05-25 |
+| 112 | kotlin-tier-quota-audit | system-administration | hard | small | kotlin | 0 | tier-quota family; kotlinc 2.0.21; preflight + zip | 2026-05-25 |
+| 113 | py-tier-quota-audit | data-processing | hard | small | python | 0 | tier-quota family; Python oracle; preflight + zip | 2026-05-25 |
+| 114 | ruby-tier-quota-audit | scientific-computing | hard | small | ruby | 0 | tier-quota family; Ruby oracle; preflight + zip | 2026-05-25 |
+| 115 | rust-tier-quota-audit | software-engineering | hard | small | rust | 0 | tier-quota family; rustup 1.85; preflight + zip | 2026-05-25 |
+| 116 | ts-tier-quota-audit | data-processing | hard | small | typescript | 0 | tier-quota family; tsc+node oracle; preflight + zip | 2026-05-25 |
+| 117 | amber-tier-cap-audit | build-and-dependency-management | hard | small | go, bash | 0 | tier-quota clone; variant 01 fixtures; Go oracle; 26 env files | 2026-05-25 |
+| 118 | bronze-tier-cap-audit | software-engineering | hard | small | rust, bash | 0 | tier-quota clone; variant 02 fixtures; Rust oracle | 2026-05-25 |
+| 119 | copper-tier-cap-audit | data-processing | hard | small | java, bash | 0 | tier-quota clone; variant 03 fixtures; Java Gson oracle | 2026-05-25 |
+| 120 | dune-tier-cap-audit | system-administration | hard | small | kotlin, bash | 0 | tier-quota clone; variant 04 fixtures; Kotlin oracle | 2026-05-25 |
+| 121 | ember-tier-cap-audit | scientific-computing | hard | small | elixir | 0 | tier-quota clone; variant 05 fixtures; Elixir oracle | 2026-05-25 |
+| 122 | flint-tier-cap-audit | debugging | hard | small | c++ | 0 | tier-quota clone; variant 06 fixtures; C++17 oracle | 2026-05-25 |
+| 123 | granite-tier-cap-audit | games | hard | small | haskell | 0 | tier-quota clone; variant 07 fixtures; Haskell oracle | 2026-05-25 |
+| 124 | hazel-tier-cap-audit | security | hard | small | javascript | 0 | tier-quota clone; variant 08 fixtures; Node oracle | 2026-05-25 |
+| 125 | ivory-tier-cap-audit | machine-learning | hard | small | typescript | 0 | tier-quota clone; variant 09 fixtures; TypeScript oracle | 2026-05-25 |
+| 126 | jade-tier-cap-audit | scientific-computing | hard | small | c, bash | 0 | tier-quota clone; variant 10 fixtures; C oracle | 2026-05-25 |
 
 ## Diversity Dashboard
 
