@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #0a0e14;
+  --surface: #141b24;
+  --surface-2: #1c2634;
+  --border: #2a3648;
+  --text: #e8eef7;
+  --muted: #8b9cb3;
+  --accent: #5b8def;
+  --accent-hover: #7aa3ff;
+  --success: #3ecf8e;
+  --warning: #f5a623;
+  --danger: #f07178;
+  --banking: #5b8def;
+  --retail: #a78bfa;
+  --insurance: #34d399;
+  --genai: #f472b6;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent),
+    var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.card-hover:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  border-color: var(--muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.domain-banking {
+  background: color-mix(in srgb, var(--banking) 20%, transparent);
+  color: var(--banking);
+}
+
+.domain-retail {
+  background: color-mix(in srgb, var(--retail) 20%, transparent);
+  color: var(--retail);
+}
+
+.domain-insurance {
+  background: color-mix(in srgb, var(--insurance) 20%, transparent);
+  color: var(--insurance);
+}
+
+.domain-genai {
+  background: color-mix(in srgb, var(--genai) 20%, transparent);
+  color: var(--genai);
+}
+
+.prose-mentor h3 {
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.prose-mentor p {
+  margin-top: 0.35rem;
+  line-height: 1.55;
+}
+
+input[type='checkbox'] {
+  accent-color: var(--accent);
+}
+
+textarea,
+input[type='text'] {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+textarea:focus,
+input[type='text']:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 1px;
+}

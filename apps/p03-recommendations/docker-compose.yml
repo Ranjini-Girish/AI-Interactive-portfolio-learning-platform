@@ -1,0 +1,25 @@
+# Optional dual-store stack for mentor milestone s1 (MongoDB + Postgres)
+# Default scaffold uses SQLite — no Docker required to run locally.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: reco
+      POSTGRES_PASSWORD: reco
+      POSTGRES_DB: interactions
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodata:/data/db
+
+volumes:
+  pgdata:
+  mongodata:
