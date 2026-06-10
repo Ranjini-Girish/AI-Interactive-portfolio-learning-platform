@@ -8,6 +8,7 @@ const links = [
   { href: '/start', label: 'Start here' },
   { href: '/portfolio', label: 'Try apps' },
   { href: '/build', label: 'Learn' },
+  { href: '/interview', label: 'Interview' },
   { href: '/experience', label: 'Experience' },
   { href: '/contact', label: 'Contact' },
 ];

@@ -33,6 +33,9 @@ export default function HomePage() {
             <Link href="/portfolio" className="btn-ghost">
               Browse all apps
             </Link>
+            <Link href="/interview" className="btn-ghost">
+              Interview copilot
+            </Link>
           </div>
           <div className="mt-12 grid max-w-lg grid-cols-3 gap-4">
             <Stat value={`${built}`} label="Apps to try" />

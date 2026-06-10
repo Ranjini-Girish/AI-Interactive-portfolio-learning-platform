@@ -1,0 +1,104 @@
+html.overlay-root,
+html.overlay-root body {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  overflow: hidden;
+}
+
+.overlay-shell {
+  min-height: 100vh;
+  padding: 12px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #f0f4ff;
+  background: rgba(8, 12, 20, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-sizing: border-box;
+}
+
+.overlay-compact .overlay-block:not(.overlay-answer-block),
+.overlay-compact .overlay-bullets,
+.overlay-compact .overlay-footer {
+  display: none;
+}
+
+.overlay-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.overlay-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b7280;
+}
+
+.overlay-dot-live {
+  background: #3ecf8e;
+  box-shadow: 0 0 8px #3ecf8e;
+}
+
+.overlay-title {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.overlay-btn {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  cursor: pointer;
+}
+
+.overlay-block {
+  margin-bottom: 12px;
+}
+
+.overlay-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  margin: 0 0 4px;
+}
+
+.overlay-question {
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.overlay-answer {
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+}
+
+.overlay-bullets {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  font-size: 12px;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.overlay-footer {
+  font-size: 10px;
+  opacity: 0.45;
+  text-align: center;
+  margin-top: 8px;
+}
