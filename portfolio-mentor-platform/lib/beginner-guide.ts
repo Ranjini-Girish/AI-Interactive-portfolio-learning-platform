@@ -10,20 +10,20 @@ export const DOMAIN_LABELS: Record<string, string> = {
 export const HOW_IT_WORKS = [
   {
     step: 1,
-    title: 'Pick a real-world topic',
-    body: 'Choose banking, shopping, insurance, or AI — each project mirrors real job experience.',
+    title: 'Open a real project demo',
+    body: 'Start with Customer Grouping Lab — banking-style segmentation you can show on a screen share.',
     icon: '🎯',
   },
   {
     step: 2,
-    title: 'Try the live demo',
-    body: 'Click “Try it now.” No coding needed for Project 1 — use practice data and follow on-screen steps.',
+    title: 'Run it with practice data',
+    body: 'One click loads sample data. No coding for Project 1 — create groups and read the chart.',
     icon: '▶️',
   },
   {
     step: 3,
-    title: 'Track your progress',
-    body: 'Open the learning path, check off what you tried, and mark steps complete when you’re done.',
+    title: 'Save your proof story',
+    body: 'Mark steps in the learning path and practice a 60-second “what I built” answer for interviews.',
     icon: '✓',
   },
 ] as const;
@@ -54,7 +54,7 @@ export const GLOSSARY: { term: string; plain: string }[] = [
 export const RECOMMENDED_FIRST = {
   slug: 'customer-segmentation-lab',
   title: 'Customer Grouping Lab',
-  why: 'Best for beginners — no spreadsheet prep, no coding. One click loads practice bank data.',
+  why: 'Fastest proof point — recruiters can see you grouped bank customers with real ML workflow, in one sitting.',
   demoPath: '/demos/customer-segmentation-lab',
   learnPath: '/build/projects/customer-segmentation-lab',
 } as const;

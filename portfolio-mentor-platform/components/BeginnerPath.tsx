@@ -5,11 +5,11 @@ export function BeginnerPath({ showCta = true }: { showCta?: boolean }) {
   return (
     <section className="space-y-6">
       <div>
-        <p className="text-sm font-medium text-[var(--success)]">New here? No tech background needed</p>
+        <p className="text-sm font-medium text-[var(--success)]">Proof before your next screen</p>
         <h2 className="mt-1 text-2xl font-bold">How it works in 3 steps</h2>
         <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
-          Learn the same ideas used in real AI and data jobs — by trying working apps, not reading
-          slides.
+          Turn a resume bullet into something you can demo — the same ideas used in real AI and data
+          jobs, without starting from a blank notebook.
         </p>
       </div>
 
@@ -28,12 +28,12 @@ export function BeginnerPath({ showCta = true }: { showCta?: boolean }) {
 
       {showCta && (
         <div className="card border-[var(--success)]/40 bg-[color-mix(in_srgb,var(--success)_8%,var(--surface))] !p-5">
-          <p className="text-sm font-semibold text-[var(--success)]">Recommended first activity</p>
+          <p className="text-sm font-semibold text-[var(--success)]">Start here — one 5-minute win</p>
           <h3 className="mt-1 text-lg font-bold">{RECOMMENDED_FIRST.title}</h3>
           <p className="mt-2 text-sm text-[var(--muted)]">{RECOMMENDED_FIRST.why}</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link href={RECOMMENDED_FIRST.demoPath} className="btn-primary text-sm">
-              Try it now (5 min)
+              Prove my first project →
             </Link>
             <Link href={RECOMMENDED_FIRST.learnPath} className="btn-ghost text-sm">
               Open learning path
