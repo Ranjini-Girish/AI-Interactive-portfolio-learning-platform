@@ -12,6 +12,17 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      // Portfolio platform inference (HF summarization) — port 3200
+      '/inference-api': {
+        target: 'http://127.0.0.1:3200',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/inference-api/, '/api/inference'),
+      },
+      '/lab-api': {
+        target: 'http://127.0.0.1:3200',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/lab-api/, '/api/lab'),
+      },
     },
   },
 });

@@ -13,8 +13,11 @@ import {
   checkHealth,
   loadSampleDataset,
   runSegmentation,
+  summarizeSegments,
+  saveLabProof,
   uploadCsv,
   type SegmentResult,
+  type StakeholderSummary,
   type UploadSummary,
 } from './api';
 import {
@@ -64,10 +67,17 @@ export default function App() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [serviceOnline, setServiceOnline] = useState<boolean | null>(null);
+  const [stakeholderSummary, setStakeholderSummary] = useState<StakeholderSummary | null>(null);
+  const [summarizeLoading, setSummarizeLoading] = useState(false);
+  const [summarizeError, setSummarizeError] = useState('');
+  const [proofUrl, setProofUrl] = useState('');
+  const [proofLoading, setProofLoading] = useState(false);
+  const [proofError, setProofError] = useState('');
 
   const step1Done = !!summary;
   const step2Done = !!segments;
-  const currentStep = !step1Done ? 1 : !step2Done ? 2 : 3;
+  const step4Done = !!stakeholderSummary;
+  const currentStep = !step1Done ? 1 : !step2Done ? 2 : !step4Done ? 3 : 4;
 
   useEffect(() => {
     if (!localStorage.getItem(WELCOME_KEY)) {
@@ -99,6 +109,7 @@ export default function App() {
     setError('');
     setLoading(true);
     setSegments(null);
+    setStakeholderSummary(null);
     try {
       const result = await loadSampleDataset();
       setSummary(result);
@@ -115,6 +126,7 @@ export default function App() {
     setError('');
     setLoading(true);
     setSegments(null);
+    setStakeholderSummary(null);
     try {
       const result = await uploadCsv(file);
       setSummary(result);
@@ -128,6 +140,8 @@ export default function App() {
 
   async function handleSegment() {
     setError('');
+    setStakeholderSummary(null);
+    setSummarizeError('');
     setLoading(true);
     try {
       const result = await runSegmentation(k);
@@ -136,6 +150,62 @@ export default function App() {
       setError(friendlyError(err instanceof Error ? err.message : 'Grouping failed'));
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleSummarize() {
+    if (!segments) return;
+    setSummarizeError('');
+    setSummarizeLoading(true);
+    try {
+      const result = await summarizeSegments(segments);
+      setStakeholderSummary(result);
+    } catch (err) {
+      setStakeholderSummary(null);
+      setSummarizeError(friendlyError(err instanceof Error ? err.message : 'Summary failed'));
+    } finally {
+      setSummarizeLoading(false);
+    }
+  }
+
+  async function copySummary() {
+    if (!stakeholderSummary) return;
+    const text = [
+      stakeholderSummary.summary,
+      '',
+      ...stakeholderSummary.bullets.map((b) => `• ${b}`),
+      '',
+      stakeholderSummary.model
+        ? `Model: ${stakeholderSummary.model} (${stakeholderSummary.provider})`
+        : `Provider: ${stakeholderSummary.provider} (no HF token — rule-based fallback)`,
+    ].join('\n');
+    await navigator.clipboard.writeText(text);
+  }
+
+  async function handleSaveProof() {
+    if (!stakeholderSummary || !segments) return;
+    setProofError('');
+    setProofLoading(true);
+    try {
+      const result = await saveLabProof({
+        lab_slug: 'customer-segmentation-lab',
+        title: 'Customer Segmentation Lab — Willamette Valley Bank',
+        summary: stakeholderSummary.summary,
+        bullets: stakeholderSummary.bullets,
+        metrics: {
+          k: segments.metrics.k,
+          silhouette_score: segments.metrics.silhouette_score.toFixed(3),
+          inertia: Math.round(segments.metrics.inertia),
+        },
+        provider: stakeholderSummary.provider,
+        model: stakeholderSummary.model,
+      });
+      setProofUrl(result.proof_url);
+    } catch (err) {
+      setProofUrl('');
+      setProofError(friendlyError(err instanceof Error ? err.message : 'Save failed'));
+    } finally {
+      setProofLoading(false);
     }
   }
 
@@ -217,17 +287,18 @@ export default function App() {
       </header>
 
       <div className="progress-track" aria-label="Your progress">
-        {[1, 2, 3].map((s) => (
+        {[1, 2, 3, 4].map((s) => (
           <div
             key={s}
-            className={`progress-seg ${s < currentStep || (s === 1 && step1Done && step2Done) ? 'done' : ''} ${s === currentStep ? 'active' : ''}`}
+            className={`progress-seg ${s < currentStep || (step4Done && s <= 3) ? 'done' : ''} ${s === currentStep ? 'active' : ''}`}
           />
         ))}
       </div>
-      <div className="progress-labels">
+      <div className="progress-labels progress-labels-4">
         <span>Load data</span>
         <span>Group customers</span>
         <span>Explore results</span>
+        <span>Lab report</span>
       </div>
 
       <StepCard
@@ -415,9 +486,81 @@ export default function App() {
             ))}
           </section>
 
+          <StepCard
+            n={4}
+            title="Generate stakeholder summary (lab)"
+            subtitle="Real inference step — Hugging Face summarization when configured, smart fallback otherwise."
+            done={step4Done}
+            active={currentStep === 4}
+          >
+            <div className="tip-box">
+              <strong>Lab deliverable:</strong> Turn your segments into a short summary a marketing lead
+              could read. This calls the portfolio inference API (same pattern as production ML apps).
+            </div>
+
+            <button
+              type="button"
+              className="big"
+              disabled={summarizeLoading}
+              onClick={handleSummarize}
+            >
+              {summarizeLoading ? 'Generating summary…' : 'Summarize my segments'}
+            </button>
+
+            {summarizeError && (
+              <div className="tip-box error" style={{ marginTop: '0.75rem' }}>
+                {summarizeError}
+              </div>
+            )}
+
+            {stakeholderSummary && (
+              <div className="summary-panel">
+                <div className="summary-meta">
+                  <span className="summary-badge">
+                    {stakeholderSummary.source === 'huggingface'
+                      ? `HF · ${stakeholderSummary.model}`
+                      : 'Local lab coach (add HF_TOKEN for live inference)'}
+                  </span>
+                  <button type="button" className="ghost copy-btn" onClick={() => void copySummary()}>
+                    Copy lab report
+                  </button>
+                </div>
+                <p className="summary-text">{stakeholderSummary.summary}</p>
+                <ul className="summary-bullets">
+                  {stakeholderSummary.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+                <div className="proof-actions">
+                  <button
+                    type="button"
+                    className="big"
+                    disabled={proofLoading}
+                    onClick={handleSaveProof}
+                  >
+                    {proofLoading ? 'Saving proof…' : 'Save & get shareable proof link'}
+                  </button>
+                </div>
+                {proofError && (
+                  <div className="tip-box error" style={{ marginTop: '0.75rem' }}>
+                    {proofError}
+                  </div>
+                )}
+                {proofUrl && (
+                  <div className="tip-box success" style={{ marginTop: '0.75rem' }}>
+                    <strong>Proof link ready</strong> — add to resume or LinkedIn:{' '}
+                    <a href={proofUrl} target="_blank" rel="noopener noreferrer">
+                      {proofUrl}
+                    </a>
+                  </div>
+                )}
+              </div>
+            )}
+          </StepCard>
+
           <div className="tip-box success">
-            <strong>You did it!</strong> You loaded data, ran customer grouping, and explored
-            segments.{' '}
+            <strong>You did it!</strong> You loaded data, ran customer grouping, explored segments
+            {stakeholderSummary ? ', and generated a stakeholder summary' : ''}.{' '}
             <a href="http://localhost:3200/build/projects/customer-segmentation-lab#step-guide">
               Open Build Lab to mark your steps complete
             </a>

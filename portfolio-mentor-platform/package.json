@@ -6,9 +6,11 @@
     "dev": "next dev --port 3200",
     "build": "next build",
     "start": "next start --port 3200",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup:lab": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-lab-env.ps1"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
     "next": "^15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

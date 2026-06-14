@@ -40,11 +40,19 @@ In Vercel → Project → Settings → Environment Variables, add:
 
 | Variable | Required | Purpose |
 |----------|----------|---------|
+| `HF_TOKEN` | **Lab features** | Hugging Face Inference Providers — P01 summarize + RAG embeddings |
+| `HF_SUMMARY_MODEL` | Optional | Default `facebook/bart-large-cnn` |
+| `HF_EMBED_MODEL` | Optional | Default `sentence-transformers/all-MiniLM-L6-v2` |
+| `SUPABASE_URL` | **Proof links** | Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | **Proof links** | Server-only; run `supabase/schema.sql` first |
+| `NEXT_PUBLIC_APP_URL` | **Proof links** | Production URL for shareable proof pages |
 | `RESEND_API_KEY` | Optional | Contact form sends email |
 | `CONTACT_TO_EMAIL` | Optional | Inbox (default: Racgowda18@gmail.com) |
 | `CONTACT_FROM_EMAIL` | Optional | Verified sender in Resend |
 | `OPENAI_API_KEY` | Optional | Live AI mentor in Build Lab |
 | `OPENAI_MODEL` | Optional | Default `gpt-4o-mini` |
+
+**Hugging Face token:** fine-grained token with **Make calls to Inference Providers** at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). Local setup: `SETUP-LAB-ENV.bat` or see `LAB-INFRA.md`. Verify at `/lab/setup`.
 
 Without `RESEND_API_KEY`, the contact form returns a **mailto** fallback (still usable).
 

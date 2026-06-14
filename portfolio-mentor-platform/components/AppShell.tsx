@@ -8,6 +8,8 @@ const links = [
   { href: '/start', label: 'Start here' },
   { href: '/portfolio', label: 'Try apps' },
   { href: '/build', label: 'Learn' },
+  { href: '/lab/rag', label: 'RAG lab' },
+  { href: '/lab/setup', label: 'Lab setup' },
   { href: '/interview', label: 'Interview' },
   { href: '/experience', label: 'Experience' },
   { href: '/contact', label: 'Contact' },

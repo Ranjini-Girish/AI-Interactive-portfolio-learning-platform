@@ -387,6 +387,56 @@ th {
   margin-bottom: 0.35rem;
 }
 
+.progress-labels-4 {
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 0.7rem;
+}
+
+.summary-panel {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.summary-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.copy-btn {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.summary-text {
+  margin: 0 0 0.75rem;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.summary-bullets {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.proof-actions {
+  margin-top: 1rem;
+}
+
 .footer-note {
   text-align: center;
   font-size: 0.75rem;

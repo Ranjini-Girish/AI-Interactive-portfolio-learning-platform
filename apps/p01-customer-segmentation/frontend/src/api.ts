@@ -99,3 +99,81 @@ export async function runSegmentation(k: number): Promise<SegmentResult> {
   if (!res.ok) throw new Error(await parseError(res));
   return res.json();
 }
+
+/** Lab inference — proxied to portfolio platform (HF or local fallback). */
+const INFERENCE_BASE =
+  import.meta.env.VITE_INFERENCE_URL?.replace(/\/$/, '') ?? '/inference-api';
+
+export type StakeholderSummary = {
+  summary: string;
+  bullets: string[];
+  source: 'huggingface' | 'local';
+  model: string | null;
+  provider: 'huggingface' | 'local';
+};
+
+export async function summarizeSegments(segments: SegmentResult): Promise<StakeholderSummary> {
+  const url = `${INFERENCE_BASE}/summarize`;
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        segments: {
+          centroids: segments.centroids,
+          metrics: segments.metrics,
+        },
+        company: 'Willamette Valley Bank',
+      }),
+    });
+  } catch {
+    throw new Error(
+      'Inference service offline. Start the portfolio site on port 3200 (npm run dev in portfolio-mentor-platform), then try again.',
+    );
+  }
+  if (!res.ok) {
+    try {
+      const body = await res.json();
+      throw new Error(body.error ?? 'Summarization failed');
+    } catch {
+      throw new Error('Summarization failed');
+    }
+  }
+  return res.json();
+}
+
+export type CreateProofResponse = {
+  id: string;
+  proof_url: string;
+};
+
+const LAB_BASE = import.meta.env.VITE_LAB_API_URL?.replace(/\/$/, '') ?? '/lab-api';
+
+export async function saveLabProof(payload: {
+  lab_slug: string;
+  title: string;
+  summary: string;
+  bullets: string[];
+  metrics: Record<string, unknown>;
+  provider: string | null;
+  model: string | null;
+}): Promise<CreateProofResponse> {
+  let res: Response;
+  try {
+    res = await fetch(`${LAB_BASE}/runs`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    throw new Error(
+      'Lab storage offline. Start portfolio on port 3200 and configure Supabase (see supabase/schema.sql).',
+    );
+  }
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error((body as { error?: string }).error ?? 'Could not save lab proof');
+  }
+  return res.json();
+}
