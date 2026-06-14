@@ -12,35 +12,38 @@ export default function HomePage() {
       <section className="hero-gradient border-b border-[var(--border)]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="text-sm font-medium uppercase tracking-widest text-[var(--accent)]">
-            AI Portfolio & Hands-On Learning — no coding required to start
+            Prove resume projects before your next interview
           </p>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-            {learner.name}
+            Turn ML projects into proof recruiters can click
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-[var(--muted)]">{learner.title}</p>
+          <p className="mt-4 max-w-2xl text-lg text-[var(--muted)]">
+            {learner.name} · {learner.title}
+          </p>
           <p className="mt-6 max-w-2xl leading-relaxed text-[var(--muted)]">
-            Real job projects turned into <strong className="text-[var(--text)]">apps you can try</strong>
-            — with step-by-step guidance and an AI helper. Built for learners, career changers, and
-            anyone curious about AI and data work.
+            Most candidates list AI projects hiring managers never see. This site gives you{' '}
+            <strong className="text-[var(--text)]">working apps</strong> tied to real banking, retail,
+            and insurance work — plus guided paths so you can demo and explain them on a call, starting
+            in about five minutes.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/start" className="btn-primary">
-              New here? Start here
+            <Link href="/demos/customer-segmentation-lab" className="btn-primary">
+              Prove my first project →
             </Link>
-            <Link href="/demos/customer-segmentation-lab" className="btn-ghost">
-              Try first app (5 min)
+            <Link href="/start" className="btn-ghost">
+              How it works
+            </Link>
+            <Link href="/interview" className="btn-ghost">
+              Interview this week?
             </Link>
             <Link href="/portfolio" className="btn-ghost">
               Browse all apps
             </Link>
-            <Link href="/interview" className="btn-ghost">
-              Interview copilot
-            </Link>
           </div>
           <div className="mt-12 grid max-w-lg grid-cols-3 gap-4">
-            <Stat value={`${built}`} label="Apps to try" />
-            <Stat value={`${projects.length}`} label="Learning topics" />
-            <Stat value="4" label="Industry areas" />
+            <Stat value={`${built}`} label="Apps to demo" />
+            <Stat value={`${projects.length}`} label="Project stories" />
+            <Stat value="5 min" label="First win" />
           </div>
         </div>
       </section>
@@ -51,28 +54,28 @@ export default function HomePage() {
 
       <section className="border-y border-[var(--border)] bg-[var(--surface)]">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
-          <h2 className="text-2xl font-bold">What makes this different</h2>
+          <h2 className="text-2xl font-bold">Built for job seekers, not tourists</h2>
           <p className="mt-3 max-w-3xl text-[var(--muted)] leading-relaxed">
-            Most resumes list projects you cannot see or touch. Here, each project is a{' '}
-            <strong className="text-[var(--text)]">working app</strong> with a guided learning path —
-            banking, shopping, insurance, and AI assistants.
+            Certificates show you watched videos. Recruiters want to know what you{' '}
+            <strong className="text-[var(--text)]">actually built</strong>. Each project here is a live
+            app with a learning path — so you can open it, run it, and talk through it under pressure.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <FeatureCard
-              title="Try live apps"
-              body="Open real demos — group bank customers, predict churn, get product recommendations. Click and learn."
-              href="/portfolio"
-              cta="See all apps"
+              title="Clickable proof"
+              body="Open real demos — group bank customers, predict churn, get recommendations. One click loads practice data."
+              href="/demos/customer-segmentation-lab"
+              cta="Prove first project"
             />
             <FeatureCard
-              title="Guided learning path"
-              body="Small steps, checklists, audio tutor, and AI mentor chat. Mark progress as you go."
+              title="Interview-ready stories"
+              body="Checklists, audio tutor, and AI mentor help you turn each demo into a 60-second answer."
               href="/build"
               cta="Open learning paths"
             />
             <FeatureCard
-              title="Real work history"
-              body="See how portfolio projects connect to jobs at banks, retailers, insurers, and tech companies."
+              title="Real industry context"
+              body="Projects mirror work at banks, retailers, insurers, and tech teams — not toy Kaggle clones."
               href="/experience"
               cta="View experience"
             />
@@ -106,17 +109,17 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <div className="card border-[var(--accent)]/30 bg-[color-mix(in_srgb,var(--accent)_6%,var(--surface))] text-center">
-          <h2 className="text-xl font-bold">Ready in one click</h2>
+          <h2 className="text-xl font-bold">Your first proof point — about 5 minutes</h2>
           <p className="mx-auto mt-2 max-w-lg text-sm text-[var(--muted)]">
-            Project 1 groups bank customers by spending — practice data included, plain English on
-            every screen.
+            Customer Grouping Lab groups bank customers by spending. Practice data included, plain English
+            on every screen — no coding required for Project 1.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link href="/demos/customer-segmentation-lab" className="btn-primary">
-              Try Customer Grouping Lab
+              Prove my first project →
             </Link>
-            <Link href="/build/projects/customer-segmentation-lab" className="btn-ghost">
-              Open learning path
+            <Link href="/start" className="btn-ghost">
+              Step-by-step guide
             </Link>
           </div>
         </div>
