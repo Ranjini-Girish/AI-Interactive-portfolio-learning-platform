@@ -1,0 +1,40 @@
+# Render Blueprint — API + managed PostgreSQL
+# Docs: https://render.com/docs/infrastructure-as-code
+#
+# After deploy:
+# 1. Set CORS_ORIGIN to your Vercel URL (e.g. https://career-sim.vercel.app)
+# 2. Set OPENAI_API_KEY in the Render dashboard (optional but recommended)
+# 3. Point Vercel NEXT_PUBLIC_API_URL to the Render service URL
+
+services:
+  - type: web
+    name: career-sim-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile.api
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: career-sim-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: CORS_ORIGIN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+
+databases:
+  - name: career-sim-db
+    plan: free
+    databaseName: career_simulator
+    user: career_sim

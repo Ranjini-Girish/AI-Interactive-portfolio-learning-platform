@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: career-simulator-db
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: career_sim
+      POSTGRES_PASSWORD: career_sim_dev
+      POSTGRES_DB: career_simulator
+    volumes:
+      - career_sim_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U career_sim -d career_simulator"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  career_sim_pgdata:

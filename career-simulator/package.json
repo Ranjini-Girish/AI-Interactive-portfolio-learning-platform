@@ -1,0 +1,25 @@
+{
+  "name": "career-simulator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI Career Transition & Real-World Experience Simulator",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w @career-sim/api\" \"npm run dev -w @career-sim/web\"",
+    "dev:web": "npm run dev -w @career-sim/web",
+    "dev:api": "npm run dev -w @career-sim/api",
+    "build": "npm run build -w @career-sim/shared && npm run build -w @career-sim/api && npm run build -w @career-sim/web",
+    "build:api": "npm run build -w @career-sim/shared && npm run build -w @career-sim/api",
+    "build:web": "npm run build -w @career-sim/shared && npm run build -w @career-sim/web",
+    "start:api": "npm run start -w @career-sim/api",
+    "docker:api": "docker build -f Dockerfile.api -t career-sim-api .",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
