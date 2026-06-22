@@ -1,0 +1,16 @@
+'use client';
+
+import { ClerkProvider } from '@clerk/nextjs';
+import { isClerkEnabled } from '@/lib/clerk-config';
+
+export function ClerkAppProvider({ children }: { children: React.ReactNode }) {
+  if (!isClerkEnabled()) {
+    return children;
+  }
+
+  return (
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
+      {children}
+    </ClerkProvider>
+  );
+}

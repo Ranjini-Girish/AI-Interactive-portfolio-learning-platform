@@ -11,7 +11,7 @@ import type {
   SimRole,
 } from '@career-sim/shared';
 import type { ProgressDashboard } from '@career-sim/shared';
-import { getStoredToken } from './auth-storage';
+import { getAuthToken } from './auth-token';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
 
@@ -34,7 +34,7 @@ async function apiFetch<T>(
   }
 
   if (options.auth !== false) {
-    const token = getStoredToken();
+    const token = await getAuthToken();
     if (token) headers.Authorization = `Bearer ${token}`;
   }
 
@@ -141,7 +141,7 @@ export async function uploadResumeFile(
   file: File,
   targetRole?: SimRole,
 ): Promise<ResumeAnalysisRecord> {
-  const token = getStoredToken();
+  const token = await getAuthToken();
   const form = new FormData();
   form.append('file', file);
   if (targetRole) form.append('targetRole', targetRole);

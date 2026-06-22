@@ -1,5 +1,5 @@
 import { API_URL } from './api-client';
-import { getStoredToken } from './auth-storage';
+import { getAuthToken } from './auth-token';
 
 export type StreamCallbacks = {
   onToken: (text: string) => void;
@@ -13,7 +13,7 @@ export async function streamMentorChat(
   callbacks: StreamCallbacks,
   options?: { clearHistory?: boolean },
 ): Promise<void> {
-  const token = getStoredToken();
+  const token = await getAuthToken();
   if (!token) {
     callbacks.onError?.('Sign in to chat with your mentor');
     return;

@@ -16,6 +16,8 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().default('http://localhost:3000'),
   /** Set on Render/Railway so health checks report public URL */
   PUBLIC_API_URL: z.string().optional(),
+  /** Clerk — when set, API accepts Clerk session tokens (see CLERK-SETUP.md) */
+  CLERK_SECRET_KEY: z.string().optional(),
 });
 
 export const env = envSchema.parse(process.env);

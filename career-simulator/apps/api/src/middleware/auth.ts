@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import { verifyToken } from '../services/jwt-service';
 import { getUserById } from '../services/auth-service';
+import { isClerkConfigured, resolveUserFromClerkToken } from '../services/clerk-auth';
 
 export async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
   const header = req.headers.authorization;
@@ -10,6 +11,21 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   }
 
   const token = header.slice(7);
+
+  if (isClerkConfigured()) {
+    try {
+      const user = await resolveUserFromClerkToken(token);
+      if (user) {
+        req.user = user;
+        next();
+        return;
+      }
+    } catch {
+      res.status(401).json({ error: 'Invalid or expired Clerk session', code: 'INVALID_TOKEN' });
+      return;
+    }
+  }
+
   try {
     const payload = verifyToken(token);
     const user = await getUserById(payload.sub);

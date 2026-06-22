@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FormEvent, useState, Suspense } from 'react';
+import { SignIn } from '@clerk/nextjs';
 import { getAuthErrorMessage, useAuth } from '@/components/providers/auth-provider';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input, Label } from '@/components/ui/input';
+import { isClerkEnabled } from '@/lib/clerk-config';
 
-function LoginForm() {
+function LegacyLoginForm() {
   const { login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -83,11 +85,29 @@ function LoginForm() {
   );
 }
 
+function ClerkLogin() {
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') ?? '/dashboard';
+
+  return (
+    <div className="mx-auto flex w-full max-w-md flex-col items-center gap-4">
+      <SignIn signUpUrl="/register" forceRedirectUrl={next} fallbackRedirectUrl={next} />
+    </div>
+  );
+}
+
+function LoginContent() {
+  if (isClerkEnabled()) {
+    return <ClerkLogin />;
+  }
+  return <LegacyLoginForm />;
+}
+
 export default function LoginPage() {
   return (
     <div className="mx-auto max-w-lg px-4 py-12">
       <Suspense fallback={<p className="text-center text-muted-foreground">Loading…</p>}>
-        <LoginForm />
+        <LoginContent />
       </Suspense>
     </div>
   );
