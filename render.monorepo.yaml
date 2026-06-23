@@ -1,10 +1,11 @@
-# Render Blueprint when career-simulator lives inside a parent monorepo.
-# Copy or symlink this file to render.yaml at the PARENT repo root before Blueprint deploy.
+# Render Blueprint — career-simulator inside monorepo (rootDir: career-simulator)
 
 services:
   - type: web
     name: career-sim-api
     runtime: docker
+    repo: https://github.com/Ranjini-Girish/AI-Interactive-portfolio-learning-platform
+    branch: main
     rootDir: career-simulator
     dockerfilePath: ./Dockerfile.api
     plan: free

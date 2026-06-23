@@ -24,6 +24,7 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/packages/shared ./packages/shared
 COPY --from=build /app/apps/api/dist ./apps/api/dist
 COPY --from=build /app/apps/api/package.json ./apps/api/package.json
+# SQL migrations are copied into dist/db/migrations during api build
 
 WORKDIR /app/apps/api
 
