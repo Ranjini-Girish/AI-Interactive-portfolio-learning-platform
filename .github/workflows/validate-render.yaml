@@ -1,0 +1,25 @@
+name: Validate Render Blueprint
+
+on:
+  push:
+    paths:
+      - 'render.yaml'
+      - 'career-simulator/Dockerfile.api'
+  pull_request:
+    paths:
+      - 'render.yaml'
+      - 'career-simulator/Dockerfile.api'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Render CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/render-oss/cli/refs/heads/main/bin/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Validate render.yaml
+        run: render blueprints validate render.yaml
