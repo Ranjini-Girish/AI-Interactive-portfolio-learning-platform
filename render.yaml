@@ -24,8 +24,12 @@ services:
       - key: OPENAI_MODEL
         value: gpt-4o-mini
       - key: CORS_ORIGIN
-        sync: false
+        value: https://career-simulator-sandy.vercel.app,https://career-simulator-ranjinigirish.vercel.app,https://career-simulator-git-main-ranjinigirish.vercel.app
+      - key: PUBLIC_API_URL
+        value: https://career-sim-api.onrender.com
       - key: OPENAI_API_KEY
+        sync: false
+      - key: CLERK_SECRET_KEY
         sync: false
 
 databases:
