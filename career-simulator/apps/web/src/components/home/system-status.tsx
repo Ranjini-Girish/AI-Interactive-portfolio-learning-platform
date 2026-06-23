@@ -2,10 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import type { HealthResponse } from '@career-sim/shared';
-import { fetchHealth } from '@/lib/api-client';
+import { API_URL, fetchHealth } from '@/lib/api-client';
 import { DeployChecklist } from '@/components/home/deploy-checklist';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+function apiOfflineMessage(): string {
+  const isLocal =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  if (isLocal) {
+    return 'Start the API: npm run dev:api (port 4000)';
+  }
+  return `Backend not reachable at ${API_URL}. Deploy the API on Render (see DEPLOY-RUNBOOK.md).`;
+}
 
 export function SystemStatus() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
@@ -14,7 +24,7 @@ export function SystemStatus() {
   useEffect(() => {
     fetchHealth()
       .then(setHealth)
-      .catch(() => setError('Start the API: npm run dev:api (port 4000)'));
+      .catch(() => setError(apiOfflineMessage()));
   }, []);
 
   return (
