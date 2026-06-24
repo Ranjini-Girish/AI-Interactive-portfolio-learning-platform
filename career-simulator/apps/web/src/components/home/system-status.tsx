@@ -14,7 +14,7 @@ function apiOfflineMessage(): string {
   if (isLocal) {
     return 'Start the API: npm run dev:api (port 4000)';
   }
-  return `Backend not reachable at ${API_URL}. Deploy the API on Render (see DEPLOY-RUNBOOK.md).`;
+  return `Backend not reachable at ${API_URL}. Deploy the API on Fly.io (see FLY-DEPLOY.md).`;
 }
 
 export function SystemStatus() {

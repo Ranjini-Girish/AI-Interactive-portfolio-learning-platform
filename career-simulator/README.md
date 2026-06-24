@@ -18,7 +18,7 @@ Interactive platform for **non-IT beginners**, **career returners**, **freshers*
 
 | Backend | Node.js, Express 5, TypeScript |
 
-| Database | PostgreSQL 16 (Docker local / Render managed) |
+| Database | PostgreSQL 16 (Docker local / Fly.io Postgres) |
 
 | AI | OpenAI API (optional — local fallbacks available) |
 
@@ -38,14 +38,13 @@ career-simulator/
 
 │   ├── web/                 # Next.js → Vercel
 
-│   └── api/                 # Express → Render (Docker)
+│   └── api/                 # Express → Fly.io (Docker)
 
 ├── packages/shared/
 
 ├── Dockerfile.api           # Production API image
-
-├── render.yaml              # Render Blueprint
-
+├── fly.toml                 # Fly.io app config
+├── FLY-DEPLOY.md            # Fly.io deploy guide
 ├── docker-compose.yml       # Local Postgres :5433
 
 └── PHASE-1.md … PHASE-10.md
@@ -118,43 +117,25 @@ See **PHASE-1.md** through **PHASE-10.md** for walkthroughs.
 
 
 
-### API — Render (Docker)
+### API — Fly.io (Docker)
 
-
-
-1. Push repo to GitHub  
-
-2. Render → **New Blueprint** → select `render.yaml`  
-
-3. Set `CORS_ORIGIN` to your Vercel URL  
-
-4. Set `OPENAI_API_KEY` (optional)  
-
-5. Note the public URL: `https://career-sim-api.onrender.com`
-
-
+1. Install Fly CLI: https://fly.io/docs/flyctl/install/
+2. Follow **`FLY-DEPLOY.md`** (Postgres + `fly deploy`)
+3. API URL: `https://career-simulator-api.fly.dev`
 
 ```powershell
-
-npm run docker:api   # local smoke test
-
+cd career-simulator
+fly auth login
+fly deploy
 ```
-
-
 
 ### Web — Vercel
 
-
-
-1. Import repo → **Root Directory:** `career-simulator/apps/web`  
-
-2. Env: `NEXT_PUBLIC_API_URL=https://your-api.onrender.com`  
-
+1. Import repo → **Root Directory:** `career-simulator/apps/web`
+2. Env: `NEXT_PUBLIC_API_URL=https://career-simulator-api.fly.dev`
 3. Deploy
 
-
-
-Full checklist: **PHASE-10.md**
+Full checklist: **FLY-DEPLOY.md**
 
 
 

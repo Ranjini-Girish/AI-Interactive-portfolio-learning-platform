@@ -1,19 +1,19 @@
-# Phase 10 — Deployment (Vercel + Render)
+# Phase 10 — Deployment (Vercel + Fly.io)
 
-> **Quick start:** see [`DEPLOY-RUNBOOK.md`](./DEPLOY-RUNBOOK.md) for copy/paste GitHub → Render → Vercel steps.
+> **Quick start:** see [`FLY-DEPLOY.md`](./FLY-DEPLOY.md) for Fly.io API deploy steps.
 
 ## Architecture
 
 ```
 ┌─────────────────┐     HTTPS      ┌──────────────────┐
-│  Vercel         │ ──────────────▶│  Render (Docker) │
+│  Vercel         │ ──────────────▶│  Fly.io (Docker) │
 │  apps/web       │   REST + SSE   │  Dockerfile.api  │
 │  Next.js 15     │                │  Express API     │
 └─────────────────┘                └────────┬─────────┘
                                             │
                                             ▼
                                    ┌──────────────────┐
-                                   │ Render Postgres  │
+                                   │ Fly Postgres     │
                                    │ (managed)        │
                                    └──────────────────┘
 ```
@@ -25,7 +25,8 @@
 | File | Purpose |
 |------|---------|
 | `Dockerfile.api` | Production API container |
-| `render.yaml` | Render Blueprint (API + Postgres) |
+| `fly.toml` | Fly.io app config (API + health checks) |
+| `FLY-DEPLOY.md` | Fly.io deploy guide |
 | `apps/web/vercel.json` | Monorepo build commands for Vercel |
 | `.env.production.example` | Production env reference |
 | `.dockerignore` | Slim Docker build context |

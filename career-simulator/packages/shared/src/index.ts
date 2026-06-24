@@ -9,7 +9,7 @@ export const DEVELOPMENT_PHASES = [
   { id: 7, name: 'Dashboard + progress tracking', status: 'done' as const },
   { id: 8, name: 'Portfolio generator', status: 'done' as const },
   { id: 9, name: 'Mock interview system', status: 'done' as const },
-  { id: 10, name: 'Deployment (Vercel + Render)', status: 'done' as const },
+  { id: 10, name: 'Deployment (Vercel + Fly.io)', status: 'done' as const },
 ];
 
 export type { SimRole } from './roles';

@@ -1,5 +1,5 @@
-# Render Blueprint — API + managed PostgreSQL
-# Docs: https://render.com/docs/infrastructure-as-code
+# LEGACY — use Fly.io instead (see career-simulator/FLY-DEPLOY.md and fly.toml)
+# Render Blueprint — kept for reference only
 #
 # After deploy:
 # 1. Set CORS_ORIGIN to your Vercel URL (e.g. https://career-sim.vercel.app)

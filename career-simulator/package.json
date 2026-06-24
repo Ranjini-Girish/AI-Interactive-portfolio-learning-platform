@@ -16,6 +16,9 @@
     "build:web": "npm run build -w @career-sim/shared && npm run build -w @career-sim/web",
     "start:api": "npm run start -w @career-sim/api",
     "docker:api": "docker build -f Dockerfile.api -t career-sim-api .",
+    "fly:deploy": "flyctl deploy",
+    "fly:status": "flyctl status",
+    "fly:logs": "flyctl logs",
     "db:up": "docker compose up -d postgres",
     "db:down": "docker compose down"
   },

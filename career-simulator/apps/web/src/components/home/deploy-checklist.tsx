@@ -5,9 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 
 const DEPLOY_STEPS = [
-  { label: 'API on Render', detail: 'Dockerfile.api + render.yaml + managed Postgres' },
+  { label: 'API on Fly.io', detail: 'fly.toml + Dockerfile.api + Fly Postgres' },
   { label: 'Web on Vercel', detail: 'apps/web with NEXT_PUBLIC_API_URL' },
-  { label: 'CORS_ORIGIN', detail: 'Set Vercel URL on Render API service' },
+  { label: 'CORS_ORIGIN', detail: 'Vercel URLs set in fly.toml' },
 ];
 
 export function DeployChecklist({ health }: { health: HealthResponse | null }) {
@@ -21,7 +21,7 @@ export function DeployChecklist({ health }: { health: HealthResponse | null }) {
           </Badge>
         </div>
         <CardDescription>
-          Production: Vercel (web) + Render (API + Postgres). See PHASE-10.md.
+          Production: Vercel (web) + Fly.io (API + Postgres). See FLY-DEPLOY.md.
         </CardDescription>
       </CardHeader>
       <CardContent>

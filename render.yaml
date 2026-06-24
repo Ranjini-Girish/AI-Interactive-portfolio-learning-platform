@@ -1,4 +1,5 @@
-# Render Blueprint — career-simulator inside monorepo (rootDir: career-simulator)
+# LEGACY — use Fly.io instead (see career-simulator/FLY-DEPLOY.md)
+# Render Blueprint — career-simulator inside monorepo
 
 services:
   - type: web

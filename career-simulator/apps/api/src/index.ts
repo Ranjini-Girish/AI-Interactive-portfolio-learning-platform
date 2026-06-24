@@ -28,7 +28,7 @@ async function start() {
 
   await runMigrations();
 
-  app.listen(env.PORT, () => {
+  app.listen(env.PORT, '0.0.0.0', () => {
     console.log(`[api] Phase 10 — listening on port ${env.PORT} (${env.NODE_ENV})`);
     console.log(`[api] Health: GET /api/health`);
     if (env.PUBLIC_API_URL) {
